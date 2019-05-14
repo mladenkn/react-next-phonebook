@@ -13,7 +13,9 @@ const generatePhoneNumber = (): PhoneNumber => ({
     type: faker.random.arrayElement(['Home', 'Work', 'Cell', 'Husband']) as PhoneNumberType
 })
 
+let contactId = 1
 export const generateContact = (): Contact => ({
+    id: contactId++,
     firstName: faker.name.firstName(),
     lastName: faker.name.lastName(),
     avatar: faker.internet.avatar(),

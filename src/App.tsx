@@ -8,7 +8,7 @@ const contacts = generateArray(generateContact, 5, 20)
 const App = () => (
     <div>
       <main>
-          <ContactList contacts={contacts} />
+          <ContactList contacts={contacts} type='vertical' />
       </main>
     </div>
 )
