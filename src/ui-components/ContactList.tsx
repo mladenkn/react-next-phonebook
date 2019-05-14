@@ -1,16 +1,15 @@
 import { contactListStyle } from "../ui-design/contactListStyle";
 import { ContactListItem } from "../models";
 import React from 'react';
-import { withStyles } from '../utils';
-import { WithSheet } from 'react-jss';
+import { withStyles, WithStyles } from '../utils';
 import { List, ListItem, Card, Avatar, CardContent, Typography, Icon } from "@material-ui/core";
 
-interface OwnProps {
+export interface ContactListOwnProps {
     contacts: ContactListItem[]
     type: 'vertical' | 'snake'
 }
  
-type Props = WithSheet<typeof contactListStyle> & OwnProps
+type Props = WithStyles<typeof contactListStyle> & ContactListOwnProps
 
 const ContactList_ = ({contacts, type, classes}: Props) => {
 
@@ -35,16 +34,17 @@ const ContactList_ = ({contacts, type, classes}: Props) => {
 
                 const name = <Typography className={classes.itemName}>{c.firstName + ' ' + c.lastName}</Typography>
 
-                return <ListItem key={c.id} className={classes.itemRoot}>
-                    <Card className={classes.itemCard}>
-                        <CardContent className={classes.itemCardContent}>
-                            {type === 'snake' && <div>{icons} {avatar} {name}</div>}
-                            {type === 'vertical' && <div>{avatar} {name} {icons}</div>}
-                        </CardContent>
-                    </Card>
-                </ListItem>;
-            }
-        )}
+                return (
+                    <ListItem key={c.id} className={classes.itemRoot}>
+                        <Card className={classes.itemCard}>
+                            <CardContent className={classes.itemCardContent}>
+                                {type === 'snake' && <div>{icons} {avatar} {name}</div>}
+                                {type === 'vertical' && <div>{avatar} {name} {icons}</div>}
+                            </CardContent>
+                        </Card>
+                    </ListItem>
+                );
+            })}
         </List>
     );
 }

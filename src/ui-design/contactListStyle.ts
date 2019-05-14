@@ -1,9 +1,11 @@
+import { ContactListOwnProps } from "../ui-components/ContactList";
+
 export const contactListStyle = {
-    root: {
-        display: ({type}: any) => type === 'snake' ? 'block' : 'flex',
+    root: ({type}: ContactListOwnProps) => type === 'snake' && ({
+        display: 'flex',
         'flex-direction': 'row',
         'flex-wrap': 'wrap'
-    },
+    }), 
     itemRoot: {
         width: 270,
     },
@@ -18,24 +20,26 @@ export const contactListStyle = {
     itemAvatar: {
         margin: 'auto',
         'margin-bottom': 10,
+        display: ({type}: ContactListOwnProps) => type === 'vertical'  && 'inline-block'
     },
     itemName: {
-        'text-align': 'center'
+        'text-align': 'center',
+        display: ({type}: ContactListOwnProps) => type === 'vertical'  && 'inline-block'
     },
     itemIcon: {
         'font-size': 18
     },
-    itemIcons: {
+    itemIcons: ({type}: ContactListOwnProps) => type === 'snake' && ({
         position: 'relative',
         height: 28,
-    },
-    itemIconsLeft: {
+    }),
+    itemIconsLeft: ({type}: ContactListOwnProps) => type === 'snake' && ({
         position: 'absolute'
-    },
-    itemIconsRight: {
+    }),
+    itemIconsRight: ({type}: ContactListOwnProps) => type === 'snake' && ({
         position: 'absolute',
         right: 0
-    },
+    }),
 }
 
 // export const contactListStyle = {
