@@ -1,26 +1,16 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { ContactList } from './ui-components/ContactList';
+import { generateArray, generateContact } from './devUtils/dataGenerators';
 
-const App: React.FC = () => {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+const contacts = generateArray(generateContact, 5, 20)
+    .map(({id, firstName, lastName, isFavorite, avatar}) => ({id, firstName, lastName, isFavorite, avatar}))
+
+const App = () => (
+    <div>
+      <main>
+          <ContactList contacts={contacts} />
+      </main>
     </div>
-  );
-}
+)
 
 export default App;
