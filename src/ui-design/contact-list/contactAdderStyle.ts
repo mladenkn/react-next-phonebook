@@ -10,17 +10,17 @@ export const contactAdderStyle = ({palette}: Theme) => createStyles({
         '&:hover': {
             'background-color': 'inherit'
         },
-        'text-transform': 'none'
+        'text-transform': 'none',
+        width: '100%',
+        height: '100%',
+        borderColor: palette.primary.light,
+        borderStyle: 'dashed',
+        borderWidth: 1,
+        boxShadow: 'inherit',
     }, 
     card: {
         [ifSm]: {
             padding: 0,
-            width: 270,
-            height: 135,
-            borderColor: palette.primary.light,
-            borderStyle: 'dashed',
-            borderWidth: 1,
-            boxShadow: 'inherit',
         },
         [ifXs]: {
             width: 310

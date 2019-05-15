@@ -7,8 +7,8 @@ export const contactListItemStyle = ({palette}: Theme) => createStyles({
     card: {
         [ifSm]: {
             padding: 0,
-            width: 270,
-            height: 135,
+            width: '100%',
+            height: '100%',
             borderWidth: 1,
             borderStyle: 'solid',
             borderColor: palette.secondary.light,

@@ -13,6 +13,7 @@ export const contactListStyle = createStyles({
     itemRoot: {
         [ifSm]: {
             width: 270,
+            height: 150,
         },
     },
 })
