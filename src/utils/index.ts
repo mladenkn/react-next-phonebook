@@ -4,8 +4,15 @@ import { FunctionComponent } from "react";
 export const withStyles =
     <Styles extends Record<string, {}>> (styles: Styles) => 
     <OtherProps> (component: FunctionComponent<OtherProps & WithStyles<Styles>>) =>
-    (injectSheet(styles as any) as any)(component) as FunctionComponent<OtherProps>
+    (injectSheet(styles as any) as any)(component) as FunctionComponent<OtherProps>;
 
 export type WithStyles<Styles extends Record<string, {}>> = {
     classes: Record<keyof Styles, string>
 }
+
+export const createStyled = <Styles extends Record<string, {}>> (styles: Styles) => {
+    const Styled = ({children, classes}: {children: (classes: Record<keyof Styles, string>) => JSX.Element} & WithStyles<Styles>) => {
+      return children(classes);
+    }
+    return withStyles(styles)(Styled);
+  }
