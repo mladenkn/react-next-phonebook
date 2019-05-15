@@ -1,6 +1,6 @@
 import { Contact } from "../models";
 import { WithStyles, withStyles } from "../utils";
-import { contactDetailsStyle } from "../ui-design/contactDetails";
+import { contactDetailsStyle } from "../ui-design/contactDetailsStyle";
 import { Grid, Avatar, Typography, Divider, Icon } from "@material-ui/core";
 import React from 'react';
 import { ContactDetailsProps } from "./ContactDetailsProps";

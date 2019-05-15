@@ -4,7 +4,7 @@ import { generateArray, generateContact } from '../devUtils/dataGenerators';
 import faker from 'faker';
 import { ContactDetails } from './ContactDetails';
 import { WithStyles, withStyles } from '../utils';
-import { appRootStyle } from '../ui-design/appRoot';
+import { appRootStyle } from '../ui-design/appRootStyle';
 
 const contacts = generateArray(generateContact, 5, 20);
 const randomContact = faker.random.arrayElement(contacts)
@@ -12,10 +12,10 @@ const randomContact = faker.random.arrayElement(contacts)
 const AppRoot = ({classes}: WithStyles<typeof appRootStyle>) => (
     <div className={classes.root}>
         <main>
-            {/* <ContactList contacts={contacts} includeAdder /> */}
             <div className={classes.contactDetailsContainer}>
                 <ContactDetails contact={randomContact} />
-            </div>            
+            </div>
+            <ContactList contacts={contacts} includeAdder />
         </main>
     </div>
 );

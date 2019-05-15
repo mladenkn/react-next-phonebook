@@ -1,6 +1,6 @@
 import { WithStyles, withStyles } from "../utils";
 import { Contact } from "../models";
-import { contactDetailsPropsStyle } from "../ui-design/contactDetailsProps";
+import { contactDetailsPropsStyle } from "../ui-design/contactDetailsPropsStyle";
 import React from 'react';
 import { List, ListItem, Icon } from "@material-ui/core";
 

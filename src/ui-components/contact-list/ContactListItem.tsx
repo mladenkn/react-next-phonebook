@@ -1,4 +1,4 @@
-import { contactListItemStyle } from "../../ui-design/contact-list/contactListItem";
+import { contactListItemStyle } from "../../ui-design/contact-list/contactListItemStyle";
 import { Contact } from "../../models";
 import React from 'react';
 import { withStyles, WithStyles } from '../../utils';

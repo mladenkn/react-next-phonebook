@@ -1,4 +1,4 @@
-import { contactAdderStyle } from "../../ui-design/contact-list/contactAdder";
+import { contactAdderStyle } from "../../ui-design/contact-list/contactAdderStyle";
 import React from 'react';
 import { withStyles, WithStyles } from '../../utils';
 import { Card, CardContent, Typography, Icon, Button }

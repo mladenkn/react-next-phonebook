@@ -79,7 +79,10 @@ export const contactListItemStyle = {
     },
     iconButton: {
         [ifSm]: {
-            padding: 5,
+            padding: 0,
+            '&:hover': {
+                'background-color': 'inherit'
+            },
         },
         [ifXs]: {
             display: 'inline-block',
