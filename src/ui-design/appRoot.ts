@@ -1,8 +1,8 @@
-export const appStyle = {
+export const appRootStyle = {
     root: {
         margin: 10
     },
     contactDetailsContainer: {
         width: 700
     },
-}
+} 
