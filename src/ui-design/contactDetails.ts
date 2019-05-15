@@ -3,36 +3,34 @@ export const contactDetailsStyle = {
         height: 160,
         width: 160,
     },
-    heading: {
-
+    content: {
+        'margin-top': 50
     },
-    headingRightContainer: {
-        position: 'relative'
+    contentHeading: {
+        position: 'relative',
+        'margin-bottom': 25,
     },
-    headingRight: {
-        position: 'absolute',
-        top: '50%',
-        width: '100%'
+    contentHeadingContent: {
+        'margin-bottom': 15
     },
-    headingRightContent : {
+    contentHeadingBackIcon : {
     },
-    headingRightContentBackIcon : {
-    },
-    headingRightContentName : {
+    contentHeadingName : {
         display: 'inline-block',
         width: 200,
-        'margin-left': 40
+        'margin-left': 40,
+        'font-size': 16,
     },
-    headingRightContentFavoriteIcon : {
-        'margin-left': 85,        
+    contentHeadingFavoriteIcon : {
+        'margin-left': 144,        
     },
-    headingRightContentEditIcon : {
+    contentHeadingEditIcon : {
         'margin-left': 10
-    },
-    content: {
-
     },
     divider: {
         height: 3
+    },
+    contentPropsContainer: {
+
     },
 }

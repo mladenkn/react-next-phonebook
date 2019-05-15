@@ -6,32 +6,30 @@ import React from 'react';
 import { ContactDetailsProps } from "./ContactDetailsProps";
 
 export const ContactDetails_ = ({contact, classes}: {contact: Contact} & WithStyles<typeof contactDetailsStyle>) => 
-    <div>
-        <Grid className={classes.heading} container>
-            <Grid item sm={3}>
-                <Avatar className={classes.avatar} src={contact.avatar} />            
-            </Grid>
-            <Grid item sm={7} className={classes.headingRightContainer}>
-                <div className={classes.headingRight}>
-                    <div className={classes.headingRightContent}>
-                        <Icon className={classes.headingRightContentBackIcon}>arrow_back</Icon>
-                        <Typography className={classes.headingRightContentName}>
-                            {contact.firstName + ' ' + contact.lastName}
-                        </Typography>
-                        <Icon className={classes.headingRightContentFavoriteIcon}>{contact.isFavorite ? 'favorite': 'favorite_outlined'}</Icon>
-                        <Icon className={classes.headingRightContentEditIcon}>edit</Icon>
-                    </div>
-                    <Divider className={classes.divider} />
+    <Grid container>
+        <Grid item sm={3}>
+            <Avatar className={classes.avatar} src={contact.avatar} />            
+        </Grid>
+        <Grid item sm={8} className={classes.content}>
+            <div className={classes.contentHeading}>
+                <div className={classes.contentHeadingContent}>
+                    <Icon className={classes.contentHeadingBackIcon}>arrow_back</Icon>
+                    <Typography className={classes.contentHeadingName}>
+                        {contact.firstName + ' ' + contact.lastName}
+                    </Typography>
+                    <Icon className={classes.contentHeadingFavoriteIcon}>{contact.isFavorite ? 'favorite': 'favorite_outlined'}</Icon>
+                    <Icon className={classes.contentHeadingEditIcon}>edit</Icon>
                 </div>
+                <Divider className={classes.divider} />
+            </div>
+            <Grid className={classes.contentPropsContainer} container>
+                <Grid item sm={1}>
+                </Grid>
+                <Grid item sm={10}>
+                    <ContactDetailsProps contact={contact} />
+                </Grid>
             </Grid>
         </Grid>
-        <Grid container className={classes.content}>
-            <Grid item sm={3}>
-            </Grid>
-            <Grid item sm={7}>
-                <ContactDetailsProps contact={contact} />
-            </Grid>
-        </Grid>
-    </div>
+    </Grid>
 
 export const ContactDetails = withStyles(contactDetailsStyle)(ContactDetails_)

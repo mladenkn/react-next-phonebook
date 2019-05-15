@@ -2,14 +2,14 @@ import { WithStyles, withStyles } from "../utils";
 import { Contact } from "../models";
 import { contactDetailsPropsStyle } from "../ui-design/contactDetailsProps";
 import React from 'react';
-import { Grid, List, ListItem, Icon } from "@material-ui/core";
+import { List, ListItem, Icon } from "@material-ui/core";
 
 type Props = {contact: Contact } & WithStyles<typeof contactDetailsPropsStyle>
 
 export const ContactDetailsProps_ = ({contact, classes}: Props) => 
     <List>
         <ListItem className={classes.prop}>
-            <div className={`${classes.propLabel}  ${classes.propLabelEmail}`}>
+            <div className={`${classes.propLabel} ${classes.propLabelEmail}`}>
                 <Icon className={classes.icon}>email</Icon>
                 email
             </div>
@@ -24,7 +24,7 @@ export const ContactDetailsProps_ = ({contact, classes}: Props) =>
             </div>
             <List className={classes.propListValue}>
                 {contact.numbers.map(({type, value}) => 
-                    <ListItem>
+                    <ListItem key={value}>
                         {type} {value}
                     </ListItem>
                 )}

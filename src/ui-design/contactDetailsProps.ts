@@ -3,7 +3,7 @@ export const contactDetailsPropsStyle = {
 
     },
     propLabel: {
-        width: 100
+        width: 100,
     },
     propLabelEmail: {
         'margin-right': 15
