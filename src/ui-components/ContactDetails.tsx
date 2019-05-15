@@ -1,6 +1,6 @@
 import { Contact } from "../models";
 import { WithStyles, withStyles } from "../utils";
-import { contactDetailsStyle } from "../ui-design/contactDetailsStyle";
+import { contactDetailsStyle } from "../ui-design/contactDetails";
 import { Grid, Avatar, Typography, Divider } from "@material-ui/core";
 import React from 'react';
 
@@ -21,7 +21,7 @@ export const ContactDetails_ = ({contact, classes}: {contact: Contact} & WithSty
             <Grid item sm={4}>
             </Grid>
             <Grid item sm={7}>
-                
+
             </Grid>
         </Grid>
     </div>
