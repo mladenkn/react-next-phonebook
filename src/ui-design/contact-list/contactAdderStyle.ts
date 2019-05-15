@@ -6,6 +6,7 @@ const ifXs = '@media (max-width: 600px)';
 export const contactAdderStyle = (theme: Theme) => createStyles({
     button: {
         display: 'inline-flex',
+        padding: 0,
         '&:hover': {
             'background-color': 'inherit'
         },
