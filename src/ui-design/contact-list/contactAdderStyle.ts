@@ -1,7 +1,9 @@
+import { createStyles, Theme } from "@material-ui/core"
+
 const ifSm = '@media (min-width: 600px)';
 const ifXs = '@media (max-width: 600px)';
 
-export const contactAdderStyle = {
+export const contactAdderStyle = (theme: Theme) => createStyles({
     button: {
         display: 'inline-flex',
         '&:hover': {
@@ -18,7 +20,7 @@ export const contactAdderStyle = {
         [ifXs]: {
             width: 310
         },
-    },
+    }, 
     cardContent: {
         [ifSm]: {
             padding: '5px 5px !important',
@@ -37,4 +39,4 @@ export const contactAdderStyle = {
         },  
 
     } 
-}
+})

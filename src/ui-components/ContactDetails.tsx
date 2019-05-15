@@ -1,9 +1,8 @@
 import { Contact } from "../models";
-import { WithStyles, withStyles } from "../utils";
 import { contactDetailsStyle } from "../ui-design/contactDetailsStyle";
-import { Grid, Avatar, Typography, Divider, Icon } from "@material-ui/core";
+import { Grid, Avatar, Typography, Divider, Icon, withStyles, WithStyles } from "@material-ui/core";
 import React from 'react';
-import { ContactDetailsProps } from "./ContactDetailsProps";
+import { ContactDetailsFields } from "./ContactDetailsFields";
 
 export const ContactDetails_ = ({contact, classes}: {contact: Contact} & WithStyles<typeof contactDetailsStyle>) => 
     <Grid container>
@@ -26,7 +25,7 @@ export const ContactDetails_ = ({contact, classes}: {contact: Contact} & WithSty
                 <Grid item sm={1}>
                 </Grid>
                 <Grid item sm={10}>
-                    <ContactDetailsProps contact={contact} />
+                    <ContactDetailsFields contact={contact} />
                 </Grid>
             </Grid>
         </Grid>

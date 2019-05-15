@@ -1,12 +1,11 @@
-import { WithStyles, withStyles } from "../utils";
 import { Contact } from "../models";
 import { contactDetailsPropsStyle } from "../ui-design/contactDetailsPropsStyle";
 import React from 'react';
-import { List, ListItem, Icon } from "@material-ui/core";
+import { List, ListItem, Icon, withStyles, WithStyles } from "@material-ui/core";
 
 type Props = {contact: Contact } & WithStyles<typeof contactDetailsPropsStyle>
 
-export const ContactDetailsProps_ = ({contact, classes}: Props) => 
+const ContactDetailsProps_ = ({contact, classes}: Props) => 
     <List>
         <ListItem className={classes.prop}>
             <div className={`${classes.propLabel} ${classes.propLabelEmail}`}>
@@ -32,4 +31,4 @@ export const ContactDetailsProps_ = ({contact, classes}: Props) =>
         </ListItem>
     </List>
 
-export const ContactDetailsProps = withStyles(contactDetailsPropsStyle)(ContactDetailsProps_) 
+export const ContactDetailsFields = withStyles(contactDetailsPropsStyle)(ContactDetailsProps_)

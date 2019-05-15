@@ -1,8 +1,7 @@
 import { contactListStyle } from "../../ui-design/contact-list/contactListStyle";
 import { Contact } from "../../models";
 import React from 'react';
-import { withStyles, WithStyles } from '../../utils';
-import { List, ListItem } from "@material-ui/core";
+import { List, ListItem, withStyles, WithStyles } from "@material-ui/core";
 import { ContactListItem } from "./ContactListItem";
 import { ContactAdder } from "./ContactAdder";
 

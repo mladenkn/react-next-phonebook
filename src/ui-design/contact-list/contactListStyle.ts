@@ -1,6 +1,8 @@
+import { createStyles } from "@material-ui/core"
+
 const ifSm = '@media (min-width: 600px)';
 
-export const contactListStyle = {
+export const contactListStyle = createStyles({
     root: {
         [ifSm]: {
             display: 'flex',
@@ -13,4 +15,4 @@ export const contactListStyle = {
             width: 270,
         },
     },
-};
+})

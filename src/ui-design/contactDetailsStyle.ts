@@ -1,4 +1,6 @@
-export const contactDetailsStyle = {
+import { createStyles, Theme } from "@material-ui/core"
+
+export const contactDetailsStyle = (theme: Theme) => createStyles({
     avatar: {
         height: 160,
         width: 160,
@@ -33,4 +35,4 @@ export const contactDetailsStyle = {
     contentPropsContainer: {
 
     },
-}
+})

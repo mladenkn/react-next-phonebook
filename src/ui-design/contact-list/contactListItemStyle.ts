@@ -1,7 +1,9 @@
+import { createStyles, Theme } from "@material-ui/core"
+
 const ifSm = '@media (min-width: 600px)';
 const ifXs = '@media (max-width: 600px)';
 
-export const contactListItemStyle = {    
+export const contactListItemStyle = createStyles({    
     card: {
         [ifSm]: {
             padding: 0,
@@ -96,4 +98,4 @@ export const contactListItemStyle = {
             'font-size': 21
         },
     },
-}
+})

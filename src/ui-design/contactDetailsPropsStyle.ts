@@ -1,4 +1,6 @@
-export const contactDetailsPropsStyle = {
+import { createStyles } from "@material-ui/core"
+
+export const contactDetailsPropsStyle = createStyles({
     prop: {
 
     },
@@ -17,4 +19,4 @@ export const contactDetailsPropsStyle = {
     icon: {
         
     }
-}
+})

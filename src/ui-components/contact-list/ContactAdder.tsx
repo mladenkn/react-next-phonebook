@@ -1,8 +1,6 @@
 import { contactAdderStyle } from "../../ui-design/contact-list/contactAdderStyle";
 import React from 'react';
-import { withStyles, WithStyles } from '../../utils';
-import { Card, CardContent, Typography, Icon, Button }
-     from "@material-ui/core";
+import { Card, CardContent, Typography, Icon, Button, withStyles, WithStyles } from "@material-ui/core";
 
 const ContactAdder_ = ({classes}: WithStyles<typeof contactAdderStyle>) => 
 <Button className={classes.button}>
@@ -14,4 +12,4 @@ const ContactAdder_ = ({classes}: WithStyles<typeof contactAdderStyle>) =>
     </Card>
 </Button>
 
-export const ContactAdder = withStyles(contactAdderStyle)<{}>(ContactAdder_)
+export const ContactAdder = withStyles(contactAdderStyle)(ContactAdder_)

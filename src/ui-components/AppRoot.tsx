@@ -3,8 +3,8 @@ import { ContactList } from './contact-list/ContactList';
 import { generateArray, generateContact } from '../devUtils/dataGenerators';
 import faker from 'faker';
 import { ContactDetails } from './ContactDetails';
-import { WithStyles, withStyles } from '../utils';
 import { appRootStyle } from '../ui-design/appRootStyle';
+import { withStyles, WithStyles } from "@material-ui/core";
 
 const contacts = generateArray(generateContact, 5, 20);
 const randomContact = faker.random.arrayElement(contacts)
@@ -20,4 +20,4 @@ const AppRoot = ({classes}: WithStyles<typeof appRootStyle>) => (
     </div>
 );
 
-export default withStyles(appRootStyle)<{}>(AppRoot)
+export default withStyles(appRootStyle)(AppRoot)
