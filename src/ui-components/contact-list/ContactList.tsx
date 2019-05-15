@@ -1,5 +1,5 @@
 import { contactListStyle } from "../../ui-design/contact-list/contactListStyle";
-import { ContactListItem as ContactListItemModel } from "../../models";
+import { Contact } from "../../models";
 import React from 'react';
 import { withStyles, WithStyles } from '../../utils';
 import { List, ListItem } from "@material-ui/core";
@@ -7,7 +7,7 @@ import { ContactListItem } from "./ContactListItem";
 import { ContactAdder } from "./ContactAdder";
 
 interface OwnProps { 
-    contacts: ContactListItemModel[],
+    contacts: Contact[],
     includeAdder?: boolean,
 }
 

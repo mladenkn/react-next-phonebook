@@ -17,10 +17,10 @@ export enum PhoneNumberType {
     Home='Home', Work='Work', Cell='Cell', Husband='Husband'
 }
 
-export interface ContactListItem {
-    id: number
-    firstName: string
-    lastName: string
-    avatar: string
-    isFavorite: boolean
-}
+// export interface ContactListItem {
+//     id: number
+//     firstName: string
+//     lastName: string
+//     avatar: string
+//     isFavorite: boolean
+// }

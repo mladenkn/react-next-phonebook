@@ -6,8 +6,9 @@ export const contactAdderStyle = {
         display: 'inline-flex',
         '&:hover': {
             'background-color': 'inherit'
-        }    
-    },
+        },
+        'text-transform': 'none'
+    }, 
     card: {
         [ifSm]: {
             padding: 0,

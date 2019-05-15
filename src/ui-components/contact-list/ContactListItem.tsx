@@ -1,11 +1,18 @@
 import { contactListItemStyle } from "../../ui-design/contact-list/contactListItemStyle";
-import { ContactListItem as ContactListItemModel } from "../../models";
+import { Contact } from "../../models";
 import React from 'react';
 import { withStyles, WithStyles } from '../../utils';
 import { Card, Avatar, CardContent, Typography, Icon, IconButton } from "@material-ui/core";
 import withWidth, { WithWidthProps } from "@material-ui/core/withWidth";
 
-type Props = {contact: ContactListItemModel} & WithStyles<typeof contactListItemStyle> & WithWidthProps
+interface OwnProps {
+    contact: Contact
+    // onToggleFavorite: () => {}
+    // onEditClick: () => {}
+    // onDeleteClick: () => {}
+}
+
+type Props = OwnProps & WithStyles<typeof contactListItemStyle> & WithWidthProps
 
 const Item = ({classes, width, contact}: Props) => {
     const icons = 
