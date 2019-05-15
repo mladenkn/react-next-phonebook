@@ -1,6 +1,6 @@
 import { Contact } from "../models";
 import { contactDetailsStyle } from "../ui-design/contactDetailsStyle";
-import { Grid, Avatar, Typography, Divider, Icon, withStyles, WithStyles } from "@material-ui/core";
+import { Grid, Avatar, Typography, Divider, Icon, withStyles, WithStyles, IconButton } from "@material-ui/core";
 import React from 'react';
 import { ContactDetailsFields } from "./ContactDetailsFields";
 
@@ -12,19 +12,25 @@ export const ContactDetails_ = ({contact, classes}: {contact: Contact} & WithSty
         <Grid item sm={8} className={classes.content}>
             <div className={classes.contentHeading}>
                 <div className={classes.contentHeadingContent}>
-                    <Icon color="secondary" className={classes.contentHeadingBackIcon}>arrow_back</Icon>
+                    <IconButton className={classes.contentHeadingBackIcon}>
+                        <Icon color="secondary">arrow_back</Icon>
+                    </IconButton>
                     <Typography className={classes.contentHeadingName}>
                         {contact.firstName + ' ' + contact.lastName}
                     </Typography>
-                    <Icon color="secondary" className={classes.contentHeadingFavoriteIcon}>{contact.isFavorite ? 'favorite': 'favorite_outlined'}</Icon>
-                    <Icon color="secondary" className={classes.contentHeadingEditIcon}>edit</Icon>
+                    <IconButton className={classes.contentHeadingEditIcon}>
+                        <Icon color="secondary" className={classes.contentHeadingEditIcon}>edit</Icon>
+                    </IconButton>
+                    <IconButton className={classes.contentHeadingFavoriteIcon}>
+                        <Icon color="secondary">{contact.isFavorite ? 'favorite': 'favorite_outlined'}</Icon>
+                    </IconButton>
                 </div>
                 <Divider className={classes.divider} />
             </div>
             <Grid className={classes.contentPropsContainer} container>
                 <Grid item sm={1}>
                 </Grid>
-                <Grid item sm={10}>
+                <Grid item sm={11}>
                     <ContactDetailsFields contact={contact} />
                 </Grid>
             </Grid>

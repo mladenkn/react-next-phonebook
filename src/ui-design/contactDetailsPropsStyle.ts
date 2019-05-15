@@ -9,7 +9,7 @@ export const contactDetailsFieldsStyle = ({palette}: Theme) => createStyles({
         color: palette.primary.main
     },
     propLabelEmail: {
-        'margin-right': 15
+        marginRight: 15
     },
     propValue: {
         color: palette.secondary.main
@@ -18,12 +18,14 @@ export const contactDetailsFieldsStyle = ({palette}: Theme) => createStyles({
 
     },
     numberType: {
-        color: palette.secondary.main
+        color: palette.secondary.main,
+        width: 100,
+        textTransform: 'uppercase'
     },
     numberValue: {
-        color: palette.secondary.main        
+        color: palette.secondary.main,       
     },
     icon: {
-        
+        width: 30
     }
 })

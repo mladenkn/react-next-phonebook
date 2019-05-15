@@ -41,7 +41,7 @@ export const contactAdderStyle = ({palette}: Theme) => createStyles({
     },
     icon: {
         [ifSm]: {
-            'font-size': 20,
+            'font-size': 27,
         },
     },
     text: {        

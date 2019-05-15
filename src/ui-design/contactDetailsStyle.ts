@@ -16,19 +16,31 @@ export const contactDetailsStyle = ({palette}: Theme) => createStyles({
         'margin-bottom': 15
     },
     contentHeadingBackIcon : {
+        padding: 0,
+        '&:hover': {
+            backgroundColor: 'transparent'
+        }
     },
     contentHeadingName : {
         display: 'inline-block',
         width: 200,
         'margin-left': 40,
         fontSize: 20,
-        color: palette.secondary.main
-    },
-    contentHeadingFavoriteIcon : {
-        'margin-left': 144,        
+        color: palette.secondary.main,
     },
     contentHeadingEditIcon : {
-        'margin-left': 10
+        'margin-left': 71,
+        padding: 0,
+        '&:hover': {
+            backgroundColor: 'transparent'
+        }
+    },
+    contentHeadingFavoriteIcon : {
+        'margin-left': 10,        
+        padding: 0,
+        '&:hover': {
+            backgroundColor: 'transparent'
+        }
     },
     divider: {
         height: 1.2,
