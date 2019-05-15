@@ -1,84 +1,96 @@
+const ifSm = '@media (min-width: 600px)'
+const ifXs = '@media (max-width: 600px)';
+
 export const contactListSnakeStyle = {
     root: {
-        display: 'flex',
-        'flex-direction': 'row',
-        'flex-wrap': 'wrap'
+        [ifSm]: {
+            display: 'flex',
+            'flex-wrap': 'wrap',
+            'flex-direction': 'row',
+        },
     }, 
     itemRoot: {
-        width: 270,
+        [ifSm]: {
+            width: 270,
+        },
     },
     itemCard: {
-        padding: 0,
-        width: 240,
+        [ifSm]: {
+            padding: 0,
+            width: 240,
+        },
+        [ifXs]: {
+            width: 310
+        },
     },
     itemCardContent: {
-        padding: 8,
-        'padding-bottom': '15px!important',
+        [ifSm]: {
+            padding: '5px 5px !important'
+        },
+        [ifXs]: {
+            padding: '11px 12px !important'
+        },
     },
     itemsContainer: {
+        [ifXs]: {
+            display: 'flex',
+            'flex-direction': 'row',
+            'align-items': 'center',
+            'justify-content': 'space-between'
+        },
     },
     itemAvatar: {
-        margin: 'auto',
-        'margin-bottom': 10,
+        [ifSm]: {
+            margin: 'auto',
+            'margin-bottom': 10,
+        },
+        [ifXs]: {
+            display: 'inline-block',
+        },
     },
     itemName: {
-        'text-align': 'center'
+        [ifSm]: {
+            'text-align': 'center'
+        },
+        [ifXs]: {
+            display: 'inline-block',
+        },
     },
     itemIcons: {
-        position: 'relative',
-        height: 28,
-        'margin-bottom': 5
+        [ifSm]: {
+            position: 'relative',
+            height: 28,
+            'margin-bottom': 5
+        },
+        [ifXs]: {
+            display: 'inline-block',
+        },
     },
     itemIconsLeft: {
-        position: 'absolute'
+        [ifSm]: {
+            position: 'absolute'
+        },
     },
     itemIconsRight: {
-        position: 'absolute',
-        right: 0
+        [ifSm]: {
+            position: 'absolute',
+            right: 0
+        },
     },
     itemIconButton: {
-        padding: 5,
+        [ifSm]: {
+            padding: 5,
+        },
+        [ifXs]: {
+            display: 'inline-block',
+        },
     },
     itemIcon: {
-        'font-size': 18
-    },
+        [ifSm]: {
+            'font-size': 18
+        },
+        [ifXs]: {
+            'font-size': 21
+        },
+    }
 }
-
-export const contactListVerticalStyle = {
-    root: {
-    }, 
-    itemRoot: {
-        
-    },
-    itemCard: {
-        width: 310
-    },
-    itemCardContent: {
-        padding: '11px 12px !important'
-    },
-    itemsContainer: {
-        display: 'flex',
-        'flex-direction': 'row',
-        'align-items': 'center',
-        'justify-content': 'space-between'
-    },
-    itemAvatar: {
-        display: 'inline-block',
-    },
-    itemName: {
-        display: 'inline-block',
-    },
-    itemIcons: {
-        display: 'inline-block',
-    },
-    itemIconsLeft: {
-    },
-    itemIconsRight: {
-    },
-    itemIconButton: {
-        padding: 5,
-    },
-    itemIcon: {
-        'font-size': 21
-    },
-} 

@@ -1,5 +1,8 @@
 import injectSheet from "react-jss";
 import { FunctionComponent } from "react";
+import { Theme } from "@material-ui/core";
+
+type ThemedStyles = (theme: Theme) => Record<string, {}>;
 
 export const withStyles =
     <Styles extends Record<string, {}>> (styles: Styles) => 
