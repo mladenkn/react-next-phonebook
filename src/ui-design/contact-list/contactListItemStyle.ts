@@ -1,20 +1,8 @@
 const ifSm = '@media (min-width: 600px)';
 const ifXs = '@media (max-width: 600px)';
 
-export const contactListSnakeStyle = {
-    root: {
-        [ifSm]: {
-            display: 'flex',
-            'flex-wrap': 'wrap',
-            'flex-direction': 'row',
-        },
-    }, 
-    itemRoot: {
-        [ifSm]: {
-            width: 270,
-        },
-    },
-    itemCard: {
+export const contactListItemStyle = {    
+    card: {
         [ifSm]: {
             padding: 0,
             width: 240,
@@ -24,13 +12,7 @@ export const contactListSnakeStyle = {
             width: 310
         },
     },
-    itemAdderButton: {
-        display: 'inline-flex',
-        '&:hover': {
-            'background-color': 'inherit'
-        }
-    },
-    itemCardContent: {
+    cardContent: {
         [ifSm]: {
             padding: '5px 5px !important'
         },
@@ -38,7 +20,7 @@ export const contactListSnakeStyle = {
             padding: '11px 12px !important'
         },
     },
-    itemAdderCardContent: {
+    adderCardContent: {
         [ifSm]: {
             position: 'absolute',
             top: '28%',
@@ -49,7 +31,7 @@ export const contactListSnakeStyle = {
             
         },
     },
-    itemsContainer: {
+    container: {
         [ifXs]: {
             display: 'flex',
             'flex-direction': 'row',
@@ -57,7 +39,7 @@ export const contactListSnakeStyle = {
             'justify-content': 'space-between'
         },
     },
-    itemAvatar: {
+    avatar: {
         [ifSm]: {
             margin: 'auto',
             'margin-bottom': 10,
@@ -66,7 +48,7 @@ export const contactListSnakeStyle = {
             display: 'inline-block',
         },
     },
-    itemName: {
+    name: {
         [ifSm]: {
             'text-align': 'center'
         },
@@ -74,7 +56,7 @@ export const contactListSnakeStyle = {
             display: 'inline-block',
         },
     },
-    itemIcons: {
+    icons: {
         [ifSm]: {
             position: 'relative',
             height: 28,
@@ -84,18 +66,18 @@ export const contactListSnakeStyle = {
             display: 'inline-block',
         },
     },
-    itemIconsLeft: {
+    iconsLeft: {
         [ifSm]: {
             position: 'absolute'
         },
     },
-    itemIconsRight: {
+    iconsRight: {
         [ifSm]: {
             position: 'absolute',
             right: 0
         },
     },
-    itemIconButton: {
+    iconButton: {
         [ifSm]: {
             padding: 5,
         },
@@ -103,7 +85,7 @@ export const contactListSnakeStyle = {
             display: 'inline-block',
         },
     },
-    itemIcon: {
+    icon: {
         [ifSm]: {
             'font-size': 18
         },
@@ -111,9 +93,4 @@ export const contactListSnakeStyle = {
             'font-size': 21
         },
     },
-    adderIcon: {
-        [ifSm]: {
-            'font-size': 20,
-        },        
-    }
-};
+}
