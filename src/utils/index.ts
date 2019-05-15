@@ -15,4 +15,9 @@ export const createStyled = <Styles extends Record<string, {}>> (styles: Styles)
       return children(classes);
     }
     return withStyles(styles)(Styled);
-  }
+}
+
+export const getViewportDimensions = () => {
+    const { innerWidth: width, innerHeight: height } = window;
+    return { width, height};
+}
