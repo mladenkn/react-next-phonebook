@@ -1,6 +1,6 @@
 import { createStyles, Theme } from "@material-ui/core"
 
-export const contactDetailsStyle = (theme: Theme) => createStyles({
+export const contactDetailsStyle = ({palette}: Theme) => createStyles({
     avatar: {
         height: 160,
         width: 160,
@@ -21,7 +21,8 @@ export const contactDetailsStyle = (theme: Theme) => createStyles({
         display: 'inline-block',
         width: 200,
         'margin-left': 40,
-        'font-size': 16,
+        fontSize: 20,
+        color: palette.secondary.main
     },
     contentHeadingFavoriteIcon : {
         'margin-left': 144,        
@@ -30,7 +31,8 @@ export const contactDetailsStyle = (theme: Theme) => createStyles({
         'margin-left': 10
     },
     divider: {
-        height: 3
+        height: 1.2,
+        'background-color': palette.primary.main
     },
     contentPropsContainer: {
 

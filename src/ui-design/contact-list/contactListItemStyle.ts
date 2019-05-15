@@ -3,12 +3,16 @@ import { createStyles, Theme } from "@material-ui/core"
 const ifSm = '@media (min-width: 600px)';
 const ifXs = '@media (max-width: 600px)';
 
-export const contactListItemStyle = createStyles({    
+export const contactListItemStyle = ({palette}: Theme) => createStyles({    
     card: {
         [ifSm]: {
             padding: 0,
-            width: 240,
-            height: 113,
+            width: 270,
+            height: 135,
+            borderWidth: 1,
+            borderStyle: 'solid',
+            borderColor: palette.secondary.light,
+            boxShadow: 'inherit'
         },
         [ifXs]: {
             width: 310
@@ -45,6 +49,8 @@ export const contactListItemStyle = createStyles({
         [ifSm]: {
             margin: 'auto',
             'margin-bottom': 10,
+            height: 50,
+            width: 50,
         },
         [ifXs]: {
             display: 'inline-block',

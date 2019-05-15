@@ -3,13 +3,13 @@ import React from 'react';
 import { Card, CardContent, Typography, Icon, Button, withStyles, WithStyles } from "@material-ui/core";
 
 const ContactAdder_ = ({classes}: WithStyles<typeof contactAdderStyle>) => 
-<Button className={classes.button}>
-    <Card className={`${classes.card}`}>
-        <CardContent className={`${classes.cardContent}`}>
-            <Icon className={classes.icon}>add</Icon>
-            <Typography>Add new</Typography>
-        </CardContent>
-    </Card>
-</Button>
+    <Button className={classes.root}>
+        <Card className={`${classes.card}`}>
+            <CardContent className={`${classes.cardContent}`}>
+                <Icon className={classes.icon}>add</Icon>
+                <Typography className={classes.text}>Add new</Typography>
+            </CardContent>
+        </Card>
+    </Button>
 
 export const ContactAdder = withStyles(contactAdderStyle)(ContactAdder_)

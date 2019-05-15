@@ -14,7 +14,7 @@ export interface PhoneNumber {
 }
 
 export enum PhoneNumberType {
-    Home='Home', Work='Work', Cell='Cell', Husband='Husband'
+    Home='Home', Work='Work', CellPhone='CellPhone', Husband='Husband'
 }
 
 // export interface ContactListItem {

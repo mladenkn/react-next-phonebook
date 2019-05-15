@@ -1,9 +1,9 @@
 import { Contact } from "../models";
-import { contactDetailsPropsStyle } from "../ui-design/contactDetailsPropsStyle";
+import { contactDetailsFieldsStyle } from "../ui-design/contactDetailsPropsStyle";
 import React from 'react';
 import { List, ListItem, Icon, withStyles, WithStyles } from "@material-ui/core";
 
-type Props = {contact: Contact } & WithStyles<typeof contactDetailsPropsStyle>
+type Props = {contact: Contact } & WithStyles<typeof contactDetailsFieldsStyle>
 
 const ContactDetailsProps_ = ({contact, classes}: Props) => 
     <List>
@@ -24,11 +24,12 @@ const ContactDetailsProps_ = ({contact, classes}: Props) =>
             <List className={classes.propListValue}>
                 {contact.numbers.map(({type, value}) => 
                     <ListItem key={value}>
-                        {type} {value}
+                        <div className={classes.numberType}>{type}</div>
+                        <div className={classes.numberValue}>{value}</div>
                     </ListItem>
                 )}
             </List>
         </ListItem>
     </List>
 
-export const ContactDetailsFields = withStyles(contactDetailsPropsStyle)(ContactDetailsProps_)
+export const ContactDetailsFields = withStyles(contactDetailsFieldsStyle)(ContactDetailsProps_)

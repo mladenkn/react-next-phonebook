@@ -3,8 +3,8 @@ import { createStyles, Theme } from "@material-ui/core"
 const ifSm = '@media (min-width: 600px)';
 const ifXs = '@media (max-width: 600px)';
 
-export const contactAdderStyle = (theme: Theme) => createStyles({
-    button: {
+export const contactAdderStyle = ({palette}: Theme) => createStyles({
+    root: {
         display: 'inline-flex',
         padding: 0,
         '&:hover': {
@@ -15,8 +15,12 @@ export const contactAdderStyle = (theme: Theme) => createStyles({
     card: {
         [ifSm]: {
             padding: 0,
-            width: 240,
-            height: 113,
+            width: 270,
+            height: 135,
+            borderColor: palette.primary.light,
+            borderStyle: 'dashed',
+            borderWidth: 1,
+            boxShadow: 'inherit',
         },
         [ifXs]: {
             width: 310
@@ -28,7 +32,8 @@ export const contactAdderStyle = (theme: Theme) => createStyles({
             position: 'absolute',
             top: '28%',
             left: '35%',
-            'text-align': 'center'
+            'text-align': 'center',
+            color: palette.primary.light,
         },
         [ifXs]: {
             padding: '11px 12px !important'
@@ -37,7 +42,9 @@ export const contactAdderStyle = (theme: Theme) => createStyles({
     icon: {
         [ifSm]: {
             'font-size': 20,
-        },  
-
-    } 
+        },
+    },
+    text: {        
+        color: palette.primary.light
+    }
 })

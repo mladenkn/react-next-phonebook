@@ -12,12 +12,12 @@ export const ContactDetails_ = ({contact, classes}: {contact: Contact} & WithSty
         <Grid item sm={8} className={classes.content}>
             <div className={classes.contentHeading}>
                 <div className={classes.contentHeadingContent}>
-                    <Icon className={classes.contentHeadingBackIcon}>arrow_back</Icon>
+                    <Icon color="secondary" className={classes.contentHeadingBackIcon}>arrow_back</Icon>
                     <Typography className={classes.contentHeadingName}>
                         {contact.firstName + ' ' + contact.lastName}
                     </Typography>
-                    <Icon className={classes.contentHeadingFavoriteIcon}>{contact.isFavorite ? 'favorite': 'favorite_outlined'}</Icon>
-                    <Icon className={classes.contentHeadingEditIcon}>edit</Icon>
+                    <Icon color="secondary" className={classes.contentHeadingFavoriteIcon}>{contact.isFavorite ? 'favorite': 'favorite_outlined'}</Icon>
+                    <Icon color="secondary" className={classes.contentHeadingEditIcon}>edit</Icon>
                 </div>
                 <Divider className={classes.divider} />
             </div>
