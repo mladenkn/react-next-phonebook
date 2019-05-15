@@ -1,4 +1,4 @@
-const ifSm = '@media (min-width: 600px)'
+const ifSm = '@media (min-width: 600px)';
 const ifXs = '@media (max-width: 600px)';
 
 export const contactListSnakeStyle = {
@@ -18,10 +18,17 @@ export const contactListSnakeStyle = {
         [ifSm]: {
             padding: 0,
             width: 240,
+            height: 113,
         },
         [ifXs]: {
             width: 310
         },
+    },
+    itemAdderButton: {
+        display: 'inline-flex',
+        '&:hover': {
+            'background-color': 'inherit'
+        }
     },
     itemCardContent: {
         [ifSm]: {
@@ -29,6 +36,17 @@ export const contactListSnakeStyle = {
         },
         [ifXs]: {
             padding: '11px 12px !important'
+        },
+    },
+    itemAdderCardContent: {
+        [ifSm]: {
+            position: 'absolute',
+            top: '28%',
+            left: '35%',
+            'text-align': 'center'
+        },
+        [ifXs]: {
+            
         },
     },
     itemsContainer: {
@@ -92,5 +110,10 @@ export const contactListSnakeStyle = {
         [ifXs]: {
             'font-size': 21
         },
+    },
+    adderIcon: {
+        [ifSm]: {
+            'font-size': 20,
+        },        
     }
-}
+};
