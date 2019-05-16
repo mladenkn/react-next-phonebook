@@ -32,10 +32,11 @@ const AppProviders = ({children}: {children: JSX.Element}) =>
 const AppContent_ = ({classes}: WithStyles<typeof appRootStyle>) => (
     <div>
         <header>
-            <AppBar position="static">
+            <AppBar>
                 <Toolbar className={classes.toolbar}>
                     <h3 className={classes.headingText}>Phonebook</h3>
                 </Toolbar>
+                <div className={classes.toolbarBorder}></div>
             </AppBar>
         </header>
         <main className={classes.main}>
