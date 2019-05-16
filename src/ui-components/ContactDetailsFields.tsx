@@ -5,23 +5,23 @@ import { List, ListItem, Icon, withStyles, WithStyles } from "@material-ui/core"
 
 type Props = {contact: Contact } & WithStyles<typeof contactDetailsFieldsStyle>
 
-const ContactDetailsProps_ = ({contact, classes}: Props) => 
+const ContactDetailsFields_ = ({contact, classes}: Props) => 
     <List>
-        <ListItem className={classes.prop}>
-            <div className={`${classes.propLabel} ${classes.propLabelEmail}`}>
-                <Icon className={classes.icon}>email</Icon>
-                email
+        <ListItem className={classes.field}>
+            <div className={`${classes.fieldLabel} ${classes.fieldLabelEmail}`}>
+                <Icon className={classes.fieldLabelIcon}>email</Icon>
+                <span className={classes.fieldLabelText}>email</span>
             </div>
-            <div className={classes.propValue}>
+            <div className={classes.fieldValue}>
                 {contact.email}                 
             </div>
         </ListItem>
-        <ListItem>
-            <div className={classes.propLabel}>
-                <Icon className={classes.icon}>phone</Icon>
-                numbers
+        <ListItem className={classes.field}>
+            <div className={classes.fieldLabel}>
+                <Icon className={classes.fieldLabelIcon}>phone</Icon>
+                <span className={classes.fieldLabelText}>numbers</span>
             </div>
-            <List className={classes.propListValue}>
+            <List className={classes.fieldListValue}>
                 {contact.numbers.map(({type, value}) => 
                     <ListItem key={value}>
                         <div className={classes.numberType}>{type}</div>
@@ -32,4 +32,4 @@ const ContactDetailsProps_ = ({contact, classes}: Props) =>
         </ListItem>
     </List>
 
-export const ContactDetailsFields = withStyles(contactDetailsFieldsStyle)(ContactDetailsProps_)
+export const ContactDetailsFields = withStyles(contactDetailsFieldsStyle)(ContactDetailsFields_)

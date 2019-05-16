@@ -1,20 +1,25 @@
 import { createStyles, Theme } from "@material-ui/core"
 
 export const contactDetailsFieldsStyle = ({palette}: Theme) => createStyles({
-    prop: {
-
+    field: {
+        alignItems: 'baseline',        
     },
-    propLabel: {
+    fieldLabel: {
         width: 100,
-        color: palette.primary.main
+        color: palette.primary.main,
     },
-    propLabelEmail: {
+    fieldLabelIcon: {
+        width: 30,
+    },
+    fieldLabelText: {
+    },
+    fieldLabelEmail: {
         marginRight: 15
     },
-    propValue: {
+    fieldValue: {
         color: palette.secondary.main
     },
-    propListValue: {
+    fieldListValue: {
 
     },
     numberType: {
@@ -25,7 +30,4 @@ export const contactDetailsFieldsStyle = ({palette}: Theme) => createStyles({
     numberValue: {
         color: palette.secondary.main,       
     },
-    icon: {
-        width: 30
-    }
 })
