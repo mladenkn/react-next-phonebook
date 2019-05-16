@@ -1,5 +1,5 @@
 import { Contact } from "../models";
-import { contactDetailsFieldsStyle } from "../ui-design/contactDetailsPropsStyle";
+import { contactDetailsFieldsStyle } from "../ui-design/contactDetailsFieldsStyle";
 import React from 'react';
 import { List, ListItem, Icon, withStyles, WithStyles } from "@material-ui/core";
 
