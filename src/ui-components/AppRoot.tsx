@@ -30,7 +30,7 @@ const AppProviders = ({children}: {children: JSX.Element}) =>
     </MuiThemeProvider>;
 
 const AppContent_ = ({classes}: WithStyles<typeof appRootStyle>) => (
-    <div>
+    <div> 
         <header>
             <AppBar>
                 <Toolbar className={classes.toolbar}>

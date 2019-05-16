@@ -14,9 +14,9 @@ export const appRootStyle = ({palette}: Theme) => createStyles({
         textTransform: 'uppercase'
     },
     main: {
-        margin: '50px 10px 10px 10px'
+        margin: '80px 100px 10px 100px'
     },
     contactDetailsContainer: {
         width: 700
     },
-} )
+})
