@@ -24,10 +24,9 @@ export const contactDetailsStyle = ({palette}: Theme) => createStyles({
         }
     },
     contentHeadingName : {
-        display: 'inline-block',
         width: 200,
-        marginLeft: 40,
         fontSize: 20,
+        marginLeft: 40,
         color: palette.secondary.main,
     },
     contentHeadingEditIcon : {

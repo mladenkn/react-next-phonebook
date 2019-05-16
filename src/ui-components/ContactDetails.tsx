@@ -1,6 +1,6 @@
 import { Contact } from "../models";
 import { contactDetailsStyle } from "../ui-design/contactDetailsStyle";
-import { Grid, Avatar, Typography, Divider, Icon, withStyles, WithStyles, IconButton } from "@material-ui/core";
+import { Grid, Avatar, Divider, Icon, withStyles, WithStyles, IconButton } from "@material-ui/core";
 import React from 'react';
 import { ContactDetailsFields } from "./ContactDetailsFields";
 
@@ -15,9 +15,9 @@ export const ContactDetails_ = ({contact, classes}: {contact: Contact} & WithSty
                     <IconButton className={classes.contentHeadingBackIcon} disableRipple>
                         <Icon color="secondary">arrow_back</Icon>
                     </IconButton>
-                    <Typography className={classes.contentHeadingName}>
+                    <span className={classes.contentHeadingName}>
                         {contact.firstName + ' ' + contact.lastName}
-                    </Typography>
+                    </span>
                     <IconButton className={classes.contentHeadingEditIcon} disableRipple>
                         <Icon color="secondary" className={classes.contentHeadingEditIcon}>edit</Icon>
                     </IconButton>
