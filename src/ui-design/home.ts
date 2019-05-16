@@ -1,6 +1,11 @@
 import { createStyles, Theme } from "@material-ui/core"
 
 export const homeStyle = ({palette}: Theme) => createStyles({
+    root: {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center'
+    },
     contactTabs: {
         marginBottom: 20,
     },
@@ -26,5 +31,13 @@ export const homeStyle = ({palette}: Theme) => createStyles({
         height: 1.2,
         backgroundColor: palette.primary.main,
         marginBottom: 20,
+        width: '100%'
+    },
+    searchField: {
+        width: 500,
+        marginBottom: 25
+    },
+    list: {
+        justifyContent: 'center'
     },
 })

@@ -5,12 +5,13 @@ import { List, ListItem, withStyles, WithStyles } from "@material-ui/core";
 import { ContactListItem } from "./ContactListItem";
 import { ContactAdder } from "./ContactAdder";
 
-interface OwnProps { 
+interface OwnProps {
     contacts: Contact[],
+    className?: string
     includeAdder?: boolean,
 }
 
-const ContactList_ = ({contacts, classes, includeAdder}: OwnProps & WithStyles<typeof contactListStyle>) => {
+const ContactList_ = ({contacts, classes, includeAdder, className}: OwnProps & WithStyles<typeof contactListStyle>) => {
 
     const includeAdder_ = includeAdder || false
  
@@ -28,7 +29,7 @@ const ContactList_ = ({contacts, classes, includeAdder}: OwnProps & WithStyles<t
         items.unshift(adder);
     }
 
-    return <List className={classes.root}>{items}</List>;
+    return <List className={`${className} ${classes.root}`}>{items}</List>;
 }
 
 export const ContactList = withStyles(contactListStyle)(ContactList_)

@@ -1,4 +1,4 @@
-import { withStyles, WithStyles, Tabs, Tab, Divider } from "@material-ui/core";
+import { withStyles, WithStyles, Tabs, Tab, Divider, TextField } from "@material-ui/core";
 import { homeStyle } from "../ui-design/home";
 import React from 'react';
 import { ContactList } from './contact-list/ContactList';
@@ -15,7 +15,7 @@ const Home_ = ({classes}: Props) =>
             selected: classes.selectedTab
         }
 
-        return <div>
+        return <div className={classes.root}>
             <Tabs value={0} centered
                 classes={{
                     root: classes.contactTabs,
@@ -27,7 +27,8 @@ const Home_ = ({classes}: Props) =>
                 <Tab label="My favorites" disableRipple classes={tabClasses} />
             </Tabs>
             <Divider className={classes.contactTabsDivider} />
-            <ContactList contacts={contacts} includeAdder />
+            <TextField className={classes.searchField} margin="normal" variant="outlined"/>
+            <ContactList contacts={contacts} includeAdder className={classes.list} />
         </div>;
     }
 
