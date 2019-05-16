@@ -1,12 +1,12 @@
 import { createStyles, Theme } from "@material-ui/core"
 
 export const contactDetailsFieldsStyle = ({palette}: Theme) => createStyles({
-    field: {
-        alignItems: 'baseline',        
+    field: {   
     },
     fieldLabel: {
         width: 100,
         color: palette.primary.main,
+        display: 'flex',
     },
     fieldLabelIcon: {
         width: 30,
@@ -14,7 +14,7 @@ export const contactDetailsFieldsStyle = ({palette}: Theme) => createStyles({
     fieldLabelText: {
     },
     fieldLabelEmail: {
-        marginRight: 15
+        marginRight: 15 
     },
     fieldValue: {
         color: palette.secondary.main

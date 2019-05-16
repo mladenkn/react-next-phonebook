@@ -17,17 +17,17 @@ const Item = ({classes, width, contact}: Props) => {
     const icons = 
         <div className={classes.icons}>
             <span className={classes.iconsLeft}>
-                <IconButton className={classes.iconButton}>
+                <IconButton className={classes.iconButton} disableRipple>
                     <Icon color="secondary" className={classes.icon}>
                         {contact.isFavorite ? 'favorite' : 'favorite_outlined'}
                     </Icon>
                 </IconButton>
             </span> 
             <span className={classes.iconsRight}>
-                <IconButton className={classes.iconButton}>
+                <IconButton className={classes.iconButton} disableRipple>
                     <Icon color="secondary" className={classes.icon}>edit</Icon> 
                 </IconButton>
-                <IconButton className={classes.iconButton}>
+                <IconButton className={classes.iconButton} disableRipple>
                     <Icon color="secondary" className={classes.icon}>delete</Icon>
                 </IconButton>
             </span>

@@ -6,8 +6,8 @@ export const contactListStyle = createStyles({
     root: {
         [ifSm]: {
             display: 'flex',
-            'flex-wrap': 'wrap',
-            'flex-direction': 'row',
+            flexWrap: 'wrap',
+            flexDirection: 'row',
         },
     },
     itemRoot: {

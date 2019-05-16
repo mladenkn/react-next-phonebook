@@ -3,7 +3,7 @@ import React from 'react';
 import { Card, CardContent, Typography, Icon, Button, withStyles, WithStyles } from "@material-ui/core";
 
 const ContactAdder_ = ({classes}: WithStyles<typeof contactAdderStyle>) => 
-    <Button className={classes.root}>
+    <Button className={classes.root} disableRipple>
         <Card className={`${classes.card}`}>
             <CardContent className={`${classes.cardContent}`}>
                 <Icon className={classes.icon}>add</Icon>

@@ -12,16 +12,16 @@ export const ContactDetails_ = ({contact, classes}: {contact: Contact} & WithSty
         <Grid item sm={8} className={classes.content}>
             <div className={classes.contentHeading}>
                 <div className={classes.contentHeadingContent}>
-                    <IconButton className={classes.contentHeadingBackIcon}>
+                    <IconButton className={classes.contentHeadingBackIcon} disableRipple>
                         <Icon color="secondary">arrow_back</Icon>
                     </IconButton>
                     <Typography className={classes.contentHeadingName}>
                         {contact.firstName + ' ' + contact.lastName}
                     </Typography>
-                    <IconButton className={classes.contentHeadingEditIcon}>
+                    <IconButton className={classes.contentHeadingEditIcon} disableRipple>
                         <Icon color="secondary" className={classes.contentHeadingEditIcon}>edit</Icon>
                     </IconButton>
-                    <IconButton className={classes.contentHeadingFavoriteIcon}>
+                    <IconButton className={classes.contentHeadingFavoriteIcon} disableRipple>
                         <Icon color="secondary">{contact.isFavorite ? 'favorite': 'favorite_outlined'}</Icon>
                     </IconButton>
                 </div>

@@ -31,7 +31,7 @@ export const contactListItemStyle = ({palette}: Theme) => createStyles({
             position: 'absolute',
             top: '28%',
             left: '35%',
-            'text-align': 'center'
+            textAlign: 'center'
         },
         [ifXs]: {
             
@@ -40,15 +40,15 @@ export const contactListItemStyle = ({palette}: Theme) => createStyles({
     container: {
         [ifXs]: {
             display: 'flex',
-            'flex-direction': 'row',
-            'align-items': 'center',
-            'justify-content': 'space-between'
+            flexDirection: 'row',
+            alignIitems: 'center',
+            justifyContent: 'space-between'
         },
     },
     avatar: {
         [ifSm]: {
             margin: 'auto',
-            'margin-bottom': 10,
+            marginBottom: 10,
             height: 50,
             width: 50,
         },
@@ -58,7 +58,7 @@ export const contactListItemStyle = ({palette}: Theme) => createStyles({
     },
     name: {
         [ifSm]: {
-            'text-align': 'center'
+            textAlign: 'center'
         },
         [ifXs]: {
             display: 'inline-block',
@@ -68,7 +68,7 @@ export const contactListItemStyle = ({palette}: Theme) => createStyles({
         [ifSm]: {
             position: 'relative',
             height: 28,
-            'margin-bottom': 5
+            marginBottom: 5
         },
         [ifXs]: {
             display: 'inline-block',
@@ -98,10 +98,10 @@ export const contactListItemStyle = ({palette}: Theme) => createStyles({
     },
     icon: {
         [ifSm]: {
-            'font-size': 18
+            fontSize: 18,
         },
         [ifXs]: {
-            'font-size': 21
+            fontSize: 21,
         },
     },
 })

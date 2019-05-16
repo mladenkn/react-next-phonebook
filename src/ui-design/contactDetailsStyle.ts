@@ -6,14 +6,16 @@ export const contactDetailsStyle = ({palette}: Theme) => createStyles({
         width: 160,
     },
     content: {
-        'margin-top': 50
+        marginTop: 50
     },
     contentHeading: {
         position: 'relative',
-        'margin-bottom': 25,
+        marginBottom: 25,
     },
     contentHeadingContent: {
-        'margin-bottom': 15
+        marginBottom: 15,
+        display: 'flex',
+        alignItems: 'center'
     },
     contentHeadingBackIcon : {
         padding: 0,
@@ -24,19 +26,19 @@ export const contactDetailsStyle = ({palette}: Theme) => createStyles({
     contentHeadingName : {
         display: 'inline-block',
         width: 200,
-        'margin-left': 40,
+        marginLeft: 40,
         fontSize: 20,
         color: palette.secondary.main,
     },
     contentHeadingEditIcon : {
-        'margin-left': 71,
+        marginLeft: 71,
         padding: 0,
         '&:hover': {
             backgroundColor: 'transparent'
         }
     },
     contentHeadingFavoriteIcon : {
-        'margin-left': 10,        
+        marginLeft: 10,        
         padding: 0,
         '&:hover': {
             backgroundColor: 'transparent'
@@ -44,7 +46,7 @@ export const contactDetailsStyle = ({palette}: Theme) => createStyles({
     },
     divider: {
         height: 1.2,
-        'background-color': palette.primary.main
+        backgroundColor: palette.primary.main
     },
     contentPropsContainer: {
 

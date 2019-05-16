@@ -10,7 +10,7 @@ export const contactAdderStyle = ({palette}: Theme) => createStyles({
         '&:hover': {
             'background-color': 'inherit'
         },
-        'text-transform': 'none',
+        textTransform: 'none',
         width: '100%',
         height: '100%',
         borderColor: palette.primary.light,
@@ -32,7 +32,7 @@ export const contactAdderStyle = ({palette}: Theme) => createStyles({
             position: 'absolute',
             top: '28%',
             left: '35%',
-            'text-align': 'center',
+            textAlign: 'center',
             color: palette.primary.light,
         },
         [ifXs]: {
@@ -41,7 +41,7 @@ export const contactAdderStyle = ({palette}: Theme) => createStyles({
     },
     icon: {
         [ifSm]: {
-            'font-size': 27,
+            fontSize: 27,
         },
     },
     text: {        
