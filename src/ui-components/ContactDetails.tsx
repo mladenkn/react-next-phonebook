@@ -1,8 +1,11 @@
 import { Contact } from "../models";
 import { contactDetailsStyle } from "../ui-design/contactDetails";
-import { Grid, Avatar, Divider, Icon, withStyles, WithStyles, IconButton } from "@material-ui/core";
+import { contactDetailsFieldsStyle } from "../ui-design/contactDetailsFields";
+import { List, ListItem, Grid, Avatar, Divider, Icon, withStyles, WithStyles, IconButton }
+    from "@material-ui/core";
 import React from 'react';
-import { ContactDetailsFields } from "./ContactDetailsFields";
+
+type Props = {contact: Contact} & WithStyles<typeof contactDetailsStyle>;
 
 export const ContactDetails_ = ({contact, classes}: {contact: Contact} & WithStyles<typeof contactDetailsStyle>) => 
     <Grid container>
@@ -28,8 +31,7 @@ export const ContactDetails_ = ({contact, classes}: {contact: Contact} & WithSty
                 <Divider className={classes.divider} />
             </div>
             <Grid className={classes.contentPropsContainer} container>
-                <Grid item sm={1}>
-                </Grid>
+                <Grid item sm={1} />
                 <Grid item sm={11}>
                     <ContactDetailsFields contact={contact} />
                 </Grid>
@@ -37,4 +39,33 @@ export const ContactDetails_ = ({contact, classes}: {contact: Contact} & WithSty
         </Grid>
     </Grid>
 
-export const ContactDetails = withStyles(contactDetailsStyle)(ContactDetails_)
+export default withStyles(contactDetailsStyle)(ContactDetails_);
+
+const ContactDetailsFields_ = ({contact, classes}: {contact: Contact} & WithStyles<typeof contactDetailsFieldsStyle>) => 
+    <List>
+        <ListItem className={classes.field}>
+            <div className={`${classes.fieldLabel} ${classes.fieldLabelEmail}`}>
+                <Icon className={classes.fieldLabelIcon}>email</Icon>
+                <span className={classes.fieldLabelText}>email</span>
+            </div>
+            <div className={classes.fieldValue}>
+                {contact.email}                 
+            </div>
+        </ListItem>
+        <ListItem className={classes.field}>
+            <div className={classes.fieldLabel}>
+                <Icon className={classes.fieldLabelIcon}>phone</Icon>
+                <span className={classes.fieldLabelText}>numbers</span>
+            </div>
+            <List className={classes.fieldListValue}>
+                {contact.numbers.map(({type, value}) => 
+                    <ListItem key={value}>
+                        <div className={classes.numberType}>{type}</div>
+                        <div className={classes.numberValue}>{value}</div>
+                    </ListItem>
+                )}
+            </List>
+        </ListItem>
+    </List>
+
+const ContactDetailsFields = withStyles(contactDetailsFieldsStyle)(ContactDetailsFields_);

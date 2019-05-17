@@ -2,8 +2,8 @@ import { contactListStyle } from "../../ui-design/contact-list/contactList";
 import { Contact } from "../../models";
 import React from 'react';
 import { List, ListItem, withStyles, WithStyles } from "@material-ui/core";
-import { ContactListItem } from "./ContactListItem";
-import { ContactAdder } from "./ContactAdder";
+import ContactListItem from "./ContactListItem";
+import ContactAdder from "./ContactAdder";
 
 interface OwnProps {
     contacts: Contact[],
@@ -32,4 +32,4 @@ const ContactList_ = ({contacts, classes, includeAdder, className}: OwnProps & W
     return <List className={`${className} ${classes.root}`}>{items}</List>;
 }
 
-export const ContactList = withStyles(contactListStyle)(ContactList_)
+export default withStyles(contactListStyle)(ContactList_)

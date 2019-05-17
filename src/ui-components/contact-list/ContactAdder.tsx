@@ -12,4 +12,4 @@ const ContactAdder_ = ({classes}: WithStyles<typeof contactAdderStyle>) =>
         </Card>
     </Button>
 
-export const ContactAdder = withStyles(contactAdderStyle)(ContactAdder_)
+export default withStyles(contactAdderStyle)(ContactAdder_)

@@ -1,14 +1,12 @@
 import { withStyles, WithStyles, Tabs, Tab, Divider, TextField } from "@material-ui/core";
 import { homeStyle } from "../ui-design/home";
 import React from 'react';
-import { ContactList } from './contact-list/ContactList';
+import ContactList from './contact-list/ContactList';
 import { generateArray, generateContact } from '../devUtils/dataGenerators';
-
-type Props = WithStyles<typeof homeStyle>
 
 const contacts = generateArray(generateContact, 5, 20);
 
-const Home_ = ({classes}: Props) => 
+const Home_ = ({classes}: WithStyles<typeof homeStyle>) => 
     {
         const tabClasses = {
             root: classes.contactTab,
@@ -32,4 +30,4 @@ const Home_ = ({classes}: Props) =>
         </div>;
     }
 
-export const Home = withStyles(homeStyle)(Home_)
+export default withStyles(homeStyle)(Home_)

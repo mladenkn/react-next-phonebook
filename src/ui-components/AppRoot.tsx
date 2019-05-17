@@ -1,11 +1,11 @@
 import React from 'react';
 import { generateArray, generateContact } from '../devUtils/dataGenerators';
 import faker from 'faker';
-import { ContactDetails } from './ContactDetails';
+import ContactDetails from './ContactDetails';
 import { appRootStyle } from '../ui-design/appRoot';
 import { withStyles, WithStyles, AppBar, Toolbar, Typography } from "@material-ui/core";
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
-import { Home } from "./Home"
+import Home from "./Home"
 
 const contacts = generateArray(generateContact, 5, 20);
 const randomContact = faker.random.arrayElement(contacts);

@@ -48,4 +48,4 @@ const Item = ({classes, width, contact}: Props) => {
     );
 }
 
-export const ContactListItem = withWidth()(withStyles(contactListItemStyle)(Item))
+export default withWidth()(withStyles(contactListItemStyle)(Item))
