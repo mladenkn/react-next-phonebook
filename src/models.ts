@@ -10,11 +10,7 @@ export interface Contact {
 
 export interface PhoneNumber {
     value: number
-    type: PhoneNumberType
-}
-
-export enum PhoneNumberType {
-    Home='Home', Work='Work', CellPhone='CellPhone', Husband='Husband'
+    label: string
 }
 
 // export interface ContactListItem {

@@ -5,8 +5,6 @@ import { List, ListItem, Grid, Avatar, Divider, Icon, withStyles, WithStyles, Ic
     from "@material-ui/core";
 import React from 'react';
 
-type Props = {contact: Contact} & WithStyles<typeof contactDetailsStyle>;
-
 export const ContactDetails_ = ({contact, classes}: {contact: Contact} & WithStyles<typeof contactDetailsStyle>) => 
     <Grid container>
         <Grid item sm={3}>
@@ -58,7 +56,7 @@ const ContactDetailsFields_ = ({contact, classes}: {contact: Contact} & WithStyl
                 <span className={classes.fieldLabelText}>numbers</span>
             </div>
             <List className={classes.fieldListValue}>
-                {contact.numbers.map(({type, value}) => 
+                {contact.numbers.map(({label: type, value}) => 
                     <ListItem key={value}>
                         <div className={classes.numberType}>{type}</div>
                         <div className={classes.numberValue}>{value}</div>

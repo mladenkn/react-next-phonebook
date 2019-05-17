@@ -21,7 +21,7 @@ const theme = createMuiTheme({
             main: '#BBC4C3',
             light: '#E3E3E3'
         },
-    },
+    }, 
 });
 
 const AppProviders = ({children}: {children: JSX.Element}) => 
@@ -40,9 +40,9 @@ const AppContent_ = ({classes}: WithStyles<typeof appRootStyle>) => (
             </AppBar>
         </header>
         <main className={classes.main}>
-            {/* <div className={classes.contactDetailsContainer}>
+            <div className={classes.contactDetailsContainer}>
                 <ContactDetails contact={randomContact} />
-            </div> */}
+            </div>
             <Home />
         </main>
     </div>

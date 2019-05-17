@@ -1,4 +1,4 @@
-import { Contact, PhoneNumberType, PhoneNumber } from "../models";
+import { Contact, PhoneNumber } from "../models";
 import faker from 'faker'
 
 export const generateArray = <T> (getNext: () => T, minCount: number, maxCount: number) => {
@@ -10,7 +10,7 @@ export const generateArray = <T> (getNext: () => T, minCount: number, maxCount: 
 
 const generatePhoneNumber = (): PhoneNumber => ({
     value: faker.random.number(),
-    type: faker.random.arrayElement(['Home', 'Work', 'Cell', 'Husband']) as PhoneNumberType
+    label: faker.random.arrayElement(['Home', 'Work', 'Cell', 'Husband'])
 })
 
 let contactId = 1
