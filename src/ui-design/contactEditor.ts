@@ -21,10 +21,25 @@ export const contactEditorStyle = ({palette}: Theme) => createStyles({
         alignItems: 'center',
     },
     labelRemover: {
-        padding: 0
+        padding: 6
     },
+    // labelRemoverIcon2: {
+    //     color: palette.secondary.light
+    // },
     labelRemoverIcon: {
-        color: palette.secondary.light
+        height: 28,
+        width: 28,
+        borderRadius: 50,
+        border: `2px solid ${palette.secondary.light}`,
+        color: palette.secondary.light,
+        display: 'inline-block',
+        textAlign: 'center',
+        paddingRight: 1,
+        fontSize: 18
+    },
+    numberAdder: {
+        color: palette.primary.main,
+        textTransform: 'none'
     },
     field: {
 
