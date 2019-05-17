@@ -1,4 +1,4 @@
-import { contactListStyle } from "../../ui-design/contact-list/contactListStyle";
+import { contactListStyle } from "../../ui-design/contact-list/contactList";
 import { Contact } from "../../models";
 import React from 'react';
 import { List, ListItem, withStyles, WithStyles } from "@material-ui/core";

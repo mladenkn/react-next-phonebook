@@ -1,4 +1,4 @@
-import { createStyles, Theme } from "@material-ui/core"
+import { createStyles, Theme } from "@material-ui/core";
 
 export const homeStyle = ({palette}: Theme) => createStyles({
     root: {
@@ -13,7 +13,7 @@ export const homeStyle = ({palette}: Theme) => createStyles({
         alignItems: 'center'
     },
     contactTab: {
-        textTransform: "capitalize",
+        textTransform: "initial",
         fontSize: '0.875rem',
     },
     tabDivider: {

@@ -1,4 +1,4 @@
-import { contactAdderStyle } from "../../ui-design/contact-list/contactAdderStyle";
+import { contactAdderStyle } from "../../ui-design/contact-list/contactAdder";
 import React from 'react';
 import { Card, CardContent, Typography, Icon, Button, withStyles, WithStyles } from "@material-ui/core";
 
