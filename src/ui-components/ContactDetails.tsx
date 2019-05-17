@@ -4,6 +4,7 @@ import { contactDetailsFieldsStyle } from "../ui-design/contactDetailsFields";
 import { List, ListItem, Grid, Avatar, Divider, Icon, withStyles, WithStyles, IconButton }
     from "@material-ui/core";
 import React from 'react';
+import ContactFieldLabel from "./ContactFieldLabel";
 
 export const ContactDetails = ({contact, classes}: {contact: Contact} & WithStyles<typeof contactDetailsStyle>) => 
     <Grid container>
@@ -42,19 +43,13 @@ export default withStyles(contactDetailsStyle)(ContactDetails);
 const ContactDetailsFields_ = ({contact, classes}: {contact: Contact} & WithStyles<typeof contactDetailsFieldsStyle>) => 
     <List>
         <ListItem className={classes.field}>
-            <div className={`${classes.fieldLabel} ${classes.fieldLabelEmail}`}>
-                <Icon className={classes.fieldLabelIcon}>email</Icon>
-                <span className={classes.fieldLabelText}>email</span>
-            </div>
+            <ContactFieldLabel icon="email" text="email" className={classes.fieldLabelEmail} />
             <div className={classes.fieldValue}>
                 {contact.email}                 
             </div>
         </ListItem>
         <ListItem className={classes.field}>
-            <div className={classes.fieldLabel}>
-                <Icon className={classes.fieldLabelIcon}>phone</Icon>
-                <span className={classes.fieldLabelText}>numbers</span>
-            </div>
+            <ContactFieldLabel icon="phone" text="number" />
             <List className={classes.fieldListValue}>
                 {contact.numbers.map(({label: type, value}) => 
                     <ListItem key={value}>
