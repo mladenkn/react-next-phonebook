@@ -3,7 +3,7 @@ import { generateArray, generateContact } from '../devUtils/dataGenerators';
 import faker from 'faker';
 import ContactDetails from './ContactDetails';
 import { appRootStyle } from '../ui-design/appRoot';
-import { withStyles, WithStyles, AppBar, Toolbar, Typography } from "@material-ui/core";
+import { withStyles, WithStyles, AppBar, Toolbar } from "@material-ui/core";
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
 import Home from "./Home"
 import ContactEditor from "./ContactEditor"
@@ -41,11 +41,11 @@ const AppContent_ = ({classes}: WithStyles<typeof appRootStyle>) => (
             </AppBar>
         </header>
         <main className={classes.main}>
-            <ContactEditor contact={randomContact}/>
+            <ContactEditor contact={randomContact} />
             {/* <div className={classes.contactDetailsContainer}>
                 <ContactDetails contact={randomContact} />
-            </div>*/}
-            <Home />
+            </div> */}
+            {/* <Home /> */}
         </main>
     </div>
 );

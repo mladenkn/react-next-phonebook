@@ -1,27 +1,35 @@
 import { createStyles, Theme } from "@material-ui/core";
 
-const inputBorder = (color: string) => `solid 1px ${color}`
-
 export const contactEditorStyle = ({palette}: Theme) => createStyles({
     input: {
-        '&:after': {
-            border: inputBorder(palette.secondary.light),
-        },
-        '&:before': {
-            border: inputBorder(palette.secondary.light),
-        },
-        border: inputBorder(palette.secondary.light),
-        borderBottom: inputBorder(palette.secondary.light),
-        borderRadius: 4,
-        padding: `5px 10px`,
+        padding: 10,
     },
     fullWidth: {
-        width: '92%'
+        width: '100%'
+    },
+    phoneNumber: {
+        paddingLeft: 0,
+        paddingRight: 0,
+        display: 'block'
+    },
+    phoneNumberLabel: {
+        
+    },
+    labelRemoverContainer: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    labelRemover: {
+        padding: 0
+    },
+    labelRemoverIcon: {
+        color: palette.secondary.light
     },
     field: {
 
     },
     divider: {
-        margin: '10px 0px'
+        // margin: '10px 0px'
     },
 }); 

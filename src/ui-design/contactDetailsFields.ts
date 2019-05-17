@@ -4,7 +4,7 @@ export const contactDetailsFieldsStyle = ({palette}: Theme) => createStyles({
     field: {   
     },
     fieldLabelEmail: {
-        marginRight: 15 
+        // marginRight: 15 
     },
     fieldValue: {
         color: palette.secondary.main
@@ -18,6 +18,7 @@ export const contactDetailsFieldsStyle = ({palette}: Theme) => createStyles({
         textTransform: 'uppercase'
     },
     numberValue: {
-        color: palette.secondary.main,       
+        color: palette.secondary.main,    
+        textDecoration: 'underline'
     },
 })

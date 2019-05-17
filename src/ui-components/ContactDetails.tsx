@@ -4,7 +4,7 @@ import { contactDetailsFieldsStyle } from "../ui-design/contactDetailsFields";
 import { List, ListItem, Grid, Avatar, Icon, withStyles, WithStyles, IconButton }
     from "@material-ui/core";
 import React from 'react';
-import { ContactFieldLabel, Divider } from "./reusables";
+import { ContactFieldLabel, Divider, Emptiness } from "./reusables";
 
 export const ContactDetails = ({contact, classes}: {contact: Contact} & WithStyles<typeof contactDetailsStyle>) => 
     <Grid container>
@@ -12,19 +12,24 @@ export const ContactDetails = ({contact, classes}: {contact: Contact} & WithStyl
             <Avatar className={classes.avatar} src={contact.avatar} />            
         </Grid>
         <Grid item sm={8} className={classes.content}>
+            <Emptiness height={50} />
             <div className={classes.contentHeading}>
                 <div className={classes.contentHeadingContent}>
                     <IconButton className={classes.contentHeadingBackIcon} disableRipple>
                         <Icon color="secondary">arrow_back</Icon>
                     </IconButton>
+                    <Emptiness width="20%" />
                     <span className={classes.contentHeadingName}>{contact.fullName}</span>
+                    <Emptiness width="40%" />
                     <IconButton className={classes.contentHeadingEditIcon} disableRipple>
                         <Icon color="secondary" className={classes.contentHeadingEditIcon}>edit</Icon>
                     </IconButton>
+                    <Emptiness width="5%" />
                     <IconButton className={classes.contentHeadingFavoriteIcon} disableRipple>
                         <Icon color="secondary">{contact.isFavorite ? 'favorite': 'favorite_outlined'}</Icon>
                     </IconButton>
                 </div>
+                <Emptiness height={10} />
                 <Divider className={classes.divider} />
             </div>
             <Grid className={classes.contentPropsContainer} container>
@@ -42,6 +47,7 @@ const ContactDetailsFields_ = ({contact, classes}: {contact: Contact} & WithStyl
     <List>
         <ListItem className={classes.field}>
             <ContactFieldLabel icon="email" text="email" className={classes.fieldLabelEmail} />
+            <Emptiness width="3.5%" />
             <div className={classes.fieldValue}>
                 {contact.email}                 
             </div>

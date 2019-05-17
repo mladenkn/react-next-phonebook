@@ -7,7 +7,7 @@ export const homeStyle = ({palette}: Theme) => createStyles({
         alignItems: 'center'
     },
     contactTabs: {
-        marginBottom: 20,
+        // marginBottom: 20,
     },
     tabContainer: {
         alignItems: 'center'
@@ -28,11 +28,11 @@ export const homeStyle = ({palette}: Theme) => createStyles({
         color: palette.primary.main
     },
     contactTabsDivider: {
-        marginBottom: 20,
+        // marginBottom: 20,
     },
     searchField: {
         width: 500,
-        marginBottom: 25
+        // marginBottom: 25
     },
     list: {
         justifyContent: 'center'
