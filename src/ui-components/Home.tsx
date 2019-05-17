@@ -6,7 +6,7 @@ import { generateArray, generateContact } from '../devUtils/dataGenerators';
 
 const contacts = generateArray(generateContact, 5, 20);
 
-const Home_ = ({classes}: WithStyles<typeof homeStyle>) => 
+const Home = ({classes}: WithStyles<typeof homeStyle>) => 
     {
         const tabClasses = {
             root: classes.contactTab,
@@ -30,4 +30,4 @@ const Home_ = ({classes}: WithStyles<typeof homeStyle>) =>
         </div>;
     }
 
-export default withStyles(homeStyle)(Home_)
+export default withStyles(homeStyle)(Home)

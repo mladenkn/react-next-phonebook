@@ -5,7 +5,7 @@ import { List, ListItem, Grid, Avatar, Divider, Icon, withStyles, WithStyles, Ic
     from "@material-ui/core";
 import React from 'react';
 
-export const ContactDetails_ = ({contact, classes}: {contact: Contact} & WithStyles<typeof contactDetailsStyle>) => 
+export const ContactDetails = ({contact, classes}: {contact: Contact} & WithStyles<typeof contactDetailsStyle>) => 
     <Grid container>
         <Grid item sm={3}>
             <Avatar className={classes.avatar} src={contact.avatar} />            
@@ -37,7 +37,7 @@ export const ContactDetails_ = ({contact, classes}: {contact: Contact} & WithSty
         </Grid>
     </Grid>
 
-export default withStyles(contactDetailsStyle)(ContactDetails_);
+export default withStyles(contactDetailsStyle)(ContactDetails);
 
 const ContactDetailsFields_ = ({contact, classes}: {contact: Contact} & WithStyles<typeof contactDetailsFieldsStyle>) => 
     <List>

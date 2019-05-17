@@ -11,7 +11,7 @@ interface OwnProps {
     includeAdder?: boolean,
 }
 
-const ContactList_ = ({contacts, classes, includeAdder, className}: OwnProps & WithStyles<typeof contactListStyle>) => {
+const ContactList = ({contacts, classes, includeAdder, className}: OwnProps & WithStyles<typeof contactListStyle>) => {
 
     const includeAdder_ = includeAdder || false
  
@@ -32,4 +32,4 @@ const ContactList_ = ({contacts, classes, includeAdder, className}: OwnProps & W
     return <List className={`${className} ${classes.root}`}>{items}</List>;
 }
 
-export default withStyles(contactListStyle)(ContactList_)
+export default withStyles(contactListStyle)(ContactList)
