@@ -12,3 +12,11 @@ export const contactFieldLabelStyle = ({palette}: Theme) => createStyles({
     fieldLabelText: {
     },
 });
+
+export const dividerStyle = ({palette}: Theme) => createStyles({
+    root: {
+        height: 1.2,
+        backgroundColor: palette.primary.main,
+        width: '100%'
+    }
+}); 

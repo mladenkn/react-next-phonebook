@@ -28,10 +28,7 @@ export const homeStyle = ({palette}: Theme) => createStyles({
         color: palette.primary.main
     },
     contactTabsDivider: {
-        height: 1.2,
-        backgroundColor: palette.primary.main,
         marginBottom: 20,
-        width: '100%'
     },
     searchField: {
         width: 500,

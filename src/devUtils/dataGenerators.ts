@@ -16,8 +16,7 @@ const generatePhoneNumber = (): PhoneNumber => ({
 let contactId = 1
 export const generateContact = (): Contact => ({
     id: contactId++,
-    firstName: faker.name.firstName(),
-    lastName: faker.name.lastName(),
+    fullName: faker.name.firstName() + ' ' + faker.name.lastName(),
     avatar: faker.internet.avatar(),
     email: faker.internet.email(),
     numbers: generateArray(generatePhoneNumber, 1, 4),

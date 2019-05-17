@@ -1,7 +1,8 @@
-import { withStyles, WithStyles, Tabs, Tab, Divider, TextField } from "@material-ui/core";
+import { withStyles, WithStyles, Tabs, Tab, TextField } from "@material-ui/core";
 import { homeStyle } from "../ui-design/home";
 import React from 'react';
 import ContactList from './contact-list/ContactList';
+import { Divider } from "./reusables"
 import { generateArray, generateContact } from '../devUtils/dataGenerators';
 
 const contacts = generateArray(generateContact, 5, 20);

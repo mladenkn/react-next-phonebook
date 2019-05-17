@@ -1,10 +1,10 @@
 import { Contact } from "../models";
 import { contactDetailsStyle } from "../ui-design/contactDetails";
 import { contactDetailsFieldsStyle } from "../ui-design/contactDetailsFields";
-import { List, ListItem, Grid, Avatar, Divider, Icon, withStyles, WithStyles, IconButton }
+import { List, ListItem, Grid, Avatar, Icon, withStyles, WithStyles, IconButton }
     from "@material-ui/core";
 import React from 'react';
-import ContactFieldLabel from "./ContactFieldLabel";
+import { ContactFieldLabel, Divider } from "./reusables";
 
 export const ContactDetails = ({contact, classes}: {contact: Contact} & WithStyles<typeof contactDetailsStyle>) => 
     <Grid container>
@@ -17,9 +17,7 @@ export const ContactDetails = ({contact, classes}: {contact: Contact} & WithStyl
                     <IconButton className={classes.contentHeadingBackIcon} disableRipple>
                         <Icon color="secondary">arrow_back</Icon>
                     </IconButton>
-                    <span className={classes.contentHeadingName}>
-                        {contact.firstName + ' ' + contact.lastName}
-                    </span>
+                    <span className={classes.contentHeadingName}>{contact.fullName}</span>
                     <IconButton className={classes.contentHeadingEditIcon} disableRipple>
                         <Icon color="secondary" className={classes.contentHeadingEditIcon}>edit</Icon>
                     </IconButton>

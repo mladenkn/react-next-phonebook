@@ -35,7 +35,7 @@ const Item = ({classes, width, contact}: Props) => {
 
     const avatar = <Avatar alt="avatar" src={contact.avatar} className={classes.avatar} />;
 
-    const name = <Typography className={classes.name}>{contact.firstName + ' ' + contact.lastName}</Typography>;
+    const name = <Typography className={classes.name}>{contact.fullName}</Typography>;
 
     return (
         <Card className={classes.card}>
