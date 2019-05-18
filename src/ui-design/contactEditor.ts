@@ -3,6 +3,7 @@ import { createStyles, Theme } from "@material-ui/core";
 export const contactEditorStyle = ({palette}: Theme) => createStyles({
     input: {
         padding: 10,
+        paddingLeft: 20,
     },
     fullWidth: {
         width: '100%'
