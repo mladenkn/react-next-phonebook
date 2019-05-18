@@ -24,10 +24,10 @@ export const contactDetailsStyle = ({palette}: Theme) => createStyles({
         }
     },
     contentHeadingName : {
-        width: 200,
+        width: 380,
         fontSize: 20,
         // marginLeft: 40,
-        color: palette.secondary.main,
+        // color: palette.secondary.main,
     },
     contentHeadingEditIcon : {
         // marginLeft: 71,

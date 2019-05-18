@@ -7,18 +7,18 @@ export const contactDetailsFieldsStyle = ({palette}: Theme) => createStyles({
         // marginRight: 15 
     },
     fieldValue: {
-        color: palette.secondary.main
+        // color: palette.secondary.main
     },
     fieldListValue: {
 
     },
     numberType: {
-        color: palette.secondary.main,
+        // color: palette.secondary.main,
         width: 100,
         textTransform: 'uppercase'
     },
     numberValue: {
-        color: palette.secondary.main,    
+        // color: palette.secondary.main,    
         textDecoration: 'underline'
     },
 })

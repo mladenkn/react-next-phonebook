@@ -4,12 +4,15 @@ import faker from 'faker';
 import ContactDetails from './ContactDetails';
 import { appRootStyle } from '../ui-design/appRoot';
 import { withStyles, WithStyles, AppBar, Toolbar } from "@material-ui/core";
+import { purple } from "@material-ui/core/colors";
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
 import Home from "./Home"
 import ContactEditSection from "./ContactEditSection"
 
 const contacts = generateArray(generateContact, 5, 20);
 const randomContact = faker.random.arrayElement(contacts);
+
+const secondaryThemeColor = purple[500]
 
 const theme = createMuiTheme({
     palette: {
@@ -23,7 +26,11 @@ const theme = createMuiTheme({
             light: '#E3E3E3',
             dark: 'rgba(0, 0, 0, 0.4000000059604645)'
         },
-    }, 
+        text: {
+            primary: '#BBC4C3',
+            secondary: '#2DA1AD',
+        }
+    },
 });
 
 const AppProviders = ({children}: {children: JSX.Element}) => 
@@ -43,10 +50,10 @@ const AppContent_ = ({classes}: WithStyles<typeof appRootStyle>) => (
         </header>
         <main className={classes.main}>
             <ContactEditSection contact={randomContact} />
-            {/* <div className={classes.contactDetailsContainer}>
+            <div className={classes.contactDetailsContainer}>
                 <ContactDetails contact={randomContact} />
             </div>
-            <Home /> */}
+            <Home />
         </main>
     </div>
 );

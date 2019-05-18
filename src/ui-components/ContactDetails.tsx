@@ -1,7 +1,7 @@
 import { Contact } from "../models";
 import { contactDetailsStyle } from "../ui-design/contactDetails";
 import { contactDetailsFieldsStyle } from "../ui-design/contactDetailsFields";
-import { List, ListItem, Grid, Avatar, Icon, withStyles, WithStyles, IconButton }
+import { List, ListItem, Grid, Avatar, Icon, withStyles, WithStyles, IconButton, Typography }
     from "@material-ui/core";
 import React from 'react';
 import { ContactFieldLabel, Divider, Emptiness } from "./reusables";
@@ -18,9 +18,8 @@ export const ContactDetails = ({contact, classes}: {contact: Contact} & WithStyl
                     <IconButton className={classes.contentHeadingBackIcon} disableRipple>
                         <Icon color="secondary">arrow_back</Icon>
                     </IconButton>
-                    <Emptiness width="20%" />
-                    <span className={classes.contentHeadingName}>{contact.fullName}</span>
-                    <Emptiness width="40%" />
+                    <Emptiness width="15%" />
+                    <Typography className={classes.contentHeadingName}>{contact.fullName}</Typography>
                     <IconButton className={classes.contentHeadingEditIcon} disableRipple>
                         <Icon color="secondary" className={classes.contentHeadingEditIcon}>edit</Icon>
                     </IconButton>
@@ -48,17 +47,17 @@ const ContactDetailsFields_ = ({contact, classes}: {contact: Contact} & WithStyl
         <ListItem className={classes.field}>
             <ContactFieldLabel icon="email" text="email" className={classes.fieldLabelEmail} />
             <Emptiness width="3.5%" />
-            <div className={classes.fieldValue}>
+            <Typography className={classes.fieldValue}>
                 {contact.email}                 
-            </div>
+            </Typography>
         </ListItem>
         <ListItem className={classes.field}>
             <ContactFieldLabel icon="phone" text="number" />
             <List className={classes.fieldListValue}>
                 {contact.numbers.map(({label: type, value}) => 
                     <ListItem key={value}>
-                        <div className={classes.numberType}>{type}</div>
-                        <div className={classes.numberValue}>{value}</div>
+                        <Typography className={classes.numberType}>{type}</Typography>
+                        <Typography className={classes.numberValue}>{value}</Typography>
                     </ListItem>
                 )}
             </List>
