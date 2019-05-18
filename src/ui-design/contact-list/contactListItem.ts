@@ -64,6 +64,7 @@ export const contactListItemStyle = ({palette}: Theme) => createStyles({
             textAlign: 'center',
             fontWeight: 550,
             fontSize: '0.9rem',
+            fontFamiliy: 'sans-serif',
         },
         [ifXs]: {
             display: 'inline-block',

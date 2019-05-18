@@ -31,13 +31,6 @@ const theme = createMuiTheme({
             secondary: '#2DA1AD',
         },
     },
-    overrides: {
-        MuiTypography: {
-            root: {
-                fontFamily: 'Lato-Regular'
-            }
-        }
-    }
 });
 
 const AppContent_ = ({classes}: WithStyles<typeof appRootStyle>) => (

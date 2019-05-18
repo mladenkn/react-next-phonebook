@@ -17,6 +17,11 @@ export const homeStyle = ({palette}: Theme) => createStyles({
         fontSize: '0.875rem',
         color: palette.secondary.dark
     },
+    tabText: {
+        fontWeight: 550,
+        fontSize: '0.95rem',
+        fontFamiliy: 'sans-serif',    
+    },
     tabDivider: {
         height: 20,
         width: 1.5,

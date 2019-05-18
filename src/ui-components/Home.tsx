@@ -11,7 +11,8 @@ const Home = ({classes}: WithStyles<typeof homeStyle>) =>
     {
         const tabClasses = {
             root: classes.contactTab,
-            selected: classes.selectedTab
+            selected: classes.selectedTab,
+            label: classes.tabText
         }
 
         const [currentTab, setCurrentTab] = useState(0)
@@ -25,9 +26,9 @@ const Home = ({classes}: WithStyles<typeof homeStyle>) =>
                         indicator: classes.tabIndicator,
                         flexContainer: classes.tabContainer
                     }}>
-                    <Tab label="All contacts" disableRipple classes={tabClasses} />
+                    <Tab label="All contacts" disableRipple textColor="inherit" classes={tabClasses} />
                     <div className={classes.tabDivider}></div>
-                    <Tab label="My favorites" disableRipple classes={tabClasses} />
+                    <Tab label="My favorites" disableRipple textColor="inherit" classes={tabClasses} />
                 </Tabs>
                 <Emptiness height={25} />
                 <Divider className={classes.contactTabsDivider} />
