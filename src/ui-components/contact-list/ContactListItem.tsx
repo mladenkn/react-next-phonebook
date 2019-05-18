@@ -6,14 +6,13 @@ import withWidth, { WithWidthProps } from "@material-ui/core/withWidth";
 
 interface OwnProps {
     contact: Contact
-    // onToggleFavorite: () => {}
-    // onEditClick: () => {}
-    // onDeleteClick: () => {}
+    isSelected: boolean
+    onClick: () => void
 }
 
 type Props = OwnProps & WithStyles<typeof contactListItemStyle> & WithWidthProps
 
-const Item = ({classes, width, contact}: Props) => {
+const Item = ({classes, width, contact, isSelected, onClick}: Props) => {
     const icons = 
         <div className={classes.icons}>
             <span className={classes.iconsLeft}>
@@ -38,7 +37,7 @@ const Item = ({classes, width, contact}: Props) => {
     const name = <Typography className={classes.name}>{contact.fullName}</Typography>;
 
     return (
-        <Card className={classes.card}>
+        <Card className={`${classes.card} ${isSelected ? classes.selected : ''}`} onClick={onClick}>
             <CardContent className={classes.cardContent}>
                 {width === 'xs' ?
                     <div className={classes.container}>{avatar} {name} {icons}</div> :

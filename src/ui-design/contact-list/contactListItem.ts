@@ -12,11 +12,14 @@ export const contactListItemStyle = ({palette}: Theme) => createStyles({
             borderWidth: 1,
             borderStyle: 'solid',
             borderColor: palette.secondary.light,
-            boxShadow: 'inherit'
+            boxShadow: 'inherit',
         },
         [ifXs]: {
             width: 310
         },
+    },
+    selected: {
+        borderColor: palette.primary.main
     },
     cardContent: {
         [ifSm]: {
