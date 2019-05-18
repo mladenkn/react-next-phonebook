@@ -11,10 +11,10 @@ const ContactEditSection = ({contact, classes}: Props) =>
     <div className={classes.root}>
         <div className={classes.header}>
             <IconButton>
-                <Icon>arrow_back</Icon>
+                <Icon color="secondary">arrow_back</Icon>
             </IconButton>
             <IconButton>
-                <Icon>delete</Icon>
+                <Icon color="secondary">delete</Icon>
             </IconButton>
         </div>
         <div className={classes.avatarContainer}>

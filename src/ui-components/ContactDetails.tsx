@@ -20,12 +20,12 @@ export const ContactDetails = ({contact, classes}: {contact: Contact} & WithStyl
                     </IconButton>
                     <Emptiness width="15%" />
                     <Typography className={classes.contentHeadingName}>{contact.fullName}</Typography>
-                    <IconButton className={classes.contentHeadingEditIcon} disableRipple>
-                        <Icon color="secondary" className={classes.contentHeadingEditIcon}>edit</Icon>
-                    </IconButton>
-                    <Emptiness width="5%" />
                     <IconButton className={classes.contentHeadingFavoriteIcon} disableRipple>
                         <Icon color="secondary">{contact.isFavorite ? 'favorite': 'favorite_outlined'}</Icon>
+                    </IconButton>
+                    <Emptiness width="5%" />
+                    <IconButton className={classes.contentHeadingEditIcon} disableRipple>
+                        <Icon color="secondary" className={classes.contentHeadingEditIcon}>edit</Icon>
                     </IconButton>
                 </div>
                 <Emptiness height={10} />

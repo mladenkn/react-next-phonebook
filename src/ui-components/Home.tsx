@@ -1,6 +1,6 @@
 import { withStyles, WithStyles, Tabs, Tab, TextField } from "@material-ui/core";
 import { homeStyle } from "../ui-design/home";
-import React from 'react';
+import React, { useState } from 'react';
 import ContactList from './contact-list/ContactList';
 import { Divider, Emptiness } from "./reusables"
 import { generateArray, generateContact } from '../devUtils/dataGenerators';
@@ -14,10 +14,12 @@ const Home = ({classes}: WithStyles<typeof homeStyle>) =>
             selected: classes.selectedTab
         }
 
+        const [currentTab, setCurrentTab] = useState(0)
+
         return (
             <div className={classes.root}>
                 <Emptiness height={20} />
-                <Tabs value={0} centered
+                <Tabs value={currentTab} centered onChange={(_, v) => setCurrentTab(v)}
                     classes={{
                         root: classes.contactTabs,
                         indicator: classes.tabIndicator,

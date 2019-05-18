@@ -15,6 +15,7 @@ export const homeStyle = ({palette}: Theme) => createStyles({
     contactTab: {
         textTransform: "initial",
         fontSize: '0.875rem',
+        color: palette.secondary.dark
     },
     tabDivider: {
         height: 20,

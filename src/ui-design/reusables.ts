@@ -29,6 +29,7 @@ export const textInputStyle = ({palette}: Theme) => createStyles({
         '&:focus': {
             border: `1px solid ${palette.secondary.light}`
         },
-        outline: 'none'
+        outline: 'none',
+        color: palette.secondary.main
     },
 })
