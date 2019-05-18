@@ -32,6 +32,9 @@ export const contactEditSectionStyle = ({palette}: Theme) => createStyles({
         backgroundColor: palette.secondary.main
     },
     saveButton: {
-        backgroundColor: palette.primary.main
+        backgroundColor: palette.primary.main,
+        '&:hover': {
+            backgroundColor: palette.primary.dark,            
+        },
     },
 }) 

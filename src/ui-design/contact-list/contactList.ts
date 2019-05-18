@@ -12,7 +12,7 @@ export const contactListStyle = createStyles({
     },
     itemRoot: {
         [ifSm]: {
-            width: 270,
+            width: 250,
             height: 150,
         },
     },

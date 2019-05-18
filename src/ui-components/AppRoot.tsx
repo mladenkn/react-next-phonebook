@@ -29,8 +29,15 @@ const theme = createMuiTheme({
         text: {
             primary: '#BBC4C3',
             secondary: '#2DA1AD',
-        }
+        },
     },
+    overrides: {
+        MuiTypography: {
+            root: {
+                fontFamily: 'Lato-Regular'
+            }
+        }
+    }
 });
 
 const AppProviders = ({children}: {children: JSX.Element}) => 
@@ -57,7 +64,7 @@ const AppContent_ = ({classes}: WithStyles<typeof appRootStyle>) => (
         </main>
     </div>
 );
-
+ 
 const AppContent = withStyles(appRootStyle)(AppContent_);
 
 export default () => (
