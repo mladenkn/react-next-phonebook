@@ -23,7 +23,7 @@ export const appRootStyle = ({palette, breakpoints}: Theme) => createStyles({
     },
     [breakpoints.down('xs')]: {
         main: {
-            margin: '60px 10px 10px 10px'
+            margin: '55px 10px 10px 10px'
         },
     } 
 }) 

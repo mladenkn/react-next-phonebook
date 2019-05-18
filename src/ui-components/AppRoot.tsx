@@ -6,7 +6,7 @@ import { appRootStyle } from '../ui-design/appRoot';
 import { withStyles, WithStyles, AppBar, Toolbar } from "@material-ui/core";
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
 import Home from "./Home"
-import ContactEditor from "./ContactEditor"
+import ContactEditSection from "./ContactEditSection"
 
 const contacts = generateArray(generateContact, 5, 20);
 const randomContact = faker.random.arrayElement(contacts);
@@ -20,7 +20,8 @@ const theme = createMuiTheme({
         },
         secondary: {
             main: '#BBC4C3',
-            light: '#E3E3E3'
+            light: '#E3E3E3',
+            dark: 'rgba(0, 0, 0, 0.4000000059604645)'
         },
     }, 
 });
@@ -41,11 +42,11 @@ const AppContent_ = ({classes}: WithStyles<typeof appRootStyle>) => (
             </AppBar>
         </header>
         <main className={classes.main}>
-            <ContactEditor contact={randomContact} />
+            <ContactEditSection contact={randomContact} />
             {/* <div className={classes.contactDetailsContainer}>
                 <ContactDetails contact={randomContact} />
-            </div> */}
-            {/* <Home /> */}
+            </div>
+            <Home /> */}
         </main>
     </div>
 );
