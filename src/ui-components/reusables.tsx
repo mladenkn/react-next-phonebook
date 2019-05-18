@@ -6,12 +6,13 @@ export interface WithClassName {
     className?: string
 }
 
-type Props = {icon: string, text: string} & WithStyles<typeof contactFieldLabelStyle> & WithClassName;
+type ContactFieldLabelProps = {icon: string, text: string} 
+    & WithStyles<typeof contactFieldLabelStyle> & WithClassName;
 
-const ContactFieldLabel_ = ({icon, text, classes, className}: Props) => 
-    <div className={`${classes.fieldLabel} ${className}`}>
-        <Icon className={classes.fieldLabelIcon}>{icon}</Icon>
-        <span className={classes.fieldLabelText}>{text}</span>
+const ContactFieldLabel_ = (p: ContactFieldLabelProps) => 
+    <div className={`${p.classes.fieldLabel} ${p.className}`}>
+        <Icon className={p.classes.fieldLabelIcon}>{p.icon}</Icon>
+        <span className={p.classes.fieldLabelText}>{p.text}</span>
     </div>
  
 export const ContactFieldLabel = withStyles(contactFieldLabelStyle)(ContactFieldLabel_);
@@ -22,9 +23,9 @@ const Divider_ = ({className, classes, margin}: DividerProps) =>
 
 export const Divider = withStyles(dividerStyle)(Divider_);
 
-type TextInputProps = { defaultValue: string } & WithStyles<typeof textInputStyle> & WithClassName
-const TextInput_ = ({defaultValue, className, classes}: TextInputProps) => 
-    <input type="text" defaultValue={defaultValue} className={`${className} ${classes.root}`} />
+type TextInputProps = { defaultValue: string, id?: string } & WithStyles<typeof textInputStyle> & WithClassName
+const TextInput_ = ({defaultValue, className, classes, id}: TextInputProps) => 
+    <input type="text" defaultValue={defaultValue} id={id} className={`${className} ${classes.root}`} />
 export const TextInput = withStyles(textInputStyle)(TextInput_);
 
 interface EmptinessProps {width?: number | string, height?: number | string}

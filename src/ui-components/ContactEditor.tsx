@@ -8,17 +8,17 @@ type Props = {contact: Contact} & WithStyles<typeof contactEditorStyle>;
 
 const ContactEditor = ({contact, classes}: Props) => 
     <div>
-      <div className={classes.field}>
+      <label className={classes.field}>
         <ContactFieldLabel icon="person_outlined" text="full name" />
         <Emptiness height={10} />
         <TextInput defaultValue={contact.fullName} className={`${classes.fullWidth} ${classes.input}`} />
-      </div>
+      </label>
       <Divider className={classes.divider} margin={18}/>
-      <div className={classes.field}>
+      <label className={classes.field}>
         <ContactFieldLabel icon="email" text="email" />
         <Emptiness height={10} />
         <TextInput defaultValue={contact.email} className={`${classes.fullWidth} ${classes.input}`} />
-      </div>
+      </label>
       <Divider className={classes.divider} margin={18}/>
       <ContactFieldLabel icon="phone" text="numbers" />
       <List disablePadding>
