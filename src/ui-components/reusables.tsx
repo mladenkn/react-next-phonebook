@@ -23,10 +23,17 @@ const Divider_ = ({className, classes, margin}: DividerProps) =>
 
 export const Divider = withStyles(dividerStyle)(Divider_);
 
-type TextInputProps = { defaultValue: string, id?: string } & WithStyles<typeof textInputStyle> & WithClassName
+type TextInputProps = { defaultValue?: string, id?: string } & WithStyles<typeof textInputStyle> & WithClassName
 const TextInput_ = ({defaultValue, className, classes, id}: TextInputProps) => 
-    <input type="text" defaultValue={defaultValue} id={id} className={`${className} ${classes.root}`} />
+    <input type="text" defaultValue={defaultValue} id={id} placeholder="&#61447;" className={`${className} ${classes.root}`} />
 export const TextInput = withStyles(textInputStyle)(TextInput_);
 
 interface EmptinessProps {width?: number | string, height?: number | string}
 export const Emptiness = ({width, height}: EmptinessProps) => <div style={{width, height}}></div>
+
+interface BoxProps { 
+    width?: number | string
+    height?: number | string
+    children: JSX.Element
+}
+export const Box = ({width, height, children}: BoxProps) => <div style={{width, height}}>{children}</div>

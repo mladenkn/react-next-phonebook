@@ -32,8 +32,19 @@ export const homeStyle = ({palette}: Theme) => createStyles({
         // marginBottom: 20,
     },
     searchField: {
-        width: 500,
-        // marginBottom: 25
+        width: 400,
+        height: 50,
+        border: `1px solid ${palette.secondary.light}`,
+        borderRadius: 4,
+        padding: 10,
+        fontSize: 'larger',     
+        boxShadow: `0 0 15px ${palette.secondary.light}`,
+    },
+    searchFieldFocused: {
+        boxShadow: `0 0 20px ${palette.secondary.main}`,
+    },
+    searchFieldIcon: {
+        marginRight: 10
     },
     list: {
         justifyContent: 'center'

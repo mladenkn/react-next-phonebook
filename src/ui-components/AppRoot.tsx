@@ -40,11 +40,6 @@ const theme = createMuiTheme({
     }
 });
 
-const AppProviders = ({children}: {children: JSX.Element}) => 
-    <MuiThemeProvider theme={theme}>
-        {children}
-    </MuiThemeProvider>;
-
 const AppContent_ = ({classes}: WithStyles<typeof appRootStyle>) => (
     <div>
         <header>
@@ -56,10 +51,10 @@ const AppContent_ = ({classes}: WithStyles<typeof appRootStyle>) => (
             </AppBar>
         </header>
         <main className={classes.main}>
-            <ContactEditSection contact={randomContact} />
+            {/* <ContactEditSection contact={randomContact} />
             <div className={classes.contactDetailsContainer}>
                 <ContactDetails contact={randomContact} />
-            </div>
+            </div> */}
             <Home />
         </main>
     </div>
@@ -68,7 +63,7 @@ const AppContent_ = ({classes}: WithStyles<typeof appRootStyle>) => (
 const AppContent = withStyles(appRootStyle)(AppContent_);
 
 export default () => (
-    <AppProviders>
+    <MuiThemeProvider theme={theme}>
         <AppContent />
-    </AppProviders>
-);
+    </MuiThemeProvider>
+); 
