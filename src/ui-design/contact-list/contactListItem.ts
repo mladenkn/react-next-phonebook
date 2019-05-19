@@ -23,14 +23,15 @@ export const contactListItemStyle = ({palette, breakpoints}: Theme) => createSty
             'background-color': 'inherit'
         },
     },
+    cardContent: {
+        display: 'flex',
+    },
     [breakpoints.down('sm')]: {
         cardContent: {
-            padding: '11px !important'
+            padding: '11px !important',
+            alignItems: 'center',
         },
         container: {
-            display: 'flex',
-            flexDirection: 'row',
-            alignItems: 'center',
         },
         avatar: {
             display: 'inline-block',
@@ -51,7 +52,8 @@ export const contactListItemStyle = ({palette, breakpoints}: Theme) => createSty
     },
     [breakpoints.up('md')]: {
         cardContent: {
-            padding: '0px 5px !important'
+            padding: '0px 5px !important',
+            flexDirection: 'column',
         },
         adderCardContent: {
             position: 'absolute',
@@ -63,15 +65,20 @@ export const contactListItemStyle = ({palette, breakpoints}: Theme) => createSty
             borderColor: palette.primary.main
         },
         avatar: {
+            order: 2,
             margin: 'auto',
             marginBottom: 10,
             height: 50,
             width: 50,
         },
+        nameBox: {
+            order: 2,            
+        },
         name: {
             textAlign: 'center',
         },
         icons: {
+            order: 1,
             height: 28,
             marginBottom: 5,
         },
