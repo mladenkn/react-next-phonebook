@@ -44,10 +44,10 @@ const AppContent_ = ({classes}: WithStyles<typeof appRootStyle>) => (
             </AppBar>
         </header>
         <main className={classes.main}>
-            <ContactEditSection contact={randomContact} />
+            {/* <ContactEditSection contact={randomContact} />
             <div className={classes.contactDetailsContainer}>
                 <ContactDetails contact={randomContact} />
-            </div>
+            </div> */}
             <Home />
         </main>
     </div>

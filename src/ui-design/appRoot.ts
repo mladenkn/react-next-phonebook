@@ -16,14 +16,14 @@ export const appRootStyle = ({palette, breakpoints}: Theme) => createStyles({
     contactDetailsContainer: {
         width: 700
     },
-    [breakpoints.up('sm')]: {
+    [breakpoints.down('sm')]: {
+        main: {
+            margin: '55px 10px 10px 10px'
+        },
+    },
+    [breakpoints.up('md')]: {
         main: {
             margin: '60px 100px 10px 100px'
         },
     },
-    [breakpoints.down('xs')]: {
-        main: {
-            margin: '55px 10px 10px 10px'
-        },
-    } 
 })
