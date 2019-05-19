@@ -1,18 +1,18 @@
-import { createStyles } from "@material-ui/core"
+import { createStyles, Theme } from "@material-ui/core"
 
 const ifSm = '@media (min-width: 600px)';
 const ifXs = '@media (max-width: 600px)';
 
-export const contactListStyle = createStyles({
+export const contactListStyle = ({breakpoints}: Theme) => createStyles({
     root: {
         [ifSm]: {
             display: 'flex',
             flexWrap: 'wrap',
             flexDirection: 'row',
         },
-        [ifXs]: {            
-            height: 74,
-        },
+        [ifXs]: {
+            width: '100%',
+        }            
     },
     itemRoot: {
         [ifSm]: {
@@ -20,7 +20,13 @@ export const contactListStyle = createStyles({
             height: 140,
         },
         [ifXs]: {
+            height: 70,
+            width: '100%',
             padding: '5px 0px',
         },
+    },
+    [breakpoints.down('xs')]: {
+    },
+    [breakpoints.down('sm')]: {
     },
 })

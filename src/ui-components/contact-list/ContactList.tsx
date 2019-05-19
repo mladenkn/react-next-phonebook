@@ -20,7 +20,7 @@ const ContactList = ({contacts, classes, includeAdder, className}: OwnProps & Wi
     const items = contacts.map(c => 
         <ListItem key={c.id} className={classes.itemRoot}>
             <ContactListItem isSelected={selectedItemId === c.id}
-                onClick={() => {setSelectedItemId(c.id)}} contact={c}/> 
+                onClick={() => {setSelectedItemId(c.id)}} contact={c} /> 
         </ListItem>
     );
 

@@ -20,7 +20,6 @@ export const contactAdderStyle = ({palette}: Theme) => createStyles({
             marginLeft: -200,
             width: 110,
             justifyContent: 'space-around',
-            padding: '11px 0px !important',
         },
     },
     icon: {

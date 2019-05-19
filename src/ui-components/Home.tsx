@@ -19,7 +19,6 @@ const Home = ({classes}: WithStyles<typeof homeStyle>) =>
 
         return (
             <div className={classes.root}>
-                <Emptiness height={20} />
                 <Tabs value={currentTab} centered onChange={(_, v) => setCurrentTab(v)}
                     classes={{
                         root: classes.contactTabs,
@@ -30,13 +29,10 @@ const Home = ({classes}: WithStyles<typeof homeStyle>) =>
                     <div className={classes.tabDivider}></div>
                     <Tab label="My favorites" disableRipple textColor="inherit" classes={tabClasses} />
                 </Tabs>
-                <Emptiness height={25} />
                 <Divider className={classes.contactTabsDivider} />
-                <Emptiness height={40} />
                 <Input disableUnderline
                     startAdornment={<Icon className={classes.searchFieldIcon}>search</Icon>}
                     classes={{root: classes.searchField, focused: classes.searchFieldFocused}} />
-                <Emptiness height={25} />
                 <ContactList contacts={contacts} includeAdder className={classes.list} />
             </div>
         );
