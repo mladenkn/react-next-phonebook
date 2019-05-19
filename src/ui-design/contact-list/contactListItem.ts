@@ -23,13 +23,7 @@ export const contactListItemStyle = ({palette, breakpoints}: Theme) => createSty
             'background-color': 'inherit'
         },
     },
-    [breakpoints.down('xs')]: {
-        secondIcon: {
-            marginLeft: '32%',
-        },
-        lastIcon: {
-            marginLeft: '32%',
-        },
+    [breakpoints.down('sm')]: {
         cardContent: {
             padding: '11px !important'
         },
@@ -48,14 +42,14 @@ export const contactListItemStyle = ({palette, breakpoints}: Theme) => createSty
         icon: {
             fontSize: 21,
         },
-    },
-    [breakpoints.up('sm')]: {
         secondIcon: {
-            marginLeft: '73%',
+            marginLeft: '32%',
         },
         lastIcon: {
-            marginLeft: '2%',
+            marginLeft: '32%',
         },
+    },
+    [breakpoints.up('md')]: {
         cardContent: {
             padding: '0px 5px !important'
         },
@@ -83,6 +77,12 @@ export const contactListItemStyle = ({palette, breakpoints}: Theme) => createSty
         },
         icon: {
             fontSize: 18,
+        },
+        secondIcon: {
+            marginLeft: '73%',
+        },
+        lastIcon: {
+            marginLeft: '2%',
         },
     },
 })

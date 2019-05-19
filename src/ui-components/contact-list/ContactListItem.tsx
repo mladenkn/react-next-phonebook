@@ -39,9 +39,9 @@ const Item = ({classes, width, contact, isSelected, onClick}: Props) => {
     return (
         <Card className={`${classes.root} ${isSelected ? classes.selected : ''}`} onClick={onClick}>
             <CardContent className={classes.cardContent}>
-                {width === 'xs' ?
-                    <div className={classes.container}>{avatar} {name} {icons}</div> :
-                    <div className={classes.container}>{icons} {avatar} {name}</div>}
+                {width === 'md' ?
+                    <div className={classes.container}>{icons} {avatar} {name}</div> :
+                    <div className={classes.container}>{avatar} {name} {icons}</div>}
             </CardContent>
         </Card>
     );

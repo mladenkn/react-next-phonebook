@@ -4,9 +4,10 @@ export const contactListStyle = ({breakpoints}: Theme) => createStyles({
     root: {
         display: 'flex',
     },
-    [breakpoints.down('xs')]: {
+    [breakpoints.down('sm')]: {
         root: {
             width: '100%',
+            flexDirection: 'column'
         },
         itemRoot: {
             height: 70,
@@ -14,21 +15,20 @@ export const contactListStyle = ({breakpoints}: Theme) => createStyles({
             padding: '5px 0px',
         },
     },
-    [breakpoints.up('sm')]: {
+    [breakpoints.only('sm')]: {
+        root: {
+            width: 400
+        },
+    },
+    [breakpoints.up('md')]: {
         root: {
             justifyContent: 'center',
             flexWrap: 'wrap'
         },
         itemRoot: {
-            padding: '11px 7px',
-            width: 220,
-            height: 140,
-        },
-    },
-    [breakpoints.up('md')]: {
-        itemRoot: {
             width: 250,
             height: 140,
+            padding: 10
         },
     },
 })

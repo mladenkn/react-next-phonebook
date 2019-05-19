@@ -18,7 +18,7 @@ export const contactAdderStyle = ({palette, breakpoints}: Theme) => createStyles
         color: palette.primary.light,
         fontSize: '0.95rem'
     },
-    [breakpoints.down('xs')]: {
+    [breakpoints.down('sm')]: {
         content_: { // doesn't compile with name 'content'
             display: 'flex',
             alignItems: 'center',
