@@ -2,7 +2,7 @@ import { withStyles, WithStyles, Tabs, Tab, Input, Icon } from "@material-ui/cor
 import { homeStyle } from "../ui-design/home";
 import React, { useState } from 'react';
 import ContactList from './contact-list/ContactList';
-import { Divider, Emptiness, Box } from "./reusables"
+import { Divider } from "./reusables"
 import { generateArray, generateContact } from '../devUtils/dataGenerators';
 
 const contacts = generateArray(generateContact, 5, 20);
