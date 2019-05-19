@@ -3,7 +3,8 @@ import { homeStyle } from "../ui-design/home";
 import React, { useState } from 'react';
 import ContactList from './contact-list/ContactList';
 import { Divider } from "./reusables"
-import { generateArray, generateContact } from '../devUtils/dataGenerators';
+import { generateContact } from '../devUtils/dataGenerators';
+import { generateArray } from "../../utils";
 
 const contacts = generateArray(generateContact, 5, 20);
 

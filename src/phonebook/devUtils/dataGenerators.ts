@@ -1,13 +1,6 @@
 import { Contact, PhoneNumber } from "../models";
-import faker from 'faker'
-
-export const generateArray = <T> (getNext: () => T, minCount: number, maxCount: number) => {
-    const count = faker.random.number({min: minCount, max: maxCount});
-    const r: T[] = [];
-    for (let i = 0; i < count; i++) 
-        r.push(getNext());
-    return r;
-}
+import faker from 'faker';
+import { generateArray } from "../../utils";
 
 const generatePhoneNumber = (): PhoneNumber => ({
     value: faker.random.number(),
