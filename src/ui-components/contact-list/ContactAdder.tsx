@@ -4,7 +4,7 @@ import { Typography, Icon, ButtonBase, withStyles, WithStyles } from "@material-
 
 const ContactAdder = ({classes}: WithStyles<typeof contactAdderStyle>) => 
     <ButtonBase className={classes.root} disableRipple>
-        <div className={`${classes.content}`}>
+        <div className={`${classes.content_}`}>
             <Icon className={classes.icon}>add</Icon>
             <Typography className={classes.text}>Add new</Typography>
         </div>

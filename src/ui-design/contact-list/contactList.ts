@@ -1,32 +1,25 @@
 import { createStyles, Theme } from "@material-ui/core"
 
-const ifSm = '@media (min-width: 600px)';
-const ifXs = '@media (max-width: 600px)';
-
 export const contactListStyle = ({breakpoints}: Theme) => createStyles({
-    root: {
-        [ifSm]: {
-            display: 'flex',
-            flexWrap: 'wrap',
-            flexDirection: 'row',
-        },
-        [ifXs]: {
+    [breakpoints.down('xs')]: {
+        root: {
             width: '100%',
-        }            
-    },
-    itemRoot: {
-        [ifSm]: {
-            width: 250,
-            height: 140,
         },
-        [ifXs]: {
+        itemRoot: {
             height: 70,
             width: '100%',
             padding: '5px 0px',
         },
     },
-    [breakpoints.down('xs')]: {
-    },
-    [breakpoints.down('sm')]: {
+    [breakpoints.up('sm')]: {
+        root: {
+            display: 'flex',
+            flexWrap: 'wrap',
+            flexDirection: 'row',
+        },
+        itemRoot: {
+            width: 250,
+            height: 140,
+        },
     },
 })

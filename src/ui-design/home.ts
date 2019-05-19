@@ -5,12 +5,6 @@ export const homeStyle = ({palette, breakpoints}: Theme) => createStyles({
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        [breakpoints.up('sm')]: {
-            marginTop: 20,
-        },
-        [breakpoints.down('xs')]: {
-            marginTop: 7,
-        },
     },
     tabContainer: {
         alignItems: 'center'
@@ -37,14 +31,6 @@ export const homeStyle = ({palette, breakpoints}: Theme) => createStyles({
         color: palette.primary.main
     },
     searchField: {
-        [breakpoints.up('sm')]: {
-            marginTop: 40,
-            width: 400,
-        },
-        [breakpoints.down('xs')]: {
-            marginTop: 20,
-            width: 310,
-        },
         height: 50,
         border: `1px solid ${palette.secondary.light}`,
         borderRadius: 4,
@@ -58,15 +44,14 @@ export const homeStyle = ({palette, breakpoints}: Theme) => createStyles({
     searchFieldIcon: {
         marginRight: 10
     },
-    [breakpoints.up('sm')]: {
-        contactTabsDivider: {
-            marginTop: 25
-        },
-        list: {
-            marginTop: 25
-        },
-    },
     [breakpoints.down('xs')]: {
+        root: {
+            marginTop: 7,
+        },
+        searchField: {
+            marginTop: 20,
+            width: 310,
+        },
         contactTabsDivider: {
             marginTop: 6
         },
@@ -74,8 +59,19 @@ export const homeStyle = ({palette, breakpoints}: Theme) => createStyles({
             marginTop: 10
         },        
     },
-
-    // list: {
-        // justifyContent: 'center'
-    // },
+    [breakpoints.up('sm')]: {
+        root: {
+            marginTop: 20,
+        },
+        searchField: {
+            marginTop: 40,
+            width: 400,
+        },
+        contactTabsDivider: {
+            marginTop: 25
+        },
+        list: {
+            marginTop: 25
+        },
+    },
 })

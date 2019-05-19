@@ -1,9 +1,6 @@
-import { createStyles, Theme } from "@material-ui/core"
+import { createStyles, Theme } from "@material-ui/core";
 
-const ifSm = '@media (min-width: 600px)';
-const ifXs = '@media (max-width: 600px)';
-
-export const contactAdderStyle = ({palette}: Theme) => createStyles({
+export const contactAdderStyle = ({palette, breakpoints}: Theme) => createStyles({
     root: {
         padding: 0,
         width: '100%',
@@ -13,15 +10,6 @@ export const contactAdderStyle = ({palette}: Theme) => createStyles({
         borderWidth: 1,
         boxShadow: 'inherit',
     }, 
-    content: {
-        [ifXs]: {
-            display: 'flex',
-            alignItems: 'center',
-            marginLeft: -200,
-            width: 110,
-            justifyContent: 'space-around',
-        },
-    },
     icon: {
         color: palette.primary.light,
         fontSize: 27,
@@ -29,5 +17,14 @@ export const contactAdderStyle = ({palette}: Theme) => createStyles({
     text: {    
         color: palette.primary.light,
         fontSize: '0.95rem'
-    }
-})
+    },
+    [breakpoints.down('xs')]: {
+        content_: { // doesn't compile with name 'content'
+            display: 'flex',
+            alignItems: 'center',
+            marginLeft: -200,
+            width: 110,
+            justifyContent: 'space-around',
+        },
+    },
+}) 
