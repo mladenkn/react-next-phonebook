@@ -10,6 +10,9 @@ export const contactListStyle = createStyles({
             flexWrap: 'wrap',
             flexDirection: 'row',
         },
+        [ifXs]: {            
+            height: 74,
+        },
     },
     itemRoot: {
         [ifSm]: {
