@@ -23,7 +23,7 @@ export const contactAdderStyle = ({palette}: Theme) => createStyles({
             padding: 0,
         },
         [ifXs]: {
-            width: 310
+            width: '100%'
         },
     }, 
     cardContent: {

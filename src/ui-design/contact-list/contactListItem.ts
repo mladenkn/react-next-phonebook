@@ -5,25 +5,20 @@ const ifXs = '@media (max-width: 600px)';
 
 export const contactListItemStyle = ({palette}: Theme) => createStyles({    
     card: {
-        [ifSm]: {
-            padding: 0,
-            width: '100%',
-            height: '100%',
-            borderWidth: 1,
-            borderStyle: 'solid',
-            borderColor: palette.secondary.light,
-            boxShadow: 'inherit',
-        },
-        [ifXs]: {
-            width: 310
-        },
+        padding: 0,
+        width: '100%',
+        height: '100%',
+        borderWidth: 1,
+        borderStyle: 'solid',
+        borderColor: palette.secondary.light,
+        boxShadow: 'inherit',
     },
     selected: {
         borderColor: palette.primary.main
     },
     cardContent: {
         [ifSm]: {
-            padding: '5px 5px !important'
+            padding: '0px 5px !important'
         },
         [ifXs]: {
             padding: '11px 12px !important'
@@ -44,7 +39,7 @@ export const contactListItemStyle = ({palette}: Theme) => createStyles({
         [ifXs]: {
             display: 'flex',
             flexDirection: 'row',
-            alignIitems: 'center',
+            alignItems: 'center',
             justifyContent: 'space-between'
         },
     },
@@ -71,35 +66,22 @@ export const contactListItemStyle = ({palette}: Theme) => createStyles({
         },
     },
     icons: {
+        display: 'flex',
         [ifSm]: {
-            position: 'relative',
             height: 28,
-            marginBottom: 5
-        },
-        [ifXs]: {
-            display: 'inline-block',
-        },
-    },
-    iconsLeft: {
-        [ifSm]: {
-            position: 'absolute'
-        },
-    },
-    iconsRight: {
-        [ifSm]: {
-            position: 'absolute',
-            right: 0
+            marginBottom: 5,
         },
     },
     iconButton: {
+        padding: 0,
+        '&:hover': {
+            'background-color': 'inherit'
+        },
         [ifSm]: {
-            padding: 0,
-            '&:hover': {
-                'background-color': 'inherit'
-            },
+            // padding: 0,
         },
         [ifXs]: {
-            display: 'inline-block',
+            // display: 'inline-block',
         },
     },
     icon: {
@@ -109,5 +91,22 @@ export const contactListItemStyle = ({palette}: Theme) => createStyles({
         [ifXs]: {
             fontSize: 21,
         },
+    },
+    firstIconsSpace: {
+        [ifSm]: {
+            width: 210,
+        },
+        [ifXs]: {
+            width: 10,
+        },        
+    },
+    secondIconsSpace: {
+        width: 10,
+    },
+    nameBox: {
+        [ifXs]: {
+            marginLeft: 20,
+            width: 180,
+        },                
     },
 })

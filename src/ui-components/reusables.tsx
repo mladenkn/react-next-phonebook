@@ -28,12 +28,13 @@ const TextInput_ = ({defaultValue, className, classes, id}: TextInputProps) =>
     <input type="text" defaultValue={defaultValue} id={id} placeholder="&#61447;" className={`${className} ${classes.root}`} />
 export const TextInput = withStyles(textInputStyle)(TextInput_);
 
-interface EmptinessProps {width?: number | string, height?: number | string}
-export const Emptiness = ({width, height}: EmptinessProps) => <div style={{width, height}}></div>
+type EmptinessProps = {width?: number | string, height?: number | string} & WithClassName
+export const Emptiness = ({width, height, className}: EmptinessProps) => <div className={className} style={{width, height}}></div>
 
-interface BoxProps { 
-    width?: number | string
-    height?: number | string
-    children: JSX.Element
-}
-export const Box = ({width, height, children}: BoxProps) => <div style={{width, height}}>{children}</div>
+type BoxProps = { 
+    width?: number | string,
+    height?: number | string,
+    children: JSX.Element,
+} & WithClassName
+export const Box = ({width, height, children, className}: BoxProps) => 
+    <div className={className} style={{width, height}}>{children}</div>

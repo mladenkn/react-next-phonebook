@@ -1,6 +1,6 @@
 import { createStyles, Theme } from "@material-ui/core";
 
-export const homeStyle = ({palette}: Theme) => createStyles({
+export const homeStyle = ({palette, breakpoints}: Theme) => createStyles({
     root: {
         display: 'flex',
         flexDirection: 'column',
@@ -37,7 +37,12 @@ export const homeStyle = ({palette}: Theme) => createStyles({
         // marginBottom: 20,
     },
     searchField: {
-        width: 400,
+        [breakpoints.up('sm')]: {
+            width: 400,
+        },
+        [breakpoints.down('xs')]: {
+            width: 310,
+        },
         height: 50,
         border: `1px solid ${palette.secondary.light}`,
         borderRadius: 4,
@@ -52,6 +57,6 @@ export const homeStyle = ({palette}: Theme) => createStyles({
         marginRight: 10
     },
     list: {
-        justifyContent: 'center'
+        // justifyContent: 'center'
     },
 })

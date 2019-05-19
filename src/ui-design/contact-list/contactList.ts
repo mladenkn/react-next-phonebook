@@ -1,6 +1,7 @@
 import { createStyles } from "@material-ui/core"
 
 const ifSm = '@media (min-width: 600px)';
+const ifXs = '@media (max-width: 600px)';
 
 export const contactListStyle = createStyles({
     root: {
@@ -13,7 +14,10 @@ export const contactListStyle = createStyles({
     itemRoot: {
         [ifSm]: {
             width: 250,
-            height: 150,
+            height: 140,
+        },
+        [ifXs]: {
+            padding: '5px 0px',
         },
     },
 })
