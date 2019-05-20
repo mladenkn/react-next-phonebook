@@ -1,7 +1,7 @@
 import React from 'react';
 import { generateContact } from '../devUtils/dataGenerators';
 import faker from 'faker';
-import ContactDetailsPage from './contact-details/ContactDetailsPage';
+import ContactDetailsPage from './contact-details';
 import style from './AppRoot-style';
 import { withStyles, WithStyles, AppBar, Toolbar } from "@material-ui/core";
 import { purple } from "@material-ui/core/colors";
@@ -45,8 +45,8 @@ const AppContent_ = ({classes}: WithStyles<typeof style>) => (
             </AppBar>
         </header>
         <main className={classes.main}>
-            {/* <ContactEditPage contact={randomContact} /> */}
-            <ContactDetailsPage contact={randomContact} />
+            <ContactEditPage contact={randomContact} />
+            {/* <ContactDetailsPage contact={randomContact} /> */}
             {/* <HomePage /> */}
         </main>
     </div>

@@ -1,5 +1,5 @@
 import { Contact } from "../../models";
-import stlye from "./ContactDetailsDesktop-style";
+import stlye from "./ContactDetailsMd-style";
 import { Grid, Avatar, Icon, withStyles, WithStyles, IconButton, Typography } from "@material-ui/core";
 import React from 'react';
 import { Divider, Emptiness } from "../reusables";
@@ -39,4 +39,4 @@ export default withStyles(stlye)(
                 </Grid>
             </Grid>
         </Grid>
-    );
+    ); 

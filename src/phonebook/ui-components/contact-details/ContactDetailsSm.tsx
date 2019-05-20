@@ -1,12 +1,12 @@
 import { Contact } from "../../models";
-import style from "./ContactDetailsMobile-style";
+import style from "./ContactDetailsSm-style";
 import { List, ListItem, Grid, Avatar, Icon, withStyles, WithStyles, IconButton, Typography }
     from "@material-ui/core";
 import React from 'react';
 import { Divider, Emptiness } from "../reusables";
 import ContactDetailsFields from "./ContactDetailsFields"
 
-export default  withStyles(style)(
+export default withStyles(style)(
     ({contact, classes}: {contact: Contact} & WithStyles<typeof style>) => 
         <div>
             <div className={classes.header}>
