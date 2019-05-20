@@ -1,6 +1,6 @@
 import { createStyles, Theme } from "@material-ui/core"
 
-export const contactListStyle = ({breakpoints}: Theme) => createStyles({
+export default ({breakpoints}: Theme) => createStyles({
     root: {
         display: 'flex',
     },

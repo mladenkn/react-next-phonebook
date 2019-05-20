@@ -1,11 +1,11 @@
 import React from 'react'
 import { Contact } from "../models";
-import { contactEditSectionStyle } from "../ui-design/contactEditSection";
+import style from "./ContactEditSection-style";
 import ContactEditor from "./ContactEditor";
 import { WithStyles, withStyles, Avatar, IconButton, Icon, Button } from "@material-ui/core";
 import { Divider, Emptiness } from "./reusables";
 
-type Props = { contact: Contact } & WithStyles<typeof contactEditSectionStyle>
+type Props = { contact: Contact } & WithStyles<typeof style>
 
 const ContactEditSection = ({contact, classes}: Props) =>
     <div className={classes.root}>
@@ -29,4 +29,4 @@ const ContactEditSection = ({contact, classes}: Props) =>
         </div>
     </div>
 
-export default withStyles(contactEditSectionStyle)(ContactEditSection)
+export default withStyles(style)(ContactEditSection)

@@ -1,4 +1,4 @@
-import { contactListItemStyle } from "../../ui-design/contact-list/contactListItem";
+import style from "./ContactListItem-style";
 import { Contact } from "../../models";
 import React from 'react';
 import { Card, Avatar, CardContent, Typography, Icon, IconButton, withStyles, WithStyles } from "@material-ui/core";
@@ -10,7 +10,7 @@ interface OwnProps {
     onClick: () => void
 }
 
-type Props = OwnProps & WithStyles<typeof contactListItemStyle>
+type Props = OwnProps & WithStyles<typeof style>
 
 const Item = ({classes, contact, isSelected, onClick}: Props) =>
     <Card className={`${classes.root} ${isSelected ? classes.selected : ''}`} onClick={onClick}>
@@ -35,4 +35,4 @@ const Item = ({classes, contact, isSelected, onClick}: Props) =>
         </CardContent>
     </Card>
 
-export default withStyles(contactListItemStyle)(Item)
+export default withStyles(style)(Item)

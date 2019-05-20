@@ -1,10 +1,10 @@
 import { WithStyles, withStyles, List, ListItem, Grid, Icon, IconButton, Button } from "@material-ui/core";
 import { Contact } from "../models";
-import { contactEditorStyle } from "../ui-design/contactEditor";
+import style from "./ContactEditor-style";
 import { ContactFieldLabel, Divider, TextInput, Emptiness } from "./reusables";
 import React from 'react'
 
-type Props = {contact: Contact} & WithStyles<typeof contactEditorStyle>;
+type Props = {contact: Contact} & WithStyles<typeof style>;
 
 const ContactEditor = ({contact, classes}: Props) => 
     <div>
@@ -54,4 +54,4 @@ const ContactEditor = ({contact, classes}: Props) =>
       </Button>
     </div>
 
-export default withStyles(contactEditorStyle)(ContactEditor);
+export default withStyles(style)(ContactEditor);

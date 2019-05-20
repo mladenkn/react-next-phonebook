@@ -42,6 +42,7 @@
     "@types/faker": "^4.1.5",
     "@types/material-ui": "^0.21.6",
     "@types/react-jss": "^8.6.3",
+    "cross-env": "^5.2.0",
     "fs-extra": "^8.0.1"
   }
 }

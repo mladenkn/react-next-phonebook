@@ -1,4 +1,4 @@
-import { createStyles, Theme } from "@material-ui/core";
+import { createStyles, Theme } from "@material-ui/core"
 
 export default ({palette, breakpoints}: Theme) => createStyles({
     toolbar: {
@@ -26,4 +26,4 @@ export default ({palette, breakpoints}: Theme) => createStyles({
             margin: '60px 100px 10px 100px'
         },
     },
-});
+})

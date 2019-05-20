@@ -1,5 +1,5 @@
 import { Icon, WithStyles, withStyles, Divider as MUIDivider } from "@material-ui/core";
-import { contactFieldLabelStyle, dividerStyle, textInputStyle } from "../ui-design/reusables";
+import { contactFieldLabelStyle, dividerStyle, textInputStyle } from "./reusables-style";
 import React from 'react';
 
 export interface WithClassName {

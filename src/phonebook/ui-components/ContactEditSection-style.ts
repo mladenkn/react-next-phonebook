@@ -1,6 +1,6 @@
-import { createStyles, Theme } from "@material-ui/core";
+import { createStyles, Theme } from "@material-ui/core"
 
-export default ({palette, breakpoints}: Theme) => createStyles({
+export default ({palette}: Theme) => createStyles({
     root: {
         margin: '0px 5px 20px 5px'
     },
@@ -37,4 +37,4 @@ export default ({palette, breakpoints}: Theme) => createStyles({
             backgroundColor: palette.primary.dark,            
         },
     },
-});
+}) 

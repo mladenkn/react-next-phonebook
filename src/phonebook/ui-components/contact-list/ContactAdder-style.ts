@@ -1,6 +1,6 @@
 import { createStyles, Theme } from "@material-ui/core";
 
-export const contactAdderStyle = ({palette, breakpoints}: Theme) => createStyles({
+export default ({palette, breakpoints}: Theme) => createStyles({
     root: {
         padding: 0,
         width: '100%',

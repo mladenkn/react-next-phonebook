@@ -2,7 +2,7 @@ import React from 'react';
 import { generateContact } from '../devUtils/dataGenerators';
 import faker from 'faker';
 import ContactDetails from './ContactDetails';
-import { appRootStyle } from '../ui-design/appRoot';
+import style from './AppRoot-style';
 import { withStyles, WithStyles, AppBar, Toolbar } from "@material-ui/core";
 import { purple } from "@material-ui/core/colors";
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
@@ -34,7 +34,7 @@ const theme = createMuiTheme({
     },
 });
 
-const AppContent_ = ({classes}: WithStyles<typeof appRootStyle>) => (
+const AppContent_ = ({classes}: WithStyles<typeof style>) => (
     <div>
         <header>
             <AppBar>
@@ -54,7 +54,7 @@ const AppContent_ = ({classes}: WithStyles<typeof appRootStyle>) => (
     </div>
 );
  
-const AppContent = withStyles(appRootStyle)(AppContent_);
+const AppContent = withStyles(style)(AppContent_);
 
 export default () => (
     <MuiThemeProvider theme={theme}>

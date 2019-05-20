@@ -1,5 +1,5 @@
 import { withStyles, WithStyles, Tabs, Tab, Input, Icon } from "@material-ui/core";
-import { homeStyle } from "../ui-design/home";
+import style from "./Home-style";
 import React, { useState } from 'react';
 import ContactList from './contact-list/ContactList';
 import { Divider } from "./reusables"
@@ -8,7 +8,7 @@ import { generateArray } from "../../utils";
 
 const contacts = generateArray(generateContact, 5, 20);
 
-const Home = ({classes}: WithStyles<typeof homeStyle>) => 
+const Home = ({classes}: WithStyles<typeof style>) => 
     {
         const tabClasses = {
             root: classes.contactTab,
@@ -39,4 +39,4 @@ const Home = ({classes}: WithStyles<typeof homeStyle>) =>
         );
     }
  
-export default withStyles(homeStyle)(Home)
+export default withStyles(style)(Home)

@@ -36,18 +36,15 @@ export default withStyles(style)(${componentName})
 `;
 
 const projSrcFolderPath = __dirname + '/../src/';
-const componentFolderPath = projSrcFolderPath + folderRelativePath + '/' + componentName + '/';
+const componentFolderPath = projSrcFolderPath + folderRelativePath + '/';
 
 const styleFilePath = componentFolderPath + componentName + '-style.ts';
-const viewFilePath = componentFolderPath + componentName + '-view.ts';
-const indexFilePath = componentFolderPath + 'index.ts';
+const viewFilePath = componentFolderPath + componentName + '.tsx';
 
 console.log(styleFilePath);
 console.log(viewFilePath);
-console.log(indexFilePath);
 
 mkdirSync(componentFolderPath);
 
 writeFileSync(styleFilePath, styleFileContent);
 writeFileSync(viewFilePath, viewFileContent);
-writeFileSync(indexFilePath, indexFileContent);

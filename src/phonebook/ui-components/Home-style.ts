@@ -1,6 +1,6 @@
 import { createStyles, Theme } from "@material-ui/core";
 
-export const homeStyle = ({palette, breakpoints}: Theme) => createStyles({
+export default ({palette, breakpoints}: Theme) => createStyles({
     root: {
         display: 'flex',
         flexDirection: 'column',
