@@ -46,7 +46,7 @@ const AppContent_ = ({classes}: WithStyles<typeof style>) => (
         </header>
         <main className={classes.main}>
             <ContactEditPage contact={randomContact} />
-            {/* <ContactDetailsPage contact={randomContact} /> */}
+            <ContactDetailsPage contact={randomContact} />
             {/* <HomePage /> */}
         </main>
     </div>

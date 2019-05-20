@@ -9,7 +9,7 @@ type Props = { contact: Contact } & WithStyles<typeof style>
 
 const ContactEditPage = ({contact, classes}: Props) =>
     <div className={classes.root}>
-        <div className={classes.header}>
+        <div className={classes.toolbar}>
             <IconButton>
                 <Icon color="secondary">arrow_back</Icon>
             </IconButton>

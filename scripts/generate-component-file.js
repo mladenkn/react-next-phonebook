@@ -1,7 +1,8 @@
 const { writeFileSync, mkdirSync } = require('fs');
 
-const componentName = process.argv[2];
-const folderRelativePath = process.argv[3];
+const type = process.argv[2];
+const componentName = process.argv[3];
+const folderRelativePath = process.argv[4];
 
 styleFileContent = `import { createStyles, Theme } from "@material-ui/core";
 
@@ -36,13 +37,16 @@ export default withStyles(style)(${componentName})
 `;
 
 const projSrcFolderPath = __dirname + '/../src/';
-const componentFolderPath = projSrcFolderPath + folderRelativePath + '/' componentName + '/';
+const componentFolderPath = projSrcFolderPath + folderRelativePath + '/';
 
 const styleFilePath = componentFolderPath + componentName + '-style.ts';
 const viewFilePath = componentFolderPath + componentName + '.tsx';
 
-console.log(styleFilePath);
-console.log(viewFilePath);
-
-writeFileSync(styleFilePath, styleFileContent);
-writeFileSync(viewFilePath, viewFileContent);
+switch(type){
+    case 'style':
+        writeFileSync(styleFilePath, styleFileContent);
+        break;
+    case 'view':
+        writeFileSync(viewFilePath, viewFileContent);
+        break;
+}

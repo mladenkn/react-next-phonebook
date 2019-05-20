@@ -15,7 +15,7 @@ export default ({palette, breakpoints}: Theme) => createStyles({
     },
     [breakpoints.down('sm')]: {
         main: {
-            margin: '55px 10px 10px 10px'
+            margin: '51px 0px 0px 0px'
         },
     },
     [breakpoints.up('md')]: {

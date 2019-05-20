@@ -12,7 +12,7 @@ export default ({palette}: Theme) => createStyles({
         width: 170,
         height: 170,
     },
-    header: {
+    toolbar: {
         display: 'flex',
         borderBottom: `1px solid ${palette.secondary.light}`,
         justifyContent: 'space-between',
