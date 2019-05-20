@@ -1,6 +1,6 @@
-import { createStyles, Theme } from "@material-ui/core"
+import { createStyles, Theme } from "@material-ui/core";
 
-export const contactDetailsStyle = ({palette}: Theme) => createStyles({
+export default ({palette}: Theme) => createStyles({
     avatar: {
         height: 160,
         width: 160,
@@ -49,28 +49,5 @@ export const contactDetailsStyle = ({palette}: Theme) => createStyles({
     },
     contentPropsContainer: {
 
-    },
-})
-
-export const contactDetailsFieldsStyle = ({palette}: Theme) => createStyles({
-    field: {   
-    },
-    fieldLabelEmail: {
-        // marginRight: 15 
-    },
-    fieldValue: {
-        // color: palette.secondary.main
-    },
-    fieldListValue: {
-
-    },
-    numberType: {
-        // color: palette.secondary.main,
-        width: 100,
-        textTransform: 'uppercase'
-    },
-    numberValue: {
-        // color: palette.secondary.main,    
-        textDecoration: 'underline'
     },
 })

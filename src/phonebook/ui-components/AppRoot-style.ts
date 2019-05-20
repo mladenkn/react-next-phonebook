@@ -13,9 +13,6 @@ export default ({palette, breakpoints}: Theme) => createStyles({
         margin: '8px auto 10px auto',
         textTransform: 'uppercase'
     },
-    contactDetailsContainer: {
-        width: 700
-    },
     [breakpoints.down('sm')]: {
         main: {
             margin: '55px 10px 10px 10px'
