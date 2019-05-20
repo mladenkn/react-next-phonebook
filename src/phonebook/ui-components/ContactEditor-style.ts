@@ -1,6 +1,6 @@
 import { createStyles, Theme } from "@material-ui/core";
 
-export default ({palette}: Theme) => createStyles({
+export default ({palette, breakpoints}: Theme) => createStyles({
     input: {
         paddingLeft: 20,
     },
@@ -11,9 +11,6 @@ export default ({palette}: Theme) => createStyles({
         paddingLeft: 0,
         paddingRight: 0,
         display: 'block'
-    },
-    phoneNumberLabel: {
-        
     },
     labelRemoverContainer: {
         display: 'flex',
@@ -46,5 +43,25 @@ export default ({palette}: Theme) => createStyles({
     },
     divider: {
         // margin: '10px 0px'
+    },
+    [breakpoints.down('sm')]: {
+        phoneNumberInput: {
+            width: '100%'
+        },
+        phoneNumberLabelInput: {
+            width: '80%'
+        },
+        labelRemover: {
+            width: '20%'            
+        },
+    },
+    [breakpoints.up('md')]: {
+        phoneNumber: {
+            display: 'flex',
+            justifyContent: 'space-between'
+        },
+        singleValueInput: {
+            width: '50%',
+        },
     },
 }); 

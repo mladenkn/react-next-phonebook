@@ -6,11 +6,7 @@ import ContactDetailsMd from "./ContactDetailsMd";
 
 export default withWidth()(
     ({width, contact}: {contact: Contact} & WithWidthProps) => 
-        {
-            console.log(width);
-            return width === 'sm' || width === 'xs' ?
-                <ContactDetailsSm contact={contact} /> :
-                <ContactDetailsMd contact={contact} />;
-        }
+        width === 'sm' || width === 'xs' ?
+            <ContactDetailsSm contact={contact} /> :
+            <ContactDetailsMd contact={contact} />
     );
-
