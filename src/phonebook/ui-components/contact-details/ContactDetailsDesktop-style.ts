@@ -1,6 +1,9 @@
 import { createStyles, Theme } from "@material-ui/core";
 
 export default ({palette}: Theme) => createStyles({
+    root: {
+        width: 700,
+    },
     avatar: {
         height: 160,
         width: 160,

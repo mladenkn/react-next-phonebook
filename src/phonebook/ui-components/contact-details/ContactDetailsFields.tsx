@@ -9,7 +9,7 @@ export default  withStyles(style)(
     ({contact, classes}: {contact: Contact} & WithStyles<typeof style>) => 
         <List className={classes.root}>
             <ListItem className={classes.field}>
-                <ContactFieldLabel icon="email" text="email" className={classes.fieldLabelEmail} />
+                <ContactFieldLabel icon="email" text="email" />
                 <Emptiness width="3.5%" />
                 <Typography className={classes.fieldValue}>
                     {contact.email}                 

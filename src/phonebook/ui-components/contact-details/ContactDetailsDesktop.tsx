@@ -7,7 +7,7 @@ import ContactDetailsFields from "./ContactDetailsFields";
 
 export default withStyles(stlye)(
     ({contact, classes}: {contact: Contact} & WithStyles<typeof stlye>) => 
-        <Grid container>
+        <Grid container className={classes.root}>
             <Grid item sm={3}>
                 <Avatar className={classes.avatar} src={contact.avatar} />            
             </Grid>
