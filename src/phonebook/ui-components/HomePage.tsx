@@ -1,5 +1,5 @@
 import { withStyles, WithStyles, Tabs, Tab, Input, Icon } from "@material-ui/core";
-import style from "./Home-style";
+import style from "./HomePage-style";
 import React, { useState } from 'react';
 import ContactList from './contact-list/ContactList';
 import { Divider } from "./reusables"

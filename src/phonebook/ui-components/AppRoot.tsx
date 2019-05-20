@@ -1,13 +1,13 @@
 import React from 'react';
 import { generateContact } from '../devUtils/dataGenerators';
 import faker from 'faker';
-import ContactDetails from './ContactDetails';
+import ContactDetailsPage from './ContactDetailsPage';
 import style from './AppRoot-style';
 import { withStyles, WithStyles, AppBar, Toolbar } from "@material-ui/core";
 import { purple } from "@material-ui/core/colors";
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
-import Home from "./Home";
-import ContactEditSection from "./ContactEditSection";
+import HomePage from "./HomePage";
+import ContactEditPage from "./ContactEditPage";
 import { generateArray } from "../../utils";
 
 const contacts = generateArray(generateContact, 5, 20);
@@ -45,11 +45,11 @@ const AppContent_ = ({classes}: WithStyles<typeof style>) => (
             </AppBar>
         </header>
         <main className={classes.main}>
-            {/* <ContactEditSection contact={randomContact} />
+            {/* <ContactEditPage contact={randomContact} />
             <div className={classes.contactDetailsContainer}>
-                <ContactDetails contact={randomContact} />
+                <ContactDetailsPage contact={randomContact} />
             </div> */}
-            <Home />
+            <HomePage />
         </main>
     </div>
 );

@@ -1,11 +1,11 @@
 import { Contact } from "../models";
-import { contactDetailsStyle, contactDetailsFieldsStyle } from "./ContactDetails-style";
+import { contactDetailsStyle, contactDetailsFieldsStyle } from "./ContactDetailsPage-style";
 import { List, ListItem, Grid, Avatar, Icon, withStyles, WithStyles, IconButton, Typography }
     from "@material-ui/core";
 import React from 'react';
 import { ContactFieldLabel, Divider, Emptiness } from "./reusables";
 
-export const ContactDetails = ({contact, classes}: {contact: Contact} & WithStyles<typeof contactDetailsStyle>) => 
+export const ContactDetailsPage = ({contact, classes}: {contact: Contact} & WithStyles<typeof contactDetailsStyle>) => 
     <Grid container>
         <Grid item sm={3}>
             <Avatar className={classes.avatar} src={contact.avatar} />            
@@ -39,7 +39,7 @@ export const ContactDetails = ({contact, classes}: {contact: Contact} & WithStyl
         </Grid>
     </Grid>
 
-export default withStyles(contactDetailsStyle)(ContactDetails);
+export default withStyles(contactDetailsStyle)(ContactDetailsPage);
 
 const ContactDetailsFields_ = ({contact, classes}: {contact: Contact} & WithStyles<typeof contactDetailsFieldsStyle>) => 
     <List>

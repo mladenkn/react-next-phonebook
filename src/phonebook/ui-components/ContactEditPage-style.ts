@@ -21,7 +21,7 @@ export default ({palette}: Theme) => createStyles({
     buttonContainer: {
         display: 'flex',
         justifyContent: 'space-between',
-    },
+    },   
     button: {
         width: 160,
         textTransform: 'none',
