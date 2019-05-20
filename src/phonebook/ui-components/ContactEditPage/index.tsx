@@ -1,9 +1,9 @@
 import React from 'react'
-import { Contact } from "../models";
+import { Contact } from "../../models";
 import style from "./ContactEditPage-style";
-import ContactEditor from "./ContactEditor";
+import ContactEditor from "../ContactEditor";
 import { WithStyles, withStyles, Avatar, IconButton, Icon, Button } from "@material-ui/core";
-import { Divider, Emptiness } from "./reusables";
+import { Divider, Emptiness } from "../reusables";
 
 type Props = { contact: Contact } & WithStyles<typeof style>
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { generateContact } from '../devUtils/dataGenerators';
 import faker from 'faker';
-import ContactDetailsPage from './contact-details';
+import ContactDetailsPage from './ContactDetailsPage';
 import style from './AppRoot-style';
 import { withStyles, WithStyles, AppBar, Toolbar } from "@material-ui/core";
 import { purple } from "@material-ui/core/colors";
