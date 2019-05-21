@@ -1,7 +1,7 @@
 import { createStyles, Theme } from "@material-ui/core";
 
-export default ({palette, breakpoints}: Theme) => createStyles({
-    [breakpoints.down('sm')]: {
+export default ({breakpoints}: Theme) => createStyles({
+    [breakpoints.down('xs')]: {
         root: {
             marginLeft: '10%'
         },
@@ -22,7 +22,6 @@ export default ({palette, breakpoints}: Theme) => createStyles({
         numberValue: {   
             textDecoration: 'underline'
         },
-
     },
     label: {
         width: 100,

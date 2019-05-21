@@ -1,21 +1,56 @@
-import { createStyles, Theme } from "@material-ui/core"
+import { createStyles, Theme } from "@material-ui/core";
 
 export default ({palette}: Theme) => createStyles({
-    toolbar: {
+    root: {
+        width: 650,
+    },
+    avatar: {
+        height: 160,
+        width: 160,
+    },
+    content: {
+        // marginTop: 50
+    },
+    contentHeading: {
+        position: 'relative',
+        // marginBottom: 25,
+    },
+    contentHeadingContent: {
+        // marginBottom: 15,
         display: 'flex',
-        borderBottom: `1px solid ${palette.secondary.light}`,
-        justifyContent: 'space-between',
-        marginBottom: 15
+        alignItems: 'center'
     },
-    header: {
-        display: 'flex',
-        alignItems: 'center',
-        marginBottom: 20
+    contentHeadingBackIcon : {
+        padding: 0,
+        '&:hover': {
+            backgroundColor: 'transparent'
+        }
     },
-    name: {
-        marginLeft: '7%'
+    contentHeadingName : {
+        width: 380,
+        fontSize: 20,
+        // marginLeft: 40,
+        // color: palette.secondary.main,
     },
-    main: {
-        margin: '0px 15px'
+    contentHeadingEditIcon : {
+        // marginLeft: 71,
+        padding: 0,
+        '&:hover': {
+            backgroundColor: 'transparent'
+        }
     },
-});
+    contentHeadingFavoriteIcon : {
+        // marginLeft: 10,        
+        padding: 0,
+        '&:hover': {
+            backgroundColor: 'transparent'
+        }
+    },
+    divider: {
+        height: 1.2,
+        backgroundColor: palette.primary.main
+    },
+    contentPropsContainer: {
+
+    },
+}) 

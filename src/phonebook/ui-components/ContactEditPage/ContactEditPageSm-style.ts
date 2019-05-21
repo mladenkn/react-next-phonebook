@@ -1,40 +1,50 @@
-import { createStyles, Theme } from "@material-ui/core"
+import { createStyles, Theme } from "@material-ui/core";
 
 export default ({palette}: Theme) => createStyles({
     root: {
-        margin: '0px 5px 20px 5px'
-    },
-    avatarContainer: {
-        display: 'flex',
-        justifyContent: 'center'
+        width: 650,
     },
     avatar: {
-        width: 170,
-        height: 170,
-    },
-    toolbar: {
-        display: 'flex',
-        borderBottom: `1px solid ${palette.secondary.light}`,
-        justifyContent: 'space-between',
-        marginBottom: 15
-    },
-    buttonContainer: {
-        display: 'flex',
-        justifyContent: 'space-between',
-    },   
-    button: {
+        height: 160,
         width: 160,
-        textTransform: 'none',
-        color: 'white',
-        borderRadius: 20
     },
-    cancelButton: {
-        backgroundColor: palette.secondary.main
+    content: {
+        // marginTop: 50
     },
-    saveButton: {
-        backgroundColor: palette.primary.main,
+    contentHeading: {
+        position: 'relative',
+        // marginBottom: 25,
+    },
+    contentHeadingContent: {
+        // marginBottom: 15,
+        display: 'flex',
+        alignItems: 'center'
+    },
+    contentHeadingBackIcon : {
+        padding: 0,
         '&:hover': {
-            backgroundColor: palette.primary.dark,            
-        },
+            backgroundColor: 'transparent'
+        }
     },
-}) 
+    contentHeadingFavoriteIcon : {
+        marginLeft: '80%',
+        padding: 0,
+        '&:hover': {
+            backgroundColor: 'transparent'
+        }
+    },
+    contentHeadingEditIcon : {
+        marginLeft: '4%',
+        padding: 0,
+        '&:hover': {
+            backgroundColor: 'transparent'
+        }
+    },
+    divider: {
+        height: 1.2,
+        backgroundColor: palette.primary.main
+    },
+    editorContainer: {
+        marginTop: 20
+    },
+});

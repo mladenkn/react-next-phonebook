@@ -1,12 +1,15 @@
 import { Contact } from "../../models";
 import React from 'react';
-import withWidth, { WithWidthProps } from "@material-ui/core/withWidth";
-import ContactDetailsSm from "./ContactDetailsSm";
-import ContactDetailsMd from "./ContactDetailsMd";
+import ContactDetailsSm from "./ContactDetailsXs";
+import ContactDetailsMd from "./ContactDetailsSm";
+import MediaQuery from "react-responsive";
 
-export default withWidth()(
-    ({width, contact}: {contact: Contact} & WithWidthProps) => 
-        width === 'sm' || width === 'xs' ?
-            <ContactDetailsSm contact={contact} /> :
+export default ({contact}: {contact: Contact}) => 
+    <div>
+        <MediaQuery maxWidth={599}>
+            <ContactDetailsSm contact={contact} />
+        </MediaQuery>
+        <MediaQuery minWidth={600}>
             <ContactDetailsMd contact={contact} />
-    );
+        </MediaQuery>
+    </div>
