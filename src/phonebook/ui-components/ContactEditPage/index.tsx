@@ -1,15 +1,16 @@
 import React from 'react';
 import { Contact } from "../../models"; 
-import ContactEditPageSm from "./ContactEditPageXs";
-import ContactEditPageMd from "./ContactEditPageSm";
 import MediaQuery from "react-responsive";
+import ContactEditor from '../ContactEditor';
+import ContactPageBaseSm from '../ContactPageBase/ContactPageBaseSm';
 
 export default ({contact}: {contact: Contact}) => 
     <div>
         <MediaQuery maxWidth={599}>
-            <ContactEditPageSm contact={contact} />
         </MediaQuery>
         <MediaQuery minWidth={600}>
-            <ContactEditPageMd contact={contact} />
+            <ContactPageBaseSm contact={contact} variant='edit'>
+                <ContactEditor contact={contact} />
+            </ContactPageBaseSm>
         </MediaQuery>
-    </div>
+    </div> 

@@ -6,6 +6,7 @@ export interface WithClassName {
     className?: string
 }
 
+
 type ContactFieldLabelProps = {icon: string, text: string} 
     & WithStyles<typeof contactFieldLabelStyle> & WithClassName;
 

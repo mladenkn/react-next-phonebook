@@ -19,25 +19,20 @@ export default ({palette, breakpoints}: Theme) => createStyles({
 `;
 
 viewFileContent = `import React from 'react';
-import { WithStyles } from "@material-ui/core";
+import { WithStyles, withStyles } from "@material-ui/core";
 import style from "./${componentName}-style";
 
 type Props = {} & WithStyles<typeof style>;
 
-export const ${componentName} = ({classes}: Props) =>
+const ${componentName} = ({classes}: Props) =>
     <div>
     </div>
-`;
 
-const indexFileContent = `import { withStyles } from "@material-ui/core";
-import { ${componentName} } from "./${componentName}-view";
-import style from "./${componentName}-style";
-
-export default withStyles(style)(${componentName})
+export default withStyles(style)(${componentName});
 `;
 
 const projSrcFolderPath = __dirname + '/../src/';
-const componentFolderPath = projSrcFolderPath + folderRelativePath + '/';
+const componentFolderPath = folderRelativePath + '/';
 
 const styleFilePath = componentFolderPath + componentName + '-style.ts';
 const viewFilePath = componentFolderPath + componentName + '.tsx';

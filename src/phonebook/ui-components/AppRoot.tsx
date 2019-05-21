@@ -1,14 +1,15 @@
 import React from 'react';
 import { generateContact } from '../devUtils/dataGenerators';
 import faker from 'faker';
-import ContactDetailsPage from './ContactDetailsPage';
 import style from './AppRoot-style';
 import { withStyles, WithStyles, AppBar, Toolbar } from "@material-ui/core";
 import { purple } from "@material-ui/core/colors";
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
 import HomePage from "./HomePage";
-import ContactEditPage from "./ContactEditPage";
 import { generateArray } from "../../utils";
+import ContactEditPage from "./ContactEditPage";
+import ContactDetailsPage from './ContactDetailsPage';
+import ContactPageBaseSm from './ContactPageBase/ContactPageBaseSm';
 
 const contacts = generateArray(generateContact, 5, 20);
 const randomContact = faker.random.arrayElement(contacts);
