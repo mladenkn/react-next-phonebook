@@ -13,26 +13,10 @@ export default ({palette}: Theme) => createStyles({
         alignItems: 'center',
         marginTop: 60,
         borderBottom: `1px solid ${palette.primary.main}`,
+        width: '100%',
     },
     headingContent: {
-        marginBottom: 10,
-        display: 'flex',
-    },
-    iconButton: {
-        width: 24,
-        height: 24,
-        padding: 0,
-        '&:hover': {
-            backgroundColor: 'transparent'
-        }
-    },
-    iconSpace: {
-        marginLeft: 10,
-    },
-    headingName: {
-        marginLeft: '8%',
-        width: 350,
-        fontSize: 20,
+        width: '100%',
     },
     mainContent: {
         marginTop: 5,
