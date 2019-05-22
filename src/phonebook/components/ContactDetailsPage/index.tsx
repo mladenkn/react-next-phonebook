@@ -37,10 +37,12 @@ const ContactDetailsPage = ({contact, classes}: {contact: Contact} & WithStyles<
             </div>
         </MediaQuery>
         <MediaQuery minWidth={600}>   
-            <ContactPageBaseSm 
-                heading={<div className={classes.heading}>{backIcon} {name} {favButton} {editButton}</div>}
-                content={<ContactDetailsFields contact={contact} />}
-                avatar={contact.avatar}/>
+            <div className={classes.rootSm}>
+                <ContactPageBaseSm 
+                    heading={<div className={classes.heading}>{backIcon} {name} {favButton} {editButton}</div>}
+                    content={<ContactDetailsFields contact={contact} />}
+                    avatar={contact.avatar}/>
+            </div>
         </MediaQuery>
     </div>;
 }

@@ -28,7 +28,7 @@ export default ({breakpoints}: Theme) => createStyles({
         itemRoot: {
             width: 250,
             height: 140,
-            padding: 10
+            padding: 5
         },
     },
 })

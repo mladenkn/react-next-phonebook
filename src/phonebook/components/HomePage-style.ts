@@ -3,8 +3,13 @@ import { createStyles, Theme } from "@material-ui/core";
 export default ({palette, breakpoints}: Theme) => createStyles({
     root: {
         display: 'flex',
+        justifyContent: 'center',
+    },
+    content: {
+        display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
+        maxWidth: 1000,
     },
     tabContainer: {
         alignItems: 'center'

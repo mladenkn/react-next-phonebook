@@ -13,9 +13,4 @@ export default ({palette, breakpoints}: Theme) => createStyles({
         margin: '8px auto 10px auto',
         textTransform: 'uppercase'
     },
-    [breakpoints.up('md')]: {
-        main: {
-            margin: '60px 100px 10px 100px'
-        },
-    },
 })

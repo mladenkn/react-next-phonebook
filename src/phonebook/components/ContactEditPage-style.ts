@@ -18,13 +18,6 @@ export default ({palette, breakpoints}: Theme) => createStyles({
         marginBottom: 10,
         display: 'flex',
     },    
-    rootMobile: {
-        marginTop: 10,
-        marginLeft: 9,
-    },
-    smMain: {
-        margin: '15px 10px 0px 10px',
-    },    
     footer: {
         display: 'flex',
         justifyContent: 'space-between',
@@ -35,13 +28,18 @@ export default ({palette, breakpoints}: Theme) => createStyles({
         width: 150,
     },
     [breakpoints.only('xs')]: {
-        footerButtons: {
-
+        rootXs: {
+            marginTop: 10,
+            marginLeft: 9,
         },
     },
-    [breakpoints.up('xs')]: {
-        footerButtons: {
-
+    [breakpoints.up('sm')]: {
+        rootSm: {
+            marginTop: 30,
+            marginLeft: '15%',
+        },
+        editorRoot: {
+            marginTop: 20
         },
     },
 });

@@ -29,7 +29,7 @@ const ContactEditPage = ({contact, classes}: {contact: Contact} & WithStyles<typ
     return (
         <div>
             <MediaQuery maxWidth={599}>
-                <div className={classes.rootMobile}>
+                <div className={classes.rootXs}>
                     <ContactPageBaseXs
                         heading={heading('xs')}                    
                         avatar={contact.avatar}
@@ -39,12 +39,18 @@ const ContactEditPage = ({contact, classes}: {contact: Contact} & WithStyles<typ
                 </div>
             </MediaQuery>
             <MediaQuery minWidth={600}>
-                <ContactPageBaseSm 
-                    heading={heading('sm')}
-                    avatar={contact.avatar}
-                    footer={footer}
-                    content={<ContactEditor contact={contact} />}
-                />
+                <div className={classes.rootSm}>
+                    <ContactPageBaseSm 
+                        heading={heading('sm')}
+                        avatar={contact.avatar}
+                        footer={footer}
+                        content={
+                            <div className={classes.editorRoot}>
+                                <ContactEditor contact={contact} />
+                            </div>
+                        }
+                    />
+                </div>   
             </MediaQuery>
         </div>
     );

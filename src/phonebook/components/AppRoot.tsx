@@ -9,8 +9,8 @@ import HomePage from "./HomePage";
 import { generateArray } from "../../utils";
 import ContactEditPage from "./ContactEditPage";
 import ContactDetailsPage from './ContactDetailsPage';
-import ContactPageBaseSm from './ContactPageBase/ContactPageBaseSm';
-import ContactPageBaseXs from './ContactPageBase/ContactPageBaseXs';
+import { BrowserRouter, Route } from "react-router-dom";
+
 
 const contacts = generateArray(generateContact, 5, 20);
 const randomContact = faker.random.arrayElement(contacts);
@@ -43,6 +43,13 @@ const theme = createMuiTheme({
     }
 });
 
+const Router = () => 
+    <BrowserRouter>
+        <Route exact path="/" component={HomePage} />
+        <Route path="/contact-edit" component={() => <ContactEditPage contact={randomContact} />} />
+        <Route path="/contact-details" component={() => <ContactDetailsPage contact={randomContact} />} />
+    </BrowserRouter>
+
 const AppContent_ = ({classes}: WithStyles<typeof style>) =>
     <div>
         <AppBar position="sticky">
@@ -51,13 +58,9 @@ const AppContent_ = ({classes}: WithStyles<typeof style>) =>
             </Toolbar>
             <div className={classes.toolbarBorder}></div>
         </AppBar>
-        <main className={classes.main}>
-            <ContactEditPage contact={randomContact} />
-            <ContactDetailsPage contact={randomContact} />
-            <HomePage />
-        </main>
+        <Router/>
     </div>
- 
+
 const AppContent = withStyles(style)(AppContent_);
 
 export default () => (

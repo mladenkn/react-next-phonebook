@@ -19,22 +19,24 @@ const Home = ({classes}: WithStyles<typeof style>) =>
     const [currentTab, setCurrentTab] = useState(0)
 
     return (
-        <div className={classes.root}>
-            <Tabs value={currentTab} centered onChange={(_, v) => setCurrentTab(v)}
-                classes={{
-                    root: classes.contactTabs,
-                    indicator: classes.tabIndicator,
-                    flexContainer: classes.tabContainer
-                }}>
-                <Tab label="All contacts" disableRipple textColor="inherit" classes={tabClasses} />
-                <div className={classes.tabDivider}></div>
-                <Tab label="My favorites" disableRipple textColor="inherit" classes={tabClasses} />
-            </Tabs>
-            <Divider className={classes.contactTabsDivider} />
-            <Input disableUnderline
-                startAdornment={<Icon className={classes.searchFieldIcon}>search</Icon>}
-                classes={{root: classes.searchField, focused: classes.searchFieldFocused}} />
-            <ContactList contacts={contacts} includeAdder className={classes.list} />
+        <div  className={classes.root}>
+            <div className={classes.content}>
+                <Tabs value={currentTab} centered onChange={(_, v) => setCurrentTab(v)}
+                    classes={{
+                        root: classes.contactTabs,
+                        indicator: classes.tabIndicator,
+                        flexContainer: classes.tabContainer
+                    }}>
+                    <Tab label="All contacts" disableRipple textColor="inherit" classes={tabClasses} />
+                    <div className={classes.tabDivider}></div>
+                    <Tab label="My favorites" disableRipple textColor="inherit" classes={tabClasses} />
+                </Tabs>
+                <Divider className={classes.contactTabsDivider} />
+                <Input disableUnderline
+                    startAdornment={<Icon className={classes.searchFieldIcon}>search</Icon>}
+                    classes={{root: classes.searchField, focused: classes.searchFieldFocused}} />
+                <ContactList contacts={contacts} includeAdder className={classes.list} />
+            </div>
         </div>
     );
 }

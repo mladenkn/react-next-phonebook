@@ -42,7 +42,11 @@ export default ({palette, breakpoints}: Theme) => createStyles({
             marginTop: 10,
         },
     },
-    [breakpoints.up('sm')]: {
+    [breakpoints.up('sm')]: {        
+        rootSm: {
+            marginTop: 30,
+            marginLeft: '12%',
+        },
         favButton: {
             right: '9%',
         },
