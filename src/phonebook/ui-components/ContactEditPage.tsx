@@ -1,11 +1,11 @@
 import React from 'react';
-import { Contact } from "../../models"; 
+import { Contact } from "../models"; 
 import MediaQuery from "react-responsive";
-import ContactEditor from '../ContactEditor';
-import ContactPageBaseSm from '../ContactPageBase/ContactPageBaseSm';
-import ContactPageBaseXs from '../ContactPageBase/ContactPageBaseXs';
+import ContactEditor from './ContactEditor';
+import ContactPageBaseSm from './ContactPageBase/ContactPageBaseSm';
+import ContactPageBaseXs from './ContactPageBase/ContactPageBaseXs';
 import { WithStyles, withStyles, IconButton, Icon, Button, Typography } from "@material-ui/core";
-import style from "./root-style";
+import style from "./ContactEditPage-style";
 
 const ContactEditPage = ({contact, classes}: {contact: Contact} & WithStyles<typeof style>) => 
 {

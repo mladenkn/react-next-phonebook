@@ -17,8 +17,7 @@ export default ({palette, breakpoints}: Theme) => createStyles({
     heading: {
         marginBottom: 10,
         display: 'flex',
-    },
-    
+    },    
     rootMobile: {
         marginTop: 10,
         marginLeft: 9,
