@@ -1,39 +1,48 @@
 import { Contact } from "../../models";
 import React from 'react';
-import ContactDetailsSm from "./ContactDetailsXs";
 import ContactDetailsFields from "./ContactDetailsFields";
 import MediaQuery from "react-responsive";
 import ContactPageBaseSm from "../ContactPageBase/ContactPageBaseSm";
+import ContactPageBaseXs from "../ContactPageBase/ContactPageBaseXs";
 import style from "./root-style";
 import { WithStyles, withStyles, IconButton, Icon, Typography } from "@material-ui/core";
-import { Emptiness } from "../reusables";
 
 const ContactDetailsPage = ({contact, classes}: {contact: Contact} & WithStyles<typeof style>) => 
-    <div>
-        <MediaQuery maxWidth={599}>
-            <ContactDetailsSm contact={contact} />
-        </MediaQuery>
-        <MediaQuery minWidth={600}>
-            <ContactPageBaseSm 
-                heading={
-                    <div className={classes.content}>
-                        <IconButton className={classes.iconButton} disableRipple>
-                            <Icon color="secondary">arrow_back</Icon>
-                        </IconButton>
-                        <Typography className={classes.headingName}>{contact.fullName}</Typography>
-                        <IconButton className={classes.iconButton} disableRipple>                        
-                            <Icon color="secondary">{contact.isFavorite ? 'favorite' : 'favorite_outlined'}</Icon>
-                        </IconButton>
-                        <Emptiness className={classes.iconSpace} />
-                        <IconButton className={classes.iconButton} disableRipple>
-                            <Icon color="secondary">edit</Icon>
-                        </IconButton>  
-                    </div>                  
-                }
-                avatar={contact.avatar}>
-                <ContactDetailsFields contact={contact} />
-            </ContactPageBaseSm>
-        </MediaQuery>
-    </div>
+{
+    const backIcon = 
+        <IconButton className={classes.button + ' ' + classes.backButton} disableRipple>
+            <Icon color="secondary">arrow_back</Icon>
+        </IconButton>;
 
+    const name = <Typography className={classes.headingName}>{contact.fullName}</Typography>;
+
+    const favButton = 
+        <IconButton className={classes.button + ' ' + classes.favButton} disableRipple>
+            <Icon color="secondary">{contact.isFavorite ? 'favorite' : 'favorite_outlined'}</Icon>
+        </IconButton>;
+
+    const editButton = 
+        <IconButton className={classes.button + ' ' + classes.editButton} disableRipple>
+            <Icon color="secondary">edit</Icon>
+        </IconButton>;
+
+    return <div>
+        <MediaQuery maxWidth={599}>
+            <div className={classes.rootXs}>
+                <ContactPageBaseXs 
+                    heading={<div className={classes.heading}>{backIcon} {favButton} {editButton}</div>}
+                    name={contact.fullName}
+                    avatar={contact.avatar}
+                    content={<ContactDetailsFields contact={contact} />} />
+            </div>
+        </MediaQuery>
+        <MediaQuery minWidth={600}>   
+            <ContactPageBaseSm 
+                heading={<div className={classes.heading}>{backIcon} {name} {favButton} {editButton}</div>}
+                content={<ContactDetailsFields contact={contact} />}
+                avatar={contact.avatar}/>
+        </MediaQuery>
+    </div>;
+}
+ 
 export default withStyles(style)(ContactDetailsPage);

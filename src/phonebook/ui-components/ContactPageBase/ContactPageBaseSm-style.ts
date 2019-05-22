@@ -3,6 +3,11 @@ import { createStyles, Theme } from "@material-ui/core";
 export default ({palette}: Theme) => createStyles({
     root: {
         width: 650,
+        display: 'flex',
+    },
+    left: {
+        width: 160,
+        marginRight: 20
     },
     avatar: {
         height: 160,

@@ -7,15 +7,15 @@ export default ({palette}: Theme) => createStyles({
         justifyContent: 'space-between',
         marginBottom: 15
     },
+    main: {
+        margin: '0px 15px'
+    },
+    name: {
+
+    },
     header: {
         display: 'flex',
         alignItems: 'center',
         marginBottom: 20
     },
-    name: {
-        marginLeft: '7%'
-    },
-    main: {
-        margin: '0px 15px'
-    },
-});
+}); 

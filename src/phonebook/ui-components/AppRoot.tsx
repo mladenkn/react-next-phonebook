@@ -10,6 +10,7 @@ import { generateArray } from "../../utils";
 import ContactEditPage from "./ContactEditPage";
 import ContactDetailsPage from './ContactDetailsPage';
 import ContactPageBaseSm from './ContactPageBase/ContactPageBaseSm';
+import ContactPageBaseXs from './ContactPageBase/ContactPageBaseXs';
 
 const contacts = generateArray(generateContact, 5, 20);
 const randomContact = faker.random.arrayElement(contacts);
@@ -35,23 +36,20 @@ const theme = createMuiTheme({
     },
 });
 
-const AppContent_ = ({classes}: WithStyles<typeof style>) => (
+const AppContent_ = ({classes}: WithStyles<typeof style>) =>
     <div>
-        <header>
-            <AppBar>
-                <Toolbar className={classes.toolbar}>
-                    <h3 className={classes.headingText}>Phonebook</h3>
-                </Toolbar>
-                <div className={classes.toolbarBorder}></div>
-            </AppBar>
-        </header>
+        <AppBar position="sticky">
+            <Toolbar className={classes.toolbar}>
+                <h3 className={classes.headingText}>Phonebook</h3>
+            </Toolbar>
+            <div className={classes.toolbarBorder}></div>
+        </AppBar>
         <main className={classes.main}>
             <ContactEditPage contact={randomContact} />
             <ContactDetailsPage contact={randomContact} />
-            {/* <HomePage /> */}
+            <HomePage />
         </main>
     </div>
-);
  
 const AppContent = withStyles(style)(AppContent_);
 

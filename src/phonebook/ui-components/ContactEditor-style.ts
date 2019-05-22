@@ -4,9 +4,6 @@ export default ({palette, breakpoints}: Theme) => createStyles({
     input: {
         paddingLeft: 20,
     },
-    fullWidth: {
-        width: '100%'
-    },
     phoneNumber: {
         paddingLeft: 0,
         paddingRight: 0,
@@ -53,6 +50,9 @@ export default ({palette, breakpoints}: Theme) => createStyles({
         },
         labelRemover: {
             width: '20%'            
+        },
+        singleValueInput: {
+            width: '100%',
         },
     },
     [breakpoints.up('md')]: {
