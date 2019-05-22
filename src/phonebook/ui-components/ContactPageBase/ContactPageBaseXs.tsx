@@ -20,7 +20,7 @@ const ContactPageBaseXs = ({classes, avatar, heading, content, name, footer}: Pr
             </div>
             <Divider margin={20} />
             {content}
-            {footer}
+            <div className={classes.footer}>{footer}</div>
         </div>
     </div>;
 }

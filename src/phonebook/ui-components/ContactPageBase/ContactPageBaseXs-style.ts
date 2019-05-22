@@ -26,4 +26,7 @@ export default ({palette, breakpoints}: Theme) => createStyles({
     content: {
         padding: '0px 20px',
     },
+    footer: {
+        marginTop: 30
+    },
 });
