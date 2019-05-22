@@ -62,7 +62,8 @@ export default ({palette, breakpoints}: Theme) => createStyles({
             textAlign: 'center'
         },
         selected: {
-            borderColor: palette.primary.main
+            borderColor: palette.primary.main,
+            cursor: 'pointer',
         },
         avatar: {
             order: 2,
@@ -85,11 +86,11 @@ export default ({palette, breakpoints}: Theme) => createStyles({
         icon: {
             fontSize: 18,
         },
-        secondIcon: {
+        iconsRight: {
             marginLeft: '73%',
-        },
-        lastIcon: {
-            marginLeft: '2%',
+            display: 'flex',
+            justifyContent: 'space-between',
+            width: '20%'
         },
     },
 })
