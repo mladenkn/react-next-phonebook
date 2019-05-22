@@ -1,19 +1,9 @@
 import React from 'react';
-import { generateContact } from '../devUtils/dataGenerators';
-import faker from 'faker';
 import style from './AppRoot-style';
 import { withStyles, WithStyles, AppBar, Toolbar } from "@material-ui/core";
 import { purple } from "@material-ui/core/colors";
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
-import HomePage from "./HomePage";
-import { generateArray } from "../../utils";
-import ContactEditPage from "./ContactEditPage";
-import ContactDetailsPage from './ContactDetailsPage';
-import { BrowserRouter, Route } from "react-router-dom";
-
-
-const contacts = generateArray(generateContact, 5, 20);
-const randomContact = faker.random.arrayElement(contacts);
+import Router from './Router'
 
 const secondaryThemeColor = purple[500]
 
@@ -42,13 +32,6 @@ const theme = createMuiTheme({
         },
     }
 });
-
-const Router = () => 
-    <BrowserRouter>
-        <Route exact path="/" component={HomePage} />
-        <Route path="/contact-edit" component={() => <ContactEditPage contact={randomContact} />} />
-        <Route path="/contact-details" component={() => <ContactDetailsPage contact={randomContact} />} />
-    </BrowserRouter>
 
 const AppContent_ = ({classes}: WithStyles<typeof style>) =>
     <div>

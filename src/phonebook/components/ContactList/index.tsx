@@ -47,7 +47,7 @@ const ContactList = withWidth()(({contacts, classes, includeAdder, className, wi
         items.unshift(adder);
     }
 
-    return <List className={`${className} ${classes.root}`}>{items}</List>;
+    return <List className={className + ' ' + classes.root}>{items}</List>;
 })
 
 export default withStyles(style)(ContactList)

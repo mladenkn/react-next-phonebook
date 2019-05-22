@@ -7,11 +7,13 @@ import ContactPageBaseXs from './ContactPageBase/ContactPageBaseXs';
 import { WithStyles, withStyles, IconButton, Icon, Button, Typography } from "@material-ui/core";
 import style from "./ContactEditPage-style";
 
-const ContactEditPage = ({contact, classes}: {contact: Contact} & WithStyles<typeof style>) => 
+type Props = {contact: Contact, onGoBack: () => void} & WithStyles<typeof style>;
+
+const ContactEditPage = ({contact, classes, onGoBack}: Props) => 
 {
     const heading = (variant: 'xs' | 'sm') =>
         <div className={classes.heading}>
-            <IconButton className={classes.backButton} disableRipple>
+            <IconButton className={classes.backButton} disableRipple onClick={onGoBack}>
                 <Icon color="secondary">arrow_back</Icon>
             </IconButton>
             <Button className={classes.deleteButton}>
