@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
-import AppRoot from './phonebook/ui-components/AppRoot';
+import AppRoot from './phonebook/components/AppRoot';
 
 ReactDOM.render(<AppRoot />, document.getElementById('root'));
 
