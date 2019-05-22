@@ -23,7 +23,10 @@ export default ({palette}: Theme) => createStyles({
     headingContent: {
         width: '100%',
     },
-    mainContent: {
+    main: {
         marginTop: 5,
+    },
+    footer: {
+        marginTop: 80,
     },
 });

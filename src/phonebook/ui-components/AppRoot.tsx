@@ -34,6 +34,13 @@ const theme = createMuiTheme({
             secondary: '#2DA1AD',
         },
     },
+    overrides: {
+        MuiButton: {
+            root: {
+                textTransform: 'none',
+            },
+        },
+    }
 });
 
 const AppContent_ = ({classes}: WithStyles<typeof style>) =>

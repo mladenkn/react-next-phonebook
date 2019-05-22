@@ -1,11 +1,11 @@
 import React from 'react';
-import { WithStyles, withStyles, Grid, Avatar } from "@material-ui/core";
+import { WithStyles, withStyles, Avatar } from "@material-ui/core";
 import style from "./ContactPageBaseSm-style";
 
-type Props = { avatar: string, content: JSX.Element, heading: JSX.Element }
+type Props = { avatar: string, content: JSX.Element, heading: JSX.Element, footer?: JSX.Element }
      & WithStyles<typeof style>;
 
-const ContactPageBaseSm = ({avatar, classes, content, heading}: Props) => 
+const ContactPageBaseSm = ({avatar, classes, content, heading, footer}: Props) => 
     <div className={classes.root}>
         <div className={classes.left}>
             <Avatar className={classes.avatar} src={avatar} />
@@ -16,8 +16,13 @@ const ContactPageBaseSm = ({avatar, classes, content, heading}: Props) =>
                     {heading}
                 </div>
             </div>
-            <div className={classes.mainContent}>
-                {content}
+            <div>
+                <div className={classes.main}>
+                    {content}
+                </div>
+                <div className={classes.footer}>
+                    {footer}
+                </div>
             </div>
         </div>
     </div>

@@ -3,10 +3,10 @@ import { WithStyles, withStyles, Avatar, Typography } from "@material-ui/core";
 import style from "./ContactPageBaseXs-style";
 import { Divider } from '../reusables';
 
-type Props = {avatar: string, name?: string, heading: JSX.Element, content: JSX.Element}
+type Props = {avatar: string, name?: string, heading: JSX.Element, content: JSX.Element, footer?: JSX.Element}
      & WithStyles<typeof style>;
 
-const ContactPageBaseXs = ({classes, avatar, heading, content, name}: Props) =>
+const ContactPageBaseXs = ({classes, avatar, heading, content, name, footer}: Props) =>
 {
     return <div>
         <div className={classes.toolbar}>
@@ -20,6 +20,7 @@ const ContactPageBaseXs = ({classes, avatar, heading, content, name}: Props) =>
             </div>
             <Divider margin={20} />
             {content}
+            {footer}
         </div>
     </div>;
 }

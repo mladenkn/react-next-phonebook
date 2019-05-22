@@ -19,6 +19,12 @@ const ContactEditPage = ({contact, classes}: {contact: Contact} & WithStyles<typ
                 <Icon color="secondary">delete</Icon>
             </Button>
         </div>;
+
+    const footer = 
+        <div className={classes.footer}>
+            <Button variant="contained" className={classes.futterButton} color="secondary">Cancel</Button>
+            <Button variant="contained" className={classes.futterButton} color="primary">Save</Button>
+        </div>
  
     return (
         <div>
@@ -27,23 +33,21 @@ const ContactEditPage = ({contact, classes}: {contact: Contact} & WithStyles<typ
                     <ContactPageBaseXs
                         heading={heading('xs')}                    
                         avatar={contact.avatar}
+                        footer={footer}
                         content={<ContactEditor contact={contact} />}
-                    />
+                    />                    
                 </div>
             </MediaQuery>
             <MediaQuery minWidth={600}>
                 <ContactPageBaseSm 
                     heading={heading('sm')}
                     avatar={contact.avatar}
-                    content={
-                        <div className={classes.smMain}>
-                            <ContactEditor contact={contact} />
-                        </div>
-                    }
+                    footer={footer}
+                    content={<ContactEditor contact={contact} />}
                 />
             </MediaQuery>
         </div>
     );
 }
-
+ 
 export default withStyles(style)(ContactEditPage);

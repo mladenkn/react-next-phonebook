@@ -1,9 +1,9 @@
-import { Contact } from "../models"
+import { Contact } from "../../models"
 import style from "./ContactDetailsFields-style";
-import { List, ListItem, Grid, Avatar, Icon, withStyles, WithStyles, IconButton, Typography }
+import { List, ListItem, withStyles, WithStyles, Typography }
     from "@material-ui/core";
 import React from 'react';
-import { ContactFieldLabel, Divider, Emptiness } from "./reusables";
+import { ContactFieldLabel, Emptiness } from "../reusables";
 
 export default  withStyles(style)(
     ({contact, classes}: {contact: Contact} & WithStyles<typeof style>) => 

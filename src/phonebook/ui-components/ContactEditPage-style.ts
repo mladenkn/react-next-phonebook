@@ -24,5 +24,24 @@ export default ({palette, breakpoints}: Theme) => createStyles({
     },
     smMain: {
         margin: '15px 10px 0px 10px',
+    },    
+    footer: {
+        display: 'flex',
+        justifyContent: 'space-between',
+    },
+    futterButton: {
+        color: 'white',
+        borderRadius: 50,
+        width: 150,
+    },
+    [breakpoints.only('xs')]: {
+        footerButtons: {
+
+        },
+    },
+    [breakpoints.up('xs')]: {
+        footerButtons: {
+
+        },
     },
 });

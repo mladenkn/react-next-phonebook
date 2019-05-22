@@ -33,7 +33,6 @@ export default ({palette, breakpoints}: Theme) => createStyles({
     },
     numberAdder: {
         color: palette.primary.main,
-        textTransform: 'none'
     },
     field: {
 
