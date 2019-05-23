@@ -14,6 +14,7 @@ export const Router = () =>
         <Route exact path="/" component={ContactPageContainer} />
         <Route path="/contact-edit/:contactId" component={ContactEditPageContainer} />
         <Route path="/contact-details/:contactId" component={ContactDetailsPageContainer} />
+        <Route path="/contact-create" component={() => <div>contact-create</div>} />
     </BrowserRouter>;
 
 interface ContactIdRouteParams {

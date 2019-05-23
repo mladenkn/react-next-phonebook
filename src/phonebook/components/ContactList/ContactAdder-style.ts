@@ -18,13 +18,16 @@ export default ({palette, breakpoints}: Theme) => createStyles({
         color: palette.primary.light,
         fontSize: '0.95rem'
     },
+    content_: { 
+        textAlign: 'center',
+    },
     [breakpoints.down('sm')]: {
         content_: { // doesn't compile with name 'content'
             display: 'flex',
             alignItems: 'center',
-            marginLeft: -200,
-            width: 110,
             justifyContent: 'space-around',
+            marginLeft: -170,
+            width: 90,
         },
     },
 }) 
