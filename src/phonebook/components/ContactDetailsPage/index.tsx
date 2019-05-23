@@ -7,10 +7,12 @@ import ContactPageBaseXs from "../ContactPageBase/ContactPageBaseXs";
 import style from "./style";
 import { WithStyles, withStyles, IconButton, Icon, Typography } from "@material-ui/core";
 
-const ContactDetailsPage = ({contact, classes}: {contact: Contact} & WithStyles<typeof style>) => 
+type Props = {contact: Contact, onGoBack: () => void} & WithStyles<typeof style>;
+
+const ContactDetailsPage = ({contact, classes, onGoBack}: Props) => 
 {
     const backIcon = 
-        <IconButton className={classes.button + ' ' + classes.backButton} disableRipple>
+        <IconButton className={classes.button + ' ' + classes.backButton} onClick={onGoBack} disableRipple>
             <Icon color="secondary">arrow_back</Icon>
         </IconButton>;
 

@@ -1,10 +1,9 @@
 import style from "./ContactListItem-style";
 import { Contact } from "../../models";
-import React, { useState } from 'react';
+import React from 'react';
 import { Card, Avatar, CardContent, Typography, Icon, IconButton, withStyles, WithStyles }
     from "@material-ui/core";
 import { Box } from "../reusables";
-import withWidth, { WithWidth } from "@material-ui/core/withWidth";
 
 export type ContactListItemAction = 'click' | 'details' | 'edit' | 'delete';
 
@@ -45,4 +44,4 @@ const Item = ({classes, contact, onAction, isSelected, smOrXs}: Props) =>
     </Card>;
 }
 
-export default withStyles(style)(Item)
+export default withStyles(style)(Item);

@@ -3,12 +3,11 @@ import style from "./HomePage-style";
 import React, { useState } from 'react';
 import ContactList from "./ContactList";
 import { Divider } from "./reusables"
-import { generateContact } from '../devUtils/dataGenerators';
-import { generateArray } from "../../utils";
+import { Contact } from "../models";
 
-const contacts = generateArray(generateContact, 5, 20);
+type Props = {contacts: Contact[]} & WithStyles<typeof style>;
 
-const Home = ({classes}: WithStyles<typeof style>) => 
+const Home = ({classes, contacts}: Props) =>
 {
     const tabClasses = {
         root: classes.contactTab,
@@ -16,7 +15,7 @@ const Home = ({classes}: WithStyles<typeof style>) =>
         label: classes.tabText
     }
 
-    const [currentTab, setCurrentTab] = useState(0)
+    const [currentTab, setCurrentTab] = useState(0);
 
     return (
         <div  className={classes.root}>
