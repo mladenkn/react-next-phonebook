@@ -10,6 +10,11 @@ export const deleteContact = createAction(
     a => ((contactId: number) => a({contactId}))
 );
 
+export const saveContact = createAction(
+    "SAVE_CONTACT",
+    a => ((contactId: number) => a({contactId}))
+);
+
 export const goBack = createAction("GO_BACK",);
 
 const allActions = {favoriteContact, deleteContact, goBack};

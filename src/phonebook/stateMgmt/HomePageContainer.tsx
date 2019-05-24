@@ -5,7 +5,7 @@ import { Contact } from "../models";
 import React from "react";
 import { DispatchContext } from "./DispatchContext";
 
-export default () => (contactList: Contact[]) => 
+export default (contactList: Contact[]) => () => 
 {
     const actionHandler = (action: RootAction) => {
         console.log("tu sam 1");

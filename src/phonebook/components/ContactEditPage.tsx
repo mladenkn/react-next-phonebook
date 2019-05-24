@@ -4,13 +4,16 @@ import MediaQuery from "react-responsive";
 import ContactEditor from './ContactEditor';
 import ContactPageBaseSm from './ContactPageBase/ContactPageBaseSm';
 import ContactPageBaseXs from './ContactPageBase/ContactPageBaseXs';
-import { WithStyles, withStyles, IconButton, Icon, Button, Typography } from "@material-ui/core";
+import { WithStyles, withStyles, Button } from "@material-ui/core";
 import style from "./ContactEditPage-style";
 import { DeleteAction, GoBackAction } from "./actions";
+import { WithDispatch, withDispatch } from '../stateMgmt/DispatchContext';
+import { saveContact } from '../actions';
+import { compose } from "lodash/fp";
 
-type Props = {contact: Contact} & WithStyles<typeof style>;
+type Props = {contact: Contact} & WithStyles<typeof style> & WithDispatch;
 
-const ContactEditPage = ({contact, classes}: Props) => 
+const ContactEditPage = ({dispatch, contact, classes}: Props) => 
 {
     const heading = (variant: 'xs' | 'sm') =>
         <div className={classes.heading}>
@@ -53,5 +56,5 @@ const ContactEditPage = ({contact, classes}: Props) =>
         </div>
     );
 }
- 
-export default withStyles(style)(ContactEditPage);
+
+export default compose(withStyles(style), withDispatch)(ContactEditPage);
