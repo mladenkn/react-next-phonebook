@@ -1,8 +1,8 @@
-import style from "./ContactList-style";
+import style from "./style";
 import { Contact } from "../../models";
 import React, { useState } from 'react';
 import { List, ListItem, withStyles, WithStyles } from "@material-ui/core";
-import ContactListItem, { ContactListItemAction } from "./ContactListItem";
+import ContactListItem from "./ContactListItem";
 import ContactAdder from "./ContactAdder";
 import withWidth, { WithWidth } from "@material-ui/core/withWidth";
 
@@ -15,27 +15,14 @@ type Props = {
 const ContactList = withWidth()(({contacts, classes, includeAdder, className, width}: Props) => {
 
     const includeAdder_ = includeAdder || false;
-    const smOrXs = width === 'sm' || width === 'xs';
+    const smOrDown = width === 'sm' || width === 'xs';
 
-    const [selectedItemId, setSelectedItemId] = useState(0)
-
-    const handleItemAction = (a: ContactListItemAction, itemId: number) => {
-        if(a === 'click'){
-            if (smOrXs)
-                console.log('show details');
-            else {
-                if(selectedItemId === itemId)
-                    console.log('show details');
-                else
-                    setSelectedItemId(itemId);
-            }
-        }
-    }
+    const [selectedItemId, setSelectedItemId] = useState(0);
  
     const items = contacts.map(c => 
         <ListItem key={c.id} className={classes.itemRoot}>
-            <ContactListItem isSelected={selectedItemId === c.id} smOrXs={smOrXs}
-                onAction={a => {handleItemAction(a, c.id)}} contact={c} /> 
+            <ContactListItem isSelected={selectedItemId === c.id} smOrDown={smOrDown}
+                onSelect={() => {setSelectedItemId(c.id)}} contact={c} /> 
         </ListItem>
     );
 

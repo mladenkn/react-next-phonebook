@@ -7,25 +7,23 @@ import { Box } from "../reusables";
 import { Link as RouterLink } from "react-router-dom";
 import { contactDetailsUrl, contactEditUrl } from "../../urls";
 
-export type ContactListItemAction = 'click' | 'details' | 'edit' | 'delete';
-
 type Props = {
     contact: Contact
-    onAction: (a: ContactListItemAction) => void
     isSelected: boolean
-    smOrXs: boolean
+    smOrDown: boolean
+    onSelect: () => void
 }
 
-export default ({contact, onAction, isSelected, smOrXs}: Props) =>
+export default ({contact, isSelected, smOrDown, onSelect}: Props) =>
 {
     return <StyledItemDummy 
         contact={contact}
-        showFavoriteButton
-        showEditLink
-        showDeleteButton
-        isLinkToDetails
-        isSelected={!smOrXs}
-        onSelect={() => {}} />
+        showFavoriteButton={true}
+        showEditLink={smOrDown || (!smOrDown && isSelected)}
+        showDeleteButton={smOrDown || (!smOrDown && isSelected)}
+        isLinkToDetails={smOrDown || (!smOrDown && isSelected)}
+        isSelected={isSelected}
+        onSelect={onSelect} />
 }
 
 type ItemDummyProps = {
