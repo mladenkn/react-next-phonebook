@@ -10,6 +10,8 @@ export const deleteContact = createAction(
     a => ((contactId: number) => a({contactId}))
 );
 
-const allActions = {favoriteContact, deleteContact};
+export const goBack = createAction("GO_BACK",);
+
+const allActions = {favoriteContact, deleteContact, goBack};
 
 export type RootAction = ActionType<typeof allActions>;

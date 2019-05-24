@@ -1,10 +1,10 @@
 import { withStyles, WithStyles, Link, Icon, IconButton, Typography } from "@material-ui/core";
-import { goToEditActionStyle, favoriteActionStyle, deleteActionStyle } from "./actions-style";
+import { goToEditActionStyle, favoriteActionStyle, deleteActionStyle, goBackStyle } from "./actions-style";
 import { WithClassName, createRefRouterLink } from "./reusables";
 import { contactEditUrl } from "../urls";
 import React from 'react';
 import { WithDispatch, withDispatch } from "../stateMgmt/DispatchContext";
-import { favoriteContact } from "../actions";
+import { favoriteContact, goBack } from "../actions";
 import { Contact } from "../models";
 import { compose } from "lodash/fp";
 
@@ -16,7 +16,7 @@ export const IconLink = ({name, url, className}: IconLinkProps) => (
         <Icon color="secondary">{name}</Icon>
     </Link>
 );
- 
+
 
 type GoToEditActionProps = { contactId: number, styles: {root: string, icon: string} } 
     & WithStyles<typeof goToEditActionStyle>;
@@ -53,3 +53,16 @@ export const DeleteAction = withStyles(deleteActionStyle)
             <Icon color="secondary" className={styles.icon}>delete</Icon>
         </IconButton>
     ));
+
+
+type GoBackActionProps = { styles?: {root?: string, icon?: string} }
+    & WithStyles<typeof goBackStyle> & WithDispatch;
+    
+export const GoBackAction = compose(withStyles(goBackStyle), withDispatch)
+    (({dispatch, classes, styles}: GoBackActionProps) => (
+        <IconButton 
+            onClick={() => dispatch(goBack())} 
+            className={classes.root + ' ' + (styles && styles.root)} disableRipple>
+            <Icon color="secondary" className={(styles && styles.icon)}>arrow_back</Icon>
+        </IconButton>
+    )); 

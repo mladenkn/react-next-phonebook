@@ -23,3 +23,12 @@ export const deleteActionStyle = createStyles({
         },
     },
 });
+
+export const goBackStyle = createStyles({
+    root: {
+        padding: 0,
+        '&:hover': {
+            'background-color': 'inherit'
+        },
+    },
+});

@@ -5,17 +5,14 @@ import MediaQuery from "react-responsive";
 import ContactPageBaseSm from "../ContactPageBase/ContactPageBaseSm";
 import ContactPageBaseXs from "../ContactPageBase/ContactPageBaseXs";
 import style from "./style";
-import { FavoriteAction, GoToEditAction } from "../actions";
+import { FavoriteAction, GoToEditAction, GoBackAction } from "../actions";
 import { WithStyles, withStyles, IconButton, Icon, Typography } from "@material-ui/core";
 
-type Props = {contact: Contact, onGoBack: () => void} & WithStyles<typeof style>;
+type Props = {contact: Contact} & WithStyles<typeof style>;
 
-const ContactDetailsPage = ({contact, classes, onGoBack}: Props) => 
+const ContactDetailsPage = ({contact, classes}: Props) => 
 {
-    const backAction = 
-        <IconButton className={classes.action + ' ' + classes.backAction} onClick={onGoBack} disableRipple>
-            <Icon color="secondary">arrow_back</Icon>
-        </IconButton>;
+    const backAction = <GoBackAction />
 
     const name = <Typography className={classes.headingName}>{contact.fullName}</Typography>;
 
