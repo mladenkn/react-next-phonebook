@@ -15,8 +15,8 @@ export const saveContact = createAction(
     a => ((contactId: number) => a({contactId}))
 );
 
-export const goBack = createAction("GO_BACK",);
+export const goBack = createAction("GO_BACK");
 
-const allActions = {favoriteContact, deleteContact, goBack};
 
-export type RootAction = ActionType<typeof allActions>;
+const allActions = { favoriteContact, deleteContact, saveContact, goBack };
+export type AnyAction = ActionType<typeof allActions>;

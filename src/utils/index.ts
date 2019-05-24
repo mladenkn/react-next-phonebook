@@ -7,3 +7,7 @@ export const generateArray = <T> (getNext: () => T, minCount: number, maxCount: 
         r.push(getNext());
     return r;
 }
+
+export const callerOf = <Arg> (...functions: ((a: Arg) => void)[]) => (arg: Arg) => {
+    functions.forEach(f => f(arg));
+}

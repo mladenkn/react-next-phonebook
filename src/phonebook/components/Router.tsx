@@ -12,5 +12,5 @@ export default () =>
         <Route exact path="/" component={HomePageContainer(contactList)} />
         <Route path="/contact/edit/:contactId" component={ContactEditPageContainer(contactList)} />
         <Route path="/contact/details/:contactId" component={ContactDetailsPageContainer(contactList)} />
-        <Route path="/contact/create" component={ContactCreatePageContainer(contactList)} />
+        <Route path="/contact/create" component={ContactCreatePageContainer()} />
     </BrowserRouter>;

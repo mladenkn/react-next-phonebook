@@ -1,7 +1,7 @@
 import React from "react";
-import { RootAction } from "../actions";
+import { AnyAction } from "../actions";
 
-export type Dispatch = (a: RootAction) => void;
+export type Dispatch = (a: AnyAction) => void;
 
 export const DispatchContext = React.createContext<Dispatch>(() => {});
 
