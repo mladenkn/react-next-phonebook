@@ -1,11 +1,11 @@
 import { Icon, WithStyles, withStyles, Divider as MUIDivider } from "@material-ui/core";
 import { contactFieldLabelStyle, dividerStyle, textInputStyle } from "./reusables-style";
 import React from 'react';
+import { Link as RouterLink } from "react-router-dom";
 
 export interface WithClassName {
     className?: string
 }
-
 
 type ContactFieldLabelProps = {icon: string, text: string} 
     & WithStyles<typeof contactFieldLabelStyle> & WithClassName;
@@ -39,3 +39,7 @@ type BoxProps = {
 } & WithClassName
 export const Box = ({width, height, children, className}: BoxProps) => 
     <div className={className} style={{width, height}}>{children}</div>
+
+export const createRefRouterLink = (url: string) => React.forwardRef((props, ref: any) => (
+    <RouterLink innerRef={ref} to={url} {...props} />
+));

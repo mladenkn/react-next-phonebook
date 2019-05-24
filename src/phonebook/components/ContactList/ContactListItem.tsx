@@ -1,11 +1,12 @@
 import style from "./ContactListItem-style";
 import { Contact } from "../../models";
 import React from 'react';
-import { Card, Avatar, Link, Typography, Icon, IconButton, withStyles, WithStyles }
+import { Card, Avatar, Link, Typography, withStyles, WithStyles }
     from "@material-ui/core";
 import { Box } from "../reusables";
-import { Link as RouterLink } from "react-router-dom";
-import { contactDetailsUrl, contactEditUrl } from "../../urls";
+import { contactDetailsUrl } from "../../urls";
+import { createRefRouterLink } from "../reusables";
+import { GoToEditAction, FavoriteAction, DeleteAction } from "../actions";
 
 type Props = {
     contact: Contact
@@ -35,10 +36,6 @@ type ItemDummyProps = {
     isSelected: boolean
     onSelect: () => void
 } & WithStyles<typeof style>
-
-const routerLink = (url: string) => React.forwardRef((props, ref: any) => (
-    <RouterLink innerRef={ref} to={url} {...props} />
-));
  
 const ItemDummy = (p: ItemDummyProps) => {
 
@@ -53,26 +50,31 @@ const ItemDummy = (p: ItemDummyProps) => {
         </Card>);
 
     const favoriteAction = p.showFavoriteButton &&
-        (<IconButton className={classes.action + ' ' + classes.favoriteAction} disableRipple>
-            <Icon color="secondary" className={classes.icon}>
-                {contact.isFavorite ? 'favorite' : 'favorite_outlined'}
-            </Icon>
-        </IconButton>);
+        <FavoriteAction
+            isContactFavorite={contact.isFavorite}
+            styles={{
+                root: classes.action + ' ' + classes.favoriteAction,
+                icon: classes.icon,
+            }} />;
 
     const editAction = p.showEditLink &&
-        (<Link component={routerLink(contactEditUrl(contact.id)) as any}
-            className={classes.action + ' ' + classes.editAction}>
-            <Icon color="secondary" className={classes.icon}>edit</Icon>
-        </Link>);
+        <GoToEditAction
+            contactId={contact.id}
+            styles={{
+                root: classes.action + ' ' + classes.editAction,
+                icon: classes.icon,
+            }} />;
 
     const deleteAction = p.showDeleteButton &&
-        (<IconButton className={classes.action + ' ' + classes.deleteAction} disableRipple>
-            <Icon color="secondary" className={classes.icon}>delete</Icon>
-        </IconButton>);
+        <DeleteAction
+            styles={{
+                root: classes.action + ' ' + classes.deleteAction,
+                icon: classes.icon,
+            }} />;
 
     return p.isLinkToDetails ? 
         <div className={classes.root}>
-            <Link component={routerLink(contactDetailsUrl(contact.id)) as any} className={classes.rootLink}>
+            <Link component={createRefRouterLink(contactDetailsUrl(contact.id)) as any} className={classes.rootLink}>
                 {avatarAndName}
             </Link>
             {favoriteAction}{editAction}{deleteAction}

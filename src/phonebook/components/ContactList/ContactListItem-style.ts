@@ -19,10 +19,6 @@ export default ({palette, breakpoints}: Theme) => createStyles({
     },
     action: {
         position: 'absolute',
-        padding: 0,
-        '&:hover': {
-            'background-color': 'inherit'
-        },
     },
     avatarAndName: {
         height: '100%',
