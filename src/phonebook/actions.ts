@@ -1,10 +1,5 @@
 import { createAction, ActionType } from "typesafe-actions";
 
-export interface Action {
-    type: string
-    payload: {}
-}
-
 export const favoriteContact = createAction(
     "FAVORITE_CONTACT",
     a => ((contactId: number) => a({contactId}))

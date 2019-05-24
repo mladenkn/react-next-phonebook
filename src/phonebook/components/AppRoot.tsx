@@ -3,7 +3,7 @@ import style from './AppRoot-style';
 import { withStyles, WithStyles, AppBar, Toolbar } from "@material-ui/core";
 import { purple } from "@material-ui/core/colors";
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
-import { Router} from "../containers";
+import { Router} from "../stateMgmt";
 
 //const secondaryThemeColor = purple[500]
 

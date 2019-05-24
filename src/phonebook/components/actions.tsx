@@ -3,6 +3,11 @@ import { goToEditActionStyle, favoriteActionStyle, deleteActionStyle } from "./a
 import { WithClassName, createRefRouterLink } from "./reusables";
 import { contactEditUrl } from "../urls";
 import React from 'react';
+import { WithDispatch, withDispatch } from "../stateMgmt/DispatchContext";
+import { favoriteContact } from "../actions";
+import { Contact } from "../models";
+import { compose } from "lodash/fp";
+
 
 type IconLinkProps = {name: string, url: string} & WithClassName;
 
@@ -12,8 +17,10 @@ export const IconLink = ({name, url, className}: IconLinkProps) => (
     </Link>
 );
  
+
 type GoToEditActionProps = { contactId: number, styles: {root: string, icon: string} } 
     & WithStyles<typeof goToEditActionStyle>;
+
 export const GoToEditAction = withStyles(goToEditActionStyle)
     (({classes, contactId, styles}: GoToEditActionProps) => (
         <Link component={createRefRouterLink(contactEditUrl(contactId)) as any}
@@ -22,19 +29,23 @@ export const GoToEditAction = withStyles(goToEditActionStyle)
         </Link>
     ));
 
-type FavoriteActionProps = { isContactFavorite: boolean, styles: {root: string, icon: string} }
-    & WithStyles<typeof favoriteActionStyle>;
-export const FavoriteAction = withStyles(favoriteActionStyle)
-    (({isContactFavorite, classes, styles}: FavoriteActionProps) => (
-        <IconButton className={classes.root + ' ' + styles.root} disableRipple>
+
+type FavoriteActionProps = { contact: Contact, styles: {root: string, icon: string} }
+    & WithStyles<typeof favoriteActionStyle> & WithDispatch;
+
+export const FavoriteAction = compose(withStyles(favoriteActionStyle), withDispatch)
+    (({contact, classes, styles, dispatch}: FavoriteActionProps) => (
+        <IconButton className={classes.root + ' ' + styles.root}
+            onClick={() => dispatch(favoriteContact(contact.id))} disableRipple>
             <Icon color="secondary" className={styles.icon}>
-                {isContactFavorite ? 'favorite' : 'favorite_outlined'}
+                {contact.isFavorite ? 'favorite' : 'favorite_outlined'}
             </Icon>
         </IconButton>
     ));
 
 
 type DeleteActionProps = { styles: {root: string, icon: string} } & WithStyles<typeof deleteActionStyle>;
+
 export const DeleteAction = withStyles(deleteActionStyle)
     (({classes, styles}: DeleteActionProps) => (
         <IconButton className={classes.root + ' ' + styles.root} disableRipple>

@@ -51,7 +51,7 @@ const ItemDummy = (p: ItemDummyProps) => {
 
     const favoriteAction = p.showFavoriteButton &&
         <FavoriteAction
-            isContactFavorite={contact.isFavorite}
+            contact={contact}
             styles={{
                 root: classes.action + ' ' + classes.favoriteAction,
                 icon: classes.icon,

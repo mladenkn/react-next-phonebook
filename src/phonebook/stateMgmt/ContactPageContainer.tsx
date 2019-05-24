@@ -3,6 +3,7 @@ import { getType } from "typesafe-actions";
 import { favoriteContact, RootAction } from "../actions";
 import { Contact } from "../models";
 import React from "react";
+import { DispatchContext } from "./DispatchContext";
 
 export default (contactList: Contact[]) => 
 {
@@ -18,5 +19,9 @@ export default (contactList: Contact[]) =>
     actionHandler(favoriteContact(23));
     console.log("tu sam 3");
 
-    return <HomePage contacts={contactList} />
+    return (
+        <DispatchContext.Provider value={actionHandler}>
+            <HomePage contacts={contactList} />
+        </DispatchContext.Provider>
+    )
 }
