@@ -1,4 +1,4 @@
-import { withStyles, WithStyles, Link, Icon, IconButton } from "@material-ui/core";
+import { withStyles, WithStyles, Link, Icon, IconButton, Typography } from "@material-ui/core";
 import { goToEditActionStyle, favoriteActionStyle, deleteActionStyle } from "./actions-style";
 import { WithClassName, createRefRouterLink } from "./reusables";
 import { contactEditUrl } from "../urls";
@@ -44,11 +44,12 @@ export const FavoriteAction = compose(withStyles(favoriteActionStyle), withDispa
     ));
 
 
-type DeleteActionProps = { styles: {root: string, icon: string} } & WithStyles<typeof deleteActionStyle>;
-
+type DeleteActionProps = { withText?: boolean, styles: {root?: string, icon?: string} } & WithStyles<typeof deleteActionStyle>;
+ 
 export const DeleteAction = withStyles(deleteActionStyle)
-    (({classes, styles}: DeleteActionProps) => (
+    (({withText, classes, styles}: DeleteActionProps) => (
         <IconButton className={classes.root + ' ' + styles.root} disableRipple>
+            {(withText || false) && <Typography>Delete</Typography>}
             <Icon color="secondary" className={styles.icon}>delete</Icon>
         </IconButton>
     ));

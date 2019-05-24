@@ -1,12 +1,11 @@
 import { createStyles, Theme } from "@material-ui/core";
 
-export default ({palette, breakpoints}: Theme) => createStyles({
+export default ({breakpoints}: Theme) => createStyles({
     heading: {
-        position: 'relative',
         marginBottom: 10,
         display: 'flex',
     },
-    button: {
+    action: {
         width: 24,
         height: 24,
         padding: 0,
@@ -19,24 +18,18 @@ export default ({palette, breakpoints}: Theme) => createStyles({
         width: 350,
         fontSize: 20,
     },
-    favButton: {
-        position: 'absolute',
-    },
-    editButton: {
-        position: 'absolute',
-    },
-    backButton: {
+    backAction: {
         left: '1%',
     },
     mainContent: {
         marginTop: 5,
     },
     [breakpoints.only('xs')]: {
-        favButton: {
-            right: '12%',
+        favAction: {
+            marginLeft: '74%',
         },
-        editButton: {
-            right: '2%',
+        editAction: {
+            marginLeft: '3%',
         },
         rootXs: {
             marginTop: 10,
@@ -46,12 +39,6 @@ export default ({palette, breakpoints}: Theme) => createStyles({
         rootSm: {
             marginTop: 30,
             marginLeft: '12%',
-        },
-        favButton: {
-            right: '9%',
-        },
-        editButton: {
-            right: '0%',
         },
     },
 });

@@ -6,6 +6,7 @@ import ContactPageBaseSm from './ContactPageBase/ContactPageBaseSm';
 import ContactPageBaseXs from './ContactPageBase/ContactPageBaseXs';
 import { WithStyles, withStyles, IconButton, Icon, Button, Typography } from "@material-ui/core";
 import style from "./ContactEditPage-style";
+import { DeleteAction } from "./actions";
 
 type Props = {contact: Contact, onGoBack: () => void} & WithStyles<typeof style>;
 
@@ -16,12 +17,9 @@ const ContactEditPage = ({contact, classes, onGoBack}: Props) =>
             <IconButton className={classes.backButton} disableRipple onClick={onGoBack}>
                 <Icon color="secondary">arrow_back</Icon>
             </IconButton>
-            <Button className={classes.deleteButton}>
-                {variant === 'sm' && <Typography>Delete</Typography>}
-                <Icon color="secondary">delete</Icon>
-            </Button>
+            <DeleteAction withText={variant === 'sm'} styles={{ root: classes.deleteButton, }} />
         </div>;
-
+ 
     const footer = 
         <div className={classes.footer}>
             <Button variant="contained" className={classes.futterButton} color="secondary">Cancel</Button>

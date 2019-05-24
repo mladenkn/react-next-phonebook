@@ -9,7 +9,7 @@ export default ({palette, breakpoints}: Theme) => createStyles({
     },
     deleteButton: {
         marginLeft: '80%',
-        textTransform: 'initial'
+        //textTransform: 'initial'
     },
     mainContent: {
         marginTop: 5,
