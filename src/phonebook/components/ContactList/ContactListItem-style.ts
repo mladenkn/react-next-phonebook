@@ -2,36 +2,56 @@ import { createStyles, Theme } from "@material-ui/core";
 
 export default ({palette, breakpoints}: Theme) => createStyles({    
     root: {
-        padding: 1,
         width: '100%',
         height: '100%',
-        borderWidth: 1,
-        borderStyle: 'solid',
-        borderColor: palette.secondary.light,
-        boxShadow: 'inherit',
+        position: 'relative',
+    },
+    rootLink: {
+        display: 'block',
+        height: '100%',
+        '&:hover': {
+            textDecoration: 'none',
+        },
     },
     name: {
         fontSize: '0.9rem',
         fontFamiliy: 'sans-serif',
     },
-    icons: {
-        display: 'flex',
-    },
-    iconButton: {
+    action: {
+        position: 'absolute',
         padding: 0,
         '&:hover': {
             'background-color': 'inherit'
         },
     },
-    cardContent: {
-        display: 'flex',
+    avatarAndName: {
+        height: '100%',
+        width: '100%',
+        borderWidth: 1,
+        borderStyle: 'solid',
+        borderColor: palette.secondary.light,
+        boxShadow: 'inherit',
     },
     [breakpoints.down('sm')]: {
-        cardContent: {
-            padding: '11px !important',
-            alignItems: 'center',
+        root: {
+
         },
-        container: {
+        avatarAndName: {
+            display: 'flex',
+            alignItems: 'center',
+            paddingLeft: '3%',
+        },
+        action: {
+            top: '33%',
+        },
+        favoriteAction: {
+            right: '25%',
+        },
+        editAction: {
+            right: '13%',
+        },
+        deleteAction: {
+            right: '2%',
         },
         avatar: {
             display: 'inline-block',
@@ -51,19 +71,22 @@ export default ({palette, breakpoints}: Theme) => createStyles({
         },
     },
     [breakpoints.up('md')]: {
-        cardContent: {
-            padding: '0px 5px !important',
-            flexDirection: 'column',
+        rootLink: {
+            '&:hover': {
+                textDecoration: 'none',
+            },
         },
-        adderCardContent: {
-            position: 'absolute',
-            top: '28%',
-            left: '35%',
-            textAlign: 'center'
+        avatarAndName: {
+            paddingTop: '15%',
         },
+        // adderCardContent: {
+        //     position: 'absolute',
+        //     top: '28%',
+        //     left: '35%',
+        //     textAlign: 'center'
+        // },
         selected: {
             borderColor: palette.primary.main,
-            cursor: 'pointer',
         },
         avatar: {
             order: 2,
@@ -78,19 +101,27 @@ export default ({palette, breakpoints}: Theme) => createStyles({
         name: {
             textAlign: 'center',
         },
-        icons: {
-            order: 1,
-            height: 28,
-            marginBottom: 5,
+        // icons: {
+        //     padding: '0px 5px',
+        //     top: '2%',
+        //     width: '100%',
+        //     height: 28,
+        //     marginBottom: 5,
+        // },
+        action: {
+            top: '5%',
+        },
+        favoriteAction: {
+            left: '2%',
+        },
+        editAction: {
+            right: '10%',
+        },
+        deleteAction: {
+            right: '2%',
         },
         icon: {
             fontSize: 18,
-        },
-        iconsRight: {
-            marginLeft: '73%',
-            display: 'flex',
-            justifyContent: 'space-between',
-            width: '20%'
         },
     },
 })

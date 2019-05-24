@@ -5,7 +5,7 @@ export default ({palette, breakpoints}: Theme) => createStyles({
         display: 'flex',
         justifyContent: 'center',
     },
-    content: {
+    content_: { // name content without _ causes compile time error
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
@@ -52,6 +52,9 @@ export default ({palette, breakpoints}: Theme) => createStyles({
     [breakpoints.down('xs')]: {
         root: {
             marginTop: 7,
+        },
+        content_: { // name content without _ causes compile time error
+            width: 330,
         },
         searchField: {
             marginTop: 20,

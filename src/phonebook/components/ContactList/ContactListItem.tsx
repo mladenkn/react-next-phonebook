@@ -1,9 +1,11 @@
 import style from "./ContactListItem-style";
 import { Contact } from "../../models";
 import React from 'react';
-import { Card, Avatar, CardContent, Typography, Icon, IconButton, withStyles, WithStyles }
+import { Card, Avatar, Link, Typography, Icon, IconButton, withStyles, WithStyles }
     from "@material-ui/core";
 import { Box } from "../reusables";
+import { Link as RouterLink } from "react-router-dom";
+import { contactDetailsUrl, contactEditUrl } from "../../urls";
 
 export type ContactListItemAction = 'click' | 'details' | 'edit' | 'delete';
 
@@ -12,36 +14,74 @@ type Props = {
     onAction: (a: ContactListItemAction) => void
     isSelected: boolean
     smOrXs: boolean
+}
+
+export default ({contact, onAction, isSelected, smOrXs}: Props) =>
+{
+    return <StyledItemDummy 
+        contact={contact}
+        showFavoriteButton
+        showEditLink
+        showDeleteButton
+        isLinkToDetails
+        isSelected={!smOrXs}
+        onSelect={() => {}} />
+}
+
+type ItemDummyProps = {
+    contact: Contact
+    showFavoriteButton: boolean
+    showEditLink: boolean
+    showDeleteButton: boolean
+    isLinkToDetails: boolean
+    isSelected: boolean
+    onSelect: () => void
 } & WithStyles<typeof style>
 
-const Item = ({classes, contact, onAction, isSelected, smOrXs}: Props) =>
-{
-    return <Card 
-        className={classes.root + ' ' + ((isSelected && !smOrXs) ? classes.selected : '')}
-        onClick={() => onAction('click')}>
-        <CardContent className={classes.cardContent}>
+const routerLink = (url: string) => React.forwardRef((props, ref: any) => (
+    <RouterLink innerRef={ref} to={url} {...props} />
+));
+ 
+const ItemDummy = (p: ItemDummyProps) => {
+
+    const { classes, contact } = p;
+
+    const avatarAndName = (
+        <Card className={classes.avatarAndName + ' ' + (p.isSelected && classes.selected)}>
             <Avatar alt="avatar" src={contact.avatar} className={classes.avatar} />
             <Box className={classes.nameBox}>
                 <Typography className={`${classes.name}`}>{contact.fullName}</Typography>
             </Box>
-            <div className={classes.icons}>
-                <IconButton className={classes.iconButton} disableRipple>
-                    <Icon color="secondary" className={classes.icon}>
-                        {contact.isFavorite ? 'favorite' : 'favorite_outlined'}
-                    </Icon>
-                </IconButton>
-                {(isSelected || smOrXs) &&
-                    <div className={classes.iconsRight}>
-                        <IconButton className={classes.iconButton + ' ' + classes.secondIcon} disableRipple>
-                            <Icon color="secondary" className={classes.icon}>edit</Icon>
-                        </IconButton>
-                        <IconButton className={classes.iconButton + ' ' + classes.lastIcon} disableRipple>
-                            <Icon color="secondary" className={classes.icon}>delete</Icon>
-                        </IconButton>
-                    </div>}
-            </div>
-        </CardContent>
-    </Card>;
+        </Card>);
+
+    const favoriteAction = p.showFavoriteButton &&
+        (<IconButton className={classes.action + ' ' + classes.favoriteAction} disableRipple>
+            <Icon color="secondary" className={classes.icon}>
+                {contact.isFavorite ? 'favorite' : 'favorite_outlined'}
+            </Icon>
+        </IconButton>);
+
+    const editAction = p.showEditLink &&
+        (<Link component={routerLink(contactEditUrl(contact.id)) as any}
+            className={classes.action + ' ' + classes.editAction}>
+            <Icon color="secondary" className={classes.icon}>edit</Icon>
+        </Link>);
+
+    const deleteAction = p.showDeleteButton &&
+        (<IconButton className={classes.action + ' ' + classes.deleteAction} disableRipple>
+            <Icon color="secondary" className={classes.icon}>delete</Icon>
+        </IconButton>);
+
+    return p.isLinkToDetails ? 
+        <div className={classes.root}>
+            <Link component={routerLink(contactDetailsUrl(contact.id)) as any} className={classes.rootLink}>
+                {avatarAndName}
+            </Link>
+            {favoriteAction}{editAction}{deleteAction}
+        </div> :
+        <div className={classes.root} onClick={p.onSelect}>
+            {avatarAndName} {favoriteAction}{editAction}{deleteAction}
+        </div> ;
 }
 
-export default withStyles(style)(Item);
+const StyledItemDummy = withStyles(style)(ItemDummy);

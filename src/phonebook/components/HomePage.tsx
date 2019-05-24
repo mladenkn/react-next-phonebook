@@ -19,7 +19,7 @@ const Home = ({classes, contacts}: Props) =>
 
     return (
         <div  className={classes.root}>
-            <div className={classes.content}>
+            <div className={classes.content_}>
                 <Tabs value={currentTab} centered onChange={(_, v) => setCurrentTab(v)}
                     classes={{
                         root: classes.contactTabs,
