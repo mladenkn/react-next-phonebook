@@ -5,6 +5,7 @@ export const contactFieldLabelStyle = ({palette}: Theme) => createStyles({
         width: 100,
         color: palette.primary.main,
         display: 'flex',
+        alignItems: 'flex-end',
     },
     fieldLabelIcon: {
         width: 30,

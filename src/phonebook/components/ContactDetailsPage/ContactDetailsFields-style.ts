@@ -1,6 +1,13 @@
 import { createStyles, Theme } from "@material-ui/core";
 
 export default ({breakpoints}: Theme) => createStyles({
+    label: {
+        width: 100,
+        textTransform: 'uppercase'
+    },
+    numberValue: {   
+        textDecoration: 'underline'
+    },
     [breakpoints.down('xs')]: {
         root: {
             marginLeft: '10%'
@@ -23,11 +30,11 @@ export default ({breakpoints}: Theme) => createStyles({
             textDecoration: 'underline'
         },
     },
-    label: {
-        width: 100,
-        textTransform: 'uppercase'
-    },
-    numberValue: {   
-        textDecoration: 'underline'
-    },
+    [breakpoints.up('sm')]: {
+        labelContainer: {
+            display: 'flex',
+            flexDirection: 'column',
+            height: '100%',
+        },
+    }
 })

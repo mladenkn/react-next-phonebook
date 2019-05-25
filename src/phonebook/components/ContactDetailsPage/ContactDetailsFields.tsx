@@ -9,14 +9,18 @@ export default  withStyles(style)(
     ({contact, classes}: {contact: Contact} & WithStyles<typeof style>) => 
         <List className={classes.root} disablePadding>
             <ListItem className={classes.field} disableGutters>
-                <ContactFieldLabel icon="email" text="email" />
+                <div className={classes.labelContainer}>
+                    <ContactFieldLabel icon="email" text="email" />
+                </div>
                 <Emptiness width="3.5%" />
                 <Typography className={classes.fieldValue}>
                     {contact.email}                 
                 </Typography>
             </ListItem> 
             <ListItem className={classes.field} disableGutters>
-                <ContactFieldLabel icon="phone" text="number" />
+                <div className={classes.labelContainer}>
+                    <ContactFieldLabel icon="phone" text="number" />
+                </div>
                 <List disablePadding className={classes.fieldValue + ' ' + classes.fieldListValue}>
                     {contact.numbers.map(({label, value}) => 
                         <ListItem key={value}>
