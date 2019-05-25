@@ -44,13 +44,13 @@ export const FavoriteAction = compose(withStyles(favoriteActionStyle), withDispa
     ));
 
 
-type DeleteActionProps = { withText?: boolean, styles: {root?: string, icon?: string} } & WithStyles<typeof deleteActionStyle>;
+type DeleteActionProps = { withText?: boolean, styles?: {root?: string, icon?: string} } & WithStyles<typeof deleteActionStyle>;
  
 export const DeleteAction = withStyles(deleteActionStyle)
     (({withText, classes, styles}: DeleteActionProps) => (
-        <IconButton className={classes.root + ' ' + styles.root} disableRipple>
+        <IconButton className={classes.root + ' ' + (styles && styles.root && styles.root)} disableRipple>
             {(withText || false) && <Typography>Delete</Typography>}
-            <Icon color="secondary" className={styles.icon}>delete</Icon>
+            <Icon color="secondary" className={(styles && styles.icon && styles.icon)}>delete</Icon>
         </IconButton>
     ));
 

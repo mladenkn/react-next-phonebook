@@ -5,6 +5,7 @@ export default ({palette, breakpoints}: Theme) => createStyles({
     heading: {
         display: 'flex',
         borderBottom: `1px solid ${palette.primary.main}`,
+        paddingBottom: 15,
     },
     action: {
 
@@ -13,11 +14,16 @@ export default ({palette, breakpoints}: Theme) => createStyles({
 
     },
 
-    [breakpoints.only('xs')]: {
+    [breakpoints.down('sm')]: {
+        shallowRoot: {
+            display: 'flex',
+            justifyContent: 'center',
+        },
         root: {
+            maxWidth: 600,
         },
         toolbar: {
-            padding: '10px 8px',
+            padding: '10px 0px',
             display: 'flex',
             alignItems: 'center',
             borderBottom: `1px solid ${palette.secondary.light}`,
@@ -26,18 +32,25 @@ export default ({palette, breakpoints}: Theme) => createStyles({
             padding: '8px 15px',
         },
         heading: {
-            padding: '10px 0px',
-            alignItems: 'center',
+            paddingTop: 10,
+            justifyContent: 'center',
+        },
+        backAction: {
+            marginLeft: '1%',
+        },
+        deleteAction: {
+            marginLeft: '83%',
         },
         avatar: {
-            marginRight: '5%',
+            width: 150,
+            height: 150,
         },
         editorContainer: {
-            padding: '0px, 10px',
+            marginTop: 10,
         },
     },
 
-    [breakpoints.up('sm')]: {
+    [breakpoints.up('md')]: {
         root: {
             display: 'flex',
             paddingTop: 50,
@@ -56,22 +69,24 @@ export default ({palette, breakpoints}: Theme) => createStyles({
             width: 150,
             height: 150,
         },
-        editAction: {
-            marginLeft: 20,
+        deleteAction: {
+            marginLeft: 430,
         },
         editorContainer: {
             marginTop: 20,
-            marginLeft: 30,
+            marginLeft: 15
         },
     },
     
-    [breakpoints.up('md')]: {
-        heading: {
-            paddingBottom: 7,
-        },
-        editorContainer: {
-            marginTop: 30,
-            marginLeft: 40,
-        },
-    },
+    // [breakpoints.up('md')]: {
+    //     heading: {
+    //         paddingBottom: 7,
+    //     },
+    //     editorContainer: {
+    //         marginTop: 30,
+    //     },
+    //     deleteAction: {
+    //         marginLeft: 430,
+    //     },
+    // },
 });

@@ -41,6 +41,8 @@ export const ContactEditPageContainer = (contactList: Contact[]) =>
     }
 
     const rootAh = compose(pageActionHandler, navigationActionHandler(history.goBack));
+
+    console.log('contact edit page');
     
     return (
         <DispatchContext.Provider value={rootAh}>
