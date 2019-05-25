@@ -6,15 +6,19 @@ import ContactPageBaseSm from "../ContactPageBase/ContactPageBaseSm";
 import ContactPageBaseXs from "../ContactPageBase/ContactPageBaseXs";
 import style from "./style";
 import { FavoriteAction, GoToEditAction, GoBackAction } from "../actions";
-import { WithStyles, withStyles, IconButton, Icon, Typography } from "@material-ui/core";
+import { WithStyles, withStyles, IconButton, Icon, Typography, Avatar } from "@material-ui/core";
+import { Divider } from "../reusables";
+import { compose }from "lodash/fp";
+import withWidth, { WithWidth } from "@material-ui/core/withWidth";
 
-type Props = {contact: Contact} & WithStyles<typeof style>;
+
+type Props = {contact: Contact} & WithStyles<typeof style> & WithWidth;
 
 const ContactDetailsPage = ({contact, classes}: Props) => 
 {
     const backAction = <GoBackAction />
 
-    const name = <Typography className={classes.headingName}>{contact.fullName}</Typography>;
+    const name = <Typography className={classes.personName}>{contact.fullName}</Typography>;
 
     const favAction = <FavoriteAction
         contact={contact}
@@ -30,25 +34,40 @@ const ContactDetailsPage = ({contact, classes}: Props) =>
             icon: classes.icon,
         }} />;
 
+    const avatar = <Avatar src={contact.avatar} className={classes.avatar}/>
+
     return <div>
         <MediaQuery maxWidth={599}>
-            <div className={classes.rootXs}>
-                <ContactPageBaseXs 
-                    heading={<div className={classes.heading}>{backAction} {favAction} {editAction}</div>}
-                    name={contact.fullName}
-                    avatar={contact.avatar}
-                    content={<ContactDetailsFields contact={contact} />} />
+            <div className={classes.root}>
+                <div className={classes.toolbar}>
+                    {backAction}{favAction}{editAction}
+                </div>
+                <div className={classes.body}>                    
+                    <div className={classes.heading}>
+                        {avatar}{name}
+                    </div>
+                    <div className={classes.detailsContainer}>                    
+                        <ContactDetailsFields contact={contact} />
+                    </div>
+                </div>
             </div>
         </MediaQuery>
         <MediaQuery minWidth={600}>   
-            <div className={classes.rootSm}>
-                <ContactPageBaseSm 
-                    heading={<div className={classes.heading}>{backAction} {name} {favAction} {editAction}</div>}
-                    content={<ContactDetailsFields contact={contact} />}
-                    avatar={contact.avatar}/>
+            <div className={classes.root}>
+                <div className={classes.smLeft}>
+                    {avatar}
+                </div>
+                <div className={classes.smRight}>
+                    <div className={classes.heading}>
+                        {backAction}{name}{favAction}{editAction}
+                    </div>
+                    <div className={classes.detailsContainer}>                    
+                        <ContactDetailsFields contact={contact} />
+                    </div>  
+                </div>          
             </div>
         </MediaQuery>
     </div>;
 }
  
-export default withStyles(style)(ContactDetailsPage);
+export default compose(withStyles(style), withWidth())(ContactDetailsPage);

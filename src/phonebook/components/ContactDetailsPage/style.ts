@@ -1,44 +1,97 @@
 import { createStyles, Theme } from "@material-ui/core";
 
-export default ({breakpoints}: Theme) => createStyles({
+export default ({palette, breakpoints}: Theme) => createStyles({
+
     heading: {
-        marginBottom: 10,
         display: 'flex',
+        borderBottom: `1px solid ${palette.primary.main}`,
+    },
+    editAction: {
+        display: 'inline-flex',
+        alignItems: 'center',
     },
     action: {
-        width: 24,
-        height: 24,
-        padding: 0,
-        '&:hover': {
-            backgroundColor: 'transparent'
-        }
+
     },
-    headingName: {
-        marginLeft: '8%',
-        width: 350,
-        fontSize: 20,
+    icon: {
+
     },
-    backAction: {
-        left: '1%',
-    },
-    mainContent: {
-        marginTop: 5,
-    },
+
     [breakpoints.only('xs')]: {
+        root: {
+        },
+        toolbar: {
+            padding: '10px 8px',
+            display: 'flex',
+            alignItems: 'center',
+            borderBottom: `1px solid ${palette.secondary.light}`,
+        },
+        body: {
+            padding: '8px 15px',
+        },
+        heading: {
+            padding: '10px 0px',
+            alignItems: 'center',
+        },
+        avatar: {
+            marginRight: '5%',
+        },
         favAction: {
-            marginLeft: '74%',
+            marginLeft: '75%',
         },
         editAction: {
             marginLeft: '3%',
         },
-        rootXs: {
-            marginTop: 10,
+        detailsContainer: {
+            padding: '0px, 10px',
         },
     },
-    [breakpoints.up('sm')]: {        
-        rootSm: {
+
+    [breakpoints.up('sm')]: {
+        root: {
+            display: 'flex',
+            paddingTop: 50,
+            paddingLeft: 50,
+        },
+        smLeft: {
+            display: 'inline-flex',
+            flexDirection: 'column',
+        },
+        smRight: {
+            marginTop: 50,
+            display: 'inline-block',
+            marginLeft: 20,
+        },
+        avatar: {
+            width: 150,
+            height: 150,
+        },
+        personName: {
+            width: 220,
+            marginLeft: 30,
+            fontSize: 20,
+        },
+        editAction: {
+            marginLeft: 20,
+        },
+        detailsContainer: {
+            marginTop: 20,
+            marginLeft: 30,
+        },
+    },
+    
+    [breakpoints.up('md')]: {
+        heading: {
+            paddingBottom: 7,
+        },
+        personName: {
+            width: 400,
+            marginLeft: 35,
+            fontSize: 28,
+        },
+        detailsContainer: {
             marginTop: 30,
-            marginLeft: '12%',
+            marginLeft: 40,
         },
     },
 });

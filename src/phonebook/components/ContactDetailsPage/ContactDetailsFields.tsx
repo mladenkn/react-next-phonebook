@@ -7,15 +7,15 @@ import { ContactFieldLabel, Emptiness } from "../reusables";
 
 export default  withStyles(style)(
     ({contact, classes}: {contact: Contact} & WithStyles<typeof style>) => 
-        <List className={classes.root}>
-            <ListItem className={classes.field}>
+        <List className={classes.root} disablePadding>
+            <ListItem className={classes.field} disableGutters>
                 <ContactFieldLabel icon="email" text="email" />
                 <Emptiness width="3.5%" />
                 <Typography className={classes.fieldValue}>
                     {contact.email}                 
                 </Typography>
             </ListItem> 
-            <ListItem className={classes.field}>
+            <ListItem className={classes.field} disableGutters>
                 <ContactFieldLabel icon="phone" text="number" />
                 <List disablePadding className={classes.fieldValue + ' ' + classes.fieldListValue}>
                     {contact.numbers.map(({label, value}) => 
