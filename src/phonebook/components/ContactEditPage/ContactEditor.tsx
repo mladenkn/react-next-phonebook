@@ -1,7 +1,7 @@
 import { WithStyles, withStyles, List, ListItem, Icon, IconButton, Button } from "@material-ui/core";
-import { Contact } from "../models";
+import { Contact } from "../../models";
 import style from "./ContactEditor-style";
-import { ContactFieldLabel, Divider, TextInput, Emptiness } from "./reusables";
+import { ContactFieldLabel, Divider, TextInput, Emptiness } from "../reusables";
 import React from 'react'
 
 type Props = {contact: Contact} & WithStyles<typeof style>;
