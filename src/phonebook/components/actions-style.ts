@@ -22,6 +22,9 @@ export const deleteActionStyle = createStyles({
             'background-color': 'inherit'
         },
     },
+    text: {
+        marginRight: 10,
+    },
 });
 
 export const goBackStyle = createStyles({

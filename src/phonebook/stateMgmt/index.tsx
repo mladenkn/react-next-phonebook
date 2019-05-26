@@ -3,9 +3,8 @@ import { RouteComponentProps } from "react-router";
 import ContactEditPage from "../components/ContactEditPage";
 import ContactDetailsPage from '../components/ContactDetailsPage';
 import { Contact } from "../models";
-import navigationActionHandler from "./navigationActionHandler";
 import { DispatchContext } from "./DispatchContext";
-import { AnyAction, saveContact } from "../actions";
+import { AnyAction, saveContact, goBack } from "../actions";
 import { getType } from "typesafe-actions";
 import { compose } from "lodash/fp";
 
@@ -23,8 +22,19 @@ const emptyContact: Contact = {
 }
 
 export const ContactCreatePageContainer = () => 
-() => {
-    return <ContactEditPage contact={emptyContact} />;
+({history}: RouteComponentProps<ContactIdRouteParams>) => {
+    const actionHandler = (a: AnyAction) => {
+        switch(a.type){
+            case getType(goBack):
+                history.goBack();
+        }
+    }
+
+    return (
+        <DispatchContext.Provider value={actionHandler}>
+             <ContactEditPage contact={emptyContact} />
+        </DispatchContext.Provider>
+    );
 }
 
 export const ContactEditPageContainer = (contactList: Contact[]) =>
@@ -33,19 +43,19 @@ export const ContactEditPageContainer = (contactList: Contact[]) =>
     const contactId = parseInt(match.params.contactId!);
     const contact = contactList.find(c => c.id === contactId)!;
     
-    const pageActionHandler = (a: AnyAction) => {
+    const actionHandler = (a: AnyAction) => {
         switch(a.type){
             case getType(saveContact):
                 console.log('handling favoriteContact');
+            case getType(goBack):
+                history.goBack();
         }
     }
-
-    const rootAh = compose(pageActionHandler, navigationActionHandler(history.goBack));
 
     console.log('contact edit page');
     
     return (
-        <DispatchContext.Provider value={rootAh}>
+        <DispatchContext.Provider value={actionHandler}>
             <ContactEditPage contact={contact} />
         </DispatchContext.Provider>
     );
@@ -57,10 +67,15 @@ export const ContactDetailsPageContainer = (contactList: Contact[]) =>
     const contactId = parseInt(match.params.contactId!);
     const contact = contactList.find(c => c.id === contactId)!;
 
-    const rootAh = navigationActionHandler(history.goBack);
+    const actionHandler = (a: AnyAction) => {
+        switch(a.type){
+            case getType(goBack):
+                history.goBack();
+        }
+    }
 
     return (
-        <DispatchContext.Provider value={rootAh}>
+        <DispatchContext.Provider value={actionHandler}>
             <ContactDetailsPage contact={contact} />
         </DispatchContext.Provider>
     );

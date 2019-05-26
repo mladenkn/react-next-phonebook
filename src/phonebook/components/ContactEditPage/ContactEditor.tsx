@@ -16,44 +16,44 @@ const ContactEditor = (p: Props) =>
     console.log(values);
     return (
         <Form>
-            <label>
-                <ContactFieldLabel icon="person_outlined" text="full name" className={classes.label} />
-                <Field type="text" name="fullName" className={classes.input + ' ' + classes.singleValueInput} />
-                <ErrorMessage name="fullName" component="div"/>
-            </label>
-           
-            <Divider className={classes.divider} margin={18} />
-            
-            <label>
-                <ContactFieldLabel icon="email" text="email" className={classes.label} />
-                <Field type="email" name="email" className={classes.input + ' ' + classes.singleValueInput} />
-                <ErrorMessage name="email" component="div"/>
-            </label>
-           
-           <Divider className={classes.divider} margin={18} />
+          <label>
+            <ContactFieldLabel icon="person_outlined" text="full name" className={classes.label} />
+            <Field type="text" name="fullName" className={classes.input + ' ' + classes.singleValueInput} />
+            <ErrorMessage name="fullName" component="div"/>
+          </label>
+          
+          <Divider className={classes.divider} margin={18} />
+          
+          <label>
+            <ContactFieldLabel icon="email" text="email" className={classes.label} />
+            <Field type="email" name="email" className={classes.input + ' ' + classes.singleValueInput} />
+            <ErrorMessage name="email" component="div"/>
+          </label>
+          
+          <Divider className={classes.divider} margin={18} />
 
-           <FieldArray
-                name="numbers"
-                render={arr => (
-                    <div>                        
-                        <ContactFieldLabel icon="phone" text="numbers" />
-                        {values.numbers.map((_, index) => (
-                            <div className={classes.phoneNumber} key={index}>
-                                <Field name={`numbers[${index}].value`} className={classes.input + ' ' + classes.phoneNumberInput} />
-                                <Field name={`numbers.${index}.label`} className={classes.input + ' ' + classes.phoneNumberLabelInput} />
-                                <IconButton className={classes.labelRemover} onClick={() => arr.remove(index)}>
-                                    <span className={classes.labelRemoverIcon}>x</span>
-                                </IconButton>
-                            </div>
-                        ))}
-                        <Button className={classes.numberAdder} onClick={() => arr.push({ value: undefined, label: '' })}>
-                            <Icon color="primary">add_circle_outline</Icon>
-                            <Emptiness width={5} />
-                            Add number
-                        </Button>
-                    </div>
-                )}
-            />
+          <FieldArray
+            name="numbers"
+            render={arr => (
+              <div>                        
+                <ContactFieldLabel icon="phone" text="numbers" />
+                {values.numbers.map((_, index) => (
+                  <div className={classes.phoneNumber} key={index}>
+                    <Field name={`numbers[${index}].value`} className={classes.input + ' ' + classes.phoneNumberInput} />
+                    <Field name={`numbers.${index}.label`} className={classes.input + ' ' + classes.phoneNumberLabelInput} />
+                    <IconButton className={classes.labelRemover} onClick={() => arr.remove(index)}>
+                      <span className={classes.labelRemoverIcon}>x</span>
+                    </IconButton>
+                  </div>
+                ))}
+                <Button className={classes.numberAdder} onClick={() => arr.push({ value: undefined, label: '' })}>
+                  <Icon color="primary">add_circle_outline</Icon>
+                  <Emptiness width={5} />
+                  Add number
+                </Button>
+              </div>
+            )}
+          />
         </Form>
       );
 }

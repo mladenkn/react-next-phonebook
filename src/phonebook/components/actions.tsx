@@ -49,7 +49,7 @@ type DeleteActionProps = { withText?: boolean, styles?: {root?: string, icon?: s
 export const DeleteAction = withStyles(deleteActionStyle)
     (({withText, classes, styles}: DeleteActionProps) => (
         <IconButton className={classes.root + ' ' + (styles && styles.root && styles.root)} disableRipple>
-            {(withText || false) && <Typography>Delete</Typography>}
+            {(withText || false) && <Typography className={classes.text}>Delete</Typography>}
             <Icon color="secondary" className={(styles && styles.icon && styles.icon)}>delete</Icon>
         </IconButton>
     ));
