@@ -2,12 +2,12 @@ import { withStyles, WithStyles, Link, Icon, IconButton, Typography } from "@mat
 import { goToEditActionStyle, favoriteActionStyle, deleteActionStyle, goBackStyle } from "./actions-style";
 import { WithClassName, createRefRouterLink } from "./reusables";
 import { contactEditUrl } from "../urls";
-import React from 'react';
+import React, { useState} from 'react';
 import { WithDispatch, withDispatch } from "../stateMgmt/DispatchContext";
-import { favoriteContact, goBack } from "../actions";
+import { favoriteContact, goBack, deleteContact } from "../actions";
 import { Contact } from "../models";
 import { compose } from "lodash/fp";
-
+import DeleteModal from "./DeleteModal";
 
 type IconLinkProps = {name: string, url: string} & WithClassName;
 
@@ -44,15 +44,24 @@ export const FavoriteAction = compose(withStyles(favoriteActionStyle), withDispa
     ));
 
 
-type DeleteActionProps = { withText?: boolean, styles?: {root?: string, icon?: string} } & WithStyles<typeof deleteActionStyle>;
+type DeleteActionProps = { contactId: number, withText?: boolean, styles?: {root?: string, icon?: string} } & WithStyles<typeof deleteActionStyle> & WithDispatch;
  
-export const DeleteAction = withStyles(deleteActionStyle)
-    (({withText, classes, styles}: DeleteActionProps) => (
-        <IconButton className={classes.root + ' ' + (styles && styles.root && styles.root)} disableRipple>
-            {(withText || false) && <Typography className={classes.text}>Delete</Typography>}
-            <Icon color="secondary" className={(styles && styles.icon && styles.icon)}>delete</Icon>
-        </IconButton>
-    ));
+export const DeleteAction = compose(withStyles(deleteActionStyle), withDispatch)
+    (({contactId, dispatch, withText, classes, styles}: DeleteActionProps) => {
+        const [modalOpen, setModalOpen] = useState(false);
+        return (
+            <div>
+                <IconButton onClick={() => setModalOpen(true)}
+                    className={classes.root + ' ' + (styles && styles.root && styles.root)} disableRipple>
+                    {(withText || false) && <Typography className={classes.text}>Delete</Typography>}
+                    <Icon color="secondary" className={(styles && styles.icon && styles.icon)}>delete</Icon>
+                </IconButton>
+                <DeleteModal isOpen={modalOpen} text="Are you sure you want to delete this modal"
+                    onCancel={() => setModalOpen(false)}
+                    onConfirm={() => dispatch(deleteContact(contactId))} />
+            </div>
+        );
+    });
 
 
 type GoBackActionProps = { styles?: {root?: string, icon?: string} }

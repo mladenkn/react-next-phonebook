@@ -24,7 +24,8 @@ export default ({contact, isSelected, smOrDown, onSelect}: Props) =>
         showDeleteButton={smOrDown || (!smOrDown && isSelected)}
         isLinkToDetails={smOrDown || (!smOrDown && isSelected)}
         isSelected={isSelected}
-        onSelect={onSelect} />
+        onSelect={onSelect} 
+        />
 }
 
 type ItemDummyProps = {
@@ -67,6 +68,7 @@ const ItemDummy = (p: ItemDummyProps) => {
 
     const deleteAction = p.showDeleteButton &&
         <DeleteAction
+            contactId={contact.id}
             styles={{
                 root: classes.action + ' ' + classes.deleteAction,
                 icon: classes.icon,

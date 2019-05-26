@@ -15,7 +15,7 @@ const ContactEditPage = ({contact, classes, width}: Props) =>
 {
     const backAction = <GoBackAction styles={{root: classes.backAction}} />;
 
-    const deleteAction = <DeleteAction withText={width !== 'xs'} styles={{root: classes.deleteAction}} />;
+    const deleteAction = <DeleteAction contactId={contact.id} withText={width !== 'xs'} styles={{root: classes.deleteAction}} />;
 
     const avatar = <Avatar src={contact.avatar} className={classes.avatar}/>;
 

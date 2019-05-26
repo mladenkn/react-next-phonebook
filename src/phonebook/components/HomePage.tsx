@@ -17,9 +17,6 @@ const Home = ({classes, contacts, dataLoading}: Props) =>
 
     const [currentTab, setCurrentTab] = useState(0);
 
-    console.log(contacts)
-    console.log(dataLoading)
-
     return (
         <div  className={classes.root}>
             <div className={classes.content_}>

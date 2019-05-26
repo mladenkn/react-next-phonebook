@@ -4,7 +4,7 @@ import ContactEditPage from "../components/ContactEditPage";
 import ContactDetailsPage from '../components/ContactDetailsPage';
 import { Contact } from "../models";
 import { DispatchContext } from "./DispatchContext";
-import { AnyAction, saveContact, goBack } from "../actions";
+import { AnyAction, saveContact, goBack, deleteContact } from "../actions";
 import { getType } from "typesafe-actions";
 import { compose } from "lodash/fp";
 import ContactService from "./ContactService";
@@ -45,6 +45,8 @@ export const ContactEditPageContainer =
 ({history, match, contactService}: RouteComponentProps<ContactIdRouteParams> & WithContactService) => {   
 
     const contactId = parseInt(match.params.contactId!);
+
+    const [contact, setContact] = useState<Contact | undefined>(undefined);
     
     const actionHandler = (a: AnyAction) => {
         switch(a.type){
@@ -52,10 +54,12 @@ export const ContactEditPageContainer =
                 console.log('handling favoriteContact');
             case getType(goBack):
                 history.goBack();
+            case getType(deleteContact):
+                contactService
+                    .delete((a as any).payload.contactId)
+                    .then(() => history.goBack());
         }
     }
-
-    const [contact, setContact] = useState<Contact | undefined>(undefined);
     contactService.getById(contactId).then(setContact);
     
     return (
