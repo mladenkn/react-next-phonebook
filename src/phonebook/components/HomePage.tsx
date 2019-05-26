@@ -5,9 +5,9 @@ import ContactList from "./ContactList";
 import { Divider } from "./reusables"
 import { Contact } from "../models";
 
-type Props = {contacts: Contact[]} & WithStyles<typeof style>;
+type Props = {contacts?: Contact[], dataLoading: boolean} & WithStyles<typeof style>;
 
-const Home = ({classes, contacts}: Props) =>
+const Home = ({classes, contacts, dataLoading}: Props) =>
 {
     const tabClasses = {
         root: classes.contactTab,
@@ -16,6 +16,9 @@ const Home = ({classes, contacts}: Props) =>
     }
 
     const [currentTab, setCurrentTab] = useState(0);
+
+    console.log(contacts)
+    console.log(dataLoading)
 
     return (
         <div  className={classes.root}>
@@ -34,7 +37,9 @@ const Home = ({classes, contacts}: Props) =>
                 <Input disableUnderline
                     startAdornment={<Icon className={classes.searchFieldIcon}>search</Icon>}
                     classes={{root: classes.searchField, focused: classes.searchFieldFocused}} />
-                <ContactList contacts={contacts} includeAdder className={classes.list} />
+                { !dataLoading &&
+                    <ContactList contacts={contacts!} includeAdder className={classes.list} />
+                }
             </div>
         </div>
     );

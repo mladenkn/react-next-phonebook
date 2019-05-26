@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { RouteComponentProps } from "react-router";
 import ContactEditPage from "../components/ContactEditPage";
 import ContactDetailsPage from '../components/ContactDetailsPage';
@@ -7,8 +7,11 @@ import { DispatchContext } from "./DispatchContext";
 import { AnyAction, saveContact, goBack } from "../actions";
 import { getType } from "typesafe-actions";
 import { compose } from "lodash/fp";
+import ContactService from "./ContactService";
 
-interface ContactIdRouteParams {
+export interface WithContactService { contactService: ContactService };
+
+export interface ContactIdRouteParams {
     contactId?: string
 }
 
@@ -21,8 +24,9 @@ const emptyContact: Contact = {
     isFavorite: false
 }
 
-export const ContactCreatePageContainer = () => 
-({history}: RouteComponentProps<ContactIdRouteParams>) => {
+export const ContactCreatePageContainer = 
+({history, contactService}: RouteComponentProps<ContactIdRouteParams> & WithContactService) => {
+
     const actionHandler = (a: AnyAction) => {
         switch(a.type){
             case getType(goBack):
@@ -37,11 +41,10 @@ export const ContactCreatePageContainer = () =>
     );
 }
 
-export const ContactEditPageContainer = (contactList: Contact[]) =>
-({history, match}: RouteComponentProps<ContactIdRouteParams>) => {   
+export const ContactEditPageContainer = 
+({history, match, contactService}: RouteComponentProps<ContactIdRouteParams> & WithContactService) => {   
 
     const contactId = parseInt(match.params.contactId!);
-    const contact = contactList.find(c => c.id === contactId)!;
     
     const actionHandler = (a: AnyAction) => {
         switch(a.type){
@@ -52,20 +55,20 @@ export const ContactEditPageContainer = (contactList: Contact[]) =>
         }
     }
 
-    console.log('contact edit page');
+    const [contact, setContact] = useState<Contact | undefined>(undefined);
+    contactService.getById(contactId).then(setContact);
     
     return (
         <DispatchContext.Provider value={actionHandler}>
-            <ContactEditPage contact={contact} />
+            {contact && <ContactEditPage contact={contact} />}
         </DispatchContext.Provider>
     );
 }
 
-export const ContactDetailsPageContainer = (contactList: Contact[]) =>
-({history, match}: RouteComponentProps<ContactIdRouteParams>) => {
+export const ContactDetailsPageContainer =
+({history, match, contactService}: RouteComponentProps<ContactIdRouteParams> & WithContactService) => {
 
     const contactId = parseInt(match.params.contactId!);
-    const contact = contactList.find(c => c.id === contactId)!;
 
     const actionHandler = (a: AnyAction) => {
         switch(a.type){
@@ -74,9 +77,12 @@ export const ContactDetailsPageContainer = (contactList: Contact[]) =>
         }
     }
 
+    const [contact, setContact] = useState<Contact | undefined>(undefined);
+    contactService.getById(contactId).then(setContact);
+
     return (
         <DispatchContext.Provider value={actionHandler}>
-            <ContactDetailsPage contact={contact} />
+            {contact && <ContactDetailsPage contact={contact} />}
         </DispatchContext.Provider>
     );
 }

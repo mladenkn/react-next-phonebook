@@ -1,11 +1,13 @@
 import HomePage from "../components/HomePage";
 import { getType } from "typesafe-actions";
 import { AnyAction, favoriteContact } from "../actions";
-import { Contact } from "../models";
-import React from "react";
+import React, { useState } from "react";
 import { DispatchContext } from "./DispatchContext";
+import ContactService from "./ContactService";
+import { Contact }from "../models";
+import { WithContactService } from ".";
 
-export default (contactList: Contact[]) => () => 
+export default ({contactService}: WithContactService) =>
 {
     const pageActionHandler = (a: AnyAction) => {
         switch(a.type){
@@ -13,10 +15,16 @@ export default (contactList: Contact[]) => () =>
                 console.log('handling favoriteContact');
         }
     }
- 
+    
+    const [contactList, setContactList] = useState<Contact[] | undefined>(undefined);
+
+    const query = (keyword: string) => contactService.search(keyword).then(setContactList);
+
+    query('')
+
     return (
         <DispatchContext.Provider value={pageActionHandler}>
-            <HomePage contacts={contactList} />
+            <HomePage contacts={contactList} dataLoading={contactList === undefined} />
         </DispatchContext.Provider>
     )
 }
