@@ -1,13 +1,14 @@
 import { createStyles, Theme } from "@material-ui/core";
 
 export default ({palette, breakpoints}: Theme) => createStyles({
-    input: {
-        paddingLeft: 20,
+    input: {    
+        padding: '10px 10px',
     },
     phoneNumber: {
         paddingLeft: 0,
         paddingRight: 0,
-        display: 'block'
+        display: 'block',
+        padding: '10px 0px;'
     },
     labelRemoverContainer: {
         display: 'flex',
@@ -17,9 +18,6 @@ export default ({palette, breakpoints}: Theme) => createStyles({
     labelRemover: {
         padding: 6
     },
-    // labelRemoverIcon2: {
-    //     color: palette.secondary.light
-    // },
     labelRemoverIcon: {
         height: 28,
         width: 28,
@@ -33,6 +31,7 @@ export default ({palette, breakpoints}: Theme) => createStyles({
     },
     numberAdder: {
         color: palette.primary.main,
+        marginTop: 20,
     },
     field: {
 
@@ -61,6 +60,9 @@ export default ({palette, breakpoints}: Theme) => createStyles({
         },
         singleValueInput: {
             width: '50%',
+        },
+        label: {
+            marginBottom: 10,
         },
     },
 }); 

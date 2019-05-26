@@ -30,6 +30,12 @@ const theme = createMuiTheme({
                 textTransform: 'none',
             },
         },
+        MuiInput: {
+            root: {                
+                padding: 10,
+                border: '1px solid #E3E3E3',
+            },
+        },
     }
 });
 

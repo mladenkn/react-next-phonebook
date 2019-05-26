@@ -2,8 +2,6 @@ import { Contact } from "../../models";
 import React from 'react';
 import ContactDetailsFields from "./ContactDetailsFields";
 import MediaQuery from "react-responsive";
-import ContactPageBaseSm from "../ContactPageBase/ContactPageBaseSm";
-import ContactPageBaseXs from "../ContactPageBase/ContactPageBaseXs";
 import style from "./style";
 import { FavoriteAction, GoToEditAction, GoBackAction } from "../actions";
 import { WithStyles, withStyles, IconButton, Icon, Typography, Avatar } from "@material-ui/core";
