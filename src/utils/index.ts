@@ -19,11 +19,11 @@ interface Action<TPayload = {}> {
     payload: TPayload
 }
 
-export const handle = <TActionPayload> (actionCreator: (a: any) => Action<TActionPayload>, handler: (a: TActionPayload) => void) => (a: Action) => {
+export const handle = <TActionPayload> (actionCreator: (a: any) => Action<TActionPayload>, handler: (a: TActionPayload) => void) => (a: AnyAction) => {
     if(isActionOf(actionCreator, a))
         handler(a.payload);
 }
 
-export const buildActionHandler = (handlers: ((a: Action) => void)[]) => (a: Action) => {
+export const buildActionHandler = (handlers: ((a: AnyAction) => void)[]) => (a: AnyAction) => {
     handlers.forEach(h => h(a));
 }

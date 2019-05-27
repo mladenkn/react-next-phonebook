@@ -16,7 +16,7 @@ export const favoriteActionStyle = createStyles({
 });
 
 export const deleteActionStyle = createStyles({
-    root: {
+    button: {
         padding: 0,
         '&:hover': {
             'background-color': 'inherit'

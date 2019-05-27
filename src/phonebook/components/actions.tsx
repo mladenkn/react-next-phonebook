@@ -50,9 +50,8 @@ export const DeleteAction = compose(withStyles(deleteActionStyle), withDispatch)
     (({contactId, dispatch, withText, classes, styles}: DeleteActionProps) => {
         const [modalOpen, setModalOpen] = useState(false);
         return (
-            <div>
-                <IconButton onClick={() => setModalOpen(true)}
-                    className={classes.root + ' ' + (styles && styles.root && styles.root)} disableRipple>
+            <div className={styles && styles.root && styles.root}>
+                <IconButton onClick={() => setModalOpen(true)} className={classes.button} disableRipple>
                     {(withText || false) && <Typography className={classes.text}>Delete</Typography>}
                     <Icon color="secondary" className={(styles && styles.icon && styles.icon)}>delete</Icon>
                 </IconButton>

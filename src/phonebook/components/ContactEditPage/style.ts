@@ -13,6 +13,10 @@ export default ({palette, breakpoints}: Theme) => createStyles({
     icon: {
 
     },
+    avatar: {
+        width: 200,
+        height: 200,
+    },
 
     [breakpoints.down('sm')]: {
         shallowRoot: {
@@ -20,7 +24,8 @@ export default ({palette, breakpoints}: Theme) => createStyles({
             justifyContent: 'center',
         },
         root: {
-            maxWidth: 600,
+            width: '100%',
+            maxWidth: 500,
         },
         toolbar: {
             padding: '10px 0px',
@@ -41,10 +46,6 @@ export default ({palette, breakpoints}: Theme) => createStyles({
         deleteAction: {
             marginLeft: '83%',
         },
-        avatar: {
-            width: 150,
-            height: 150,
-        },
         editorContainer: {
             marginTop: 10,
         },
@@ -64,10 +65,6 @@ export default ({palette, breakpoints}: Theme) => createStyles({
             marginTop: 50,
             display: 'inline-block',
             marginLeft: 20,
-        },
-        avatar: {
-            width: 150,
-            height: 150,
         },
         deleteAction: {
             marginLeft: 430,

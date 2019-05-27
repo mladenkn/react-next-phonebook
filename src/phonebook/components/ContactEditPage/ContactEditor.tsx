@@ -36,7 +36,7 @@ const ContactEditor = (p: Props) =>
             name="numbers"
             render={arr => (
               <div>                        
-                <ContactFieldLabel icon="phone" text="numbers" />
+                <ContactFieldLabel icon="phone" text="numbers" className={classes.label} />
                 {values.numbers.map((_, index) => (
                   <div className={classes.phoneNumber} key={index}>
                     <Field name={`numbers[${index}].value`} className={classes.input + ' ' + classes.phoneNumberInput} />

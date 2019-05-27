@@ -20,7 +20,7 @@ const ContactEditPage = ({contact, classes, width}: Props) =>
     const avatar = <Avatar src={contact.avatar} className={classes.avatar}/>;
 
     return <div>
-        <MediaQuery maxWidth={960}>
+        <MediaQuery maxWidth={959}>
             <div className={classes.shallowRoot}>
                 <div className={classes.root}>
                     <div className={classes.toolbar}>
@@ -37,7 +37,7 @@ const ContactEditPage = ({contact, classes, width}: Props) =>
                 </div>
             </div>
         </MediaQuery>
-        <MediaQuery minWidth={961}>   
+        <MediaQuery minWidth={960}>   
             <div className={classes.root}>
                 <div className={classes.smLeft}>
                     {avatar}

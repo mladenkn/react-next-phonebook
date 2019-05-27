@@ -33,9 +33,15 @@ export default ({palette, breakpoints}: Theme) => createStyles({
             padding: '10px 0px',
             alignItems: 'center',
         },
-        avatar: {
-            marginRight: '5%',
+        personName: {
+            fontSize: 22,
         },
+        avatar: {
+            marginLeft: '1%',
+            marginRight: '5%',
+            width: 70,
+            height: 70,
+        }, 
         favAction: {
             marginLeft: '75%',
         },
@@ -53,6 +59,10 @@ export default ({palette, breakpoints}: Theme) => createStyles({
             paddingTop: 50,
             paddingLeft: 50,
         },
+        avatar: {
+            width: 180,
+            height: 180,
+        },
         smLeft: {
             display: 'inline-flex',
             flexDirection: 'column',
@@ -61,10 +71,6 @@ export default ({palette, breakpoints}: Theme) => createStyles({
             marginTop: 50,
             display: 'inline-block',
             marginLeft: 20,
-        },
-        avatar: {
-            width: 150,
-            height: 150,
         },
         personName: {
             width: 220,

@@ -3,6 +3,8 @@ import { createStyles, Theme } from "@material-ui/core";
 export default ({palette, breakpoints}: Theme) => createStyles({
     input: {    
         padding: '10px 10px',
+        border: `2px solid ${palette.secondary.light}`,
+        color: palette.secondary.main,
     },
     phoneNumber: {
         paddingLeft: 0,
@@ -39,12 +41,13 @@ export default ({palette, breakpoints}: Theme) => createStyles({
     divider: {
         // margin: '10px 0px'
     },
-    [breakpoints.down('sm')]: {
+    [breakpoints.only('xs')]: {
         phoneNumberInput: {
-            width: '100%'
+            width: '100%',
+            marginBottom: 10,
         },
         phoneNumberLabelInput: {
-            width: '80%'
+            width: '80%',
         },
         labelRemover: {
             width: '20%'            
@@ -52,8 +55,11 @@ export default ({palette, breakpoints}: Theme) => createStyles({
         singleValueInput: {
             width: '100%',
         },
+        label: {
+            marginBottom: 10,
+        },
     },
-    [breakpoints.up('md')]: {
+    [breakpoints.up('sm')]: {
         phoneNumber: {
             display: 'flex',
             justifyContent: 'space-between'
