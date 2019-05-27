@@ -3,7 +3,7 @@ import React from 'react';
 import MediaQuery from "react-responsive";
 import style from "./style";
 import { DeleteAction, GoBackAction } from "../actions";
-import { WithStyles, withStyles, IconButton, Icon, Typography, Avatar } from "@material-ui/core";
+import { WithStyles, withStyles, Button, Avatar } from "@material-ui/core";
 import { compose }from "lodash/fp";
 import withWidth, { WithWidth } from "@material-ui/core/withWidth";
 import ContactEditor from "./ContactEditor";
@@ -22,6 +22,17 @@ const ContactEditPage = ({contact, classes, width}: Props) =>
 
     const avatar = <Avatar src={contact.avatar} className={classes.avatar}/>;
 
+    const buttons = (
+        <div className={classes.actions}>
+            <Button variant="contained" color="secondary" onClick={() => {}} className={classes.button}>
+                Cancel
+            </Button>
+            <Button variant="contained" color="primary" onClick={() => {}} className={classes.button} autoFocus>
+                Save
+            </Button>              
+        </div>
+    )
+
     return <div>
         <MediaQuery maxWidth={959}>
             <div className={classes.shallowRoot}>
@@ -33,8 +44,9 @@ const ContactEditPage = ({contact, classes, width}: Props) =>
                         <div className={classes.heading}>
                             {avatar}
                         </div>
-                        <div className={classes.editorContainer}>
+                        <div className={classes.formAndButtons}>
                             <ContactEditor contact={contact} />
+                            {buttons}
                         </div>
                     </div>
                 </div>
@@ -49,13 +61,14 @@ const ContactEditPage = ({contact, classes, width}: Props) =>
                     <div className={classes.heading}>
                         {backAction}{deleteAction}
                     </div>
-                    <div className={classes.editorContainer}>
-                        <ContactEditor contact={contact} />                    
+                    <div className={classes.formAndButtons}>
+                        <ContactEditor contact={contact} />
+                        {buttons}                
                     </div>  
                 </div>          
             </div>
         </MediaQuery>
     </div>;
 }
- 
+
 export default compose(withStyles(style), withWidth())(ContactEditPage);

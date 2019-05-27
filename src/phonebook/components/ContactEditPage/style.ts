@@ -18,6 +18,19 @@ export default ({palette, breakpoints}: Theme) => createStyles({
         height: 200,
     },
 
+    actions: {
+        marginTop: 50,
+        display: 'flex',
+        justifyContent: 'space-between',
+        margin: '8px 10px 18px 10px',
+    },
+
+    button: {
+        borderRadius: 40,
+        width: 150,
+        color: 'white'
+    },
+
     [breakpoints.down('sm')]: {
         shallowRoot: {
             display: 'flex',
@@ -46,7 +59,7 @@ export default ({palette, breakpoints}: Theme) => createStyles({
         deleteAction: {
             marginLeft: '83%',
         },
-        editorContainer: {
+        formAndButtons: {
             marginTop: 10,
         },
     },
@@ -69,21 +82,9 @@ export default ({palette, breakpoints}: Theme) => createStyles({
         deleteAction: {
             marginLeft: 430,
         },
-        editorContainer: {
+        formAndButtons: {
             marginTop: 20,
             marginLeft: 15
         },
     },
-    
-    // [breakpoints.up('md')]: {
-    //     heading: {
-    //         paddingBottom: 7,
-    //     },
-    //     editorContainer: {
-    //         marginTop: 30,
-    //     },
-    //     deleteAction: {
-    //         marginLeft: 430,
-    //     },
-    // },
 });
