@@ -1,4 +1,6 @@
 import faker from 'faker';
+import { AnyAction } from '../phonebook/actions';
+import { isActionOf, ActionCreator } from 'typesafe-actions';
 
 export const generateArray = <T> (getNext: () => T, minCount: number, maxCount: number) => {
     const count = faker.random.number({min: minCount, max: maxCount});
@@ -10,4 +12,18 @@ export const generateArray = <T> (getNext: () => T, minCount: number, maxCount: 
 
 export const callerOf = <Arg> (...functions: ((a: Arg) => void)[]) => (arg: Arg) => {
     functions.forEach(f => f(arg));
+}
+
+interface Action<TPayload = {}> {
+    type: string,
+    payload: TPayload
+}
+
+export const handle = <TActionPayload> (actionCreator: (a: any) => Action<TActionPayload>, handler: (a: TActionPayload) => void) => (a: Action) => {
+    if(isActionOf(actionCreator, a))
+        handler(a.payload);
+}
+
+export const buildActionHandler = (handlers: ((a: Action) => void)[]) => (a: Action) => {
+    handlers.forEach(h => h(a));
 }

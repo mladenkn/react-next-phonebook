@@ -51,13 +51,16 @@ export const ContactEditPageContainer =
     const actionHandler = (a: AnyAction) => {
         switch(a.type){
             case getType(saveContact):
-                console.log('handling favoriteContact');
+                console.log('handling saveContact');
+                break;
             case getType(goBack):
                 history.goBack();
+                break;
             case getType(deleteContact):
                 contactService
                     .delete((a as any).payload.contactId)
                     .then(() => history.goBack());
+                break;
         }
     }
     contactService.getById(contactId).then(setContact);
@@ -78,6 +81,7 @@ export const ContactDetailsPageContainer =
         switch(a.type){
             case getType(goBack):
                 history.goBack();
+                break;
         }
     }
 

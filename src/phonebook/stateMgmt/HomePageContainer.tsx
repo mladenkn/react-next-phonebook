@@ -6,33 +6,37 @@ import { DispatchContext } from "./DispatchContext";
 import ContactService from "./ContactService";
 import { Contact }from "../models";
 import { WithContactService } from ".";
+import { buildActionHandler, handle } from "../../utils";
 
 export default ({contactService}: WithContactService) =>
-{    
-    console.log("home page");
+{
     const [contactList, setContactList] = useState<Contact[] | undefined>(undefined);
-    
-    const pageActionHandler = (a: AnyAction) => {
-        console.log(a);
-        switch(a.type){
-            case getType(favoriteContact):
-                console.log('handling favoriteContact');
-            case getType(deleteContact):
-                contactService
-                    .delete(a.payload.contactId)
-                    .then(() => {
-                        const withoutContact = contactList!.filter(c => c.id !== a.payload.contactId);
-                        setContactList(withoutContact);
-                    });
-        }
-    }
- 
-    const query = (keyword: string) => contactService.search(keyword).then(setContactList);
+    const [queried, setQueried] = useState(false);
 
-    query('')
+    const actionHandler = buildActionHandler([
+        handle(favoriteContact, ({contactId}) => {
+            return console.log('handling favoriteContact');
+        }),
+        handle(deleteContact, ({contactId}) => {
+            contactService
+                .delete(contactId)
+                .then(() => {
+                    const withoutContact = contactList!.filter(c => c.id !== contactId);
+                    setContactList(withoutContact);
+                });
+        }),        
+    ]);
+ 
+    const query = (keyword: string) => {        
+        contactService.search(keyword).then(setContactList);
+        setQueried(true);
+    };
+
+    if(!queried)
+        query('')
 
     return (
-        <DispatchContext.Provider value={pageActionHandler}>
+        <DispatchContext.Provider value={actionHandler}>
             <HomePage contacts={contactList} dataLoading={contactList === undefined} />
         </DispatchContext.Provider>
     )

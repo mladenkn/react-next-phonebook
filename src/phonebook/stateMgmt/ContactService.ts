@@ -6,7 +6,7 @@ import { generateContact } from '../devUtils/dataGenerators';
 // Easy to refactor to call REST API
 export default class ContactService {
 
-    contactList = generateArray(generateContact, 5, 20);
+    private contactList = generateArray(generateContact, 5, 20);
 
     async getById(id: number){
         return this.contactList.find(c => c.id === id)!;
@@ -21,6 +21,6 @@ export default class ContactService {
     }
 
     async delete(id: number){
-        this.contactList.filter(c => c.id !== id);
+        this.contactList = this.contactList.filter(c => c.id !== id);
     }
 }
