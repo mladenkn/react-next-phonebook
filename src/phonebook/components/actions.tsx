@@ -18,42 +18,42 @@ export const IconLink = ({name, url, className}: IconLinkProps) => (
 );
 
 
-type GoToEditActionProps = { contactId: number, styles: {root: string, icon: string} } 
+type GoToEditActionProps = { contactId: number, rootClass?: string, iconClass?: string } 
     & WithStyles<typeof goToEditActionStyle>;
 
 export const GoToEditAction = withStyles(goToEditActionStyle)
-    (({classes, contactId, styles}: GoToEditActionProps) => (
+    (({classes, contactId, rootClass, iconClass}: GoToEditActionProps) => (
         <Link component={createRefRouterLink(contactEditUrl(contactId)) as any}
-            className={classes.root + ' ' + styles.root}>
-            <Icon color="secondary" className={styles.icon}>edit</Icon>
+            className={classes.root + ' ' + rootClass}>
+            <Icon color="secondary" className={iconClass}>edit</Icon>
         </Link>
     ));
 
 
-type FavoriteActionProps = { contact: Contact, styles: {root: string, icon: string} }
+type FavoriteActionProps = { contact: Contact, rootClass?: string, iconClass?: string }
     & WithStyles<typeof favoriteActionStyle> & WithDispatch;
 
 export const FavoriteAction = compose(withStyles(favoriteActionStyle), withDispatch)
-    (({contact, classes, styles, dispatch}: FavoriteActionProps) => (
-        <IconButton className={classes.root + ' ' + styles.root}
+    (({contact, classes, rootClass, iconClass, dispatch}: FavoriteActionProps) => (
+        <IconButton className={classes.root + ' ' + rootClass}
             onClick={() => dispatch(favoriteContact(contact.id))} disableRipple>
-            <Icon color="secondary" className={styles.icon}>
+            <Icon color="secondary" className={iconClass}>
                 {contact.isFavorite ? 'favorite' : 'favorite_outlined'}
             </Icon>
         </IconButton>
     ));
 
 
-type DeleteActionProps = { contactId: number, withText?: boolean, styles?: {root?: string, icon?: string} } & WithStyles<typeof deleteActionStyle> & WithDispatch;
+type DeleteActionProps = { contactId: number, withText?: boolean, rootClass?: string, iconClass?: string } & WithStyles<typeof deleteActionStyle> & WithDispatch;
  
 export const DeleteAction = compose(withStyles(deleteActionStyle), withDispatch)
-    (({contactId, dispatch, withText, classes, styles}: DeleteActionProps) => {
+    (({contactId, dispatch, withText, classes, rootClass, iconClass}: DeleteActionProps) => {
         const [modalOpen, setModalOpen] = useState(false);
         return (
-            <div className={styles && styles.root && styles.root}>
+            <div className={rootClass}>
                 <IconButton onClick={() => setModalOpen(true)} className={classes.button} disableRipple>
                     {(withText || false) && <Typography className={classes.text}>Delete</Typography>}
-                    <Icon color="secondary" className={(styles && styles.icon && styles.icon)}>delete</Icon>
+                    <Icon color="secondary" className={iconClass}>delete</Icon>
                 </IconButton>
                 <DeleteModal isOpen={modalOpen} text="Are you sure you want to delete this modal"
                     onCancel={() => setModalOpen(false)}
@@ -63,14 +63,14 @@ export const DeleteAction = compose(withStyles(deleteActionStyle), withDispatch)
     });
 
 
-type GoBackActionProps = { styles?: {root?: string, icon?: string} }
+type GoBackActionProps = { rootClass?: string, iconClass?: string }
     & WithStyles<typeof goBackStyle> & WithDispatch;
     
 export const GoBackAction = compose(withStyles(goBackStyle), withDispatch)
-    (({dispatch, classes, styles}: GoBackActionProps) => (
+    (({dispatch, classes, rootClass, iconClass}: GoBackActionProps) => (
         <IconButton 
             onClick={() => dispatch(goBack())} 
-            className={classes.root + ' ' + (styles && styles.root)} disableRipple>
-            <Icon color="secondary" className={(styles && styles.icon)}>arrow_back</Icon>
+            className={classes.root + ' ' + rootClass} disableRipple>
+            <Icon color="secondary" className={iconClass}>arrow_back</Icon>
         </IconButton>
     )); 

@@ -53,26 +53,20 @@ const ItemDummy = (p: ItemDummyProps) => {
     const favoriteAction = p.showFavoriteButton &&
         <FavoriteAction
             contact={contact}
-            styles={{
-                root: classes.action + ' ' + classes.favoriteAction,
-                icon: classes.icon,
-            }} />;
+            rootClass={classes.action + ' ' + classes.favoriteAction}
+            iconClass={classes.icon} />;
 
     const editAction = p.showEditLink &&
         <GoToEditAction
             contactId={contact.id}
-            styles={{
-                root: classes.action + ' ' + classes.editAction,
-                icon: classes.icon,
-            }} />;
+            rootClass={classes.action + ' ' + classes.editAction}
+            iconClass={classes.icon} />;
 
     const deleteAction = p.showDeleteButton &&
         <DeleteAction
             contactId={contact.id}
-            styles={{
-                root: classes.action + ' ' + classes.deleteAction,
-                icon: classes.icon,
-            }} />;
+            rootClass={classes.action + ' ' + classes.deleteAction}
+            iconClass={classes.icon} />;
 
     return p.isLinkToDetails ? 
         <div className={classes.root}>

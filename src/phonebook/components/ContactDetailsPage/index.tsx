@@ -18,19 +18,15 @@ const ContactDetailsPage = ({contact, classes}: Props) =>
 
     const name = <Typography className={classes.personName}>{contact.fullName}</Typography>;
 
-    const favAction = <FavoriteAction
+    const favAction = <FavoriteAction 
         contact={contact}
-        styles={{
-            root: classes.action + ' ' + classes.favAction,
-            icon: classes.icon,
-        }} />;
+        rootClass={classes.action + ' ' + classes.favAction} 
+        iconClass={classes.icon} />;
 
     const editAction = <GoToEditAction
         contactId={contact.id}
-        styles={{
-            root: classes.action + ' ' + classes.editAction,
-            icon: classes.icon,
-        }} />;
+        rootClass={classes.action + ' ' + classes.editAction}
+        iconClass={classes.icon} />;
 
     const avatar = <Avatar src={contact.avatar} className={classes.avatar}/>
 

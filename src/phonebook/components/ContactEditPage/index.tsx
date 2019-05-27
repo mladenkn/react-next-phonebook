@@ -13,9 +13,12 @@ type Props = {contact: Contact} & WithStyles<typeof style> & WithWidth;
 
 const ContactEditPage = ({contact, classes, width}: Props) => 
 {
-    const backAction = <GoBackAction styles={{root: classes.backAction}} />;
+    const backAction = <GoBackAction rootClass={classes.backAction} />;
 
-    const deleteAction = <DeleteAction contactId={contact.id} withText={width !== 'xs'} styles={{root: classes.deleteAction}} />;
+    const deleteAction = <DeleteAction
+        contactId={contact.id}
+        withText={width !== 'xs'}
+        rootClass={classes.deleteAction} />;
 
     const avatar = <Avatar src={contact.avatar} className={classes.avatar}/>;
 
