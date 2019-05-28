@@ -27,7 +27,8 @@ export default class ContactService {
     }
 
     async search(keyword: string){
-        return this.contactList;
+        const keywordLower = keyword.toLowerCase();
+        return this.contactList.filter(c => c.fullName.includes(keywordLower));
     }
 
     async save(c: Contact){

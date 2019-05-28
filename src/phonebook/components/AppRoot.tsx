@@ -8,6 +8,10 @@ import { homePageUrl } from "../urls";
 import { BrowserRouter } from 'react-router-dom';
 import { Link } from './reusables';
 import { SaveWorkAction } from './actions';
+import { Provider } from 'unstated';
+import ContactService from '../stateMgmt/ContactService';
+import { ContactListContainer } from '../stateMgmt/containers';
+
 
 //const secondaryThemeColor = purple[500]
 
@@ -37,18 +41,23 @@ const theme = createMuiTheme({
     }
 });
  
+const contactService = new ContactService();
+const contactListContainer = new ContactListContainer(contactService);
+
 const AppContent_ = ({classes}: WithStyles<typeof style>) =>
     <BrowserRouter>
-        <AppBar position="sticky">
-            <Toolbar className={classes.toolbar}>
-                <Link className={classes.headingLink} underline="none" href={homePageUrl}>
-                    <Typography className={classes.headingLinkText}>Phonebook</Typography>
-                </Link>
-                <SaveWorkAction className={classes.saveWorkAction} />
-            </Toolbar>
-            <div className={classes.toolbarBorder}></div>
-        </AppBar>
-        <Routes/>
+        <Provider inject={[contactListContainer]}>
+            <AppBar position="sticky">
+                <Toolbar className={classes.toolbar}>
+                    <Link className={classes.headingLink} underline="none" href={homePageUrl}>
+                        <Typography className={classes.headingLinkText}>Phonebook</Typography>
+                    </Link>
+                    <SaveWorkAction className={classes.saveWorkAction} />
+                </Toolbar>
+                <div className={classes.toolbarBorder}></div>
+            </AppBar>
+            <Routes/>
+        </Provider>
     </BrowserRouter>
 
 const AppContent = withStyles(style)(AppContent_);
