@@ -1,24 +1,25 @@
 import { Contact } from "../../models";
-import React from 'react';
-import MediaQuery from "react-responsive";
+import React, { useState } from 'react';
 import style from "./style";
 import { DeleteAction, GoBackAction } from "../actions";
 import { WithStyles, withStyles, Button, Avatar } from "@material-ui/core";
-import { useTheme } from "@material-ui/styles";
-import { compose }from "lodash/fp";
-import withWidth, { WithWidth } from "@material-ui/core/withWidth";
-import ContactEditor from "./ContactEditor";
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import ContactForm from "./ContactForm";
 import { useContactPageBaseStylesXs, useContactPageBaseStylesSm } from "../ContactPageBase-style";
 
-type Props = {contact: Contact} & WithStyles<typeof style> & WithWidth;
 
-const ContactEditPage = ({contact, classes, width}: Props) => 
-{
+type Props = {contact: Contact} & WithStyles<typeof style>;
+
+const ContactEditPage = ({contact, classes}: Props) => 
+{ 
+    const onlyXs = useMediaQuery('(max-width:599px)');
+    const downSm = useMediaQuery('(max-width:959px)');
+
     const backAction = <GoBackAction rootClass={classes.backAction} />;
 
     const deleteAction = <DeleteAction
         contactId={contact.id}
-        withText={width !== 'xs'}
+        withText={!onlyXs}
         rootClass={classes.deleteAction} />;
 
     const avatar = <Avatar src={contact.avatar} className={classes.avatar}/>;
@@ -37,8 +38,11 @@ const ContactEditPage = ({contact, classes, width}: Props) =>
     const xsBaseClasses = useContactPageBaseStylesXs();
     const smBaseClasses = useContactPageBaseStylesSm();
 
-    return <div>
-        <MediaQuery maxWidth={959}>
+    const [formInput, setFormInput] = useState(contact);
+    console.log(formInput);
+
+    if(downSm){
+        return (
             <div className={classes.shallowRoot}>
                 <div className={xsBaseClasses.root + ' '+ classes.root}>
                     <div className={xsBaseClasses.toolbar}>
@@ -49,30 +53,28 @@ const ContactEditPage = ({contact, classes, width}: Props) =>
                             {avatar}
                         </div>
                         <div className={classes.formAndButtons}>
-                            <ContactEditor contact={contact} />
+                            <ContactForm contact={contact} onChange={setFormInput} />
                             {buttons}
                         </div>
                     </div>
                 </div>
+            </div>);
+    }
+    return (  
+        <div className={smBaseClasses.root}>
+            <div className={smBaseClasses.smLeft}>
+                {avatar}
             </div>
-        </MediaQuery>
-        <MediaQuery minWidth={960}>   
-            <div className={smBaseClasses.root}>
-                <div className={smBaseClasses.smLeft}>
-                    {avatar}
+            <div className={smBaseClasses.smRight}>
+                <div className={smBaseClasses.heading}>
+                    {backAction}{deleteAction}
                 </div>
-                <div className={smBaseClasses.smRight}>
-                    <div className={smBaseClasses.heading}>
-                        {backAction}{deleteAction}
-                    </div>
-                    <div className={classes.formAndButtons}>
-                        <ContactEditor contact={contact} />
-                        {buttons}                
-                    </div>  
-                </div>          
-            </div>
-        </MediaQuery>
-    </div>;
+                <div className={classes.formAndButtons}>
+                    <ContactForm contact={contact} onChange={setFormInput} />
+                    {buttons}                
+                </div>  
+            </div>          
+        </div>);
 }
 
-export default compose(withStyles(style), withWidth())(ContactEditPage);
+export default withStyles(style)(ContactEditPage);
