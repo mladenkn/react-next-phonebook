@@ -17,3 +17,5 @@ export const saveContact = createAction(
 );
 
 export const goBack = createAction("GO_BACK", a => () => a({}));
+
+export const saveWork = createAction("SAVE_WORK", a => () => a({}));

@@ -1,9 +1,13 @@
 import React from 'react';
 import style from './AppRoot-style';
-import { withStyles, WithStyles, AppBar, Toolbar } from "@material-ui/core";
+import { withStyles, WithStyles, AppBar, Toolbar, Typography } from "@material-ui/core";
 import { purple } from "@material-ui/core/colors";
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
-import Router from "./Router";
+import Routes from "./Router";
+import { homePageUrl } from "../urls";
+import { BrowserRouter } from 'react-router-dom';
+import { Link } from './reusables';
+import { SaveWorkAction } from './actions';
 
 //const secondaryThemeColor = purple[500]
 
@@ -30,25 +34,22 @@ const theme = createMuiTheme({
                 textTransform: 'none',
             },
         },
-        MuiInput: {
-            root: {                
-                padding: 10,
-                border: '1px solid #E3E3E3',
-            },
-        },
     }
 });
-
+ 
 const AppContent_ = ({classes}: WithStyles<typeof style>) =>
-    <div>
+    <BrowserRouter>
         <AppBar position="sticky">
             <Toolbar className={classes.toolbar}>
-                <h3 className={classes.headingText}>Phonebook</h3>
+                <Link className={classes.headingLink} underline={'none'} href={homePageUrl}>
+                    <Typography className={classes.headingLinkText}>Phonebook</Typography>
+                </Link>
+                <SaveWorkAction className={classes.saveWorkAction} />
             </Toolbar>
             <div className={classes.toolbarBorder}></div>
         </AppBar>
-        <Router/>
-    </div>
+        <Routes/>
+    </BrowserRouter>
 
 const AppContent = withStyles(style)(AppContent_);
 

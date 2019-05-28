@@ -33,7 +33,7 @@ const ContactDetailsPage = ({contact, classes}: Props) =>
   
     return <div>
         <MediaQuery maxWidth={599}>
-            <div className={xsBaseClasses.root}>
+            <div className={xsBaseClasses.root + ' ' + classes.root}>
                 <div className={xsBaseClasses.toolbar}>
                     {backAction}{favAction}{editAction}
                 </div>
@@ -48,7 +48,7 @@ const ContactDetailsPage = ({contact, classes}: Props) =>
             </div>
         </MediaQuery>
         <MediaQuery minWidth={600}>   
-            <div className={smBaseClasses.root}>
+            <div className={smBaseClasses.root + ' ' + classes.root}>
                 <div className={smBaseClasses.smLeft}>
                     {avatar}
                 </div>

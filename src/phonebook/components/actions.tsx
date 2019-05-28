@@ -1,10 +1,10 @@
-import { withStyles, WithStyles, Icon, IconButton, Typography } from "@material-ui/core";
+import { withStyles, WithStyles, Icon, IconButton, Typography, Tooltip  } from "@material-ui/core";
 import { goToEditActionStyle, favoriteActionStyle, deleteActionStyle, goBackStyle } from "./actions-style";
 import { WithClassName, Link } from "./reusables";
 import { contactEditUrl } from "../urls";
 import React, { useState, useContext } from 'react';
 import { DispatchContext } from "../stateMgmt/DispatchContext";
-import { favoriteContact, goBack, deleteContact } from "../actions";
+import { favoriteContact, goBack, deleteContact, saveWork } from "../actions";
 import { Contact } from "../models";
 import DeleteModal from "./DeleteModal";
 
@@ -75,3 +75,13 @@ export const GoBackAction = withStyles(goBackStyle)
             <Icon color="secondary" className={iconClass}>arrow_back</Icon>
         </IconButton>);
     }); 
+
+export const SaveWorkAction = ({className}: WithClassName) => 
+{
+    const dispatch = useContext(DispatchContext);
+    return <Tooltip title="Save work">
+        <IconButton onClick={() => dispatch(saveWork())} className={className}>
+            <Icon>save</Icon>
+        </IconButton>
+    </Tooltip>;
+}
