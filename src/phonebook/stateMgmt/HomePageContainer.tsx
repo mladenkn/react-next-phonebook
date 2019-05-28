@@ -1,6 +1,6 @@
 import HomePage from "../components/HomePage";
 import { getType } from "typesafe-actions";
-import { favoriteContact, deleteContact } from "../actions";
+import { favoriteContact, deleteContact, saveWork } from "../actions";
 import React, { useState } from "react";
 import { DispatchContext } from "./DispatchContext";
 import ContactService from "./ContactService";
@@ -15,7 +15,11 @@ export default ({contactService}: WithContactService) =>
 
     const actionHandler = buildActionHandler([
         handle(favoriteContact, (contactId) => {
-            return console.log('handling favoriteContact');
+            console.log('handling favoriteContact');
+        }),
+        handle(saveWork, () => {
+            console.log("handling saveWork");
+            contactService.persist().then(() => console.log("podaci spremljeni"));            
         }),
         handle(deleteContact, (contactId) => {
             contactService
@@ -26,7 +30,7 @@ export default ({contactService}: WithContactService) =>
                 });
         }),        
     ]);
- 
+
     const query = (keyword: string) => {        
         contactService.search(keyword).then(setContactList);
         setQueried(true);

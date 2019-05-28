@@ -41,7 +41,7 @@ const AppContent_ = ({classes}: WithStyles<typeof style>) =>
     <BrowserRouter>
         <AppBar position="sticky">
             <Toolbar className={classes.toolbar}>
-                <Link className={classes.headingLink} underline={'none'} href={homePageUrl}>
+                <Link className={classes.headingLink} underline="none" href={homePageUrl}>
                     <Typography className={classes.headingLinkText}>Phonebook</Typography>
                 </Link>
                 <SaveWorkAction className={classes.saveWorkAction} />

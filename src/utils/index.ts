@@ -29,3 +29,5 @@ export const handle = <TActionPayload>(
 }
 
 export const buildActionHandler = (handlers: ((a: AnyAction) => void)[]) => (a: AnyAction) => handlers.forEach(h => h(a));
+
+export type RequestStatus = 'none' | 'pending' | 'completed' | 'failed';

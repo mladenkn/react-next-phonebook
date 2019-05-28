@@ -8,6 +8,20 @@ export default class ContactService {
 
     private contactList = generateArray(generateContact, 5, 20);
 
+    constructor(){
+        const contactListJsonOrNothing = localStorage.getItem('contacts');
+
+        if(contactListJsonOrNothing === null)
+            this.contactList = generateArray(generateContact, 5, 20);
+        else
+            this.contactList = JSON.parse(contactListJsonOrNothing) as Contact[];
+    }
+
+    async persist(){
+        const contactListJson = JSON.stringify(this.contactList);
+        localStorage.setItem('contacts', contactListJson);
+    }
+
     async getById(id: number){
         return this.contactList.find(c => c.id === id)!;
     }

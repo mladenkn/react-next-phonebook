@@ -57,7 +57,7 @@ export const DeleteAction = withStyles(deleteActionStyle)
                     {(withText || false) && <Typography className={classes.text}>Delete</Typography>}
                     <Icon color="secondary" className={iconClass}>delete</Icon>
                 </IconButton>
-                <DeleteModal isOpen={modalOpen} text="Are you sure you want to delete this modal"
+                <DeleteModal isOpen={modalOpen} text="Are you sure you want to delete this contact?"
                     onCancel={() => setModalOpen(false)}
                     onConfirm={() => dispatch(deleteContact(contactId))} />
             </div>
@@ -65,8 +65,7 @@ export const DeleteAction = withStyles(deleteActionStyle)
     });
 
     
-type GoBackActionProps = { rootClass?: string, iconClass?: string }
-    & WithStyles<typeof goBackStyle>;
+type GoBackActionProps = { rootClass?: string, iconClass?: string } & WithStyles<typeof goBackStyle>;
     
 export const GoBackAction = withStyles(goBackStyle)
     (({classes, rootClass, iconClass}: GoBackActionProps) => {
