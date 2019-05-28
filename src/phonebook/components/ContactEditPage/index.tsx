@@ -4,10 +4,11 @@ import MediaQuery from "react-responsive";
 import style from "./style";
 import { DeleteAction, GoBackAction } from "../actions";
 import { WithStyles, withStyles, Button, Avatar } from "@material-ui/core";
+import { useTheme } from "@material-ui/styles";
 import { compose }from "lodash/fp";
 import withWidth, { WithWidth } from "@material-ui/core/withWidth";
 import ContactEditor from "./ContactEditor";
-import { useContactPageBaseStylesXs, useContactPageBaseSm } from "../ContactPageBase-style";
+import { useContactPageBaseStylesXs, useContactPageBaseStylesSm } from "../ContactPageBase-style";
 
 type Props = {contact: Contact} & WithStyles<typeof style> & WithWidth;
 
@@ -34,7 +35,7 @@ const ContactEditPage = ({contact, classes, width}: Props) =>
     )
 
     const xsBaseClasses = useContactPageBaseStylesXs();
-    const smBaseClasses = useContactPageBaseSm();
+    const smBaseClasses = useContactPageBaseStylesSm();
 
     return <div>
         <MediaQuery maxWidth={959}>

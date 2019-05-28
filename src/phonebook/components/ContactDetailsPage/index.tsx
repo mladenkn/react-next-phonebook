@@ -5,8 +5,8 @@ import MediaQuery from "react-responsive";
 import style from "./style";
 import { FavoriteAction, GoToEditAction, GoBackAction } from "../actions";
 import { WithStyles, withStyles, IconButton, Icon, Typography, Avatar, } from "@material-ui/core";
-import { makeStyles, useTheme } from "@material-ui/styles";
-import { useContactPageBaseStylesXs, useContactPageBaseSm } from "../ContactPageBase-style";
+import { useTheme } from "@material-ui/styles";
+import { useContactPageBaseStylesXs, useContactPageBaseStylesSm } from "../ContactPageBase-style";
  
 type Props = {contact: Contact} & WithStyles<typeof style>;
 
@@ -29,7 +29,7 @@ const ContactDetailsPage = ({contact, classes}: Props) =>
     const avatar = <Avatar src={contact.avatar} className={classes.avatar}/>
 
     const xsBaseClasses = useContactPageBaseStylesXs();
-    const smBaseClasses = useContactPageBaseSm();
+    const smBaseClasses = useContactPageBaseStylesSm();
   
     return <div>
         <MediaQuery maxWidth={599}>

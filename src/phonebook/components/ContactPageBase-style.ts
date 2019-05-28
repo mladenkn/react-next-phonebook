@@ -8,11 +8,11 @@ const contactPageBaseXs = ({palette, breakpoints}: Theme) => createStyles({
         padding: '10px 8px',
         display: 'flex',
         alignItems: 'center',
-        borderBottom: `1px solid #E3E3E3`,    
+        borderBottom: `1px solid ${palette.secondary.main}`,    
     },
     heading: {
         display: 'flex',
-        borderBottom: `1px solid #2DA1AD`,
+        borderBottom: `1px solid ${palette.primary.main}`,
         padding: '10px 0px',
         alignItems: 'center',
     },
@@ -31,7 +31,7 @@ const contactPageBaseSm = ({palette, breakpoints}: Theme) => createStyles({
     },
     heading: {
         display: 'flex',
-        borderBottom: `1px solid #2DA1AD`,  
+        borderBottom: `1px solid ${palette.primary.main}`,  
         paddingBottom: 10, 
     },
     smLeft: {
@@ -45,4 +45,4 @@ const contactPageBaseSm = ({palette, breakpoints}: Theme) => createStyles({
     },
 });
 
-export const useContactPageBaseSm = makeStyles(contactPageBaseSm);
+export const useContactPageBaseStylesSm = makeStyles(contactPageBaseSm);
