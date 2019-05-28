@@ -1,6 +1,6 @@
-import { withStyles, WithStyles, Link, Icon, IconButton, Typography } from "@material-ui/core";
+import { withStyles, WithStyles, Icon, IconButton, Typography } from "@material-ui/core";
 import { goToEditActionStyle, favoriteActionStyle, deleteActionStyle, goBackStyle } from "./actions-style";
-import { WithClassName, createRefRouterLink } from "./reusables";
+import { WithClassName, Link } from "./reusables";
 import { contactEditUrl } from "../urls";
 import React, { useState, useContext } from 'react';
 import { DispatchContext } from "../stateMgmt/DispatchContext";
@@ -11,19 +11,18 @@ import DeleteModal from "./DeleteModal";
 type IconLinkProps = {name: string, url: string} & WithClassName;
 
 export const IconLink = ({name, url, className}: IconLinkProps) => (
-    <Link component={createRefRouterLink(url) as any} className={className}>
+    <Link href={url} className={className}>
         <Icon color="secondary">{name}</Icon>
     </Link>
 );
 
-
+ 
 type GoToEditActionProps = { contactId: number, rootClass?: string, iconClass?: string } 
     & WithStyles<typeof goToEditActionStyle>;
 
 export const GoToEditAction = withStyles(goToEditActionStyle)
     (({classes, contactId, rootClass, iconClass}: GoToEditActionProps) => (
-        <Link component={createRefRouterLink(contactEditUrl(contactId)) as any}
-            className={classes.root + ' ' + rootClass}>
+        <Link href={contactEditUrl(contactId)} className={classes.root + ' ' + rootClass}>
             <Icon color="secondary" className={iconClass}>edit</Icon>
         </Link>
     ));

@@ -1,11 +1,9 @@
 import style from "./ContactListItem-style";
 import { Contact } from "../../models";
 import React from 'react';
-import { Card, Avatar, Link, Typography, withStyles, WithStyles }
-    from "@material-ui/core";
-import { Box } from "../reusables";
+import { Card, Avatar, Typography, withStyles, WithStyles } from "@material-ui/core";
+import { Box, Link } from "../reusables";
 import { contactDetailsUrl } from "../../urls";
-import { createRefRouterLink } from "../reusables";
 import { GoToEditAction, FavoriteAction, DeleteAction } from "../actions";
 
 type Props = {
@@ -70,9 +68,7 @@ const ItemDummy = (p: ItemDummyProps) => {
 
     return p.isLinkToDetails ? 
         <div className={classes.root}>
-            <Link component={createRefRouterLink(contactDetailsUrl(contact.id)) as any} className={classes.rootLink}>
-                {avatarAndName}
-            </Link>
+            <Link href={contactDetailsUrl(contact.id)} className={classes.rootLink}>{avatarAndName}</Link>
             {favoriteAction}{editAction}{deleteAction}
         </div> :
         <div className={classes.root} onClick={p.onSelect}>
