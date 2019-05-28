@@ -19,9 +19,9 @@ import { FormikErrors, Formik, Field, ErrorMessage, FieldArray } from 'formik';
     the form component itself, because it makes it more reusable.
 */
 
-type Props = {contact: Contact, onChange: (c: Contact) => void} & WithStyles<typeof style>; 
+type Props = {initialInput: Contact, onChange: (c: Contact) => void} & WithStyles<typeof style>; 
 
-const ContactForm = ({classes, contact, onChange}: Props) => 
+const ContactForm = ({classes, initialInput, onChange}: Props) => 
 {
   const validate = (values: Contact) => {
     onChange(values);
@@ -35,7 +35,7 @@ const ContactForm = ({classes, contact, onChange}: Props) =>
   }
   
   return (
-    <Formik initialValues={contact} validate={validate} onSubmit={() => {}}>
+    <Formik initialValues={initialInput} validate={validate} onSubmit={() => {}}>
       {({values}) => (
         <div>
           <label>

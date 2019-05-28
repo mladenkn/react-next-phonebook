@@ -1,6 +1,6 @@
 import HomePage from "../components/HomePage";
 import { getType } from "typesafe-actions";
-import { AnyAction, favoriteContact, deleteContact } from "../actions";
+import { favoriteContact, deleteContact } from "../actions";
 import React, { useState } from "react";
 import { DispatchContext } from "./DispatchContext";
 import ContactService from "./ContactService";
@@ -14,10 +14,10 @@ export default ({contactService}: WithContactService) =>
     const [queried, setQueried] = useState(false);
 
     const actionHandler = buildActionHandler([
-        handle(favoriteContact, ({contactId}) => {
+        handle(favoriteContact, (contactId) => {
             return console.log('handling favoriteContact');
         }),
-        handle(deleteContact, ({contactId}) => {
+        handle(deleteContact, (contactId) => {
             contactService
                 .delete(contactId)
                 .then(() => {

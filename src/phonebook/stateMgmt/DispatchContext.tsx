@@ -1,6 +1,6 @@
 import React from "react";
-import { AnyAction } from "../actions";
 import { Subtract } from "utility-types";
+import { AnyAction } from "../../utils";
 
 export type Dispatch = (a: AnyAction) => void;
 

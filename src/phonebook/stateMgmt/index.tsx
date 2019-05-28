@@ -4,10 +4,11 @@ import ContactEditPage from "../components/ContactEditPage";
 import ContactDetailsPage from '../components/ContactDetailsPage';
 import { Contact } from "../models";
 import { DispatchContext } from "./DispatchContext";
-import { AnyAction, saveContact, goBack, deleteContact } from "../actions";
+import { saveContact, goBack, deleteContact } from "../actions";
 import { getType } from "typesafe-actions";
 import { compose } from "lodash/fp";
 import ContactService from "./ContactService";
+import { buildActionHandler, handle } from "../../utils";
 
 export interface WithContactService { contactService: ContactService };
 
@@ -27,12 +28,9 @@ const emptyContact: Contact = {
 export const ContactCreatePageContainer = 
 ({history, contactService}: RouteComponentProps<ContactIdRouteParams> & WithContactService) => {
 
-    const actionHandler = (a: AnyAction) => {
-        switch(a.type){
-            case getType(goBack):
-                history.goBack();
-        }
-    }
+    const actionHandler = buildActionHandler([
+        handle(goBack, history.goBack),
+    ]);
 
     return (
         <DispatchContext.Provider value={actionHandler}>
@@ -47,22 +45,19 @@ export const ContactEditPageContainer =
     const contactId = parseInt(match.params.contactId!);
 
     const [contact, setContact] = useState<Contact | undefined>(undefined);
-    
-    const actionHandler = (a: AnyAction) => {
-        switch(a.type){
-            case getType(saveContact):
-                console.log('handling saveContact');
-                break;
-            case getType(goBack):
-                history.goBack();
-                break;
-            case getType(deleteContact):
-                contactService
-                    .delete((a as any).payload.contactId)
-                    .then(() => history.goBack());
-                break;
-        }
-    }
+
+    const actionHandler = buildActionHandler([
+        handle(goBack, history.goBack),
+        handle(saveContact, contact => {
+            return console.log('handling saveContact', contact);
+        }),
+        handle(deleteContact, (contactId) => {
+            contactService
+                .delete(contactId)
+                .then(() => history.goBack());
+        }),
+    ]);
+
     contactService.getById(contactId).then(setContact);
     
     return (
@@ -77,13 +72,9 @@ export const ContactDetailsPageContainer =
 
     const contactId = parseInt(match.params.contactId!);
 
-    const actionHandler = (a: AnyAction) => {
-        switch(a.type){
-            case getType(goBack):
-                history.goBack();
-                break;
-        }
-    }
+    const actionHandler = buildActionHandler([
+        handle(goBack, history.goBack),
+    ]);
 
     const [contact, setContact] = useState<Contact | undefined>(undefined);
     contactService.getById(contactId).then(setContact);

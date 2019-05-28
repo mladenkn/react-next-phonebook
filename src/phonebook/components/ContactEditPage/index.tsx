@@ -1,11 +1,13 @@
 import { Contact } from "../../models";
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import style from "./style";
 import { DeleteAction, GoBackAction } from "../actions";
 import { WithStyles, withStyles, Button, Avatar } from "@material-ui/core";
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import ContactForm from "./ContactForm";
 import { useContactPageBaseStylesXs, useContactPageBaseStylesSm } from "../ContactPageBase-style";
+import { DispatchContext } from "../../stateMgmt/DispatchContext";
+import { saveContact, goBack } from "../../actions";
 
 
 type Props = {contact: Contact} & WithStyles<typeof style>;
@@ -24,12 +26,24 @@ const ContactEditPage = ({contact, classes}: Props) =>
 
     const avatar = <Avatar src={contact.avatar} className={classes.avatar}/>;
 
+    const dispatch = useContext(DispatchContext);
+    const [formInput, setFormInput] = useState(contact);
+
     const buttons = (
         <div className={classes.actions}>
-            <Button variant="contained" color="secondary" onClick={() => {}} className={classes.button}>
+            <Button 
+                variant="contained"
+                color="secondary"
+                onClick={() => dispatch(goBack())}
+                className={classes.button}>
                 Cancel
             </Button>
-            <Button variant="contained" color="primary" onClick={() => {}} className={classes.button} autoFocus>
+            <Button 
+                variant="contained" 
+                color="primary" 
+                onClick={() => dispatch(saveContact(formInput))} 
+                className={classes.button} 
+                autoFocus>
                 Save
             </Button>              
         </div>
@@ -37,9 +51,6 @@ const ContactEditPage = ({contact, classes}: Props) =>
 
     const xsBaseClasses = useContactPageBaseStylesXs();
     const smBaseClasses = useContactPageBaseStylesSm();
-
-    const [formInput, setFormInput] = useState(contact);
-    console.log(formInput);
 
     if(downSm){
         return (
@@ -53,7 +64,7 @@ const ContactEditPage = ({contact, classes}: Props) =>
                             {avatar}
                         </div>
                         <div className={classes.formAndButtons}>
-                            <ContactForm contact={contact} onChange={setFormInput} />
+                            <ContactForm initialInput={formInput} onChange={setFormInput} />
                             {buttons}
                         </div>
                     </div>
@@ -70,7 +81,7 @@ const ContactEditPage = ({contact, classes}: Props) =>
                     {backAction}{deleteAction}
                 </div>
                 <div className={classes.formAndButtons}>
-                    <ContactForm contact={contact} onChange={setFormInput} />
+                    <ContactForm initialInput={formInput} onChange={setFormInput} />
                     {buttons}                
                 </div>  
             </div>          

@@ -1,5 +1,4 @@
 import faker from 'faker';
-import { AnyAction } from '../phonebook/actions';
 import { isActionOf, ActionCreator } from 'typesafe-actions';
 
 export const generateArray = <T> (getNext: () => T, minCount: number, maxCount: number) => {
@@ -19,7 +18,12 @@ interface Action<TPayload = {}> {
     payload: TPayload
 }
 
-export const handle = <TActionPayload> (actionCreator: (a: any) => Action<TActionPayload>, handler: (a: TActionPayload) => void) => (a: AnyAction) => {
+export interface AnyAction {
+    type: string
+}
+
+export const handle = <TActionPayload>(
+    actionCreator: (a: any) => Action<TActionPayload>, handler: (a: TActionPayload) => void) => (a: AnyAction) => {
     if(isActionOf(actionCreator, a))
         handler(a.payload);
 }
