@@ -1,12 +1,6 @@
 import { createStyles, Theme } from "@material-ui/core";
 
 export default ({palette, breakpoints}: Theme) => createStyles({
-
-    heading: {
-        display: 'flex',
-        borderBottom: `1px solid ${palette.primary.main}`,
-        paddingBottom: 15,
-    },
     action: {
 
     },
@@ -40,17 +34,7 @@ export default ({palette, breakpoints}: Theme) => createStyles({
             width: '100%',
             maxWidth: 500,
         },
-        toolbar: {
-            padding: '10px 0px',
-            display: 'flex',
-            alignItems: 'center',
-            borderBottom: `1px solid ${palette.secondary.light}`,
-        },
-        body: {
-            padding: '8px 15px',
-        },
         heading: {
-            paddingTop: 10,
             justifyContent: 'center',
         },
         backAction: {

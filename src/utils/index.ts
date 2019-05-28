@@ -24,6 +24,4 @@ export const handle = <TActionPayload> (actionCreator: (a: any) => Action<TActio
         handler(a.payload);
 }
 
-export const buildActionHandler = (handlers: ((a: AnyAction) => void)[]) => (a: AnyAction) => {
-    handlers.forEach(h => h(a));
-}
+export const buildActionHandler = (handlers: ((a: AnyAction) => void)[]) => (a: AnyAction) => handlers.forEach(h => h(a));

@@ -7,7 +7,7 @@ import { WithStyles, withStyles, Button, Avatar } from "@material-ui/core";
 import { compose }from "lodash/fp";
 import withWidth, { WithWidth } from "@material-ui/core/withWidth";
 import ContactEditor from "./ContactEditor";
-
+import { useContactPageBaseStylesXs } from "../ContactPageBase-style";
 
 type Props = {contact: Contact} & WithStyles<typeof style> & WithWidth;
 
@@ -33,15 +33,17 @@ const ContactEditPage = ({contact, classes, width}: Props) =>
         </div>
     )
 
+    const baseClasses = useContactPageBaseStylesXs();
+
     return <div>
         <MediaQuery maxWidth={959}>
             <div className={classes.shallowRoot}>
                 <div className={classes.root}>
-                    <div className={classes.toolbar}>
+                    <div className={baseClasses.toolbar}>
                         {backAction}{deleteAction}
                     </div>
-                    <div className={classes.body}>                    
-                        <div className={classes.heading}>
+                    <div className={baseClasses.body}>                    
+                        <div className={baseClasses.heading + ' ' + classes.heading}>
                             {avatar}
                         </div>
                         <div className={classes.formAndButtons}>

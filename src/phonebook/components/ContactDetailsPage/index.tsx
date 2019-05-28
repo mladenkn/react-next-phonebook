@@ -4,13 +4,11 @@ import ContactDetailsFields from "./ContactDetailsFields";
 import MediaQuery from "react-responsive";
 import style from "./style";
 import { FavoriteAction, GoToEditAction, GoBackAction } from "../actions";
-import { WithStyles, withStyles, IconButton, Icon, Typography, Avatar } from "@material-ui/core";
-import { Divider } from "../reusables";
-import { compose }from "lodash/fp";
-import withWidth, { WithWidth } from "@material-ui/core/withWidth";
-
-
-type Props = {contact: Contact} & WithStyles<typeof style> & WithWidth;
+import { WithStyles, withStyles, IconButton, Icon, Typography, Avatar, } from "@material-ui/core";
+import { makeStyles, useTheme } from "@material-ui/styles";
+import { useContactPageBaseStylesXs } from "../ContactPageBase-style"; 
+ 
+type Props = {contact: Contact} & WithStyles<typeof style>;
 
 const ContactDetailsPage = ({contact, classes}: Props) => 
 {
@@ -30,14 +28,16 @@ const ContactDetailsPage = ({contact, classes}: Props) =>
 
     const avatar = <Avatar src={contact.avatar} className={classes.avatar}/>
 
+    const baseClasses = useContactPageBaseStylesXs();
+  
     return <div>
         <MediaQuery maxWidth={599}>
-            <div className={classes.root}>
-                <div className={classes.toolbar}>
+            <div className={baseClasses.root}>
+                <div className={baseClasses.toolbar}>
                     {backAction}{favAction}{editAction}
                 </div>
-                <div className={classes.body}>                    
-                    <div className={classes.heading}>
+                <div className={baseClasses.body}>                    
+                    <div className={baseClasses.heading}>
                         {avatar}{name}
                     </div>
                     <div className={classes.detailsContainer}>                    
@@ -64,4 +64,4 @@ const ContactDetailsPage = ({contact, classes}: Props) =>
     </div>;
 }
  
-export default compose(withStyles(style), withWidth())(ContactDetailsPage);
+export default withStyles(style)(ContactDetailsPage);

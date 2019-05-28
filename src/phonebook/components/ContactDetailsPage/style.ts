@@ -1,11 +1,6 @@
 import { createStyles, Theme } from "@material-ui/core";
 
 export default ({palette, breakpoints}: Theme) => createStyles({
-
-    heading: {
-        display: 'flex',
-        borderBottom: `1px solid ${palette.primary.main}`,
-    },
     editAction: {
         display: 'inline-flex',
         alignItems: 'center',
@@ -18,21 +13,6 @@ export default ({palette, breakpoints}: Theme) => createStyles({
     },
 
     [breakpoints.only('xs')]: {
-        root: {
-        },
-        toolbar: {
-            padding: '10px 8px',
-            display: 'flex',
-            alignItems: 'center',
-            borderBottom: `1px solid ${palette.secondary.light}`,
-        },
-        body: {
-            padding: '8px 15px',
-        },
-        heading: {
-            padding: '10px 0px',
-            alignItems: 'center',
-        },
         personName: {
             fontSize: 22,
         },
@@ -43,7 +23,7 @@ export default ({palette, breakpoints}: Theme) => createStyles({
             height: 70,
         }, 
         favAction: {
-            marginLeft: '75%',
+            marginLeft: '72%',
         },
         editAction: {
             marginLeft: '3%',
