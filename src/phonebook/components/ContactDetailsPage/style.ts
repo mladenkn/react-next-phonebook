@@ -34,23 +34,9 @@ export default ({palette, breakpoints}: Theme) => createStyles({
     },
 
     [breakpoints.up('sm')]: {
-        root: {
-            display: 'flex',
-            paddingTop: 50,
-            paddingLeft: 50,
-        },
         avatar: {
             width: 180,
             height: 180,
-        },
-        smLeft: {
-            display: 'inline-flex',
-            flexDirection: 'column',
-        },
-        smRight: {
-            marginTop: 50,
-            display: 'inline-block',
-            marginLeft: 20,
         },
         personName: {
             width: 220,

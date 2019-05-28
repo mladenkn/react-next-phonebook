@@ -6,7 +6,7 @@ import style from "./style";
 import { FavoriteAction, GoToEditAction, GoBackAction } from "../actions";
 import { WithStyles, withStyles, IconButton, Icon, Typography, Avatar, } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/styles";
-import { useContactPageBaseStylesXs } from "../ContactPageBase-style"; 
+import { useContactPageBaseStylesXs, useContactPageBaseSm } from "../ContactPageBase-style";
  
 type Props = {contact: Contact} & WithStyles<typeof style>;
 
@@ -28,16 +28,17 @@ const ContactDetailsPage = ({contact, classes}: Props) =>
 
     const avatar = <Avatar src={contact.avatar} className={classes.avatar}/>
 
-    const baseClasses = useContactPageBaseStylesXs();
+    const xsBaseClasses = useContactPageBaseStylesXs();
+    const smBaseClasses = useContactPageBaseSm();
   
     return <div>
         <MediaQuery maxWidth={599}>
-            <div className={baseClasses.root}>
-                <div className={baseClasses.toolbar}>
+            <div className={xsBaseClasses.root}>
+                <div className={xsBaseClasses.toolbar}>
                     {backAction}{favAction}{editAction}
                 </div>
-                <div className={baseClasses.body}>                    
-                    <div className={baseClasses.heading}>
+                <div className={xsBaseClasses.body}>                    
+                    <div className={xsBaseClasses.heading}>
                         {avatar}{name}
                     </div>
                     <div className={classes.detailsContainer}>                    
@@ -47,12 +48,12 @@ const ContactDetailsPage = ({contact, classes}: Props) =>
             </div>
         </MediaQuery>
         <MediaQuery minWidth={600}>   
-            <div className={classes.root}>
-                <div className={classes.smLeft}>
+            <div className={smBaseClasses.root}>
+                <div className={smBaseClasses.smLeft}>
                     {avatar}
                 </div>
-                <div className={classes.smRight}>
-                    <div className={classes.heading}>
+                <div className={smBaseClasses.smRight}>
+                    <div className={smBaseClasses.heading}>
                         {backAction}{name}{favAction}{editAction}
                     </div>
                     <div className={classes.detailsContainer}>                    

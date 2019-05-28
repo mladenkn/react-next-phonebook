@@ -7,7 +7,7 @@ import { WithStyles, withStyles, Button, Avatar } from "@material-ui/core";
 import { compose }from "lodash/fp";
 import withWidth, { WithWidth } from "@material-ui/core/withWidth";
 import ContactEditor from "./ContactEditor";
-import { useContactPageBaseStylesXs } from "../ContactPageBase-style";
+import { useContactPageBaseStylesXs, useContactPageBaseSm } from "../ContactPageBase-style";
 
 type Props = {contact: Contact} & WithStyles<typeof style> & WithWidth;
 
@@ -33,17 +33,18 @@ const ContactEditPage = ({contact, classes, width}: Props) =>
         </div>
     )
 
-    const baseClasses = useContactPageBaseStylesXs();
+    const xsBaseClasses = useContactPageBaseStylesXs();
+    const smBaseClasses = useContactPageBaseSm();
 
     return <div>
         <MediaQuery maxWidth={959}>
             <div className={classes.shallowRoot}>
-                <div className={classes.root}>
-                    <div className={baseClasses.toolbar}>
+                <div className={xsBaseClasses.root + ' '+ classes.root}>
+                    <div className={xsBaseClasses.toolbar}>
                         {backAction}{deleteAction}
                     </div>
-                    <div className={baseClasses.body}>                    
-                        <div className={baseClasses.heading + ' ' + classes.heading}>
+                    <div className={xsBaseClasses.body}>                    
+                        <div className={xsBaseClasses.heading + ' ' + classes.heading}>
                             {avatar}
                         </div>
                         <div className={classes.formAndButtons}>
@@ -55,12 +56,12 @@ const ContactEditPage = ({contact, classes, width}: Props) =>
             </div>
         </MediaQuery>
         <MediaQuery minWidth={960}>   
-            <div className={classes.root}>
-                <div className={classes.smLeft}>
+            <div className={smBaseClasses.root}>
+                <div className={smBaseClasses.smLeft}>
                     {avatar}
                 </div>
-                <div className={classes.smRight}>
-                    <div className={classes.heading}>
+                <div className={smBaseClasses.smRight}>
+                    <div className={smBaseClasses.heading}>
                         {backAction}{deleteAction}
                     </div>
                     <div className={classes.formAndButtons}>

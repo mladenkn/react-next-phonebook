@@ -49,20 +49,6 @@ export default ({palette, breakpoints}: Theme) => createStyles({
     },
 
     [breakpoints.up('md')]: {
-        root: {
-            display: 'flex',
-            paddingTop: 50,
-            paddingLeft: 50,
-        },
-        smLeft: {
-            display: 'inline-flex',
-            flexDirection: 'column',
-        },
-        smRight: {
-            marginTop: 50,
-            display: 'inline-block',
-            marginLeft: 20,
-        },
         deleteAction: {
             marginLeft: 430,
         },
