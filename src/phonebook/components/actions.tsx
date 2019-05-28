@@ -2,11 +2,10 @@ import { withStyles, WithStyles, Link, Icon, IconButton, Typography } from "@mat
 import { goToEditActionStyle, favoriteActionStyle, deleteActionStyle, goBackStyle } from "./actions-style";
 import { WithClassName, createRefRouterLink } from "./reusables";
 import { contactEditUrl } from "../urls";
-import React, { useState} from 'react';
-import { WithDispatch, withDispatch } from "../stateMgmt/DispatchContext";
+import React, { useState, useContext } from 'react';
+import { DispatchContext } from "../stateMgmt/DispatchContext";
 import { favoriteContact, goBack, deleteContact } from "../actions";
 import { Contact } from "../models";
-import { compose } from "lodash/fp";
 import DeleteModal from "./DeleteModal";
 
 type IconLinkProps = {name: string, url: string} & WithClassName;
@@ -31,24 +30,28 @@ export const GoToEditAction = withStyles(goToEditActionStyle)
 
 
 type FavoriteActionProps = { contact: Contact, rootClass?: string, iconClass?: string }
-    & WithStyles<typeof favoriteActionStyle> & WithDispatch;
+    & WithStyles<typeof favoriteActionStyle>;
 
-export const FavoriteAction = compose(withStyles(favoriteActionStyle), withDispatch)
-    (({contact, classes, rootClass, iconClass, dispatch}: FavoriteActionProps) => (
-        <IconButton className={classes.root + ' ' + rootClass}
-            onClick={() => dispatch(favoriteContact(contact.id))} disableRipple>
+export const FavoriteAction = withStyles(favoriteActionStyle)
+    (({contact, classes, rootClass, iconClass}: FavoriteActionProps) => {
+        const dispatch = useContext(DispatchContext);
+        return (
+            <IconButton className={classes.root + ' ' + rootClass}
+                onClick={() => dispatch(favoriteContact(contact.id))} disableRipple>
             <Icon color="secondary" className={iconClass}>
                 {contact.isFavorite ? 'favorite' : 'favorite_outlined'}
             </Icon>
-        </IconButton>
-    ));
+        </IconButton>);
+    });
 
 
-type DeleteActionProps = { contactId: number, withText?: boolean, rootClass?: string, iconClass?: string } & WithStyles<typeof deleteActionStyle> & WithDispatch;
+type DeleteActionProps = { contactId: number, withText?: boolean, rootClass?: string, iconClass?: string }
+    & WithStyles<typeof deleteActionStyle>
  
-export const DeleteAction = compose(withStyles(deleteActionStyle), withDispatch)
-    (({contactId, dispatch, withText, classes, rootClass, iconClass}: DeleteActionProps) => {
+export const DeleteAction = withStyles(deleteActionStyle)
+    (({contactId, withText, classes, rootClass, iconClass}: DeleteActionProps) => {
         const [modalOpen, setModalOpen] = useState(false);
+        const dispatch = useContext(DispatchContext);
         return (
             <div className={rootClass}>
                 <IconButton onClick={() => setModalOpen(true)} className={classes.button} disableRipple>
@@ -62,15 +65,14 @@ export const DeleteAction = compose(withStyles(deleteActionStyle), withDispatch)
         );
     });
 
-
-type GoBackActionProps = { rootClass?: string, iconClass?: string }
-    & WithStyles<typeof goBackStyle> & WithDispatch;
     
-export const GoBackAction = compose(withStyles(goBackStyle), withDispatch)
-    (({dispatch, classes, rootClass, iconClass}: GoBackActionProps) => (
-        <IconButton 
-            onClick={() => dispatch(goBack())} 
-            className={classes.root + ' ' + rootClass} disableRipple>
+type GoBackActionProps = { rootClass?: string, iconClass?: string }
+    & WithStyles<typeof goBackStyle>;
+    
+export const GoBackAction = withStyles(goBackStyle)
+    (({classes, rootClass, iconClass}: GoBackActionProps) => {
+        const dispatch = useContext(DispatchContext);
+        return (<IconButton onClick={() => dispatch(goBack())} className={classes.root + ' ' + rootClass} disableRipple>
             <Icon color="secondary" className={iconClass}>arrow_back</Icon>
-        </IconButton>
-    )); 
+        </IconButton>);
+    }); 
