@@ -2,7 +2,9 @@ import { createStyles } from "@material-ui/core";
 
 export const goToEditActionStyle = createStyles({
     root: {
-
+        '&:hover': {
+            textDecoration: 'none',
+        },
     },
 });
 

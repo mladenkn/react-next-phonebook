@@ -47,6 +47,7 @@ export default ({palette, breakpoints}: Theme) => createStyles({
             right: '13%',
         },
         deleteAction: {
+            top: '29%',
             right: '2%',
         },
         avatar: {
@@ -75,12 +76,6 @@ export default ({palette, breakpoints}: Theme) => createStyles({
         avatarAndName: {
             paddingTop: '15%',
         },
-        // adderCardContent: {
-        //     position: 'absolute',
-        //     top: '28%',
-        //     left: '35%',
-        //     textAlign: 'center'
-        // },
         selected: {
             borderColor: palette.primary.main,
         },
@@ -97,13 +92,6 @@ export default ({palette, breakpoints}: Theme) => createStyles({
         name: {
             textAlign: 'center',
         },
-        // icons: {
-        //     padding: '0px 5px',
-        //     top: '2%',
-        //     width: '100%',
-        //     height: 28,
-        //     marginBottom: 5,
-        // },
         action: {
             top: '5%',
         },
@@ -114,6 +102,7 @@ export default ({palette, breakpoints}: Theme) => createStyles({
             right: '10%',
         },
         deleteAction: {
+            top: '2%',
             right: '2%',
         },
         icon: {

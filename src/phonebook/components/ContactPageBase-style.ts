@@ -8,7 +8,7 @@ const contactPageBaseXs = ({palette, breakpoints}: Theme) => createStyles({
         padding: '10px 8px',
         display: 'flex',
         alignItems: 'center',
-        borderBottom: `1px solid #E3E3E3`,        
+        borderBottom: `1px solid #E3E3E3`,    
     },
     heading: {
         display: 'flex',
