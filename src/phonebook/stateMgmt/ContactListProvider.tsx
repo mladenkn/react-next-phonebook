@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { RequestStatus } from '../../utils';
 import { Contact } from '../models';
 import ContactService from './ContactService';
+import { WithContactService } from ".";
+import { WithManyChildren } from ".";
 
 // This is both default value and type definition
 const defaultValue = {
@@ -16,7 +18,7 @@ const defaultValue = {
 
 export const ContactListContext = React.createContext(defaultValue);
 
-type Props = { contactService: ContactService, children: JSX.Element }
+type Props = WithContactService & WithManyChildren
 
 export const ContactListProvider = ({contactService, children}: Props) => {
 

@@ -33,10 +33,9 @@ type FavoriteActionProps = { contact: Contact, rootClass?: string, iconClass?: s
 
 export const FavoriteAction = withStyles(favoriteActionStyle)
     (({contact, classes, rootClass, iconClass}: FavoriteActionProps) => {
-        const dispatch = useContext(DispatchContext);
         return (
             <IconButton className={classes.root + ' ' + rootClass}
-                onClick={() => dispatch(favoriteContact(contact.id))} disableRipple>
+                onClick={() => {}} disableRipple>
             <Icon color="secondary" className={iconClass}>
                 {contact.isFavorite ? 'favorite' : 'favorite_outlined'}
             </Icon>
@@ -50,7 +49,6 @@ type DeleteActionProps = { contactId: number, withText?: boolean, rootClass?: st
 export const DeleteAction = withStyles(deleteActionStyle)
     (({contactId, withText, classes, rootClass, iconClass}: DeleteActionProps) => {
         const [modalOpen, setModalOpen] = useState(false);
-        const dispatch = useContext(DispatchContext);
         return (
             <div className={rootClass}>
                 <IconButton onClick={() => setModalOpen(true)} className={classes.button} disableRipple>
@@ -59,7 +57,7 @@ export const DeleteAction = withStyles(deleteActionStyle)
                 </IconButton>
                 <DeleteModal isOpen={modalOpen} text="Are you sure you want to delete this contact?"
                     onCancel={() => setModalOpen(false)}
-                    onConfirm={() => dispatch(deleteContact(contactId))} />
+                    onConfirm={() => {}} />
             </div>
         );
     });
@@ -69,8 +67,7 @@ type GoBackActionProps = { rootClass?: string, iconClass?: string } & WithStyles
     
 export const GoBackAction = withStyles(goBackStyle)
     (({classes, rootClass, iconClass}: GoBackActionProps) => {
-        const dispatch = useContext(DispatchContext);
-        return (<IconButton onClick={() => dispatch(goBack())} className={classes.root + ' ' + rootClass} disableRipple>
+        return (<IconButton onClick={() => {}} className={classes.root + ' ' + rootClass} disableRipple>
             <Icon color="secondary" className={iconClass}>arrow_back</Icon>
         </IconButton>);
     }); 
@@ -79,7 +76,7 @@ export const SaveWorkAction = ({className}: WithClassName) =>
 {
     const dispatch = useContext(DispatchContext);
     return <Tooltip title="Save work">
-        <IconButton onClick={() => dispatch(saveWork())} className={className}>
+        <IconButton onClick={() => {}} className={className}>
             <Icon>save</Icon>
         </IconButton>
     </Tooltip>;

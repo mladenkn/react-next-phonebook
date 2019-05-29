@@ -1,10 +1,12 @@
 import React from 'react';
 import { Route } from "react-router-dom";
-import { ContactEditPageContainer, ContactDetailsPageContainer, ContactCreatePageContainer, ContactIdRouteParams, WithContactService } from "../stateMgmt";
+import { ContactIdRouteParams, WithContactService } from "../stateMgmt";
 import HomePage from "./HomePage";
 import ContactService from "../stateMgmt/ContactService";
 import { Subtract } from 'utility-types';
 import { ContactListProvider } from "../stateMgmt/ContactListProvider";
+import { ContactEditProvider } from "../stateMgmt/ContactEditProvider";
+import { ContactDetailsProvider } from "../stateMgmt/ContactDetailsProvider";
 
 const contactService = new ContactService();
 
@@ -21,7 +23,10 @@ export default () =>
                 <HomePage />
             </ContactListProvider>
         } />        
-        <Route path="/contact/edit/:contactId" component={withContactService(ContactEditPageContainer)} />        
+        {/* <Route path="/contact/edit/:contactId" component={() => 
+            <ContactEditProvider>
+            </ContactEditProvider>
+        } />        
         <Route path="/contact/details/:contactId" component={withContactService(ContactDetailsPageContainer)} />       
-        <Route path="/contact/create" component={withContactService(ContactCreatePageContainer)} />
+        <Route path="/contact/create" component={withContactService(ContactCreatePageContainer)} /> */}
     </div>; 
