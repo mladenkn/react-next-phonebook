@@ -7,10 +7,7 @@ import { Contact } from "../models";
 import { Subscribe } from 'unstated';
 import { ContactListContainer } from "../stateMgmt/containers";
 
-
-type Props = {contacts: Contact[], dataLoading: boolean, handleSearchTextChange: (text: string) => void} & WithStyles<typeof style>;
-
-const Home = ({classes, contacts, dataLoading, handleSearchTextChange}: Props) =>
+const Home = ({classes}: WithStyles<typeof style>) =>
 {
     const tabClasses = {
         root: classes.contactTab,
@@ -21,8 +18,8 @@ const Home = ({classes, contacts, dataLoading, handleSearchTextChange}: Props) =
     const [currentTab, setCurrentTab] = useState(0);
 
     return (
-        // <Subscribe to={[ContactListContainer]}>
-        //     {(container: ContactListContainer) => 
+        <Subscribe to={[ContactListContainer]}>
+            {(container: ContactListContainer) => 
                 <div className={classes.root}>
                     <div className={classes.content_}>
                         <Tabs value={currentTab} centered onChange={(_, v) => setCurrentTab(v)}
@@ -38,16 +35,16 @@ const Home = ({classes, contacts, dataLoading, handleSearchTextChange}: Props) =
                         <Divider className={classes.contactTabsDivider} />
                         <Input disableUnderline
                             startAdornment={<Icon className={classes.searchFieldIcon}>search</Icon>}
-                            onChange={e => handleSearchTextChange(e.target.value)}
+                            onChange={e => container.search(e.target.value)}
                             classes={{root: classes.searchField, focused: classes.searchFieldFocused}} />
-                        {!dataLoading &&
-                            <ContactList contacts={contacts} includeAdder className={classes.list} />
+                        { container.state.requestStatus === 'completed' &&
+                            <ContactList contacts={container.state.contacts} includeAdder className={classes.list} />
                         }
                     </div>
                 </div>
-        //     }
-        // </Subscribe>
+            }
+        </Subscribe>
     );
 }
- 
-export default withStyles(style)(Home)
+
+export default withStyles(style)(Home);

@@ -7,6 +7,7 @@ import React from 'react';
 export interface ContactListState {
     contacts: Contact[]
     requestStatus: RequestStatus
+    _fetchedAlready: boolean
 }
 
 export class ContactListContainer extends Container<ContactListState> {
@@ -17,28 +18,20 @@ export class ContactListContainer extends Container<ContactListState> {
         this.state = {
             contacts: [],
             requestStatus: 'none',
+            _fetchedAlready: false
         };
 
-        this.fetch = this.fetch.bind(this);
+        this.search = this.search.bind(this);
+
+        if(!this.state._fetchedAlready)
+            this.search('');
     }
 
-    fetch(keyword: string){
+    search(keyword: string){
+        this.setState({requestStatus: 'pending'});
         this.contactService.search(keyword)
-            .then(cl => this.setState({contacts: cl}));
+            .then(cl => {
+                this.setState({contacts: cl, requestStatus: 'completed', _fetchedAlready: true});
+            });
     }
-}
-
-interface ConnectComponentOptions {
-    component: any
-    to: any
-    with: any
-}
-
-export const connect = (o: ConnectComponentOptions) => (otherProps: any) =>
-    <Subscribe to={[o.to]}>
-        {c => {
-            const componentProps = o.with(c);
-            const Component = o.component;
-            return <Component {...otherProps} {...componentProps} />
-        }}
-    </Subscribe>    
+} 
