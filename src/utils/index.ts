@@ -30,4 +30,4 @@ export const handle = <TActionPayload>(
 
 export const buildActionHandler = (handlers: ((a: AnyAction) => void)[]) => (a: AnyAction) => handlers.forEach(h => h(a));
 
-export type RequestStatus = 'none' | 'pending' | 'completed' | 'failed';
+export type RequestStatus = 'NOT_FETCHED' | 'FETCHING' | 'FETCHED' | 'ERRORED'; 

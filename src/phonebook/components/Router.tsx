@@ -4,6 +4,7 @@ import { ContactEditPageContainer, ContactDetailsPageContainer, ContactCreatePag
 import HomePage from "./HomePage";
 import ContactService from "../stateMgmt/ContactService";
 import { Subtract } from 'utility-types';
+import { ContactListProvider } from "../stateMgmt/ContactListProvider";
 
 const contactService = new ContactService();
 
@@ -15,7 +16,11 @@ export function withContactService<TProps extends WithContactService>(Component:
 
 export default () => 
     <div>
-        <Route exact path="/" component={HomePage} />        
+        <Route exact path="/" component={() =>
+            <ContactListProvider contactService={contactService}>
+                <HomePage />
+            </ContactListProvider>
+        } />        
         <Route path="/contact/edit/:contactId" component={withContactService(ContactEditPageContainer)} />        
         <Route path="/contact/details/:contactId" component={withContactService(ContactDetailsPageContainer)} />       
         <Route path="/contact/create" component={withContactService(ContactCreatePageContainer)} />

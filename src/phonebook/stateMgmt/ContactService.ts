@@ -6,7 +6,7 @@ import { generateContact } from '../devUtils/dataGenerators';
 // Easy to refactor to call REST API
 export default class ContactService {
 
-    private contactList = generateArray(generateContact, 5, 20);
+    private contactList: Contact[]
 
     constructor(){
         const contactListJsonOrNothing = localStorage.getItem('contacts');
@@ -28,7 +28,9 @@ export default class ContactService {
 
     async search(keyword: string){
         const keywordLower = keyword.toLowerCase();
-        return this.contactList.filter(c => c.fullName.includes(keywordLower));
+        const all = this.contactList.filter(c => c.fullName.toLowerCase().includes(keywordLower));
+        const favorites = all.filter(c => c.isFavorite);
+        return {all, favorites};
     }
 
     async save(c: Contact){
