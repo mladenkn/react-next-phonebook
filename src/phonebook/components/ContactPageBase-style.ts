@@ -26,8 +26,6 @@ export const useContactPageBaseStylesXs = makeStyles(contactPageBaseXs);
 const contactPageBaseSm = ({palette, breakpoints}: Theme) => createStyles({
     root: {
         display: 'flex',
-        paddingTop: 50,
-        paddingLeft: 50,
     },
     heading: {
         display: 'flex',

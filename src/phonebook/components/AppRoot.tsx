@@ -3,7 +3,7 @@ import style from './AppRoot-style';
 import { withStyles, WithStyles, AppBar, Toolbar, Typography } from "@material-ui/core";
 import { purple } from "@material-ui/core/colors";
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
-import Routes from "./Router";
+import Routes from "./Pages";
 import { homePageUrl } from "../urls";
 import { BrowserRouter } from 'react-router-dom';
 import { Link } from './reusables';

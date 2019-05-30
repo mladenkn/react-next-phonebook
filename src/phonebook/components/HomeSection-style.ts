@@ -2,8 +2,6 @@ import { createStyles, Theme } from "@material-ui/core";
 
 export default ({palette, breakpoints}: Theme) => createStyles({
     root: {
-        display: 'flex',
-        justifyContent: 'center',
     },
     content_: { // name content without _ causes compile time error
         display: 'flex',
@@ -45,9 +43,6 @@ export default ({palette, breakpoints}: Theme) => createStyles({
         marginRight: 10
     },
     [breakpoints.down('xs')]: {
-        root: {
-            marginTop: 7,
-        },
         content_: { // name content without _ causes compile time error
             width: 330,
         },
@@ -63,9 +58,6 @@ export default ({palette, breakpoints}: Theme) => createStyles({
         },        
     },
     [breakpoints.up('sm')]: {
-        root: {
-            marginTop: 20,
-        },
         searchField: {
             marginTop: 40,
             width: 400,
