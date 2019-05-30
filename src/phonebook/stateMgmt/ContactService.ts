@@ -2,7 +2,7 @@ import { Contact } from "../models";
 import { generateArray } from "../../utils";
 import { generateContact } from '../devUtils/dataGenerators';
 
-// Classes and services may be discouraged in React but why not :)
+// Classes and services may be discouraged in React but they ara not a bad pattern :)
 // Easy to refactor to call REST API
 export default class ContactService {
 
@@ -11,8 +11,8 @@ export default class ContactService {
     constructor(){
         const contactListJsonOrNothing = localStorage.getItem('contacts');
 
-        if(contactListJsonOrNothing === null)
-            this.contactList = generateArray(generateContact, 5, 20);
+        if(!contactListJsonOrNothing)
+            this.contactList = generateArray(generateContact, 70, 100);
         else
             this.contactList = JSON.parse(contactListJsonOrNothing) as Contact[];
     }

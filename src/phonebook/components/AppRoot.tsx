@@ -8,6 +8,7 @@ import { homePageUrl } from "../urls";
 import { BrowserRouter } from 'react-router-dom';
 import { Link } from './reusables';
 import { SaveWorkAction } from './actions';
+import ContactService from '../stateMgmt/ContactService';
 
 //const secondaryThemeColor = purple[500]
 
@@ -37,6 +38,8 @@ const theme = createMuiTheme({
     }
 });
 
+const contactService = new ContactService();
+
 const AppContent_ = ({classes}: WithStyles<typeof style>) =>
     <BrowserRouter>
         <AppBar position="sticky">
@@ -44,11 +47,11 @@ const AppContent_ = ({classes}: WithStyles<typeof style>) =>
                 <Link className={classes.headingLink} underline="none" href={homePageUrl}>
                     <Typography className={classes.headingLinkText}>Phonebook</Typography>
                 </Link>
-                <SaveWorkAction className={classes.saveWorkAction} />
+                <SaveWorkAction className={classes.saveWorkAction} onClick={() => contactService.persist()} />
             </Toolbar>
             <div className={classes.toolbarBorder}></div>
         </AppBar>
-        <Routes/>
+        <Routes contactService={contactService}/>
     </BrowserRouter>
 
 const AppContent = withStyles(style)(AppContent_);

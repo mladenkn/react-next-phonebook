@@ -9,16 +9,7 @@ import { ContactEditProvider } from "../stateMgmt/ContactEditProvider";
 import { ContactDetailsProvider } from "../stateMgmt/ContactDetailsProvider";
 import { RouteComponentProps } from "react-router";
 
-
-const contactService = new ContactService();
-
-export function withContactService<TProps extends WithContactService>(Component: React.ComponentType<TProps>){
-    return function (props: Subtract<TProps, WithContactService>) {
-        return <Component contactService={contactService} {...props as TProps} />
-    }
-}
-
-export default () => 
+export default ({contactService}: WithContactService) => 
     <div>
         <Route exact path="/" component={() =>
             <ContactListProvider contactService={contactService}>

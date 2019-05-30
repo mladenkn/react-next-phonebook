@@ -72,12 +72,10 @@ export const GoBackAction = withStyles(goBackStyle)
         </IconButton>);
     }); 
 
-export const SaveWorkAction = ({className}: WithClassName) => 
-{
-    const dispatch = useContext(DispatchContext);
-    return <Tooltip title="Save work">
-        <IconButton onClick={() => {}} className={className}>
+type SaveWorkActionProps = {onClick: () => void} & WithClassName
+export const SaveWorkAction = ({className, onClick}: SaveWorkActionProps) => 
+    <Tooltip title="Save work">
+        <IconButton onClick={onClick} className={className}>
             <Icon>save</Icon>
         </IconButton>
     </Tooltip>;
-}
