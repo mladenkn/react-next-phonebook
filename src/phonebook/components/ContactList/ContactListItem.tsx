@@ -50,6 +50,7 @@ const ItemDummy = (p: ItemDummyProps) => {
 
     const favoriteAction = p.showFavoriteButton &&
         <FavoriteAction
+            onClick={() => {}}
             isFavorite={contact.isFavorite}
             rootClass={classes.action + ' ' + classes.favoriteAction}
             iconClass={classes.icon} />;
@@ -62,6 +63,7 @@ const ItemDummy = (p: ItemDummyProps) => {
 
     const deleteAction = p.showDeleteButton &&
         <DeleteAction
+            onConfirm={() => {}}
             rootClass={classes.action + ' ' + classes.deleteAction}
             iconClass={classes.icon} />;
 
@@ -74,5 +76,5 @@ const ItemDummy = (p: ItemDummyProps) => {
             {avatarAndName} {favoriteAction}{editAction}{deleteAction}
         </div> ;
 }
-
+ 
 const StyledItemDummy = withStyles(style)(ItemDummy);

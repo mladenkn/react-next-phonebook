@@ -4,12 +4,19 @@ import { WithContactService } from ".";
 import { WithManyChildren } from ".";
 import ContactService from "./ContactService";
 import React from 'react';
+import { Contact } from "../models";
+import { RequestStatus } from "../../utils";
 
-type Props = WithManyChildren & RouteComponentProps<ContactIdRouteParams> & WithContactService;
+interface ContextValue {
+    onComplete: () => void
+    onCancel: () => void
+    contact?: Contact
+    contactStatus: RequestStatus
+}
 
-export const ContactEditProvider = ({history, match, contactService, children}: Props) => {   
+type Props = { contactId: number, children: (c: ContextValue) => (JSX.Element | JSX.Element[]) } & WithContactService;
 
-    const contactId = parseInt(match.params.contactId!);
+export const ContactEditProvider = ({contactId, contactService, children}: Props) => {
 
     return <div>{children}</div>
 }

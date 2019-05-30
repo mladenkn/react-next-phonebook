@@ -1,14 +1,33 @@
-import { RouteComponentProps } from "react-router";
-import { ContactIdRouteParams } from ".";
 import { WithContactService } from ".";
-import { WithManyChildren } from ".";
-import React from 'react';
+import React, { useState } from 'react';
+import { Contact } from "../models";
+import { RequestStatus } from "../../utils";
 
-type Props = WithManyChildren & RouteComponentProps<ContactIdRouteParams> & WithContactService;
+interface ContextValue {
+    onFavorite: () => void
+    contact?: Contact
+    contactStatus: RequestStatus
+}
 
-export const ContactDetailsProvider = ({history, match, contactService, children}: Props) => {
+type Props = { contactId: number, children: (c: ContextValue) => (JSX.Element | JSX.Element[]) } & WithContactService;
 
-    const contactId = parseInt(match.params.contactId!);
+export const ContactDetailsProvider = ({contactId, contactService, children}: Props) => {
     
-    return <div>{children}</div>
+    const [contactStatus, setContactStatus] = useState<RequestStatus>('FETCHING');
+    const [contact, setContact] = useState<Contact | undefined>(undefined);
+
+    contactService.getById(contactId).then(
+        c => {
+            setContact(c);
+            setContactStatus('FETCHED');
+        }
+    );
+
+    const onFavorite = () => {}
+
+    const contextValue = {
+        contactStatus, contact, onFavorite
+    }
+
+    return <div>{children(contextValue)}</div>
 }

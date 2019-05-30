@@ -2,20 +2,8 @@ import { withStyles, WithStyles, Icon, IconButton, Typography, Tooltip  } from "
 import { goToEditActionStyle, favoriteActionStyle, deleteActionStyle, goBackStyle } from "./actions-style";
 import { WithClassName, Link } from "./reusables";
 import { contactEditUrl } from "../urls";
-import React, { useState, useContext } from 'react';
-import { DispatchContext } from "../stateMgmt/DispatchContext";
-import { favoriteContact, goBack, deleteContact, saveWork } from "../actions";
-import { Contact } from "../models";
+import React, { useState } from 'react';
 import DeleteModal from "./DeleteModal";
-
-type IconLinkProps = {name: string, url: string} & WithClassName;
-
-export const IconLink = ({name, url, className}: IconLinkProps) => (
-    <Link href={url} className={className}>
-        <Icon color="secondary">{name}</Icon>
-    </Link>
-);
-
  
 type GoToEditActionProps = { contactId: number, rootClass?: string, iconClass?: string } 
     & WithStyles<typeof goToEditActionStyle>;
@@ -28,14 +16,14 @@ export const GoToEditAction = withStyles(goToEditActionStyle)
     ));
 
 
-type FavoriteActionProps = { isFavorite: boolean, rootClass?: string, iconClass?: string }
+type FavoriteActionProps = { onClick: () => void, isFavorite: boolean, rootClass?: string, iconClass?: string }
     & WithStyles<typeof favoriteActionStyle>;
 
 export const FavoriteAction = withStyles(favoriteActionStyle)
-    (({isFavorite, classes, rootClass, iconClass}: FavoriteActionProps) => {
+    (({onClick, isFavorite, classes, rootClass, iconClass}: FavoriteActionProps) => {
         return (
             <IconButton className={classes.root + ' ' + rootClass}
-                onClick={() => {}} disableRipple>
+                onClick={onClick} disableRipple>
             <Icon color="secondary" className={iconClass}>
                 {isFavorite ? 'favorite' : 'favorite_outlined'}
             </Icon>
@@ -43,11 +31,11 @@ export const FavoriteAction = withStyles(favoriteActionStyle)
     });
 
 
-type DeleteActionProps = { withText?: boolean, rootClass?: string, iconClass?: string }
+type DeleteActionProps = { onConfirm: () => void, withText?: boolean, rootClass?: string, iconClass?: string }
     & WithStyles<typeof deleteActionStyle>
  
 export const DeleteAction = withStyles(deleteActionStyle)
-    (({withText, classes, rootClass, iconClass}: DeleteActionProps) => {
+    (({onConfirm, withText, classes, rootClass, iconClass}: DeleteActionProps) => {
         const [modalOpen, setModalOpen] = useState(false);
         return (
             <div className={rootClass}>
@@ -57,17 +45,17 @@ export const DeleteAction = withStyles(deleteActionStyle)
                 </IconButton>
                 <DeleteModal isOpen={modalOpen} text="Are you sure you want to delete this contact?"
                     onCancel={() => setModalOpen(false)}
-                    onConfirm={() => {}} />
+                    onConfirm={onConfirm} />
             </div>
         );
     });
 
     
-type GoBackActionProps = { rootClass?: string, iconClass?: string } & WithStyles<typeof goBackStyle>;
+type GoBackActionProps = { onClick: () => void, rootClass?: string, iconClass?: string } & WithStyles<typeof goBackStyle>;
     
 export const GoBackAction = withStyles(goBackStyle)
-    (({classes, rootClass, iconClass}: GoBackActionProps) => {
-        return (<IconButton onClick={() => {}} className={classes.root + ' ' + rootClass} disableRipple>
+    (({onClick, classes, rootClass, iconClass}: GoBackActionProps) => {
+        return (<IconButton onClick={onClick} className={classes.root + ' ' + rootClass} disableRipple>
             <Icon color="secondary" className={iconClass}>arrow_back</Icon>
         </IconButton>);
     }); 

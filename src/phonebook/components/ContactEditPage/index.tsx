@@ -10,16 +10,17 @@ import { DispatchContext } from "../../stateMgmt/DispatchContext";
 import { saveContact, goBack } from "../../actions";
 
 
-type Props = {contact: Contact} & WithStyles<typeof style>;
+type Props = {contact: Contact, onConfirm: () => void} & WithStyles<typeof style>;
 
-const ContactEditPage = ({contact, classes}: Props) => 
+const ContactEditPage = ({contact, classes, onConfirm}: Props) => 
 { 
     const onlyXs = useMediaQuery('(max-width:599px)');
     const downSm = useMediaQuery('(max-width:959px)');
 
-    const backAction = <GoBackAction rootClass={classes.backAction} />;
+    const backAction = <GoBackAction onClick={() => {}} rootClass={classes.backAction} />;
 
     const deleteAction = <DeleteAction
+        onConfirm={onConfirm}
         withText={!onlyXs}
         rootClass={classes.deleteAction} />;
 

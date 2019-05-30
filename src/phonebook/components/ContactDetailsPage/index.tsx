@@ -8,19 +8,20 @@ import { WithStyles, withStyles, IconButton, Icon, Typography, Avatar, } from "@
 import { useTheme } from "@material-ui/styles";
 import { useContactPageBaseStylesXs, useContactPageBaseStylesSm } from "../ContactPageBase-style";
  
-type Props = {contact: Contact} & WithStyles<typeof style>;
+type Props = {contact: Contact, onFavorite: () => void} & WithStyles<typeof style>;
 
-const ContactDetailsPage = ({contact, classes}: Props) => 
+const ContactDetailsPage = ({contact, classes, onFavorite}: Props) => 
 {
-    const backAction = <GoBackAction />
+    const backAction = <GoBackAction onClick={() => {}} />
 
     const name = <Typography className={classes.personName}>{contact.fullName}</Typography>;
 
-    const favAction = <FavoriteAction 
+    const favAction = <FavoriteAction
+        onClick={onFavorite}
         isFavorite={contact.isFavorite}
         rootClass={classes.action + ' ' + classes.favAction} 
         iconClass={classes.icon} />;
-
+ 
     const editAction = <GoToEditAction
         contactId={contact.id}
         rootClass={classes.action + ' ' + classes.editAction}
