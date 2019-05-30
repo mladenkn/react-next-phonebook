@@ -17,7 +17,7 @@ const ContactDetailsPage = ({contact, classes}: Props) =>
     const name = <Typography className={classes.personName}>{contact.fullName}</Typography>;
 
     const favAction = <FavoriteAction 
-        contact={contact}
+        isFavorite={contact.isFavorite}
         rootClass={classes.action + ' ' + classes.favAction} 
         iconClass={classes.icon} />;
 

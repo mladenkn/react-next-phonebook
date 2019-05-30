@@ -20,7 +20,6 @@ const ContactEditPage = ({contact, classes}: Props) =>
     const backAction = <GoBackAction rootClass={classes.backAction} />;
 
     const deleteAction = <DeleteAction
-        contactId={contact.id}
         withText={!onlyXs}
         rootClass={classes.deleteAction} />;
 

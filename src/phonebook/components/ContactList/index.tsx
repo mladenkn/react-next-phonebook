@@ -1,13 +1,13 @@
 import style from "./style";
-import { Contact } from "../../models";
+import { ContactListItem } from "../../models";
 import React, { useState } from 'react';
 import { List, ListItem, withStyles, WithStyles } from "@material-ui/core";
-import ContactListItem from "./ContactListItem";
+import Item from "./ContactListItem";
 import ContactAdder from "./ContactAdder";
 import withWidth, { WithWidth } from "@material-ui/core/withWidth";
 
 type Props = {
-    contacts: Contact[]
+    contacts: ContactListItem[]
     className?: string
     includeAdder?: boolean
 } & WithStyles<typeof style> & WithWidth
@@ -21,7 +21,7 @@ const ContactList = withWidth()(({contacts, classes, includeAdder, className, wi
  
     const items = contacts.map(c => 
         <ListItem key={c.id} className={classes.itemRoot}>
-            <ContactListItem isSelected={selectedItemId === c.id} smOrDown={smOrDown}
+            <Item isSelected={selectedItemId === c.id} smOrDown={smOrDown}
                 onSelect={() => {setSelectedItemId(c.id)}} contact={c} /> 
         </ListItem>
     );

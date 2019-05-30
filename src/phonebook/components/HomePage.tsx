@@ -3,7 +3,6 @@ import style from "./HomePage-style";
 import React, { useState, useContext } from 'react';
 import ContactList from "./ContactList";
 import { Divider } from "./reusables"
-import { Contact } from "../models";
 import { ContactListContext } from "../stateMgmt/ContactListProvider";
 
 const Home = ({classes}: WithStyles<typeof style>) =>

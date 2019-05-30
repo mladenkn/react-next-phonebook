@@ -40,4 +40,12 @@ export default class ContactService {
     async delete(id: number){
         this.contactList = this.contactList.filter(c => c.id !== id);
     }
+
+    async update(contact: Contact){
+        
+    }
+
+    async favorite(id: number){
+        
+    }
 }

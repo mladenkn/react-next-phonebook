@@ -28,26 +28,26 @@ export const GoToEditAction = withStyles(goToEditActionStyle)
     ));
 
 
-type FavoriteActionProps = { contact: Contact, rootClass?: string, iconClass?: string }
+type FavoriteActionProps = { isFavorite: boolean, rootClass?: string, iconClass?: string }
     & WithStyles<typeof favoriteActionStyle>;
 
 export const FavoriteAction = withStyles(favoriteActionStyle)
-    (({contact, classes, rootClass, iconClass}: FavoriteActionProps) => {
+    (({isFavorite, classes, rootClass, iconClass}: FavoriteActionProps) => {
         return (
             <IconButton className={classes.root + ' ' + rootClass}
                 onClick={() => {}} disableRipple>
             <Icon color="secondary" className={iconClass}>
-                {contact.isFavorite ? 'favorite' : 'favorite_outlined'}
+                {isFavorite ? 'favorite' : 'favorite_outlined'}
             </Icon>
         </IconButton>);
     });
 
 
-type DeleteActionProps = { contactId: number, withText?: boolean, rootClass?: string, iconClass?: string }
+type DeleteActionProps = { withText?: boolean, rootClass?: string, iconClass?: string }
     & WithStyles<typeof deleteActionStyle>
  
 export const DeleteAction = withStyles(deleteActionStyle)
-    (({contactId, withText, classes, rootClass, iconClass}: DeleteActionProps) => {
+    (({withText, classes, rootClass, iconClass}: DeleteActionProps) => {
         const [modalOpen, setModalOpen] = useState(false);
         return (
             <div className={rootClass}>

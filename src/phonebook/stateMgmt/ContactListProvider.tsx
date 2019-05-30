@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { RequestStatus } from '../../utils';
-import { Contact } from '../models';
+import { ContactListItem } from '../models';
 import ContactService from './ContactService';
 import { WithContactService } from ".";
 import { WithManyChildren } from ".";
@@ -8,8 +8,8 @@ import { WithManyChildren } from ".";
 // This is both default value and type definition
 const defaultValue = {
     contacts: {} as {
-        all: Contact[],
-        favorites: Contact[]
+        all: ContactListItem[],
+        favorites: ContactListItem[]
     },
     contactsStatus: 'NOT_FETCHED' as RequestStatus,
 

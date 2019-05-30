@@ -7,6 +7,13 @@ export interface Contact {
     isFavorite: boolean
 }
 
+export interface ContactListItem {
+    id: number
+    fullName: string
+    avatar: string
+    isFavorite: boolean
+}
+
 export interface PhoneNumber {
     value: number
     label: string

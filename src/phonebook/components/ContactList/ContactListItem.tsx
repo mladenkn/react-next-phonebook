@@ -1,5 +1,5 @@
 import style from "./ContactListItem-style";
-import { Contact } from "../../models";
+import { ContactListItem } from "../../models";
 import React from 'react';
 import { Card, Avatar, Typography, withStyles, WithStyles } from "@material-ui/core";
 import { Box, Link } from "../reusables";
@@ -7,7 +7,7 @@ import { contactDetailsUrl } from "../../urls";
 import { GoToEditAction, FavoriteAction, DeleteAction } from "../actions";
 
 type Props = {
-    contact: Contact
+    contact: ContactListItem
     isSelected: boolean
     smOrDown: boolean
     onSelect: () => void
@@ -27,7 +27,7 @@ export default ({contact, isSelected, smOrDown, onSelect}: Props) =>
 }
 
 type ItemDummyProps = {
-    contact: Contact
+    contact: ContactListItem
     showFavoriteButton: boolean
     showEditLink: boolean
     showDeleteButton: boolean
@@ -50,7 +50,7 @@ const ItemDummy = (p: ItemDummyProps) => {
 
     const favoriteAction = p.showFavoriteButton &&
         <FavoriteAction
-            contact={contact}
+            isFavorite={contact.isFavorite}
             rootClass={classes.action + ' ' + classes.favoriteAction}
             iconClass={classes.icon} />;
 
@@ -62,7 +62,6 @@ const ItemDummy = (p: ItemDummyProps) => {
 
     const deleteAction = p.showDeleteButton &&
         <DeleteAction
-            contactId={contact.id}
             rootClass={classes.action + ' ' + classes.deleteAction}
             iconClass={classes.icon} />;
 
