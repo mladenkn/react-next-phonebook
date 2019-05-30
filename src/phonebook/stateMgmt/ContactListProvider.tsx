@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { RequestStatus } from '../../utils';
+import { DataFetchStatus } from '../../utils';
 import { ContactListItem } from '../models';
 import ContactService from './ContactService';
 import { WithContactService } from ".";
@@ -11,7 +11,7 @@ const defaultValue = {
         all: ContactListItem[],
         favorites: ContactListItem[]
     },
-    contactsStatus: 'NOT_FETCHED' as RequestStatus,
+    contactsStatus: 'NOT_FETCHED' as DataFetchStatus,
 
     fetch: (keyword: string) => {},
 };

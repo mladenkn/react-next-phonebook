@@ -30,4 +30,26 @@ export const handle = <TActionPayload>(
 
 export const buildActionHandler = (handlers: ((a: AnyAction) => void)[]) => (a: AnyAction) => handlers.forEach(h => h(a));
 
-export type RequestStatus = 'NOT_FETCHED' | 'FETCHING' | 'FETCHED' | 'ERRORED'; 
+export type DataFetchStatus = 'NOT_FETCHED' | 'FETCHING' | 'FETCHED' | 'ERRORED'; 
+
+export const replaceMatches = <T> (arr: T[], doesMatch: (item: T) => boolean, replaceWith: T) => {
+    const {allItems, updatedItems} = update(arr, doesMatch, () => replaceWith);
+    return {allItems, newItems: updatedItems};
+}
+
+export const update = <T> (arr: T[], doesMatch: (item: T) => boolean, update: (item: T) => T) => {
+    const allItems: T[] = [];
+    const updatedItems: T[] = [];
+
+    arr.forEach((item) => {
+        if(doesMatch(item)){
+            const updated = update(item);
+            allItems.push(updated);
+            updatedItems.push(updated);
+        }
+        else
+            allItems.push(item);
+    });
+
+    return {allItems, updatedItems};
+}

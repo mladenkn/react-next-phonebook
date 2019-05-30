@@ -1,5 +1,5 @@
 import { Contact } from "../models";
-import { generateArray } from "../../utils";
+import { generateArray, replaceMatches, update } from "../../utils";
 import { generateContact } from '../devUtils/dataGenerators';
 
 // Classes and services may be discouraged in React but they ara not a bad pattern :)
@@ -42,10 +42,14 @@ export default class ContactService {
     }
 
     async update(contact: Contact){
-        
+        const {allItems, newItems} = replaceMatches(this.contactList, c => c.id === contact.id, contact);
+        this.contactList = allItems;
+        return newItems[0];
     }
 
-    async favorite(id: number){
-        
+    async toggleFavorite(id: number){
+        const {allItems, updatedItems} = update(this.contactList, c => c.id === id, c => ({...c, isFavorite: !c.isFavorite})); 
+        this.contactList = allItems;
+        return updatedItems[0];      
     }
 }
