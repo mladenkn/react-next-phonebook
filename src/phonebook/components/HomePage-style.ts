@@ -16,13 +16,11 @@ export default ({palette, breakpoints}: Theme) => createStyles({
     },
     contactTab: {
         textTransform: "initial",
-        fontSize: '0.875rem',
-        color: palette.secondary.dark
+        fontSize: '1.05rem',
+        color: palette.secondary.dark,
     },
-    tabText: {
-        fontWeight: 550,
-        fontSize: '0.95rem',
-        fontFamiliy: 'sans-serif',    
+    selectedTab: {
+        color: palette.primary.main
     },
     tabDivider: {
         height: 20,
@@ -31,9 +29,6 @@ export default ({palette, breakpoints}: Theme) => createStyles({
     },
     tabIndicator: {
         display: 'none'
-    },
-    selectedTab: {
-        color: palette.primary.main
     },
     searchField: {
         height: 50,

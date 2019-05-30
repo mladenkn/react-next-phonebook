@@ -18,11 +18,3 @@ export interface PhoneNumber {
     value: number
     label: string
 }
-
-// export interface ContactListItem {
-//     id: number
-//     firstName: string
-//     lastName: string
-//     avatar: string
-//     isFavorite: boolean
-// }

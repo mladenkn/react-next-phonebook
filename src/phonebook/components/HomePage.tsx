@@ -10,7 +10,6 @@ const Home = ({classes}: WithStyles<typeof style>) =>
     const tabClasses = {
         root: classes.contactTab,
         selected: classes.selectedTab,
-        label: classes.tabText
     }
 
     const [currentTab, setCurrentTab] = useState(0);
