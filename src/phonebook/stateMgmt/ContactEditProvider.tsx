@@ -5,13 +5,13 @@ import { WithManyChildren } from ".";
 import ContactService from "./ContactService";
 import React from 'react';
 import { Contact } from "../models";
-import { DataFetchStatus } from "../../utils";
+import { OperationStatus } from "../../utils";
 
 interface ContextValue {
     onComplete: () => void
     onCancel: () => void
     contact?: Contact
-    contactStatus: DataFetchStatus
+    contactStatus: OperationStatus
 }
 
 type Props = { contactId: number, children: (c: ContextValue) => (JSX.Element | JSX.Element[]) } & WithContactService;

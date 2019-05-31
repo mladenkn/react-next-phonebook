@@ -34,7 +34,7 @@ const Home = ({classes}: WithStyles<typeof style>) =>
                     startAdornment={<Icon className={classes.searchFieldIcon}>search</Icon>}
                     onChange={e => contactList.fetch(e.target.value)}
                     classes={{root: classes.searchField, focused: classes.searchFieldFocused}} />
-                { contactList.contactsStatus === 'FETCHED' &&
+                { contactList.contactsLoadStatus === 'COMPLETED' &&
                     <ContactList contacts={displayedContacts} includeAdder className={classes.list} />
                 }
             </div>

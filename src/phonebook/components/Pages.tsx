@@ -35,9 +35,9 @@ export default ({contactService}: WithContactService) =>
                 const classes = useContactPageStyle();
                 return (
                     <ContactDetailsProvider contactId={contactId} contactService={contactService}>
-                        {({contact, contactStatus, onFavorite}) => 
+                        {({contact, contactLoadStatus: contactStatus, onFavorite}) => 
                             <div className={classes.root}>
-                                {contactStatus === 'FETCHED' ?
+                                {contactStatus === 'COMPLETED' ?
                                     <ContactDetailsPage contact={contact!} onFavorite={onFavorite} /> :
                                     <div>fetching</div> // doesn't make sense to handle this since there is no real fetching}
                                 }

@@ -1,41 +1,49 @@
 import { WithContactService } from ".";
 import React, { useState } from 'react';
 import { Contact } from "../models";
-import { DataFetchStatus, update } from "../../utils";
+import { OperationStatus, update } from "../../utils";
 
 interface ContextValue {
     onFavorite: () => void
     contact?: Contact
-    contactStatus: DataFetchStatus
+    contactLoadStatus: OperationStatus
+    favoriteContactStatus: OperationStatus
 }
 
 type Props = { contactId: number, children: (c: ContextValue) => (JSX.Element | JSX.Element[]) } & WithContactService;
 
 export const ContactDetailsProvider = ({contactId, contactService, children}: Props) => {
     
-    const [contactStatus, setContactStatus] = useState<DataFetchStatus>('FETCHING');
+    const [contactLoadStatus, setContactLoadStatus] = useState<OperationStatus>('NOT_INITIATED');
+    const [favoriteContactStatus, setFavoriteContactStatus] = useState<OperationStatus>('NOT_INITIATED');
     const [contact, setContact] = useState<Contact | undefined>(undefined);
     const [fetchedAllReady, setFetchedAllready] = useState(false);
 
-    if(!fetchedAllReady)
+    if(!fetchedAllReady){
+        setContactLoadStatus('PROCESSING');
         contactService.getById(contactId).then(
             c => {
                 setContact(c);
-                setContactStatus('FETCHED');
+                setContactLoadStatus('COMPLETED');
                 setFetchedAllready(true);
-            }
+            },
+            error => setContactLoadStatus('ERRORED')
         );
+    }
 
     const onFavorite = () => {
+        setFavoriteContactStatus('PROCESSING');
         contactService.toggleFavorite(contactId).then(
             updatedContact => {
                 setContact(updatedContact);
-            }
+                setFavoriteContactStatus('COMPLETED');
+            },
+            error => setFavoriteContactStatus('ERRORED')
         );
     }
 
     const contextValue = {
-        contactStatus, contact, onFavorite
+        contactLoadStatus, contact, onFavorite, favoriteContactStatus
     }
 
     return <div>{children(contextValue)}</div>
