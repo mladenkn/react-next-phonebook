@@ -35,7 +35,7 @@ export default ({contactService}: WithContactService) =>
                 const classes = useContactPageStyle();
                 return (
                     <ContactDetailsProvider contactId={contactId} contactService={contactService}>
-                        {({contact, contactLoadStatus: contactStatus, onFavorite}) => 
+                        {({contact, fetchContactStatus: contactStatus, onFavorite}) => 
                             <div className={classes.root}>
                                 {contactStatus === 'COMPLETED' ?
                                     <ContactDetailsPage contact={contact!} onFavorite={onFavorite} /> :

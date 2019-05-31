@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { OperationStatus } from '../../utils';
+import { AsyncOperationStatus } from '../../utils';
 import { ContactListItem } from '../models';
 import ContactService from './ContactService';
 import { WithContactService } from ".";
@@ -11,7 +11,7 @@ const defaultValue = {
         all: ContactListItem[],
         favorites: ContactListItem[]
     },
-    contactsLoadStatus: 'NOT_INITIATED' as OperationStatus,
+    fetchContactsStatus: 'NOT_INITIATED' as AsyncOperationStatus,
 
     fetch: (keyword: string) => {},
 };
@@ -23,18 +23,18 @@ type Props = WithContactService & WithManyChildren
 export const ContactListProvider = ({contactService, children}: Props) => {
 
     const [contacts, setContacts] = useState(defaultValue.contacts);
-    const [contactsLoadStatus, setContactsLoadStatus] = useState(defaultValue.contactsLoadStatus);
+    const [fetchContactsStatus, setFetchContactsStatus] = useState(defaultValue.fetchContactsStatus);
     const [fetchedAlready, setFetchedAlready] = useState(false);
 
     const fetch = (keyword: string) => {
-        setContactsLoadStatus('PROCESSING');
+        setFetchContactsStatus('PROCESSING');
         contactService.search(keyword).then(
             c => {
                 setContacts(c);
-                setContactsLoadStatus('COMPLETED');
+                setFetchContactsStatus('COMPLETED');
                 setFetchedAlready(true);
             },
-            error => setContactsLoadStatus('ERRORED')
+            error => setFetchContactsStatus('ERRORED')
         );
     };
 
@@ -43,7 +43,7 @@ export const ContactListProvider = ({contactService, children}: Props) => {
             fetch('');
     });
 
-    const value = { contacts, contactsLoadStatus, fetch };
+    const value = { contacts, fetchContactsStatus, fetch };
 
     return (
         <ContactListContext.Provider value={value}>

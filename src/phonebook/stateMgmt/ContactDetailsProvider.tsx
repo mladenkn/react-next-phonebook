@@ -1,35 +1,38 @@
 import { WithContactService } from ".";
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Contact } from "../models";
-import { OperationStatus, update } from "../../utils";
+import { AsyncOperationStatus, update } from "../../utils";
 
 interface ContextValue {
-    onFavorite: () => void
     contact?: Contact
-    contactLoadStatus: OperationStatus
-    favoriteContactStatus: OperationStatus
+    fetchContactStatus: AsyncOperationStatus
+    favoriteContactStatus: AsyncOperationStatus
+    
+    onFavorite: () => void
 }
 
 type Props = { contactId: number, children: (c: ContextValue) => (JSX.Element | JSX.Element[]) } & WithContactService;
 
 export const ContactDetailsProvider = ({contactId, contactService, children}: Props) => {
     
-    const [contactLoadStatus, setContactLoadStatus] = useState<OperationStatus>('NOT_INITIATED');
-    const [favoriteContactStatus, setFavoriteContactStatus] = useState<OperationStatus>('NOT_INITIATED');
+    const [fetchContactStatus, setFetchContactStatus] = useState<AsyncOperationStatus>('NOT_INITIATED');
+    const [favoriteContactStatus, setFavoriteContactStatus] = useState<AsyncOperationStatus>('NOT_INITIATED');
     const [contact, setContact] = useState<Contact | undefined>(undefined);
     const [fetchedAllReady, setFetchedAllready] = useState(false);
 
-    if(!fetchedAllReady){
-        setContactLoadStatus('PROCESSING');
-        contactService.getById(contactId).then(
-            c => {
-                setContact(c);
-                setContactLoadStatus('COMPLETED');
-                setFetchedAllready(true);
-            },
-            error => setContactLoadStatus('ERRORED')
-        );
-    }
+    useEffect(() => {
+        if(!fetchedAllReady){
+            setFetchContactStatus('PROCESSING');
+            contactService.getById(contactId).then(
+                c => {
+                    setContact(c);
+                    setFetchContactStatus('COMPLETED');
+                    setFetchedAllready(true);
+                },
+                error => setFetchContactStatus('ERRORED')
+            );
+        }
+    });
 
     const onFavorite = () => {
         setFavoriteContactStatus('PROCESSING');
@@ -43,7 +46,7 @@ export const ContactDetailsProvider = ({contactId, contactService, children}: Pr
     }
 
     const contextValue = {
-        contactLoadStatus, contact, onFavorite, favoriteContactStatus
+        fetchContactStatus, contact, onFavorite, favoriteContactStatus
     }
 
     return <div>{children(contextValue)}</div>
