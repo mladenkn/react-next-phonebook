@@ -3,9 +3,9 @@ import { AsyncOperationStatus } from '../../utils';
 import { ContactListItem } from '../models';
 import ContactService from './ContactService';
 import { WithContactService } from ".";
-import { WithManyChildren } from ".";
+import { WithChildren } from ".";
 
-// This is both default value and type definition
+// This serves as both a default value and type definition
 const defaultValue = {
     contacts: {} as {
         all: ContactListItem[],
@@ -18,7 +18,7 @@ const defaultValue = {
 
 export const ContactListContext = React.createContext(defaultValue);
 
-type Props = WithContactService & WithManyChildren
+type Props = WithContactService & {children: JSX.Element | JSX.Element[]};
 
 export const ContactListProvider = ({contactService, children}: Props) => {
 

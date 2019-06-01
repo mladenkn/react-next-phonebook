@@ -12,7 +12,7 @@ type Props = {contact: Contact, onFavorite: () => void} & WithStyles<typeof styl
 
 const ContactDetailsPage = ({contact, classes, onFavorite}: Props) => 
 {
-    const backAction = <GoBackAction onClick={() => {}} />
+    const backAction = <GoBackAction />
 
     const name = <Typography className={classes.personName}>{contact.fullName}</Typography>;
 

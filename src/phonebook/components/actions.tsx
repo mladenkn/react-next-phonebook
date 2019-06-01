@@ -2,8 +2,9 @@ import { withStyles, WithStyles, Icon, IconButton, Typography, Tooltip  } from "
 import { goToEditActionStyle, favoriteActionStyle, deleteActionStyle, goBackStyle } from "./actions-style";
 import { WithClassName, Link } from "./reusables";
 import { contactEditUrl } from "../urls";
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import DeleteModal from "./DeleteModal";
+import { GoBackContext } from "../stateMgmt/GoBackContext";
  
 type GoToEditActionProps = { contactId: number, rootClass?: string, iconClass?: string } 
     & WithStyles<typeof goToEditActionStyle>;
@@ -51,13 +52,18 @@ export const DeleteAction = withStyles(deleteActionStyle)
     });
 
     
-type GoBackActionProps = { onClick: () => void, rootClass?: string, iconClass?: string } & WithStyles<typeof goBackStyle>;
-    
+type GoBackActionProps = { 
+    rootClass?: string, iconClass?: string, onClick?: () => void, useGoBackContext?: boolean
+} & WithStyles<typeof goBackStyle>;
+
 export const GoBackAction = withStyles(goBackStyle)
-    (({onClick, classes, rootClass, iconClass}: GoBackActionProps) => {
-        return (<IconButton onClick={onClick} className={classes.root + ' ' + rootClass} disableRipple>
-            <Icon color="secondary" className={iconClass}>arrow_back</Icon>
-        </IconButton>);
+    (({onClick, classes, rootClass, iconClass, useGoBackContext}: GoBackActionProps) => {
+        const onClick_ = (useGoBackContext || true) ? useContext(GoBackContext) : onClick;
+        return (
+            <IconButton onClick={onClick_} className={classes.root + ' ' + rootClass} disableRipple>
+                <Icon color="secondary" className={iconClass}>arrow_back</Icon>
+            </IconButton>
+        );
     }); 
 
 type SaveWorkActionProps = {onClick: () => void} & WithClassName

@@ -11,7 +11,7 @@ import { buildActionHandler, handle } from "../../utils";
 
 export interface WithContactService { contactService: ContactService };
 
-export interface WithManyChildren { children: JSX.Element };
+export interface WithChildren<TParam> { children: (c: TParam) => (JSX.Element | JSX.Element[]) };
 
 export interface ContactIdRouteParams {
     contactId?: string

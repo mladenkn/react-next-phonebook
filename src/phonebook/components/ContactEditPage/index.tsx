@@ -17,7 +17,7 @@ const ContactEditPage = ({contact, classes, onConfirm}: Props) =>
     const onlyXs = useMediaQuery('(max-width:599px)');
     const downSm = useMediaQuery('(max-width:959px)');
 
-    const backAction = <GoBackAction onClick={() => {}} rootClass={classes.backAction} />;
+    const backAction = <GoBackAction rootClass={classes.backAction} />;
 
     const deleteAction = <DeleteAction
         onConfirm={onConfirm}

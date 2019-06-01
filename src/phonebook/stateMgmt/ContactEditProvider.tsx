@@ -1,7 +1,7 @@
 import { RouteComponentProps } from "react-router";
 import { ContactIdRouteParams } from ".";
 import { WithContactService } from ".";
-import { WithManyChildren } from ".";
+import { WithChildren } from ".";
 import ContactService from "./ContactService";
 import React from 'react';
 import { Contact } from "../models";
