@@ -1,7 +1,7 @@
 import { WithContactService } from ".";
 import React, { useState, useEffect } from 'react';
 import { Contact } from "../models";
-import { AsyncOperationStatus, updateMatches, apiRequest, doAsyncOperation } from "../../utils";
+import { AsyncOperationStatus, doAsyncOperation } from "../../utils";
 import ContactService from "./ContactService";
 
 export const useContactDetailsOps = (contactId: number, contactService: ContactService) => {

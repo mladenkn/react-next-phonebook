@@ -1,19 +1,21 @@
 import style from "./ContactListItem-style";
-import { ContactListItem } from "../../models";
+import { ContactListItem as Model } from "../../models";
 import React from 'react';
 import { Card, Avatar, Typography, withStyles, WithStyles } from "@material-ui/core";
 import { Box, Link } from "../reusables";
 import { contactDetailsUrl } from "../../urls";
 import { GoToEditAction, FavoriteAction, DeleteAction } from "../actions";
 
+export type ContactListItemAction = 'SELECT' | 'TOGGLE_FAVORITE' | 'DELETE'
+
 type Props = {
-    contact: ContactListItem
+    contact: Model
     isSelected: boolean
     smOrDown: boolean
-    onSelect: () => void
+    onAction: (a: ContactListItemAction) => void
 }
 
-export default ({contact, isSelected, smOrDown, onSelect}: Props) =>
+export const ContactListItem =  ({contact, isSelected, smOrDown, onAction}: Props) =>
 {
     return <StyledItemDummy 
         contact={contact}
@@ -22,18 +24,18 @@ export default ({contact, isSelected, smOrDown, onSelect}: Props) =>
         showDeleteButton={smOrDown || (!smOrDown && isSelected)}
         isLinkToDetails={smOrDown || (!smOrDown && isSelected)}
         isSelected={isSelected}
-        onSelect={onSelect} 
-        />
+        onAction={onAction} 
+    />
 }
-
+ 
 type ItemDummyProps = {
-    contact: ContactListItem
+    contact: Model
     showFavoriteButton: boolean
     showEditLink: boolean
     showDeleteButton: boolean
     isLinkToDetails: boolean
     isSelected: boolean
-    onSelect: () => void
+    onAction: (a: ContactListItemAction) => void
 } & WithStyles<typeof style>
  
 const ItemDummy = (p: ItemDummyProps) => {
@@ -72,7 +74,7 @@ const ItemDummy = (p: ItemDummyProps) => {
             <Link href={contactDetailsUrl(contact.id)} className={classes.rootLink}>{avatarAndName}</Link>
             {favoriteAction}{editAction}{deleteAction}
         </div> :
-        <div className={classes.root} onClick={p.onSelect}>
+        <div className={classes.root} onClick={() => p.onAction('SELECT')}>
             {avatarAndName} {favoriteAction}{editAction}{deleteAction}
         </div> ;
 }

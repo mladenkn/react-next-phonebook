@@ -1,4 +1,4 @@
-import { createStyles } from "@material-ui/core";
+import { createStyles, Theme } from "@material-ui/core";
 
 export const goToEditActionStyle = createStyles({
     root: {
@@ -17,9 +17,10 @@ export const favoriteActionStyle = createStyles({
     },
 });
 
-export const deleteActionStyle = createStyles({
+export const deleteActionStyle = ({palette}: Theme) => createStyles({
     button: {
         padding: 0,
+        color: palette.text.primary,
         '&:hover': {
             'background-color': 'inherit'
         },
