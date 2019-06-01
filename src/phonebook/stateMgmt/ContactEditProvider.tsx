@@ -16,8 +16,8 @@ type Props = { contactId: number, children: (c: ContextValue) => (JSX.Element | 
 export const ContactEditProvider = ({contactId, contactService, children}: Props) => {
     
     const [contact, setContact] = useState<Contact | undefined>(undefined);
-    const [fetchContactStatus, setFetchContactStatus] = useState<AsyncOperationStatus>('NOT_INITIATED');
-    const [saveContactStatus, setSaveContactStatus] = useState<AsyncOperationStatus>('NOT_INITIATED');
+    const [fetchContactStatus, setFetchContactStatus] = useState<AsyncOperationStatus>('NEVER_INITIATED');
+    const [saveContactStatus, setSaveContactStatus] = useState<AsyncOperationStatus>('NEVER_INITIATED');
     const [fetchedAllReady, setFetchedAllready] = useState(false);
 
     useEffect(() => {

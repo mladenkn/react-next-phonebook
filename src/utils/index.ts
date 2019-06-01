@@ -30,7 +30,7 @@ export const handle = <TActionPayload>(
 
 export const buildActionHandler = (handlers: ((a: AnyAction) => void)[]) => (a: AnyAction) => handlers.forEach(h => h(a));
 
-export type AsyncOperationStatus = 'NOT_INITIATED' | 'PROCESSING' | 'COMPLETED' | 'ERRORED'; 
+export type AsyncOperationStatus = 'NEVER_INITIATED' | 'PROCESSING' | 'COMPLETED' | 'ERRORED'; 
 
 export const replaceMatches = <T> (arr: T[], doesMatch: (item: T) => boolean, replaceWith: T) => {
     const {allItems, updatedItems} = updateMatches(arr, doesMatch, () => replaceWith);
@@ -52,4 +52,41 @@ export const updateMatches = <T> (arr: T[], doesMatch: (item: T) => boolean, upd
     });
 
     return {allItems, updatedItems};
+}
+
+
+interface ApiRequestState<TPayload> { 
+    status: AsyncOperationStatus
+    data: TPayload | undefined
+    error: Error | undefined
+}
+
+export const apiRequest = <TPayload> (
+    executeWith: () => Promise<TPayload>, onStateChange: (s:ApiRequestState<TPayload>) => void
+) => {
+
+    const execute = () => {
+
+    }
+
+    return execute
+}
+
+interface DoAsyncOperationParams<TData> {
+    execute: Promise<TData>
+    setStatus: (status: AsyncOperationStatus) => void
+    setData: (data: TData) => void
+    setExecutedAlready: (executedAlready: boolean) => void
+}
+
+export const doAsyncOperation = <TData> (p: DoAsyncOperationParams<TData>) => {
+    p.setStatus('PROCESSING');
+    p.execute.then(
+        d => {
+            p.setData(d);
+            p.setExecutedAlready(true);
+            p.setStatus('PROCESSING');
+        },
+        e => p.setStatus('ERRORED')
+    );
 }

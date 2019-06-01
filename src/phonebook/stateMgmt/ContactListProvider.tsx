@@ -11,7 +11,7 @@ const defaultValue = {
         all: ContactListItem[],
         favorites: ContactListItem[]
     },
-    fetchContactsStatus: 'NOT_INITIATED' as AsyncOperationStatus,
+    fetchContactsStatus: 'NEVER_INITIATED' as AsyncOperationStatus,
 
     fetch: (keyword: string) => {},
 };
@@ -19,6 +19,12 @@ const defaultValue = {
 export const ContactListContext = React.createContext(defaultValue);
 
 type Props = WithContactService & {children: JSX.Element | JSX.Element[]};
+
+/*
+    Why didn't I use a custom api request hook?
+    I tried, but I've had multiple requests which returned the same data, which caused bugs.
+    It had also caused unnecessary rerenders because of multiple variables, which had also caused bugs.
+*/
 
 export const ContactListProvider = ({contactService, children}: Props) => {
 

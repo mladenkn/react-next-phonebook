@@ -4,7 +4,7 @@ import { WithContactService, ContactIdRouteParams } from "../stateMgmt";
 import HomeSection from "./HomeSection";
 import { ContactListProvider } from "../stateMgmt/ContactListProvider";
 import { ContactEditProvider } from "../stateMgmt/ContactEditProvider";
-import { ContactDetailsProvider } from "../stateMgmt/ContactDetailsProvider";
+import { useContactDetailsOps } from "../stateMgmt/ContactDetailsProvider";
 import { RouteComponentProps } from "react-router";
 import ContactDetailsPage from './ContactDetailsPage';
 import { useContactPageStyle, useHomePageStyle } from './pages-styles';
@@ -34,7 +34,7 @@ export default ({contactService}: WithContactService) =>
                   <div className={classes.root}>
                     {fetchContactStatus === 'COMPLETED' ?
                       <ContactEditPage contact={contact!} onFinish={onFinish} saveStatus={saveContactStatus} /> :
-                      <div></div> // doesn't make sense to handle this since there is no real fetching}
+                      <div /> // doesn't make sense to handle this since there is no real fetching}
                     }
                   </div>
                 }   
@@ -47,18 +47,15 @@ export default ({contactService}: WithContactService) =>
         {
           const contactId = parseInt(match.params.contactId!);
           const classes = useContactPageStyle();
+          const ops = useContactDetailsOps(contactId, contactService);
           return (
             <GoBackContext.Provider value={history.goBack}>
-              <ContactDetailsProvider contactId={contactId} contactService={contactService}>
-                {({contact, fetchContactStatus: contactStatus, onFavorite}) => 
-                  <div className={classes.root}>
-                    {contactStatus === 'COMPLETED' ?
-                      <ContactDetailsPage contact={contact!} onFavorite={onFavorite} /> :
-                      <div></div> // doesn't make sense to handle this since there is no real fetching}
+                <div className={classes.root}>
+                    {ops.fetchContactStatus === 'COMPLETED' ?
+                        <ContactDetailsPage contact={ops.contact!} onFavorite={ops.favorite} /> :
+                        <div /> // doesn't make sense to handle this since there is no real fetching}
                     }
-                  </div>
-                }               
-              </ContactDetailsProvider>
+                </div>
             </GoBackContext.Provider>
           );
         }
