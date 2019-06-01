@@ -1,7 +1,7 @@
 import { WithContactService } from ".";
 import React, { useState, useEffect } from 'react';
 import { Contact } from "../models";
-import { AsyncOperationStatus, update } from "../../utils";
+import { AsyncOperationStatus, updateMatches } from "../../utils";
 
 interface ContextValue {
     contact?: Contact

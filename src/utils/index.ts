@@ -33,11 +33,11 @@ export const buildActionHandler = (handlers: ((a: AnyAction) => void)[]) => (a: 
 export type AsyncOperationStatus = 'NOT_INITIATED' | 'PROCESSING' | 'COMPLETED' | 'ERRORED'; 
 
 export const replaceMatches = <T> (arr: T[], doesMatch: (item: T) => boolean, replaceWith: T) => {
-    const {allItems, updatedItems} = update(arr, doesMatch, () => replaceWith);
+    const {allItems, updatedItems} = updateMatches(arr, doesMatch, () => replaceWith);
     return {allItems, newItems: updatedItems};
 }
 
-export const update = <T> (arr: T[], doesMatch: (item: T) => boolean, update: (item: T) => T) => {
+export const updateMatches = <T> (arr: T[], doesMatch: (item: T) => boolean, update: (item: T) => T) => {
     const allItems: T[] = [];
     const updatedItems: T[] = [];
 
