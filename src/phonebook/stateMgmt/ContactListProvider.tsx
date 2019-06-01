@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { AsyncOperationStatus } from '../../utils';
+import { AsyncOperationStatus, doAsyncOperation } from '../../utils';
 import { ContactListItem } from '../models';
 import ContactService from './ContactService';
 import { WithContactService } from ".";
@@ -21,9 +21,9 @@ export const ContactListContext = React.createContext(defaultValue);
 type Props = WithContactService & {children: JSX.Element | JSX.Element[]};
 
 /*
-    Why didn't I use a custom api request hook?
+    Why not use a custom hook instead of doAsyncOperation?
     I tried, but I've had multiple requests which returned the same data, which caused bugs.
-    It had also caused unnecessary rerenders because of multiple variables, which had also caused bugs.
+    It had also caused unnecessary rerenders because of the multiple variables, which had also caused bugs.
 */
 
 export const ContactListProvider = ({contactService, children}: Props) => {
@@ -33,15 +33,12 @@ export const ContactListProvider = ({contactService, children}: Props) => {
     const [fetchedAlready, setFetchedAlready] = useState(false);
 
     const fetch = (keyword: string) => {
-        setFetchContactsStatus('PROCESSING');
-        contactService.search(keyword).then(
-            c => {
-                setContacts(c);
-                setFetchContactsStatus('COMPLETED');
-                setFetchedAlready(true);
-            },
-            error => setFetchContactsStatus('ERRORED')
-        );
+        doAsyncOperation({
+            do: contactService.search(keyword),
+            setStatus: setFetchContactsStatus,
+            setData: setContacts,
+            setExecutedAlready: setFetchedAlready
+        });
     };
 
     useEffect(() => {

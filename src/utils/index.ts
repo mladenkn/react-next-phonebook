@@ -76,7 +76,7 @@ interface DoAsyncOperationParams<TData> {
     do: Promise<TData>
     setStatus: (status: AsyncOperationStatus) => void
     setData: (data: TData) => void
-    setExecutedAlready: (executedAlready: boolean) => void
+    setExecutedAlready?: (executedAlready: boolean) => void
 }
 
 export const doAsyncOperation = <TData> (p: DoAsyncOperationParams<TData>) => {
@@ -84,8 +84,8 @@ export const doAsyncOperation = <TData> (p: DoAsyncOperationParams<TData>) => {
     p.do.then(
         d => {
             p.setData(d);
-            p.setExecutedAlready(true);
-            p.setStatus('PROCESSING');
+            p.setExecutedAlready && p.setExecutedAlready(true);
+            p.setStatus('COMPLETED');
         },
         e => p.setStatus('ERRORED')
     );

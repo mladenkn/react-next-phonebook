@@ -14,38 +14,29 @@ export const useContactDetailsOps = (contactId: number, contactService: ContactS
 
     useEffect(() => {
         if(!fetchedAllReady){
-            setFetchContactStatus('PROCESSING');
-            contactService.getById(contactId).then(
-                c => {
-                    setContact(c);
-                    setFetchContactStatus('COMPLETED');
-                    setFetchedAlready(true);
-                },
-                error => setFetchContactStatus('ERRORED')
-            );
+            doAsyncOperation({
+                do: contactService.getById(contactId),
+                setStatus: setFetchContactStatus,
+                setData: setContact,
+                setExecutedAlready: setFetchedAlready
+            });
         }
     });
 
     const favorite = () => {
-        setFavoriteContactStatus('PROCESSING');
-        contactService.toggleFavorite(contactId).then(
-            updatedContact => {
-                setContact(updatedContact);
-                setFavoriteContactStatus('COMPLETED');
-            },
-            error => setFavoriteContactStatus('ERRORED')
-        );
+        doAsyncOperation({
+            do: contactService.toggleFavorite(contactId),
+            setStatus: setFavoriteContactStatus,
+            setData: setContact
+        });
     }
 
-    const save = (data: Contact) => {
-        setSaveContactStatus('PROCESSING');
-        contactService.save(data).then(
-            updatedContact => {
-                setContact(updatedContact);
-                setSaveContactStatus('COMPLETED');
-            },
-            error => setSaveContactStatus('ERRORED')
-        );        
+    const save = (updatedContact: Contact) => {
+        doAsyncOperation({
+            do: contactService.save(updatedContact),
+            setStatus: setSaveContactStatus,
+            setData: setContact
+        });
     }
 
     return {
