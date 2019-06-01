@@ -2,7 +2,8 @@ import { Contact } from "../models";
 import { generateArray, replaceMatches, updateMatches } from "../../utils";
 import { generateContact } from '../devUtils/dataGenerators';
 
-// Classes and services may be discouraged in React but they ara not a bad pattern :)
+// Classes and services may be discouraged in React but they are not a bad pattern :)
+// Interface not needed because it's not necessary in order to mock ContactService in test
 // Easy to refactor to call REST API
 export default class ContactService {
 
@@ -35,6 +36,7 @@ export default class ContactService {
 
     async save(c: Contact){
         this.contactList.push(c);
+        return c;
     }
 
     async delete(id: number){
@@ -42,7 +44,7 @@ export default class ContactService {
     }
 
     async update(contact: Contact){
-        replaceMatches(this.contactList, c => c.id === contact.id, contact);
+        this.contactList = replaceMatches(this.contactList, c => c.id === contact.id, contact).allItems;
         return contact;
     }
 

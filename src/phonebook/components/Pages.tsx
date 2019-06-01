@@ -9,6 +9,7 @@ import { RouteComponentProps } from "react-router";
 import ContactDetailsPage from './ContactDetailsPage';
 import { useContactPageStyle, useHomePageStyle } from './pages-styles';
 import { GoBackContext } from '../stateMgmt/GoBackContext';
+import ContactEditPage from './ContactEditPage';
 
 export default ({contactService}: WithContactService) => 
     <div>
@@ -24,16 +25,24 @@ export default ({contactService}: WithContactService) =>
       } />
       <Route path="/contact/edit/:contactId" component={({match, history}: RouteComponentProps<ContactIdRouteParams>) =>
         {
-          const contactId = parseInt(match.params.contactId!)
+          const contactId = parseInt(match.params.contactId!);
+          const classes = useContactPageStyle();
           return (
             <GoBackContext.Provider value={history.goBack}>
               <ContactEditProvider contactId={contactId} contactService={contactService}>
-                {() => <div>edit</div>}
+                {({onFinish, contact, fetchContactStatus, saveContactStatus}) => 
+                  <div className={classes.root}>
+                    {fetchContactStatus === 'COMPLETED' ?
+                      <ContactEditPage contact={contact!} onFinish={onFinish} saveStatus={saveContactStatus} /> :
+                      <div></div> // doesn't make sense to handle this since there is no real fetching}
+                    }
+                  </div>
+                }   
               </ContactEditProvider>
             </GoBackContext.Provider>
           );
         }
-      } />       
+      } />
       <Route path="/contact/details/:contactId" component={({match, history}: RouteComponentProps<ContactIdRouteParams>) =>
         {
           const contactId = parseInt(match.params.contactId!);
@@ -45,7 +54,7 @@ export default ({contactService}: WithContactService) =>
                   <div className={classes.root}>
                     {contactStatus === 'COMPLETED' ?
                       <ContactDetailsPage contact={contact!} onFavorite={onFavorite} /> :
-                      <div>fetching</div> // doesn't make sense to handle this since there is no real fetching}
+                      <div></div> // doesn't make sense to handle this since there is no real fetching}
                     }
                   </div>
                 }               

@@ -8,19 +8,20 @@ import ContactForm from "./ContactForm";
 import { useContactPageBaseStylesXs, useContactPageBaseStylesSm } from "../ContactPageBase-style";
 import { DispatchContext } from "../../stateMgmt/DispatchContext";
 import { saveContact, goBack } from "../../actions";
+import { AsyncOperationStatus } from "../../../utils";
 
 
-type Props = {contact: Contact, onConfirm: () => void} & WithStyles<typeof style>;
+type Props = {contact: Contact, onFinish: (c: Contact) => void, saveStatus: AsyncOperationStatus} & WithStyles<typeof style>;
 
-const ContactEditPage = ({contact, classes, onConfirm}: Props) => 
+const ContactEditPage = ({contact, classes, onFinish}: Props) => 
 { 
     const onlyXs = useMediaQuery('(max-width:599px)');
     const downSm = useMediaQuery('(max-width:959px)');
-
+ 
     const backAction = <GoBackAction rootClass={classes.backAction} />;
 
     const deleteAction = <DeleteAction
-        onConfirm={onConfirm}
+        onConfirm={() => {}}
         withText={!onlyXs}
         rootClass={classes.deleteAction} />;
 
