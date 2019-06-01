@@ -9,6 +9,7 @@ import { useContactPageBaseStylesXs, useContactPageBaseStylesSm } from "../Conta
 import { DispatchContext } from "../../stateMgmt/DispatchContext";
 import { saveContact, goBack } from "../../actions";
 import { AsyncOperationStatus } from "../../../utils";
+import { GoBackContext } from "../../stateMgmt/GoBackContext";
 
 
 type Props = {contact: Contact, onFinish: (c: Contact) => void, saveStatus: AsyncOperationStatus} & WithStyles<typeof style>;
@@ -27,7 +28,7 @@ const ContactEditPage = ({contact, classes, onFinish}: Props) =>
 
     const avatar = <Avatar src={contact.avatar} className={classes.avatar}/>;
 
-    const dispatch = useContext(DispatchContext);
+    const goBack = useContext(GoBackContext);
     const [formInput, setFormInput] = useState(contact);
 
     const buttons = (
@@ -35,14 +36,14 @@ const ContactEditPage = ({contact, classes, onFinish}: Props) =>
             <Button 
                 variant="contained"
                 color="secondary"
-                onClick={() => dispatch(goBack())}
+                onClick={goBack}
                 className={classes.button}>
                 Cancel
             </Button>
             <Button 
                 variant="contained" 
                 color="primary" 
-                onClick={() => dispatch(saveContact(formInput))} 
+                onClick={() => onFinish(formInput)} 
                 className={classes.button} 
                 autoFocus>
                 Save

@@ -34,18 +34,16 @@ export default class ContactService {
         return {all, favorites};
     }
 
-    async save(c: Contact){
-        this.contactList.push(c);
-        return c;
+    async save(contact: Contact){
+        if(contact.id)
+            this.contactList = replaceMatches(this.contactList, c => c.id === contact.id, contact).allItems;
+        else 
+            this.contactList.push(contact);
+        return contact;
     }
 
     async delete(id: number){
         this.contactList = this.contactList.filter(c => c.id !== id);
-    }
-
-    async update(contact: Contact){
-        this.contactList = replaceMatches(this.contactList, c => c.id === contact.id, contact).allItems;
-        return contact;
     }
 
     async toggleFavorite(id: number){

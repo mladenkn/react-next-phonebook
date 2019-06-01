@@ -3,7 +3,6 @@ import { Route } from "react-router-dom";
 import { WithContactService, ContactIdRouteParams } from "../stateMgmt";
 import HomeSection from "./HomeSection";
 import { ContactListProvider } from "../stateMgmt/ContactListProvider";
-import { ContactEditProvider } from "../stateMgmt/ContactEditProvider";
 import { useContactDetailsOps } from "../stateMgmt/ContactDetailsProvider";
 import { RouteComponentProps } from "react-router";
 import ContactDetailsPage from './ContactDetailsPage';
@@ -27,18 +26,15 @@ export default ({contactService}: WithContactService) =>
         {
           const contactId = parseInt(match.params.contactId!);
           const classes = useContactPageStyle();
+          const ops = useContactDetailsOps(contactId, contactService);
           return (
             <GoBackContext.Provider value={history.goBack}>
-              <ContactEditProvider contactId={contactId} contactService={contactService}>
-                {({onFinish, contact, fetchContactStatus, saveContactStatus}) => 
-                  <div className={classes.root}>
-                    {fetchContactStatus === 'COMPLETED' ?
-                      <ContactEditPage contact={contact!} onFinish={onFinish} saveStatus={saveContactStatus} /> :
-                      <div /> // doesn't make sense to handle this since there is no real fetching}
-                    }
-                  </div>
-                }   
-              </ContactEditProvider>
+                <div className={classes.root}>
+                {ops.fetchContactStatus === 'COMPLETED' ?
+                    <ContactEditPage contact={ops.contact!} onFinish={ops.save} saveStatus={ops.saveContactStatus} /> :
+                    <div /> // doesn't make sense to handle this since there is no real fetching}
+                }
+                </div> 
             </GoBackContext.Provider>
           );
         }

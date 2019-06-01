@@ -8,6 +8,7 @@ export const useContactDetailsOps = (contactId: number, contactService: ContactS
     
     const [fetchContactStatus, setFetchContactStatus] = useState<AsyncOperationStatus>('NEVER_INITIATED');
     const [favoriteContactStatus, setFavoriteContactStatus] = useState<AsyncOperationStatus>('NEVER_INITIATED');
+    const [saveContactStatus, setSaveContactStatus] = useState<AsyncOperationStatus>('NEVER_INITIATED');
     const [contact, setContact] = useState<Contact | undefined>(undefined);
     const [fetchedAllReady, setFetchedAlready] = useState(false);
 
@@ -36,7 +37,18 @@ export const useContactDetailsOps = (contactId: number, contactService: ContactS
         );
     }
 
+    const save = (data: Contact) => {
+        setSaveContactStatus('PROCESSING');
+        contactService.save(data).then(
+            updatedContact => {
+                setContact(updatedContact);
+                setSaveContactStatus('COMPLETED');
+            },
+            error => setSaveContactStatus('ERRORED')
+        );        
+    }
+
     return {
-        fetchContactStatus, contact, favorite, favoriteContactStatus
+        fetchContactStatus, contact, favorite, favoriteContactStatus, saveContactStatus, save,
     }
 }
