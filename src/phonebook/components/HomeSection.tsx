@@ -33,7 +33,7 @@ const Home = ({classes}: WithStyles<typeof style>) =>
                     startAdornment={<Icon className={classes.searchFieldIcon}>search</Icon>}
                     onChange={e => ops.fetch(e.target.value)}
                     classes={{root: classes.searchField, focused: classes.searchFieldFocused}} />
-                { ops.fetchContactsStatus === 'COMPLETED' &&
+                { ops.fetchStatus === 'COMPLETED' &&
                     <ContactList
                         contacts={currentTab === 0 ? ops.contacts!.all : ops.contacts!.favorites}
                         onAction={ops.handleAction}

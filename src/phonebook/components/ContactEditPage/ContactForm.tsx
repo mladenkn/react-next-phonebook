@@ -38,6 +38,7 @@ const ContactForm = ({classes, initialInput, onChange}: Props) =>
     <Formik initialValues={initialInput} validate={validate} onSubmit={() => {}}>
       {({values}) => (
         <div>
+
           <label>
             <ContactFieldLabel icon="person_outlined" text="full name" className={classes.label} />
             <Field type="text" name="fullName" className={classes.input + ' ' + classes.singleValueInput} />

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Contact } from "../models";
-import { AsyncOperationStatus, doAsyncOperation } from "../../utils";
+import { AsyncOperationStatus } from "../../utils";
 import { useContactService } from "./ContactService";
 import { homePageUrl } from '../urls';
 
@@ -13,13 +13,16 @@ export const useContactDetailsOps = (contactId: number, goBack: () => void, navi
     const contactService = useContactService();
 
     useEffect(() => {
-        if(!fetchedAlReady)
-            doAsyncOperation({
-                do: contactService.getById(contactId),
-                setStatus: setFetchStatus,
-                setData: setContact,
-                setExecutedAlready: setFetchedAlready
-            });
+        if(!fetchedAlReady){
+            setFetchStatus('PROCESSING');
+            contactService.getById(contactId).then(
+                c => {
+                    setContact(c);
+                    setFetchedAlready(true);
+                    setFetchStatus('COMPLETED');
+                }
+            );
+        }
     });
 
     const favorite = () => contactService.toggleFavorite(contactId).then(setContact);

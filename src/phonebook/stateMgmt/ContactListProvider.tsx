@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { doAsyncOperation, replaceMatches } from '../../utils';
+import { replaceMatches } from '../../utils';
 import { ContactListItem } from '../models';
 import { useContactService } from './ContactService';
 import { ContactListItemAction } from '../components/ContactList/ContactListItem';
@@ -9,27 +9,23 @@ interface Contacts {
     favorites: ContactListItem[]
 }
 
-/*
-    Why not use a custom hook instead of doAsyncOperation?
-    I tried, but I've had multiple requests which returned the same data, which caused bugs.
-    It had also caused unnecessary rerenders because of the multiple variables, which had also caused bugs.
-*/
-
 export const useContactListOps = () => {
 
     const [contacts, setContacts] = useState<Contacts | undefined>(undefined);
-    const [fetchContactsStatus, setFetchContactsStatus] = useState('NEVER_INITIATED');
+    const [fetchStatus, setFetchStatus] = useState('NEVER_INITIATED');
     const [fetchedAlready, setFetchedAlready] = useState(false);
 
     const contactService = useContactService();
 
     const fetch = (keyword: string) => {
-        doAsyncOperation({
-            do: contactService.search(keyword),
-            setStatus: setFetchContactsStatus,
-            setData: setContacts,
-            setExecutedAlready: setFetchedAlready
-        });
+        setFetchStatus('PROCESSING');
+        contactService.search(keyword).then(
+            cl => {
+                setContacts(cl);
+                setFetchedAlready(true);
+                setFetchStatus('COMPLETED');
+            }
+        );
     };
 
     useEffect(() => {
@@ -56,5 +52,5 @@ export const useContactListOps = () => {
                 });
     };
 
-    return { contacts, fetchContactsStatus, fetch, handleAction };
+    return { contacts, fetchStatus, fetch, handleAction };
 }
