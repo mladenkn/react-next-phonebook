@@ -1,4 +1,4 @@
-import { Contact } from "../models";
+import { Contact, ContactListItem } from "../models";
 import { generateArray, replaceMatches, updateMatches } from "../../utils";
 import { generateContact } from '../devUtils/dataGenerators';
 import React, { useContext } from 'react'
@@ -51,6 +51,10 @@ export class ContactService {
         const {allItems, updatedItems} = updateMatches(this.contactList, c => c.id === id, c => ({...c, isFavorite: !c.isFavorite})); 
         this.contactList = allItems;
         return updatedItems[0];      
+    }
+
+    async toggleFavoriteListItem(id: number){
+        return (await this.toggleFavorite(id)) as ContactListItem;
     }
 }
 

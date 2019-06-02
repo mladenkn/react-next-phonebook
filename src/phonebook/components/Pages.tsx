@@ -23,7 +23,7 @@ export default () =>
         {
           const contactId = parseInt(match.params.contactId!);
           const classes = useContactPageStyle();
-          const ops = useContactDetailsOps(contactId);
+          const ops = useContactDetailsOps(contactId, history.goBack, history.push);
           return (
             <GoBackContext.Provider value={history.goBack}>
                 <div className={classes.root}>
@@ -31,7 +31,6 @@ export default () =>
                     <ContactEditPage 
                         contact={ops.contact!}
                         onSave={ops.save}
-                        saveStatus={ops.saveStatus}
                         onDelete={ops.delete}
                     /> :
                     <div /> // doesn't make sense to handle this since there is no real fetching}
@@ -45,7 +44,7 @@ export default () =>
         {
           const contactId = parseInt(match.params.contactId!);
           const classes = useContactPageStyle();
-          const ops = useContactDetailsOps(contactId);
+          const ops = useContactDetailsOps(contactId, history.goBack, history.push);
           return (
             <GoBackContext.Provider value={history.goBack}>
                 <div className={classes.root}>

@@ -1,5 +1,5 @@
 import faker from 'faker';
-import { isActionOf, ActionCreator } from 'typesafe-actions';
+import { isActionOf } from 'typesafe-actions';
 
 export const generateArray = <T> (getNext: () => T, minCount: number, maxCount: number) => {
     const count = faker.random.number({min: minCount, max: maxCount});
@@ -30,7 +30,7 @@ export const handle = <TActionPayload>(
 
 export const buildActionHandler = (handlers: ((a: AnyAction) => void)[]) => (a: AnyAction) => handlers.forEach(h => h(a));
 
-export type AsyncOperationStatus = 'NEVER_INITIATED' | 'PROCESSING' | 'COMPLETED' | 'ERRORED'; 
+export type AsyncOperationStatus = 'NEVER_INITIATED' | 'PROCESSING' | 'COMPLETED' | 'SERVER_ERROR' | 'NO_CONNECTION'; 
 
 export const replaceMatches = <T> (arr: T[], doesMatch: (item: T) => boolean, replaceWith: T) => {
     const {allItems, updatedItems} = updateMatches(arr, doesMatch, () => replaceWith);
@@ -74,19 +74,21 @@ export const apiRequest = <TPayload> (
 
 interface DoAsyncOperationParams<TData> {
     do: Promise<TData>
-    setStatus: (status: AsyncOperationStatus) => void
+    setStatus?: (status: AsyncOperationStatus) => void
     setData?: (data: TData) => void
     setExecutedAlready?: (executedAlready: boolean) => void
+    onComplete?: (data: TData) => void
 }
 
 export const doAsyncOperation = <TData> (p: DoAsyncOperationParams<TData>) => {
-    p.setStatus('PROCESSING');
+    p.setStatus && p.setStatus('PROCESSING');
     p.do.then(
         d => {
             p.setData && p.setData(d);
             p.setExecutedAlready && p.setExecutedAlready(true);
-            p.setStatus('COMPLETED');
+            p.setStatus && p.setStatus('COMPLETED');
+            p.onComplete && p.onComplete(d);
         },
-        e => p.setStatus('ERRORED')
+        e => p.setStatus && p.setStatus('SERVER_ERROR')
     );
 }

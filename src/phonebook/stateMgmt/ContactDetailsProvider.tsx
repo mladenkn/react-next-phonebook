@@ -1,20 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Contact } from "../models";
 import { AsyncOperationStatus, doAsyncOperation } from "../../utils";
 import { useContactService } from "./ContactService";
+import { homePageUrl } from '../urls';
 
-export const useContactDetailsOps = (contactId: number) => {
+export const useContactDetailsOps = (contactId: number, goBack: () => void, navigate: (url: string) => void) => {
     
     const [fetchStatus, setFetchStatus] = useState<AsyncOperationStatus>('NEVER_INITIATED');
-    const [favoriteStatus, setFavoritetatus] = useState<AsyncOperationStatus>('NEVER_INITIATED');
-    const [saveStatus, setSaveStatus] = useState<AsyncOperationStatus>('NEVER_INITIATED');
-    const [deleteStatus, setDeleteStatus] = useState<AsyncOperationStatus>('NEVER_INITIATED');
     const [contact, setContact] = useState<Contact | undefined>(undefined);
     const [fetchedAlReady, setFetchedAlready] = useState(false);
-
-    if(deleteStatus === 'COMPLETED'){
-
-    }
 
     const contactService = useContactService();
 
@@ -28,27 +22,13 @@ export const useContactDetailsOps = (contactId: number) => {
             });
     });
 
-    const favorite = () => 
-        doAsyncOperation({
-            do: contactService.toggleFavorite(contactId),
-            setStatus: setFavoritetatus,
-            setData: setContact
-        });
+    const favorite = () => contactService.toggleFavorite(contactId).then(setContact);
 
-    const save = (updatedContact: Contact) =>
-        doAsyncOperation({
-            do: contactService.save(updatedContact),
-            setStatus: setSaveStatus,
-            setData: setContact
-        });
+    const save = (updatedContact: Contact) => contactService.save(updatedContact).then(goBack);
 
-    const delete_ = () => 
-        doAsyncOperation({
-            do: contactService.delete(contactId),
-            setStatus: setDeleteStatus,
-        });
+    const delete_ = () =>  contactService.delete(contactId).then(() => navigate(homePageUrl));
 
     return {
-        fetchStatus, contact, favorite, favoriteStatus, saveStatus, save, delete: delete_, deleteStatus
+        fetchStatus, contact, favorite, save, delete: delete_
     }
 }

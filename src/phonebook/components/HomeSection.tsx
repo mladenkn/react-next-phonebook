@@ -14,7 +14,6 @@ const Home = ({classes}: WithStyles<typeof style>) =>
 
     const [currentTab, setCurrentTab] = useState(0);
     const ops = useContactListOps();
-    const displayedContacts = currentTab === 0 ? ops.contacts.all : ops.contacts.favorites;
 
     return (
         <div className={classes.root}>
@@ -36,7 +35,7 @@ const Home = ({classes}: WithStyles<typeof style>) =>
                     classes={{root: classes.searchField, focused: classes.searchFieldFocused}} />
                 { ops.fetchContactsStatus === 'COMPLETED' &&
                     <ContactList
-                        contacts={displayedContacts}
+                        contacts={currentTab === 0 ? ops.contacts!.all : ops.contacts!.favorites}
                         onAction={ops.handleAction}
                         includeAdder
                         className={classes.list} 

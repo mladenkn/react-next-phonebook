@@ -1,24 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { AsyncOperationStatus, doAsyncOperation } from '../../utils';
+import { useState, useEffect } from 'react';
+import { doAsyncOperation, replaceMatches } from '../../utils';
 import { ContactListItem } from '../models';
 import { useContactService } from './ContactService';
-import { WithContactService } from ".";
-import { WithChildren } from ".";
 import { ContactListItemAction } from '../components/ContactList/ContactListItem';
 
-// This serves as both a default value and type definition
-const defaultValue = {
-    contacts: {} as {
-        all: ContactListItem[],
-        favorites: ContactListItem[]
-    },
-    fetchContactsStatus: 'NEVER_INITIATED' as AsyncOperationStatus,
-
-    fetch: (keyword: string) => {},
-    handleAction: (a: ContactListItemAction) => {}
-};
-
-export const ContactListContext = React.createContext(defaultValue);
+interface Contacts {
+    all: ContactListItem[],
+    favorites: ContactListItem[]
+}
 
 /*
     Why not use a custom hook instead of doAsyncOperation?
@@ -28,8 +17,8 @@ export const ContactListContext = React.createContext(defaultValue);
 
 export const useContactListOps = () => {
 
-    const [contacts, setContacts] = useState(defaultValue.contacts);
-    const [fetchContactsStatus, setFetchContactsStatus] = useState(defaultValue.fetchContactsStatus);
+    const [contacts, setContacts] = useState<Contacts | undefined>(undefined);
+    const [fetchContactsStatus, setFetchContactsStatus] = useState('NEVER_INITIATED');
     const [fetchedAlready, setFetchedAlready] = useState(false);
 
     const contactService = useContactService();
@@ -48,8 +37,23 @@ export const useContactListOps = () => {
             fetch('');
     });
     
-    const handleAction = (a: ContactListItemAction) => {
-        console.log(a);
+    const handleAction = ({type, contactId}: ContactListItemAction) => {
+
+        if(type === 'TOGGLE_FAVORITE')
+            contactService.toggleFavoriteListItem(contactId)
+                .then(updatedContact => {
+                    const all = replaceMatches(contacts!.all, c => c.id === contactId, updatedContact).allItems;                    
+                    const favorites = replaceMatches(contacts!.favorites, c => c.id === contactId, updatedContact).allItems;
+                    setContacts({all, favorites});
+                });
+                
+        else if(type === 'DELETE')
+            contactService.delete(contactId)
+                .then(() => {
+                    const all = contacts!.all.filter(c => c.id !== contactId);
+                    const favorites = contacts!.all.filter(c => c.id !== contactId);
+                    setContacts({all, favorites});
+                });
     };
 
     return { contacts, fetchContactsStatus, fetch, handleAction };

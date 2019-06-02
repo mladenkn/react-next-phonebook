@@ -6,22 +6,17 @@ import { WithStyles, withStyles, Button, Avatar } from "@material-ui/core";
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import ContactForm from "./ContactForm";
 import { useContactPageBaseStylesXs, useContactPageBaseStylesSm } from "../ContactPageBase-style";
-import { AsyncOperationStatus } from "../../../utils";
 import { GoBackContext } from "../../stateMgmt/GoBackContext";
 
 type Props = {
     contact: Contact
     onSave: (c: Contact) => void
-    saveStatus: AsyncOperationStatus
     onDelete: () => void
 } & WithStyles<typeof style>;
 
-const ContactEditPage = ({contact, classes, onSave: onFinish, saveStatus, onDelete}: Props) => 
+const ContactEditPage = ({contact, classes, onSave: onFinish, onDelete}: Props) => 
 {
     const goBack = useContext(GoBackContext);
-
-    if(saveStatus === 'COMPLETED')
-        goBack();
 
     const onlyXs = useMediaQuery('(max-width:599px)');
     const downSm = useMediaQuery('(max-width:959px)');
