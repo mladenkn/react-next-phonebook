@@ -10,18 +10,21 @@ type Props = {
     contacts: ContactListItem[]
     className?: string
     includeAdder?: boolean
+    onAction: (a: ContactListItemAction) => void
 } & WithStyles<typeof style> & WithWidth
 
-const ContactList = withWidth()(({contacts, classes, includeAdder, className, width}: Props) => {
+const ContactList = withWidth()(({contacts, classes, includeAdder, className, width, onAction}: Props) => {
 
     const includeAdder_ = includeAdder || false;
     const smOrDown = width === 'sm' || width === 'xs';
  
     const [selectedItemId, setSelectedItemId] = useState(0);
 
-    const handleAction = (a: ContactListItemAction, itemId: number) => {
-        if(a === 'SELECT')
-            setSelectedItemId(itemId);
+    const handleAction = (a: ContactListItemAction) => {
+        if(a.type === 'SELECT')
+            setSelectedItemId(a.contactId);
+        else
+            onAction(a);
     }
  
     const items = contacts.map(c => 
@@ -29,7 +32,7 @@ const ContactList = withWidth()(({contacts, classes, includeAdder, className, wi
             <Item
                 isSelected={selectedItemId === c.id}
                 smOrDown={smOrDown}
-                onAction={a => {handleAction(a, c.id)}} 
+                onAction={a => {handleAction(a)}} 
                 contact={c} /> 
         </ListItem>
     );

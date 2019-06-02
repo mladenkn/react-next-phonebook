@@ -2,15 +2,17 @@ import { WithContactService } from ".";
 import React, { useState, useEffect } from 'react';
 import { Contact } from "../models";
 import { AsyncOperationStatus, doAsyncOperation } from "../../utils";
-import ContactService from "./ContactService";
+import { useContactService } from "./ContactService";
 
-export const useContactDetailsOps = (contactId: number, contactService: ContactService) => {
+export const useContactDetailsOps = (contactId: number) => {
     
     const [fetchContactStatus, setFetchContactStatus] = useState<AsyncOperationStatus>('NEVER_INITIATED');
     const [favoriteContactStatus, setFavoriteContactStatus] = useState<AsyncOperationStatus>('NEVER_INITIATED');
     const [saveContactStatus, setSaveContactStatus] = useState<AsyncOperationStatus>('NEVER_INITIATED');
     const [contact, setContact] = useState<Contact | undefined>(undefined);
     const [fetchedAllReady, setFetchedAlready] = useState(false);
+
+    const contactService = useContactService();
 
     useEffect(() => {
         if(!fetchedAllReady){

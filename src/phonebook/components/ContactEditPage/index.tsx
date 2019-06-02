@@ -12,7 +12,11 @@ import { AsyncOperationStatus } from "../../../utils";
 import { GoBackContext } from "../../stateMgmt/GoBackContext";
 
 
-type Props = {contact: Contact, onFinish: (c: Contact) => void, saveStatus: AsyncOperationStatus} & WithStyles<typeof style>;
+type Props = {
+    contact: Contact
+    onFinish: (c: Contact) => void
+    saveStatus: AsyncOperationStatus
+} & WithStyles<typeof style>;
 
 const ContactEditPage = ({contact, classes, onFinish}: Props) => 
 { 
@@ -21,7 +25,7 @@ const ContactEditPage = ({contact, classes, onFinish}: Props) =>
  
     const backAction = <GoBackAction rootClass={classes.backAction} />;
 
-    const deleteAction = <DeleteAction
+    const deleteAction = contact.id && <DeleteAction
         onConfirm={() => {}}
         withText={!onlyXs}
         rootClass={classes.deleteAction} />;

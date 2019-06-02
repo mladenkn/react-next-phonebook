@@ -2,7 +2,6 @@ import React from 'react';
 import { Route } from "react-router-dom";
 import { WithContactService, ContactIdRouteParams } from "../stateMgmt";
 import HomeSection from "./HomeSection";
-import { ContactListProvider } from "../stateMgmt/ContactListProvider";
 import { useContactDetailsOps } from "../stateMgmt/ContactDetailsProvider";
 import { RouteComponentProps } from "react-router";
 import ContactDetailsPage from './ContactDetailsPage';
@@ -10,23 +9,21 @@ import { useContactPageStyle, useHomePageStyle } from './pages-styles';
 import { GoBackContext } from '../stateMgmt/GoBackContext';
 import ContactEditPage from './ContactEditPage';
 
-export default ({contactService}: WithContactService) => 
+export default () => 
     <div>
       <Route exact path="/" component={() =>
         {
           const classes = useHomePageStyle();
-          return <ContactListProvider contactService={contactService}>
-            <div className={classes.root}>
-              <HomeSection />
+          return <div className={classes.root}>
+                <HomeSection />
             </div>
-          </ContactListProvider>;
         }
       } />
       <Route path="/contact/edit/:contactId" component={({match, history}: RouteComponentProps<ContactIdRouteParams>) =>
         {
           const contactId = parseInt(match.params.contactId!);
           const classes = useContactPageStyle();
-          const ops = useContactDetailsOps(contactId, contactService);
+          const ops = useContactDetailsOps(contactId);
           return (
             <GoBackContext.Provider value={history.goBack}>
                 <div className={classes.root}>
@@ -43,7 +40,7 @@ export default ({contactService}: WithContactService) =>
         {
           const contactId = parseInt(match.params.contactId!);
           const classes = useContactPageStyle();
-          const ops = useContactDetailsOps(contactId, contactService);
+          const ops = useContactDetailsOps(contactId);
           return (
             <GoBackContext.Provider value={history.goBack}>
                 <div className={classes.root}>

@@ -8,7 +8,7 @@ import { homePageUrl } from "../urls";
 import { BrowserRouter } from 'react-router-dom';
 import { Link } from './reusables';
 import { SaveWorkAction } from './actions';
-import ContactService from '../stateMgmt/ContactService';
+import { ContactService, ContactServiceContext } from '../stateMgmt/ContactService';
 
 //const secondaryThemeColor = purple[500]
 
@@ -41,16 +41,18 @@ const contactService = new ContactService();
 
 const AppContent_ = ({classes}: WithStyles<typeof style>) =>
     <BrowserRouter>
-        <AppBar position="sticky">
-            <Toolbar className={classes.toolbar}>
-                <Link className={classes.headingLink} underline="none" href={homePageUrl}>
-                    <Typography className={classes.headingLinkText}>Phonebook</Typography>
-                </Link>
-                <SaveWorkAction className={classes.saveWorkAction} onClick={() => contactService.persist()} />
-            </Toolbar>
-            <div className={classes.toolbarBorder}></div>
-        </AppBar>
-        <Routes contactService={contactService}/>
+        <ContactServiceContext.Provider value={contactService}>
+            <AppBar position="sticky">
+                <Toolbar className={classes.toolbar}>
+                    <Link className={classes.headingLink} underline="none" href={homePageUrl}>
+                        <Typography className={classes.headingLinkText}>Phonebook</Typography>
+                    </Link>
+                    <SaveWorkAction className={classes.saveWorkAction} onClick={() => contactService.persist()} />
+                </Toolbar>
+                <div className={classes.toolbarBorder}></div>
+            </AppBar>
+            <Routes/>
+        </ContactServiceContext.Provider>
     </BrowserRouter>
 
 const AppContent = withStyles(style)(AppContent_);

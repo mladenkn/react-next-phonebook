@@ -6,7 +6,10 @@ import { Box, Link } from "../reusables";
 import { contactDetailsUrl } from "../../urls";
 import { GoToEditAction, FavoriteAction, DeleteAction } from "../actions";
 
-export type ContactListItemAction = 'SELECT' | 'TOGGLE_FAVORITE' | 'DELETE'
+export interface ContactListItemAction {
+    type: 'SELECT' | 'TOGGLE_FAVORITE' | 'DELETE'
+    contactId: number
+}
 
 type Props = {
     contact: Model
@@ -40,7 +43,7 @@ type ItemDummyProps = {
  
 const ItemDummy = (p: ItemDummyProps) => {
 
-    const { classes, contact } = p;
+    const { classes, contact, onAction } = p;
 
     const avatarAndName = (
         <Card className={classes.avatarAndName + ' ' + (p.isSelected && classes.selected)}>
@@ -52,7 +55,7 @@ const ItemDummy = (p: ItemDummyProps) => {
 
     const favoriteAction = p.showFavoriteButton &&
         <FavoriteAction
-            onClick={() => {}}
+            onClick={() => onAction({type: 'TOGGLE_FAVORITE', contactId: contact.id})}
             isFavorite={contact.isFavorite}
             rootClass={classes.action + ' ' + classes.favoriteAction}
             iconClass={classes.icon} />;
@@ -65,7 +68,7 @@ const ItemDummy = (p: ItemDummyProps) => {
 
     const deleteAction = p.showDeleteButton &&
         <DeleteAction
-            onConfirm={() => {}}
+            onConfirm={() => onAction({type: 'DELETE', contactId: contact.id})}
             rootClass={classes.action + ' ' + classes.deleteAction}
             iconClass={classes.icon} />;
 
@@ -74,7 +77,7 @@ const ItemDummy = (p: ItemDummyProps) => {
             <Link href={contactDetailsUrl(contact.id)} className={classes.rootLink}>{avatarAndName}</Link>
             {favoriteAction}{editAction}{deleteAction}
         </div> :
-        <div className={classes.root} onClick={() => p.onAction('SELECT')}>
+        <div className={classes.root} onClick={() => onAction({type: 'SELECT', contactId: contact.id})}>
             {avatarAndName} {favoriteAction}{editAction}{deleteAction}
         </div> ;
 }

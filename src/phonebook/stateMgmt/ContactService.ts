@@ -1,11 +1,12 @@
 import { Contact } from "../models";
 import { generateArray, replaceMatches, updateMatches } from "../../utils";
 import { generateContact } from '../devUtils/dataGenerators';
+import React, { useContext } from 'react'
 
 // Classes and services may be discouraged in React but they are not a bad pattern :)
 // Interface not needed because it's not necessary in order to mock ContactService in test
 // Easy to refactor to call REST API
-export default class ContactService {
+export class ContactService {
 
     private contactList: Contact[]
 
@@ -51,4 +52,13 @@ export default class ContactService {
         this.contactList = allItems;
         return updatedItems[0];      
     }
+}
+
+export const ContactServiceContext = React.createContext<ContactService | undefined>(undefined);
+
+export const useContactService = () => {
+    const cs = useContext(ContactServiceContext);
+    if(!cs)
+        throw new Error('Not providing ContactService');
+    return cs;
 }

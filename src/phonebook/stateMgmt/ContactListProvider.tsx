@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { AsyncOperationStatus, doAsyncOperation } from '../../utils';
 import { ContactListItem } from '../models';
-import ContactService from './ContactService';
+import { useContactService } from './ContactService';
 import { WithContactService } from ".";
 import { WithChildren } from ".";
+import { ContactListItemAction } from '../components/ContactList/ContactListItem';
 
 // This serves as both a default value and type definition
 const defaultValue = {
@@ -14,11 +15,10 @@ const defaultValue = {
     fetchContactsStatus: 'NEVER_INITIATED' as AsyncOperationStatus,
 
     fetch: (keyword: string) => {},
+    handleAction: (a: ContactListItemAction) => {}
 };
 
 export const ContactListContext = React.createContext(defaultValue);
-
-type Props = WithContactService & {children: JSX.Element | JSX.Element[]};
 
 /*
     Why not use a custom hook instead of doAsyncOperation?
@@ -26,11 +26,13 @@ type Props = WithContactService & {children: JSX.Element | JSX.Element[]};
     It had also caused unnecessary rerenders because of the multiple variables, which had also caused bugs.
 */
 
-export const ContactListProvider = ({contactService, children}: Props) => {
+export const useContactListOps = () => {
 
     const [contacts, setContacts] = useState(defaultValue.contacts);
     const [fetchContactsStatus, setFetchContactsStatus] = useState(defaultValue.fetchContactsStatus);
     const [fetchedAlready, setFetchedAlready] = useState(false);
+
+    const contactService = useContactService();
 
     const fetch = (keyword: string) => {
         doAsyncOperation({
@@ -45,12 +47,10 @@ export const ContactListProvider = ({contactService, children}: Props) => {
         if(!fetchedAlready)
             fetch('');
     });
+    
+    const handleAction = (a: ContactListItemAction) => {
+        console.log(a);
+    };
 
-    const value = { contacts, fetchContactsStatus, fetch };
-
-    return (
-        <ContactListContext.Provider value={value}>
-            {children}
-        </ContactListContext.Provider>
-    );
+    return { contacts, fetchContactsStatus, fetch, handleAction };
 }

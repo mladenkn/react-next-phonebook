@@ -3,7 +3,7 @@ import style from "./HomeSection-style";
 import React, { useState, useContext } from 'react';
 import ContactList from "./ContactList";
 import { Divider } from "./reusables"
-import { ContactListContext } from "../stateMgmt/ContactListProvider";
+import { useContactListOps } from "../stateMgmt/ContactListProvider";
 
 const Home = ({classes}: WithStyles<typeof style>) =>
 {
@@ -13,8 +13,8 @@ const Home = ({classes}: WithStyles<typeof style>) =>
     }
 
     const [currentTab, setCurrentTab] = useState(0);
-    const contactList = useContext(ContactListContext);
-    const displayedContacts = currentTab === 0 ? contactList.contacts.all : contactList.contacts.favorites;
+    const ops = useContactListOps();
+    const displayedContacts = currentTab === 0 ? ops.contacts.all : ops.contacts.favorites;
 
     return (
         <div className={classes.root}>
@@ -32,10 +32,15 @@ const Home = ({classes}: WithStyles<typeof style>) =>
                 <Divider className={classes.contactTabsDivider} />
                 <Input disableUnderline
                     startAdornment={<Icon className={classes.searchFieldIcon}>search</Icon>}
-                    onChange={e => contactList.fetch(e.target.value)}
+                    onChange={e => ops.fetch(e.target.value)}
                     classes={{root: classes.searchField, focused: classes.searchFieldFocused}} />
-                { contactList.fetchContactsStatus === 'COMPLETED' &&
-                    <ContactList contacts={displayedContacts} includeAdder className={classes.list} />
+                { ops.fetchContactsStatus === 'COMPLETED' &&
+                    <ContactList
+                        contacts={displayedContacts}
+                        onAction={ops.handleAction}
+                        includeAdder
+                        className={classes.list} 
+                    />
                 }
             </div>
         </div>
