@@ -32,15 +32,16 @@ export const FavoriteAction = withStyles(favoriteActionStyle)
     });
 
 
-type DeleteActionProps = { onConfirm: () => void, withText?: boolean, rootClass?: string, iconClass?: string }
+type DeleteActionProps = { onConfirm: () => void, withHoverEffect?: boolean, withText?: boolean, rootClass?: string, iconClass?: string }
     & WithStyles<typeof deleteActionStyle>
  
 export const DeleteAction = withStyles(deleteActionStyle)
-    (({onConfirm, withText, classes, rootClass, iconClass}: DeleteActionProps) => {
+    (({onConfirm, withText, classes, rootClass, iconClass, withHoverEffect}: DeleteActionProps) => {
         const [modalOpen, setModalOpen] = useState(false);
+        const buttonClass = (withHoverEffect || false) ? classes.buttonHoverEffect : classes.button;
         return (
             <div className={rootClass}>
-                <IconButton onClick={() => setModalOpen(true)} className={classes.button} disableRipple>
+                <IconButton onClick={() => setModalOpen(true)} className={buttonClass} disableRipple>
                     {(withText || false) && <Typography className={classes.text}>Delete</Typography>}
                     <Icon color="secondary" className={iconClass}>delete</Icon>
                 </IconButton>

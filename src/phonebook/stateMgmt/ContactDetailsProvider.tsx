@@ -1,4 +1,3 @@
-import { WithContactService } from ".";
 import React, { useState, useEffect } from 'react';
 import { Contact } from "../models";
 import { AsyncOperationStatus, doAsyncOperation } from "../../utils";
@@ -6,42 +5,50 @@ import { useContactService } from "./ContactService";
 
 export const useContactDetailsOps = (contactId: number) => {
     
-    const [fetchContactStatus, setFetchContactStatus] = useState<AsyncOperationStatus>('NEVER_INITIATED');
-    const [favoriteContactStatus, setFavoriteContactStatus] = useState<AsyncOperationStatus>('NEVER_INITIATED');
-    const [saveContactStatus, setSaveContactStatus] = useState<AsyncOperationStatus>('NEVER_INITIATED');
+    const [fetchStatus, setFetchStatus] = useState<AsyncOperationStatus>('NEVER_INITIATED');
+    const [favoriteStatus, setFavoritetatus] = useState<AsyncOperationStatus>('NEVER_INITIATED');
+    const [saveStatus, setSaveStatus] = useState<AsyncOperationStatus>('NEVER_INITIATED');
+    const [deleteStatus, setDeleteStatus] = useState<AsyncOperationStatus>('NEVER_INITIATED');
     const [contact, setContact] = useState<Contact | undefined>(undefined);
-    const [fetchedAllReady, setFetchedAlready] = useState(false);
+    const [fetchedAlReady, setFetchedAlready] = useState(false);
+
+    if(deleteStatus === 'COMPLETED'){
+
+    }
 
     const contactService = useContactService();
 
     useEffect(() => {
-        if(!fetchedAllReady){
+        if(!fetchedAlReady)
             doAsyncOperation({
                 do: contactService.getById(contactId),
-                setStatus: setFetchContactStatus,
+                setStatus: setFetchStatus,
                 setData: setContact,
                 setExecutedAlready: setFetchedAlready
             });
-        }
     });
 
-    const favorite = () => {
+    const favorite = () => 
         doAsyncOperation({
             do: contactService.toggleFavorite(contactId),
-            setStatus: setFavoriteContactStatus,
+            setStatus: setFavoritetatus,
             setData: setContact
         });
-    }
 
-    const save = (updatedContact: Contact) => {
+    const save = (updatedContact: Contact) =>
         doAsyncOperation({
             do: contactService.save(updatedContact),
-            setStatus: setSaveContactStatus,
+            setStatus: setSaveStatus,
             setData: setContact
         });
-    }
+
+    const delete_ = () => 
+        doAsyncOperation({
+            do: contactService.delete(contactId),
+            setStatus: setDeleteStatus,
+        });
 
     return {
-        fetchContactStatus, contact, favorite, favoriteContactStatus, saveContactStatus, save,
+        fetchStatus, contact, favorite, favoriteStatus, saveStatus, save, delete: delete_, deleteStatus
     }
 }

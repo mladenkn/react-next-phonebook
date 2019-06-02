@@ -75,7 +75,7 @@ export const apiRequest = <TPayload> (
 interface DoAsyncOperationParams<TData> {
     do: Promise<TData>
     setStatus: (status: AsyncOperationStatus) => void
-    setData: (data: TData) => void
+    setData?: (data: TData) => void
     setExecutedAlready?: (executedAlready: boolean) => void
 }
 
@@ -83,7 +83,7 @@ export const doAsyncOperation = <TData> (p: DoAsyncOperationParams<TData>) => {
     p.setStatus('PROCESSING');
     p.do.then(
         d => {
-            p.setData(d);
+            p.setData && p.setData(d);
             p.setExecutedAlready && p.setExecutedAlready(true);
             p.setStatus('COMPLETED');
         },

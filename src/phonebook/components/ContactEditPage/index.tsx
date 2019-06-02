@@ -6,33 +6,36 @@ import { WithStyles, withStyles, Button, Avatar } from "@material-ui/core";
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import ContactForm from "./ContactForm";
 import { useContactPageBaseStylesXs, useContactPageBaseStylesSm } from "../ContactPageBase-style";
-import { DispatchContext } from "../../stateMgmt/DispatchContext";
-import { saveContact, goBack } from "../../actions";
 import { AsyncOperationStatus } from "../../../utils";
 import { GoBackContext } from "../../stateMgmt/GoBackContext";
 
-
 type Props = {
     contact: Contact
-    onFinish: (c: Contact) => void
+    onSave: (c: Contact) => void
     saveStatus: AsyncOperationStatus
+    onDelete: () => void
 } & WithStyles<typeof style>;
 
-const ContactEditPage = ({contact, classes, onFinish}: Props) => 
-{ 
+const ContactEditPage = ({contact, classes, onSave: onFinish, saveStatus, onDelete}: Props) => 
+{
+    const goBack = useContext(GoBackContext);
+
+    if(saveStatus === 'COMPLETED')
+        goBack();
+
     const onlyXs = useMediaQuery('(max-width:599px)');
     const downSm = useMediaQuery('(max-width:959px)');
  
     const backAction = <GoBackAction rootClass={classes.backAction} />;
 
     const deleteAction = contact.id && <DeleteAction
-        onConfirm={() => {}}
+        onConfirm={onDelete}
+        withHoverEffect
         withText={!onlyXs}
         rootClass={classes.deleteAction} />;
 
     const avatar = <Avatar src={contact.avatar} className={classes.avatar}/>;
 
-    const goBack = useContext(GoBackContext);
     const [formInput, setFormInput] = useState(contact);
 
     const buttons = (
@@ -88,7 +91,7 @@ const ContactEditPage = ({contact, classes, onFinish}: Props) =>
                 </div>
                 <div className={classes.formAndButtons}>
                     <ContactForm initialInput={formInput} onChange={setFormInput} />
-                    {buttons}                
+                    {buttons}
                 </div>  
             </div>          
         </div>);

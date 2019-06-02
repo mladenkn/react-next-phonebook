@@ -30,7 +30,7 @@ const contactPageBaseSm = ({palette, breakpoints}: Theme) => createStyles({
     heading: {
         display: 'flex',
         borderBottom: `1px solid ${palette.primary.main}`,  
-        paddingBottom: 10, 
+        paddingBottom: 7, 
     },
     smLeft: {
         display: 'inline-flex',

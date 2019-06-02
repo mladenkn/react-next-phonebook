@@ -27,8 +27,13 @@ export default () =>
           return (
             <GoBackContext.Provider value={history.goBack}>
                 <div className={classes.root}>
-                {ops.fetchContactStatus === 'COMPLETED' ?
-                    <ContactEditPage contact={ops.contact!} onFinish={ops.save} saveStatus={ops.saveContactStatus} /> :
+                {ops.fetchStatus === 'COMPLETED' ?
+                    <ContactEditPage 
+                        contact={ops.contact!}
+                        onSave={ops.save}
+                        saveStatus={ops.saveStatus}
+                        onDelete={ops.delete}
+                    /> :
                     <div /> // doesn't make sense to handle this since there is no real fetching}
                 }
                 </div> 
@@ -44,7 +49,7 @@ export default () =>
           return (
             <GoBackContext.Provider value={history.goBack}>
                 <div className={classes.root}>
-                    {ops.fetchContactStatus === 'COMPLETED' ?
+                    {ops.fetchStatus === 'COMPLETED' ?
                         <ContactDetailsPage contact={ops.contact!} onFavorite={ops.favorite} /> :
                         <div /> // doesn't make sense to handle this since there is no real fetching}
                     }

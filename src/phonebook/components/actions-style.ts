@@ -25,8 +25,13 @@ export const deleteActionStyle = ({palette}: Theme) => createStyles({
             'background-color': 'inherit'
         },
     },
+    buttonHoverEffect: {
+        padding: 5,
+        color: palette.text.primary,
+        borderRadius: '10%',
+    },
     text: {
-        marginRight: 10,
+        marginRight: 3,
     },
 });
 
