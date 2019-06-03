@@ -7,8 +7,8 @@ import { FavoriteAction, GoToEditAction, GoBackAction } from "../actions";
 import { WithStyles, withStyles, IconButton, Icon, Typography, Avatar, } from "@material-ui/core";
 import { useTheme } from "@material-ui/styles";
 import { useContactPageBaseStylesXs, useContactPageBaseStylesMd } from "../ContactPageBase-style";
-import defaultAvatarUrl from '../../assets/default-avatar.jpg';
- 
+const defaultAvatarUrl = require('../../assets/default-avatar.jpg'); // doesn't work with ES6 import
+
 type Props = {contact: Contact, onFavorite: () => void} & WithStyles<typeof style>;
 
 const ContactDetailsPage = ({contact, classes, onFavorite}: Props) => 
