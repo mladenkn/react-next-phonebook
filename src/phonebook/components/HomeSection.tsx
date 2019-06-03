@@ -2,8 +2,8 @@ import { withStyles, WithStyles, Tabs, Tab, Input, Icon } from "@material-ui/cor
 import style from "./HomeSection-style";
 import React, { useState, useContext } from 'react';
 import ContactList from "./ContactList";
-import { Divider } from "./reusables"
-import { useContactListOps } from "../stateMgmt/ContactListProvider";
+import { useContactListOps } from "../logic/contactListOps";
+import { Divider, Emptiness } from "../../utils/components";
 
 const Home = ({classes}: WithStyles<typeof style>) =>
 {

@@ -2,9 +2,10 @@ import style from "./style";
 import { ContactListItem } from "../../models";
 import React, { useState } from 'react';
 import { List, ListItem, withStyles, WithStyles } from "@material-ui/core";
-import { ContactListItem as Item, ContactListItemAction } from "./ContactListItem";
+import { ContactListItem as Item } from "./ContactListItem";
 import ContactAdder from "./ContactAdder";
 import withWidth, { WithWidth } from "@material-ui/core/withWidth";
+import { ContactListItemAction } from "../../actions";
 
 type Props = {
     contacts: ContactListItem[]

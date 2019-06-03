@@ -6,7 +6,7 @@ import { WithStyles, withStyles, Button, Avatar } from "@material-ui/core";
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import ContactForm from "./ContactForm";
 import { useContactPageBaseStylesXs, useContactPageBaseStylesMd } from "../ContactPageBase-style";
-import { GoBackContext } from "../../stateMgmt/GoBackContext";
+import { GoBackContext } from "../../logic/GoBackContext";
 import { SwapableAvatar } from "../../../utils/components";
 
 type Props = {

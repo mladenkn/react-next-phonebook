@@ -1,13 +1,13 @@
 import React from 'react';
 import { Route } from "react-router-dom";
 import HomeSection from "./HomeSection";
-import { useContactDetailsOps } from "../stateMgmt/ContactDetailsProvider";
+import { useContactDetailsOps } from "../logic/contactDetailsOps";
 import { RouteComponentProps } from "react-router";
 import ContactDetails from './ContactDetails';
 import { useContactPageStyle, useHomePageStyle } from './pages-styles';
-import { GoBackContext } from '../stateMgmt/GoBackContext';
+import { GoBackContext } from '../logic/GoBackContext';
 import ContactEdit from './ContactEdit';
-import { useContactService } from '../stateMgmt/ContactService';
+import { useContactService } from '../logic/ContactService';
 
 export interface ContactIdRouteParams {
     contactId?: string

@@ -61,3 +61,11 @@ export const urlInputDialogStyle = ({palette, breakpoints}: Theme) => createStyl
 });
 
 export const useUrlInputDialogStyle = makeStyles(urlInputDialogStyle, {name: 'UrlInputDialogStyle'});
+
+export const dividerStyle = ({palette}: Theme) => createStyles({
+    root: {
+        height: 1.2,
+        backgroundColor: palette.primary.main,
+        width: '100%'
+    }
+});

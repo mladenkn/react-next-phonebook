@@ -5,12 +5,8 @@ import { Card, Avatar, Typography, withStyles, WithStyles } from "@material-ui/c
 import { Link } from "../../../utils/components";
 import { contactDetailsUrl } from "../../urls";
 import { GoToEditAction, FavoriteAction, DeleteAction } from "../actions";
+import { ContactListItemAction } from "../../actions";
 const defaultAvatarUrl = require('../../assets/default-avatar.jpg'); // doesn't work with ES6 import
-
-export interface ContactListItemAction {
-    type: 'SELECT' | 'TOGGLE_FAVORITE' | 'DELETE'
-    contactId: number
-}
 
 type Props = {
     contact: Model

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { replaceMatches } from '../../utils';
 import { ContactListItem } from '../models';
 import { useContactService } from './ContactService';
-import { ContactListItemAction } from '../components/ContactList/ContactListItem';
+import { ContactListItemAction } from '../actions';
 
 interface Contacts {
     all: ContactListItem[],

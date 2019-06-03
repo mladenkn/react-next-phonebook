@@ -1,10 +1,9 @@
 import { withStyles, WithStyles, Icon, IconButton, Typography, Tooltip  } from "@material-ui/core";
 import { goToEditActionStyle, favoriteActionStyle, deleteActionStyle, goBackStyle } from "./actions-style";
-import { WithClassName } from "./reusables";
 import { contactEditUrl } from "../urls";
 import React, { useState, useContext } from 'react';
 import DeleteModal from "./DeleteModal";
-import { GoBackContext } from "../stateMgmt/GoBackContext";
+import { GoBackContext } from "../logic/GoBackContext";
 import { Link } from "../../utils/components";
  
 type GoToEditActionProps = { contactId: number, rootClass?: string, iconClass?: string } 
@@ -33,7 +32,13 @@ export const FavoriteAction = withStyles(favoriteActionStyle)
     });
 
 
-type DeleteActionProps = { onConfirm: () => void, withHoverEffect?: boolean, withText?: boolean, rootClass?: string, iconClass?: string }
+type DeleteActionProps = { 
+    onConfirm: () => void,
+    withHoverEffect?: boolean,
+    withText?: boolean,
+    rootClass?: string,
+    iconClass?: string
+}
     & WithStyles<typeof deleteActionStyle>
  
 export const DeleteAction = withStyles(deleteActionStyle)
@@ -68,7 +73,7 @@ export const GoBackAction = withStyles(goBackStyle)
         );
     }); 
 
-type SaveWorkActionProps = {onClick: () => void} & WithClassName
+type SaveWorkActionProps = {onClick: () => void, className: string}
 export const SaveWorkAction = ({className, onClick}: SaveWorkActionProps) => 
     <Tooltip title="Save work">
         <IconButton onClick={onClick} className={className}>

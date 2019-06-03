@@ -13,24 +13,3 @@ export const contactFieldLabelStyle = ({palette}: Theme) => createStyles({
     fieldLabelText: {
     },
 });
-
-export const dividerStyle = ({palette}: Theme) => createStyles({
-    root: {
-        height: 1.2,
-        backgroundColor: palette.primary.main,
-        width: '100%'
-    }
-}); 
-
-export const textInputStyle = ({palette}: Theme) => createStyles({
-    root: {
-        border: `1px solid ${palette.secondary.light}`,
-        borderRadius: 4,
-        padding: 10,
-        '&:focus': {
-            border: `1px solid ${palette.secondary.light}`
-        },
-        outline: 'none',
-        color: palette.secondary.main
-    },
-})

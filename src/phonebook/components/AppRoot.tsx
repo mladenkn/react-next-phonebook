@@ -8,7 +8,7 @@ import { homePageUrl } from "../urls";
 import { BrowserRouter } from 'react-router-dom';
 import { Link } from '../../utils/components';
 import { SaveWorkAction } from './actions';
-import { ContactService, ContactServiceContext } from '../stateMgmt/ContactService';
+import { ContactService, ContactServiceContext } from '../logic/ContactService';
 
 //const secondaryThemeColor = purple[500]
 
