@@ -9,12 +9,12 @@ import { useContactPageBaseStylesXs, useContactPageBaseStylesSm } from "../Conta
 import { GoBackContext } from "../../stateMgmt/GoBackContext";
 
 type Props = {
-    contact: Contact
+    contact?: Contact
     onSave: (c: Contact) => void
-    onDelete: () => void
+    onDelete?: () => void
 } & WithStyles<typeof style>;
 
-const ContactEditPage = ({contact, classes, onSave: onFinish, onDelete}: Props) => 
+const ContactEditPage = ({contact, classes, onSave, onDelete}: Props) => 
 {
     const goBack = useContext(GoBackContext);
 
@@ -23,15 +23,25 @@ const ContactEditPage = ({contact, classes, onSave: onFinish, onDelete}: Props) 
  
     const backAction = <GoBackAction rootClass={classes.backAction} />;
 
-    const deleteAction = contact.id && <DeleteAction
-        onConfirm={onDelete}
+    const deleteAction = contact ? <DeleteAction
+        onConfirm={onDelete!}
         withHoverEffect
         withText={!onlyXs}
-        rootClass={classes.deleteAction} />;
+        rootClass={classes.deleteAction} 
+    /> : '';
 
-    const avatar = <Avatar src={contact.avatar} className={classes.avatar}/>;
+    const contact_ = contact || {
+        id: 0,
+        fullName: '',
+        avatar: '',
+        email: '',
+        numbers: [],
+        isFavorite: false
+    }
 
-    const [formInput, setFormInput] = useState(contact);
+    const avatar = <Avatar src={contact_.avatar} className={classes.avatar}/>;
+
+    const [editedContact, setEditedContact] = useState(contact_);
 
     const buttons = (
         <div className={classes.actions}>
@@ -45,7 +55,7 @@ const ContactEditPage = ({contact, classes, onSave: onFinish, onDelete}: Props) 
             <Button 
                 variant="contained" 
                 color="primary" 
-                onClick={() => onFinish(formInput)} 
+                onClick={() => onSave(editedContact)} 
                 className={classes.button} 
                 autoFocus>
                 Save
@@ -68,7 +78,7 @@ const ContactEditPage = ({contact, classes, onSave: onFinish, onDelete}: Props) 
                             {avatar}
                         </div>
                         <div className={classes.formAndButtons}>
-                            <ContactForm initialInput={formInput} onChange={setFormInput} />
+                            <ContactForm initialInput={editedContact} onChange={setEditedContact} />
                             {buttons}
                         </div>
                     </div>
@@ -85,7 +95,7 @@ const ContactEditPage = ({contact, classes, onSave: onFinish, onDelete}: Props) 
                     {backAction}{deleteAction}
                 </div>
                 <div className={classes.formAndButtons}>
-                    <ContactForm initialInput={formInput} onChange={setFormInput} />
+                    <ContactForm initialInput={editedContact} onChange={setEditedContact} />
                     {buttons}
                 </div>  
             </div>          

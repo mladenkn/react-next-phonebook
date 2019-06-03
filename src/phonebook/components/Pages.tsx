@@ -1,13 +1,17 @@
 import React from 'react';
 import { Route } from "react-router-dom";
-import { WithContactService, ContactIdRouteParams } from "../stateMgmt";
 import HomeSection from "./HomeSection";
 import { useContactDetailsOps } from "../stateMgmt/ContactDetailsProvider";
 import { RouteComponentProps } from "react-router";
-import ContactDetailsPage from './ContactDetailsPage';
+import ContactDetails from './ContactDetails';
 import { useContactPageStyle, useHomePageStyle } from './pages-styles';
 import { GoBackContext } from '../stateMgmt/GoBackContext';
-import ContactEditPage from './ContactEditPage';
+import ContactEdit from './ContactEdit';
+import { useContactService } from '../stateMgmt/ContactService';
+
+export interface ContactIdRouteParams {
+    contactId?: string
+}
 
 export default () => 
     <div>
@@ -28,11 +32,7 @@ export default () =>
             <GoBackContext.Provider value={history.goBack}>
                 <div className={classes.root}>
                 {ops.fetchStatus === 'COMPLETED' ?
-                    <ContactEditPage 
-                        contact={ops.contact!}
-                        onSave={ops.save}
-                        onDelete={ops.delete}
-                    /> :
+                    <ContactEdit contact={ops.contact!} onSave={ops.save} onDelete={ops.delete} /> :
                     <div /> // doesn't make sense to handle this since there is no real fetching}
                 }
                 </div> 
@@ -49,7 +49,7 @@ export default () =>
             <GoBackContext.Provider value={history.goBack}>
                 <div className={classes.root}>
                     {ops.fetchStatus === 'COMPLETED' ?
-                        <ContactDetailsPage contact={ops.contact!} onFavorite={ops.favorite} /> :
+                        <ContactDetails contact={ops.contact!} onFavorite={ops.favorite} /> :
                         <div /> // doesn't make sense to handle this since there is no real fetching}
                     }
                 </div>
@@ -57,5 +57,15 @@ export default () =>
           );
         }
       } />       
-      {/* <Route path="/contact/create" component={withContactService(ContactCreatePageContainer)} /> */}
+      <Route path="/contact/create" component={({history}: RouteComponentProps) => {
+          const classes = useContactPageStyle();
+          const contactService = useContactService();
+          return (
+            <GoBackContext.Provider value={history.goBack}>
+                <div className={classes.root}>
+                    <ContactEdit onSave={c => contactService.save(c).then(history.goBack)} />
+                </div> 
+            </GoBackContext.Provider>
+          );     
+      }} />
     </div>;
