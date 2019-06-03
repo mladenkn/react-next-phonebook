@@ -1,7 +1,7 @@
 export interface Contact {
     id: number
     fullName: string
-    avatar: string
+    avatar?: string
     email: string
     numbers: PhoneNumber[]
     isFavorite: boolean
@@ -10,7 +10,7 @@ export interface Contact {
 export interface ContactListItem {
     id: number
     fullName: string
-    avatar: string
+    avatar?: string
     isFavorite: boolean
 }
 

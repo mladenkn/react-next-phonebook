@@ -7,6 +7,7 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 import ContactForm from "./ContactForm";
 import { useContactPageBaseStylesXs, useContactPageBaseStylesMd } from "../ContactPageBase-style";
 import { GoBackContext } from "../../stateMgmt/GoBackContext";
+import { SwapableAvatar } from "../../../utils/components";
 
 type Props = {
     contact?: Contact
@@ -33,15 +34,19 @@ const ContactEditPage = ({contact, classes, onSave, onDelete}: Props) =>
     const contact_ = contact || {
         id: 0,
         fullName: '',
-        avatar: '',
+        avatar: undefined,
         email: '',
         numbers: [],
         isFavorite: false
     }
 
-    const avatar = <Avatar src={contact_.avatar} className={classes.avatar}/>;
-
     const [editedContact, setEditedContact] = useState(contact_);
+    const setAvatar = (avatarUrl?: string) => {
+        console.log(avatarUrl);
+        return setEditedContact({ ...editedContact, avatar: avatarUrl });
+    };    
+
+    const avatar = <SwapableAvatar src={editedContact.avatar} className={classes.avatar} onChange={setAvatar} />
 
     const buttons = (
         <div className={classes.actions}>

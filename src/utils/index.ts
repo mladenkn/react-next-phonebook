@@ -53,3 +53,8 @@ export const updateMatches = <T> (arr: T[], doesMatch: (item: T) => boolean, upd
 
     return {allItems, updatedItems};
 }
+
+export const validURL = (str: string) => {
+    var pattern = new RegExp(/^(?:\w+:)?\/\/([^\s\.]+\.\S{2}|localhost[\:?\d]*)\S*$/); // fragment locator
+    return !!pattern.test(str);
+  }

@@ -21,7 +21,7 @@ const contactPageBaseXs = ({palette, breakpoints}: Theme) => createStyles({
     },
 });
 
-export const useContactPageBaseStylesXs = makeStyles(contactPageBaseXs);
+export const useContactPageBaseStylesXs = makeStyles(contactPageBaseXs, {name: 'ContactPageBaseXs'});
 
 const contactPageBaseMd = ({palette, breakpoints}: Theme) => createStyles({
     root: {
@@ -43,4 +43,4 @@ const contactPageBaseMd = ({palette, breakpoints}: Theme) => createStyles({
     },
 });
 
-export const useContactPageBaseStylesMd = makeStyles(contactPageBaseMd);
+export const useContactPageBaseStylesMd = makeStyles(contactPageBaseMd, {name: 'ContactPageBaseMd'});

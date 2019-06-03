@@ -5,6 +5,7 @@ import { Card, Avatar, Typography, withStyles, WithStyles } from "@material-ui/c
 import { Link } from "../../../utils/components";
 import { contactDetailsUrl } from "../../urls";
 import { GoToEditAction, FavoriteAction, DeleteAction } from "../actions";
+import defaultAvatarUrl from '../../assets/default-avatar.jpg';
 
 export interface ContactListItemAction {
     type: 'SELECT' | 'TOGGLE_FAVORITE' | 'DELETE'
@@ -45,9 +46,11 @@ const ItemDummy = (p: ItemDummyProps) => {
 
     const { classes, contact, onAction } = p;
 
+    const avatarUrl = contact.avatar || defaultAvatarUrl;
+
     const avatarAndName = (
         <Card className={classes.avatarAndName + ' ' + (p.isSelected && classes.selected)}>
-            <Avatar alt="avatar" src={contact.avatar} className={classes.avatar} />
+            <Avatar alt="avatar" src={avatarUrl} className={classes.avatar} />
             <div className={classes.nameBox}>
                 <Typography className={`${classes.name}`}>{contact.fullName}</Typography>
             </div>

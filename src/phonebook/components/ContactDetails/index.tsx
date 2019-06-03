@@ -7,6 +7,7 @@ import { FavoriteAction, GoToEditAction, GoBackAction } from "../actions";
 import { WithStyles, withStyles, IconButton, Icon, Typography, Avatar, } from "@material-ui/core";
 import { useTheme } from "@material-ui/styles";
 import { useContactPageBaseStylesXs, useContactPageBaseStylesMd } from "../ContactPageBase-style";
+import defaultAvatarUrl from '../../assets/default-avatar.jpg';
  
 type Props = {contact: Contact, onFavorite: () => void} & WithStyles<typeof style>;
 
@@ -27,7 +28,9 @@ const ContactDetailsPage = ({contact, classes, onFavorite}: Props) =>
         rootClass={classes.action + ' ' + classes.editAction}
         iconClass={classes.icon} />;
 
-    const avatar = <Avatar src={contact.avatar} className={classes.avatar}/>
+    const avatarUrl = contact.avatar || defaultAvatarUrl;
+
+    const avatar = <Avatar src={avatarUrl} className={classes.avatar}/>
 
     const xsBaseClasses = useContactPageBaseStylesXs();
     const mdBaseClasses = useContactPageBaseStylesMd();
