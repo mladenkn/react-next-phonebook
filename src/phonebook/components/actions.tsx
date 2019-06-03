@@ -1,10 +1,11 @@
 import { withStyles, WithStyles, Icon, IconButton, Typography, Tooltip  } from "@material-ui/core";
 import { goToEditActionStyle, favoriteActionStyle, deleteActionStyle, goBackStyle } from "./actions-style";
-import { WithClassName, Link } from "./reusables";
+import { WithClassName } from "./reusables";
 import { contactEditUrl } from "../urls";
 import React, { useState, useContext } from 'react';
 import DeleteModal from "./DeleteModal";
 import { GoBackContext } from "../stateMgmt/GoBackContext";
+import { Link } from "../../utils/components";
  
 type GoToEditActionProps = { contactId: number, rootClass?: string, iconClass?: string } 
     & WithStyles<typeof goToEditActionStyle>;

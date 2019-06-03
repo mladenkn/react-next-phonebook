@@ -2,7 +2,7 @@ import style from "./ContactListItem-style";
 import { ContactListItem as Model } from "../../models";
 import React from 'react';
 import { Card, Avatar, Typography, withStyles, WithStyles } from "@material-ui/core";
-import { Box, Link } from "../reusables";
+import { Link } from "../../../utils/components";
 import { contactDetailsUrl } from "../../urls";
 import { GoToEditAction, FavoriteAction, DeleteAction } from "../actions";
 
@@ -48,9 +48,9 @@ const ItemDummy = (p: ItemDummyProps) => {
     const avatarAndName = (
         <Card className={classes.avatarAndName + ' ' + (p.isSelected && classes.selected)}>
             <Avatar alt="avatar" src={contact.avatar} className={classes.avatar} />
-            <Box className={classes.nameBox}>
+            <div className={classes.nameBox}>
                 <Typography className={`${classes.name}`}>{contact.fullName}</Typography>
-            </Box>
+            </div>
         </Card>);
 
     const favoriteAction = p.showFavoriteButton &&

@@ -1,8 +1,6 @@
 import { Icon, WithStyles, withStyles, Divider as MUIDivider, Link as MuiLink } from "@material-ui/core";
-import { LinkProps as MuiLinkProps } from "@material-ui/core/Link";
 import { contactFieldLabelStyle, dividerStyle, textInputStyle } from "./reusables-style";
 import React from 'react';
-import { Link as RouterLink } from "react-router-dom";
 
 export interface WithClassName {
     className?: string
@@ -40,10 +38,3 @@ type BoxProps = {
 } & WithClassName
 export const Box = ({width, height, children, className}: BoxProps) => 
     <div className={className} style={{width, height}}>{children}</div>;
-
-export const createRefRouterLink = (url: string) => React.forwardRef((props, ref: any) => (
-    <RouterLink innerRef={ref} to={url} {...props} />
-));
-
-const MuiLink_ = MuiLink as any;
-export const Link = (p: MuiLinkProps) => <MuiLink_ {...p} component={createRefRouterLink(p.href!)} />
