@@ -74,8 +74,8 @@ export const GoBackAction = withStyles(goBackStyle)
     }); 
 
 type SaveWorkActionProps = {onClick: () => void, className: string}
-export const SaveWorkAction = ({className, onClick}: SaveWorkActionProps) => 
-    <Tooltip title="Save work">
+export const SaveChangesAction = ({className, onClick}: SaveWorkActionProps) => 
+    <Tooltip title="Save changes">
         <IconButton onClick={onClick} className={className}>
             <Icon>save</Icon>
         </IconButton>

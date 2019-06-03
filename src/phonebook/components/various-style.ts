@@ -1,6 +1,20 @@
-import { createStyles, Theme } from "@material-ui/core"
+import { createStyles, makeStyles, Theme } from "@material-ui/core";
 
-export default ({palette, breakpoints}: Theme) => createStyles({
+export const contactFieldLabelStyle = ({palette}: Theme) => createStyles({
+    fieldLabel: {
+        width: 100,
+        color: palette.primary.main,
+        display: 'flex',
+        alignItems: 'flex-end',
+    },
+    fieldLabelIcon: {
+        width: 30,
+    },
+    fieldLabelText: {
+    },
+});
+
+export const toolbarStyle = ({palette}: Theme) => createStyles({
     toolbar: {
         backgroundImage: `linear-gradient(to right, ${palette.primary.dark}, ${palette.primary.light})`,
         minHeight: 40,
@@ -25,4 +39,6 @@ export default ({palette, breakpoints}: Theme) => createStyles({
         position: 'absolute',
         right: '5%'
     },
-}) 
+});
+
+export const useToolbarStyle = makeStyles(toolbarStyle, {name: 'ToolbarStyle'});

@@ -1,20 +1,14 @@
 import React from 'react';
-import style from './AppRoot-style';
-import { withStyles, WithStyles, AppBar, Toolbar, Typography } from "@material-ui/core";
-import { purple } from "@material-ui/core/colors";
+import {  AppBar } from "@material-ui/core";
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
-import Routes from "./Pages";
-import { homePageUrl } from "../urls";
+import Routes from "./pages";
 import { BrowserRouter } from 'react-router-dom';
-import { Link } from '../../utils/components';
-import { SaveWorkAction } from './actions';
 import { ContactService, ContactServiceContext } from '../logic/ContactService';
-import { Contact } from '../models';
 import { generateArray } from '../../utils';
 import { generateContact } from '../devUtils/dataGenerators';
 import { getContacts, persistContacts } from '../logic/contactLocalStorage';
+import { Toolbar } from './various';
 
-//const secondaryThemeColor = purple[500]
 
 const theme = createMuiTheme({
     palette: {
@@ -45,26 +39,15 @@ const allContacts = getContacts() || generateArray(generateContact, 25, 50);
 const contactService = new ContactService(allContacts);
 const persistContacts_ = () => contactService.getAll().then(persistContacts);
 
-const AppContent_ = ({classes}: WithStyles<typeof style>) =>
-    <BrowserRouter>
+export const AppRoot = () => (
+    <MuiThemeProvider theme={theme}>
+        <BrowserRouter>
         <ContactServiceContext.Provider value={contactService}>
             <AppBar position="sticky">
-                <Toolbar className={classes.toolbar}>
-                    <Link className={classes.headingLink} underline="none" href={homePageUrl}>
-                        <Typography className={classes.headingLinkText}>Phonebook</Typography>
-                    </Link>
-                    <SaveWorkAction className={classes.saveWorkAction} onClick={persistContacts_} />
-                </Toolbar>
-                <div className={classes.toolbarBorder} />
+                <Toolbar saveWork={onComplete => persistContacts_().then(onComplete)} />
             </AppBar>
             <Routes/>
         </ContactServiceContext.Provider>
     </BrowserRouter>
-
-const AppContent = withStyles(style)(AppContent_);
-
-export default () => (
-    <MuiThemeProvider theme={theme}>
-        <AppContent />
     </MuiThemeProvider>
 ); 

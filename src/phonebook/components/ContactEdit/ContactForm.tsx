@@ -1,10 +1,10 @@
 import { WithStyles, withStyles, Icon, IconButton, Button } from "@material-ui/core";
 import { Contact } from "../../models";
 import style from "./ContactForm-style";
-import { ContactFieldLabel } from "../reusables";
 import React from 'react';
 import { FormikErrors, Formik, Field, ErrorMessage, FieldArray } from 'formik';
 import { Divider, Emptiness } from "../../../utils/components";
+import { ContactFieldLabel } from "../various";
 
 /*
     Notes:
