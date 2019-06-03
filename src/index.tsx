@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 import AppRoot from './phonebook/components/AppRoot';
+import { containsOnlyDigits } from './utils';
 
 ReactDOM.render(<AppRoot />, document.getElementById('root'));
 

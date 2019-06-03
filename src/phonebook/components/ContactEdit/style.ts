@@ -57,7 +57,7 @@ export default ({palette, breakpoints}: Theme) => createStyles({
             marginLeft: 15
         },
         right_: {
-            width: 500
+            width: 530
         }
     },
 });

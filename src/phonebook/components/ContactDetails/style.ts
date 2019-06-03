@@ -26,7 +26,7 @@ export default ({palette, breakpoints}: Theme) => createStyles({
             height: 70,
         }, 
         favAction: {
-            marginLeft: '72%',
+            marginLeft: '75%',
         },
         editAction: {
             marginLeft: '3%',

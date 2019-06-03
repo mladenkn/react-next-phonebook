@@ -1,7 +1,7 @@
 import { createStyles, Theme } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 
-const contactPageBaseXs = ({palette, breakpoints}: Theme) => createStyles({
+const contactPageBaseXs = ({palette}: Theme) => createStyles({
     root: {
     },
     toolbar: {
@@ -23,7 +23,7 @@ const contactPageBaseXs = ({palette, breakpoints}: Theme) => createStyles({
 
 export const useContactPageBaseStylesXs = makeStyles(contactPageBaseXs, {name: 'ContactPageBaseXs'});
 
-const contactPageBaseMd = ({palette, breakpoints}: Theme) => createStyles({
+const contactPageBaseMd = ({palette,}: Theme) => createStyles({
     root: {
         display: 'flex',
     },

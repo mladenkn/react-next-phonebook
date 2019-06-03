@@ -10,15 +10,17 @@ const contactPageStyle = ({breakpoints}: Theme) => createStyles({
     }
 });
 
-export const useContactEditPageStyle = makeStyles(({breakpoints}: Theme) => createStyles({
+const contactEditPageStyle = ({breakpoints}: Theme) => createStyles({
     [breakpoints.up('sm')]: {
         root: {
             width: 720
         },
     }
-}));
+});
 
-export const useContactPageStyle = makeStyles(contactPageStyle);
+export const useContactPageStyle = makeStyles(contactPageStyle, {name: 'ContactPageStyle'});
+
+export const useContactEditPageStyle = makeStyles(contactEditPageStyle, {name: 'ContactEditPageStyle'});
 
 const homePageStyle = ({breakpoints}: Theme) => createStyles({
     root: {
@@ -37,4 +39,4 @@ const homePageStyle = ({breakpoints}: Theme) => createStyles({
     }
 });
 
-export const useHomePageStyle = makeStyles(homePageStyle);
+export const useHomePageStyle = makeStyles(homePageStyle, {name: 'HomePageStyle'});

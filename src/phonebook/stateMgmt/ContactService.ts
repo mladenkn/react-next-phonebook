@@ -1,5 +1,5 @@
 import { Contact, ContactListItem } from "../models";
-import { generateArray, replaceMatches, updateMatches } from "../../utils";
+import { generateArray, replaceMatches, updateMatches, containsOnlyDigits } from "../../utils";
 import { generateContact } from '../devUtils/dataGenerators';
 import React, { useContext } from 'react'
 
@@ -29,10 +29,25 @@ export class ContactService {
     }
 
     async search(keyword: string){
-        const keywordLower = keyword.toLowerCase();
-        const all = this.contactList.filter(c => c.fullName.toLowerCase().includes(keywordLower));
+        const all = this.contactList.filter(this.anyPropContains(keyword));
         const favorites = all.filter(c => c.isFavorite);
         return {all, favorites};
+    }
+
+    private anyPropContains(keyword: string) {
+        const keywordLower = keyword.toLocaleLowerCase();
+        return (contact: Contact) => {
+            if(contact.fullName.toLocaleLowerCase().includes(keywordLower))
+                return true;
+            if(contact.email.toLocaleLowerCase().includes(keywordLower))
+                return true;
+            if(containsOnlyDigits(keyword)){
+                const numMatch = contact.numbers.some(n => n.value.toString().includes(keyword));
+                if(numMatch)
+                    return true;
+            }
+            return false;
+        }
     }
 
     async save(contact: Contact){
@@ -63,6 +78,6 @@ export const ContactServiceContext = React.createContext<ContactService | undefi
 export const useContactService = () => {
     const cs = useContext(ContactServiceContext);
     if(!cs)
-        throw new Error('Not providing ContactService');
+        throw new Error('ContactServiceContext not found.');
     return cs;
 }

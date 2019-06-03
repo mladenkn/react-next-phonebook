@@ -57,4 +57,13 @@ export const updateMatches = <T> (arr: T[], doesMatch: (item: T) => boolean, upd
 export const validURL = (str: string) => {
     var pattern = new RegExp(/^(?:\w+:)?\/\/([^\s\.]+\.\S{2}|localhost[\:?\d]*)\S*$/); // fragment locator
     return !!pattern.test(str);
-  }
+}
+
+export const containsOnlyDigits = (str: string) => {
+    for (let index = 0; index < str.length; index++) {
+        const c = str[index];
+        if(isNaN(parseInt(c)))
+            return false;
+    }
+    return true;
+}
