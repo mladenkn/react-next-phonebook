@@ -6,7 +6,7 @@ import style from "./style";
 import { FavoriteAction, GoToEditAction, GoBackAction } from "../actions";
 import { WithStyles, withStyles, IconButton, Icon, Typography, Avatar, } from "@material-ui/core";
 import { useTheme } from "@material-ui/styles";
-import { useContactPageBaseStylesXs, useContactPageBaseStylesSm } from "../ContactPageBase-style";
+import { useContactPageBaseStylesXs, useContactPageBaseStylesMd } from "../ContactPageBase-style";
  
 type Props = {contact: Contact, onFavorite: () => void} & WithStyles<typeof style>;
 
@@ -30,7 +30,7 @@ const ContactDetailsPage = ({contact, classes, onFavorite}: Props) =>
     const avatar = <Avatar src={contact.avatar} className={classes.avatar}/>
 
     const xsBaseClasses = useContactPageBaseStylesXs();
-    const smBaseClasses = useContactPageBaseStylesSm();
+    const mdBaseClasses = useContactPageBaseStylesMd();
   
     return <div>
         <MediaQuery maxWidth={599}>
@@ -49,12 +49,12 @@ const ContactDetailsPage = ({contact, classes, onFavorite}: Props) =>
             </div>
         </MediaQuery>
         <MediaQuery minWidth={600}>   
-            <div className={smBaseClasses.root + ' ' + classes.root}>
-                <div className={smBaseClasses.smLeft}>
+            <div className={mdBaseClasses.root + ' ' + classes.root}>
+                <div className={mdBaseClasses.left}>
                     {avatar}
                 </div>
-                <div className={smBaseClasses.smRight}>
-                    <div className={smBaseClasses.heading}>
+                <div className={mdBaseClasses.right}>
+                    <div className={mdBaseClasses.heading}>
                         {backAction}{name}{favAction}{editAction}
                     </div>
                     <div className={classes.detailsContainer}>                    

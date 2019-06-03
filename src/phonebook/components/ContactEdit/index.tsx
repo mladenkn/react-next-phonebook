@@ -5,7 +5,7 @@ import { DeleteAction, GoBackAction } from "../actions";
 import { WithStyles, withStyles, Button, Avatar } from "@material-ui/core";
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import ContactForm from "./ContactForm";
-import { useContactPageBaseStylesXs, useContactPageBaseStylesSm } from "../ContactPageBase-style";
+import { useContactPageBaseStylesXs, useContactPageBaseStylesMd } from "../ContactPageBase-style";
 import { GoBackContext } from "../../stateMgmt/GoBackContext";
 
 type Props = {
@@ -64,7 +64,7 @@ const ContactEditPage = ({contact, classes, onSave, onDelete}: Props) =>
     )
 
     const xsBaseClasses = useContactPageBaseStylesXs();
-    const smBaseClasses = useContactPageBaseStylesSm();
+    const mdBaseClasses = useContactPageBaseStylesMd();
 
     if(downSm){
         return (
@@ -86,12 +86,12 @@ const ContactEditPage = ({contact, classes, onSave, onDelete}: Props) =>
             </div>);
     }
     return (  
-        <div className={smBaseClasses.root}>
-            <div className={smBaseClasses.smLeft}>
+        <div className={mdBaseClasses.root}>
+            <div className={mdBaseClasses.left}>
                 {avatar}
             </div>
-            <div className={smBaseClasses.smRight}>
-                <div className={smBaseClasses.heading}>
+            <div className={mdBaseClasses.right + ' ' + classes.right_}>
+                <div className={mdBaseClasses.heading}>
                     {backAction}{deleteAction}
                 </div>
                 <div className={classes.formAndButtons}>

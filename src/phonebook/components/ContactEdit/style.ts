@@ -16,7 +16,7 @@ export default ({palette, breakpoints}: Theme) => createStyles({
         marginTop: 50,
         display: 'flex',
         justifyContent: 'space-between',
-        margin: '8px 10px 18px 10px',
+        margin: '8px 2px 18px 2px',
     },
 
     button: {
@@ -56,5 +56,8 @@ export default ({palette, breakpoints}: Theme) => createStyles({
             marginTop: 20,
             marginLeft: 15
         },
+        right_: {
+            width: 500
+        }
     },
 });

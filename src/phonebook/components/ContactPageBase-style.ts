@@ -17,13 +17,13 @@ const contactPageBaseXs = ({palette, breakpoints}: Theme) => createStyles({
         alignItems: 'center',
     },
     body: {
-        padding: '8px 25px 0px 15px',
+        padding: '8px 15px 0px 15px',
     },
 });
 
 export const useContactPageBaseStylesXs = makeStyles(contactPageBaseXs);
 
-const contactPageBaseSm = ({palette, breakpoints}: Theme) => createStyles({
+const contactPageBaseMd = ({palette, breakpoints}: Theme) => createStyles({
     root: {
         display: 'flex',
     },
@@ -32,15 +32,15 @@ const contactPageBaseSm = ({palette, breakpoints}: Theme) => createStyles({
         borderBottom: `1px solid ${palette.primary.main}`,  
         paddingBottom: 7, 
     },
-    smLeft: {
+    left: {
         display: 'inline-flex',
         flexDirection: 'column',
     },
-    smRight: {
+    right: {
         marginTop: 50,
         display: 'inline-block',
         marginLeft: 20,
     },
 });
 
-export const useContactPageBaseStylesSm = makeStyles(contactPageBaseSm);
+export const useContactPageBaseStylesMd = makeStyles(contactPageBaseMd);
