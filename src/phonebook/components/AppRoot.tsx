@@ -9,6 +9,10 @@ import { BrowserRouter } from 'react-router-dom';
 import { Link } from '../../utils/components';
 import { SaveWorkAction } from './actions';
 import { ContactService, ContactServiceContext } from '../logic/ContactService';
+import { Contact } from '../models';
+import { generateArray } from '../../utils';
+import { generateContact } from '../devUtils/dataGenerators';
+import { getContacts, persistContacts } from '../logic/contactLocalStorage';
 
 //const secondaryThemeColor = purple[500]
 
@@ -37,7 +41,9 @@ const theme = createMuiTheme({
     }
 });
 
-const contactService = new ContactService();
+const allContacts = getContacts() || generateArray(generateContact, 25, 50);
+const contactService = new ContactService(allContacts);
+const persistContacts_ = () => contactService.getAll().then(persistContacts);
 
 const AppContent_ = ({classes}: WithStyles<typeof style>) =>
     <BrowserRouter>
@@ -47,9 +53,9 @@ const AppContent_ = ({classes}: WithStyles<typeof style>) =>
                     <Link className={classes.headingLink} underline="none" href={homePageUrl}>
                         <Typography className={classes.headingLinkText}>Phonebook</Typography>
                     </Link>
-                    <SaveWorkAction className={classes.saveWorkAction} onClick={() => contactService.persist()} />
+                    <SaveWorkAction className={classes.saveWorkAction} onClick={persistContacts_} />
                 </Toolbar>
-                <div className={classes.toolbarBorder}></div>
+                <div className={classes.toolbarBorder} />
             </AppBar>
             <Routes/>
         </ContactServiceContext.Provider>
