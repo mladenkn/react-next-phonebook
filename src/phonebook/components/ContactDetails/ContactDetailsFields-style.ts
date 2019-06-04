@@ -31,10 +31,15 @@ export default ({breakpoints}: Theme) => createStyles({
         },
     },
     [breakpoints.up('sm')]: {
+        field: {
+            display: 'flex',
+            padding: '10px 0px',
+        },
         labelContainer: {
             display: 'flex',
             flexDirection: 'column',
             height: '100%',
+            width: 120,
         },
     }
 })

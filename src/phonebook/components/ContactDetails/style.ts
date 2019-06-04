@@ -31,9 +31,6 @@ export default ({palette, breakpoints}: Theme) => createStyles({
         editAction: {
             marginLeft: '3%',
         },
-        detailsContainer: {
-            padding: '0px, 10px',
-        },
     },
 
     [breakpoints.up('sm')]: {
@@ -42,7 +39,7 @@ export default ({palette, breakpoints}: Theme) => createStyles({
             height: 180,
         },
         personName: {
-            width: 220,
+            width: 300,
             marginLeft: 30,
             fontSize: 20,
         },
@@ -65,7 +62,7 @@ export default ({palette, breakpoints}: Theme) => createStyles({
             fontSize: 28,
         },
         detailsContainer: {
-            marginTop: 30,
+            marginTop: 15,
             marginLeft: 40,
         },
     },

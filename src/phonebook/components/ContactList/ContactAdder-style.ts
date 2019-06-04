@@ -26,8 +26,8 @@ export default ({palette, breakpoints}: Theme) => createStyles({
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-around',
-            marginLeft: -170,
-            width: 90,
+            marginLeft: -180,
+            width: 110,
         },
     },
 }) 

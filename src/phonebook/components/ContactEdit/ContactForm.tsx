@@ -71,8 +71,8 @@ const ContactForm = ({classes, initialInput, onChange}: Props) =>
                 </div>
             ))}
             <Button className={classes.numberAdder} onClick={() => arr.push({ value: undefined, label: '' })}>
-            <Icon color="primary">add_circle_outline</Icon>
-            <Emptiness width={5} />
+                <Icon color="primary">add_circle_outline</Icon>
+                <Emptiness width={5} />
                 Add number
             </Button>
             </div>
