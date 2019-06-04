@@ -9,6 +9,7 @@ export default ({palette, breakpoints}: Theme) => createStyles({
         borderStyle: 'dashed',
         borderWidth: 1,
         boxShadow: 'inherit',
+        display: 'flex',
     }, 
     icon: {
         color: palette.primary.light,
@@ -26,8 +27,14 @@ export default ({palette, breakpoints}: Theme) => createStyles({
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-around',
-            marginLeft: -180,
+            marginLeft: 20,
             width: 110,
+        },
+    },
+    [breakpoints.up('md')]: {
+        root: {
+            justifyContent: 'center',
+            alignItems: 'center',         
         },
     },
 }) 
