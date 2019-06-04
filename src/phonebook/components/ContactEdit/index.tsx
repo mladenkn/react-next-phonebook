@@ -40,13 +40,23 @@ const ContactEditPage = ({contact, classes, onSave, onDelete}: Props) =>
         isFavorite: false
     }
 
+    const isEdit = contact ? true : false;
+
     const [editedContact, setEditedContact] = useState(contact_);
+    const [isEditedContactValid, setIsEditedContactValid] = useState(isEdit);
+
     const setAvatar = (avatarUrl?: string) => {
         console.log(avatarUrl);
         return setEditedContact({ ...editedContact, avatar: avatarUrl });
-    };    
+    };
+    
+    const formChange = (input: Contact, isValid: boolean) => {
+        setEditedContact(input);
+        setIsEditedContactValid(isValid);
+    }
 
     const avatar = <SwapableAvatar src={editedContact.avatar} className={classes.avatar} onChange={setAvatar} />
+    const form = <ContactForm initialInput={editedContact} onChange={formChange} />
 
     const buttons = (
         <div className={classes.actions}>
@@ -62,7 +72,9 @@ const ContactEditPage = ({contact, classes, onSave, onDelete}: Props) =>
                 color="primary" 
                 onClick={() => onSave(editedContact)} 
                 className={classes.button} 
-                autoFocus>
+                autoFocus
+                disabled={!isEditedContactValid}
+            >
                 Save
             </Button>              
         </div>
@@ -83,8 +95,7 @@ const ContactEditPage = ({contact, classes, onSave, onDelete}: Props) =>
                             {avatar}
                         </div>
                         <div className={classes.formAndButtons}>
-                            <ContactForm initialInput={editedContact} onChange={setEditedContact} />
-                            {buttons}
+                            {form}{buttons}
                         </div>
                     </div>
                 </div>
@@ -100,8 +111,7 @@ const ContactEditPage = ({contact, classes, onSave, onDelete}: Props) =>
                     {backAction}{deleteAction}
                 </div>
                 <div className={classes.formAndButtons}>
-                    <ContactForm initialInput={editedContact} onChange={setEditedContact} />
-                    {buttons}
+                    {form}{buttons}
                 </div>  
             </div>          
         </div>);

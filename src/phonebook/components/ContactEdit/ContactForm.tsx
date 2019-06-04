@@ -17,20 +17,21 @@ import { ContactFieldLabel } from "../various";
     button. So, if this form should contain Save button, then it also needs to contain a Cancel button, but that doesn't make
     sense. Because the Cancel button is coupled to the page component, therefore the Save button should be to.
       But even if there weren't for the Cancel button, I still believe that the form submit button should be separated from
-    the form component itself, because it makes it more reusable.
+    the form component itself.
 */
 
-type Props = {initialInput: Contact, onChange: (c: Contact) => void} & WithStyles<typeof style>; 
+type Props = {initialInput: Contact, onChange: (c: Contact, isValid: boolean) => void} & WithStyles<typeof style>; 
 
 const ContactForm = ({classes, initialInput, onChange}: Props) => 
 {
   const validate = (values: Contact) => {
-    onChange(values);
 
     let errors: FormikErrors<Contact> = {};
 
     if(!values.email.includes('@') || !values.email.includes('.'))
       errors.email = "Email not valid."
+      
+    onChange(values, Object.entries(errors).length === 0);
 
     return errors;
   }
@@ -59,23 +60,23 @@ const ContactForm = ({classes, initialInput, onChange}: Props) =>
           <FieldArray
             name="numbers"
             render={arr => (
-            <div>                        
-            <ContactFieldLabel icon="phone" text="numbers" className={classes.label} />
-            {values.numbers.map((_, index) => (
-                <div className={classes.phoneNumber} key={index}>
-                    <Field name={`numbers[${index}].value`} className={classes.input + ' ' + classes.phoneNumberInput} />
-                    <Field name={`numbers.${index}.label`} className={classes.input + ' ' + classes.phoneNumberLabelInput} />
-                    <IconButton className={classes.labelRemover} onClick={() => arr.remove(index)}>
-                    <span className={classes.labelRemoverIcon}>x</span>
-                    </IconButton>
+                <div>                        
+                    <ContactFieldLabel icon="phone" text="numbers" className={classes.label} />
+                    {values.numbers.map((_, index) => (
+                        <div className={classes.phoneNumber} key={index}>
+                            <Field type="number" name={`numbers[${index}].value`} className={classes.input + ' ' + classes.phoneNumberInput} />
+                            <Field name={`numbers.${index}.label`} className={classes.input + ' ' + classes.phoneNumberLabelInput} />
+                            <IconButton className={classes.labelRemover} onClick={() => arr.remove(index)}>
+                            <span className={classes.labelRemoverIcon}>x</span>
+                            </IconButton>
+                        </div>
+                    ))}
+                    <Button className={classes.numberAdder} onClick={() => arr.push({ value: undefined, label: '' })}>
+                        <Icon color="primary">add_circle_outline</Icon>
+                        <Emptiness width={5} />
+                        Add number
+                    </Button>
                 </div>
-            ))}
-            <Button className={classes.numberAdder} onClick={() => arr.push({ value: undefined, label: '' })}>
-                <Icon color="primary">add_circle_outline</Icon>
-                <Emptiness width={5} />
-                Add number
-            </Button>
-            </div>
             )}
           />
         </div>

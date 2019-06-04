@@ -10,6 +10,9 @@ export default ({palette, breakpoints}: Theme) => createStyles({
         borderWidth: 1,
         boxShadow: 'inherit',
         display: 'flex',
+        '&:hover': {
+            textDecoration: 'none',
+        },
     }, 
     icon: {
         color: palette.primary.light,
