@@ -1,7 +1,7 @@
 import React from 'react';
 import { WithStyles, withStyles, Button, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions } 
     from "@material-ui/core";
-import style from "./DeleteModal-style";
+import style from "./DeleteDialog-style";
 
 type Props = {text: string, onCancel: () => void, onConfirm: () => void, isOpen: boolean} & WithStyles<typeof style>;
 

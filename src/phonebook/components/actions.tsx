@@ -2,7 +2,7 @@ import { withStyles, WithStyles, Icon, IconButton, Typography, Tooltip  } from "
 import { goToEditActionStyle, favoriteActionStyle, deleteActionStyle, goBackStyle } from "./actions-style";
 import { contactEditUrl } from "../urls";
 import React, { useState, useContext } from 'react';
-import DeleteModal from "./DeleteModal";
+import DeleteModal from "./DeleteDialog";
 import { GoBackContext } from "../logic/GoBackContext";
 import { Link } from "../../utils/components";
  
