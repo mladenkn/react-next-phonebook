@@ -30,6 +30,9 @@ const ContactForm = ({classes, initialInput, onChange}: Props) =>
 
     if(values.email && (!values.email.includes('@') || !values.email.includes('.')))
       errors.email = "Email not valid."
+
+    if(!values.fullName)
+        errors.fullName = "Name is required."
       
     onChange(values, Object.entries(errors).length === 0);
 
@@ -44,6 +47,7 @@ const ContactForm = ({classes, initialInput, onChange}: Props) =>
           <label>
             <ContactFieldLabel icon="person_outlined" text="full name" className={classes.label} />
             <Field type="text" name="fullName" className={classes.input + ' ' + classes.singleValueInput} />
+            <ErrorMessage component="div" name="fullName" className={classes.errorMessage}/>
           </label>
           
           <Divider className={classes.divider} margin={18} />

@@ -16,14 +16,10 @@ type Props = {
 } & WithStyles<typeof style>;
 
 const ContactEditPage = ({contact, classes, onSave, onDelete}: Props) => 
-{
-    const goBack = useContext(GoBackContext);
-
-    const onlyXs = useMediaQuery('(max-width:599px)');
-    const downSm = useMediaQuery('(max-width:959px)');
- 
+{ 
     const backAction = <GoBackAction rootClass={classes.backAction} />;
 
+    const onlyXs = useMediaQuery('(max-width:599px)');
     const deleteAction = contact ? <DeleteAction
         onConfirm={onDelete!}
         withHoverEffect
@@ -45,10 +41,7 @@ const ContactEditPage = ({contact, classes, onSave, onDelete}: Props) =>
     const [editedContact, setEditedContact] = useState(contact_);
     const [isEditedContactValid, setIsEditedContactValid] = useState(isEdit);
 
-    const setAvatar = (avatarUrl?: string) => {
-        console.log(avatarUrl);
-        return setEditedContact({ ...editedContact, avatar: avatarUrl });
-    };
+    const setAvatar = (avatarUrl?: string) => setEditedContact({ ...editedContact, avatar: avatarUrl });
     
     const formChange = (input: Contact, isValid: boolean) => {
         setEditedContact({...input, avatar: editedContact.avatar});
@@ -58,6 +51,8 @@ const ContactEditPage = ({contact, classes, onSave, onDelete}: Props) =>
     const avatar = <SwapableAvatar src={editedContact.avatar} className={classes.avatar} onChange={setAvatar} />
     const form = <ContactForm initialInput={editedContact} onChange={formChange} />
 
+    const goBack = useContext(GoBackContext);
+    
     const buttons = (
         <div className={classes.actions}>
             <Button 
@@ -78,10 +73,12 @@ const ContactEditPage = ({contact, classes, onSave, onDelete}: Props) =>
                 Save
             </Button>              
         </div>
-    )
+    );
 
     const xsBaseClasses = useContactPageBaseStylesXs();
     const mdBaseClasses = useContactPageBaseStylesMd();
+
+    const downSm = useMediaQuery('(max-width:959px)');
 
     if(downSm){
         return (
