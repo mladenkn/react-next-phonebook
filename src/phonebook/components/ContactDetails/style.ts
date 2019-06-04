@@ -17,7 +17,7 @@ export default ({palette, breakpoints}: Theme) => createStyles({
 
     [breakpoints.only('xs')]: {
         personName: {
-            fontSize: 22,
+            fontSize: '1.5rem',
         },
         avatar: {
             marginLeft: '1%',
@@ -39,31 +39,16 @@ export default ({palette, breakpoints}: Theme) => createStyles({
             height: 180,
         },
         personName: {
-            width: 300,
-            marginLeft: 30,
-            fontSize: 20,
+            width: '76%',
+            marginLeft: '9%',
+            fontSize: '1.5rem',
         },
         editAction: {
-            marginLeft: 20,
+            marginLeft: '3%',
         },
         detailsContainer: {
-            marginTop: 20,
-            marginLeft: 30,
-        },
-    },
-    
-    [breakpoints.up('md')]: {
-        heading: {
-            paddingBottom: 7,
-        },
-        personName: {
-            width: 400,
-            marginLeft: 35,
-            fontSize: 28,
-        },
-        detailsContainer: {
-            marginTop: 15,
-            marginLeft: 40,
+            marginTop: '6%',
+            marginLeft: '9%',
         },
     },
 });

@@ -1,12 +1,15 @@
 import { createStyles, Theme } from "@material-ui/core";
 
 export default ({palette, breakpoints}: Theme) => createStyles({
+  
     action: {
 
     },
+
     icon: {
 
     },
+
     avatar: {
         width: 200,
         height: 200,
@@ -50,14 +53,11 @@ export default ({palette, breakpoints}: Theme) => createStyles({
 
     [breakpoints.up('md')]: {
         deleteAction: {
-            marginLeft: 430,
+            marginLeft: '79.5%',
         },
         formAndButtons: {
-            marginTop: 20,
-            marginLeft: 15
+            marginTop: '2%',
+            marginLeft: '3%',
         },
-        right_: {
-            width: 530
-        }
     },
 });

@@ -37,6 +37,7 @@ const contactPageBaseMd = ({palette,}: Theme) => createStyles({
         flexDirection: 'column',
     },
     right: {
+        width: 500,
         marginTop: 50,
         display: 'inline-block',
         marginLeft: 20,
