@@ -1,6 +1,6 @@
-import { Icon, WithStyles, withStyles, Typography, Toolbar as MuiToolbar } from "@material-ui/core";
+import { Icon, WithStyles, withStyles, Typography, Toolbar as MuiToolbar, Snackbar } from "@material-ui/core";
 import { contactFieldLabelStyle, useToolbarStyle } from "./various-style";
-import React from 'react';
+import React, { useState } from 'react';
 import { homePageUrl } from "../urls";
 import { Link } from "../../utils/components";
 import { SaveChangesAction } from "./actions";
@@ -22,13 +22,24 @@ type ToolbarProps = {saveWork: (onComplete: () => void) => void}
 export const Toolbar = ({saveWork}: ToolbarProps) =>
 {
     const classes = useToolbarStyle();
+    const [isSnackbarOpen, setIsSnackbarOpen] = useState(false);
     return <div>
         <MuiToolbar className={classes.toolbar}>
             <Link className={classes.headingLink} underline="none" href={homePageUrl}>
                 <Typography className={classes.headingLinkText}>Phonebook</Typography>
             </Link>
-            <SaveChangesAction className={classes.saveWorkAction} onClick={() => saveWork(() => {})} />
+            <SaveChangesAction className={classes.saveWorkAction} onClick={() => saveWork(() => setIsSnackbarOpen(true))} />
         </MuiToolbar>
+        <Snackbar 
+            message="Saved changes" 
+            open={isSnackbarOpen} 
+            autoHideDuration={4000}
+            onClose={() => setIsSnackbarOpen(false)}
+            anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'left',
+            }}
+        />
         <div className={classes.toolbarBorder} />
     </div>;
 }
