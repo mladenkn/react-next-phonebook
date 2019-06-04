@@ -47,7 +47,7 @@ export const useContactListOps = () => {
             contactService.delete(contactId)
                 .then(() => {
                     const all = contacts!.all.filter(c => c.id !== contactId);
-                    const favorites = contacts!.all.filter(c => c.id !== contactId);
+                    const favorites = contacts!.favorites.filter(c => c.id !== contactId);
                     setContacts({all, favorites});
                 });
     };
