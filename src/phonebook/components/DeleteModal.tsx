@@ -6,9 +6,9 @@ import style from "./DeleteModal-style";
 type Props = {text: string, onCancel: () => void, onConfirm: () => void, isOpen: boolean} & WithStyles<typeof style>;
 
 const DeleteModal_ = ({classes, text, isOpen, onCancel, onConfirm}: Props) =>
-    <Dialog className={classes.root} open={isOpen} aria-labelledby="responsive-dialog-title">
+    <Dialog className={classes.root} open={isOpen} aria-labelledby="delete-dialog">
 
-        <DialogTitle className={classes.title} id="responsive-dialog-title">Delete</DialogTitle>
+        <DialogTitle className={classes.title} id="delete-dialog">Delete</DialogTitle>
        
         <DialogContent>
             <DialogContentText className={classes.text}>

@@ -18,9 +18,9 @@ export const TextInputDialog = (p: TextInputDialogProps) => {
     const okButtonDisabled = !inputValid;
 
     return (
-        <Dialog classes={{paper: classes.paper}} open={true} aria-labelledby="d1">
+        <Dialog classes={{paper: classes.paper}} open={true} aria-labelledby="text-input-dialog">
 
-            <DialogTitle id="d1">Enter image url:</DialogTitle>
+            <DialogTitle id="text-input-dialog">Enter image url:</DialogTitle>
         
             <DialogContent>
                 <Input className={classes.input} value={input} onChange={e => setInput(e.target.value)} />

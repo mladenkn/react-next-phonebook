@@ -5,7 +5,8 @@ const contactPageBaseXs = ({palette}: Theme) => createStyles({
     root: {
     },
     toolbar: {
-        padding: '10px 8px',
+        marginTop: 15,
+        padding: '0px 8px 10px',
         display: 'flex',
         alignItems: 'center',
         borderBottom: `1px solid ${palette.secondary.main}`,    
@@ -13,7 +14,7 @@ const contactPageBaseXs = ({palette}: Theme) => createStyles({
     heading: {
         display: 'flex',
         borderBottom: `1px solid ${palette.primary.main}`,
-        padding: '10px 0px',
+        padding: '10px 0px 20px',
         alignItems: 'center',
     },
     body: {

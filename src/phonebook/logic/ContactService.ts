@@ -7,7 +7,12 @@ import React, { useContext } from 'react'
 // Easy to refactor to call REST API
 export class ContactService {    
 
-    constructor(private contactList: Contact[]){}
+    nextElementId: number
+
+    constructor(private contactList: Contact[]){
+        const elementWithHighestId = contactList.sort(c => c.id)[contactList.length - 1]
+        this.nextElementId = elementWithHighestId.id + 1;
+    }
 
     async getAll() { return this.contactList }
 
@@ -22,11 +27,16 @@ export class ContactService {
     }
 
     async save(contact: Contact){
-        if(contact.id)
+        if(contact.id){
             this.contactList = replaceMatches(this.contactList, c => c.id === contact.id, contact).allItems;
-        else 
-            this.contactList.push(contact);
-        return contact;
+            return contact;
+        }
+        else {
+            const contactWithId = {...contact, id: this.nextElementId }
+            this.nextElementId++;
+            this.contactList.push(contactWithId);
+            return contactWithId;
+        }
     }
 
     async delete(id: number){

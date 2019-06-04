@@ -28,7 +28,7 @@ const ContactForm = ({classes, initialInput, onChange}: Props) =>
 
     let errors: FormikErrors<Contact> = {};
 
-    if(!values.email.includes('@') || !values.email.includes('.'))
+    if(values.email && (!values.email.includes('@') || !values.email.includes('.')))
       errors.email = "Email not valid."
       
     onChange(values, Object.entries(errors).length === 0);
@@ -44,7 +44,6 @@ const ContactForm = ({classes, initialInput, onChange}: Props) =>
           <label>
             <ContactFieldLabel icon="person_outlined" text="full name" className={classes.label} />
             <Field type="text" name="fullName" className={classes.input + ' ' + classes.singleValueInput} />
-            <ErrorMessage name="fullName" component="div"/>
           </label>
           
           <Divider className={classes.divider} margin={18} />
@@ -52,7 +51,7 @@ const ContactForm = ({classes, initialInput, onChange}: Props) =>
           <label>
             <ContactFieldLabel icon="email" text="email" className={classes.label} />
             <Field type="email" name="email" className={classes.input + ' ' + classes.singleValueInput} />
-            <ErrorMessage name="email" component="div"/>
+            <ErrorMessage component="div" name="email" className={classes.errorMessage}/>
           </label>
           
           <Divider className={classes.divider} margin={18} />
@@ -71,7 +70,7 @@ const ContactForm = ({classes, initialInput, onChange}: Props) =>
                             </IconButton>
                         </div>
                     ))}
-                    <Button className={classes.numberAdder} onClick={() => arr.push({ value: undefined, label: '' })}>
+                    <Button className={classes.numberAdder} onClick={() => arr.push({ value: '', label: '' })}>
                         <Icon color="primary">add_circle_outline</Icon>
                         <Emptiness width={5} />
                         Add number

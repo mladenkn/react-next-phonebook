@@ -41,6 +41,11 @@ export default ({palette, breakpoints}: Theme) => createStyles({
     divider: {
         // margin: '10px 0px'
     },
+    errorMessage: {
+        color: palette.error.main,
+        marginLeft: 7,
+        marginTop: 2,
+    },
     [breakpoints.only('xs')]: {
         phoneNumberInput: {
             width: '100%',

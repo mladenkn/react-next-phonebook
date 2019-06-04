@@ -2,7 +2,7 @@ import { Contact } from "../../models";
 import React, { useState, useContext } from 'react';
 import style from "./style";
 import { DeleteAction, GoBackAction } from "../actions";
-import { WithStyles, withStyles, Button, Avatar } from "@material-ui/core";
+import { WithStyles, withStyles, Button } from "@material-ui/core";
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import ContactForm from "./ContactForm";
 import { useContactPageBaseStylesXs, useContactPageBaseStylesMd } from "../ContactPageBase-style";
@@ -51,7 +51,7 @@ const ContactEditPage = ({contact, classes, onSave, onDelete}: Props) =>
     };
     
     const formChange = (input: Contact, isValid: boolean) => {
-        setEditedContact(input);
+        setEditedContact({...input, avatar: editedContact.avatar});
         setIsEditedContactValid(isValid);
     }
 

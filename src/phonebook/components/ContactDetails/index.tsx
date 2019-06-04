@@ -3,7 +3,7 @@ import React from 'react';
 import ContactDetailsFields from "./ContactDetailsFields";
 import style from "./style";
 import { FavoriteAction, GoToEditAction, GoBackAction } from "../actions";
-import { WithStyles, withStyles, IconButton, Icon, Typography, Avatar, } from "@material-ui/core";
+import { WithStyles, withStyles, Typography, Avatar, } from "@material-ui/core";
 import { useContactPageBaseStylesXs, useContactPageBaseStylesMd } from "../ContactPageBase-style";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 const defaultAvatarUrl = require('../../assets/default-avatar.jpg'); // doesn't work with ES6 import
