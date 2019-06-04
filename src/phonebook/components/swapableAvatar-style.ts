@@ -1,4 +1,4 @@
-import { createStyles, makeStyles, Theme } from "@material-ui/core";
+import { createStyles, Theme } from "@material-ui/core";
 import { grey } from "@material-ui/core/colors";
 
 export const swapableAvatarStyle = ({palette, breakpoints}: Theme) => createStyles({
@@ -34,38 +34,4 @@ export const swapableAvatarStyle = ({palette, breakpoints}: Theme) => createStyl
         color: 'white',
         fontSize: '2.25rem'
     },
-});
-
-
-export const urlInputDialogStyle = ({palette, breakpoints}: Theme) => createStyles({
-
-    [breakpoints.only('xs')]: {
-        paper: {
-            margin: '0px 10px',
-            width: '100%',
-        },
-        input: {
-            width: '100%',
-        },
-    },
-
-    [breakpoints.up('sm')]: {
-        input: {
-            width: 400,
-        },
-    },
-
-    actions:  {
-        padding: '8px 24px 12px',
-    },
-});
-
-export const useUrlInputDialogStyle = makeStyles(urlInputDialogStyle, {name: 'UrlInputDialogStyle'});
-
-export const dividerStyle = ({palette}: Theme) => createStyles({
-    root: {
-        height: 1.2,
-        backgroundColor: palette.primary.main,
-        width: '100%'
-    }
 });

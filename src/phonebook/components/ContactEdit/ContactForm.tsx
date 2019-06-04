@@ -3,7 +3,7 @@ import { Contact } from "../../models";
 import style from "./ContactForm-style";
 import React from 'react';
 import { FormikErrors, Formik, Field, ErrorMessage, FieldArray } from 'formik';
-import { Divider, Emptiness } from "../../../utils/components";
+import { Divider, Emptiness } from "../various";
 import { ContactFieldLabel } from "../various";
 
 /*

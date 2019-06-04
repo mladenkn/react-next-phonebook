@@ -3,7 +3,7 @@ import style from "./HomeSection-style";
 import React, { useState } from 'react';
 import ContactList from "./ContactList";
 import { useContactListOps } from "../logic/contactListOps";
-import { Divider } from "../../utils/components";
+import { Divider } from "./various";
 
 const Home = ({classes}: WithStyles<typeof style>) =>
 {

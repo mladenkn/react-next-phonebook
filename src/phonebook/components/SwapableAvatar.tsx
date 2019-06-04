@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { validURL } from "..";
-import { swapableAvatarStyle } from './style';
+import { validURL } from "../../utils";
+import { swapableAvatarStyle } from './swapableAvatar-style';
 import { withStyles, WithStyles, Avatar, Icon, } from "@material-ui/core";
 import { TextInputDialog } from './TextInputDialog';
 

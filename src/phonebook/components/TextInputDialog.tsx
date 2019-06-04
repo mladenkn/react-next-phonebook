@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Dialog, DialogContent, DialogTitle, Input, DialogActions, Button } from "@material-ui/core";
-import { useUrlInputDialogStyle } from './style';
+import { useTextInputDialogStyle } from './various-style';
  
 
 type TextInputDialogProps = {
@@ -12,7 +12,7 @@ type TextInputDialogProps = {
 
 export const TextInputDialog = (p: TextInputDialogProps) => {
 
-    const classes = useUrlInputDialogStyle();
+    const classes = useTextInputDialogStyle();
     const [input, setInput] = useState(p.text || '');
     const inputValid = p.isInputValid(input);
     const okButtonDisabled = !inputValid;

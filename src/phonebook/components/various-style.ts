@@ -42,3 +42,37 @@ export const toolbarStyle = ({palette}: Theme) => createStyles({
 });
 
 export const useToolbarStyle = makeStyles(toolbarStyle, {name: 'ToolbarStyle'});
+
+export const dividerStyle = ({palette}: Theme) => createStyles({
+    root: {
+        height: 1.2,
+        backgroundColor: palette.primary.main,
+        width: '100%'
+    }
+});
+
+
+export const textInputDialogStyle = ({palette, breakpoints}: Theme) => createStyles({
+
+    [breakpoints.only('xs')]: {
+        paper: {
+            margin: '0px 10px',
+            width: '100%',
+        },
+        input: {
+            width: '100%',
+        },
+    },
+
+    [breakpoints.up('sm')]: {
+        input: {
+            width: 400,
+        },
+    },
+
+    actions:  {
+        padding: '8px 24px 12px',
+    },
+});
+
+export const useTextInputDialogStyle = makeStyles(textInputDialogStyle, {name: 'UrlInputDialogStyle'});

@@ -2,7 +2,7 @@ import style from "./ContactListItem-style";
 import { ContactListItem as Model } from "../../models";
 import React from 'react';
 import { Card, Avatar, Typography, withStyles, WithStyles } from "@material-ui/core";
-import { Link } from "../../../utils/components";
+import { Link } from "../various";
 import { contactDetailsUrl } from "../../urls";
 import { GoToEditAction, FavoriteAction, DeleteAction } from "../actions";
 import { ContactListItemAction } from "../../actions";

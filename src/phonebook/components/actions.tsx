@@ -4,7 +4,7 @@ import { contactEditUrl } from "../urls";
 import React, { useState, useContext } from 'react';
 import DeleteModal from "./DeleteDialog";
 import { GoBackContext } from "../logic/GoBackContext";
-import { Link } from "../../utils/components";
+import { Link } from "./various";
  
 type GoToEditActionProps = { contactId: number, rootClass?: string, iconClass?: string } 
     & WithStyles<typeof goToEditActionStyle>;
