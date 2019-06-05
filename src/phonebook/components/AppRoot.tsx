@@ -7,7 +7,7 @@ import { ContactService, ContactServiceContext } from '../logic/ContactService';
 import { generateArray } from '../../utils';
 import { generateContact } from '../devUtils/dataGenerators';
 import { getContacts, persistContacts } from '../logic/contactLocalStorage';
-import { Toolbar } from './various';
+import { Toolbar } from './Toolbar';
 
 
 const theme = createMuiTheme({
