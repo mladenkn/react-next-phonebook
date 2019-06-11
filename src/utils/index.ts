@@ -11,7 +11,8 @@ export const generateArray = <T> (getNext: () => T, minCount: number, maxCount: 
 export type AsyncOperationStatus = 'NEVER_INITIATED' | 'PROCESSING' | 'COMPLETED';
 
 export const replaceMatches = <T> (arr: T[], doesMatch: (item: T) => boolean, replaceWith: T) => {
-    return updateMatches(arr, doesMatch, () => replaceWith);
+    const [all, replaced] = updateMatches(arr, doesMatch, () => replaceWith);
+    return [all, replaced.length] as [T[], number];
 }
 
 export const updateMatches = <T> (arr: T[], doesMatch: (item: T) => boolean, update: (item: T) => T) => {
