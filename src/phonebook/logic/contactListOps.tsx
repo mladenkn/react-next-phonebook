@@ -38,8 +38,8 @@ export const useContactListOps = () => {
         if(type === 'TOGGLE_FAVORITE')
             contactService.toggleFavoriteListItem(contactId)
                 .then(updatedContact => {
-                    const all = replaceMatches(contacts!.all, c => c.id === contactId, updatedContact).allItems;                    
-                    const favorites = replaceMatches(contacts!.favorites, c => c.id === contactId, updatedContact).allItems;
+                    const all = replaceMatches(contacts!.all, c => c.id === contactId, updatedContact)[0];                    
+                    const favorites = replaceMatches(contacts!.favorites, c => c.id === contactId, updatedContact)[0];
                     setContacts({all, favorites});
                 });
                 

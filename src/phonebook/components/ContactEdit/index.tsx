@@ -97,7 +97,7 @@ const ContactEditPage = ({contact, classes, onSave, onDelete}: Props) =>
                     </div>
                 </div>
             </div>);
-    }
+    } 
     return (  
         <div className={mdBaseClasses.root}>
             <div className={mdBaseClasses.left}>

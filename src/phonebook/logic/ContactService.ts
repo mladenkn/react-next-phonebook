@@ -28,8 +28,8 @@ export class ContactService {
 
     async save(contact: Contact){
         if(contact.id){
-            this.contactList = replaceMatches(this.contactList, c => c.id === contact.id, contact).allItems;
-            return contact;
+            this.contactList = replaceMatches(this.contactList, c => c.id === contact.id, contact)[0];
+            return this.contactList;
         }
         else {
             const contactWithId = {...contact, id: this.nextElementId }
@@ -44,7 +44,7 @@ export class ContactService {
     }
 
     async toggleFavorite(id: number){
-        const {allItems, updatedItems} = updateMatches(this.contactList, c => c.id === id, c => ({...c, isFavorite: !c.isFavorite})); 
+        const [allItems, updatedItems] = updateMatches(this.contactList, c => c.id === id, c => ({...c, isFavorite: !c.isFavorite})); 
         this.contactList = allItems;
         return updatedItems[0];      
     }
