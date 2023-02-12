@@ -38,6 +38,7 @@ type ItemDummyProps = {
     onAction: (a: ContactListItemAction) => void
 } & WithStyles<typeof style>
  
+ // Should rename to StyledItemDummy
 const ItemDummy = (p: ItemDummyProps) => {
 
     const { classes, contact, onAction } = p;
