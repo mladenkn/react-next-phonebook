@@ -8,6 +8,7 @@ import { GoToEditAction, FavoriteAction, DeleteAction } from "../actions";
 import { ContactListItemAction } from "../../actions";
 const defaultAvatarUrl = require('../../assets/default-avatar.jpg'); // doesn't work with ES6 import
 
+
 type Props = {
     contact: Model
     isSelected: boolean
@@ -15,8 +16,7 @@ type Props = {
     onAction: (a: ContactListItemAction) => void
 }
 
-export const ContactListItem =  ({contact, isSelected, smOrDown, onAction}: Props) =>
-{
+export const ContactListItem =  ({contact, isSelected, smOrDown, onAction}: Props) => {
     return <StyledItemDummy 
         contact={contact}
         showFavoriteButton={true}
@@ -40,7 +40,6 @@ type ItemDummyProps = {
  
  // Should rename to StyledItemDummy
 const ItemDummy = (p: ItemDummyProps) => {
-
     const { classes, contact, onAction } = p;
 
     const avatarUrl = contact.avatar || defaultAvatarUrl;
