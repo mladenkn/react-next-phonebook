@@ -5,8 +5,7 @@ import ContactList from "./ContactList";
 import { useContactListOps } from "../logic/contactListOps";
 import { Divider } from "./various";
 
-const Home = ({classes}: WithStyles<typeof style>) =>
-{
+const Home = ({classes}: WithStyles<typeof style>) => {
     const tabClasses = {
         root: classes.contactTab,
         selected: classes.selectedTab,
@@ -24,9 +23,9 @@ const Home = ({classes}: WithStyles<typeof style>) =>
                         indicator: classes.tabIndicator,
                         flexContainer: classes.tabContainer
                     }}>
-                    <Tab label="All contacts" disableRipple textColor="inherit" classes={tabClasses} />
+                    <Tab label="All contacts" disableRipple classes={tabClasses} />
                     <div className={classes.tabDivider}></div>
-                    <Tab label="My favorites" disableRipple textColor="inherit" classes={tabClasses} />
+                    <Tab label="My favorites" disableRipple classes={tabClasses} />
                 </Tabs>
                 <Divider className={classes.contactTabsDivider} />
                 <Input disableUnderline

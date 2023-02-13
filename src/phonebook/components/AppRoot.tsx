@@ -1,7 +1,7 @@
 import React from 'react';
 import {  AppBar } from "@material-ui/core";
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
-import Routes from "./pages";
+import Routes from "./Pages";
 import { BrowserRouter } from 'react-router-dom';
 import { ContactService, ContactServiceContext } from '../logic/ContactService';
 import { generateArray } from '../../utils';
