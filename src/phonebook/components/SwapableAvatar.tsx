@@ -1,34 +1,34 @@
-import React, { useState } from "react";
-import { validURL } from "../../utils";
-import { swapableAvatarStyle } from "./swapableAvatar-style";
-import { withStyles, WithStyles, Avatar, Icon } from "@material-ui/core";
-import { TextInputDialog } from "./TextInputDialog";
+import React, { useState } from "react"
+import { validURL } from "../../utils"
+import { swapableAvatarStyle } from "./swapableAvatar-style"
+import { withStyles, WithStyles, Avatar, Icon } from "@material-ui/core"
+import { TextInputDialog } from "./TextInputDialog"
 
 type Props = {
-  src?: string;
-  onChange: (image?: string) => void;
-  className?: string;
-} & WithStyles<typeof swapableAvatarStyle>;
+  src?: string
+  onChange: (image?: string) => void
+  className?: string
+} & WithStyles<typeof swapableAvatarStyle>
 
 export const SwapableAvatar = withStyles(swapableAvatarStyle)((p: Props) => {
-  const [imageSrc, setImageSrc] = useState(p.src);
-  const { classes } = p;
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [imageSrc, setImageSrc] = useState(p.src)
+  const { classes } = p
+  const [isDialogOpen, setIsDialogOpen] = useState(false)
 
   const setImageSrc_ = (src?: string) => {
-    setImageSrc(src);
-    p.onChange(src);
-  };
+    setImageSrc(src)
+    p.onChange(src)
+  }
 
   const handleDialogOK = (image: string) => {
-    setIsDialogOpen(false);
-    setImageSrc_(image);
-  };
+    setIsDialogOpen(false)
+    setImageSrc_(image)
+  }
 
   const onClick = () => {
-    if (imageSrc) setImageSrc_(undefined);
-    else setIsDialogOpen(true);
-  };
+    if (imageSrc) setImageSrc_(undefined)
+    else setIsDialogOpen(true)
+  }
 
   const dialog = isDialogOpen && (
     <TextInputDialog
@@ -37,7 +37,7 @@ export const SwapableAvatar = withStyles(swapableAvatarStyle)((p: Props) => {
       onCancel={() => setIsDialogOpen(false)}
       isInputValid={validURL}
     />
-  );
+  )
 
   return (
     <div>
@@ -55,5 +55,5 @@ export const SwapableAvatar = withStyles(swapableAvatarStyle)((p: Props) => {
       </div>
       {dialog}
     </div>
-  );
-});
+  )
+})

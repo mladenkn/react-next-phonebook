@@ -1,4 +1,4 @@
-import { createStyles, makeStyles, Theme } from "@material-ui/core";
+import { createStyles, makeStyles, Theme } from "@material-ui/core"
 
 export const toolbarStyle = ({ palette }: Theme) =>
   createStyles({
@@ -26,8 +26,8 @@ export const toolbarStyle = ({ palette }: Theme) =>
       position: "absolute",
       right: "5%",
     },
-  });
+  })
 
 export const useToolbarStyle = makeStyles(toolbarStyle, {
   name: "ToolbarStyle",
-});
+})

@@ -1,25 +1,25 @@
-import style from "./ContactListItem-style";
-import { ContactListItem as ContactListItemModel } from "../../models";
-import React from "react";
+import style from "./ContactListItem-style"
+import { ContactListItem as ContactListItemModel } from "../../models"
+import React from "react"
 import {
   Card,
   Avatar,
   Typography,
   withStyles,
   WithStyles,
-} from "@material-ui/core";
-import { Link } from "../various";
-import { contactDetailsUrl } from "../../urls";
-import { GoToEditAction, FavoriteAction, DeleteAction } from "../actions";
-import { ContactListItemAction } from "../../actions";
-const defaultAvatarUrl = require("../../assets/default-avatar.jpg"); // doesn't work with ES6 import
+} from "@material-ui/core"
+import { Link } from "../various"
+import { contactDetailsUrl } from "../../urls"
+import { GoToEditAction, FavoriteAction, DeleteAction } from "../actions"
+import { ContactListItemAction } from "../../actions"
+const defaultAvatarUrl = require("../../assets/default-avatar.jpg") // doesn't work with ES6 import
 
 type Props = {
-  contact: ContactListItemModel;
-  isSelected: boolean;
-  smOrDown: boolean;
-  onAction: (a: ContactListItemAction) => void;
-};
+  contact: ContactListItemModel
+  isSelected: boolean
+  smOrDown: boolean
+  onAction: (a: ContactListItemAction) => void
+}
 
 export const ContactListItem = ({
   contact,
@@ -36,22 +36,22 @@ export const ContactListItem = ({
     isSelected={isSelected}
     onAction={onAction}
   />
-);
+)
 
 type ItemPresenterProps = {
-  contact: ContactListItemModel;
-  showFavoriteButton: boolean;
-  showEditLink: boolean;
-  showDeleteButton: boolean;
-  isLinkToDetails: boolean;
-  isSelected: boolean;
-  onAction: (a: ContactListItemAction) => void;
-} & WithStyles<typeof style>;
+  contact: ContactListItemModel
+  showFavoriteButton: boolean
+  showEditLink: boolean
+  showDeleteButton: boolean
+  isLinkToDetails: boolean
+  isSelected: boolean
+  onAction: (a: ContactListItemAction) => void
+} & WithStyles<typeof style>
 
 const ItemPresenter = (p: ItemPresenterProps) => {
-  const { classes, contact, onAction } = p;
+  const { classes, contact, onAction } = p
 
-  const avatarUrl = contact.avatar || defaultAvatarUrl;
+  const avatarUrl = contact.avatar || defaultAvatarUrl
 
   const avatarAndName = (
     <Card
@@ -66,7 +66,7 @@ const ItemPresenter = (p: ItemPresenterProps) => {
         </Typography>
       </div>
     </Card>
-  );
+  )
 
   const favoriteAction = p.showFavoriteButton && (
     <FavoriteAction
@@ -77,7 +77,7 @@ const ItemPresenter = (p: ItemPresenterProps) => {
       rootClass={classes.action + " " + classes.favoriteAction}
       iconClass={classes.icon}
     />
-  );
+  )
 
   const editAction = p.showEditLink && (
     <GoToEditAction
@@ -85,7 +85,7 @@ const ItemPresenter = (p: ItemPresenterProps) => {
       rootClass={classes.action + " " + classes.editAction}
       iconClass={classes.icon}
     />
-  );
+  )
 
   const deleteAction = p.showDeleteButton && (
     <DeleteAction
@@ -93,7 +93,7 @@ const ItemPresenter = (p: ItemPresenterProps) => {
       rootClass={classes.action + " " + classes.deleteAction}
       iconClass={classes.icon}
     />
-  );
+  )
 
   return p.isLinkToDetails ? (
     <div className={classes.root}>
@@ -113,7 +113,7 @@ const ItemPresenter = (p: ItemPresenterProps) => {
       {editAction}
       {deleteAction}
     </div>
-  );
-};
+  )
+}
 
-const StyledItemDummy = withStyles(style)(ItemPresenter);
+const StyledItemDummy = withStyles(style)(ItemPresenter)

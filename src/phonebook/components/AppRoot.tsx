@@ -1,13 +1,13 @@
-import React from "react";
-import { AppBar } from "@material-ui/core";
-import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
-import Routes from "./Pages";
-import { BrowserRouter } from "react-router-dom";
-import { ContactService, ContactServiceContext } from "../logic/ContactService";
-import { generateArray } from "../../utils";
-import { generateContact } from "../devUtils/dataGenerators";
-import { getContacts, persistContacts } from "../logic/contactLocalStorage";
-import { Toolbar } from "./Toolbar";
+import React from "react"
+import { AppBar } from "@material-ui/core"
+import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles"
+import Routes from "./Pages"
+import { BrowserRouter } from "react-router-dom"
+import { ContactService, ContactServiceContext } from "../logic/ContactService"
+import { generateArray } from "../../utils"
+import { generateContact } from "../devUtils/dataGenerators"
+import { getContacts, persistContacts } from "../logic/contactLocalStorage"
+import { Toolbar } from "./Toolbar"
 
 const theme = createMuiTheme({
   palette: {
@@ -32,11 +32,11 @@ const theme = createMuiTheme({
       },
     },
   },
-});
+})
 
-const allContacts = getContacts() || generateArray(generateContact, 25, 50);
-const contactService = new ContactService(allContacts);
-const persistContacts_ = () => contactService.getAll().then(persistContacts);
+const allContacts = getContacts() || generateArray(generateContact, 25, 50)
+const contactService = new ContactService(allContacts)
+const persistContacts_ = () => contactService.getAll().then(persistContacts)
 
 export const AppRoot = () => (
   <MuiThemeProvider theme={theme}>
@@ -51,4 +51,4 @@ export const AppRoot = () => (
       </ContactServiceContext.Provider>
     </BrowserRouter>
   </MuiThemeProvider>
-);
+)

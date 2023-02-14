@@ -1,4 +1,4 @@
-import { createStyles, Theme } from "@material-ui/core";
+import { createStyles, Theme } from "@material-ui/core"
 
 export const goToEditActionStyle = createStyles({
   root: {
@@ -6,7 +6,7 @@ export const goToEditActionStyle = createStyles({
       textDecoration: "none",
     },
   },
-});
+})
 
 export const favoriteActionStyle = createStyles({
   root: {
@@ -15,7 +15,7 @@ export const favoriteActionStyle = createStyles({
       "background-color": "inherit",
     },
   },
-});
+})
 
 export const deleteActionStyle = ({ palette }: Theme) =>
   createStyles({
@@ -34,7 +34,7 @@ export const deleteActionStyle = ({ palette }: Theme) =>
     text: {
       marginRight: 3,
     },
-  });
+  })
 
 export const goBackStyle = createStyles({
   root: {
@@ -43,4 +43,4 @@ export const goBackStyle = createStyles({
       "background-color": "inherit",
     },
   },
-});
+})

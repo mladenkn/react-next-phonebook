@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from "react"
 import {
   Dialog,
   DialogContent,
@@ -6,21 +6,21 @@ import {
   Input,
   DialogActions,
   Button,
-} from "@material-ui/core";
-import { useTextInputDialogStyle } from "./various-style";
+} from "@material-ui/core"
+import { useTextInputDialogStyle } from "./various-style"
 
 type TextInputDialogProps = {
-  text?: string;
-  isInputValid: (input: string) => boolean;
-  onOK: (url: string) => void;
-  onCancel: () => void;
-};
+  text?: string
+  isInputValid: (input: string) => boolean
+  onOK: (url: string) => void
+  onCancel: () => void
+}
 
 export const TextInputDialog = (p: TextInputDialogProps) => {
-  const classes = useTextInputDialogStyle();
-  const [input, setInput] = useState(p.text || "");
-  const inputValid = p.isInputValid(input);
-  const okButtonDisabled = !inputValid;
+  const classes = useTextInputDialogStyle()
+  const [input, setInput] = useState(p.text || "")
+  const inputValid = p.isInputValid(input)
+  const okButtonDisabled = !inputValid
 
   return (
     <Dialog
@@ -58,5 +58,5 @@ export const TextInputDialog = (p: TextInputDialogProps) => {
         </Button>
       </DialogActions>
     </Dialog>
-  );
-};
+  )
+}

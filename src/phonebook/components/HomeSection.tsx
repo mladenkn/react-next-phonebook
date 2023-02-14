@@ -5,21 +5,21 @@ import {
   Tab,
   Input,
   Icon,
-} from "@material-ui/core";
-import style from "./HomeSection-style";
-import React, { useState } from "react";
-import ContactList from "./ContactList";
-import { useContactListOps } from "../logic/contactListOps";
-import { Divider } from "./various";
+} from "@material-ui/core"
+import style from "./HomeSection-style"
+import React, { useState } from "react"
+import ContactList from "./ContactList"
+import { useContactListOps } from "../logic/contactListOps"
+import { Divider } from "./various"
 
 const Home = ({ classes }: WithStyles<typeof style>) => {
   const tabClasses = {
     root: classes.contactTab,
     selected: classes.selectedTab,
-  };
+  }
 
-  const [currentTab, setCurrentTab] = useState(0);
-  const ops = useContactListOps();
+  const [currentTab, setCurrentTab] = useState(0)
+  const ops = useContactListOps()
 
   return (
     <div className={classes.root}>
@@ -62,7 +62,7 @@ const Home = ({ classes }: WithStyles<typeof style>) => {
         )}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default withStyles(style)(Home);
+export default withStyles(style)(Home)

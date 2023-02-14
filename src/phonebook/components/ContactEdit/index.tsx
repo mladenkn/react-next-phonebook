@@ -1,27 +1,27 @@
-import { Contact } from "../../models";
-import React, { useState, useContext } from "react";
-import style from "./style";
-import { DeleteAction, GoBackAction } from "../actions";
-import { WithStyles, withStyles, Button } from "@material-ui/core";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
-import ContactForm from "./ContactForm";
+import { Contact } from "../../models"
+import React, { useState, useContext } from "react"
+import style from "./style"
+import { DeleteAction, GoBackAction } from "../actions"
+import { WithStyles, withStyles, Button } from "@material-ui/core"
+import useMediaQuery from "@material-ui/core/useMediaQuery"
+import ContactForm from "./ContactForm"
 import {
   useContactPageBaseStylesXs,
   useContactPageBaseStylesMd,
-} from "../ContactPageBase-style";
-import { GoBackContext } from "../../logic/GoBackContext";
-import { SwapableAvatar } from "../SwapableAvatar";
+} from "../ContactPageBase-style"
+import { GoBackContext } from "../../logic/GoBackContext"
+import { SwapableAvatar } from "../SwapableAvatar"
 
 type Props = {
-  contact?: Contact;
-  onSave: (c: Contact) => void;
-  onDelete?: () => void;
-} & WithStyles<typeof style>;
+  contact?: Contact
+  onSave: (c: Contact) => void
+  onDelete?: () => void
+} & WithStyles<typeof style>
 
 const ContactEditPage = ({ contact, classes, onSave, onDelete }: Props) => {
-  const backAction = <GoBackAction rootClass={classes.backAction} />;
+  const backAction = <GoBackAction rootClass={classes.backAction} />
 
-  const onlyXs = useMediaQuery("(max-width:599px)");
+  const onlyXs = useMediaQuery("(max-width:599px)")
   const deleteAction = contact ? (
     <DeleteAction
       onConfirm={onDelete!}
@@ -31,7 +31,7 @@ const ContactEditPage = ({ contact, classes, onSave, onDelete }: Props) => {
     />
   ) : (
     ""
-  );
+  )
 
   const contact_ = contact || {
     id: 0,
@@ -40,20 +40,20 @@ const ContactEditPage = ({ contact, classes, onSave, onDelete }: Props) => {
     email: "",
     numbers: [],
     isFavorite: false,
-  };
+  }
 
-  const isEdit = contact ? true : false;
+  const isEdit = contact ? true : false
 
-  const [editedContact, setEditedContact] = useState(contact_);
-  const [isEditedContactValid, setIsEditedContactValid] = useState(isEdit);
+  const [editedContact, setEditedContact] = useState(contact_)
+  const [isEditedContactValid, setIsEditedContactValid] = useState(isEdit)
 
   const setAvatar = (avatarUrl?: string) =>
-    setEditedContact({ ...editedContact, avatar: avatarUrl });
+    setEditedContact({ ...editedContact, avatar: avatarUrl })
 
   const formChange = (input: Contact, isValid: boolean) => {
-    setEditedContact({ ...input, avatar: editedContact.avatar });
-    setIsEditedContactValid(isValid);
-  };
+    setEditedContact({ ...input, avatar: editedContact.avatar })
+    setIsEditedContactValid(isValid)
+  }
 
   const avatar = (
     <SwapableAvatar
@@ -61,12 +61,12 @@ const ContactEditPage = ({ contact, classes, onSave, onDelete }: Props) => {
       className={classes.avatar}
       onChange={setAvatar}
     />
-  );
+  )
   const form = (
     <ContactForm initialInput={editedContact} onChange={formChange} />
-  );
+  )
 
-  const goBack = useContext(GoBackContext);
+  const goBack = useContext(GoBackContext)
 
   const buttons = (
     <div className={classes.actions}>
@@ -89,12 +89,12 @@ const ContactEditPage = ({ contact, classes, onSave, onDelete }: Props) => {
         Save
       </Button>
     </div>
-  );
+  )
 
-  const xsBaseClasses = useContactPageBaseStylesXs();
-  const mdBaseClasses = useContactPageBaseStylesMd();
+  const xsBaseClasses = useContactPageBaseStylesXs()
+  const mdBaseClasses = useContactPageBaseStylesMd()
 
-  const downSm = useMediaQuery("(max-width:959px)");
+  const downSm = useMediaQuery("(max-width:959px)")
 
   if (downSm) {
     return (
@@ -115,7 +115,7 @@ const ContactEditPage = ({ contact, classes, onSave, onDelete }: Props) => {
           </div>
         </div>
       </div>
-    );
+    )
   }
   return (
     <div className={mdBaseClasses.root}>
@@ -131,7 +131,7 @@ const ContactEditPage = ({ contact, classes, onSave, onDelete }: Props) => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default withStyles(style)(ContactEditPage);
+export default withStyles(style)(ContactEditPage)

@@ -4,13 +4,13 @@ import {
   Icon,
   IconButton,
   Button,
-} from "@material-ui/core";
-import { Contact } from "../../models";
-import style from "./ContactForm-style";
-import React from "react";
-import { FormikErrors, Formik, Field, ErrorMessage, FieldArray } from "formik";
-import { Divider, Emptiness } from "../various";
-import { ContactFieldLabel } from "../various";
+} from "@material-ui/core"
+import { Contact } from "../../models"
+import style from "./ContactForm-style"
+import React from "react"
+import { FormikErrors, Formik, Field, ErrorMessage, FieldArray } from "formik"
+import { Divider, Emptiness } from "../various"
+import { ContactFieldLabel } from "../various"
 
 /*
     Notes:
@@ -27,26 +27,26 @@ import { ContactFieldLabel } from "../various";
 */
 
 type Props = {
-  initialInput: Contact;
-  onChange: (c: Contact, isValid: boolean) => void;
-} & WithStyles<typeof style>;
+  initialInput: Contact
+  onChange: (c: Contact, isValid: boolean) => void
+} & WithStyles<typeof style>
 
 const ContactForm = ({ classes, initialInput, onChange }: Props) => {
   const validate = (values: Contact) => {
-    let errors: FormikErrors<Contact> = {};
+    let errors: FormikErrors<Contact> = {}
 
     if (
       values.email &&
       (!values.email.includes("@") || !values.email.includes("."))
     )
-      errors.email = "Email not valid.";
+      errors.email = "Email not valid."
 
-    if (!values.fullName) errors.fullName = "Name is required.";
+    if (!values.fullName) errors.fullName = "Name is required."
 
-    onChange(values, Object.entries(errors).length === 0);
+    onChange(values, Object.entries(errors).length === 0)
 
-    return errors;
-  };
+    return errors
+  }
 
   return (
     <Formik
@@ -140,7 +140,7 @@ const ContactForm = ({ classes, initialInput, onChange }: Props) => {
         </div>
       )}
     </Formik>
-  );
-};
+  )
+}
 
-export default withStyles(style)(ContactForm);
+export default withStyles(style)(ContactForm)

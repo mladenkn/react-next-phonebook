@@ -1,14 +1,14 @@
-import { Contact } from "../../models";
-import style from "./ContactDetailsFields-style";
+import { Contact } from "../../models"
+import style from "./ContactDetailsFields-style"
 import {
   List,
   ListItem,
   withStyles,
   WithStyles,
   Typography,
-} from "@material-ui/core";
-import React from "react";
-import { ContactFieldLabel } from "../various";
+} from "@material-ui/core"
+import React from "react"
+import { ContactFieldLabel } from "../various"
 
 export default withStyles(style)(
   ({ contact, classes }: { contact: Contact } & WithStyles<typeof style>) => (
@@ -37,4 +37,4 @@ export default withStyles(style)(
       </div>
     </div>
   )
-);
+)

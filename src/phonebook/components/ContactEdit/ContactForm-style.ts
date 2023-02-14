@@ -1,4 +1,4 @@
-import { createStyles, Theme } from "@material-ui/core";
+import { createStyles, Theme } from "@material-ui/core"
 
 export default ({ palette, breakpoints }: Theme) =>
   createStyles({
@@ -11,7 +11,7 @@ export default ({ palette, breakpoints }: Theme) =>
       paddingLeft: 0,
       paddingRight: 0,
       display: "block",
-      padding: "10px 0px;",
+      padding: "10px 0px",
     },
     labelRemoverContainer: {
       display: "flex",
@@ -75,4 +75,4 @@ export default ({ palette, breakpoints }: Theme) =>
         marginBottom: 10,
       },
     },
-  });
+  })

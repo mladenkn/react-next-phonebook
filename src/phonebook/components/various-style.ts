@@ -1,4 +1,4 @@
-import { createStyles, makeStyles, Theme } from "@material-ui/core";
+import { createStyles, makeStyles, Theme } from "@material-ui/core"
 
 export const contactFieldLabelStyle = ({ palette }: Theme) =>
   createStyles({
@@ -12,7 +12,7 @@ export const contactFieldLabelStyle = ({ palette }: Theme) =>
       width: 30,
     },
     fieldLabelText: {},
-  });
+  })
 
 export const dividerStyle = ({ palette }: Theme) =>
   createStyles({
@@ -21,7 +21,7 @@ export const dividerStyle = ({ palette }: Theme) =>
       backgroundColor: palette.primary.main,
       width: "100%",
     },
-  });
+  })
 
 export const textInputDialogStyle = ({ palette, breakpoints }: Theme) =>
   createStyles({
@@ -44,8 +44,8 @@ export const textInputDialogStyle = ({ palette, breakpoints }: Theme) =>
     actions: {
       padding: "8px 24px 12px",
     },
-  });
+  })
 
 export const useTextInputDialogStyle = makeStyles(textInputDialogStyle, {
   name: "UrlInputDialogStyle",
-});
+})

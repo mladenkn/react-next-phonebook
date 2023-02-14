@@ -1,19 +1,19 @@
-import { useToolbarStyle } from "./Toolbar-style";
-import React, { useState } from "react";
-import { homePageUrl } from "../urls";
-import { SaveChangesAction } from "./actions";
+import { useToolbarStyle } from "./Toolbar-style"
+import React, { useState } from "react"
+import { homePageUrl } from "../urls"
+import { SaveChangesAction } from "./actions"
 import {
   Link,
   Typography,
   Toolbar as MuiToolbar,
   Snackbar,
-} from "@material-ui/core";
+} from "@material-ui/core"
 
-type ToolbarProps = { saveWork: (onComplete: () => void) => void };
+type ToolbarProps = { saveWork: (onComplete: () => void) => void }
 
 export const Toolbar = ({ saveWork }: ToolbarProps) => {
-  const classes = useToolbarStyle();
-  const [isSnackbarOpen, setIsSnackbarOpen] = useState(false);
+  const classes = useToolbarStyle()
+  const [isSnackbarOpen, setIsSnackbarOpen] = useState(false)
   return (
     <div>
       <MuiToolbar className={classes.toolbar}>
@@ -41,5 +41,5 @@ export const Toolbar = ({ saveWork }: ToolbarProps) => {
       />
       <div className={classes.toolbarBorder} />
     </div>
-  );
-};
+  )
+}

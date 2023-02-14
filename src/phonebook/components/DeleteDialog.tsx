@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react"
 import {
   WithStyles,
   withStyles,
@@ -8,15 +8,15 @@ import {
   DialogContent,
   DialogContentText,
   DialogActions,
-} from "@material-ui/core";
-import style from "./DeleteDialog-style";
+} from "@material-ui/core"
+import style from "./DeleteDialog-style"
 
 type Props = {
-  text: string;
-  onCancel: () => void;
-  onConfirm: () => void;
-  isOpen: boolean;
-} & WithStyles<typeof style>;
+  text: string
+  onCancel: () => void
+  onConfirm: () => void
+  isOpen: boolean
+} & WithStyles<typeof style>
 
 const DeleteModal_ = ({
   classes,
@@ -58,9 +58,9 @@ const DeleteModal_ = ({
       </Button>
     </DialogActions>
   </Dialog>
-);
+)
 
-export default withStyles(style)(DeleteModal_);
+export default withStyles(style)(DeleteModal_)
 
 // export const DeleteContactModel = (p: {onCancel: () => {}, onConfirm: () => {}}) =>
 //     <DeleteModal text="Are you sure you want to delete this contact?" onCancel={p.onCancel} onConfirm={p.onConfirm} />

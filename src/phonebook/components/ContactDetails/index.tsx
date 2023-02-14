@@ -1,26 +1,26 @@
-import { Contact } from "../../models";
-import React from "react";
-import ContactDetailsFields from "./ContactDetailsFields";
-import style from "./style";
-import { FavoriteAction, GoToEditAction, GoBackAction } from "../actions";
-import { WithStyles, withStyles, Typography, Avatar } from "@material-ui/core";
+import { Contact } from "../../models"
+import React from "react"
+import ContactDetailsFields from "./ContactDetailsFields"
+import style from "./style"
+import { FavoriteAction, GoToEditAction, GoBackAction } from "../actions"
+import { WithStyles, withStyles, Typography, Avatar } from "@material-ui/core"
 import {
   useContactPageBaseStylesXs,
   useContactPageBaseStylesMd,
-} from "../ContactPageBase-style";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
-const defaultAvatarUrl = require("../../assets/default-avatar.jpg"); // doesn't work with ES6 import
+} from "../ContactPageBase-style"
+import useMediaQuery from "@material-ui/core/useMediaQuery"
+const defaultAvatarUrl = require("../../assets/default-avatar.jpg") // doesn't work with ES6 import
 
-type Props = { contact: Contact; onFavorite: () => void } & WithStyles<
+type Props = { contact: Contact, onFavorite: () => void } & WithStyles<
   typeof style
->;
+>
 
 const ContactDetailsPage = ({ contact, classes, onFavorite }: Props) => {
-  const backAction = <GoBackAction />;
+  const backAction = <GoBackAction />
 
   const name = (
     <Typography className={classes.personName}>{contact.fullName}</Typography>
-  );
+  )
 
   const favAction = (
     <FavoriteAction
@@ -29,7 +29,7 @@ const ContactDetailsPage = ({ contact, classes, onFavorite }: Props) => {
       rootClass={classes.action + " " + classes.favAction}
       iconClass={classes.icon}
     />
-  );
+  )
 
   const editAction = (
     <GoToEditAction
@@ -37,16 +37,16 @@ const ContactDetailsPage = ({ contact, classes, onFavorite }: Props) => {
       rootClass={classes.action + " " + classes.editAction}
       iconClass={classes.icon}
     />
-  );
+  )
 
-  const avatarUrl = contact.avatar || defaultAvatarUrl;
+  const avatarUrl = contact.avatar || defaultAvatarUrl
 
-  const avatar = <Avatar src={avatarUrl} className={classes.avatar} />;
+  const avatar = <Avatar src={avatarUrl} className={classes.avatar} />
 
-  const xsBaseClasses = useContactPageBaseStylesXs();
-  const mdBaseClasses = useContactPageBaseStylesMd();
+  const xsBaseClasses = useContactPageBaseStylesXs()
+  const mdBaseClasses = useContactPageBaseStylesMd()
 
-  const onlyXs = useMediaQuery("(max-width:599px)");
+  const onlyXs = useMediaQuery("(max-width:599px)")
 
   if (onlyXs) {
     return (
@@ -66,7 +66,7 @@ const ContactDetailsPage = ({ contact, classes, onFavorite }: Props) => {
           </div>
         </div>
       </div>
-    );
+    )
   } else {
     return (
       <div className={mdBaseClasses.root + " " + classes.root}>
@@ -83,8 +83,8 @@ const ContactDetailsPage = ({ contact, classes, onFavorite }: Props) => {
           </div>
         </div>
       </div>
-    );
+    )
   }
-};
+}
 
-export default withStyles(style)(ContactDetailsPage);
+export default withStyles(style)(ContactDetailsPage)

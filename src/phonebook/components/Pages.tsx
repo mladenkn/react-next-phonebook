@@ -1,16 +1,16 @@
-import React from "react";
-import { Route } from "react-router-dom";
-import HomeSection from "./HomeSection";
-import { useContactDetailsOps } from "../logic/contactDetailsOps";
-import { RouteComponentProps } from "react-router";
-import ContactDetails from "./ContactDetails";
-import { useContactPageStyle, useHomePageStyle } from "./pages-styles";
-import { GoBackContext } from "../logic/GoBackContext";
-import ContactEdit from "./ContactEdit";
-import { useContactService } from "../logic/ContactService";
+import React from "react"
+import { Route } from "react-router-dom"
+import HomeSection from "./HomeSection"
+import { useContactDetailsOps } from "../logic/contactDetailsOps"
+import { RouteComponentProps } from "react-router"
+import ContactDetails from "./ContactDetails"
+import { useContactPageStyle, useHomePageStyle } from "./pages-styles"
+import { GoBackContext } from "../logic/GoBackContext"
+import ContactEdit from "./ContactEdit"
+import { useContactService } from "../logic/ContactService"
 
 export interface ContactIdRouteParams {
-  contactId?: string;
+  contactId?: string
 }
 
 export default () => (
@@ -19,12 +19,12 @@ export default () => (
       exact
       path="/"
       component={() => {
-        const classes = useHomePageStyle();
+        const classes = useHomePageStyle()
         return (
           <div className={classes.root}>
             <HomeSection />
           </div>
-        );
+        )
       }}
     />
     <Route
@@ -33,13 +33,13 @@ export default () => (
         match,
         history,
       }: RouteComponentProps<ContactIdRouteParams>) => {
-        const contactId = parseInt(match.params.contactId!);
-        const classes = useContactPageStyle();
+        const contactId = parseInt(match.params.contactId!)
+        const classes = useContactPageStyle()
         const ops = useContactDetailsOps(
           contactId,
           history.goBack,
           history.push
-        );
+        )
         return (
           <GoBackContext.Provider value={history.goBack}>
             <div className={classes.root}>
@@ -56,7 +56,7 @@ export default () => (
               }
             </div>
           </GoBackContext.Provider>
-        );
+        )
       }}
     />
     <Route
@@ -65,13 +65,13 @@ export default () => (
         match,
         history,
       }: RouteComponentProps<ContactIdRouteParams>) => {
-        const contactId = parseInt(match.params.contactId!);
-        const classes = useContactPageStyle();
+        const contactId = parseInt(match.params.contactId!)
+        const classes = useContactPageStyle()
         const ops = useContactDetailsOps(
           contactId,
           history.goBack,
           history.push
-        );
+        )
         return (
           <GoBackContext.Provider value={history.goBack}>
             <div className={classes.root}>
@@ -87,14 +87,14 @@ export default () => (
               }
             </div>
           </GoBackContext.Provider>
-        );
+        )
       }}
     />
     <Route
       path="/contact/create"
       component={({ history }: RouteComponentProps) => {
-        const classes = useContactPageStyle();
-        const contactService = useContactService();
+        const classes = useContactPageStyle()
+        const contactService = useContactService()
         return (
           <GoBackContext.Provider value={history.goBack}>
             <div className={classes.root}>
@@ -103,8 +103,8 @@ export default () => (
               />
             </div>
           </GoBackContext.Provider>
-        );
+        )
       }}
     />
   </div>
-);
+)

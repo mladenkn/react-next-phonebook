@@ -1,5 +1,5 @@
-import { createStyles, Theme } from "@material-ui/core";
-import { makeStyles } from "@material-ui/styles";
+import { createStyles, Theme } from "@material-ui/core"
+import { makeStyles } from "@material-ui/styles"
 
 const contactPageBaseXs = ({ palette }: Theme) =>
   createStyles({
@@ -20,11 +20,11 @@ const contactPageBaseXs = ({ palette }: Theme) =>
     body: {
       padding: "8px 15px 0px 15px",
     },
-  });
+  })
 
 export const useContactPageBaseStylesXs = makeStyles(contactPageBaseXs, {
   name: "ContactPageBaseXs",
-});
+})
 
 const contactPageBaseMd = ({ palette }: Theme) =>
   createStyles({
@@ -46,8 +46,8 @@ const contactPageBaseMd = ({ palette }: Theme) =>
       display: "inline-block",
       marginLeft: 20,
     },
-  });
+  })
 
 export const useContactPageBaseStylesMd = makeStyles(contactPageBaseMd, {
   name: "ContactPageBaseMd",
-});
+})

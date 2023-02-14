@@ -1,5 +1,5 @@
-import { createStyles, Theme } from "@material-ui/core";
-import { grey } from "@material-ui/core/colors";
+import { createStyles, Theme } from "@material-ui/core"
+import { grey } from "@material-ui/core/colors"
 
 export const swapableAvatarStyle = ({ palette, breakpoints }: Theme) =>
   createStyles({
@@ -34,4 +34,4 @@ export const swapableAvatarStyle = ({ palette, breakpoints }: Theme) =>
       color: "white",
       fontSize: "2.25rem",
     },
-  });
+  })

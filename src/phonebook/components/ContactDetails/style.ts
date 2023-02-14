@@ -1,4 +1,4 @@
-import { createStyles, Theme } from "@material-ui/core";
+import { createStyles, Theme } from "@material-ui/core"
 
 export default ({ palette, breakpoints }: Theme) =>
   createStyles({
@@ -48,4 +48,4 @@ export default ({ palette, breakpoints }: Theme) =>
         marginLeft: "9%",
       },
     },
-  });
+  })
