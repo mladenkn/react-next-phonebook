@@ -13,9 +13,9 @@ import {
   goBackStyle,
 } from "./actions-style"
 import { contactEditUrl } from "../urls"
-import React, { useState, useContext } from "react"
+import React, { useState } from "react"
 import DeleteModal from "./DeleteDialog"
-import { GoBackContext } from "../logic/GoBackContext"
+import { useGoBack } from "../logic/GoBackContext"
 import { Link } from "./various"
 
 type GoToEditActionProps = {
@@ -125,7 +125,7 @@ export const GoBackAction = withStyles(goBackStyle)(
     useGoBackContext,
   }: GoBackActionProps) => {
     const onClick_ =
-      useGoBackContext || true ? useContext(GoBackContext) : onClick
+      useGoBackContext || true ? useGoBack() : onClick
     return (
       <IconButton
         onClick={onClick_}

@@ -9,7 +9,7 @@ import {
   useContactPageBaseStylesXs,
   useContactPageBaseStylesMd,
 } from "../ContactPageBase-style"
-import { GoBackContext } from "../../logic/GoBackContext"
+import { GoBackContext, useGoBack } from "../../logic/GoBackContext"
 import { SwapableAvatar } from "../SwapableAvatar"
 
 type Props = {
@@ -66,7 +66,7 @@ const ContactEditPage = ({ contact, classes, onSave, onDelete }: Props) => {
     <ContactForm initialInput={editedContact} onChange={formChange} />
   )
 
-  const goBack = useContext(GoBackContext)
+  const goBack = useGoBack()
 
   const buttons = (
     <div className={classes.actions}>
