@@ -1,4 +1,6 @@
 import faker from "faker"
+import { isNil } from "lodash"
+
 
 export const generateArray = <T>(
   getNext: () => T,
@@ -57,4 +59,17 @@ export const containsOnlyDigits = (str: string) => {
     if (isNaN(parseInt(c))) return false
   }
   return true
+}
+
+export function assertIsNonNil<T>(val: T): asserts val is NonNullable<T> {
+  if (isNil(val)) {
+    throw new Error(
+      `Expected 'val' to be defined, but received ${val}`
+    );
+  }
+}
+
+export function asNonNil<T>(val?: T){
+  assertIsNonNil(val)
+  return val
 }
