@@ -1,10 +1,3 @@
-import { useContext, createContext } from "react"
+import { createContext } from "../../utils/react"
 
-export const GoBackContext = createContext<(() => void) | undefined>(undefined)
-
-export const useGoBack = () => {
-  const goBack = useContext(GoBackContext)
-  if(!goBack)
-    throw new Error('Go back function not provided')
-  return goBack
-}
+export const [GoBackContextProvider, useGoBack] = createContext<() => void>()

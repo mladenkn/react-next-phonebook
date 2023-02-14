@@ -5,9 +5,10 @@ import { useContactDetailsOps } from "../logic/contactDetailsOps"
 import { RouteComponentProps } from "react-router"
 import ContactDetails from "./ContactDetails"
 import { useContactPageStyle, useHomePageStyle } from "./pages-styles"
-import { GoBackContext } from "../logic/GoBackContext"
+import { GoBackContextProvider } from "../logic/GoBackContext"
 import ContactEdit from "./ContactEdit"
 import { useContactService } from "../logic/ContactService"
+
 
 export interface ContactIdRouteParams {
   contactId?: string
@@ -41,7 +42,7 @@ export default () => (
           history.push
         )
         return (
-          <GoBackContext.Provider value={history.goBack}>
+          <GoBackContextProvider value={history.goBack}>
             <div className={classes.root}>
               {
                 ops.fetchStatus === "COMPLETED" ? (
@@ -55,7 +56,7 @@ export default () => (
                 ) // doesn't make sense to handle this since there is no real fetching}
               }
             </div>
-          </GoBackContext.Provider>
+          </GoBackContextProvider>
         )
       }}
     />
@@ -73,7 +74,7 @@ export default () => (
           history.push
         )
         return (
-          <GoBackContext.Provider value={history.goBack}>
+          <GoBackContextProvider value={history.goBack}>
             <div className={classes.root}>
               {
                 ops.fetchStatus === "COMPLETED" ? (
@@ -86,7 +87,7 @@ export default () => (
                 ) // doesn't make sense to handle this since there is no real fetching}
               }
             </div>
-          </GoBackContext.Provider>
+          </GoBackContextProvider>
         )
       }}
     />
@@ -96,13 +97,13 @@ export default () => (
         const classes = useContactPageStyle()
         const contactService = useContactService()
         return (
-          <GoBackContext.Provider value={history.goBack}>
+          <GoBackContextProvider value={history.goBack}>
             <div className={classes.root}>
               <ContactEdit
                 onSave={(c) => contactService.save(c).then(history.goBack)}
               />
             </div>
-          </GoBackContext.Provider>
+          </GoBackContextProvider>
         )
       }}
     />

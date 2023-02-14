@@ -9,7 +9,7 @@ import {
   useContactPageBaseStylesXs,
   useContactPageBaseStylesMd,
 } from "../ContactPageBase-style"
-import { GoBackContext, useGoBack } from "../../logic/GoBackContext"
+import { useGoBack } from "../../logic/GoBackContext"
 import { SwapableAvatar } from "../SwapableAvatar"
 
 type Props = {
