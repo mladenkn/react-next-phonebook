@@ -1,5 +1,5 @@
 import style from "./ContactListItem-style";
-import { ContactListItem as Model } from "../../models";
+import { ContactListItem as ContactListItemModel } from "../../models";
 import React from 'react';
 import { Card, Avatar, Typography, withStyles, WithStyles } from "@material-ui/core";
 import { Link } from "../various";
@@ -10,26 +10,25 @@ const defaultAvatarUrl = require('../../assets/default-avatar.jpg'); // doesn't 
 
 
 type Props = {
-    contact: Model
+    contact: ContactListItemModel
     isSelected: boolean
     smOrDown: boolean
     onAction: (a: ContactListItemAction) => void
 }
 
-export const ContactListItem =  ({contact, isSelected, smOrDown, onAction}: Props) => {
-    return <StyledItemDummy 
+export const ContactListItem =  ({contact, isSelected, smOrDown, onAction}: Props) =>
+    <StyledItemDummy
         contact={contact}
-        showFavoriteButton={true}
+        showFavoriteButton
         showEditLink={smOrDown || (!smOrDown && isSelected)}
         showDeleteButton={smOrDown || (!smOrDown && isSelected)}
         isLinkToDetails={smOrDown || (!smOrDown && isSelected)}
         isSelected={isSelected}
-        onAction={onAction} 
+        onAction={onAction}
     />
-}
  
-type ItemDummyProps = {
-    contact: Model
+type ItemPresenterProps = {
+    contact: ContactListItemModel
     showFavoriteButton: boolean
     showEditLink: boolean
     showDeleteButton: boolean
@@ -38,8 +37,7 @@ type ItemDummyProps = {
     onAction: (a: ContactListItemAction) => void
 } & WithStyles<typeof style>
  
- // Should rename to StyledItemDummy
-const ItemDummy = (p: ItemDummyProps) => {
+const ItemPresenter = (p: ItemPresenterProps) => {
     const { classes, contact, onAction } = p;
 
     const avatarUrl = contact.avatar || defaultAvatarUrl;
@@ -81,4 +79,4 @@ const ItemDummy = (p: ItemDummyProps) => {
         </div> ;
 }
  
-const StyledItemDummy = withStyles(style)(ItemDummy);
+const StyledItemDummy = withStyles(style)(ItemPresenter);
