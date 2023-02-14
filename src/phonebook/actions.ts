@@ -1,4 +1,4 @@
 export interface ContactListItemAction {
-    type: 'SELECT' | 'TOGGLE_FAVORITE' | 'DELETE'
-    contactId: number
+  type: "SELECT" | "TOGGLE_FAVORITE" | "DELETE";
+  contactId: number;
 }

@@ -1,4 +1,4 @@
-const { writeFileSync, mkdirSync } = require('fs');
+const { writeFileSync, mkdirSync } = require("fs");
 
 const type = process.argv[2];
 const componentName = process.argv[3];
@@ -31,17 +31,17 @@ const ${componentName} = ({classes}: Props) =>
 export default withStyles(style)(${componentName});
 `;
 
-const projSrcFolderPath = __dirname + '/../src/';
-const componentFolderPath = folderRelativePath + '/';
+const projSrcFolderPath = __dirname + "/../src/";
+const componentFolderPath = folderRelativePath + "/";
 
-const styleFilePath = componentFolderPath + componentName + '-style.ts';
-const viewFilePath = componentFolderPath + componentName + '.tsx';
+const styleFilePath = componentFolderPath + componentName + "-style.ts";
+const viewFilePath = componentFolderPath + componentName + ".tsx";
 
-switch(type){
-    case 'style':
-        writeFileSync(styleFilePath, styleFileContent);
-        break;
-    case 'view':
-        writeFileSync(viewFilePath, viewFileContent);
-        break;
+switch (type) {
+  case "style":
+    writeFileSync(styleFilePath, styleFileContent);
+    break;
+  case "view":
+    writeFileSync(viewFilePath, viewFileContent);
+    break;
 }
