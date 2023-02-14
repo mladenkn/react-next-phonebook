@@ -140,7 +140,7 @@ export const GoBackAction = withStyles(goBackStyle)(
   }
 )
 
-type SaveWorkActionProps = { onClick: () => void, className: string }
+type SaveWorkActionProps = { onClick: () => void; className: string }
 export const SaveChangesAction = ({
   className,
   onClick,

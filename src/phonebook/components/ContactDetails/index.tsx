@@ -11,7 +11,7 @@ import {
 import useMediaQuery from "@material-ui/core/useMediaQuery"
 const defaultAvatarUrl = require("../../assets/default-avatar.jpg") // doesn't work with ES6 import
 
-type Props = { contact: Contact, onFavorite: () => void } & WithStyles<
+type Props = { contact: Contact; onFavorite: () => void } & WithStyles<
   typeof style
 >
 
