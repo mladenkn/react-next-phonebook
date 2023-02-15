@@ -1,4 +1,3 @@
-import React from "react"
 import {
   WithStyles,
   withStyles,
@@ -9,7 +8,7 @@ import {
   DialogContentText,
   DialogActions,
 } from "@material-ui/core"
-import style from "./DeleteDialog-style"
+import style from "./DeleteDialog.style"
 
 type Props = {
   text: string

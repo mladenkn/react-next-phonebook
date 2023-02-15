@@ -10,7 +10,7 @@ import {
   favoriteActionStyle,
   deleteActionStyle,
   goBackStyle,
-} from "./actions-style"
+} from "./actions.style"
 import { contactEditUrl } from "../urls"
 import { useState } from "react"
 import DeleteModal from "./DeleteDialog"

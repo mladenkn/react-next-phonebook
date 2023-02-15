@@ -8,7 +8,7 @@ import ContactForm from "./ContactForm"
 import {
   useContactPageBaseStylesXs,
   useContactPageBaseStylesMd,
-} from "../ContactPageBase-style"
+} from "../ContactPageBase.style"
 import { useGoBack } from "../../logic/GoBackContext"
 import { SwapableAvatar } from "../SwapableAvatar"
 

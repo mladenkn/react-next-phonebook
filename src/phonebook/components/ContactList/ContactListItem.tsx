@@ -1,6 +1,5 @@
-import style from "./ContactListItem-style"
+import style from "./ContactListItem.style"
 import { ContactListItem as ContactListItemModel } from "../../models"
-import React from "react"
 import {
   Card,
   Avatar,

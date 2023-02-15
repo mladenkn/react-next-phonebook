@@ -5,7 +5,7 @@ import {
   Button,
 } from "@material-ui/core"
 import { Contact } from "../../models"
-import style from "./ContactForm-style"
+import style from "./ContactForm.style"
 import { FormikErrors, Formik, Field, ErrorMessage, FieldArray } from "formik"
 import { Divider, Emptiness } from "../various"
 import { ContactFieldLabel } from "../various"

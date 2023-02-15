@@ -7,7 +7,7 @@ import {
   DialogActions,
   Button,
 } from "@material-ui/core"
-import { useTextInputDialogStyle } from "./various-style"
+import { useTextInputDialogStyle } from "./various.style"
 
 type TextInputDialogProps = {
   text?: string

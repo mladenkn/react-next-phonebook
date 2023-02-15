@@ -1,10 +1,10 @@
 import { Icon, WithStyles, withStyles } from "@material-ui/core"
-import { contactFieldLabelStyle } from "./various-style"
+import { contactFieldLabelStyle } from "./various.style"
 import React from "react"
 import { LinkProps as MuiLinkProps } from "@material-ui/core/Link"
 import { Link as MuiLink, Divider as MUIDivider } from "@material-ui/core"
 import { Link as RouterLink } from "react-router-dom"
-import { dividerStyle } from "./various-style"
+import { dividerStyle } from "./various.style"
 
 type ContactFieldLabelProps = {
   icon: string

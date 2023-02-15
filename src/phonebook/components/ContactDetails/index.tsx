@@ -7,7 +7,7 @@ import { WithStyles, withStyles, Typography, Avatar } from "@material-ui/core"
 import {
   useContactPageBaseStylesXs,
   useContactPageBaseStylesMd,
-} from "../ContactPageBase-style"
+} from "../ContactPageBase.style"
 import useMediaQuery from "@material-ui/core/useMediaQuery"
 const defaultAvatarUrl = require("../../assets/default-avatar.jpg") // doesn't work with ES6 import
 

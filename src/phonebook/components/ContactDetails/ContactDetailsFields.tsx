@@ -1,5 +1,5 @@
 import { Contact } from "../../models"
-import style from "./ContactDetailsFields-style"
+import style from "./ContactDetailsFields.style"
 import {
   List,
   ListItem,

@@ -5,7 +5,7 @@ import {
   Tab,
   Input,
 } from "@material-ui/core"
-import style from "./HomeSection-style"
+import style from "./HomeSection.style"
 import { useState } from "react"
 import ContactList from "./ContactList"
 import { useContactListOps } from "../logic/contactListOps"
