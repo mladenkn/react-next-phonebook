@@ -1,10 +1,15 @@
-import React from "react"
-import ReactDOM from "react-dom"
+import { createRoot } from 'react-dom/client'
 import "./index.css"
 import * as serviceWorker from "./serviceWorker"
 import { AppRoot } from "./phonebook/components/AppRoot"
+import { assertIsNonNil } from "./utils"
 
-ReactDOM.render(<AppRoot />, document.getElementById("root"))
+
+const rootDomNode = document.getElementById('root');
+assertIsNonNil(rootDomNode)
+const root = createRoot(rootDomNode)
+console.log(rootDomNode, root)
+root.render(<AppRoot />)
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

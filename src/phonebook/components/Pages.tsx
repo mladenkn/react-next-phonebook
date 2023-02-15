@@ -1,8 +1,7 @@
 import React from "react"
-import { Route } from "react-router-dom"
+import { Route, useParams, useNavigate } from "react-router-dom"
 import HomeSection from "./HomeSection"
 import { useContactDetailsOps } from "../logic/contactDetailsOps"
-import { RouteComponentProps } from "react-router"
 import ContactDetails from "./ContactDetails"
 import { useContactPageStyle, useHomePageStyle } from "./pages-styles"
 import { GoBackContextProvider } from "../logic/GoBackContext"
@@ -17,95 +16,101 @@ export interface ContactIdRouteParams {
 export default () => (
   <div>
     <Route
-      exact
       path="/"
-      component={() => {
-        const classes = useHomePageStyle()
-        return (
-          <div className={classes.root}>
-            <HomeSection />
-          </div>
-        )
-      }}
+      element={<ContactListPage />}
     />
     <Route
       path="/contact/edit/:contactId"
-      component={({
-        match,
-        history,
-      }: RouteComponentProps<ContactIdRouteParams>) => {
-        const contactId = parseInt(match.params.contactId!)
-        const classes = useContactPageStyle()
-        const ops = useContactDetailsOps(
-          contactId,
-          history.goBack,
-          history.push
-        )
-        return (
-          <GoBackContextProvider value={history.goBack}>
-            <div className={classes.root}>
-              {
-                ops.fetchStatus === "COMPLETED" ? (
-                  <ContactEdit
-                    contact={ops.contact!}
-                    onSave={ops.save}
-                    onDelete={ops.delete}
-                  />
-                ) : (
-                  <div />
-                ) // doesn't make sense to handle this since there is no real fetching}
-              }
-            </div>
-          </GoBackContextProvider>
-        )
-      }}
+      element={<ContactEditPage />}
     />
     <Route
       path="/contact/details/:contactId"
-      component={({
-        match,
-        history,
-      }: RouteComponentProps<ContactIdRouteParams>) => {
-        const contactId = parseInt(match.params.contactId!)
-        const classes = useContactPageStyle()
-        const ops = useContactDetailsOps(
-          contactId,
-          history.goBack,
-          history.push
-        )
-        return (
-          <GoBackContextProvider value={history.goBack}>
-            <div className={classes.root}>
-              {
-                ops.fetchStatus === "COMPLETED" ? (
-                  <ContactDetails
-                    contact={ops.contact!}
-                    onFavorite={ops.favorite}
-                  />
-                ) : (
-                  <div />
-                ) // doesn't make sense to handle this since there is no real fetching}
-              }
-            </div>
-          </GoBackContextProvider>
-        )
-      }}
+      element={<ContactDetailsPage />}
     />
     <Route
       path="/contact/create"
-      component={({ history }: RouteComponentProps) => {
-        const classes = useContactPageStyle()
-        const contactService = useContactService()
-        return (
-          <GoBackContextProvider value={history.goBack}>
-            <div className={classes.root}>
-              <ContactEdit
-                onSave={(c) => contactService.save(c).then(history.goBack)}
-              />
-            </div>
-          </GoBackContextProvider>
-        )
-      }}
+      element={<ContactCreatePage />}
     />
   </div>
 )
+
+const ContactListPage = () => {
+  const classes = useHomePageStyle()
+  return (
+    <div className={classes.root}>
+      <HomeSection />
+    </div>
+  )
+}
+
+const ContactDetailsPage = () => {
+  const params = useParams()
+  const navigate = useNavigate()
+  const contactId = parseInt(params.contactId!)
+  const classes = useContactPageStyle()
+  const ops = useContactDetailsOps(
+    contactId,
+    () => navigate(-1),
+    navigate
+  )
+  return (
+    <GoBackContextProvider value={() => navigate(-1)}>
+      <div className={classes.root}>
+        {
+          ops.fetchStatus === "COMPLETED" ? (
+            <ContactDetails
+              contact={ops.contact!}
+              onFavorite={ops.favorite}
+            />
+          ) : (
+            <div />
+          ) // doesn't make sense to handle this since there is no real fetching}
+        }
+      </div>
+    </GoBackContextProvider>
+  )
+}
+
+const ContactCreatePage = () => {
+  const navigate = useNavigate()
+  const classes = useContactPageStyle()
+  const contactService = useContactService()
+  return (
+    <GoBackContextProvider value={() => navigate(-1)}>
+      <div className={classes.root}>
+        <ContactEdit
+          onSave={(c) => contactService.save(c).then(() => navigate(-1))}
+        />
+      </div>
+    </GoBackContextProvider>
+  )
+}
+
+const ContactEditPage = () => {
+  const params = useParams()
+  const navigate = useNavigate()
+  const contactId = parseInt(params.contactId!)
+  const classes = useContactPageStyle()
+  const ops = useContactDetailsOps(
+    contactId,
+    () => navigate(-1),
+    navigate
+  )
+  return (
+    <GoBackContextProvider value={() => navigate(-1)}>
+      <div className={classes.root}>
+        {
+          ops.fetchStatus === "COMPLETED" ? (
+            <ContactEdit
+              contact={ops.contact!}
+              onSave={ops.save}
+              onDelete={ops.delete}
+            />
+          ) : (
+            <div />
+          ) // doesn't make sense to handle this since there is no real fetching}
+        }
+      </div>
+    </GoBackContextProvider>
+  )
+}

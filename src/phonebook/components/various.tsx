@@ -47,6 +47,7 @@ export const Emptiness = ({ width, height, className }: EmptinessProps) => (
 
 const createRefRouterLink = (url: string) =>
   React.forwardRef((props, ref: any) => (
+    // @ts-ignore
     <RouterLink innerRef={ref} to={url} {...props} />
   ))
 
