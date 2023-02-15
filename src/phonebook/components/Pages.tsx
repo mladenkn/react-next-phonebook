@@ -1,5 +1,4 @@
 import React from "react"
-import { Route, useParams, useNavigate } from "react-router-dom"
 import HomeSection from "./HomeSection"
 import { useContactDetailsOps } from "../logic/contactDetailsOps"
 import ContactDetails from "./ContactDetails"
@@ -7,32 +6,16 @@ import { useContactPageStyle, useHomePageStyle } from "./pages-styles"
 import { GoBackContextProvider } from "../logic/GoBackContext"
 import ContactEdit from "./ContactEdit"
 import { useContactService } from "../logic/ContactService"
+import {
+  createRoutesFromElements,
+  createBrowserRouter,
+  Route, useParams, useNavigate,
+} from "react-router-dom";
 
 
 export interface ContactIdRouteParams {
   contactId?: string
 }
-
-export default () => (
-  <div>
-    <Route
-      path="/"
-      element={<ContactListPage />}
-    />
-    <Route
-      path="/contact/edit/:contactId"
-      element={<ContactEditPage />}
-    />
-    <Route
-      path="/contact/details/:contactId"
-      element={<ContactDetailsPage />}
-    />
-    <Route
-      path="/contact/create"
-      element={<ContactCreatePage />}
-    />
-  </div>
-)
 
 const ContactListPage = () => {
   const classes = useHomePageStyle()
@@ -114,3 +97,27 @@ const ContactEditPage = () => {
     </GoBackContextProvider>
   )
 }
+
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <>
+      <Route
+        path="/"
+        element={<ContactListPage />}
+      />
+      <Route
+        path="/contact/edit/:contactId"
+        element={<ContactEditPage />}
+      />
+      <Route
+        path="/contact/details/:contactId"
+        element={<ContactDetailsPage />}
+      />
+      <Route
+        path="/contact/create"
+        element={<ContactCreatePage />}
+      />
+    </>
+  ))
+
+export default router
