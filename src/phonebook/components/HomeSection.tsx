@@ -4,13 +4,14 @@ import {
   Tabs,
   Tab,
   Input,
-  Icon,
 } from "@material-ui/core"
 import style from "./HomeSection-style"
-import React, { useState } from "react"
+import { useState } from "react"
 import ContactList from "./ContactList"
 import { useContactListOps } from "../logic/contactListOps"
 import { Divider } from "./various"
+import SearchIcon from "@material-ui/icons/Search"
+
 
 const Home = ({ classes }: WithStyles<typeof style>) => {
   const tabClasses = {
@@ -42,7 +43,7 @@ const Home = ({ classes }: WithStyles<typeof style>) => {
         <Input
           disableUnderline
           startAdornment={
-            <Icon className={classes.searchFieldIcon}>search</Icon>
+            <SearchIcon className={classes.searchFieldIcon} />
           }
           onChange={(e) => ops.fetch(e.target.value)}
           classes={{
