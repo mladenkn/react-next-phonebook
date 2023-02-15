@@ -3,6 +3,8 @@ import { validURL } from "../../utils"
 import { swapableAvatarStyle } from "./swapableAvatar-style"
 import { withStyles, WithStyles, Avatar, Icon } from "@material-ui/core"
 import { TextInputDialog } from "./TextInputDialog"
+import CloudUploadIcon from "@material-ui/icons/CloudUpload"
+
 
 type Props = {
   src?: string
@@ -50,7 +52,7 @@ export const SwapableAvatar = withStyles(swapableAvatarStyle)((p: Props) => {
         {p.src ? (
           <div className={classes.removeIcon}>x</div>
         ) : (
-          <Icon className={classes.uploadIcon}>cloud_upload</Icon>
+          <CloudUploadIcon className={classes.uploadIcon} />
         )}
       </div>
       {dialog}

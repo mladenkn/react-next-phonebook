@@ -1,7 +1,6 @@
 import {
   withStyles,
   WithStyles,
-  Icon,
   IconButton,
   Typography,
   Tooltip,
@@ -13,10 +12,17 @@ import {
   goBackStyle,
 } from "./actions-style"
 import { contactEditUrl } from "../urls"
-import React, { useState } from "react"
+import { useState } from "react"
 import DeleteModal from "./DeleteDialog"
 import { useGoBack } from "../logic/GoBackContext"
 import { Link } from "./various"
+import EditIcon from "@material-ui/icons/Edit"
+import DeleteIcon from "@material-ui/icons/Delete"
+import ArrowBackIcon from "@material-ui/icons/ArrowBack"
+import SaveIcon from "@material-ui/icons/Save"
+import FavoriteIcon from "@material-ui/icons/Favorite"
+import FavoriteOutlinedIcon from "@material-ui/icons/FavoriteOutlined"
+
 
 type GoToEditActionProps = {
   contactId: number
@@ -30,9 +36,7 @@ export const GoToEditAction = withStyles(goToEditActionStyle)(
       href={contactEditUrl(contactId)}
       className={classes.root + " " + rootClass}
     >
-      <Icon color="secondary" className={iconClass}>
-        edit
-      </Icon>
+      <EditIcon color="secondary" className={iconClass} />
     </Link>
   )
 )
@@ -57,9 +61,7 @@ export const FavoriteAction = withStyles(favoriteActionStyle)(
       onClick={onClick}
       disableRipple
     >
-      <Icon color="secondary" className={iconClass}>
-        {isFavorite ? "favorite" : "favorite_outlined"}
-      </Icon>
+      {isFavorite ? <FavoriteIcon /> : <FavoriteOutlinedIcon />}
     </IconButton>
   )
 )
@@ -94,9 +96,7 @@ export const DeleteAction = withStyles(deleteActionStyle)(
           {(withText || false) && (
             <Typography className={classes.text}>Delete</Typography>
           )}
-          <Icon color="secondary" className={iconClass}>
-            delete
-          </Icon>
+          <DeleteIcon color="secondary" className={iconClass} />
         </IconButton>
         <DeleteModal
           isOpen={modalOpen}
@@ -132,9 +132,7 @@ export const GoBackAction = withStyles(goBackStyle)(
         className={classes.root + " " + rootClass}
         disableRipple
       >
-        <Icon color="secondary" className={iconClass}>
-          arrow_back
-        </Icon>
+        <ArrowBackIcon color="secondary" className={iconClass} />
       </IconButton>
     )
   }
@@ -147,7 +145,7 @@ export const SaveChangesAction = ({
 }: SaveWorkActionProps) => (
   <Tooltip title="Save changes">
     <IconButton onClick={onClick} className={className}>
-      <Icon>save</Icon>
+      <SaveIcon />
     </IconButton>
   </Tooltip>
 )

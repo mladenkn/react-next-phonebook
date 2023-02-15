@@ -1,16 +1,15 @@
 import {
   WithStyles,
   withStyles,
-  Icon,
   IconButton,
   Button,
 } from "@material-ui/core"
 import { Contact } from "../../models"
 import style from "./ContactForm-style"
-import React from "react"
 import { FormikErrors, Formik, Field, ErrorMessage, FieldArray } from "formik"
 import { Divider, Emptiness } from "../various"
 import { ContactFieldLabel } from "../various"
+import { AddCircleOutline } from "@material-ui/icons"
 
 /*
     Notes:
@@ -130,7 +129,7 @@ const ContactForm = ({ classes, initialInput, onChange }: Props) => {
                   className={classes.numberAdder}
                   onClick={() => arr.push({ value: "", label: "" })}
                 >
-                  <Icon color="primary">add_circle_outline</Icon>
+                  <AddCircleOutline color="primary" />
                   <Emptiness width={5} />
                   Add number
                 </Button>

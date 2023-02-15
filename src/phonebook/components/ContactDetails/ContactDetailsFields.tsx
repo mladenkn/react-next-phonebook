@@ -7,8 +7,8 @@ import {
   WithStyles,
   Typography,
 } from "@material-ui/core"
-import React from "react"
 import { ContactFieldLabel } from "../various"
+
 
 export default withStyles(style)(
   ({ contact, classes }: { contact: Contact } & WithStyles<typeof style>) => (
