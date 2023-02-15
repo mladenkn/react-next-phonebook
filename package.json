@@ -15,7 +15,6 @@
     "faker": "^4.1.0",
     "formik": "^1.5.7",
     "lodash": "^4.17.21",
-    "material-ui-render-props-styles": "^4.0.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-jss": "^8.6.1",
