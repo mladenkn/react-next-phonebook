@@ -47,7 +47,7 @@ export const AppRoot = () => {
     <MuiThemeProvider theme={theme}>
       <ContactServiceContextProvider value={contactService}>
         <AppBar position="sticky">
-          <Toolbar saveWork={() => {}} />
+          <Toolbar />
         </AppBar>
         <RouterProvider router={router} />
       </ContactServiceContextProvider>

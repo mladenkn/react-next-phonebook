@@ -3,7 +3,6 @@ import {
   WithStyles,
   IconButton,
   Typography,
-  Tooltip,
 } from "@material-ui/core"
 import {
   goToEditActionStyle,
@@ -19,7 +18,6 @@ import { Link } from "./various"
 import EditIcon from "@material-ui/icons/Edit"
 import DeleteIcon from "@material-ui/icons/Delete"
 import ArrowBackIcon from "@material-ui/icons/ArrowBack"
-import SaveIcon from "@material-ui/icons/Save"
 import FavoriteIcon from "@material-ui/icons/Favorite"
 import FavoriteOutlinedIcon from "@material-ui/icons/FavoriteOutlined"
 
@@ -136,16 +134,4 @@ export const GoBackAction = withStyles(goBackStyle)(
       </IconButton>
     )
   }
-)
-
-type SaveWorkActionProps = { onClick: () => void; className: string }
-export const SaveChangesAction = ({
-  className,
-  onClick,
-}: SaveWorkActionProps) => (
-  <Tooltip title="Save changes">
-    <IconButton onClick={onClick} className={className}>
-      <SaveIcon />
-    </IconButton>
-  </Tooltip>
 )
