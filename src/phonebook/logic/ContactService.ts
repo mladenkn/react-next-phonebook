@@ -1,5 +1,5 @@
 import { Contact } from "../models"
-import { replaceMatches, updateMatches, containsOnlyDigits } from "../../utils"
+import { updateMatches, containsOnlyDigits } from "../../utils"
 import { createContext } from "../../utils/react"
 import { useState } from "react"
 
@@ -27,10 +27,10 @@ export const useContactRepositoryLocalStorage = (contactList_: Contact[]) => {
     save: async (contact: Contact) => {
       if (contact.id) {
         setContactList(
-          replaceMatches(
+          updateMatches(
             contactList,
             (c) => c.id === contact.id,
-            contact
+            () => contact
           )[0]
         )
         return contactList

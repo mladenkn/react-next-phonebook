@@ -18,20 +18,11 @@ export type AsyncOperationStatus =
   | "PROCESSING"
   | "COMPLETED"
 
-export const replaceMatches = <T>(
-  arr: T[],
-  doesMatch: (item: T) => boolean,
-  replaceWith: T
-): [T[], number] => {
-  const [all, replaced] = updateMatches(arr, doesMatch, () => replaceWith)
-  return [all, replaced.length]
-}
-
 export const updateMatches = <T>(
   arr: T[],
   doesMatch: (item: T) => boolean,
   update: (item: T) => T
-) => {
+): [T[], T[]] => {
   const allItems: T[] = []
   const updatedItems: T[] = []
 

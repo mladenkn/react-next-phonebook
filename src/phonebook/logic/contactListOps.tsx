@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { replaceMatches } from "../../utils"
+import { updateMatches } from "../../utils"
 import { ContactListItem } from "../models"
 import { useContactServiceContext } from "./ContactService"
 import { ContactListItemAction } from "../actions"
@@ -34,15 +34,15 @@ export const useContactListOps = () => {
       contactService
         .toggleFavorite(contactId)
         .then((updatedContact) => {
-          const all = replaceMatches(
+          const all = updateMatches(
             contacts!.all,
             (c) => c.id === contactId,
-            updatedContact
+            () => updatedContact
           )[0]
-          const favorites = replaceMatches(
+          const favorites = updateMatches(
             contacts!.favorites,
             (c) => c.id === contactId,
-            updatedContact
+            () => updatedContact
           )[0]
           setContacts({ all, favorites })
         })
