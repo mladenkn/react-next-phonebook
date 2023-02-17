@@ -26,19 +26,16 @@ export const useContactRepositoryLocalStorage = (contactList_: Contact[]) => {
 
     save: async (contact: Contact) => {
       if (contact.id) {
-        setContactList(
-          updateMatches(
-            contactList,
-            (c) => c.id === contact.id,
-            () => contact
-          )[0]
+        const [udpatedList, updatedItems] = updateMatches(
+          contactList,
+          (c) => c.id === contact.id,
+          () => contact
         )
-        return contactList
+        setContactList(udpatedList)
+        return updatedItems[0]
       } else {
         const contactWithId = { ...contact, id: getNextElementId() }
-        setContactList(
-          [...contactList, contactWithId]  
-        )
+        setContactList([...contactList, contactWithId])
         return contactWithId
       }
     },
