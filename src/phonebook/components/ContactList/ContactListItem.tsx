@@ -2,12 +2,11 @@ import style from "./ContactListItem.style"
 import { ContactListItem as ContactListItemModel } from "../../models"
 import {
   Card,
-  Avatar,
   Typography,
   withStyles,
   WithStyles,
 } from "@material-ui/core"
-import { Link } from "../various"
+import { Link, RandomAvatar } from "../various"
 import { contactDetailsUrl } from "../../urls"
 import { GoToEditAction, FavoriteAction, DeleteAction } from "../actions"
 import { ContactListItemAction } from "../../actions"
@@ -50,15 +49,13 @@ type ItemPresenterProps = {
 const ItemPresenter = (p: ItemPresenterProps) => {
   const { classes, contact, onAction } = p
 
-  const avatarUrl = contact.avatar || defaultAvatarUrl
-
   const avatarAndName = (
     <Card
       className={
         classes.avatarAndName + " " + (p.isSelected && classes.selected)
       }
     >
-      <Avatar alt="avatar" src={avatarUrl} className={classes.avatar} />
+      <RandomAvatar className={classes.avatar} letter={p.contact.fullName[0]} />
       <div className={classes.nameBox}>
         <Typography className={classes.name}>
           {contact.fullName}

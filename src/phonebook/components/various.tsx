@@ -6,6 +6,7 @@ import { Link as MuiLink, Divider as MUIDivider } from "@material-ui/core"
 import { Link as RouterLink } from "react-router-dom"
 import { dividerStyle } from "./various.style"
 import clsx from 'clsx'
+import faker from "faker"
 
 
 type ContactFieldLabelProps = {
@@ -57,3 +58,23 @@ const MuiLink_ = MuiLink as any
 export const Link = (p: MuiLinkProps) => (
   <MuiLink_ {...p} component={createRefRouterLink(p.href!)} />
 )
+
+
+export const RandomAvatar = ({ letter, className }: { letter: string, className?: string }) => {
+  const background = faker.random.arrayElement(['red', 'green', 'blue', 'white', 'grey', 'orange', 'yellow', 'purple'])
+  return (
+    <div
+      className={className}
+      style={{
+        background,
+        display: 'inline-flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: '50%',
+        padding: 10
+      }}
+    >
+      {letter}
+    </div>
+    )
+}
