@@ -33,16 +33,19 @@ export const useContactRepositoryLocalStorage = () => {
           (c) => c.id === contact.id,
           () => contact
         )
+        localStorage[`contact-${contact.id}`] = updatedItems[0]
         setContacts(udpatedList)
         return updatedItems[0]
       } else {
         const contactWithId = { ...contact, id: getNextElementId() }
+        localStorage[`contact-${contact.id}`] = contactWithId
         setContacts([...contacts, contactWithId])
         return contactWithId
       }
     },
 
     delete: async (id: number) => {
+      localStorage.removeItem(`contact-${id}`)
       setContacts(contacts.filter((c) => c.id !== id))
     },
 
@@ -52,6 +55,7 @@ export const useContactRepositoryLocalStorage = () => {
         (c) => c.id === id,
         (c) => ({ ...c, isFavorite: !c.isFavorite })
       )
+      localStorage[`contact-${id}`] = updatedItems[0]
       setContacts(allItems)
       return updatedItems[0]
     }
