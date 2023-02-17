@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import { replaceMatches } from "../../utils"
 import { ContactListItem } from "../models"
-import { useContactService } from "./ContactService"
+import { useContactServiceContext } from "./ContactService"
 import { ContactListItemAction } from "../actions"
 
 interface Contacts {
@@ -14,7 +14,7 @@ export const useContactListOps = () => {
   const [fetchStatus, setFetchStatus] = useState("NEVER_INITIATED")
   const [fetchedAlready, setFetchedAlready] = useState(false)
 
-  const contactService = useContactService()
+  const contactService = useContactServiceContext()
 
   const fetch = (keyword: string) => {
     setFetchStatus("PROCESSING")

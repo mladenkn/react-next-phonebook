@@ -4,7 +4,7 @@ import ContactDetails from "./ContactDetails"
 import { useContactPageStyle, useHomePageStyle } from "./pages.styles"
 import { GoBackContextProvider } from "../logic/GoBackContext"
 import ContactEdit from "./ContactEdit"
-import { useContactService } from "../logic/ContactService"
+import { useContactServiceContext } from "../logic/ContactService"
 import {
   createRoutesFromElements,
   createBrowserRouter,
@@ -56,7 +56,7 @@ const ContactDetailsPage = () => {
 const ContactCreatePage = () => {
   const navigate = useNavigate()
   const classes = useContactPageStyle()
-  const contactService = useContactService()
+  const contactService = useContactServiceContext()
   return (
     <GoBackContextProvider value={() => navigate(-1)}>
       <div className={classes.root}>

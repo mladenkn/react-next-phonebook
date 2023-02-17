@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import { Contact } from "../models"
 import { AsyncOperationStatus } from "../../utils"
-import { useContactService } from "./ContactService"
+import { useContactServiceContext } from "./ContactService"
 import { homePageUrl } from "../urls"
 
 export const useContactDetailsOps = (
@@ -14,7 +14,7 @@ export const useContactDetailsOps = (
   const [contact, setContact] = useState<Contact | undefined>(undefined)
   const [fetchedAlReady, setFetchedAlready] = useState(false)
 
-  const contactService = useContactService()
+  const contactService = useContactServiceContext()
 
   useEffect(() => {
     if (!fetchedAlReady) {

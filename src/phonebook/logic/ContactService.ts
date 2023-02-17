@@ -59,7 +59,7 @@ export class ContactService {
   }
 }
 
-export const [ContactServiceContextProvider, useContactService] = createContext<ContactService>()
+export const [ContactServiceContextProvider, useContactServiceContext] = createContext<ContactService>()
 
 export const anyPropContains = (contact: Contact, keyword: string) => {
   const keywordLower = keyword.toLocaleLowerCase()
