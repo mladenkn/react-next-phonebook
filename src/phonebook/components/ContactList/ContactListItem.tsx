@@ -6,10 +6,11 @@ import {
   withStyles,
   WithStyles,
 } from "@material-ui/core"
-import { Link, RandomAvatar } from "../various"
+import { Link, DefaultAvatar } from "../various"
 import { contactDetailsUrl } from "../../urls"
 import { GoToEditAction, FavoriteAction, DeleteAction } from "../actions"
 import { ContactListItemAction } from "../../actions"
+import faker from "faker"
 
 type Props = {
   contact: ContactListItemModel
@@ -54,7 +55,13 @@ const ItemPresenter = (p: ItemPresenterProps) => {
         classes.avatarAndName + " " + (p.isSelected && classes.selected)
       }
     >
-      <RandomAvatar className={classes.avatar} letter={p.contact.fullName[0]} />
+      <DefaultAvatar
+        className={classes.avatar}
+        letter={p.contact.fullName[0]}
+        style={{
+          background: faker.random.arrayElement(['red', 'green', 'blue', 'white', 'grey', 'orange', 'yellow', 'purple'])
+        }}
+      />
       <div className={classes.nameBox}>
         <Typography className={classes.name}>
           {contact.fullName}

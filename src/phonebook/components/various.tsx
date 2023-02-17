@@ -1,6 +1,6 @@
-import { WithStyles, withStyles } from "@material-ui/core"
+import { makeStyles, WithStyles, withStyles } from "@material-ui/core"
 import { contactFieldLabelStyle } from "./various.style"
-import React, { ComponentType } from "react"
+import React, { ComponentType, CSSProperties } from "react"
 import { LinkProps as MuiLinkProps } from "@material-ui/core/Link"
 import { Link as MuiLink, Divider as MUIDivider } from "@material-ui/core"
 import { Link as RouterLink } from "react-router-dom"
@@ -60,21 +60,27 @@ export const Link = (p: MuiLinkProps) => (
 )
 
 
-export const RandomAvatar = ({ letter, className }: { letter: string, className?: string }) => {
-  const background = faker.random.arrayElement(['red', 'green', 'blue', 'white', 'grey', 'orange', 'yellow', 'purple'])
+type RandomAvatarProps = {
+  letter: string
+  className?: string
+  style?: CSSProperties
+}
+
+export const DefaultAvatar = ({ letter, className, style }: RandomAvatarProps) => {
+  const styles = useRandomAvatarStyles()
   return (
-    <div
-      className={className}
-      style={{
-        background,
-        display: 'inline-flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        borderRadius: '50%',
-        padding: 10
-      }}
-    >
+    <div className={clsx(styles.root, className)} style={style}>
       {letter}
     </div>
-    )
+  )
 }
+
+const useRandomAvatarStyles = makeStyles({
+  root: {
+    display: 'inline-flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: '50%',
+    padding: 10
+  }
+})
