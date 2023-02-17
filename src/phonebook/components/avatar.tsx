@@ -1,32 +1,5 @@
 import { Avatar, makeStyles } from "@material-ui/core"
-import { CSSProperties } from "react"
 import clsx from "clsx"
-
-
-type RandomAvatarProps = {
-  letter: string
-  className?: string
-  style?: CSSProperties
-}
-
-export const DefaultAvatar = ({ letter, className, style }: RandomAvatarProps) => {
-  const styles = useRandomAvatarStyles()
-  return (
-    <div className={clsx(styles.root, className)} style={style}>
-      {letter}
-    </div>
-  )
-}
-
-const useRandomAvatarStyles = makeStyles({
-  root: {
-    display: 'inline-flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: '50%',
-    padding: 10
-  }
-})
 
 
 type ContactAvatarProps = {
@@ -42,10 +15,28 @@ type ContactAvatarProps = {
 }
 
 export const ContactAvatar = ({ className, avatarUrl, defaultAvatarBackground, letter }: ContactAvatarProps) => {
+  const styles = useDefaultAvatarStyles()
+
   if (avatarUrl)
     return <Avatar className={className} src={avatarUrl} />
+
   else if (defaultAvatarBackground && letter)
-    return <DefaultAvatar className={className} style={{ background: defaultAvatarBackground }} letter={letter} />
+    return (
+      <div className={clsx(styles.root, className)} style={{ background: defaultAvatarBackground }}>
+        {letter}
+      </div>
+    )
+
   else
     throw new Error('Case not supported')
 }
+
+const useDefaultAvatarStyles = makeStyles({
+  root: {
+    display: 'inline-flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: '50%',
+    padding: 10
+  }
+})
