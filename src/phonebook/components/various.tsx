@@ -1,12 +1,11 @@
-import { makeStyles, WithStyles, withStyles } from "@material-ui/core"
+import { WithStyles, withStyles } from "@material-ui/core"
 import { contactFieldLabelStyle } from "./various.style"
-import React, { ComponentType, CSSProperties } from "react"
+import React, { ComponentType } from "react"
 import { LinkProps as MuiLinkProps } from "@material-ui/core/Link"
 import { Link as MuiLink, Divider as MUIDivider } from "@material-ui/core"
 import { Link as RouterLink } from "react-router-dom"
 import { dividerStyle } from "./various.style"
 import clsx from 'clsx'
-import faker from "faker"
 
 
 type ContactFieldLabelProps = {
@@ -58,29 +57,3 @@ const MuiLink_ = MuiLink as any
 export const Link = (p: MuiLinkProps) => (
   <MuiLink_ {...p} component={createRefRouterLink(p.href!)} />
 )
-
-
-type RandomAvatarProps = {
-  letter: string
-  className?: string
-  style?: CSSProperties
-}
-
-export const DefaultAvatar = ({ letter, className, style }: RandomAvatarProps) => {
-  const styles = useRandomAvatarStyles()
-  return (
-    <div className={clsx(styles.root, className)} style={style}>
-      {letter}
-    </div>
-  )
-}
-
-const useRandomAvatarStyles = makeStyles({
-  root: {
-    display: 'inline-flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: '50%',
-    padding: 10
-  }
-})

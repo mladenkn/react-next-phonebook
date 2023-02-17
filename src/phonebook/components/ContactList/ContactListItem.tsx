@@ -6,11 +6,13 @@ import {
   withStyles,
   WithStyles,
 } from "@material-ui/core"
-import { Link, DefaultAvatar } from "../various"
+import { Link } from "../various"
 import { contactDetailsUrl } from "../../urls"
 import { GoToEditAction, FavoriteAction, DeleteAction } from "../actions"
 import { ContactListItemAction } from "../../actions"
 import faker from "faker"
+import { DefaultAvatar } from "../avatar"
+
 
 type Props = {
   contact: ContactListItemModel
