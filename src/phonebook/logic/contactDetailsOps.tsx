@@ -23,20 +23,11 @@ export const useContactDetailsOps = (
     })
   }, [setFetchStatus, contactService, contactId, setContact])
 
-  const favorite = () =>
-    contactService.toggleFavorite(contactId).then(setContact)
-
-  const save = (updatedContact: Contact) =>
-    contactService.save(updatedContact).then(goBack)
-
-  const delete_ = () =>
-    contactService.delete(contactId).then(() => navigate(homePageUrl))
-
   return {
     fetchStatus,
     contact,
-    favorite,
-    save,
-    delete: delete_,
+    favorite: () => contactService.toggleFavorite(contactId).then(setContact),
+    save: (updatedContact: Contact) => contactService.save(updatedContact).then(goBack),
+    delete: () => contactService.delete(contactId).then(() => navigate(homePageUrl))
   }
 }
