@@ -4,7 +4,7 @@ import ContactDetails from "./ContactDetails"
 import { useContactPageStyle, useHomePageStyle } from "./pages.styles"
 import { GoBackContextProvider } from "../logic/GoBackContext"
 import ContactEdit from "./ContactEdit"
-import { useContactServiceContext } from "../logic/ContactService"
+import { useContactServiceContext } from "../logic/contactService"
 import {
   createRoutesFromElements,
   createBrowserRouter,

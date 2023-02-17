@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import { updateMatches } from "../../utils"
 import { ContactListItem } from "../models"
-import { useContactServiceContext } from "./ContactService"
+import { useContactServiceContext } from "./contactService"
 import { ContactListItemAction } from "../actions"
 
 interface Contacts {
