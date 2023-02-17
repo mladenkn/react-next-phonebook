@@ -8,6 +8,8 @@ import {
   Typography,
 } from "@material-ui/core"
 import { ContactFieldLabel } from "../various"
+import EmailIcon from "@material-ui/icons/Email"
+import PhoneIcon from "@material-ui/icons/Phone"
 
 
 export default withStyles(style)(
@@ -15,13 +17,13 @@ export default withStyles(style)(
     <div className={classes.root}>
       <div className={classes.field}>
         <div className={classes.labelContainer}>
-          <ContactFieldLabel icon="email" text="email" />
+          <ContactFieldLabel Icon={EmailIcon} text="email" />
         </div>
         <Typography className={classes.fieldValue}>{contact.email}</Typography>
       </div>
       <div className={classes.field}>
         <div className={classes.labelContainer}>
-          <ContactFieldLabel icon="phone" text="number" />
+          <ContactFieldLabel Icon={PhoneIcon} text="number" />
         </div>
         <List
           disablePadding

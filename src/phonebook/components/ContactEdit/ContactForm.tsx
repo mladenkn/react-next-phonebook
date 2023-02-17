@@ -10,6 +10,9 @@ import { FormikErrors, Formik, Field, ErrorMessage, FieldArray } from "formik"
 import { Divider, Emptiness } from "../various"
 import { ContactFieldLabel } from "../various"
 import { AddCircleOutline } from "@material-ui/icons"
+import EmailIcon from "@material-ui/icons/Email"
+import PhoneIcon from "@material-ui/icons/Phone"
+import PersonOutlinedIcon from "@material-ui/icons/PersonOutlined"
 
 /*
     Notes:
@@ -57,7 +60,7 @@ const ContactForm = ({ classes, initialInput, onChange }: Props) => {
         <div>
           <label>
             <ContactFieldLabel
-              icon="person_outlined"
+              Icon={PersonOutlinedIcon}
               text="full name"
               className={classes.label}
             />
@@ -77,7 +80,7 @@ const ContactForm = ({ classes, initialInput, onChange }: Props) => {
 
           <label>
             <ContactFieldLabel
-              icon="email"
+              Icon={EmailIcon}
               text="email"
               className={classes.label}
             />
@@ -100,7 +103,7 @@ const ContactForm = ({ classes, initialInput, onChange }: Props) => {
             render={(arr) => (
               <div>
                 <ContactFieldLabel
-                  icon="phone"
+                  Icon={PhoneIcon}
                   text="numbers"
                   className={classes.label}
                 />
