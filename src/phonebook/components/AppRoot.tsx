@@ -2,7 +2,7 @@ import { AppBar } from "@material-ui/core"
 import { createTheme, MuiThemeProvider } from "@material-ui/core/styles"
 import router from "./Pages"
 import { RouterProvider } from "react-router-dom"
-import { eva, generateArray } from "../../utils"
+import { generateArray } from "../../utils"
 import { generateContact } from "../devUtils/dataGenerators"
 import { Toolbar } from "./Toolbar"
 import { ContactServiceContextProvider, useContactRepositoryLocalStorage } from "../logic/contactsRepository"
@@ -33,17 +33,12 @@ const theme = createTheme({
   },
 })
 
-eva(() => {
-  const contactsFromStorage = Object.entries(localStorage)
-    .filter(([ key, value ]) => key.startsWith('contact-'))
-    .map(([ key, value ]) => value)
-
-  if(!contactsFromStorage.length){
-    const generatedContacts = generateArray(generateContact, 25, 50)
-    for (const contact of generatedContacts)
-      localStorage[`contact-${contact.id}`] = contact
-  }
-})
+const hasAnyContacts = Object.keys(localStorage).some(key => key.startsWith('contact-'))
+if(!hasAnyContacts){
+  const generatedContacts = generateArray(generateContact, 25, 50)
+  for (const contact of generatedContacts)
+    localStorage[`contact-${contact.id}`] = contact
+}
 
 export const AppRoot = () => {
   const contactService = useContactRepositoryLocalStorage()
