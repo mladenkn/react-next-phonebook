@@ -1,65 +1,65 @@
-import { Contact, ContactListItem } from "../models"
+import { Contact } from "../models"
 import { replaceMatches, updateMatches, containsOnlyDigits } from "../../utils"
 import { createContext } from "../../utils/react"
+import { useState } from "react"
 
 
-// Classes and services may be discouraged in React but they are not a bad pattern :)
-export class ContactService {
-  nextElementId: number
+export const useContactRepositoryLocalStorage = (contactList_: Contact[]) => {
+  const [contactList, setContactList] = useState(contactList_)
 
-  constructor(private contactList: Contact[]) {
+  const getNextElementId = () => {
     const elementWithHighestId = contactList.sort((c) => c.id)[
       contactList.length - 1
     ]
-    this.nextElementId = elementWithHighestId.id + 1
+    return elementWithHighestId.id + 1
   }
 
-  async getAll() {
-    return this.contactList
-  }
+  return {
+    getAll: async () => contactList,
+    getById: async (id: number) => contactList.find((c) => c.id === id)!,
 
-  async getById(id: number) {
-    return this.contactList.find((c) => c.id === id)!
-  }
+    search: async (keyword: string) => {
+      const all = contactList.filter(contact => anyPropContains(contact, keyword))
+      const favorites = all.filter(c => c.isFavorite)
+      return { all, favorites }
+    },
 
-  async search(keyword: string) {
-    const all = this.contactList.filter(contact => anyPropContains(contact, keyword))
-    const favorites = all.filter((c) => c.isFavorite)
-    return { all, favorites }
-  }
+    save: async (contact: Contact) => {
+      if (contact.id) {
+        setContactList(
+          replaceMatches(
+            contactList,
+            (c) => c.id === contact.id,
+            contact
+          )[0]
+        )
+        return contactList
+      } else {
+        const contactWithId = { ...contact, id: getNextElementId() }
+        setContactList(
+          [...contactList, contactWithId]  
+        )
+        return contactWithId
+      }
+    },
 
-  async save(contact: Contact) {
-    if (contact.id) {
-      this.contactList = replaceMatches(
-        this.contactList,
-        (c) => c.id === contact.id,
-        contact
-      )[0]
-      return this.contactList
-    } else {
-      const contactWithId = { ...contact, id: this.nextElementId }
-      this.nextElementId++
-      this.contactList.push(contactWithId)
-      return contactWithId
+    delete: async (id: number) => {
+      setContactList(contactList.filter((c) => c.id !== id))
+    },
+
+    toggleFavorite: async (id: number) => {
+      const [allItems, updatedItems] = updateMatches(
+        contactList,
+        (c) => c.id === id,
+        (c) => ({ ...c, isFavorite: !c.isFavorite })
+      )
+      setContactList(allItems)
+      return updatedItems[0]
     }
-  }
-
-  async delete(id: number) {
-    this.contactList = this.contactList.filter((c) => c.id !== id)
-  }
-
-  async toggleFavorite(id: number) {
-    const [allItems, updatedItems] = updateMatches(
-      this.contactList,
-      (c) => c.id === id,
-      (c) => ({ ...c, isFavorite: !c.isFavorite })
-    )
-    this.contactList = allItems
-    return updatedItems[0]
   }
 }
 
-export const [ContactServiceContextProvider, useContactServiceContext] = createContext<ContactService>()
+export const [ContactServiceContextProvider, useContactServiceContext] = createContext<ReturnType<typeof useContactRepositoryLocalStorage>>()
 
 export const anyPropContains = (contact: Contact, keyword: string) => {
   const keywordLower = keyword.toLocaleLowerCase()
