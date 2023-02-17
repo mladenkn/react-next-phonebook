@@ -12,7 +12,6 @@ interface Contacts {
 export const useContactListOps = () => {
   const [contacts, setContacts] = useState<Contacts | undefined>(undefined)
   const [fetchStatus, setFetchStatus] = useState("NEVER_INITIATED")
-  const [fetchedAlready, setFetchedAlready] = useState(false)
 
   const contactService = useContactServiceContext()
 
@@ -20,7 +19,6 @@ export const useContactListOps = () => {
     setFetchStatus("PROCESSING")
     contactService.search(keyword).then((cl) => {
       setContacts(cl)
-      setFetchedAlready(true)
       setFetchStatus("COMPLETED")
     })
   }
