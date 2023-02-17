@@ -25,7 +25,7 @@ export const useContactListOps = () => {
 
   useEffect(() => {
     fetch("")
-  })
+  }, [])
 
   const handleAction = ({ type, contactId }: ContactListItemAction) => {
     if (type === "TOGGLE_FAVORITE")
