@@ -7,7 +7,7 @@ import { useState } from "react"
 export const useContactRepositoryLocalStorage = () => {
   const allContactsInitial: Contact[] = Object.entries(window.localStorage)
     .filter(([ key, value ]) => key.startsWith('contact-'))
-    .map(([key, value]) => value)
+    .map(([key, value]) => JSON.parse(value))
   const [contacts, setContacts] = useState(allContactsInitial)
 
   const getNextElementId = () => {
@@ -33,12 +33,12 @@ export const useContactRepositoryLocalStorage = () => {
           (c) => c.id === contact.id,
           () => contact
         )
-        localStorage[`contact-${contact.id}`] = updatedItems[0]
+        localStorage[`contact-${contact.id}`] = JSON.stringify(updatedItems[0])
         setContacts(udpatedList)
         return updatedItems[0]
       } else {
         const contactWithId = { ...contact, id: getNextElementId() }
-        localStorage[`contact-${contact.id}`] = contactWithId
+        localStorage[`contact-${contact.id}`] = JSON.stringify(contactWithId)
         setContacts([...contacts, contactWithId])
         return contactWithId
       }
@@ -55,7 +55,7 @@ export const useContactRepositoryLocalStorage = () => {
         (c) => c.id === id,
         (c) => ({ ...c, isFavorite: !c.isFavorite })
       )
-      localStorage[`contact-${id}`] = updatedItems[0]
+      localStorage[`contact-${id}`] = JSON.stringify(updatedItems[0])
       setContacts(allItems)
       return updatedItems[0]
     }

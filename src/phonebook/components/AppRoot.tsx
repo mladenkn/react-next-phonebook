@@ -37,7 +37,7 @@ const hasAnyContacts = Object.keys(localStorage).some(key => key.startsWith('con
 if(!hasAnyContacts){
   const generatedContacts = generateArray(generateContact, 25, 50)
   for (const contact of generatedContacts)
-    localStorage[`contact-${contact.id}`] = contact
+    localStorage[`contact-${contact.id}`] = JSON.stringify(contact)
 }
 
 export const AppRoot = () => {

@@ -26,7 +26,7 @@ export const useContactListOps = () => {
   }
 
   useEffect(() => {
-    if (!fetchedAlready) fetch("")
+    fetch("")
   })
 
   const handleAction = ({ type, contactId }: ContactListItemAction) => {
