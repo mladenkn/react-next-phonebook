@@ -6,19 +6,19 @@ type ContactAvatarProps = {
   className?: string
   background: string
   letter: string
-  avatarUrl?: undefined
+  imageUrl?: string
 } | {
   className?: string
-  avatarUrl: string
+  imageUrl: string
   background?: undefined
   letter?: undefined
 }
 
-export const ContactAvatar = ({ className, avatarUrl, background, letter }: ContactAvatarProps) => {
+export const ContactAvatar = ({ className, imageUrl, background, letter }: ContactAvatarProps) => {
   const styles = useDefaultAvatarStyles()
 
-  if (avatarUrl)
-    return <Avatar className={className} src={avatarUrl} />
+  if (imageUrl)
+    return <Avatar className={className} src={imageUrl} />
 
   else if (background && letter)
     return (

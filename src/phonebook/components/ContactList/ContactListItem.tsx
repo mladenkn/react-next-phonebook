@@ -61,6 +61,7 @@ const ItemPresenter = (p: ItemPresenterProps) => {
         className={classes.avatar}
         letter={p.contact.fullName[0]}
         background={faker.random.arrayElement(['red', 'green', 'blue', 'white', 'grey', 'orange', 'yellow', 'purple'])}
+        imageUrl={p.contact.avatar}
       />
       <div className={classes.nameBox}>
         <Typography className={classes.name}>
