@@ -17,6 +17,7 @@ export type AsyncOperationStatus =
   | "NEVER_INITIATED"
   | "PROCESSING"
   | "COMPLETED"
+  | "ERROR"
 
 export const updateMatches = <T>(
   arr: T[],
