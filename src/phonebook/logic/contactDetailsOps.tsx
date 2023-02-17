@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import { Contact } from "../models"
 import { AsyncOperationStatus } from "../../utils"
-import { useContactServiceContext } from "./contactService"
+import { useContactServiceContext } from "./contactsRepository"
 import { homePageUrl } from "../urls"
 
 export const useContactDetailsOps = (
