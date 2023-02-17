@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useCallback } from "react"
 import { updateMatches } from "../../utils"
 import { ContactListItem } from "../models"
 import { useContactServiceContext } from "./contactsRepository"
@@ -15,17 +15,17 @@ export const useContactListOps = () => {
 
   const contactService = useContactServiceContext()
 
-  const fetch = (keyword: string) => {
+  const fetch = useCallback((keyword: string) => {
     setFetchStatus("PROCESSING")
     contactService.search(keyword).then((cl) => {
       setContacts(cl)
       setFetchStatus("COMPLETED")
     })
-  }
+  }, [setFetchStatus, contactService, setContacts])
 
   useEffect(() => {
     fetch("")
-  }, [])
+  }, [fetch])
 
   const handleAction = ({ type, contactId }: ContactListItemAction) => {
     if (type === "TOGGLE_FAVORITE")
