@@ -60,7 +60,7 @@ const ItemPresenter = (p: ItemPresenterProps) => {
     >
       <Avatar alt="avatar" src={avatarUrl} className={classes.avatar} />
       <div className={classes.nameBox}>
-        <Typography className={`${classes.name}`}>
+        <Typography className={classes.name}>
           {contact.fullName}
         </Typography>
       </div>
