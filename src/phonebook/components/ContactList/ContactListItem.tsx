@@ -11,7 +11,7 @@ import { contactDetailsUrl } from "../../urls"
 import { GoToEditAction, FavoriteAction, DeleteAction } from "../actions"
 import { ContactListItemAction } from "../../actions"
 import faker from "faker"
-import { DefaultAvatar } from "../avatar"
+import { ContactAvatar } from "../avatar"
 
 
 type Props = {
@@ -57,12 +57,10 @@ const ItemPresenter = (p: ItemPresenterProps) => {
         classes.avatarAndName + " " + (p.isSelected && classes.selected)
       }
     >
-      <DefaultAvatar
+      <ContactAvatar
         className={classes.avatar}
         letter={p.contact.fullName[0]}
-        style={{
-          background: faker.random.arrayElement(['red', 'green', 'blue', 'white', 'grey', 'orange', 'yellow', 'purple'])
-        }}
+        defaultAvatarBackground={faker.random.arrayElement(['red', 'green', 'blue', 'white', 'grey', 'orange', 'yellow', 'purple'])}
       />
       <div className={classes.nameBox}>
         <Typography className={classes.name}>

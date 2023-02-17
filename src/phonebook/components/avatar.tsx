@@ -1,4 +1,4 @@
-import { makeStyles } from "@material-ui/core"
+import { Avatar, makeStyles } from "@material-ui/core"
 import { CSSProperties } from "react"
 import clsx from "clsx"
 
@@ -27,3 +27,25 @@ const useRandomAvatarStyles = makeStyles({
     padding: 10
   }
 })
+
+
+type ContactAvatarProps = {
+  className?: string
+  defaultAvatarBackground: string
+  letter: string
+  avatarUrl?: undefined
+} | {
+  className?: string
+  avatarUrl: string
+  defaultAvatarBackground?: undefined
+  letter?: undefined
+}
+
+export const ContactAvatar = ({ className, avatarUrl, defaultAvatarBackground, letter }: ContactAvatarProps) => {
+  if (avatarUrl)
+    return <Avatar className={className} src={avatarUrl} />
+  else if (defaultAvatarBackground && letter)
+    return <DefaultAvatar className={className} style={{ background: defaultAvatarBackground }} letter={letter} />
+  else
+    throw new Error('Case not supported')
+}
