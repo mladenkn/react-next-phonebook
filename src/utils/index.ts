@@ -65,3 +65,5 @@ export function asNonNil<T>(val?: T){
   assertIsNonNil(val)
   return val
 }
+
+export const eva = <T> (f: () => T) => f()
