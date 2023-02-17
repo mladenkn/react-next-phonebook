@@ -12,20 +12,16 @@ export const useContactDetailsOps = (
   const [fetchStatus, setFetchStatus] =
     useState<AsyncOperationStatus>("NEVER_INITIATED")
   const [contact, setContact] = useState<Contact | undefined>(undefined)
-  const [fetchedAlReady, setFetchedAlready] = useState(false)
 
   const contactService = useContactServiceContext()
 
   useEffect(() => {
-    if (!fetchedAlReady) {
-      setFetchStatus("PROCESSING")
-      contactService.getById(contactId).then((c) => {
-        setContact(c)
-        setFetchedAlready(true)
-        setFetchStatus("COMPLETED")
-      })
-    }
-  })
+    setFetchStatus("PROCESSING")
+    contactService.getById(contactId).then((c) => {
+      setContact(c)
+      setFetchStatus("COMPLETED")
+    })
+  }, [setFetchStatus, contactService, contactId, setContact])
 
   const favorite = () =>
     contactService.toggleFavorite(contactId).then(setContact)

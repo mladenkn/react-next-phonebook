@@ -10,7 +10,6 @@ import { Link, RandomAvatar } from "../various"
 import { contactDetailsUrl } from "../../urls"
 import { GoToEditAction, FavoriteAction, DeleteAction } from "../actions"
 import { ContactListItemAction } from "../../actions"
-const defaultAvatarUrl = require("../../assets/default-avatar.jpg") // doesn't work with ES6 import
 
 type Props = {
   contact: ContactListItemModel
