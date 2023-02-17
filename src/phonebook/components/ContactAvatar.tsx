@@ -4,25 +4,25 @@ import clsx from "clsx"
 
 type ContactAvatarProps = {
   className?: string
-  defaultAvatarBackground: string
+  background: string
   letter: string
   avatarUrl?: undefined
 } | {
   className?: string
   avatarUrl: string
-  defaultAvatarBackground?: undefined
+  background?: undefined
   letter?: undefined
 }
 
-export const ContactAvatar = ({ className, avatarUrl, defaultAvatarBackground, letter }: ContactAvatarProps) => {
+export const ContactAvatar = ({ className, avatarUrl, background, letter }: ContactAvatarProps) => {
   const styles = useDefaultAvatarStyles()
 
   if (avatarUrl)
     return <Avatar className={className} src={avatarUrl} />
 
-  else if (defaultAvatarBackground && letter)
+  else if (background && letter)
     return (
-      <div className={clsx(styles.root, className)} style={{ background: defaultAvatarBackground }}>
+      <div className={clsx(styles.root, className)} style={{ background }}>
         {letter}
       </div>
     )
