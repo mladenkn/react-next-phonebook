@@ -5,10 +5,7 @@ import { DeleteAction, GoBackAction } from "../actions"
 import { WithStyles, withStyles, Button } from "@material-ui/core"
 import useMediaQuery from "@material-ui/core/useMediaQuery"
 import ContactForm from "./ContactForm"
-import {
-  useContactPageBaseStylesXs,
-  useContactPageBaseStylesMd,
-} from "../ContactPageBase.style"
+import { useContactPageBaseStylesXs, useContactPageBaseStylesMd } from "../ContactPageBase.style"
 import { useGoBack } from "../../logic/GoBackContext"
 import { SwapableAvatar } from "../SwapableAvatar"
 
@@ -56,26 +53,15 @@ const ContactEditPage = ({ contact, classes, onSave, onDelete }: Props) => {
   }
 
   const avatar = (
-    <SwapableAvatar
-      src={editedContact.avatar}
-      className={classes.avatar}
-      onChange={setAvatar}
-    />
+    <SwapableAvatar src={editedContact.avatar} className={classes.avatar} onChange={setAvatar} />
   )
-  const form = (
-    <ContactForm initialInput={editedContact} onChange={formChange} />
-  )
+  const form = <ContactForm initialInput={editedContact} onChange={formChange} />
 
   const goBack = useGoBack()
 
   const buttons = (
     <div className={classes.actions}>
-      <Button
-        variant="contained"
-        color="secondary"
-        onClick={goBack}
-        className={classes.button}
-      >
+      <Button variant="contained" color="secondary" onClick={goBack} className={classes.button}>
         Cancel
       </Button>
       <Button
@@ -105,9 +91,7 @@ const ContactEditPage = ({ contact, classes, onSave, onDelete }: Props) => {
             {deleteAction}
           </div>
           <div className={xsBaseClasses.body}>
-            <div className={xsBaseClasses.heading + " " + classes.heading}>
-              {avatar}
-            </div>
+            <div className={xsBaseClasses.heading + " " + classes.heading}>{avatar}</div>
             <div className={classes.formAndButtons}>
               {form}
               {buttons}

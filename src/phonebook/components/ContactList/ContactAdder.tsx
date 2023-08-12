@@ -4,7 +4,6 @@ import { Link } from "../various"
 import { contactCreateUrl } from "../../urls"
 import { Add } from "@material-ui/icons"
 
-
 const ContactAdder = ({ classes }: WithStyles<typeof style>) => (
   <Link href={contactCreateUrl} className={classes.root}>
     <div className={classes.content_}>

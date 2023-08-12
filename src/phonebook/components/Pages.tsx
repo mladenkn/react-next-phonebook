@@ -8,9 +8,10 @@ import { useContactServiceContext } from "../logic/contactsRepository"
 import {
   createRoutesFromElements,
   createBrowserRouter,
-  Route, useParams, useNavigate,
-} from "react-router-dom";
-
+  Route,
+  useParams,
+  useNavigate,
+} from "react-router-dom"
 
 export interface ContactIdRouteParams {
   contactId?: string
@@ -30,20 +31,13 @@ const ContactDetailsPage = () => {
   const navigate = useNavigate()
   const contactId = parseInt(params.contactId!)
   const classes = useContactPageStyle()
-  const ops = useContactDetailsOps(
-    contactId,
-    () => navigate(-1),
-    navigate
-  )
+  const ops = useContactDetailsOps(contactId, () => navigate(-1), navigate)
   return (
     <GoBackContextProvider value={() => navigate(-1)}>
       <div className={classes.root}>
         {
           ops.fetchStatus === "COMPLETED" ? (
-            <ContactDetails
-              contact={ops.contact!}
-              onFavorite={ops.favorite}
-            />
+            <ContactDetails contact={ops.contact!} onFavorite={ops.favorite} />
           ) : (
             <div />
           ) // doesn't make sense to handle this since there is no real fetching}
@@ -60,9 +54,7 @@ const ContactCreatePage = () => {
   return (
     <GoBackContextProvider value={() => navigate(-1)}>
       <div className={classes.root}>
-        <ContactEdit
-          onSave={(c) => contactService.save(c).then(() => navigate(-1))}
-        />
+        <ContactEdit onSave={c => contactService.save(c).then(() => navigate(-1))} />
       </div>
     </GoBackContextProvider>
   )
@@ -73,21 +65,13 @@ const ContactEditPage = () => {
   const navigate = useNavigate()
   const contactId = parseInt(params.contactId!)
   const classes = useContactPageStyle()
-  const ops = useContactDetailsOps(
-    contactId,
-    () => navigate(-1),
-    navigate
-  )
+  const ops = useContactDetailsOps(contactId, () => navigate(-1), navigate)
   return (
     <GoBackContextProvider value={() => navigate(-1)}>
       <div className={classes.root}>
         {
           ops.fetchStatus === "COMPLETED" ? (
-            <ContactEdit
-              contact={ops.contact!}
-              onSave={ops.save}
-              onDelete={ops.delete}
-            />
+            <ContactEdit contact={ops.contact!} onSave={ops.save} onDelete={ops.delete} />
           ) : (
             <div />
           ) // doesn't make sense to handle this since there is no real fetching}
@@ -100,23 +84,12 @@ const ContactEditPage = () => {
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
-      <Route
-        path="/"
-        element={<ContactListPage />}
-      />
-      <Route
-        path="/contact/edit/:contactId"
-        element={<ContactEditPage />}
-      />
-      <Route
-        path="/contact/details/:contactId"
-        element={<ContactDetailsPage />}
-      />
-      <Route
-        path="/contact/create"
-        element={<ContactCreatePage />}
-      />
-    </>
-  ))
+      <Route path="/" element={<ContactListPage />} />
+      <Route path="/contact/edit/:contactId" element={<ContactEditPage />} />
+      <Route path="/contact/details/:contactId" element={<ContactDetailsPage />} />
+      <Route path="/contact/create" element={<ContactCreatePage />} />
+    </>,
+  ),
+)
 
 export default router

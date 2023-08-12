@@ -5,7 +5,6 @@ import { withStyles, WithStyles, Avatar, Icon } from "@material-ui/core"
 import { TextInputDialog } from "./TextInputDialog"
 import CloudUploadIcon from "@material-ui/icons/CloudUpload"
 
-
 type Props = {
   src?: string
   onChange: (image?: string) => void

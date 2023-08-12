@@ -1,17 +1,11 @@
 import style from "./ContactListItem.style"
 import { ContactListItem as ContactListItemModel } from "../../models"
-import {
-  Card,
-  Typography,
-  withStyles,
-  WithStyles,
-} from "@material-ui/core"
+import { Card, Typography, withStyles, WithStyles } from "@material-ui/core"
 import { Link } from "../various"
 import { contactDetailsUrl } from "../../urls"
 import { GoToEditAction, FavoriteAction, DeleteAction } from "../actions"
 import faker from "faker"
 import { ContactAvatar } from "../ContactAvatar"
-
 
 type Props = {
   contact: ContactListItemModel
@@ -59,21 +53,24 @@ const ItemPresenter = (p: ItemPresenterProps) => {
   const { classes, contact, onToggleFavorite, onDelete, onSelect } = p
 
   const avatarAndName = (
-    <Card
-      className={
-        classes.avatarAndName + " " + (p.isSelected && classes.selected)
-      }
-    >
+    <Card className={classes.avatarAndName + " " + (p.isSelected && classes.selected)}>
       <ContactAvatar
         className={classes.avatar}
         letter={p.contact.fullName[0]}
-        background={faker.random.arrayElement(['red', 'green', 'blue', 'white', 'grey', 'orange', 'yellow', 'purple'])}
+        background={faker.random.arrayElement([
+          "red",
+          "green",
+          "blue",
+          "white",
+          "grey",
+          "orange",
+          "yellow",
+          "purple",
+        ])}
         imageUrl={p.contact.avatar}
       />
       <div className={classes.nameBox}>
-        <Typography className={classes.name}>
-          {contact.fullName}
-        </Typography>
+        <Typography className={classes.name}>{contact.fullName}</Typography>
       </div>
     </Card>
   )
@@ -113,10 +110,7 @@ const ItemPresenter = (p: ItemPresenterProps) => {
       {deleteAction}
     </div>
   ) : (
-    <div
-      className={classes.root}
-      onClick={onSelect}
-    >
+    <div className={classes.root} onClick={onSelect}>
       {avatarAndName}
       {favoriteAction}
       {editAction}

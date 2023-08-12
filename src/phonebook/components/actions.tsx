@@ -1,9 +1,4 @@
-import {
-  withStyles,
-  WithStyles,
-  IconButton,
-  Typography,
-} from "@material-ui/core"
+import { withStyles, WithStyles, IconButton, Typography } from "@material-ui/core"
 import {
   goToEditActionStyle,
   favoriteActionStyle,
@@ -21,7 +16,6 @@ import ArrowBackIcon from "@material-ui/icons/ArrowBack"
 import FavoriteIcon from "@material-ui/icons/Favorite"
 import FavoriteOutlinedIcon from "@material-ui/icons/FavoriteOutlined"
 
-
 type GoToEditActionProps = {
   contactId: number
   rootClass?: string
@@ -30,13 +24,10 @@ type GoToEditActionProps = {
 
 export const GoToEditAction = withStyles(goToEditActionStyle)(
   ({ classes, contactId, rootClass, iconClass }: GoToEditActionProps) => (
-    <Link
-      href={contactEditUrl(contactId)}
-      className={classes.root + " " + rootClass}
-    >
+    <Link href={contactEditUrl(contactId)} className={classes.root + " " + rootClass}>
       <EditIcon color="secondary" className={iconClass} />
     </Link>
-  )
+  ),
 )
 
 type FavoriteActionProps = {
@@ -47,21 +38,11 @@ type FavoriteActionProps = {
 } & WithStyles<typeof favoriteActionStyle>
 
 export const FavoriteAction = withStyles(favoriteActionStyle)(
-  ({
-    onClick,
-    isFavorite,
-    classes,
-    rootClass,
-    iconClass,
-  }: FavoriteActionProps) => (
-    <IconButton
-      className={classes.root + " " + rootClass}
-      onClick={onClick}
-      disableRipple
-    >
+  ({ onClick, isFavorite, classes, rootClass, iconClass }: FavoriteActionProps) => (
+    <IconButton className={classes.root + " " + rootClass} onClick={onClick} disableRipple>
       {isFavorite ? <FavoriteIcon /> : <FavoriteOutlinedIcon />}
     </IconButton>
-  )
+  ),
 )
 
 type DeleteActionProps = {
@@ -72,40 +53,31 @@ type DeleteActionProps = {
   iconClass?: string
 } & WithStyles<typeof deleteActionStyle>
 
-export const DeleteAction = withStyles(deleteActionStyle)(
-  ({
-    onConfirm,
-    withText,
-    classes,
-    rootClass,
-    iconClass,
-    withHoverEffect,
-  }: DeleteActionProps) => {
-    const [modalOpen, setModalOpen] = useState(false)
-    const buttonClass =
-      withHoverEffect || false ? classes.buttonHoverEffect : classes.button
-    return (
-      <div className={rootClass}>
-        <IconButton
-          onClick={() => setModalOpen(true)}
-          className={buttonClass}
-          disableRipple
-        >
-          {(withText || false) && (
-            <Typography className={classes.text}>Delete</Typography>
-          )}
-          <DeleteIcon color="secondary" className={iconClass} />
-        </IconButton>
-        <DeleteModal
-          isOpen={modalOpen}
-          text="Are you sure you want to delete this contact?"
-          onCancel={() => setModalOpen(false)}
-          onConfirm={onConfirm}
-        />
-      </div>
-    )
-  }
-)
+export const DeleteAction = withStyles(deleteActionStyle)(({
+  onConfirm,
+  withText,
+  classes,
+  rootClass,
+  iconClass,
+  withHoverEffect,
+}: DeleteActionProps) => {
+  const [modalOpen, setModalOpen] = useState(false)
+  const buttonClass = withHoverEffect || false ? classes.buttonHoverEffect : classes.button
+  return (
+    <div className={rootClass}>
+      <IconButton onClick={() => setModalOpen(true)} className={buttonClass} disableRipple>
+        {(withText || false) && <Typography className={classes.text}>Delete</Typography>}
+        <DeleteIcon color="secondary" className={iconClass} />
+      </IconButton>
+      <DeleteModal
+        isOpen={modalOpen}
+        text="Are you sure you want to delete this contact?"
+        onCancel={() => setModalOpen(false)}
+        onConfirm={onConfirm}
+      />
+    </div>
+  )
+})
 
 type GoBackActionProps = {
   rootClass?: string
@@ -114,24 +86,17 @@ type GoBackActionProps = {
   useGoBackContext?: boolean
 } & WithStyles<typeof goBackStyle>
 
-export const GoBackAction = withStyles(goBackStyle)(
-  ({
-    onClick,
-    classes,
-    rootClass,
-    iconClass,
-    useGoBackContext,
-  }: GoBackActionProps) => {
-    const onClick_ =
-      useGoBackContext || true ? useGoBack() : onClick
-    return (
-      <IconButton
-        onClick={onClick_}
-        className={classes.root + " " + rootClass}
-        disableRipple
-      >
-        <ArrowBackIcon color="secondary" className={iconClass} />
-      </IconButton>
-    )
-  }
-)
+export const GoBackAction = withStyles(goBackStyle)(({
+  onClick,
+  classes,
+  rootClass,
+  iconClass,
+  useGoBackContext,
+}: GoBackActionProps) => {
+  const onClick_ = useGoBackContext || true ? useGoBack() : onClick
+  return (
+    <IconButton onClick={onClick_} className={classes.root + " " + rootClass} disableRipple>
+      <ArrowBackIcon color="secondary" className={iconClass} />
+    </IconButton>
+  )
+})

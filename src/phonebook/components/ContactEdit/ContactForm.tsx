@@ -1,9 +1,4 @@
-import {
-  WithStyles,
-  withStyles,
-  IconButton,
-  Button,
-} from "@material-ui/core"
+import { WithStyles, withStyles, IconButton, Button } from "@material-ui/core"
 import { Contact } from "../../models"
 import style from "./ContactForm.style"
 import { FormikErrors, Formik, Field, ErrorMessage, FieldArray } from "formik"
@@ -37,10 +32,7 @@ const ContactForm = ({ classes, initialInput, onChange }: Props) => {
   const validate = (values: Contact) => {
     let errors: FormikErrors<Contact> = {}
 
-    if (
-      values.email &&
-      (!values.email.includes("@") || !values.email.includes("."))
-    )
+    if (values.email && (!values.email.includes("@") || !values.email.includes(".")))
       errors.email = "Email not valid."
 
     if (!values.fullName) errors.fullName = "Name is required."
@@ -51,11 +43,7 @@ const ContactForm = ({ classes, initialInput, onChange }: Props) => {
   }
 
   return (
-    <Formik
-      initialValues={initialInput}
-      validate={validate}
-      onSubmit={() => {}}
-    >
+    <Formik initialValues={initialInput} validate={validate} onSubmit={() => {}}>
       {({ values }) => (
         <div>
           <label>
@@ -69,44 +57,28 @@ const ContactForm = ({ classes, initialInput, onChange }: Props) => {
               name="fullName"
               className={classes.input + " " + classes.singleValueInput}
             />
-            <ErrorMessage
-              component="div"
-              name="fullName"
-              className={classes.errorMessage}
-            />
+            <ErrorMessage component="div" name="fullName" className={classes.errorMessage} />
           </label>
 
           <Divider className={classes.divider} margin={18} />
 
           <label>
-            <ContactFieldLabel
-              Icon={EmailIcon}
-              text="email"
-              className={classes.label}
-            />
+            <ContactFieldLabel Icon={EmailIcon} text="email" className={classes.label} />
             <Field
               type="email"
               name="email"
               className={classes.input + " " + classes.singleValueInput}
             />
-            <ErrorMessage
-              component="div"
-              name="email"
-              className={classes.errorMessage}
-            />
+            <ErrorMessage component="div" name="email" className={classes.errorMessage} />
           </label>
 
           <Divider className={classes.divider} margin={18} />
 
           <FieldArray
             name="numbers"
-            render={(arr) => (
+            render={arr => (
               <div>
-                <ContactFieldLabel
-                  Icon={PhoneIcon}
-                  text="numbers"
-                  className={classes.label}
-                />
+                <ContactFieldLabel Icon={PhoneIcon} text="numbers" className={classes.label} />
                 {values.numbers.map((_, index) => (
                   <div className={classes.phoneNumber} key={index}>
                     <Field
@@ -116,14 +88,9 @@ const ContactForm = ({ classes, initialInput, onChange }: Props) => {
                     />
                     <Field
                       name={`numbers.${index}.label`}
-                      className={
-                        classes.input + " " + classes.phoneNumberLabelInput
-                      }
+                      className={classes.input + " " + classes.phoneNumberLabelInput}
                     />
-                    <IconButton
-                      className={classes.labelRemover}
-                      onClick={() => arr.remove(index)}
-                    >
+                    <IconButton className={classes.labelRemover} onClick={() => arr.remove(index)}>
                       <span className={classes.labelRemoverIcon}>x</span>
                     </IconButton>
                   </div>

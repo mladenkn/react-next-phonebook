@@ -1,10 +1,4 @@
-import {
-  withStyles,
-  WithStyles,
-  Tabs,
-  Tab,
-  Input,
-} from "@material-ui/core"
+import { withStyles, WithStyles, Tabs, Tab, Input } from "@material-ui/core"
 import style from "./HomeSection.style"
 import { useState } from "react"
 import ContactList from "./ContactList"
@@ -41,10 +35,8 @@ const Home = ({ classes }: WithStyles<typeof style>) => {
         <Divider className={classes.contactTabsDivider} />
         <Input
           disableUnderline
-          startAdornment={
-            <SearchIcon className={classes.searchFieldIcon} />
-          }
-          onChange={(e) => ops.fetch(e.target.value)}
+          startAdornment={<SearchIcon className={classes.searchFieldIcon} />}
+          onChange={e => ops.fetch(e.target.value)}
           classes={{
             root: classes.searchField,
             focused: classes.searchFieldFocused,
@@ -52,9 +44,7 @@ const Home = ({ classes }: WithStyles<typeof style>) => {
         />
         {ops.fetchStatus === "COMPLETED" && (
           <ContactList
-            contacts={
-              currentTab === 0 ? ops.contacts!.all : ops.contacts!.favorites
-            }
+            contacts={currentTab === 0 ? ops.contacts!.all : ops.contacts!.favorites}
             deleteContact={ops.deleteContact}
             toggleFavorite={ops.toggleFavorite}
             includeAdder

@@ -1,11 +1,10 @@
-import { createRoot } from 'react-dom/client'
+import { createRoot } from "react-dom/client"
 import "./index.css"
 import * as serviceWorker from "./serviceWorker"
 import { AppRoot } from "./phonebook/components/AppRoot"
 import { assertIsNonNil } from "./utils"
 
-
-const rootDomNode = document.getElementById('root');
+const rootDomNode = document.getElementById("root")
 assertIsNonNil(rootDomNode)
 const root = createRoot(rootDomNode)
 console.log(rootDomNode, root)

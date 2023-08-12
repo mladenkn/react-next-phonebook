@@ -5,8 +5,10 @@ import { RouterProvider } from "react-router-dom"
 import { generateArray } from "../../utils"
 import { generateContact } from "../devUtils/dataGenerators"
 import { Toolbar } from "./Toolbar"
-import { ContactServiceContextProvider, useContactRepositoryLocalStorage } from "../logic/contactsRepository"
-
+import {
+  ContactServiceContextProvider,
+  useContactRepositoryLocalStorage,
+} from "../logic/contactsRepository"
 
 const theme = createTheme({
   palette: {
@@ -33,8 +35,8 @@ const theme = createTheme({
   },
 })
 
-const hasAnyContacts = Object.keys(localStorage).some(key => key.startsWith('contact-'))
-if(!hasAnyContacts){
+const hasAnyContacts = Object.keys(localStorage).some(key => key.startsWith("contact-"))
+if (!hasAnyContacts) {
   const generatedContacts = generateArray(generateContact, 25, 50)
   for (const contact of generatedContacts)
     localStorage[`contact-${contact.id}`] = JSON.stringify(contact)

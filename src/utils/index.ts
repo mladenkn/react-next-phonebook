@@ -1,33 +1,24 @@
 import faker from "faker"
 import { isNil } from "lodash"
 
-
-export const generateArray = <T>(
-  getNext: () => T,
-  minCount: number,
-  maxCount: number
-) => {
+export const generateArray = <T>(getNext: () => T, minCount: number, maxCount: number) => {
   const count = faker.random.number({ min: minCount, max: maxCount })
   const r: T[] = []
   for (let i = 0; i < count; i++) r.push(getNext())
   return r
 }
 
-export type AsyncOperationStatus =
-  | "NEVER_INITIATED"
-  | "PROCESSING"
-  | "COMPLETED"
-  | "ERROR"
+export type AsyncOperationStatus = "NEVER_INITIATED" | "PROCESSING" | "COMPLETED" | "ERROR"
 
 export const updateMatches = <T>(
   arr: T[],
   doesMatch: (item: T) => boolean,
-  update: (item: T) => T
+  update: (item: T) => T,
 ): [T[], T[]] => {
   const allItems: T[] = []
   const updatedItems: T[] = []
 
-  arr.forEach((item) => {
+  arr.forEach(item => {
     if (doesMatch(item)) {
       const updated = update(item)
       allItems.push(updated)
@@ -39,9 +30,7 @@ export const updateMatches = <T>(
 }
 
 export const validURL = (str: string) => {
-  var pattern = new RegExp(
-    /^(?:\w+:)?\/\/([^\s\.]+\.\S{2}|localhost[\:?\d]*)\S*$/
-  )
+  var pattern = new RegExp(/^(?:\w+:)?\/\/([^\s\.]+\.\S{2}|localhost[\:?\d]*)\S*$/)
   return !!pattern.test(str)
 }
 
@@ -55,15 +44,13 @@ export const containsOnlyDigits = (str: string) => {
 
 export function assertIsNonNil<T>(val: T): asserts val is NonNullable<T> {
   if (isNil(val)) {
-    throw new Error(
-      `Expected 'val' to be defined, but received ${val}`
-    );
+    throw new Error(`Expected 'val' to be defined, but received ${val}`)
   }
 }
 
-export function asNonNil<T>(val?: T){
+export function asNonNil<T>(val?: T) {
   assertIsNonNil(val)
   return val
 }
 
-export const eva = <T> (f: () => T) => f()
+export const eva = <T>(f: () => T) => f()

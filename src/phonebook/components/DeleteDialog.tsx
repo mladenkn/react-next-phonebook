@@ -17,18 +17,8 @@ type Props = {
   isOpen: boolean
 } & WithStyles<typeof style>
 
-const DeleteModal_ = ({
-  classes,
-  text,
-  isOpen,
-  onCancel,
-  onConfirm,
-}: Props) => (
-  <Dialog
-    className={classes.root}
-    open={isOpen}
-    aria-labelledby="delete-dialog"
-  >
+const DeleteModal_ = ({ classes, text, isOpen, onCancel, onConfirm }: Props) => (
+  <Dialog className={classes.root} open={isOpen} aria-labelledby="delete-dialog">
     <DialogTitle className={classes.title} id="delete-dialog">
       Delete
     </DialogTitle>
@@ -38,12 +28,7 @@ const DeleteModal_ = ({
     </DialogContent>
 
     <DialogActions className={classes.actions}>
-      <Button
-        variant="contained"
-        color="secondary"
-        onClick={onCancel}
-        className={classes.button}
-      >
+      <Button variant="contained" color="secondary" onClick={onCancel} className={classes.button}>
         Cancel
       </Button>
       <Button

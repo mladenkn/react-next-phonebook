@@ -1,16 +1,9 @@
 import { Contact } from "../../models"
 import style from "./ContactDetailsFields.style"
-import {
-  List,
-  ListItem,
-  withStyles,
-  WithStyles,
-  Typography,
-} from "@material-ui/core"
+import { List, ListItem, withStyles, WithStyles, Typography } from "@material-ui/core"
 import { ContactFieldLabel } from "../various"
 import EmailIcon from "@material-ui/icons/Email"
 import PhoneIcon from "@material-ui/icons/Phone"
-
 
 export default withStyles(style)(
   ({ contact, classes }: { contact: Contact } & WithStyles<typeof style>) => (
@@ -25,10 +18,7 @@ export default withStyles(style)(
         <div className={classes.labelContainer}>
           <ContactFieldLabel Icon={PhoneIcon} text="number" />
         </div>
-        <List
-          disablePadding
-          className={classes.fieldValue + " " + classes.fieldListValue}
-        >
+        <List disablePadding className={classes.fieldValue + " " + classes.fieldListValue}>
           {contact.numbers.map(({ label, value }) => (
             <ListItem disableGutters key={value}>
               <Typography className={classes.label}>{label}</Typography>
@@ -38,5 +28,5 @@ export default withStyles(style)(
         </List>
       </div>
     </div>
-  )
+  ),
 )

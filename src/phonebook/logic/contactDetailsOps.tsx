@@ -7,17 +7,16 @@ import { homePageUrl } from "../urls"
 export const useContactDetailsOps = (
   contactId: number,
   goBack: () => void,
-  navigate: (url: string) => void
+  navigate: (url: string) => void,
 ) => {
-  const [fetchStatus, setFetchStatus] =
-    useState<AsyncOperationStatus>("NEVER_INITIATED")
+  const [fetchStatus, setFetchStatus] = useState<AsyncOperationStatus>("NEVER_INITIATED")
   const [contact, setContact] = useState<Contact | undefined>(undefined)
 
   const contactService = useContactServiceContext()
 
   useEffect(() => {
     setFetchStatus("PROCESSING")
-    contactService.getById(contactId).then((c) => {
+    contactService.getById(contactId).then(c => {
       setContact(c)
       setFetchStatus("COMPLETED")
     })
@@ -28,6 +27,6 @@ export const useContactDetailsOps = (
     contact,
     favorite: () => contactService.toggleFavorite(contactId).then(setContact),
     save: (updatedContact: Contact) => contactService.save(updatedContact).then(goBack),
-    delete: () => contactService.delete(contactId).then(() => navigate(homePageUrl))
+    delete: () => contactService.delete(contactId).then(() => navigate(homePageUrl)),
   }
 }
