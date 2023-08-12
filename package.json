@@ -40,7 +40,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "tsc": "tsc",
-    "reset": "rm -rf package.json && rm yarn.lock",
+    "wipe": "rm -rf package.json && rm yarn.lock",
+    "reset": "yarn wipe && yarn install",
     "format": "prettier --write \"**/*.{ts,tsx}\""
   },
   "eslintConfig": {
