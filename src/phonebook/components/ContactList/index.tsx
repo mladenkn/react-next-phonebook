@@ -5,36 +5,31 @@ import { List, ListItem, withStyles, WithStyles } from "@material-ui/core"
 import { ContactListItem as Item } from "./ContactListItem"
 import ContactAdder from "./ContactAdder"
 import withWidth, { WithWidth } from "@material-ui/core/withWidth"
-import { ContactListItemAction } from "../../actions"
 
 type Props = {
   contacts: ContactListItem[]
   className?: string
   includeAdder?: boolean
-  onAction: (a: ContactListItemAction) => void
+  deleteContact: (id: number) => void
+  toggleFavorite: (id: number) => void
 } & WithStyles<typeof style> &
   WithWidth
 
 const ContactList = withWidth()(
-  ({ contacts, classes, includeAdder, className, width, onAction }: Props) => {
+  ({ contacts, classes, includeAdder, className, width, deleteContact, toggleFavorite }: Props) => {
     const includeAdder_ = includeAdder || false
     const smOrDown = width === "sm" || width === "xs"
 
     const [selectedItemId, setSelectedItemId] = useState(0)
-
-    const handleAction = (a: ContactListItemAction) => {
-      if (a.type === "SELECT") setSelectedItemId(a.contactId)
-      else onAction(a)
-    }
 
     const items = contacts.map((c) => (
       <ListItem key={c.id} className={classes.itemRoot}>
         <Item
           isSelected={selectedItemId === c.id}
           smOrDown={smOrDown}
-          onDelete={() => handleAction({ type: "DELETE", contactId: c.id })}
+          onDelete={() => deleteContact(c.id)}
           onSelect={() => setSelectedItemId(c.id)}
-          onToggleFavorite={() => handleAction({ type: "TOGGLE_FAVORITE", contactId: c.id })}
+          onToggleFavorite={() => toggleFavorite(c.id)}
           contact={c}
         />
       </ListItem>

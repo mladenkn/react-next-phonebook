@@ -12,7 +12,6 @@ import { useContactListOps } from "../logic/contactListOps"
 import { Divider } from "./various"
 import SearchIcon from "@material-ui/icons/Search"
 
-
 const Home = ({ classes }: WithStyles<typeof style>) => {
   const tabClasses = {
     root: classes.contactTab,
@@ -56,7 +55,8 @@ const Home = ({ classes }: WithStyles<typeof style>) => {
             contacts={
               currentTab === 0 ? ops.contacts!.all : ops.contacts!.favorites
             }
-            onAction={ops.handleAction}
+            deleteContact={ops.deleteContact}
+            toggleFavorite={ops.toggleFavorite}
             includeAdder
             className={classes.list}
           />
