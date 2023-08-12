@@ -18,7 +18,7 @@ export const ContactAvatar = ({ className, imageUrl, background, letter }: Conta
   const styles = useDefaultAvatarStyles()
 
   if (imageUrl)
-    return <Avatar className={className} src={imageUrl} />
+    return <Avatar className={clsx(styles.root, className)} src={imageUrl} />
 
   else if (background && letter)
     return (
@@ -33,7 +33,7 @@ export const ContactAvatar = ({ className, imageUrl, background, letter }: Conta
 
 const useDefaultAvatarStyles = makeStyles({
   root: {
-    display: 'inline-flex',
+    display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: '50%',

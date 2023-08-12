@@ -112,7 +112,8 @@ const ItemPresenter = (p: ItemPresenterProps) => {
       className={classes.root}
       onClick={() => onAction({ type: "SELECT", contactId: contact.id })}
     >
-      {avatarAndName} {favoriteAction}
+      {avatarAndName}
+      {favoriteAction}
       {editAction}
       {deleteAction}
     </div>
