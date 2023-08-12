@@ -9,7 +9,6 @@ import {
 import { Link } from "../various"
 import { contactDetailsUrl } from "../../urls"
 import { GoToEditAction, FavoriteAction, DeleteAction } from "../actions"
-import { ContactListItemAction } from "../../actions"
 import faker from "faker"
 import { ContactAvatar } from "../ContactAvatar"
 
@@ -18,14 +17,18 @@ type Props = {
   contact: ContactListItemModel
   isSelected: boolean
   smOrDown: boolean
-  onAction: (a: ContactListItemAction) => void
+  onToggleFavorite(): void
+  onDelete(): void
+  onSelect(): void
 }
 
 export const ContactListItem = ({
   contact,
   isSelected,
   smOrDown,
-  onAction,
+  onToggleFavorite,
+  onDelete,
+  onSelect,
 }: Props) => (
   <StyledItemDummy
     contact={contact}
@@ -34,7 +37,9 @@ export const ContactListItem = ({
     showDeleteButton={smOrDown || (!smOrDown && isSelected)}
     isLinkToDetails={smOrDown || (!smOrDown && isSelected)}
     isSelected={isSelected}
-    onAction={onAction}
+    onToggleFavorite={onToggleFavorite}
+    onDelete={onDelete}
+    onSelect={onSelect}
   />
 )
 
@@ -45,11 +50,13 @@ type ItemPresenterProps = {
   showDeleteButton: boolean
   isLinkToDetails: boolean
   isSelected: boolean
-  onAction: (a: ContactListItemAction) => void
+  onToggleFavorite(): void
+  onDelete(): void
+  onSelect(): void
 } & WithStyles<typeof style>
 
 const ItemPresenter = (p: ItemPresenterProps) => {
-  const { classes, contact, onAction } = p
+  const { classes, contact, onToggleFavorite, onDelete, onSelect } = p
 
   const avatarAndName = (
     <Card
@@ -73,9 +80,7 @@ const ItemPresenter = (p: ItemPresenterProps) => {
 
   const favoriteAction = p.showFavoriteButton && (
     <FavoriteAction
-      onClick={() =>
-        onAction({ type: "TOGGLE_FAVORITE", contactId: contact.id })
-      }
+      onClick={onToggleFavorite}
       isFavorite={contact.isFavorite}
       rootClass={classes.action + " " + classes.favoriteAction}
       iconClass={classes.icon}
@@ -92,7 +97,7 @@ const ItemPresenter = (p: ItemPresenterProps) => {
 
   const deleteAction = p.showDeleteButton && (
     <DeleteAction
-      onConfirm={() => onAction({ type: "DELETE", contactId: contact.id })}
+      onConfirm={onDelete}
       rootClass={classes.action + " " + classes.deleteAction}
       iconClass={classes.icon}
     />
@@ -110,7 +115,7 @@ const ItemPresenter = (p: ItemPresenterProps) => {
   ) : (
     <div
       className={classes.root}
-      onClick={() => onAction({ type: "SELECT", contactId: contact.id })}
+      onClick={onSelect}
     >
       {avatarAndName}
       {favoriteAction}

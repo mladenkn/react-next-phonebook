@@ -32,9 +32,9 @@ const ContactList = withWidth()(
         <Item
           isSelected={selectedItemId === c.id}
           smOrDown={smOrDown}
-          onAction={(a) => {
-            handleAction(a)
-          }}
+          onDelete={() => handleAction({ type: "DELETE", contactId: c.id })}
+          onSelect={() => setSelectedItemId(c.id)}
+          onToggleFavorite={() => handleAction({ type: "TOGGLE_FAVORITE", contactId: c.id })}
           contact={c}
         />
       </ListItem>
