@@ -7,7 +7,6 @@ import { assertIsNonNil } from "./utils"
 const rootDomNode = document.getElementById("root")
 assertIsNonNil(rootDomNode)
 const root = createRoot(rootDomNode)
-console.log(rootDomNode, root)
 root.render(<AppRoot />)
 
 // If you want your app to work offline and load faster, you can change

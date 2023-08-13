@@ -1,8 +1,8 @@
-import faker from "faker"
+import { faker } from "@faker-js/faker"
 import { isNil } from "lodash"
 
 export const generateArray = <T>(getNext: () => T, minCount: number, maxCount: number) => {
-  const count = faker.random.number({ min: minCount, max: maxCount })
+  const count = faker.number.int({ min: minCount, max: maxCount })
   const r: T[] = []
   for (let i = 0; i < count; i++) r.push(getNext())
   return r

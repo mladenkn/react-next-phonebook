@@ -4,7 +4,7 @@ import { Card, Typography, withStyles, WithStyles } from "@material-ui/core"
 import { Link } from "../various"
 import { contactDetailsUrl } from "../../urls"
 import { GoToEditAction, FavoriteAction, DeleteAction } from "../actions"
-import faker from "faker"
+import { faker } from "@faker-js/faker"
 import { ContactAvatar } from "../ContactAvatar"
 
 type Props = {
@@ -15,7 +15,7 @@ type Props = {
   onDelete(): void
   onSelect(): void
 }
-
+ 
 export const ContactListItem = ({
   contact,
   isSelected,
@@ -57,7 +57,7 @@ const ItemPresenter = (p: ItemPresenterProps) => {
       <ContactAvatar
         className={classes.avatar}
         letter={p.contact.fullName[0]}
-        background={faker.random.arrayElement([
+        background={faker.helpers.arrayElement([
           "red",
           "green",
           "blue",
