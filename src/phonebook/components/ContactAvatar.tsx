@@ -6,24 +6,19 @@ type ContactAvatarProps = {
   className?: string
   style?: CSSProperties
   letter: string
+  url?: string
 }
 
-export const ContactAvatar = ({ className, style, letter }: ContactAvatarProps) => {
+export const ContactAvatar = ({ className, style, letter, url }: ContactAvatarProps) => {
   const styles = useDefaultAvatarStyles()
-  return (
-    <Avatar className={clsx(styles.root, className)} style={style}>
-      {letter}
-    </Avatar>
-  )
-
-  // if (imageUrl) return <Avatar className={clsx(styles.root, className)} src={imageUrl} />
-  // else if (background && letter)
-  //   return (
-  //     <div className={clsx(styles.root, className)} style={{ background }}>
-  //       {letter}
-  //     </div>
-  //   )
-  // else throw new Error("Case not supported")
+  if (url) return <Avatar className={clsx(styles.root, className)} src={url} />
+  else if (letter)
+    return (
+      <div className={clsx(styles.root, className)} style={style}>
+        {letter}
+      </div>
+    )
+  else throw new Error("Case not supported")
 }
 
 const useDefaultAvatarStyles = makeStyles({

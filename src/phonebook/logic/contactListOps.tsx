@@ -12,6 +12,8 @@ export const useContactListOps = () => {
   const [contacts, setContacts] = useState<Contacts | undefined>(undefined)
   const [fetchStatus, setFetchStatus] = useState("NEVER_INITIATED")
 
+  console.log(15, contacts)
+
   const contactService = useContactServiceContext()
 
   const fetch = useCallback(

@@ -58,6 +58,7 @@ const ItemPresenter = (p: ItemPresenterProps) => {
         className={classes.avatar}
         letter={p.contact.fullName[0]}
         style={p.contact.avatar}
+        url={p.contact.avatarUrl}
       />
       <div className={classes.nameBox}>
         <Typography className={classes.name}>{contact.fullName}</Typography>
