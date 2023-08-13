@@ -2,10 +2,11 @@ import { Contact } from "../../models"
 import ContactDetailsFields from "./ContactDetailsFields"
 import style from "./style"
 import { FavoriteAction, GoToEditAction, GoBackAction } from "../actions"
-import { WithStyles, withStyles, Typography, Avatar } from "@material-ui/core"
+import { WithStyles, withStyles, Typography } from "@material-ui/core"
 import { useContactPageBaseStylesXs, useContactPageBaseStylesMd } from "../ContactPageBase.style"
 import useMediaQuery from "@material-ui/core/useMediaQuery"
 import { ContactAvatar } from "../ContactAvatar"
+import clsx from "clsx"
 
 type Props = { contact: Contact; onFavorite: () => void } & WithStyles<typeof style>
 
@@ -18,7 +19,7 @@ const ContactDetailsPage = ({ contact, classes, onFavorite }: Props) => {
     <FavoriteAction
       onClick={onFavorite}
       isFavorite={contact.isFavorite}
-      rootClass={classes.action + " " + classes.favAction}
+      rootClass={clsx(classes.action, classes.favAction)}
       iconClass={classes.icon}
     />
   )
@@ -26,16 +27,11 @@ const ContactDetailsPage = ({ contact, classes, onFavorite }: Props) => {
   const editAction = (
     <GoToEditAction
       contactId={contact.id}
-      rootClass={classes.action + " " + classes.editAction}
+      rootClass={clsx(classes.action, classes.editAction)}
       iconClass={classes.icon}
     />
   )
 
-  // const avatar = (
-  //   <Avatar style={contact.avatar} className={classes.avatar}>
-  //     {contact.fullName[0]}
-  //   </Avatar>
-  // )
   const avatar = (
     <ContactAvatar
       style={contact.avatar}
@@ -52,7 +48,7 @@ const ContactDetailsPage = ({ contact, classes, onFavorite }: Props) => {
 
   if (onlyXs) {
     return (
-      <div className={xsBaseClasses.root + " " + classes.root}>
+      <div className={clsx(xsBaseClasses.root, classes.root)}>
         <div className={xsBaseClasses.toolbar}>
           {backAction}
           {favAction}
@@ -71,7 +67,7 @@ const ContactDetailsPage = ({ contact, classes, onFavorite }: Props) => {
     )
   } else {
     return (
-      <div className={mdBaseClasses.root + " " + classes.root}>
+      <div className={clsx(mdBaseClasses.root, classes.root)}>
         <div className={mdBaseClasses.left}>{avatar}</div>
         <div className={mdBaseClasses.right}>
           <div className={mdBaseClasses.heading}>

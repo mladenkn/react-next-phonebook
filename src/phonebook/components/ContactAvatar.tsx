@@ -26,5 +26,6 @@ const useDefaultAvatarStyles = makeStyles({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
+    borderRadius: "50%",
   },
 })
