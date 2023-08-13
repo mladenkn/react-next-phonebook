@@ -40,7 +40,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "tsc": "tsc",
-    "wipe": "rm -rf package.json && rm yarn.lock",
+    "wipe": "rm -rf node_modules && rm -f yarn.lock",
     "reset": "yarn wipe && yarn install",
     "format": "prettier --write \"**/*.{ts,tsx}\""
   },
