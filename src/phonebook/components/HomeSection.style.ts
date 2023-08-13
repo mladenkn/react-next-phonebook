@@ -15,8 +15,9 @@ export default ({ palette, breakpoints }: Theme) =>
     },
     contactTab: {
       textTransform: "initial",
-      fontSize: "1.05rem",
-      color: palette.secondary.dark,
+      fontSize: "1.2rem",
+      color: palette.text.primary,
+      fontWeight: 600
     },
     selectedTab: {
       color: palette.primary.main,

@@ -3,7 +3,7 @@ import { createStyles, Theme } from "@material-ui/core"
 export default ({ palette, breakpoints }: Theme) =>
   createStyles({
     root: {
-      color: palette.secondary.main,
+      color: palette.text.primary,
     },
     editAction: {
       display: "inline-flex",

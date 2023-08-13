@@ -1,4 +1,4 @@
-import { AppBar } from "@material-ui/core"
+import { AppBar, colors } from "@material-ui/core"
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles"
 import router from "./Pages"
 import { RouterProvider } from "react-router-dom"
@@ -22,7 +22,7 @@ const theme = createMuiTheme({
       light: "#E3E3E3",
     },
     text: {
-      primary: "#BBC4C3",
+      primary: colors.grey[600],
       secondary: "#2DA1AD",
     },
   },
