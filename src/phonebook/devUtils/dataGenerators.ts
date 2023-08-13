@@ -9,16 +9,16 @@ const generatePhoneNumber = (): PhoneNumber => ({
 
 const avatarStyles = [
   { background: "green", color: "white" },
-  { background: "yellow" },
+  { background: "yellow", color: "black" },
   { background: "red", color: "white" },
   { background: "blue", color: "white" },
-  { background: "orange" },
+  { background: "orange", color: "black" },
 ]
 
 let contactId = 1
 export const generateContact = (): Contact => ({
   id: contactId++,
-  fullName: faker.name.firstName() + " " + faker.name.lastName(),
+  fullName: faker.person.firstName() + " " + faker.person.lastName(),
   avatar: faker.helpers.arrayElement([
     { background: faker.internet.avatar() },
     faker.helpers.arrayElement(avatarStyles),
