@@ -1,5 +1,5 @@
 import { AppBar } from "@material-ui/core"
-import { createTheme, MuiThemeProvider } from "@material-ui/core/styles"
+import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles"
 import router from "./Pages"
 import { RouterProvider } from "react-router-dom"
 import { generateArray } from "../../utils"
@@ -10,7 +10,7 @@ import {
   useContactRepositoryLocalStorage,
 } from "../logic/contactsRepository"
 
-const theme = createTheme({
+const theme = createMuiTheme({
   palette: {
     primary: {
       light: "#78C9CE",

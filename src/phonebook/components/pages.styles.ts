@@ -28,23 +28,26 @@ export const useContactEditPageStyle = makeStyles(contactEditPageStyle, {
   name: "ContactEditPageStyle",
 })
 
-const homePageStyle = ({ breakpoints }: Theme) =>
-  createStyles({
-    root: {
-      display: "flex",
-      justifyContent: "center",
-    },
-    [breakpoints.up("xs")]: {
+const homePageStyle = ({ breakpoints, ...theme }: Theme) =>
+  {
+    console.log(33, breakpoints, theme)
+    return createStyles({
       root: {
-        marginTop: 7,
+        display: "flex",
+        justifyContent: "center",
       },
-    },
-    [breakpoints.up("sm")]: {
-      root: {
-        marginTop: 20,
+      [breakpoints.up("xs")]: {
+        root: {
+          marginTop: 7,
+        },
       },
-    },
-  })
+      [breakpoints.up("sm")]: {
+        root: {
+          marginTop: 20,
+        },
+      },
+    })
+  }
 
 export const useHomePageStyle = makeStyles(homePageStyle, {
   name: "HomePageStyle",
