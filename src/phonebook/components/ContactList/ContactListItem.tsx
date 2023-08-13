@@ -6,6 +6,7 @@ import { contactDetailsUrl } from "../../urls"
 import { GoToEditAction, FavoriteAction, DeleteAction } from "../actions"
 import { faker } from "@faker-js/faker"
 import { ContactAvatar } from "../ContactAvatar"
+import clsx from "clsx"
 
 type Props = {
   contact: ContactListItemModel
@@ -53,7 +54,7 @@ const ItemPresenter = (p: ItemPresenterProps) => {
   const { classes, contact, onToggleFavorite, onDelete, onSelect } = p
 
   const avatarAndName = (
-    <Card className={classes.avatarAndName + " " + (p.isSelected && classes.selected)}>
+    <Card className={clsx(classes.avatarAndName, (p.isSelected && classes.selected))}>
       <ContactAvatar
         className={classes.avatar}
         letter={p.contact.fullName[0]}
@@ -79,7 +80,7 @@ const ItemPresenter = (p: ItemPresenterProps) => {
     <FavoriteAction
       onClick={onToggleFavorite}
       isFavorite={contact.isFavorite}
-      rootClass={classes.action + " " + classes.favoriteAction}
+      rootClass={clsx(classes.action, classes.favoriteAction)}
       iconClass={classes.icon}
     />
   )
@@ -87,7 +88,7 @@ const ItemPresenter = (p: ItemPresenterProps) => {
   const editAction = p.showEditLink && (
     <GoToEditAction
       contactId={contact.id}
-      rootClass={classes.action + " " + classes.editAction}
+      rootClass={clsx(classes.action, classes.editAction)}
       iconClass={classes.icon}
     />
   )
@@ -95,7 +96,7 @@ const ItemPresenter = (p: ItemPresenterProps) => {
   const deleteAction = p.showDeleteButton && (
     <DeleteAction
       onConfirm={onDelete}
-      rootClass={classes.action + " " + classes.deleteAction}
+      rootClass={clsx(classes.action, classes.deleteAction)}
       iconClass={classes.icon}
     />
   )

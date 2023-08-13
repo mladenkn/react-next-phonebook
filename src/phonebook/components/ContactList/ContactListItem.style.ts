@@ -46,7 +46,7 @@ export default ({ palette, breakpoints }: Theme) =>
         right: "13%",
       },
       deleteAction: {
-        top: "29%",
+        top: "33%",
         right: "2%",
       },
       avatar: {
@@ -101,7 +101,7 @@ export default ({ palette, breakpoints }: Theme) =>
         right: "10%",
       },
       deleteAction: {
-        top: "2%",
+        top: "5%",
         right: "2%",
       },
       icon: {
