@@ -14,7 +14,8 @@ import EditIcon from "@material-ui/icons/Edit"
 import DeleteIcon from "@material-ui/icons/Delete"
 import ArrowBackIcon from "@material-ui/icons/ArrowBack"
 import FavoriteIcon from "@material-ui/icons/Favorite"
-import FavoriteOutlinedIcon from "@material-ui/icons/FavoriteOutlined"
+import FavoriteOutlinedIcon from "@material-ui/icons/FavoriteBorder"
+import clsx from "clsx"
 
 type GoToEditActionProps = {
   contactId: number
@@ -24,7 +25,7 @@ type GoToEditActionProps = {
 
 export const GoToEditAction = withStyles(goToEditActionStyle)(
   ({ classes, contactId, rootClass, iconClass }: GoToEditActionProps) => (
-    <Link href={contactEditUrl(contactId)} className={classes.root + " " + rootClass}>
+    <Link href={contactEditUrl(contactId)} className={clsx(classes.root, rootClass)}>
       <EditIcon color="secondary" className={iconClass} />
     </Link>
   ),
@@ -38,7 +39,7 @@ type FavoriteActionProps = {
 } & WithStyles<typeof favoriteActionStyle>
 
 export const FavoriteAction = withStyles(favoriteActionStyle)(
-  ({ onClick, isFavorite, classes, rootClass, iconClass }: FavoriteActionProps) => (
+  ({ onClick, isFavorite, classes, rootClass }: FavoriteActionProps) => (
     <IconButton className={classes.root + " " + rootClass} onClick={onClick} disableRipple>
       {isFavorite ? <FavoriteIcon /> : <FavoriteOutlinedIcon />}
     </IconButton>
