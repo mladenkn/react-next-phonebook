@@ -13,6 +13,7 @@
     "@types/node": "^16.7.13",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
+    "clsx": "^2.0.0",
     "formik": "^1.5.7",
     "lodash": "^4.17.21",
     "react": "^18.2.0",
@@ -39,8 +40,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "tsc": "tsc",
-    "wipe": "rm -rf node_modules && rm -f yarn.lock",
-    "reset": "yarn wipe && yarn install",
+    "wipe": "rm -rf node_modules && rm -f pnpm-lock.yaml",
+    "reset": "pnpm wipe && pnpm install",
     "format": "prettier --write \"**/*.{ts,tsx}\""
   },
   "eslintConfig": {

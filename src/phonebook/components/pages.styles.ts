@@ -1,5 +1,4 @@
-import { createStyles, Theme } from "@material-ui/core"
-import { makeStyles } from "@material-ui/styles"
+import { createStyles, Theme, makeStyles } from "@material-ui/core"
 
 const contactPageStyle = ({ breakpoints }: Theme) =>
   createStyles({
