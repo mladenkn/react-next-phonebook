@@ -5,6 +5,7 @@ import { FavoriteAction, GoToEditAction, GoBackAction } from "../actions"
 import { WithStyles, withStyles, Typography, Avatar } from "@material-ui/core"
 import { useContactPageBaseStylesXs, useContactPageBaseStylesMd } from "../ContactPageBase.style"
 import useMediaQuery from "@material-ui/core/useMediaQuery"
+import { ContactAvatar } from "../ContactAvatar"
 
 type Props = { contact: Contact; onFavorite: () => void } & WithStyles<typeof style>
 
@@ -30,10 +31,18 @@ const ContactDetailsPage = ({ contact, classes, onFavorite }: Props) => {
     />
   )
 
+  // const avatar = (
+  //   <Avatar style={contact.avatar} className={classes.avatar}>
+  //     {contact.fullName[0]}
+  //   </Avatar>
+  // )
   const avatar = (
-    <Avatar style={contact.avatar} className={classes.avatar}>
-      {contact.fullName[0]}
-    </Avatar>
+    <ContactAvatar
+      style={contact.avatar}
+      className={classes.avatar}
+      url={contact.avatarUrl}
+      letter={contact.fullName[0]}
+    />
   )
 
   const xsBaseClasses = useContactPageBaseStylesXs()

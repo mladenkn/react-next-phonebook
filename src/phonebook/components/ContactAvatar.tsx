@@ -5,7 +5,7 @@ import { CSSProperties } from "react"
 type ContactAvatarProps = {
   className?: string
   style?: CSSProperties
-  letter: string
+  letter?: string
   url?: string
 }
 
