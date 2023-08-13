@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { validURL } from "../../utils"
 import { swapableAvatarStyle } from "./swapableAvatar.style"
-import { withStyles, WithStyles, Avatar, Icon } from "@material-ui/core"
+import { withStyles, WithStyles, Avatar } from "@material-ui/core"
 import { TextInputDialog } from "./TextInputDialog"
 import CloudUploadIcon from "@material-ui/icons/CloudUpload"
 

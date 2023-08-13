@@ -1,5 +1,5 @@
 import { Contact } from "../../models"
-import React, { useState, useContext } from "react"
+import React, { useState } from "react"
 import style from "./style"
 import { DeleteAction, GoBackAction } from "../actions"
 import { WithStyles, withStyles, Button } from "@material-ui/core"

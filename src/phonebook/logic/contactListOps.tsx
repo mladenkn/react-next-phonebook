@@ -2,7 +2,6 @@ import { useState, useEffect, useCallback } from "react"
 import { updateMatches } from "../../utils"
 import { ContactListItem } from "../models"
 import { useContactServiceContext } from "./contactsRepository"
-import { ContactListItemAction } from "../actions"
 
 interface Contacts {
   all: ContactListItem[]
