@@ -11,14 +11,18 @@ type Props = {
   className?: string
 } & WithStyles<typeof swapableAvatarStyle>
 
-export const SwapableAvatar = withStyles(swapableAvatarStyle)((p: Props) => {
-  const [imageSrc, setImageSrc] = useState(p.src)
-  const { classes } = p
+export const SwapableAvatar = withStyles(swapableAvatarStyle)(({
+  className,
+  classes,
+  src,
+  onChange,
+}: Props) => {
+  const [imageSrc, setImageSrc] = useState(src)
   const [isDialogOpen, setIsDialogOpen] = useState(false)
 
   const setImageSrc_ = (src?: string) => {
     setImageSrc(src)
-    p.onChange(src)
+    onChange(src)
   }
 
   const handleDialogOK = (image: string) => {
@@ -42,13 +46,13 @@ export const SwapableAvatar = withStyles(swapableAvatarStyle)((p: Props) => {
 
   return (
     <div>
-      <div className={p.className + " " + classes.root} onClick={onClick}>
-        {p.src ? (
-          <Avatar src={p.src} className={classes.avatar} />
+      <div className={className + " " + classes.root} onClick={onClick}>
+        {src ? (
+          <Avatar src={src} className={classes.avatar} />
         ) : (
           <div className={classes.uploadImage} />
         )}
-        {p.src ? (
+        {src ? (
           <div className={classes.removeIcon}>x</div>
         ) : (
           <CloudUploadIcon className={classes.uploadIcon} />
