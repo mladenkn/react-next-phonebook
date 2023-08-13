@@ -44,8 +44,8 @@ const ContactEditPage = ({ contact, classes, onSave, onDelete }: Props) => {
   const [editedContact, setEditedContact] = useState(contact_)
   const [isEditedContactValid, setIsEditedContactValid] = useState(isEdit)
 
-  const setAvatar = (avatarUrl?: string) =>
-    setEditedContact({ ...editedContact, avatar: avatarUrl })
+  // const setAvatar = (avatarUrl?: string) =>
+  //   setEditedContact({ ...editedContact, avatar: avatarUrl })
 
   const formChange = (input: Contact, isValid: boolean) => {
     setEditedContact({ ...input, avatar: editedContact.avatar })
@@ -53,7 +53,8 @@ const ContactEditPage = ({ contact, classes, onSave, onDelete }: Props) => {
   }
 
   const avatar = (
-    <SwapableAvatar src={editedContact.avatar} className={classes.avatar} onChange={setAvatar} />
+    // <SwapableAvatar src={editedContact.avatar} className={classes.avatar} onChange={setAvatar} />
+    <></>
   )
   const form = <ContactForm initialInput={editedContact} onChange={formChange} />
 

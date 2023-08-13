@@ -4,7 +4,6 @@ import { Card, Typography, withStyles, WithStyles } from "@material-ui/core"
 import { Link } from "../various"
 import { contactDetailsUrl } from "../../urls"
 import { GoToEditAction, FavoriteAction, DeleteAction } from "../actions"
-import { faker } from "@faker-js/faker"
 import { ContactAvatar } from "../ContactAvatar"
 import clsx from "clsx"
 
@@ -16,7 +15,7 @@ type Props = {
   onDelete(): void
   onSelect(): void
 }
- 
+
 export const ContactListItem = ({
   contact,
   isSelected,
@@ -54,21 +53,11 @@ const ItemPresenter = (p: ItemPresenterProps) => {
   const { classes, contact, onToggleFavorite, onDelete, onSelect } = p
 
   const avatarAndName = (
-    <Card className={clsx(classes.avatarAndName, (p.isSelected && classes.selected))}>
+    <Card className={clsx(classes.avatarAndName, p.isSelected && classes.selected)}>
       <ContactAvatar
         className={classes.avatar}
         letter={p.contact.fullName[0]}
-        background={faker.helpers.arrayElement([
-          "red",
-          "green",
-          "blue",
-          "white",
-          "grey",
-          "orange",
-          "yellow",
-          "purple",
-        ])}
-        imageUrl={p.contact.avatar}
+        style={p.contact.avatar}
       />
       <div className={classes.nameBox}>
         <Typography className={classes.name}>{contact.fullName}</Typography>

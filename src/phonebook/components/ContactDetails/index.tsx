@@ -1,12 +1,10 @@
 import { Contact } from "../../models"
-import React from "react"
 import ContactDetailsFields from "./ContactDetailsFields"
 import style from "./style"
 import { FavoriteAction, GoToEditAction, GoBackAction } from "../actions"
 import { WithStyles, withStyles, Typography, Avatar } from "@material-ui/core"
 import { useContactPageBaseStylesXs, useContactPageBaseStylesMd } from "../ContactPageBase.style"
 import useMediaQuery from "@material-ui/core/useMediaQuery"
-const defaultAvatarUrl = require("../../assets/default-avatar.jpg") // doesn't work with ES6 import
 
 type Props = { contact: Contact; onFavorite: () => void } & WithStyles<typeof style>
 
@@ -32,9 +30,11 @@ const ContactDetailsPage = ({ contact, classes, onFavorite }: Props) => {
     />
   )
 
-  const avatarUrl = contact.avatar || defaultAvatarUrl
-
-  const avatar = <Avatar src={avatarUrl} className={classes.avatar} />
+  const avatar = (
+    <Avatar style={contact.avatar} className={classes.avatar}>
+      {contact.fullName[0]}
+    </Avatar>
+  )
 
   const xsBaseClasses = useContactPageBaseStylesXs()
   const mdBaseClasses = useContactPageBaseStylesMd()

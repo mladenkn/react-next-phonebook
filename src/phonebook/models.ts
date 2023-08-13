@@ -1,7 +1,9 @@
+import { CSSProperties } from "react"
+
 export interface Contact {
   id: number
   fullName: string
-  avatar?: string
+  avatar?: CSSProperties
   email: string
   numbers: PhoneNumber[]
   isFavorite: boolean
@@ -10,7 +12,7 @@ export interface Contact {
 export interface ContactListItem {
   id: number
   fullName: string
-  avatar?: string
+  avatar?: CSSProperties
   isFavorite: boolean
 }
 

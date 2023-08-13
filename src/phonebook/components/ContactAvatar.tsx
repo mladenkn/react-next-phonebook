@@ -1,31 +1,29 @@
 import { Avatar, makeStyles } from "@material-ui/core"
 import clsx from "clsx"
+import { CSSProperties } from "react"
 
-type ContactAvatarProps =
-  | {
-      className?: string
-      background: string
-      letter: string
-      imageUrl?: string
-    }
-  | {
-      className?: string
-      imageUrl: string
-      background?: undefined
-      letter?: undefined
-    }
+type ContactAvatarProps = {
+  className?: string
+  style?: CSSProperties
+  letter: string
+}
 
-export const ContactAvatar = ({ className, imageUrl, background, letter }: ContactAvatarProps) => {
+export const ContactAvatar = ({ className, style, letter }: ContactAvatarProps) => {
   const styles = useDefaultAvatarStyles()
+  return (
+    <Avatar className={clsx(styles.root, className)} style={style}>
+      {letter}
+    </Avatar>
+  )
 
-  if (imageUrl) return <Avatar className={clsx(styles.root, className)} src={imageUrl} />
-  else if (background && letter)
-    return (
-      <div className={clsx(styles.root, className)} style={{ background }}>
-        {letter}
-      </div>
-    )
-  else throw new Error("Case not supported")
+  // if (imageUrl) return <Avatar className={clsx(styles.root, className)} src={imageUrl} />
+  // else if (background && letter)
+  //   return (
+  //     <div className={clsx(styles.root, className)} style={{ background }}>
+  //       {letter}
+  //     </div>
+  //   )
+  // else throw new Error("Case not supported")
 }
 
 const useDefaultAvatarStyles = makeStyles({

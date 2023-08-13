@@ -2,13 +2,12 @@ import { AppBar, colors } from "@material-ui/core"
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles"
 import router from "./Pages"
 import { RouterProvider } from "react-router-dom"
-import { generateArray } from "../../utils"
-import { generateContact } from "../devUtils/dataGenerators"
 import { Toolbar } from "./Toolbar"
 import {
   ContactServiceContextProvider,
   useContactRepositoryLocalStorage,
 } from "../logic/contactsRepository"
+import { seedDataIfNeeded } from "../devUtils/localStorage"
 
 const theme = createMuiTheme({
   palette: {
@@ -35,12 +34,7 @@ const theme = createMuiTheme({
   },
 })
 
-const hasAnyContacts = Object.keys(localStorage).some(key => key.startsWith("contact-"))
-if (!hasAnyContacts) {
-  const generatedContacts = generateArray(generateContact, 25, 50)
-  for (const contact of generatedContacts)
-    localStorage[`contact-${contact.id}`] = JSON.stringify(contact)
-}
+seedDataIfNeeded()
 
 export const AppRoot = () => {
   const contactService = useContactRepositoryLocalStorage()
