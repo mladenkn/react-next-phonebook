@@ -50,7 +50,6 @@ const createRefRouterLink = (url: string) =>
     <RouterLink innerRef={ref} to={url} {...props} />
   ))
 
-const MuiLink_ = MuiLink as any
 export const Link = (p: MuiLinkProps) => (
-  <MuiLink_ {...p} component={createRefRouterLink(p.href!)} />
+  <MuiLink {...p} component={createRefRouterLink(p.href!)} />
 )
