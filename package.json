@@ -39,7 +39,7 @@
     "vite-tsconfig-paths": "^4.2.0"
   },
   "scripts": {
-    "start": "vite",
+    "dev": "vite",
     "build": "vite build",
     "tsc": "tsc",
     "wipe": "rm -rf node_modules && rm -f pnpm-lock.yaml",
