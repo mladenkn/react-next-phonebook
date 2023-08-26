@@ -4,8 +4,7 @@ const contactPageStyle = ({ breakpoints }: Theme) =>
   createStyles({
     [breakpoints.up("sm")]: {
       root: {
-        marginTop: 50,
-        marginLeft: 50,
+        marginTop: 30,
       },
     },
   })

@@ -12,6 +12,7 @@ import {
   useParams,
   useNavigate,
 } from "react-router-dom"
+import { Container } from "@material-ui/core"
 
 export interface ContactIdRouteParams {
   contactId?: string
@@ -32,12 +33,15 @@ const ContactDetailsPage = () => {
   const contactId = parseInt(params.contactId!)
   const classes = useContactPageStyle()
   const ops = useContactDetailsOps(contactId, () => navigate(-1), navigate)
+
   return (
     <GoBackContextProvider value={() => navigate(-1)}>
       <div className={classes.root}>
         {
           ops.fetchStatus === "COMPLETED" ? (
-            <ContactDetails contact={ops.contact!} onFavorite={ops.favorite} />
+            <Container maxWidth="sm">
+              <ContactDetails contact={ops.contact!} onFavorite={ops.favorite} />
+            </Container>
           ) : (
             <div />
           ) // doesn't make sense to handle this since there is no real fetching}
