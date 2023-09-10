@@ -1,6 +1,7 @@
 import { createStyles, Theme } from "@material-ui/core"
+import { makeStyles } from "@material-ui/core"
 
-export default ({ palette, breakpoints }: Theme) =>
+const useHomeSectionStyles = makeStyles(({ palette, breakpoints }: Theme) =>
   createStyles({
     root: {},
     content_: {
@@ -72,4 +73,7 @@ export default ({ palette, breakpoints }: Theme) =>
         marginTop: 25,
       },
     },
-  })
+  }),
+)
+
+export default useHomeSectionStyles

@@ -1,12 +1,14 @@
-import { withStyles, WithStyles, Tabs, Tab, Input } from "@material-ui/core"
-import style from "./HomeSection.style"
+import { Tabs, Tab, Input } from "@material-ui/core"
 import { useState } from "react"
 import ContactList from "./ContactList"
 import { useContactListOps } from "../logic/contactListOps"
 import { Divider } from "./various"
 import SearchIcon from "@material-ui/icons/Search"
+import useHomeSectionStyles from "./HomeSection.style"
 
-const Home = ({ classes }: WithStyles<typeof style>) => {
+const Home = () => {
+  const classes = useHomeSectionStyles()
+
   const tabClasses = {
     root: classes.contactTab,
     selected: classes.selectedTab,
@@ -56,4 +58,4 @@ const Home = ({ classes }: WithStyles<typeof style>) => {
   )
 }
 
-export default withStyles(style)(Home)
+export default Home
