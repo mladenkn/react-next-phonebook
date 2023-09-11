@@ -31,29 +31,29 @@ const useHomeSectionStyles = makeStyles(({ palette, breakpoints }: Theme) =>
     tabIndicator: {
       display: "none",
     },
-    searchField: {
-      height: 50,
-      border: `1px solid ${palette.secondary.light}`,
-      borderRadius: 4,
-      padding: 10,
-      fontSize: "larger",
-      boxShadow: `0 0 15px ${palette.secondary.light}`,
-    },
-    searchFieldFocused: {
-      boxShadow: `0 0 20px ${palette.secondary.main}`,
-    },
-    searchFieldIcon: {
-      marginRight: 10,
-    },
+    // searchField: {
+    //   height: 50,
+    //   border: `1px solid ${palette.secondary.light}`,
+    //   borderRadius: 4,
+    //   padding: 10,
+    //   fontSize: "larger",
+    //   boxShadow: `0 0 15px ${palette.secondary.light}`,
+    // },
+    // searchFieldFocused: {
+    //   boxShadow: `0 0 20px ${palette.secondary.main}`,
+    // },
+    // searchFieldIcon: {
+    //   marginRight: 10,
+    // },
     [breakpoints.down("xs")]: {
       content_: {
         // name content without _ causes compile time error
         width: 330,
       },
-      searchField: {
-        marginTop: 20,
-        width: 310,
-      },
+      // searchField: {
+      //   marginTop: 20,
+      //   width: 310,
+      // },
       contactTabsDivider: {
         marginTop: 6,
       },
@@ -62,10 +62,10 @@ const useHomeSectionStyles = makeStyles(({ palette, breakpoints }: Theme) =>
       },
     },
     [breakpoints.up("sm")]: {
-      searchField: {
-        marginTop: 40,
-        width: 400,
-      },
+      // searchField: {
+      //   marginTop: 40,
+      //   width: 400,
+      // },
       contactTabsDivider: {
         marginTop: 25,
       },

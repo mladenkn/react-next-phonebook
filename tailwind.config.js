@@ -1,3 +1,5 @@
+const { colors } = require("@material-ui/core")
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -6,6 +8,21 @@ module.exports = {
   ],
   theme: {
     extend: {},
+    colors: {
+      primary: {
+        light: "#78C9CE",
+        main: "#2DA1AD",
+        dark: "#2496A2",
+      },
+      secondary: {
+        main: "#BBC4C3",
+        light: "#E3E3E3",
+      },
+      text: {
+        primary: colors.grey[600],
+        secondary: "#2DA1AD",
+      },
+    }
   },
   plugins: [],
 }

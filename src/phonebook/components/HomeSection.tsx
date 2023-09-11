@@ -38,11 +38,11 @@ const Home = () => {
         <Divider className={classes.contactTabsDivider} />
         <Input
           disableUnderline
-          startAdornment={<SearchIcon className={classes.searchFieldIcon} />}
+          startAdornment={<SearchIcon className="mr-2" />}
           onChange={e => ops.fetch(e.target.value)}
-          className="border-red-600 border-solid border-1 h-12 rounded-md p-2 text-lg"
+          className="border-solid border-1 border-secondary-light h-12 rounded-md p-2 text-lg shadow-lg mt-5 w-80 sm:mt-10 sm:w-96"
           classes={{
-            focused: classes.searchFieldFocused,
+            focused: "shadow-2xl",
           }}
         />
         {ops.fetchStatus === "COMPLETED" && (
