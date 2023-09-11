@@ -5,6 +5,7 @@ import { useContactListOps } from "../logic/contactListOps"
 import { Divider } from "./various"
 import SearchIcon from "@material-ui/icons/Search"
 import useHomeSectionStyles from "./HomeSection.style"
+import clsx from "clsx"
 
 const Home = () => {
   const classes = useHomeSectionStyles()
@@ -39,8 +40,8 @@ const Home = () => {
           disableUnderline
           startAdornment={<SearchIcon className={classes.searchFieldIcon} />}
           onChange={e => ops.fetch(e.target.value)}
+          className="border-red-600 border-solid border-1 h-12 rounded-md p-2 text-lg"
           classes={{
-            root: classes.searchField,
             focused: classes.searchFieldFocused,
           }}
         />
