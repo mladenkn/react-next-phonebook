@@ -5,7 +5,13 @@ import { useContactListOps } from "../logic/contactListOps"
 import { Divider } from "./various"
 import SearchIcon from "@material-ui/icons/Search"
 import useHomeSectionStyles from "./HomeSection.style"
-import clsx from "clsx"
+import tw from "tailwind-styled-components"
+
+const StyledInput = tw(Input)`
+  border-solid border-1 border-secondary-light h-12 rounded-md p-2 text-lg shadow-lg mt-5 w-80 sm:mt-10 sm:w-96
+`
+
+const StyledTab = tw.button`text-lg text-tc-primary font-semibold`
 
 const Home = () => {
   const classes = useHomeSectionStyles()
@@ -19,8 +25,8 @@ const Home = () => {
   const ops = useContactListOps()
 
   return (
-    <div className={classes.root}>
-      <div className={classes.content_}>
+    <div>
+      <div className="flex flex-col items-center max-w-5xl">
         <Tabs
           value={currentTab}
           centered
@@ -35,12 +41,16 @@ const Home = () => {
           <div className={classes.tabDivider}></div>
           <Tab label="My favorites" disableRipple classes={tabClasses} />
         </Tabs>
+        <div className="flex gap-8">
+          <StyledTab>All contacts</StyledTab>
+          <div className="h-5 w-1 bg-secondary-main" />
+          <StyledTab>My favorites</StyledTab>
+        </div>
         <Divider className={classes.contactTabsDivider} />
-        <Input
+        <StyledInput
           disableUnderline
           startAdornment={<SearchIcon className="mr-2" />}
           onChange={e => ops.fetch(e.target.value)}
-          className="border-solid border-1 border-secondary-light h-12 rounded-md p-2 text-lg shadow-lg mt-5 w-80 sm:mt-10 sm:w-96"
           classes={{
             focused: "shadow-2xl",
           }}

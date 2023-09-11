@@ -4,13 +4,13 @@ import { makeStyles } from "@material-ui/core"
 const useHomeSectionStyles = makeStyles(({ palette, breakpoints }: Theme) =>
   createStyles({
     root: {},
-    content_: {
-      // name content without _ causes compile time error
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-      maxWidth: 1000,
-    },
+    // content_: {
+    //   // name content without _ causes compile time error
+    //   display: "flex",
+    //   flexDirection: "column",
+    //   alignItems: "center",
+    //   maxWidth: 1000,
+    // },
     tabContainer: {
       alignItems: "center",
     },
