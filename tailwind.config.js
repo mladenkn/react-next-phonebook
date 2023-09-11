@@ -18,8 +18,8 @@ module.exports = {
         main: "#BBC4C3",
         light: "#E3E3E3",
       },
-      text: {
-        primary: colors.grey[600],
+      tc: {
+        primary: colors.grey[500],
         secondary: "#2DA1AD",
       },
     }
