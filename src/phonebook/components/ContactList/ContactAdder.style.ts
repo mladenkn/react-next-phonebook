@@ -19,10 +19,10 @@ export default ({ palette, breakpoints }: Theme) =>
       color: palette.primary.light,
       fontSize: 27,
     },
-    text: {
-      color: palette.primary.light,
-      fontSize: "0.95rem",
-    },
+    // text: {
+    //   color: palette.primary.light,
+    //   fontSize: "0.95rem",
+    // },
     content_: {
       textAlign: "center",
     },

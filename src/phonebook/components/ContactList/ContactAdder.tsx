@@ -8,7 +8,7 @@ const ContactAdder = ({ classes }: WithStyles<typeof style>) => (
   <Link href={contactCreateUrl} className={classes.root}>
     <div className={classes.content_}>
       <Add className={classes.icon} />
-      <Typography className={classes.text}>Add new</Typography>
+      <p className="text-primary-light">Add new</p>
     </div>
   </Link>
 )
