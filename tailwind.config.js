@@ -22,6 +22,9 @@ module.exports = {
           primary: colors.grey[500],
           secondary: "#2DA1AD",
         },
+      },
+      boxShadow: {
+        homeSearch: "0 0 20px"
       }
     },
   },

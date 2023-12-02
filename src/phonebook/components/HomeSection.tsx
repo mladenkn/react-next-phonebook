@@ -47,6 +47,10 @@ const Home = () => {
             focused: "shadow-2xl",
           }}
         />
+        <div className="border-solid border-1 border-secondary-light mt-5 w-80 sm:mt-10 sm:w-96 flex items-center rounded-md shadow-homeSearch shadow-secondary-main">
+          <SearchIcon className="mr-2 ml-2 text-gray-500" />
+          <input className="h-12 p-2 text-lg outline-none w-full text-gray-500" />
+        </div>
         {ops.fetchStatus === "COMPLETED" && (
           <ContactList
             contacts={currentTab === 0 ? ops.contacts!.all : ops.contacts!.favorites}
