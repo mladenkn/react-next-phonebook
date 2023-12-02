@@ -12,7 +12,13 @@ const StyledInput = tw(Input)`
   border-solid border-1 border-secondary-light h-12 rounded-md p-2 text-lg shadow-lg mt-5 w-80 sm:mt-10 sm:w-96
 `
 
+const a = tw.base
+
 const StyledTab = tw.button`text-lg text-tc-primary font-semibold`
+
+const SearchWrapper = tw.div`
+  border-1 mt-5 flex w-80 items-center rounded-md border-solid border-secondary-light shadow-homeSearch shadow-secondary-main sm:mt-10 sm:w-96
+`
 
 const Home = () => {
   const classes = useHomeSectionStyles()
@@ -51,6 +57,10 @@ const Home = () => {
           <SearchIcon className="ml-2 mr-2 text-gray-500" />
           <input className="h-12 w-full p-2 text-lg text-gray-500 outline-none" />
         </div>
+        <SearchWrapper>
+          <SearchIcon className="ml-2 mr-2 text-gray-500" />
+          <input className="h-12 w-full p-2 text-lg text-gray-500 outline-none" />
+        </SearchWrapper>
         {ops.fetchStatus === "COMPLETED" && (
           <ContactList
             contacts={currentTab === 0 ? ops.contacts!.all : ops.contacts!.favorites}
