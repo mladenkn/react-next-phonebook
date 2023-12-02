@@ -22,7 +22,7 @@ const Home = () => {
 
   return (
     <div>
-      <div className="flex flex-col items-center max-w-5xl">
+      <div className="flex max-w-5xl flex-col items-center">
         <div className="flex gap-8">
           <StyledTab
             className={clsx(currentTab === 0 && "text-tc-secondary")}
@@ -47,9 +47,9 @@ const Home = () => {
             focused: "shadow-2xl",
           }}
         />
-        <div className="border-solid border-1 border-secondary-light mt-5 w-80 sm:mt-10 sm:w-96 flex items-center rounded-md shadow-homeSearch shadow-secondary-main">
-          <SearchIcon className="mr-2 ml-2 text-gray-500" />
-          <input className="h-12 p-2 text-lg outline-none w-full text-gray-500" />
+        <div className="border-1 mt-5 flex w-80 items-center rounded-md border-solid border-secondary-light shadow-homeSearch shadow-secondary-main sm:mt-10 sm:w-96">
+          <SearchIcon className="ml-2 mr-2 text-gray-500" />
+          <input className="h-12 w-full p-2 text-lg text-gray-500 outline-none" />
         </div>
         {ops.fetchStatus === "COMPLETED" && (
           <ContactList
