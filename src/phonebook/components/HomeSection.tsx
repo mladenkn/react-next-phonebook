@@ -12,8 +12,6 @@ const StyledInput = tw(Input)`
   border-solid border-1 border-secondary-light h-12 rounded-md p-2 text-lg shadow-lg mt-5 w-80 sm:mt-10 sm:w-96
 `
 
-const a = tw.base
-
 const StyledTab = tw.button`text-lg text-tc-primary font-semibold`
 
 const SearchWrapper = tw.div`
