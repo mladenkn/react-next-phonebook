@@ -5,6 +5,7 @@ import { List, ListItem, withStyles, WithStyles } from "@material-ui/core"
 import { ContactListItem as Item } from "./ContactListItem"
 import ContactAdder from "./ContactAdder"
 import withWidth, { WithWidth } from "@material-ui/core/withWidth"
+import clsx from "clsx"
 
 type Props = {
   contacts: ContactListItem[]
@@ -51,7 +52,7 @@ const ContactList = withWidth()(({
     items.unshift(adder)
   }
 
-  return <List className={className + " " + classes.root}>{items}</List>
+  return <List className={clsx(classes.root, className)}>{items}</List>
 })
 
 export default withStyles(style)(ContactList)
