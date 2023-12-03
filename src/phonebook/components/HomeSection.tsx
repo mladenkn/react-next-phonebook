@@ -4,16 +4,12 @@ import { useContactListOps } from "../logic/contactListOps"
 import { Divider } from "./various"
 import SearchIcon from "@material-ui/icons/Search"
 import useHomeSectionStyles from "./HomeSection.style"
-import tw from "tailwind-styled-components"
 import clsx from "clsx"
+import { tw } from "../../utils"
 
 const StyledTab = tw.button`text-lg text-tc-primary font-semibold`
 
-function tw_(className: TemplateStringsArray) {
-  return className.join("")
-}
-
-const searchWrapper_class = tw_`
+const searchWrapper_class = tw.class`
   mt-5 flex w-80 items-center sm:mt-10 sm:w-96
   border-1 rounded-md border-solid border-secondary-light
   shadow-homeSearch shadow-secondary-main

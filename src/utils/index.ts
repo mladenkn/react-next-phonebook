@@ -1,5 +1,13 @@
 import { faker } from "@faker-js/faker"
 import { isNil } from "lodash"
+import _tw from "tailwind-styled-components"
+
+export const tw = {
+  ..._tw,
+  class(className: TemplateStringsArray) {
+    return className.join("")
+  },
+}
 
 export const generateArray = <T>(getNext: () => T, minCount: number, maxCount: number) => {
   const count = faker.number.int({ min: minCount, max: maxCount })
