@@ -1,56 +1,27 @@
 import style from "./ContactListItem.style"
 import { ContactListItem as ContactListItemModel } from "../../models"
-import { Card, Typography, withStyles, WithStyles } from "@material-ui/core"
+import { Card, withStyles, WithStyles } from "@material-ui/core"
 import { Link } from "../various"
 import { contactDetailsUrl } from "../../urls"
 import { GoToEditAction, FavoriteAction, DeleteAction } from "../actions"
 import { ContactAvatar } from "../ContactAvatar"
 import clsx from "clsx"
 
-type Props = {
-  contact: ContactListItemModel
-  isSelected: boolean
-  smOrDown: boolean
-  onToggleFavorite(): void
-  onDelete(): void
-  onSelect(): void
-}
-
-export const ContactListItem = ({
-  contact,
-  isSelected,
-  smOrDown,
-  onToggleFavorite,
-  onDelete,
-  onSelect,
-}: Props) => (
-  <StyledItemDummy
-    contact={contact}
-    showFavoriteButton
-    showEditLink={smOrDown || (!smOrDown && isSelected)}
-    showDeleteButton={smOrDown || (!smOrDown && isSelected)}
-    isLinkToDetails={smOrDown || (!smOrDown && isSelected)}
-    isSelected={isSelected}
-    onToggleFavorite={onToggleFavorite}
-    onDelete={onDelete}
-    onSelect={onSelect}
-  />
-)
-
 type ItemPresenterProps = {
   contact: ContactListItemModel
-  showFavoriteButton: boolean
-  showEditLink: boolean
-  showDeleteButton: boolean
-  isLinkToDetails: boolean
   isSelected: boolean
   onToggleFavorite(): void
   onDelete(): void
   onSelect(): void
+  smOrDown: boolean
 } & WithStyles<typeof style>
 
-const ItemPresenter = (p: ItemPresenterProps) => {
+const _ContactListItem = (p: ItemPresenterProps) => {
   const { classes, contact, onToggleFavorite, onDelete, onSelect } = p
+
+  const showEditLink = p.smOrDown || (!p.smOrDown && p.isSelected)
+  const showDeleteButton = showEditLink
+  const isLinkToDetails = showEditLink
 
   const avatarAndName = (
     <Card
@@ -72,7 +43,7 @@ const ItemPresenter = (p: ItemPresenterProps) => {
     </Card>
   )
 
-  const favoriteAction = p.showFavoriteButton && (
+  const favoriteAction = (
     <FavoriteAction
       onClick={onToggleFavorite}
       isFavorite={contact.isFavorite}
@@ -81,7 +52,7 @@ const ItemPresenter = (p: ItemPresenterProps) => {
     />
   )
 
-  const editAction = p.showEditLink && (
+  const editAction = showEditLink && (
     <GoToEditAction
       contactId={contact.id}
       rootClass={clsx(classes.action, classes.editAction)}
@@ -89,7 +60,7 @@ const ItemPresenter = (p: ItemPresenterProps) => {
     />
   )
 
-  const deleteAction = p.showDeleteButton && (
+  const deleteAction = showDeleteButton && (
     <DeleteAction
       onConfirm={onDelete}
       rootClass={clsx(classes.action, classes.deleteAction)}
@@ -97,7 +68,7 @@ const ItemPresenter = (p: ItemPresenterProps) => {
     />
   )
 
-  return p.isLinkToDetails ? (
+  return isLinkToDetails ? (
     <div className="relative h-full w-full">
       <Link href={contactDetailsUrl(contact.id)} className={clsx("block h-full", classes.rootLink)}>
         {avatarAndName}
@@ -116,4 +87,4 @@ const ItemPresenter = (p: ItemPresenterProps) => {
   )
 }
 
-const StyledItemDummy = withStyles(style)(ItemPresenter)
+export const ContactListItem = withStyles(style)(_ContactListItem)
