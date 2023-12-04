@@ -4,35 +4,30 @@ import { ContactAvatar } from "../ContactAvatar"
 import withWidth, { WithWidth } from "@material-ui/core/withWidth"
 import { Link } from "../various"
 import clsx from "clsx"
-import { tw, useWidth } from "../../../utils"
+import { tw } from "../../../utils"
 
 type ItemPresenterProps = {
   contact: ContactListItemModel
   isSelected: boolean
+  variant: "bigger" | "smaller"
   onToggleFavorite(): void
   onDelete(): void
   onSelect(): void
-  smOrDown: boolean
 } & WithWidth
 
 const _ContactListItem = ({
   contact,
-  smOrDown,
   isSelected,
+  variant,
   onToggleFavorite,
   onDelete,
   onSelect,
 }: ItemPresenterProps) => {
-  const showEditLink = smOrDown || (!smOrDown && isSelected)
-  const showDeleteButton = showEditLink
-  const isLinkToDetails = showEditLink
-
-  const width = useWidth()
-  const isMd = width && width >= 768
+  const isBigger = variant === "bigger"
 
   const avatar = (
     <ContactAvatar
-      className={clsx(isMd && "mb-2 mt-5")}
+      className={clsx(isBigger && "mb-2 mt-5")}
       letter={contact.fullName[0]}
       style={contact.avatar}
       url={contact.avatarUrl}
@@ -42,28 +37,28 @@ const _ContactListItem = ({
   const name = (
     <p
       style={{ color: "rgba(0, 0, 0, 0.54)" }}
-      className={clsx("font-sans text-sm", isMd && "text-center")}
+      className={clsx("font-sans text-sm", isBigger && "text-center")}
     >
       {contact.fullName}
     </p>
   )
 
-  const favoriteAction = (
+  const showActions = variant === "smaller" || (isBigger && isSelected)
+
+  const favoriteAction = showActions && (
     <FavoriteAction
       onClick={onToggleFavorite}
       isFavorite={contact.isFavorite}
       iconClass="text-sm"
     />
   )
-  const editAction = showEditLink && <GoToEditAction contactId={contact.id} />
-  const deleteAction = showDeleteButton && <DeleteAction onConfirm={onDelete} />
+  const editAction = showActions && <GoToEditAction contactId={contact.id} />
+  const deleteAction = showActions && <DeleteAction onConfirm={onDelete} />
 
   const baseClass = tw.class`flex h-full items-center border-solid`
 
   switch (true) {
-    case !width:
-      return <></>
-    case isMd && !isLinkToDetails:
+    case isBigger && !isSelected:
       return (
         <div
           className={clsx(baseClass, "flex-col  justify-center border-2 border-secondary-light")}
@@ -73,7 +68,7 @@ const _ContactListItem = ({
           {name}
         </div>
       )
-    case isMd && isLinkToDetails:
+    case isBigger && isSelected:
       return (
         <Link className={clsx(baseClass, "flex-col justify-center border-2 border-primary-main")}>
           <div className="flex w-full justify-between px-1.5">

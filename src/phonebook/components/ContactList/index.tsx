@@ -6,6 +6,7 @@ import { ContactListItem as Item } from "./ContactListItem"
 import ContactAdder from "./ContactAdder"
 import withWidth, { WithWidth } from "@material-ui/core/withWidth"
 import clsx from "clsx"
+import { useWidth } from "../../../utils"
 
 type Props = {
   contacts: ContactListItem[]
@@ -21,20 +22,21 @@ const ContactList = withWidth()(({
   classes,
   includeAdder,
   className,
-  width,
   deleteContact,
   toggleFavorite,
 }: Props) => {
   const includeAdder_ = includeAdder || false
-  const smOrDown = width === "sm" || width === "xs"
 
   const [selectedItemId, setSelectedItemId] = useState(0)
+
+  const width = useWidth()
+  if (!width) return <></>
 
   const items = contacts.map(c => (
     <li key={c.id} className={classes.itemRoot}>
       <Item
         isSelected={selectedItemId === c.id}
-        smOrDown={smOrDown}
+        variant={width >= 768 ? "bigger" : "smaller"}
         onDelete={() => deleteContact(c.id)}
         onSelect={() => setSelectedItemId(c.id)}
         onToggleFavorite={() => toggleFavorite(c.id)}
