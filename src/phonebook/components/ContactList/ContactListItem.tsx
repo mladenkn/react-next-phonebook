@@ -55,7 +55,7 @@ const ItemPresenter = (p: ItemPresenterProps) => {
   const avatarAndName = (
     <Card
       className={clsx(
-        "h-full w-full border-2 border-solid border-secondary-light shadow-none",
+        "flex h-full w-full items-center border-2 border-solid border-secondary-light shadow-none",
         classes.avatarAndName,
         p.isSelected && classes.selected,
       )}

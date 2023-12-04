@@ -12,8 +12,6 @@ export default ({ palette, breakpoints }: Theme) =>
     },
     [breakpoints.down("sm")]: {
       avatarAndName: {
-        display: "flex",
-        alignItems: "center",
         paddingLeft: "3%",
       },
       action: {
@@ -46,6 +44,7 @@ export default ({ palette, breakpoints }: Theme) =>
     [breakpoints.up("md")]: {
       avatarAndName: {
         paddingTop: "15%",
+        display: "block",
       },
       selected: {
         borderColor: palette.primary.main,
