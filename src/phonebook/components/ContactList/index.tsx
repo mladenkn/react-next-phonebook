@@ -1,11 +1,8 @@
-import style from "./style"
 import { ContactListItem as ContactListItemModel } from "../../models"
 import { useState } from "react"
-import { withStyles, WithStyles } from "@material-ui/core"
 import ContactListItem from "./ContactListItem"
 import ContactAdder from "./ContactAdder"
-import withWidth, { WithWidth } from "@material-ui/core/withWidth"
-import clsx from "clsx"
+import withWidth from "@material-ui/core/withWidth"
 import { cn, useWidth } from "../../../utils"
 
 type Props = {
@@ -14,12 +11,10 @@ type Props = {
   includeAdder?: boolean
   deleteContact: (id: number) => void
   toggleFavorite: (id: number) => void
-} & WithStyles<typeof style> &
-  WithWidth
+}
 
 const ContactList = withWidth()(({
   contacts,
-  classes,
   includeAdder,
   className,
   deleteContact,
@@ -72,4 +67,4 @@ const ContactList = withWidth()(({
   )
 })
 
-export default withStyles(style)(ContactList)
+export default ContactList
