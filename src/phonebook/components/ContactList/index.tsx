@@ -6,7 +6,7 @@ import ContactListItem from "./ContactListItem"
 import ContactAdder from "./ContactAdder"
 import withWidth, { WithWidth } from "@material-ui/core/withWidth"
 import clsx from "clsx"
-import { useWidth } from "../../../utils"
+import { cn, useWidth } from "../../../utils"
 
 type Props = {
   contacts: ContactListItemModel[]
@@ -54,7 +54,19 @@ const ContactList = withWidth()(({
     items.unshift(adder)
   }
 
-  return <ul className={clsx(classes.root, className)}>{items}</ul>
+  const isBigger = width >= 768
+
+  return (
+    <ul
+      className={cn(
+        "flex w-full flex-col",
+        isBigger && "flex-row flex-wrap justify-center",
+        className,
+      )}
+    >
+      {items}
+    </ul>
+  )
 })
 
 export default withStyles(style)(ContactList)
