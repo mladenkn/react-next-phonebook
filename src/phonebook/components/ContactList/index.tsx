@@ -30,10 +30,10 @@ const ContactList = withWidth()(({
   const variant = width >= 768 ? "bigger" : "smaller"
   const isBigger = variant == "bigger"
 
-  const itemRoot_class = cn("h-16 w-full pt-1", isBigger && "w-60 h-36 p-1")
+  const itemRootClass = cn("h-16 w-full pt-1", isBigger && "w-60 h-36 p-1")
 
   const items = contacts.map(c => (
-    <li key={c.id} className={itemRoot_class}>
+    <li key={c.id} className={itemRootClass}>
       <ContactListItem
         isSelected={selectedItemId === c.id}
         variant={variant}
@@ -47,7 +47,7 @@ const ContactList = withWidth()(({
 
   if (includeAdder_) {
     const adder = (
-      <li key={0} className={itemRoot_class}>
+      <li key={0} className={itemRootClass}>
         <ContactAdder />
       </li>
     )
