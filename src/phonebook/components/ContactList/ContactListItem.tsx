@@ -7,6 +7,7 @@ import withWidth, { WithWidth } from "@material-ui/core/withWidth"
 import { Link } from "../various"
 import clsx from "clsx"
 import { tw } from "../../../utils"
+import { useState, useLayoutEffect } from "react"
 
 type ItemPresenterProps = {
   contact: ContactListItemModel
@@ -23,7 +24,6 @@ const _ContactListItem = ({
   contact,
   smOrDown,
   isSelected,
-  width,
   onToggleFavorite,
   onDelete,
   onSelect,
@@ -32,9 +32,12 @@ const _ContactListItem = ({
   const showDeleteButton = showEditLink
   const isLinkToDetails = showEditLink
 
+  const width = useWidth()
+  const isMd = width && width >= 768
+
   const avatar = (
     <ContactAvatar
-      className="md:mb-2 md:mt-5"
+      className={clsx(isMd && "mb-2 mt-5")}
       letter={contact.fullName[0]}
       style={contact.avatar}
       url={contact.avatarUrl}
@@ -42,7 +45,10 @@ const _ContactListItem = ({
   )
 
   const name = (
-    <p style={{ color: "rgba(0, 0, 0, 0.54)" }} className="font-sans text-sm lg:text-center">
+    <p
+      style={{ color: "rgba(0, 0, 0, 0.54)" }}
+      className={clsx("font-sans text-sm", isMd && "text-center")}
+    >
       {contact.fullName}
     </p>
   )
@@ -66,7 +72,9 @@ const _ContactListItem = ({
   const baseClass = tw.class`flex h-full items-center border-solid`
 
   switch (true) {
-    case width === "md" && !isLinkToDetails:
+    case !width:
+      return <></>
+    case width! >= 768 && !isLinkToDetails:
       return (
         <div
           className={clsx(baseClass, "flex-col  justify-center border-2 border-secondary-light")}
@@ -76,7 +84,7 @@ const _ContactListItem = ({
           {name}
         </div>
       )
-    case width === "md" && isLinkToDetails:
+    case width! >= 768 && isLinkToDetails:
       return (
         <Link className={clsx(baseClass, "flex-col justify-center border-2 border-primary-main")}>
           <div className="flex w-full justify-between px-1.5">
@@ -111,3 +119,22 @@ const _ContactListItem = ({
 }
 
 export const ContactListItem = withWidth()(withStyles(style)(_ContactListItem))
+
+export function useWidth() {
+  const [size, setSize] = useState<number>()
+
+  useLayoutEffect(() => {
+    const handleResize = () => {
+      setSize(window.innerWidth)
+    }
+
+    handleResize()
+    window.addEventListener("resize", handleResize)
+
+    return () => {
+      window.removeEventListener("resize", handleResize)
+    }
+  }, [])
+
+  return size
+}
