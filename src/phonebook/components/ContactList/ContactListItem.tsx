@@ -1,6 +1,6 @@
 import style from "./ContactListItem.style"
 import { ContactListItem as ContactListItemModel } from "../../models"
-import { Card, withStyles, WithStyles } from "@material-ui/core"
+import { Paper, useTheme, withStyles, WithStyles } from "@material-ui/core"
 import { Link } from "../various"
 import { contactDetailsUrl } from "../../urls"
 import { GoToEditAction, FavoriteAction, DeleteAction } from "../actions"
@@ -30,7 +30,7 @@ const _ContactListItem = ({
   const isLinkToDetails = showEditLink
 
   const avatarAndName = (
-    <Card
+    <div
       className={clsx(
         "flex h-full w-full items-center border-2 border-solid border-secondary-light shadow-none md:block",
         classes.avatarAndName,
@@ -44,9 +44,11 @@ const _ContactListItem = ({
         url={contact.avatarUrl}
       />
       <div className={classes.nameBox}>
-        <p className="font-sans text-sm lg:text-center">{contact.fullName}</p>
+        <p style={{ color: "rgba(0, 0, 0, 0.54)" }} className="font-sans text-sm lg:text-center">
+          {contact.fullName}
+        </p>
       </div>
-    </Card>
+    </div>
   )
 
   const favoriteAction = (
