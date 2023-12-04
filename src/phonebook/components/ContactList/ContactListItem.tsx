@@ -53,7 +53,13 @@ const ItemPresenter = (p: ItemPresenterProps) => {
   const { classes, contact, onToggleFavorite, onDelete, onSelect } = p
 
   const avatarAndName = (
-    <Card className={clsx(classes.avatarAndName, p.isSelected && classes.selected)}>
+    <Card
+      className={clsx(
+        "h-full w-full border-2 border-solid border-secondary-light shadow-none",
+        classes.avatarAndName,
+        p.isSelected && classes.selected,
+      )}
+    >
       <ContactAvatar
         className={classes.avatar}
         letter={p.contact.fullName[0]}

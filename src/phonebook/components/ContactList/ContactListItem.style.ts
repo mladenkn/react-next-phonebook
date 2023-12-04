@@ -10,14 +10,6 @@ export default ({ palette, breakpoints }: Theme) =>
     action: {
       position: "absolute",
     },
-    avatarAndName: {
-      height: "100%",
-      width: "100%",
-      borderWidth: 1,
-      borderStyle: "solid",
-      borderColor: palette.secondary.light,
-      boxShadow: "inherit",
-    },
     [breakpoints.down("sm")]: {
       avatarAndName: {
         display: "flex",
