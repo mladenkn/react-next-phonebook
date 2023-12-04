@@ -16,10 +16,16 @@ type ItemPresenterProps = {
   smOrDown: boolean
 } & WithStyles<typeof style>
 
-const _ContactListItem = (p: ItemPresenterProps) => {
-  const { classes, contact, onToggleFavorite, onDelete, onSelect } = p
-
-  const showEditLink = p.smOrDown || (!p.smOrDown && p.isSelected)
+const _ContactListItem = ({
+  classes,
+  contact,
+  smOrDown,
+  isSelected,
+  onToggleFavorite,
+  onDelete,
+  onSelect,
+}: ItemPresenterProps) => {
+  const showEditLink = smOrDown || (!smOrDown && isSelected)
   const showDeleteButton = showEditLink
   const isLinkToDetails = showEditLink
 
@@ -28,14 +34,14 @@ const _ContactListItem = (p: ItemPresenterProps) => {
       className={clsx(
         "flex h-full w-full items-center border-2 border-solid border-secondary-light shadow-none md:block",
         classes.avatarAndName,
-        p.isSelected && "border-primary-main",
+        isSelected && "border-primary-main",
       )}
     >
       <ContactAvatar
         className="md:order-2 md:m-auto md:mb-2 md:h-12 md:w-12"
-        letter={p.contact.fullName[0]}
-        style={p.contact.avatar}
-        url={p.contact.avatarUrl}
+        letter={contact.fullName[0]}
+        style={contact.avatar}
+        url={contact.avatarUrl}
       />
       <div className={classes.nameBox}>
         <p className="font-sans text-sm lg:text-center">{contact.fullName}</p>
