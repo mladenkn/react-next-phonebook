@@ -6,8 +6,7 @@ import { ContactAvatar } from "../ContactAvatar"
 import withWidth, { WithWidth } from "@material-ui/core/withWidth"
 import { Link } from "../various"
 import clsx from "clsx"
-import { tw } from "../../../utils"
-import { useState, useLayoutEffect } from "react"
+import { tw, useWidth } from "../../../utils"
 
 type ItemPresenterProps = {
   contact: ContactListItemModel
@@ -74,7 +73,7 @@ const _ContactListItem = ({
   switch (true) {
     case !width:
       return <></>
-    case width! >= 768 && !isLinkToDetails:
+    case isMd && !isLinkToDetails:
       return (
         <div
           className={clsx(baseClass, "flex-col  justify-center border-2 border-secondary-light")}
@@ -84,7 +83,7 @@ const _ContactListItem = ({
           {name}
         </div>
       )
-    case width! >= 768 && isLinkToDetails:
+    case isMd && isLinkToDetails:
       return (
         <Link className={clsx(baseClass, "flex-col justify-center border-2 border-primary-main")}>
           <div className="flex w-full justify-between px-1.5">
@@ -119,22 +118,3 @@ const _ContactListItem = ({
 }
 
 export const ContactListItem = withWidth()(withStyles(style)(_ContactListItem))
-
-export function useWidth() {
-  const [size, setSize] = useState<number>()
-
-  useLayoutEffect(() => {
-    const handleResize = () => {
-      setSize(window.innerWidth)
-    }
-
-    handleResize()
-    window.addEventListener("resize", handleResize)
-
-    return () => {
-      window.removeEventListener("resize", handleResize)
-    }
-  }, [])
-
-  return size
-}

@@ -1,6 +1,7 @@
 import { faker } from "@faker-js/faker"
 import { isNil } from "lodash"
 import _tw from "tailwind-styled-components"
+import { useState, useLayoutEffect } from "react"
 
 export const tw = {
   ..._tw,
@@ -62,3 +63,22 @@ export function asNonNil<T>(val?: T) {
 }
 
 export const eva = <T>(f: () => T) => f()
+
+export function useWidth() {
+  const [size, setSize] = useState<number>()
+
+  useLayoutEffect(() => {
+    const handleResize = () => {
+      setSize(window.innerWidth)
+    }
+
+    handleResize()
+    window.addEventListener("resize", handleResize)
+
+    return () => {
+      window.removeEventListener("resize", handleResize)
+    }
+  }, [])
+
+  return size
+}
