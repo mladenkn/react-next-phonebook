@@ -39,7 +39,7 @@ const Home = () => {
             My favorites
           </StyledTab>
         </div>
-        <Divider className={classes.contactTabsDivider} />
+        <div className="h-0.25 mt-2 w-full bg-primary-main sm:mt-6" />
         <div className={searchWrapper_class}>
           <SearchIcon className="ml-2 mr-2 text-gray-500" />
           <input className="h-12 w-full p-2 text-lg text-gray-500 outline-none" />

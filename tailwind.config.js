@@ -25,6 +25,9 @@ module.exports = {
       },
       boxShadow: {
         homeSearch: "0 0 12px",
+      },
+      height: {
+        0.25: "0.062rem"
       }
     },
   },
