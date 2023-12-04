@@ -2,7 +2,6 @@ import { useState } from "react"
 import ContactList from "./ContactList"
 import { useContactListOps } from "../logic/contactListOps"
 import SearchIcon from "@material-ui/icons/Search"
-import useHomeSectionStyles from "./HomeSection.style"
 import clsx from "clsx"
 import { tw } from "../../utils"
 
@@ -15,8 +14,6 @@ const searchWrapper_class = tw.class`
 `
 
 const Home = () => {
-  const classes = useHomeSectionStyles()
-
   const [currentTab, setCurrentTab] = useState(0)
   const ops = useContactListOps()
 
@@ -49,7 +46,7 @@ const Home = () => {
             deleteContact={ops.deleteContact}
             toggleFavorite={ops.toggleFavorite}
             includeAdder
-            className={classes.list}
+            className="mt-3 sm:mt-6"
           />
         )}
       </div>
