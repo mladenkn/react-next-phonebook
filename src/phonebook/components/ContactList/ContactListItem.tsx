@@ -5,6 +5,7 @@ import { GoToEditAction, FavoriteAction, DeleteAction } from "../actions"
 import { ContactAvatar } from "../ContactAvatar"
 import withWidth, { WithWidth } from "@material-ui/core/withWidth"
 import { Link } from "../various"
+import clsx from "clsx"
 
 type ItemPresenterProps = {
   contact: ContactListItemModel
@@ -61,11 +62,13 @@ const _ContactListItem = ({
     <DeleteAction onConfirm={onDelete} iconClass={classes.icon} />
   )
 
+  const baseClass = "flex h-full items-center border-solid"
+
   switch (true) {
     case width === "md" && !isLinkToDetails:
       return (
         <div
-          className="flex h-full flex-col items-center justify-center border-2 border-solid border-secondary-light"
+          className={clsx(baseClass, "flex-col  justify-center border-2 border-secondary-light")}
           onClick={onSelect}
         >
           {avatar}
@@ -74,7 +77,7 @@ const _ContactListItem = ({
       )
     case width === "md" && isLinkToDetails:
       return (
-        <Link className="flex h-full flex-col items-center justify-center border-2 border-solid border-primary-main">
+        <Link className={clsx(baseClass, "flex-col justify-center border-2 border-primary-main")}>
           <div className="flex w-full justify-between px-1.5">
             {favoriteAction}
             <span>
@@ -88,7 +91,12 @@ const _ContactListItem = ({
       )
     default:
       return (
-        <div className="flex h-full w-full items-center justify-between border-2 border-solid border-secondary-light shadow-none">
+        <div
+          className={clsx(
+            baseClass,
+            "w-full justify-between border-2 border-secondary-light shadow-none",
+          )}
+        >
           {avatar}
           {name}
           <span>
