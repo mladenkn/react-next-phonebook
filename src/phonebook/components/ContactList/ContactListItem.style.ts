@@ -7,10 +7,6 @@ export default ({ palette, breakpoints }: Theme) =>
         textDecoration: "none",
       },
     },
-    name: {
-      fontSize: "0.9rem",
-      fontFamiliy: "sans-serif",
-    },
     action: {
       position: "absolute",
     },
@@ -71,9 +67,6 @@ export default ({ palette, breakpoints }: Theme) =>
       },
       nameBox: {
         order: 2,
-      },
-      name: {
-        textAlign: "center",
       },
       action: {
         top: "5%",

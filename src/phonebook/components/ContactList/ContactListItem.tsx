@@ -61,7 +61,7 @@ const ItemPresenter = (p: ItemPresenterProps) => {
         url={p.contact.avatarUrl}
       />
       <div className={classes.nameBox}>
-        <Typography className={classes.name}>{contact.fullName}</Typography>
+        <Typography className="font-sans text-sm lg:text-center">{contact.fullName}</Typography>
       </div>
     </Card>
   )
