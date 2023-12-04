@@ -1,15 +1,15 @@
 import style from "./style"
-import { ContactListItem } from "../../models"
+import { ContactListItem as ContactListItemModel } from "../../models"
 import { useState } from "react"
 import { withStyles, WithStyles } from "@material-ui/core"
-import { ContactListItem as Item } from "./ContactListItem"
+import ContactListItem from "./ContactListItem"
 import ContactAdder from "./ContactAdder"
 import withWidth, { WithWidth } from "@material-ui/core/withWidth"
 import clsx from "clsx"
 import { useWidth } from "../../../utils"
 
 type Props = {
-  contacts: ContactListItem[]
+  contacts: ContactListItemModel[]
   className?: string
   includeAdder?: boolean
   deleteContact: (id: number) => void
@@ -34,7 +34,7 @@ const ContactList = withWidth()(({
 
   const items = contacts.map(c => (
     <li key={c.id} className={classes.itemRoot}>
-      <Item
+      <ContactListItem
         isSelected={selectedItemId === c.id}
         variant={width >= 768 ? "bigger" : "smaller"}
         onDelete={() => deleteContact(c.id)}

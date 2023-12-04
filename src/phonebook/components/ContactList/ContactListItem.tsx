@@ -1,7 +1,6 @@
 import { ContactListItem as ContactListItemModel } from "../../models"
 import { GoToEditAction, FavoriteAction, DeleteAction } from "../actions"
 import { ContactAvatar } from "../ContactAvatar"
-import withWidth, { WithWidth } from "@material-ui/core/withWidth"
 import { Link } from "../various"
 import clsx from "clsx"
 import { tw } from "../../../utils"
@@ -13,9 +12,9 @@ type ItemPresenterProps = {
   onToggleFavorite(): void
   onDelete(): void
   onSelect(): void
-} & WithWidth
+}
 
-const _ContactListItem = ({
+const ContactListItem = ({
   contact,
   isSelected,
   variant,
@@ -102,4 +101,4 @@ const _ContactListItem = ({
   }
 }
 
-export const ContactListItem = withWidth()(_ContactListItem)
+export default ContactListItem
