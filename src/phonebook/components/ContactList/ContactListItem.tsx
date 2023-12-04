@@ -92,7 +92,7 @@ const ItemPresenter = (p: ItemPresenterProps) => {
   )
 
   return p.isLinkToDetails ? (
-    <div className={classes.root}>
+    <div className="relative h-full w-full">
       <Link href={contactDetailsUrl(contact.id)} className={clsx("block h-full", classes.rootLink)}>
         {avatarAndName}
       </Link>
