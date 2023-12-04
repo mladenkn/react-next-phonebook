@@ -1,7 +1,7 @@
 import style from "./style"
 import { ContactListItem } from "../../models"
-import React, { useState } from "react"
-import { List, ListItem, withStyles, WithStyles } from "@material-ui/core"
+import { useState } from "react"
+import { withStyles, WithStyles } from "@material-ui/core"
 import { ContactListItem as Item } from "./ContactListItem"
 import ContactAdder from "./ContactAdder"
 import withWidth, { WithWidth } from "@material-ui/core/withWidth"
@@ -31,7 +31,7 @@ const ContactList = withWidth()(({
   const [selectedItemId, setSelectedItemId] = useState(0)
 
   const items = contacts.map(c => (
-    <ListItem key={c.id} className={classes.itemRoot}>
+    <li key={c.id} className={classes.itemRoot}>
       <Item
         isSelected={selectedItemId === c.id}
         smOrDown={smOrDown}
@@ -40,19 +40,19 @@ const ContactList = withWidth()(({
         onToggleFavorite={() => toggleFavorite(c.id)}
         contact={c}
       />
-    </ListItem>
+    </li>
   ))
 
   if (includeAdder_) {
     const adder = (
-      <ListItem key={0} className={classes.itemRoot}>
+      <li key={0} className={classes.itemRoot}>
         <ContactAdder />
-      </ListItem>
+      </li>
     )
     items.unshift(adder)
   }
 
-  return <List className={clsx(classes.root, className)}>{items}</List>
+  return <ul className={clsx(classes.root, className)}>{items}</ul>
 })
 
 export default withStyles(style)(ContactList)

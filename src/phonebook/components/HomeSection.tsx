@@ -1,7 +1,6 @@
 import { useState } from "react"
 import ContactList from "./ContactList"
 import { useContactListOps } from "../logic/contactListOps"
-import { Divider } from "./various"
 import SearchIcon from "@material-ui/icons/Search"
 import useHomeSectionStyles from "./HomeSection.style"
 import clsx from "clsx"
