@@ -1,6 +1,4 @@
-import style from "./ContactListItem.style"
 import { ContactListItem as ContactListItemModel } from "../../models"
-import { withStyles, WithStyles } from "@material-ui/core"
 import { GoToEditAction, FavoriteAction, DeleteAction } from "../actions"
 import { ContactAvatar } from "../ContactAvatar"
 import withWidth, { WithWidth } from "@material-ui/core/withWidth"
@@ -15,11 +13,9 @@ type ItemPresenterProps = {
   onDelete(): void
   onSelect(): void
   smOrDown: boolean
-} & WithStyles<typeof style> &
-  WithWidth
+} & WithWidth
 
 const _ContactListItem = ({
-  classes,
   contact,
   smOrDown,
   isSelected,
@@ -56,17 +52,11 @@ const _ContactListItem = ({
     <FavoriteAction
       onClick={onToggleFavorite}
       isFavorite={contact.isFavorite}
-      iconClass={classes.icon}
+      iconClass="text-sm"
     />
   )
-
-  const editAction = showEditLink && (
-    <GoToEditAction contactId={contact.id} iconClass={classes.icon} />
-  )
-
-  const deleteAction = showDeleteButton && (
-    <DeleteAction onConfirm={onDelete} iconClass={classes.icon} />
-  )
+  const editAction = showEditLink && <GoToEditAction contactId={contact.id} />
+  const deleteAction = showDeleteButton && <DeleteAction onConfirm={onDelete} />
 
   const baseClass = tw.class`flex h-full items-center border-solid`
 
@@ -117,4 +107,4 @@ const _ContactListItem = ({
   }
 }
 
-export const ContactListItem = withWidth()(withStyles(style)(_ContactListItem))
+export const ContactListItem = withWidth()(_ContactListItem)
