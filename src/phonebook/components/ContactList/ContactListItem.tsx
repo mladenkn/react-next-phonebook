@@ -3,6 +3,8 @@ import { ContactListItem as ContactListItemModel } from "../../models"
 import { withStyles, WithStyles } from "@material-ui/core"
 import { GoToEditAction, FavoriteAction, DeleteAction } from "../actions"
 import { ContactAvatar } from "../ContactAvatar"
+import withWidth, { WithWidth } from "@material-ui/core/withWidth"
+import { Link } from "../various"
 
 type ItemPresenterProps = {
   contact: ContactListItemModel
@@ -11,13 +13,15 @@ type ItemPresenterProps = {
   onDelete(): void
   onSelect(): void
   smOrDown: boolean
-} & WithStyles<typeof style>
+} & WithStyles<typeof style> &
+  WithWidth
 
 const _ContactListItem = ({
   classes,
   contact,
   smOrDown,
   isSelected,
+  width,
   onToggleFavorite,
   onDelete,
   onSelect,
@@ -28,7 +32,7 @@ const _ContactListItem = ({
 
   const avatar = (
     <ContactAvatar
-      className="md:m-auto md:mb-2 md:h-12 md:w-12"
+      className="md:mb-2 md:mt-5"
       letter={contact.fullName[0]}
       style={contact.avatar}
       url={contact.avatarUrl}
@@ -57,11 +61,36 @@ const _ContactListItem = ({
     <DeleteAction onConfirm={onDelete} iconClass={classes.icon} />
   )
 
+  if (width === "md" && !isLinkToDetails) {
+    return (
+      <div
+        className="flex h-full flex-col items-center justify-center border-2 border-solid border-secondary-light"
+        onClick={onSelect}
+      >
+        {avatar}
+        {name}
+      </div>
+    )
+  }
+
+  if (width === "md" && isLinkToDetails) {
+    return (
+      <Link className="flex h-full flex-col items-center justify-center border-2 border-solid border-primary-main">
+        <div className="flex w-full justify-between">
+          {favoriteAction}
+          <span>
+            {editAction}
+            {deleteAction}
+          </span>
+        </div>
+        {avatar}
+        {name}
+      </Link>
+    )
+  }
+
   return (
-    <div
-      className="relative flex h-full w-full items-center justify-between border-solid border-secondary-light shadow-none"
-      onClick={isLinkToDetails ? undefined : onSelect}
-    >
+    <div className="flex h-full w-full items-center justify-between border-2 border-solid border-secondary-light shadow-none">
       {avatar}
       {name}
       <span>
@@ -73,4 +102,4 @@ const _ContactListItem = ({
   )
 }
 
-export const ContactListItem = withStyles(style)(_ContactListItem)
+export const ContactListItem = withWidth()(withStyles(style)(_ContactListItem))
