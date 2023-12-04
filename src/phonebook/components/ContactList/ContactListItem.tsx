@@ -8,7 +8,7 @@ import { tw } from "../../../utils"
 type ItemPresenterProps = {
   contact: ContactListItemModel
   isSelected: boolean
-  variant: "bigger" | "smaller"
+  variant: "smaller" | "bigger"
   onToggleFavorite(): void
   onDelete(): void
   onSelect(): void
