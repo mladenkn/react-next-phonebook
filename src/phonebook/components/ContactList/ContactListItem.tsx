@@ -6,6 +6,7 @@ import { ContactAvatar } from "../ContactAvatar"
 import withWidth, { WithWidth } from "@material-ui/core/withWidth"
 import { Link } from "../various"
 import clsx from "clsx"
+import { tw } from "../../../utils"
 
 type ItemPresenterProps = {
   contact: ContactListItemModel
@@ -62,7 +63,7 @@ const _ContactListItem = ({
     <DeleteAction onConfirm={onDelete} iconClass={classes.icon} />
   )
 
-  const baseClass = "flex h-full items-center border-solid"
+  const baseClass = tw.class`flex h-full items-center border-solid`
 
   switch (true) {
     case width === "md" && !isLinkToDetails:
