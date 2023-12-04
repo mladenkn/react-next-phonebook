@@ -61,7 +61,7 @@ const ItemPresenter = (p: ItemPresenterProps) => {
       )}
     >
       <ContactAvatar
-        className={classes.avatar}
+        className="md:order-2 md:m-auto md:mb-2 md:h-12 md:w-12"
         letter={p.contact.fullName[0]}
         style={p.contact.avatar}
         url={p.contact.avatarUrl}

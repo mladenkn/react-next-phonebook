@@ -1,6 +1,6 @@
 import { createStyles, Theme } from "@material-ui/core"
 
-export default ({ palette, breakpoints }: Theme) =>
+export default ({ breakpoints }: Theme) =>
   createStyles({
     rootLink: {
       "&:hover": {
@@ -44,13 +44,6 @@ export default ({ palette, breakpoints }: Theme) =>
     [breakpoints.up("md")]: {
       avatarAndName: {
         paddingTop: "15%",
-      },
-      avatar: {
-        order: 2,
-        margin: "auto",
-        marginBottom: 10,
-        height: 50,
-        width: 50,
       },
       nameBox: {
         order: 2,
