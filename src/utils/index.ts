@@ -2,6 +2,12 @@ import { faker } from "@faker-js/faker"
 import { isNil } from "lodash"
 import _tw from "tailwind-styled-components"
 import { useState, useLayoutEffect } from "react"
+import { ClassValue, clsx } from "clsx"
+import { twMerge } from "tailwind-merge"
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs))
+}
 
 export const tw = {
   ..._tw,
