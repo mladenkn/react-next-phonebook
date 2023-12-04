@@ -93,7 +93,7 @@ const ItemPresenter = (p: ItemPresenterProps) => {
 
   return p.isLinkToDetails ? (
     <div className={classes.root}>
-      <Link href={contactDetailsUrl(contact.id)} className={classes.rootLink}>
+      <Link href={contactDetailsUrl(contact.id)} className={clsx("block h-full", classes.rootLink)}>
         {avatarAndName}
       </Link>
       {favoriteAction}

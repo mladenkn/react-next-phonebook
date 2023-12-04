@@ -3,8 +3,6 @@ import { createStyles, Theme } from "@material-ui/core"
 export default ({ palette, breakpoints }: Theme) =>
   createStyles({
     rootLink: {
-      display: "block",
-      height: "100%",
       "&:hover": {
         textDecoration: "none",
       },
@@ -58,11 +56,6 @@ export default ({ palette, breakpoints }: Theme) =>
       },
     },
     [breakpoints.up("md")]: {
-      rootLink: {
-        "&:hover": {
-          textDecoration: "none",
-        },
-      },
       avatarAndName: {
         paddingTop: "15%",
       },
