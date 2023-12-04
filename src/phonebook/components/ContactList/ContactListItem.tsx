@@ -101,7 +101,7 @@ const ItemPresenter = (p: ItemPresenterProps) => {
       {deleteAction}
     </div>
   ) : (
-    <div className={classes.root} onClick={onSelect}>
+    <div className="relative h-full w-full" onClick={onSelect}>
       {avatarAndName}
       {favoriteAction}
       {editAction}

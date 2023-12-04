@@ -2,11 +2,6 @@ import { createStyles, Theme } from "@material-ui/core"
 
 export default ({ palette, breakpoints }: Theme) =>
   createStyles({
-    root: {
-      width: "100%",
-      height: "100%",
-      position: "relative",
-    },
     rootLink: {
       display: "block",
       height: "100%",
@@ -30,7 +25,6 @@ export default ({ palette, breakpoints }: Theme) =>
       boxShadow: "inherit",
     },
     [breakpoints.down("sm")]: {
-      root: {},
       avatarAndName: {
         display: "flex",
         alignItems: "center",
