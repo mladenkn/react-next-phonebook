@@ -45,9 +45,6 @@ export default ({ palette, breakpoints }: Theme) =>
       avatarAndName: {
         paddingTop: "15%",
       },
-      selected: {
-        borderColor: palette.primary.main,
-      },
       avatar: {
         order: 2,
         margin: "auto",

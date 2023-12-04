@@ -57,7 +57,7 @@ const ItemPresenter = (p: ItemPresenterProps) => {
       className={clsx(
         "flex h-full w-full items-center border-2 border-solid border-secondary-light shadow-none md:block",
         classes.avatarAndName,
-        p.isSelected && classes.selected,
+        p.isSelected && "border-primary-main",
       )}
     >
       <ContactAvatar
