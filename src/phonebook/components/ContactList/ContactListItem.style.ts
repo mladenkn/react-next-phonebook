@@ -49,9 +49,6 @@ export default ({ palette, breakpoints }: Theme) =>
         top: "33%",
         right: "2%",
       },
-      avatar: {
-        display: "inline-block",
-      },
       nameBox: {
         marginLeft: "5%",
         width: "50%",
