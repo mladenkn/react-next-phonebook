@@ -3,7 +3,7 @@ import ContactDetailsFields from "./ContactDetailsFields"
 import style from "./style"
 import { FavoriteAction, GoToEditAction, GoBackAction } from "../actions"
 import { WithStyles, withStyles, Typography } from "@material-ui/core"
-import { useContactPageBaseStylesXs, useContactPageBaseStylesMd } from "../ContactPageBase.style"
+import { useContactPageBaseStylesMd, ContactPageBaseStylesXs } from "../ContactPageBase.style"
 import useMediaQuery from "@material-ui/core/useMediaQuery"
 import { ContactAvatar } from "../ContactAvatar"
 import clsx from "clsx"
@@ -41,21 +41,20 @@ const ContactDetailsPage = ({ contact, classes, onFavorite }: Props) => {
     />
   )
 
-  const xsBaseClasses = useContactPageBaseStylesXs()
   const mdBaseClasses = useContactPageBaseStylesMd()
 
   const onlyXs = useMediaQuery("(max-width:599px)")
 
   if (onlyXs) {
     return (
-      <div className={clsx(xsBaseClasses.root, classes.root)}>
-        <div className={xsBaseClasses.toolbar}>
+      <div className={clsx(ContactPageBaseStylesXs.root, classes.root)}>
+        <div className={ContactPageBaseStylesXs.toolbar}>
           {backAction}
           {favAction}
           {editAction}
         </div>
-        <div className={xsBaseClasses.body}>
-          <div className={xsBaseClasses.heading}>
+        <div className={ContactPageBaseStylesXs.body}>
+          <div className={ContactPageBaseStylesXs.heading}>
             {avatar}
             {name}
           </div>

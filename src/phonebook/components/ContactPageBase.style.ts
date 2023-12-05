@@ -1,29 +1,12 @@
 import { createStyles, Theme, makeStyles } from "@material-ui/core"
+import { cn } from "../../utils"
 
-const contactPageBaseXs = ({ palette }: Theme) =>
-  createStyles({
-    root: {},
-    toolbar: {
-      marginTop: 15,
-      padding: "0px 8px 10px",
-      display: "flex",
-      alignItems: "center",
-      borderBottom: `1px solid ${palette.secondary.main}`,
-    },
-    heading: {
-      display: "flex",
-      borderBottom: `1px solid ${palette.primary.main}`,
-      padding: "10px 0px 20px",
-      alignItems: "center",
-    },
-    body: {
-      padding: "8px 15px 0px 15px",
-    },
-  })
-
-export const useContactPageBaseStylesXs = makeStyles(contactPageBaseXs, {
-  name: "ContactPageBaseXs",
-})
+export const ContactPageBaseStylesXs = {
+  root: cn(""),
+  toolbar: cn("border-b-1 mt-4 flex items-center border-secondary-main px-2 pb-2 pt-0"),
+  heading: cn("border-b-1 flex items-center border-primary-main px-0 pb-5 pt-2"),
+  body: cn("pb-0 pl-4 pr-4 pt-2"),
+}
 
 const contactPageBaseMd = ({ palette }: Theme) =>
   createStyles({

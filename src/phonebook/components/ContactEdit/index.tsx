@@ -1,11 +1,11 @@
 import { Contact } from "../../models"
-import React, { useState } from "react"
+import { useState } from "react"
 import style from "./style"
 import { DeleteAction, GoBackAction } from "../actions"
 import { WithStyles, withStyles, Button } from "@material-ui/core"
 import useMediaQuery from "@material-ui/core/useMediaQuery"
 import ContactForm from "./ContactForm"
-import { useContactPageBaseStylesXs, useContactPageBaseStylesMd } from "../ContactPageBase.style"
+import { ContactPageBaseStylesXs, useContactPageBaseStylesMd } from "../ContactPageBase.style"
 import { useGoBack } from "../../logic/GoBackContext"
 import { SwapableAvatar } from "../SwapableAvatar"
 
@@ -78,7 +78,6 @@ const ContactEditPage = ({ contact, classes, onSave, onDelete }: Props) => {
     </div>
   )
 
-  const xsBaseClasses = useContactPageBaseStylesXs()
   const mdBaseClasses = useContactPageBaseStylesMd()
 
   const downSm = useMediaQuery("(max-width:959px)")
@@ -86,13 +85,13 @@ const ContactEditPage = ({ contact, classes, onSave, onDelete }: Props) => {
   if (downSm) {
     return (
       <div className={classes.shallowRoot}>
-        <div className={xsBaseClasses.root + " " + classes.root}>
-          <div className={xsBaseClasses.toolbar}>
+        <div className={ContactPageBaseStylesXs.root + " " + classes.root}>
+          <div className={ContactPageBaseStylesXs.toolbar}>
             {backAction}
             {deleteAction}
           </div>
-          <div className={xsBaseClasses.body}>
-            <div className={xsBaseClasses.heading + " " + classes.heading}>{avatar}</div>
+          <div className={ContactPageBaseStylesXs.body}>
+            <div className={ContactPageBaseStylesXs.heading + " " + classes.heading}>{avatar}</div>
             <div className={classes.formAndButtons}>
               {form}
               {buttons}
