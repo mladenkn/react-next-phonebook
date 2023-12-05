@@ -13,16 +13,16 @@ const ContactDetailsPage = ({ contact, onFavorite }: Props) => {
   const favAction = <FavoriteAction onClick={onFavorite} isFavorite={contact.isFavorite} />
   const editAction = <GoToEditAction contactId={contact.id} rootClass="inline-flex items-center" />
 
+  const onlyXs = useMediaQuery("(max-width:599px)")
+
   const avatar = (
     <ContactAvatar
       style={contact.avatar}
-      className="ml-2 mr-3 h-16 w-16"
+      className={cn("ml-2 mr-3 h-16 w-16", !onlyXs && "h-44 w-44")}
       url={contact.avatarUrl}
       letter={contact.fullName[0]}
     />
   )
-
-  const onlyXs = useMediaQuery("(max-width:599px)")
 
   if (onlyXs) {
     return (
