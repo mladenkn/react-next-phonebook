@@ -1,27 +1,8 @@
 import { createStyles, Theme } from "@material-ui/core"
 
-export default ({ palette, breakpoints }: Theme) =>
+export default ({ breakpoints }: Theme) =>
   createStyles({
-    root: {
-      color: palette.text.primary,
-    },
-    editAction: {
-      display: "inline-flex",
-      alignItems: "center",
-    },
-    action: {},
-    icon: {},
-
     [breakpoints.only("xs")]: {
-      personName: {
-        fontSize: "1.5rem",
-      },
-      avatar: {
-        marginLeft: "1%",
-        marginRight: "5%",
-        width: 70,
-        height: 70,
-      },
       favAction: {
         marginLeft: "75%",
       },

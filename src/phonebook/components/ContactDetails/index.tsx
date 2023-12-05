@@ -11,31 +11,14 @@ import clsx from "clsx"
 type Props = { contact: Contact; onFavorite: () => void } & WithStyles<typeof style>
 
 const ContactDetailsPage = ({ contact, classes, onFavorite }: Props) => {
-  const backAction = <GoBackAction />
-
-  const name = <Typography className={classes.personName}>{contact.fullName}</Typography>
-
-  const favAction = (
-    <FavoriteAction
-      onClick={onFavorite}
-      isFavorite={contact.isFavorite}
-      rootClass={clsx(classes.action, classes.favAction)}
-      iconClass={classes.icon}
-    />
-  )
-
-  const editAction = (
-    <GoToEditAction
-      contactId={contact.id}
-      rootClass={clsx(classes.action, classes.editAction)}
-      iconClass={classes.icon}
-    />
-  )
+  const name = <p className="text-2xl">{contact.fullName}</p>
+  const favAction = <FavoriteAction onClick={onFavorite} isFavorite={contact.isFavorite} />
+  const editAction = <GoToEditAction contactId={contact.id} rootClass="inline-flex items-center" />
 
   const avatar = (
     <ContactAvatar
       style={contact.avatar}
-      className={classes.avatar}
+      className="ml-2 mr-3 h-16 w-16"
       url={contact.avatarUrl}
       letter={contact.fullName[0]}
     />
@@ -45,30 +28,30 @@ const ContactDetailsPage = ({ contact, classes, onFavorite }: Props) => {
 
   if (onlyXs) {
     return (
-      <div className={clsx(ContactPageBaseStylesXs.root, classes.root)}>
+      <div className={clsx(ContactPageBaseStylesXs.root, "text-tc-primary")}>
         <div className={ContactPageBaseStylesXs.toolbar}>
-          {backAction}
-          {favAction}
-          {editAction}
+          <GoBackAction />
+          <span className="flex items-center gap-2">
+            {favAction}
+            {editAction}
+          </span>
         </div>
         <div className={ContactPageBaseStylesXs.body}>
           <div className={ContactPageBaseStylesXs.heading}>
             {avatar}
             {name}
           </div>
-          <div className={classes.detailsContainer}>
-            <ContactDetailsFields contact={contact} />
-          </div>
+          <ContactDetailsFields contact={contact} />
         </div>
       </div>
     )
   } else {
     return (
-      <div className={clsx(ContactPageBaseStylesMd.root, classes.root)}>
+      <div className={clsx(ContactPageBaseStylesMd.root, "text-tc-primary")}>
         <div className={ContactPageBaseStylesMd.left}>{avatar}</div>
         <div className={ContactPageBaseStylesMd.right}>
           <div className={ContactPageBaseStylesMd.heading}>
-            {backAction}
+            <GoBackAction />
             {name}
             {favAction}
             {editAction}
