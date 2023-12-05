@@ -1,8 +1,6 @@
 import { Contact } from "../../models"
 import { useState } from "react"
-import style from "./style"
 import { DeleteAction, GoBackAction } from "../actions"
-import { WithStyles, withStyles } from "@material-ui/core"
 import useMediaQuery from "@material-ui/core/useMediaQuery"
 import ContactForm from "./ContactForm"
 import { ContactPageBaseStylesXs, ContactPageBaseStylesMd } from "../ContactPageBase.style"
@@ -14,9 +12,9 @@ type Props = {
   contact?: Contact
   onSave: (c: Contact) => void
   onDelete?: () => void
-} & WithStyles<typeof style>
+}
 
-const ContactEditPage = ({ contact, classes, onSave, onDelete }: Props) => {
+const ContactEditPage = ({ contact, onSave, onDelete }: Props) => {
   const backAction = <GoBackAction />
 
   const onlyXs = useMediaQuery("(max-width:599px)")
@@ -110,4 +108,4 @@ const ContactEditPage = ({ contact, classes, onSave, onDelete }: Props) => {
   )
 }
 
-export default withStyles(style)(ContactEditPage)
+export default ContactEditPage
