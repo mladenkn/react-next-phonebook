@@ -30,6 +30,7 @@ const ContactList = withWidth()(({
   const variant = width >= 768 ? "bigger" : "smaller"
   const isBigger = variant == "bigger"
 
+  // const itemRootClass = cn("h-16 w-full pt-1", { md: "w-60 h-36 p-1" })
   const itemRootClass = cn("h-16 w-full pt-1", isBigger && "w-60 h-36 p-1")
 
   const items = contacts.map(c => (

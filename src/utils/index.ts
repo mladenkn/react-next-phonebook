@@ -12,16 +12,27 @@ const myPropNames_gruped = {
 
 const myPropNames = Object.values(myPropNames_gruped).flat()
 
-// type myProps_value = (typeof myPropNames)[0]
-// type myClassValue = ClassValue | Record<myProps_value, string>
+type myProps_value = (typeof myPropNames)[0]
+type myClassValue = ClassValue | Record<myProps_value, string>
 
-export function cn(...inputs: ClassValue[]) {
+export function cn(...inputs: myClassValue[]) {
   const myParams_ = inputs.filter(classValue => typeof classValue === "object")
 
   // const myParams = asSingleItem(myParams_) as Record<myProps_value, string>
-  const myParams = myParams_[0] as Record<string, string> // assert da je samo jedan?
+  const withMyParams = myParams_[0] as Record<myProps_value, string> // assert da je samo jedan?
 
-  return twMerge(clsx(inputs))
+  if (!withMyParams) return twMerge(clsx(inputs))
+
+  const myParams_unflatted = Object.entries(withMyParams)
+    .filter(([key, value]) => key && myPropNames.includes(key as any))
+    .map(([key, value]) => [key as myProps_value, value.split(" ")] as const)
+    .map(([key, value]) => value.map(valueItem => `${key}:${valueItem}`))
+  const myClasses = myParams_unflatted.flat().join(" ")
+
+  const allClasses = [...inputs, myClasses]
+  console.log(27, myClasses, allClasses)
+
+  return twMerge(clsx(allClasses))
 }
 
 export const tw = {
