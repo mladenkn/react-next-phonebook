@@ -46,7 +46,7 @@ const ContactDetailsPage = ({ contact, onFavorite }: Props) => {
   } else {
     return (
       <div className={cn(ContactPageBaseStylesMd.root, "text-tc-primary")}>
-        <div>{avatar}</div>
+        {avatar}
         <div className={ContactPageBaseStylesMd.right}>
           <div className={cn(ContactPageBaseStylesMd.heading, "flex justify-between")}>
             <GoBackAction />
