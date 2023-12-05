@@ -2,12 +2,6 @@ import { createStyles, Theme } from "@material-ui/core"
 
 export default ({ palette, breakpoints }: Theme) =>
   createStyles({
-    button: {
-      borderRadius: 40,
-      width: 150,
-      color: "white",
-    },
-
     [breakpoints.down("sm")]: {
       shallowRoot: {
         display: "flex",

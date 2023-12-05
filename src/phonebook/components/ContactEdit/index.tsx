@@ -2,7 +2,7 @@ import { Contact } from "../../models"
 import { useState } from "react"
 import style from "./style"
 import { DeleteAction, GoBackAction } from "../actions"
-import { WithStyles, withStyles, Button } from "@material-ui/core"
+import { WithStyles, withStyles } from "@material-ui/core"
 import useMediaQuery from "@material-ui/core/useMediaQuery"
 import ContactForm from "./ContactForm"
 import { ContactPageBaseStylesXs, ContactPageBaseStylesMd } from "../ContactPageBase.style"
@@ -57,26 +57,23 @@ const ContactEditPage = ({ contact, classes, onSave, onDelete }: Props) => {
       onChange={(avatarUrl?: string) => setEditedContact({ ...editedContact, avatarUrl })}
     />
   )
-  const form = <ContactForm initialInput={editedContact} onChange={formChange} />
 
+  const form = <ContactForm initialInput={editedContact} onChange={formChange} />
   const goBack = useGoBack()
+  const buttonClass = cn("w-36 rounded-2xl text-white h-8")
 
   const buttons = (
     <div className="mx-0.5 mb-4 mt-2 flex justify-between">
-      <Button variant="contained" color="secondary" onClick={goBack} className={classes.button}>
+      <button className={cn(buttonClass, "bg-secondary-main")} onClick={goBack}>
         Cancel
-      </Button>
-
-      <Button
-        variant="contained"
-        color="primary"
+      </button>
+      <button
         onClick={() => onSave(editedContact)}
-        className={classes.button}
-        autoFocus
+        className={cn(buttonClass, "bg-primary-main")}
         disabled={!isEditedContactValid}
       >
         Save
-      </Button>
+      </button>
     </div>
   )
 
