@@ -2,15 +2,6 @@ import { createStyles, Theme } from "@material-ui/core"
 
 export default ({ breakpoints }: Theme) =>
   createStyles({
-    [breakpoints.only("xs")]: {
-      favAction: {
-        marginLeft: "75%",
-      },
-      editAction: {
-        marginLeft: "3%",
-      },
-    },
-
     [breakpoints.up("sm")]: {
       avatar: {
         width: 180,
