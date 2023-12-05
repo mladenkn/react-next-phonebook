@@ -101,7 +101,7 @@ const ContactEditPage = ({ contact, classes, onSave, onDelete }: Props) => {
   }
   return (
     <div className={ContactPageBaseStylesMd.root}>
-      <div>{avatar}</div>
+      {avatar}
       <div className={ContactPageBaseStylesMd.right + " " + classes.right_}>
         <div className={ContactPageBaseStylesMd.heading}>
           {backAction}
