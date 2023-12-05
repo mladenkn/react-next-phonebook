@@ -2,22 +2,6 @@ import { createStyles, Theme } from "@material-ui/core"
 
 export default ({ palette, breakpoints }: Theme) =>
   createStyles({
-    action: {},
-
-    icon: {},
-
-    avatar: {
-      width: 200,
-      height: 200,
-    },
-
-    actions: {
-      marginTop: 50,
-      display: "flex",
-      justifyContent: "space-between",
-      margin: "8px 2px 18px 2px",
-    },
-
     button: {
       borderRadius: 40,
       width: 150,

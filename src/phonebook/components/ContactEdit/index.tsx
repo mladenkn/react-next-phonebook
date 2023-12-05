@@ -53,7 +53,7 @@ const ContactEditPage = ({ contact, classes, onSave, onDelete }: Props) => {
   const avatar = (
     <SwapableAvatar
       src={editedContact.avatarUrl}
-      className={classes.avatar}
+      className="h-52 w-52"
       onChange={(avatarUrl?: string) => setEditedContact({ ...editedContact, avatarUrl })}
     />
   )
@@ -62,10 +62,11 @@ const ContactEditPage = ({ contact, classes, onSave, onDelete }: Props) => {
   const goBack = useGoBack()
 
   const buttons = (
-    <div className={classes.actions}>
+    <div className="mx-0.5 mb-4 mt-2 flex justify-between">
       <Button variant="contained" color="secondary" onClick={goBack} className={classes.button}>
         Cancel
       </Button>
+
       <Button
         variant="contained"
         color="primary"
