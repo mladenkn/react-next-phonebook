@@ -8,6 +8,7 @@ import ContactForm from "./ContactForm"
 import { ContactPageBaseStylesXs, ContactPageBaseStylesMd } from "../ContactPageBase.style"
 import { useGoBack } from "../../logic/GoBackContext"
 import { SwapableAvatar } from "../SwapableAvatar"
+import { cn } from "../../../utils"
 
 type Props = {
   contact?: Contact
@@ -83,13 +84,13 @@ const ContactEditPage = ({ contact, classes, onSave, onDelete }: Props) => {
   if (downSm) {
     return (
       <div className={classes.shallowRoot}>
-        <div className={ContactPageBaseStylesXs.root + " " + classes.root}>
+        <div className={cn(ContactPageBaseStylesXs.root, classes.root)}>
           <div className={ContactPageBaseStylesXs.toolbar}>
             {backAction}
             {deleteAction}
           </div>
           <div className={ContactPageBaseStylesXs.body}>
-            <div className={ContactPageBaseStylesXs.heading + " " + classes.heading}>{avatar}</div>
+            <div className={cn(ContactPageBaseStylesXs.heading, classes.heading)}>{avatar}</div>
             <div className={classes.formAndButtons}>
               {form}
               {buttons}
@@ -102,7 +103,7 @@ const ContactEditPage = ({ contact, classes, onSave, onDelete }: Props) => {
   return (
     <div className={ContactPageBaseStylesMd.root}>
       {avatar}
-      <div className={ContactPageBaseStylesMd.right + " " + classes.right_}>
+      <div className={cn(ContactPageBaseStylesMd.right, classes.right_)}>
         <div className={ContactPageBaseStylesMd.heading}>
           {backAction}
           {deleteAction}
