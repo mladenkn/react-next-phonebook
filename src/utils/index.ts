@@ -5,7 +5,22 @@ import { useState, useLayoutEffect } from "react"
 import { ClassValue, clsx } from "clsx"
 import { twMerge } from "tailwind-merge"
 
+const myPropNames_gruped = {
+  responsive: ["xs", "sm", "md", "lg", "xl"],
+  states: ["hover", "focus", "active"],
+} as const
+
+const myPropNames = Object.values(myPropNames_gruped).flat()
+
+// type myProps_value = (typeof myPropNames)[0]
+// type myClassValue = ClassValue | Record<myProps_value, string>
+
 export function cn(...inputs: ClassValue[]) {
+  const myParams_ = inputs.filter(classValue => typeof classValue === "object")
+
+  // const myParams = asSingleItem(myParams_) as Record<myProps_value, string>
+  const myParams = myParams_[0] as Record<string, string> // assert da je samo jedan?
+
   return twMerge(clsx(inputs))
 }
 
