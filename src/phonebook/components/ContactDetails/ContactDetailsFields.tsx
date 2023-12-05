@@ -18,11 +18,11 @@ export default withStyles(style)(
         <div className={classes.labelContainer}>
           <ContactFieldLabel Icon={PhoneIcon} text="number" />
         </div>
-        <List disablePadding className={classes.fieldValue + " " + classes.fieldListValue}>
+        <List disablePadding className={classes.fieldValue}>
           {contact.numbers.map(({ label, value }) => (
             <ListItem disableGutters key={value}>
-              <Typography className={classes.label}>{label}</Typography>
-              <Typography className={classes.numberValue}>{value}</Typography>
+              <Typography className="w-24 uppercase">{label}</Typography>
+              <Typography className="underline">{value}</Typography>
             </ListItem>
           ))}
         </List>
