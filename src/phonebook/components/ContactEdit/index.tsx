@@ -81,15 +81,15 @@ const ContactEditPage = ({ contact, classes, onSave, onDelete }: Props) => {
 
   if (downSm) {
     return (
-      <div className={classes.shallowRoot}>
-        <div className={cn(ContactPageBaseStylesXs.root, classes.root)}>
+      <div className="flex justify-center">
+        <div className={cn(ContactPageBaseStylesXs.root, "w-full max-w-lg")}>
           <div className={ContactPageBaseStylesXs.toolbar}>
             {backAction}
             {deleteAction}
           </div>
           <div className={ContactPageBaseStylesXs.body}>
-            <div className={cn(ContactPageBaseStylesXs.heading, classes.heading)}>{avatar}</div>
-            <div className={classes.formAndButtons}>
+            <div className={cn(ContactPageBaseStylesXs.heading, "justify-center")}>{avatar}</div>
+            <div className="mt-3">
               {form}
               {buttons}
             </div>
