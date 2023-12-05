@@ -17,16 +17,11 @@ type Props = {
 } & WithStyles<typeof style>
 
 const ContactEditPage = ({ contact, classes, onSave, onDelete }: Props) => {
-  const backAction = <GoBackAction rootClass={classes.backAction} />
+  const backAction = <GoBackAction />
 
   const onlyXs = useMediaQuery("(max-width:599px)")
   const deleteAction = contact ? (
-    <DeleteAction
-      onConfirm={onDelete!}
-      withHoverEffect
-      withText={!onlyXs}
-      rootClass={classes.deleteAction}
-    />
+    <DeleteAction onConfirm={onDelete!} withHoverEffect withText={!onlyXs} />
   ) : (
     ""
   )
@@ -101,12 +96,12 @@ const ContactEditPage = ({ contact, classes, onSave, onDelete }: Props) => {
   return (
     <div className={ContactPageBaseStylesMd.root}>
       {avatar}
-      <div className={cn(ContactPageBaseStylesMd.right, classes.right_)}>
-        <div className={ContactPageBaseStylesMd.heading}>
+      <div className={cn(ContactPageBaseStylesMd.right)}>
+        <div className={cn(ContactPageBaseStylesMd.heading, "justify-between")}>
           {backAction}
           {deleteAction}
         </div>
-        <div className={classes.formAndButtons}>
+        <div className="ml-1 mt-1">
           {form}
           {buttons}
         </div>

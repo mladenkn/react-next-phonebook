@@ -3,9 +3,6 @@ import { createStyles, Theme } from "@material-ui/core"
 export default ({ breakpoints }: Theme) =>
   createStyles({
     [breakpoints.down("sm")]: {
-      backAction: {
-        marginLeft: "1%",
-      },
       deleteAction: {
         marginLeft: "83%",
       },
