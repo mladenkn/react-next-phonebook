@@ -2,11 +2,11 @@ import { Contact } from "../../models"
 import ContactDetailsFields from "./ContactDetailsFields"
 import style from "./style"
 import { FavoriteAction, GoToEditAction, GoBackAction } from "../actions"
-import { WithStyles, withStyles, Typography } from "@material-ui/core"
+import { WithStyles, withStyles } from "@material-ui/core"
 import { ContactPageBaseStylesMd, ContactPageBaseStylesXs } from "../ContactPageBase.style"
 import useMediaQuery from "@material-ui/core/useMediaQuery"
 import { ContactAvatar } from "../ContactAvatar"
-import clsx from "clsx"
+import { cn } from "../../../utils"
 
 type Props = { contact: Contact; onFavorite: () => void } & WithStyles<typeof style>
 
@@ -28,7 +28,7 @@ const ContactDetailsPage = ({ contact, classes, onFavorite }: Props) => {
 
   if (onlyXs) {
     return (
-      <div className={clsx(ContactPageBaseStylesXs.root, "text-tc-primary")}>
+      <div className={cn(ContactPageBaseStylesXs.root, "text-tc-primary")}>
         <div className={ContactPageBaseStylesXs.toolbar}>
           <GoBackAction />
           <span className="flex items-center gap-2">
@@ -47,16 +47,18 @@ const ContactDetailsPage = ({ contact, classes, onFavorite }: Props) => {
     )
   } else {
     return (
-      <div className={clsx(ContactPageBaseStylesMd.root, "text-tc-primary")}>
+      <div className={cn(ContactPageBaseStylesMd.root, "text-tc-primary")}>
         <div className={ContactPageBaseStylesMd.left}>{avatar}</div>
         <div className={ContactPageBaseStylesMd.right}>
-          <div className={ContactPageBaseStylesMd.heading}>
+          <div className={cn(ContactPageBaseStylesMd.heading, "flex justify-between")}>
             <GoBackAction />
             {name}
-            {favAction}
-            {editAction}
+            <span className="inline-flex items-center gap-1">
+              {favAction}
+              {editAction}
+            </span>
           </div>
-          <div className={classes.detailsContainer}>
+          <div className="ml-3 mt-2">
             <ContactDetailsFields contact={contact} />
           </div>
         </div>
