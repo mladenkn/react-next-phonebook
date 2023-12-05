@@ -1,4 +1,3 @@
-import { createStyles, Theme, makeStyles } from "@material-ui/core"
 import { cn } from "../../utils"
 
 export const ContactPageBaseStylesXs = {
@@ -8,28 +7,9 @@ export const ContactPageBaseStylesXs = {
   body: cn("pb-0 pl-4 pr-4 pt-2"),
 }
 
-const contactPageBaseMd = ({ palette }: Theme) =>
-  createStyles({
-    root: {
-      display: "flex",
-    },
-    heading: {
-      display: "flex",
-      borderBottom: `1px solid ${palette.primary.main}`,
-      paddingBottom: 7,
-    },
-    left: {
-      display: "inline-flex",
-      flexDirection: "column",
-    },
-    right: {
-      width: 500,
-      marginTop: 50,
-      display: "inline-block",
-      marginLeft: 20,
-    },
-  })
-
-export const useContactPageBaseStylesMd = makeStyles(contactPageBaseMd, {
-  name: "ContactPageBaseMd",
-})
+export const ContactPageBaseStylesMd = {
+  root: cn("flex"),
+  heading: cn("flex border-b-1 border-primary-main pb-2"),
+  left: cn("inline-flex flex-col"),
+  right: cn("mt-12 inline-block ml-5"), // fali width
+}
