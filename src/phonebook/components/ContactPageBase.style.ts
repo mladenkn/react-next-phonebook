@@ -11,5 +11,5 @@ export const ContactPageBaseStylesMd = {
   root: cn("flex"),
   heading: cn("flex border-b-1 border-primary-main pb-2"),
   left: cn("inline-flex flex-col"),
-  right: cn("mt-12 inline-block ml-5"), // fali width
+  right: cn("mt-12 inline-block ml-5"),
 }
