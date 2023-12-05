@@ -1,16 +1,14 @@
 import { Contact } from "../../models"
 import ContactDetailsFields from "./ContactDetailsFields"
-import style from "./style"
 import { FavoriteAction, GoToEditAction, GoBackAction } from "../actions"
-import { WithStyles, withStyles } from "@material-ui/core"
 import { ContactPageBaseStylesMd, ContactPageBaseStylesXs } from "../ContactPageBase.style"
 import useMediaQuery from "@material-ui/core/useMediaQuery"
 import { ContactAvatar } from "../ContactAvatar"
 import { cn } from "../../../utils"
 
-type Props = { contact: Contact; onFavorite: () => void } & WithStyles<typeof style>
+type Props = { contact: Contact; onFavorite: () => void }
 
-const ContactDetailsPage = ({ contact, classes, onFavorite }: Props) => {
+const ContactDetailsPage = ({ contact, onFavorite }: Props) => {
   const name = <p className="text-2xl">{contact.fullName}</p>
   const favAction = <FavoriteAction onClick={onFavorite} isFavorite={contact.isFavorite} />
   const editAction = <GoToEditAction contactId={contact.id} rootClass="inline-flex items-center" />
@@ -48,7 +46,7 @@ const ContactDetailsPage = ({ contact, classes, onFavorite }: Props) => {
   } else {
     return (
       <div className={cn(ContactPageBaseStylesMd.root, "text-tc-primary")}>
-        <div className={ContactPageBaseStylesMd.left}>{avatar}</div>
+        <div>{avatar}</div>
         <div className={ContactPageBaseStylesMd.right}>
           <div className={cn(ContactPageBaseStylesMd.heading, "flex justify-between")}>
             <GoBackAction />
@@ -67,4 +65,4 @@ const ContactDetailsPage = ({ contact, classes, onFavorite }: Props) => {
   }
 }
 
-export default withStyles(style)(ContactDetailsPage)
+export default ContactDetailsPage
