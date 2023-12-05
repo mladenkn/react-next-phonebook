@@ -69,7 +69,10 @@ const ContactListItem = ({
       )
     case isBigger && isSelected:
       return (
-        <Link className={clsx(baseClass, "flex-col justify-center border-2 border-primary-main")}>
+        <Link
+          className={clsx(baseClass, "flex-col justify-center border-2 border-primary-main")}
+          href={`/contact/details/${contact.id}`}
+        >
           <div className="flex w-full justify-between px-1.5">
             {favoriteAction}
             <span>
@@ -83,11 +86,12 @@ const ContactListItem = ({
       )
     default:
       return (
-        <div
+        <Link
           className={clsx(
             baseClass,
-            "w-full justify-between border-2 border-secondary-light shadow-none",
+            "w-full justify-between border-2 border-secondary-light pl-2 pr-1 shadow-none",
           )}
+          href={`/contact/details/${contact.id}`}
         >
           {avatar}
           {name}
@@ -96,7 +100,7 @@ const ContactListItem = ({
             {editAction}
             {deleteAction}
           </span>
-        </div>
+        </Link>
       )
   }
 }
