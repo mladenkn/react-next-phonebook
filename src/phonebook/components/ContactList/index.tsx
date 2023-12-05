@@ -30,8 +30,9 @@ const ContactList = withWidth()(({
   const variant = width >= 768 ? "bigger" : "smaller"
   const isBigger = variant == "bigger"
 
-  // const itemRootClass = cn("h-16 w-full pt-1", { md: "w-60 h-36 p-1" })
-  const itemRootClass = cn("h-16 w-full pt-1", isBigger && "w-60 h-36 p-1")
+  const itemRootClass = cn("h-16 w-full pt-1", { md: "w-60 h-36 p-1" })
+  // const itemRootClass = cn("h-16 w-full pt-1 md:w-60 md:h-36 md:p-1")
+  // const itemRootClass = cn("h-16 w-full pt-1", isBigger && "w-60 h-36 p-1")
 
   const items = contacts.map(c => (
     <li key={c.id} className={itemRootClass}>
@@ -57,6 +58,7 @@ const ContactList = withWidth()(({
 
   return (
     <ul
+      // className={cn("flex w-full flex-col", { md: "flex-row flex-wrap justify-center" }, className)}
       className={cn(
         "flex w-full flex-col",
         isBigger && "flex-row flex-wrap justify-center",
