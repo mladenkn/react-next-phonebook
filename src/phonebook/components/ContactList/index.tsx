@@ -58,12 +58,12 @@ const ContactList = withWidth()(({
 
   return (
     <ul
-      // className={cn("flex w-full flex-col", { md: "flex-row flex-wrap justify-center" }, className)}
-      className={cn(
-        "flex w-full flex-col",
-        isBigger && "flex-row flex-wrap justify-center",
-        className,
-      )}
+      className={cn("flex w-full flex-col", { md: "flex-row flex-wrap justify-center" }, className)}
+      // className={cn(
+      //   "flex w-full flex-col",
+      //   "md:flex-row md:flex-wrap md:justify-center",
+      //   className,
+      // )}
     >
       {items}
     </ul>
