@@ -60,7 +60,7 @@ const ContactListItem = ({
     case isBigger && !isSelected:
       return (
         <div
-          className={clsx(baseClass, "flex-col  justify-center border-2 border-secondary-light")}
+          className={clsx(baseClass, "flex-col justify-center border-2 border-secondary-light")}
           onClick={onSelect}
         >
           {avatar}
