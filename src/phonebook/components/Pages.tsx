@@ -1,9 +1,9 @@
 import HomeSection from "./HomeSection"
 import { useContactDetailsOps } from "../logic/contactDetailsOps"
-import ContactDetails from "./ContactDetails"
+import ContactDetails from "./contact.details"
 import { useContactPageStyle, useHomePageStyle } from "./pages.styles"
 import { GoBackContextProvider } from "../logic/GoBackContext"
-import ContactEdit from "./ContactEdit"
+import ContactEdit from "./contact.edit"
 import { useContactServiceContext } from "../logic/contactsRepository"
 import {
   createRoutesFromElements,

@@ -1,12 +1,12 @@
-import { Contact } from "../../models"
+import { Contact } from "../models"
 import { useState } from "react"
-import { DeleteAction, GoBackAction } from "../actions"
+import { DeleteAction, GoBackAction } from "./actions"
 import useMediaQuery from "@material-ui/core/useMediaQuery"
-import ContactForm from "./ContactForm"
-import { ContactPageBaseStylesXs, ContactPageBaseStylesMd } from "../ContactPageBase.style"
-import { useGoBack } from "../../logic/GoBackContext"
-import { SwapableAvatar } from "../SwapableAvatar"
-import { cn } from "../../../utils"
+import ContactForm from "./contact.form"
+import { ContactPageBaseStylesXs, ContactPageBaseStylesMd } from "./ContactPageBase.style"
+import { useGoBack } from "../logic/GoBackContext"
+import { SwapableAvatar } from "./SwapableAvatar"
+import { cn } from "../../utils"
 
 type Props = {
   contact?: Contact
