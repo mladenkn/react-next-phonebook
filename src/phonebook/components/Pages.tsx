@@ -1,4 +1,4 @@
-import HomeSection from "./HomeSection"
+import HomeSection from "./contact.list.page"
 import { useContactDetailsOps } from "../logic/contactDetailsOps"
 import ContactDetails from "./contact.details"
 import { useContactPageStyle, useHomePageStyle } from "./pages.styles"
