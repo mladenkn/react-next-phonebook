@@ -1,5 +1,46 @@
 import { faker } from "@faker-js/faker"
 import { isNil } from "lodash"
+import _tw from "tailwind-styled-components"
+import { useState, useLayoutEffect } from "react"
+import { ClassValue, clsx } from "clsx"
+import { twMerge } from "tailwind-merge"
+
+const myPropNames_gruped = {
+  responsive: ["xs", "sm", "md", "lg", "xl"],
+  states: ["hover", "focus", "active"],
+} as const
+
+const myPropNames = Object.values(myPropNames_gruped).flat()
+
+type myProps_value = (typeof myPropNames)[0]
+type myClassValue = ClassValue | Record<myProps_value, string>
+
+export function cn(...inputs: myClassValue[]) {
+  const myParams_ = inputs.filter(classValue => typeof classValue === "object")
+
+  // const myParams = asSingleItem(myParams_) as Record<myProps_value, string>
+  const withMyParams = myParams_[0] as Record<myProps_value, string> // assert da je samo jedan?
+
+  if (!withMyParams) return twMerge(clsx(inputs))
+
+  const myParams_unflatted = Object.entries(withMyParams)
+    .filter(([key, value]) => key && myPropNames.includes(key as any))
+    .map(([key, value]) => [key as myProps_value, value.split(" ")] as const)
+    .map(([key, value]) => value.map(valueItem => `${key}:${valueItem}`))
+  const myClasses = myParams_unflatted.flat().join(" ")
+
+  const allClasses = [...inputs, myClasses]
+  console.log(27, myClasses, allClasses)
+
+  return twMerge(clsx(allClasses))
+}
+
+export const tw = {
+  ..._tw,
+  class(className: TemplateStringsArray) {
+    return className.join("")
+  },
+}
 
 export const generateArray = <T>(getNext: () => T, minCount: number, maxCount: number) => {
   const count = faker.number.int({ min: minCount, max: maxCount })
@@ -54,3 +95,22 @@ export function asNonNil<T>(val?: T) {
 }
 
 export const eva = <T>(f: () => T) => f()
+
+export function useWidth() {
+  const [size, setSize] = useState<number>()
+
+  useLayoutEffect(() => {
+    const handleResize = () => {
+      setSize(window.innerWidth)
+    }
+
+    handleResize()
+    window.addEventListener("resize", handleResize)
+
+    return () => {
+      window.removeEventListener("resize", handleResize)
+    }
+  }, [])
+
+  return size
+}

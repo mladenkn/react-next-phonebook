@@ -65,8 +65,12 @@ export const DeleteAction = withStyles(deleteActionStyle)(({
   const [modalOpen, setModalOpen] = useState(false)
   const buttonClass = withHoverEffect || false ? classes.buttonHoverEffect : classes.button
   return (
-    <div className={rootClass}>
-      <IconButton onClick={() => setModalOpen(true)} className={buttonClass} disableRipple>
+    <>
+      <IconButton
+        className={clsx(rootClass, buttonClass)}
+        onClick={() => setModalOpen(true)}
+        disableRipple
+      >
         {(withText || false) && <Typography className={classes.text}>Delete</Typography>}
         <DeleteIcon color="secondary" className={iconClass} />
       </IconButton>
@@ -76,7 +80,7 @@ export const DeleteAction = withStyles(deleteActionStyle)(({
         onCancel={() => setModalOpen(false)}
         onConfirm={onConfirm}
       />
-    </div>
+    </>
   )
 })
 

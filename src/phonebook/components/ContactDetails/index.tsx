@@ -1,82 +1,62 @@
 import { Contact } from "../../models"
 import ContactDetailsFields from "./ContactDetailsFields"
-import style from "./style"
 import { FavoriteAction, GoToEditAction, GoBackAction } from "../actions"
-import { WithStyles, withStyles, Typography } from "@material-ui/core"
-import { useContactPageBaseStylesXs, useContactPageBaseStylesMd } from "../ContactPageBase.style"
+import { ContactPageBaseStylesMd, ContactPageBaseStylesXs } from "../ContactPageBase.style"
 import useMediaQuery from "@material-ui/core/useMediaQuery"
 import { ContactAvatar } from "../ContactAvatar"
-import clsx from "clsx"
+import { cn } from "../../../utils"
 
-type Props = { contact: Contact; onFavorite: () => void } & WithStyles<typeof style>
+type Props = { contact: Contact; onFavorite: () => void }
 
-const ContactDetailsPage = ({ contact, classes, onFavorite }: Props) => {
-  const backAction = <GoBackAction />
+const ContactDetailsPage = ({ contact, onFavorite }: Props) => {
+  const name = <p className="text-2xl">{contact.fullName}</p>
+  const favAction = <FavoriteAction onClick={onFavorite} isFavorite={contact.isFavorite} />
+  const editAction = <GoToEditAction contactId={contact.id} rootClass="inline-flex items-center" />
 
-  const name = <Typography className={classes.personName}>{contact.fullName}</Typography>
-
-  const favAction = (
-    <FavoriteAction
-      onClick={onFavorite}
-      isFavorite={contact.isFavorite}
-      rootClass={clsx(classes.action, classes.favAction)}
-      iconClass={classes.icon}
-    />
-  )
-
-  const editAction = (
-    <GoToEditAction
-      contactId={contact.id}
-      rootClass={clsx(classes.action, classes.editAction)}
-      iconClass={classes.icon}
-    />
-  )
+  const onlyXs = useMediaQuery("(max-width:599px)")
 
   const avatar = (
     <ContactAvatar
       style={contact.avatar}
-      className={classes.avatar}
+      className={cn("ml-2 mr-3 h-16 w-16", !onlyXs && "h-44 w-44")}
       url={contact.avatarUrl}
       letter={contact.fullName[0]}
     />
   )
 
-  const xsBaseClasses = useContactPageBaseStylesXs()
-  const mdBaseClasses = useContactPageBaseStylesMd()
-
-  const onlyXs = useMediaQuery("(max-width:599px)")
-
   if (onlyXs) {
     return (
-      <div className={clsx(xsBaseClasses.root, classes.root)}>
-        <div className={xsBaseClasses.toolbar}>
-          {backAction}
-          {favAction}
-          {editAction}
+      <div className={cn(ContactPageBaseStylesXs.root, "text-tc-primary")}>
+        <div className={ContactPageBaseStylesXs.toolbar}>
+          <GoBackAction />
+          <span className="flex items-center gap-2">
+            {favAction}
+            {editAction}
+          </span>
         </div>
-        <div className={xsBaseClasses.body}>
-          <div className={xsBaseClasses.heading}>
+        <div className={ContactPageBaseStylesXs.body}>
+          <div className={ContactPageBaseStylesXs.heading}>
             {avatar}
             {name}
           </div>
-          <div className={classes.detailsContainer}>
-            <ContactDetailsFields contact={contact} />
-          </div>
+          <ContactDetailsFields contact={contact} />
         </div>
       </div>
     )
   } else {
     return (
-      <div className={clsx(mdBaseClasses.root, classes.root)}>
-        <div className={mdBaseClasses.left}>{avatar}</div>
-        <div className={mdBaseClasses.right}>
-          <div className={mdBaseClasses.heading}>
-            {backAction}
+      <div className={cn(ContactPageBaseStylesMd.root, "text-tc-primary")}>
+        {avatar}
+        <div className={ContactPageBaseStylesMd.right}>
+          <div className={cn(ContactPageBaseStylesMd.heading, "flex justify-between")}>
+            <GoBackAction />
             {name}
-            {favAction}
-            {editAction}
+            <span className="inline-flex items-center gap-1">
+              {favAction}
+              {editAction}
+            </span>
           </div>
-          <div className={classes.detailsContainer}>
+          <div className="ml-3 mt-2">
             <ContactDetailsFields contact={contact} />
           </div>
         </div>
@@ -85,4 +65,4 @@ const ContactDetailsPage = ({ contact, classes, onFavorite }: Props) => {
   }
 }
 
-export default withStyles(style)(ContactDetailsPage)
+export default ContactDetailsPage

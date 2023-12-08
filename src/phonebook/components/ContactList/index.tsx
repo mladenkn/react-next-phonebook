@@ -1,57 +1,73 @@
-import style from "./style"
-import { ContactListItem } from "../../models"
-import React, { useState } from "react"
-import { List, ListItem, withStyles, WithStyles } from "@material-ui/core"
-import { ContactListItem as Item } from "./ContactListItem"
+import { ContactListItem as ContactListItemModel } from "../../models"
+import { useState } from "react"
+import ContactListItem from "./ContactListItem"
 import ContactAdder from "./ContactAdder"
-import withWidth, { WithWidth } from "@material-ui/core/withWidth"
+import withWidth from "@material-ui/core/withWidth"
+import { cn, useWidth } from "../../../utils"
 
 type Props = {
-  contacts: ContactListItem[]
+  contacts: ContactListItemModel[]
   className?: string
   includeAdder?: boolean
   deleteContact: (id: number) => void
   toggleFavorite: (id: number) => void
-} & WithStyles<typeof style> &
-  WithWidth
+}
 
 const ContactList = withWidth()(({
   contacts,
-  classes,
   includeAdder,
   className,
-  width,
   deleteContact,
   toggleFavorite,
 }: Props) => {
   const includeAdder_ = includeAdder || false
-  const smOrDown = width === "sm" || width === "xs"
 
   const [selectedItemId, setSelectedItemId] = useState(0)
 
+  const width = useWidth()
+  if (!width) return <></>
+
+  const variant = width >= 768 ? "bigger" : "smaller"
+  const isBigger = variant == "bigger"
+
+  const itemRootClass = cn("h-16 w-full pt-1", { md: "w-60 h-36 p-1" })
+  // const itemRootClass = cn("h-16 w-full pt-1 md:w-60 md:h-36 md:p-1")
+  // const itemRootClass = cn("h-16 w-full pt-1", isBigger && "w-60 h-36 p-1")
+
   const items = contacts.map(c => (
-    <ListItem key={c.id} className={classes.itemRoot}>
-      <Item
+    <li key={c.id} className={itemRootClass}>
+      <ContactListItem
         isSelected={selectedItemId === c.id}
-        smOrDown={smOrDown}
+        variant={variant}
         onDelete={() => deleteContact(c.id)}
         onSelect={() => setSelectedItemId(c.id)}
         onToggleFavorite={() => toggleFavorite(c.id)}
         contact={c}
       />
-    </ListItem>
+    </li>
   ))
 
   if (includeAdder_) {
     const adder = (
-      <ListItem key={0} className={classes.itemRoot}>
+      <li key={0} className={itemRootClass}>
         <ContactAdder />
-      </ListItem>
+      </li>
     )
     items.unshift(adder)
   }
 
-  return <List className={className + " " + classes.root}>{items}</List>
+  return (
+    <ul
+      className={cn("flex w-full flex-col", { md: "flex-row flex-wrap justify-center" }, className)}
+      // className={cn(
+      //   "flex w-full flex-col",
+      //   "md:flex-row md:flex-wrap md:justify-center",
+      //   className,
+      // )}
+    >
+      {items}
+    </ul>
+  )
 })
 
-export default withStyles(style)(ContactList)
+export default ContactList

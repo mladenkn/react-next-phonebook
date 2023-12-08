@@ -1,113 +1,108 @@
-import style from "./ContactListItem.style"
 import { ContactListItem as ContactListItemModel } from "../../models"
-import { Card, Typography, withStyles, WithStyles } from "@material-ui/core"
-import { Link } from "../various"
-import { contactDetailsUrl } from "../../urls"
 import { GoToEditAction, FavoriteAction, DeleteAction } from "../actions"
 import { ContactAvatar } from "../ContactAvatar"
+import { Link } from "../various"
 import clsx from "clsx"
-
-type Props = {
-  contact: ContactListItemModel
-  isSelected: boolean
-  smOrDown: boolean
-  onToggleFavorite(): void
-  onDelete(): void
-  onSelect(): void
-}
-
-export const ContactListItem = ({
-  contact,
-  isSelected,
-  smOrDown,
-  onToggleFavorite,
-  onDelete,
-  onSelect,
-}: Props) => (
-  <StyledItemDummy
-    contact={contact}
-    showFavoriteButton
-    showEditLink={smOrDown || (!smOrDown && isSelected)}
-    showDeleteButton={smOrDown || (!smOrDown && isSelected)}
-    isLinkToDetails={smOrDown || (!smOrDown && isSelected)}
-    isSelected={isSelected}
-    onToggleFavorite={onToggleFavorite}
-    onDelete={onDelete}
-    onSelect={onSelect}
-  />
-)
+import { tw } from "../../../utils"
 
 type ItemPresenterProps = {
   contact: ContactListItemModel
-  showFavoriteButton: boolean
-  showEditLink: boolean
-  showDeleteButton: boolean
-  isLinkToDetails: boolean
   isSelected: boolean
+  variant: "smaller" | "bigger"
   onToggleFavorite(): void
   onDelete(): void
   onSelect(): void
-} & WithStyles<typeof style>
+}
 
-const ItemPresenter = (p: ItemPresenterProps) => {
-  const { classes, contact, onToggleFavorite, onDelete, onSelect } = p
+const ContactListItem = ({
+  contact,
+  isSelected,
+  variant,
+  onToggleFavorite,
+  onDelete,
+  onSelect,
+}: ItemPresenterProps) => {
+  const isBigger = variant === "bigger"
 
-  const avatarAndName = (
-    <Card className={clsx(classes.avatarAndName, p.isSelected && classes.selected)}>
-      <ContactAvatar
-        className={classes.avatar}
-        letter={p.contact.fullName[0]}
-        style={p.contact.avatar}
-        url={p.contact.avatarUrl}
-      />
-      <div className={classes.nameBox}>
-        <Typography className={classes.name}>{contact.fullName}</Typography>
-      </div>
-    </Card>
+  const avatar = (
+    <ContactAvatar
+      className={clsx(isBigger && "mb-2 mt-5")}
+      letter={contact.fullName[0]}
+      style={contact.avatar}
+      url={contact.avatarUrl}
+    />
   )
 
-  const favoriteAction = p.showFavoriteButton && (
+  const name = (
+    <p
+      style={{ color: "rgba(0, 0, 0, 0.54)" }}
+      className={clsx("font-sans text-sm", isBigger && "text-center")}
+    >
+      {contact.fullName}
+    </p>
+  )
+
+  const showActions = variant === "smaller" || (isBigger && isSelected)
+
+  const favoriteAction = showActions && (
     <FavoriteAction
       onClick={onToggleFavorite}
       isFavorite={contact.isFavorite}
-      rootClass={clsx(classes.action, classes.favoriteAction)}
-      iconClass={classes.icon}
+      iconClass="text-sm"
     />
   )
+  const editAction = showActions && <GoToEditAction contactId={contact.id} />
+  const deleteAction = showActions && <DeleteAction onConfirm={onDelete} />
 
-  const editAction = p.showEditLink && (
-    <GoToEditAction
-      contactId={contact.id}
-      rootClass={clsx(classes.action, classes.editAction)}
-      iconClass={classes.icon}
-    />
-  )
+  const baseClass = tw.class`flex h-full items-center border-solid`
 
-  const deleteAction = p.showDeleteButton && (
-    <DeleteAction
-      onConfirm={onDelete}
-      rootClass={clsx(classes.action, classes.deleteAction)}
-      iconClass={classes.icon}
-    />
-  )
-
-  return p.isLinkToDetails ? (
-    <div className={classes.root}>
-      <Link href={contactDetailsUrl(contact.id)} className={classes.rootLink}>
-        {avatarAndName}
-      </Link>
-      {favoriteAction}
-      {editAction}
-      {deleteAction}
-    </div>
-  ) : (
-    <div className={classes.root} onClick={onSelect}>
-      {avatarAndName}
-      {favoriteAction}
-      {editAction}
-      {deleteAction}
-    </div>
-  )
+  switch (true) {
+    case isBigger && !isSelected:
+      return (
+        <div
+          className={clsx(baseClass, "flex-col justify-center border-2 border-secondary-light")}
+          onClick={onSelect}
+        >
+          {avatar}
+          {name}
+        </div>
+      )
+    case isBigger && isSelected:
+      return (
+        <Link
+          className={clsx(baseClass, "flex-col justify-center border-2 border-primary-main")}
+          href={`/contact/details/${contact.id}`}
+        >
+          <div className="flex w-full justify-between px-1.5">
+            {favoriteAction}
+            <span>
+              {editAction}
+              {deleteAction}
+            </span>
+          </div>
+          {avatar}
+          {name}
+        </Link>
+      )
+    default:
+      return (
+        <Link
+          className={clsx(
+            baseClass,
+            "w-full justify-between border-2 border-secondary-light pl-2 pr-1 shadow-none",
+          )}
+          href={`/contact/details/${contact.id}`}
+        >
+          {avatar}
+          {name}
+          <span>
+            {favoriteAction}
+            {editAction}
+            {deleteAction}
+          </span>
+        </Link>
+      )
+  }
 }
 
-const StyledItemDummy = withStyles(style)(ItemPresenter)
+export default ContactListItem

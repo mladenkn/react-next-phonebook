@@ -1,31 +1,25 @@
 import { Contact } from "../../models"
-import React, { useState } from "react"
-import style from "./style"
+import { useState } from "react"
 import { DeleteAction, GoBackAction } from "../actions"
-import { WithStyles, withStyles, Button } from "@material-ui/core"
 import useMediaQuery from "@material-ui/core/useMediaQuery"
 import ContactForm from "./ContactForm"
-import { useContactPageBaseStylesXs, useContactPageBaseStylesMd } from "../ContactPageBase.style"
+import { ContactPageBaseStylesXs, ContactPageBaseStylesMd } from "../ContactPageBase.style"
 import { useGoBack } from "../../logic/GoBackContext"
 import { SwapableAvatar } from "../SwapableAvatar"
+import { cn } from "../../../utils"
 
 type Props = {
   contact?: Contact
   onSave: (c: Contact) => void
   onDelete?: () => void
-} & WithStyles<typeof style>
+}
 
-const ContactEditPage = ({ contact, classes, onSave, onDelete }: Props) => {
-  const backAction = <GoBackAction rootClass={classes.backAction} />
+const ContactEditPage = ({ contact, onSave, onDelete }: Props) => {
+  const backAction = <GoBackAction />
 
   const onlyXs = useMediaQuery("(max-width:599px)")
   const deleteAction = contact ? (
-    <DeleteAction
-      onConfirm={onDelete!}
-      withHoverEffect
-      withText={!onlyXs}
-      rootClass={classes.deleteAction}
-    />
+    <DeleteAction onConfirm={onDelete!} withHoverEffect withText={!onlyXs} />
   ) : (
     ""
   )
@@ -52,48 +46,43 @@ const ContactEditPage = ({ contact, classes, onSave, onDelete }: Props) => {
   const avatar = (
     <SwapableAvatar
       src={editedContact.avatarUrl}
-      className={classes.avatar}
+      className="h-52 w-52"
       onChange={(avatarUrl?: string) => setEditedContact({ ...editedContact, avatarUrl })}
     />
   )
-  const form = <ContactForm initialInput={editedContact} onChange={formChange} />
 
+  const form = <ContactForm initialInput={editedContact} onChange={formChange} />
   const goBack = useGoBack()
+  const buttonClass = cn("w-36 rounded-2xl text-white h-8")
 
   const buttons = (
-    <div className={classes.actions}>
-      <Button variant="contained" color="secondary" onClick={goBack} className={classes.button}>
+    <div className="mx-0.5 mb-4 mt-2 flex justify-between">
+      <button className={cn(buttonClass, "bg-secondary-main")} onClick={goBack}>
         Cancel
-      </Button>
-      <Button
-        variant="contained"
-        color="primary"
+      </button>
+      <button
         onClick={() => onSave(editedContact)}
-        className={classes.button}
-        autoFocus
+        className={cn(buttonClass, "bg-primary-main")}
         disabled={!isEditedContactValid}
       >
         Save
-      </Button>
+      </button>
     </div>
   )
-
-  const xsBaseClasses = useContactPageBaseStylesXs()
-  const mdBaseClasses = useContactPageBaseStylesMd()
 
   const downSm = useMediaQuery("(max-width:959px)")
 
   if (downSm) {
     return (
-      <div className={classes.shallowRoot}>
-        <div className={xsBaseClasses.root + " " + classes.root}>
-          <div className={xsBaseClasses.toolbar}>
+      <div className="flex justify-center">
+        <div className={cn(ContactPageBaseStylesXs.root, "w-full max-w-lg")}>
+          <div className={ContactPageBaseStylesXs.toolbar}>
             {backAction}
             {deleteAction}
           </div>
-          <div className={xsBaseClasses.body}>
-            <div className={xsBaseClasses.heading + " " + classes.heading}>{avatar}</div>
-            <div className={classes.formAndButtons}>
+          <div className={ContactPageBaseStylesXs.body}>
+            <div className={cn(ContactPageBaseStylesXs.heading, "justify-center")}>{avatar}</div>
+            <div className="mt-3">
               {form}
               {buttons}
             </div>
@@ -103,14 +92,14 @@ const ContactEditPage = ({ contact, classes, onSave, onDelete }: Props) => {
     )
   }
   return (
-    <div className={mdBaseClasses.root}>
-      <div className={mdBaseClasses.left}>{avatar}</div>
-      <div className={mdBaseClasses.right + " " + classes.right_}>
-        <div className={mdBaseClasses.heading}>
+    <div className={ContactPageBaseStylesMd.root}>
+      {avatar}
+      <div className={cn(ContactPageBaseStylesMd.right)}>
+        <div className={cn(ContactPageBaseStylesMd.heading, "justify-between")}>
           {backAction}
           {deleteAction}
         </div>
-        <div className={classes.formAndButtons}>
+        <div className="ml-1 mt-1">
           {form}
           {buttons}
         </div>
@@ -119,4 +108,4 @@ const ContactEditPage = ({ contact, classes, onSave, onDelete }: Props) => {
   )
 }
 
-export default withStyles(style)(ContactEditPage)
+export default ContactEditPage

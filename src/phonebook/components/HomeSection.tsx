@@ -1,56 +1,52 @@
-import { Tabs, Tab, Input } from "@material-ui/core"
 import { useState } from "react"
 import ContactList from "./ContactList"
 import { useContactListOps } from "../logic/contactListOps"
-import { Divider } from "./various"
 import SearchIcon from "@material-ui/icons/Search"
-import useHomeSectionStyles from "./HomeSection.style"
+import clsx from "clsx"
+import { tw } from "../../utils"
+
+const StyledTab = tw.button`text-lg text-tc-primary font-semibold`
+
+const searchWrapper_class = tw.class`
+  mt-5 flex w-80 items-center sm:mt-10 sm:w-96
+  border-1 rounded-md border-solid border-secondary-light
+  shadow-homeSearch shadow-secondary-main
+`
 
 const Home = () => {
-  const classes = useHomeSectionStyles()
-
-  const tabClasses = {
-    root: classes.contactTab,
-    selected: classes.selectedTab,
-  }
-
   const [currentTab, setCurrentTab] = useState(0)
   const ops = useContactListOps()
 
   return (
-    <div className={classes.root}>
-      <div className={classes.content_}>
-        <Tabs
-          value={currentTab}
-          centered
-          onChange={(_, v) => setCurrentTab(v)}
-          classes={{
-            root: classes.contactTabs,
-            indicator: classes.tabIndicator,
-            flexContainer: classes.tabContainer,
-          }}
-        >
-          <Tab label="All contacts" disableRipple classes={tabClasses} />
-          <div className={classes.tabDivider}></div>
-          <Tab label="My favorites" disableRipple classes={tabClasses} />
-        </Tabs>
-        <Divider className={classes.contactTabsDivider} />
-        <Input
-          disableUnderline
-          startAdornment={<SearchIcon className={classes.searchFieldIcon} />}
-          onChange={e => ops.fetch(e.target.value)}
-          classes={{
-            root: classes.searchField,
-            focused: classes.searchFieldFocused,
-          }}
-        />
+    <div>
+      <div className="flex max-w-5xl flex-col items-center">
+        <div className="flex gap-8">
+          <StyledTab
+            className={clsx(currentTab === 0 && "text-tc-secondary")}
+            onClick={() => setCurrentTab(0)}
+          >
+            All contacts
+          </StyledTab>
+          <div className="h-5 w-1 bg-secondary-main" />
+          <StyledTab
+            className={clsx(currentTab === 1 && "text-tc-secondary")}
+            onClick={() => setCurrentTab(1)}
+          >
+            My favorites
+          </StyledTab>
+        </div>
+        <div className="h-0.25 mt-2 w-full bg-primary-main sm:mt-6" />
+        <div className={searchWrapper_class}>
+          <SearchIcon className="ml-2 mr-2 text-gray-500" />
+          <input className="h-12 w-full p-2 text-lg text-gray-500 outline-none" />
+        </div>
         {ops.fetchStatus === "COMPLETED" && (
           <ContactList
             contacts={currentTab === 0 ? ops.contacts!.all : ops.contacts!.favorites}
             deleteContact={ops.deleteContact}
             toggleFavorite={ops.toggleFavorite}
             includeAdder
-            className={classes.list}
+            className="mt-3 sm:mt-6"
           />
         )}
       </div>
