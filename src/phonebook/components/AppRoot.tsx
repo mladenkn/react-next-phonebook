@@ -1,6 +1,6 @@
 import { AppBar, colors } from "@material-ui/core"
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles"
-import router from "./Pages"
+import router from "./pages"
 import { RouterProvider } from "react-router-dom"
 import { Toolbar } from "./Toolbar"
 import {
