@@ -6,7 +6,7 @@ type Contact = {
   email: string
   numbers: {
     label: string
-    value: string
+    value: number
   }[]
 }
 
