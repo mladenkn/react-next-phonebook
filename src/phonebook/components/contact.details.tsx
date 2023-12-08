@@ -1,9 +1,9 @@
 import { Contact } from "../models"
 import ContactDetailsFields from "./contact.details.fields"
 import { FavoriteAction, GoToEditAction, GoBackAction } from "./actions"
-import { ContactPageBaseStylesMd, ContactPageBaseStylesXs } from "./ContactPageBase.style"
+import { ContactPageBaseStylesMd, ContactPageBaseStylesXs } from "./contact.details.baseStyle"
 import useMediaQuery from "@material-ui/core/useMediaQuery"
-import { ContactAvatar } from "./ContactAvatar"
+import { ContactAvatar } from "./contact.avatar"
 import { cn } from "../../utils"
 
 type Props = { contact: Contact; onFavorite: () => void }
