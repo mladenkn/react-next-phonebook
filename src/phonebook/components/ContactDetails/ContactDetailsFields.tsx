@@ -1,7 +1,14 @@
-import { Contact } from "../../models"
 import { ContactFieldLabel } from "../various"
 import EmailIcon from "@material-ui/icons/Email"
 import PhoneIcon from "@material-ui/icons/Phone"
+
+type Contact = {
+  email: string
+  numbers: {
+    label: string
+    value: string
+  }[]
+}
 
 export default ({ contact }: { contact: Contact }) => (
   <div>
