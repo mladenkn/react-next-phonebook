@@ -7,7 +7,7 @@ import {
 } from "./actions.style"
 import { contactEditUrl } from "../urls"
 import { useState } from "react"
-import DeleteModal from "./deleteDialog"
+import DeleteModal from "./delete-dialog"
 import { useGoBack } from "../logic/GoBackContext"
 import { Link } from "./various"
 import EditIcon from "@material-ui/icons/Edit"

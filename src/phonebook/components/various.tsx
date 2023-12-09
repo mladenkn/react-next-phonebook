@@ -1,10 +1,10 @@
 import { WithStyles, withStyles } from "@material-ui/core"
-import { contactFieldLabelStyle } from "./various.style"
+import { contactFieldLabelStyle } from "./various-style"
 import React, { ComponentType } from "react"
 import { LinkProps as MuiLinkProps } from "@material-ui/core/Link"
 import { Link as MuiLink, Divider as MUIDivider } from "@material-ui/core"
 import { Link as RouterLink } from "react-router-dom"
-import { dividerStyle } from "./various.style"
+import { dividerStyle } from "./various-style"
 import clsx from "clsx"
 
 type ContactFieldLabelProps = {
@@ -50,6 +50,4 @@ const createRefRouterLink = (url: string) =>
     <RouterLink innerRef={ref} to={url} {...props} />
   ))
 
-export const Link = (p: MuiLinkProps) => (
-  <MuiLink {...p} component={createRefRouterLink(p.href!)} />
-)
+export const Link = (p: MuiLinkProps) => <MuiLink {...p} component={createRefRouterLink(p.href!)} />

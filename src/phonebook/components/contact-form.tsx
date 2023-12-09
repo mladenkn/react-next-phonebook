@@ -1,6 +1,6 @@
 import { WithStyles, withStyles, IconButton, Button } from "@material-ui/core"
 import { Contact } from "../models"
-import style from "./contact.form.style"
+import style from "./contact-form-style"
 import { FormikErrors, Formik, Field, ErrorMessage, FieldArray } from "formik"
 import { Divider, Emptiness } from "./various"
 import { ContactFieldLabel } from "./various"

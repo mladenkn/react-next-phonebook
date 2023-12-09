@@ -8,7 +8,7 @@ import {
   DialogContentText,
   DialogActions,
 } from "@material-ui/core"
-import style from "./deleteDialog.style"
+import style from "./delete-dialog-style"
 
 type Props = {
   text: string

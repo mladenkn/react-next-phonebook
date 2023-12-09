@@ -1,8 +1,8 @@
 import { useState } from "react"
 import { validURL } from "../../utils"
-import { swapableAvatarStyle } from "./swapableAvatar.style"
+import { swapableAvatarStyle } from "./swapable-avatar-style"
 import { withStyles, WithStyles, Avatar } from "@material-ui/core"
-import { TextInputDialog } from "./TextInputDialog"
+import { TextInputDialog } from "./text-input-dialog"
 import CloudUploadIcon from "@material-ui/icons/CloudUpload"
 
 type Props = {

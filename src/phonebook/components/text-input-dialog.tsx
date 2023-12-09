@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { Dialog, DialogContent, DialogTitle, Input, DialogActions, Button } from "@material-ui/core"
-import { useTextInputDialogStyle } from "./various.style"
+import { useTextInputDialogStyle } from "./various-style"
 
 type TextInputDialogProps = {
   text?: string

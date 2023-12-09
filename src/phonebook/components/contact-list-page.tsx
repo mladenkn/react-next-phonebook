@@ -1,5 +1,5 @@
 import { useState } from "react"
-import ContactList from "./contact.list"
+import ContactList from "./contact-list"
 import { useContactListOps } from "../logic/contactListOps"
 import SearchIcon from "@material-ui/icons/Search"
 import clsx from "clsx"
