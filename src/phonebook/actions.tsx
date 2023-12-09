@@ -27,9 +27,9 @@ type FavoriteActionProps = {
 export const FavoriteAction = ({ onClick, isFavorite, iconClass }: FavoriteActionProps) => (
   <button onClick={onClick}>
     {isFavorite ? (
-      <FavoriteIcon className={iconClass} />
+      <FavoriteIcon className={iconClass} color="secondary" />
     ) : (
-      <FavoriteOutlinedIcon className={iconClass} />
+      <FavoriteOutlinedIcon className={iconClass} color="secondary" />
     )}
   </button>
 )
