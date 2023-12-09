@@ -1,10 +1,5 @@
 import { withStyles, WithStyles, IconButton, Typography } from "@material-ui/core"
-import {
-  goToEditActionStyle,
-  favoriteActionStyle,
-  deleteActionStyle,
-  goBackStyle,
-} from "./actions-style"
+import { deleteActionStyle, goBackStyle } from "./actions-style"
 import { contactEditUrl } from "./urls"
 import { useState } from "react"
 import DeleteModal from "./delete-dialog"
@@ -21,29 +16,28 @@ type GoToEditActionProps = {
   contactId: number
   rootClass?: string
   iconClass?: string
-} & WithStyles<typeof goToEditActionStyle>
+}
 
-export const GoToEditAction = withStyles(goToEditActionStyle)(
-  ({ classes, contactId, rootClass, iconClass }: GoToEditActionProps) => (
-    <Link href={contactEditUrl(contactId)} className={clsx(classes.root, rootClass)}>
-      <EditIcon color="secondary" className={iconClass} />
-    </Link>
-  ),
+export const GoToEditAction = ({ contactId, rootClass, iconClass }: GoToEditActionProps) => (
+  <Link href={contactEditUrl(contactId)} className={rootClass}>
+    <EditIcon color="secondary" className={iconClass} />
+  </Link>
 )
 
 type FavoriteActionProps = {
   onClick: () => void
   isFavorite: boolean
-  rootClass?: string
   iconClass?: string
-} & WithStyles<typeof favoriteActionStyle>
+}
 
-export const FavoriteAction = withStyles(favoriteActionStyle)(
-  ({ onClick, isFavorite, classes, rootClass }: FavoriteActionProps) => (
-    <IconButton className={classes.root + " " + rootClass} onClick={onClick} disableRipple>
-      {isFavorite ? <FavoriteIcon /> : <FavoriteOutlinedIcon />}
-    </IconButton>
-  ),
+export const FavoriteAction = ({ onClick, isFavorite, iconClass }: FavoriteActionProps) => (
+  <button className={"p-0"} onClick={onClick}>
+    {isFavorite ? (
+      <FavoriteIcon className={iconClass} />
+    ) : (
+      <FavoriteOutlinedIcon className={iconClass} />
+    )}
+  </button>
 )
 
 type DeleteActionProps = {
