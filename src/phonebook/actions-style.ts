@@ -12,6 +12,6 @@ export const deleteActionStyle = ({ palette }: Theme) =>
     buttonHoverEffect: {
       padding: 5,
       color: palette.text.primary,
-      borderRadius: "10%",
+      borderRadius: "1%",
     },
   })

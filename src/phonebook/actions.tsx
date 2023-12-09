@@ -1,4 +1,4 @@
-import { withStyles, WithStyles, IconButton, Typography } from "@material-ui/core"
+import { withStyles, WithStyles, IconButton } from "@material-ui/core"
 import { deleteActionStyle } from "./actions-style"
 import { contactEditUrl } from "./urls"
 import { useState } from "react"
@@ -10,7 +10,6 @@ import DeleteIcon from "@material-ui/icons/Delete"
 import ArrowBackIcon from "@material-ui/icons/ArrowBack"
 import FavoriteIcon from "@material-ui/icons/Favorite"
 import FavoriteOutlinedIcon from "@material-ui/icons/FavoriteBorder"
-import clsx from "clsx"
 
 export const GoToEditAction = ({ contactId }: { contactId: number }) => (
   <Link href={contactEditUrl(contactId)}>
