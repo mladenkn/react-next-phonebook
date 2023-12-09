@@ -38,29 +38,21 @@ type DeleteActionProps = {
   onConfirm: () => void
   withHoverEffect?: boolean
   withText?: boolean
-  rootClass?: string
-  iconClass?: string
 } & WithStyles<typeof deleteActionStyle>
 
 export const DeleteAction = withStyles(deleteActionStyle)(({
   onConfirm,
   withText,
   classes,
-  rootClass,
-  iconClass,
   withHoverEffect,
 }: DeleteActionProps) => {
   const [modalOpen, setModalOpen] = useState(false)
   const buttonClass = withHoverEffect || false ? classes.buttonHoverEffect : classes.button
   return (
     <>
-      <IconButton
-        className={clsx(rootClass, buttonClass)}
-        onClick={() => setModalOpen(true)}
-        disableRipple
-      >
-        {(withText || false) && <Typography className={classes.text}>Delete</Typography>}
-        <DeleteIcon color="secondary" className={iconClass} />
+      <IconButton className={buttonClass} onClick={() => setModalOpen(true)} disableRipple>
+        {(withText || false) && <p className="mr-1 text-base">Delete</p>}
+        <DeleteIcon color="secondary" />
       </IconButton>
       <DeleteModal
         isOpen={modalOpen}

@@ -14,7 +14,4 @@ export const deleteActionStyle = ({ palette }: Theme) =>
       color: palette.text.primary,
       borderRadius: "10%",
     },
-    text: {
-      marginRight: 3,
-    },
   })
