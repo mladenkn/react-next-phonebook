@@ -8,7 +8,7 @@ import {
   DialogContentText,
   DialogActions,
 } from "@material-ui/core"
-import style from "./DeleteDialog.style"
+import style from "./delete-dialog-style"
 
 type Props = {
   text: string
@@ -17,7 +17,7 @@ type Props = {
   isOpen: boolean
 } & WithStyles<typeof style>
 
-const DeleteModal_ = ({ classes, text, isOpen, onCancel, onConfirm }: Props) => (
+const DeleteModal = ({ classes, text, isOpen, onCancel, onConfirm }: Props) => (
   <Dialog className={classes.root} open={isOpen} aria-labelledby="delete-dialog">
     <DialogTitle className={classes.title} id="delete-dialog">
       Delete
@@ -44,7 +44,4 @@ const DeleteModal_ = ({ classes, text, isOpen, onCancel, onConfirm }: Props) => 
   </Dialog>
 )
 
-export default withStyles(style)(DeleteModal_)
-
-// export const DeleteContactModel = (p: {onCancel: () => {}, onConfirm: () => {}}) =>
-//     <DeleteModal text="Are you sure you want to delete this contact?" onCancel={p.onCancel} onConfirm={p.onConfirm} />
+export default withStyles(style)(DeleteModal)

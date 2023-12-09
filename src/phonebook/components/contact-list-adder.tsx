@@ -1,7 +1,7 @@
-import style from "./ContactAdder.style"
-import { Typography, withStyles, WithStyles } from "@material-ui/core"
-import { Link } from "../various"
-import { contactCreateUrl } from "../../urls"
+import style from "./contact-list-adder-style"
+import { withStyles, WithStyles } from "@material-ui/core"
+import { Link } from "./various"
+import { contactCreateUrl } from "../urls"
 import { Add } from "@material-ui/icons"
 
 const ContactAdder = ({ classes }: WithStyles<typeof style>) => (

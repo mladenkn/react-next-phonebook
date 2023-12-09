@@ -1,4 +1,4 @@
-import { ContactFieldLabel } from "../various"
+import { ContactFieldLabel } from "./various"
 import EmailIcon from "@material-ui/icons/Email"
 import PhoneIcon from "@material-ui/icons/Phone"
 
@@ -10,7 +10,7 @@ type Contact = {
   }[]
 }
 
-export default ({ contact }: { contact: Contact }) => (
+const ContactDetailsFields = ({ contact }: { contact: Contact }) => (
   <div>
     <div className="py-5">
       <ContactFieldLabel Icon={EmailIcon} text="email" />
@@ -29,3 +29,5 @@ export default ({ contact }: { contact: Contact }) => (
     </div>
   </div>
 )
+
+export default ContactDetailsFields
