@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { validURL } from "../../utils"
+import { validURL } from "../utils"
 import { swapableAvatarStyle } from "./swapable-avatar-style"
 import { withStyles, WithStyles, Avatar } from "@material-ui/core"
 import { TextInputDialog } from "./text-input-dialog"

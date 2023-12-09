@@ -1,6 +1,6 @@
 import style from "./contact-list-adder-style"
 import { withStyles, WithStyles } from "@material-ui/core"
-import { Link } from "./various"
+import { Link } from "../various"
 import { contactCreateUrl } from "../urls"
 import { Add } from "@material-ui/icons"
 

@@ -1,7 +1,7 @@
 import { ContactListItem as ContactListItemModel } from "../models"
-import { GoToEditAction, FavoriteAction, DeleteAction } from "./actions"
+import { GoToEditAction, FavoriteAction, DeleteAction } from "../actions"
 import { ContactAvatar } from "./contact-avatar"
-import { Link } from "./various"
+import { Link } from "../various"
 import clsx from "clsx"
 import { tw } from "../../utils"
 

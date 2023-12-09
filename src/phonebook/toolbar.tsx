@@ -1,4 +1,4 @@
-import { homePageUrl } from "../urls"
+import { homePageUrl } from "./urls"
 import { Link, Typography, Toolbar as MuiToolbar } from "@material-ui/core"
 import { createStyles, makeStyles, Theme } from "@material-ui/core"
 

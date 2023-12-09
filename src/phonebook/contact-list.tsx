@@ -1,9 +1,9 @@
-import { ContactListItem as ContactListItemModel } from "../models"
+import { ContactListItem as ContactListItemModel } from "./models"
 import { useState } from "react"
-import ContactListItem from "./contact-list-item"
-import ContactAdder from "./contact-list-adder"
+import ContactListItem from "./contact/contact-list-item"
+import ContactAdder from "./contact/contact-list-adder"
 import withWidth from "@material-ui/core/withWidth"
-import { cn, useWidth } from "../../utils"
+import { cn, useWidth } from "../utils"
 
 type Props = {
   contacts: ContactListItemModel[]

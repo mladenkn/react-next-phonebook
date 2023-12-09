@@ -5,10 +5,10 @@ import {
   deleteActionStyle,
   goBackStyle,
 } from "./actions.style"
-import { contactEditUrl } from "../urls"
+import { contactEditUrl } from "./urls"
 import { useState } from "react"
 import DeleteModal from "./delete-dialog"
-import { useGoBack } from "../go-back-context"
+import { useGoBack } from "./go-back-context"
 import { Link } from "./various"
 import EditIcon from "@material-ui/icons/Edit"
 import DeleteIcon from "@material-ui/icons/Delete"

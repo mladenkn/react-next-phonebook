@@ -1,10 +1,10 @@
-import HomeSection from "./contact-list-page"
-import { useContactDetailsOps } from "../logic/contact-details-ops"
-import ContactDetails from "./contact-details"
+import HomeSection from "./contact/contact-list-page"
+import { useContactDetailsOps } from "./contact/contact-details-ops"
+import ContactDetails from "./contact/contact-details"
 import { useContactPageStyle, useHomePageStyle } from "./pages-styles"
-import { GoBackContextProvider } from "../go-back-context"
-import ContactEdit from "./contact-edit"
-import { useContactServiceContext } from "../logic/contact-repository"
+import { GoBackContextProvider } from "./go-back-context"
+import ContactEdit from "./contact/contact-edit"
+import { useContactServiceContext } from "./contact/contact-repository"
 import {
   createRoutesFromElements,
   createBrowserRouter,

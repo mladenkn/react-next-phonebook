@@ -1,7 +1,7 @@
 import { createRoot } from "react-dom/client"
 import "./index.css"
 import * as serviceWorker from "./serviceWorker"
-import { AppRoot } from "./phonebook/components/app-root"
+import { AppRoot } from "./phonebook/app-root"
 import { assertIsNonNil } from "./utils"
 
 const rootDomNode = document.getElementById("root")

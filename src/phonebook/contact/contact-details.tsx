@@ -1,6 +1,6 @@
 import { Contact } from "../models"
 import ContactDetailsFields from "./contact-details-fields"
-import { FavoriteAction, GoToEditAction, GoBackAction } from "./actions"
+import { FavoriteAction, GoToEditAction, GoBackAction } from "../actions"
 import { ContactPageBaseStylesMd, ContactPageBaseStylesXs } from "./contact-details-base-style"
 import useMediaQuery from "@material-ui/core/useMediaQuery"
 import { ContactAvatar } from "./contact-avatar"
