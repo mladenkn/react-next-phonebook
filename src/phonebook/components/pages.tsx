@@ -2,7 +2,7 @@ import HomeSection from "./contact-list-page"
 import { useContactDetailsOps } from "../logic/contactDetailsOps"
 import ContactDetails from "./contact-details"
 import { useContactPageStyle, useHomePageStyle } from "./pages-styles"
-import { GoBackContextProvider } from "../logic/GoBackContext"
+import { GoBackContextProvider } from "../go-back-context"
 import ContactEdit from "./contact-edit"
 import { useContactServiceContext } from "../logic/contactsRepository"
 import {

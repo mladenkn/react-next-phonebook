@@ -4,7 +4,7 @@ import { DeleteAction, GoBackAction } from "./actions"
 import useMediaQuery from "@material-ui/core/useMediaQuery"
 import ContactForm from "./contact-form"
 import { ContactPageBaseStylesXs, ContactPageBaseStylesMd } from "./contact-details-base-style"
-import { useGoBack } from "../logic/GoBackContext"
+import { useGoBack } from "../go-back-context"
 import { SwapableAvatar } from "./swapable-avatar"
 import { cn } from "../../utils"
 
