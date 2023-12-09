@@ -26,7 +26,7 @@ export const useContactEditPageStyle = makeStyles(contactEditPageStyle, {
   name: "ContactEditPageStyle",
 })
 
-const homePageStyle = ({ breakpoints, ...theme }: Theme) =>
+const homePageStyle = ({ breakpoints }: Theme) =>
   createStyles({
     root: {
       display: "flex",
