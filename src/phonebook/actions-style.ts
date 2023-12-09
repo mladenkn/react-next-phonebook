@@ -18,12 +18,3 @@ export const deleteActionStyle = ({ palette }: Theme) =>
       marginRight: 3,
     },
   })
-
-export const goBackStyle = createStyles({
-  root: {
-    padding: 0,
-    "&:hover": {
-      "background-color": "inherit",
-    },
-  },
-})

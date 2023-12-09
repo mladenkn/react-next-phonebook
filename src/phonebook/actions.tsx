@@ -1,5 +1,5 @@
 import { withStyles, WithStyles, IconButton, Typography } from "@material-ui/core"
-import { deleteActionStyle, goBackStyle } from "./actions-style"
+import { deleteActionStyle } from "./actions-style"
 import { contactEditUrl } from "./urls"
 import { useState } from "react"
 import DeleteModal from "./delete-dialog"
@@ -79,22 +79,14 @@ export const DeleteAction = withStyles(deleteActionStyle)(({
 })
 
 type GoBackActionProps = {
-  rootClass?: string
   iconClass?: string
-  onClick?: () => void
-  useGoBackContext?: boolean
-} & WithStyles<typeof goBackStyle>
+}
 
-export const GoBackAction = withStyles(goBackStyle)(({
-  onClick,
-  rootClass,
-  iconClass,
-  useGoBackContext,
-}: GoBackActionProps) => {
-  const onClick_ = useGoBackContext || true ? useGoBack() : onClick
+export const GoBackAction = ({ iconClass }: GoBackActionProps) => {
+  const onClick = useGoBack()
   return (
-    <button onClick={onClick_} className={"p-0" + rootClass}>
+    <button onClick={onClick} className="p-0">
       <ArrowBackIcon color="secondary" className={iconClass} />
     </button>
   )
-})
+}
