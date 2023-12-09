@@ -18,7 +18,11 @@ export interface ContactIdRouteParams {
 }
 
 const ContactListPage = () => {
-  return <HomeSection className="mt-4 sm:mt-7" />
+  return (
+    <Container maxWidth="lg">
+      <HomeSection className="mt-4 sm:mt-7" />
+    </Container>
+  )
 }
 
 const ContactDetailsPage = () => {
