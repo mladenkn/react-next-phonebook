@@ -1,7 +1,7 @@
 import HomeSection from "./contact/contact-list-page"
 import { useContactDetailsOps } from "./contact/contact-details-ops"
 import ContactDetails from "./contact/contact-details"
-import { useContactPageStyle, useHomePageStyle } from "./pages-styles"
+import { useHomePageStyle } from "./pages-styles"
 import { GoBackContextProvider } from "./go-back-context"
 import ContactEdit from "./contact/contact-edit"
 import { useContactServiceContext } from "./contact/contact-repository"
@@ -31,12 +31,11 @@ const ContactDetailsPage = () => {
   const params = useParams()
   const navigate = useNavigate()
   const contactId = parseInt(params.contactId!)
-  const classes = useContactPageStyle()
   const ops = useContactDetailsOps(contactId, () => navigate(-1), navigate)
 
   return (
     <GoBackContextProvider value={() => navigate(-1)}>
-      <div className={classes.root}>
+      <div>
         {
           ops.fetchStatus === "COMPLETED" ? (
             <Container maxWidth="sm">
@@ -53,11 +52,10 @@ const ContactDetailsPage = () => {
 
 const ContactCreatePage = () => {
   const navigate = useNavigate()
-  const classes = useContactPageStyle()
   const contactService = useContactServiceContext()
   return (
     <GoBackContextProvider value={() => navigate(-1)}>
-      <div className={classes.root}>
+      <div>
         <ContactEdit onSave={c => contactService.save(c).then(() => navigate(-1))} />
       </div>
     </GoBackContextProvider>
@@ -68,11 +66,10 @@ const ContactEditPage = () => {
   const params = useParams()
   const navigate = useNavigate()
   const contactId = parseInt(params.contactId!)
-  const classes = useContactPageStyle()
   const ops = useContactDetailsOps(contactId, () => navigate(-1), navigate)
   return (
     <GoBackContextProvider value={() => navigate(-1)}>
-      <div className={classes.root}>
+      <div>
         {
           ops.fetchStatus === "COMPLETED" ? (
             <ContactEdit contact={ops.contact!} onSave={ops.save} onDelete={ops.delete} />

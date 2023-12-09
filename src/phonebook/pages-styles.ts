@@ -1,31 +1,5 @@
 import { createStyles, Theme, makeStyles } from "@material-ui/core"
 
-const contactPageStyle = ({ breakpoints }: Theme) =>
-  createStyles({
-    [breakpoints.up("sm")]: {
-      root: {
-        marginTop: 30,
-      },
-    },
-  })
-
-const contactEditPageStyle = ({ breakpoints }: Theme) =>
-  createStyles({
-    [breakpoints.up("sm")]: {
-      root: {
-        width: 720,
-      },
-    },
-  })
-
-export const useContactPageStyle = makeStyles(contactPageStyle, {
-  name: "ContactPageStyle",
-})
-
-export const useContactEditPageStyle = makeStyles(contactEditPageStyle, {
-  name: "ContactEditPageStyle",
-})
-
 const homePageStyle = ({ breakpoints }: Theme) =>
   createStyles({
     root: {
