@@ -23,7 +23,7 @@ export const dividerStyle = ({ palette }: Theme) =>
     },
   })
 
-export const textInputDialogStyle = ({ palette, breakpoints }: Theme) =>
+export const textInputDialogStyle = ({ breakpoints }: Theme) =>
   createStyles({
     [breakpoints.only("xs")]: {
       paper: {

@@ -13,7 +13,7 @@ const searchWrapper_class = tw.class`
   shadow-homeSearch shadow-secondary-main
 `
 
-const Home = () => {
+const ContactListPage = () => {
   const [currentTab, setCurrentTab] = useState(0)
   const ops = useContactListOps()
 
@@ -54,4 +54,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default ContactListPage
