@@ -87,15 +87,14 @@ type GoBackActionProps = {
 
 export const GoBackAction = withStyles(goBackStyle)(({
   onClick,
-  classes,
   rootClass,
   iconClass,
   useGoBackContext,
 }: GoBackActionProps) => {
   const onClick_ = useGoBackContext || true ? useGoBack() : onClick
   return (
-    <IconButton onClick={onClick_} className={classes.root + " " + rootClass} disableRipple>
+    <button onClick={onClick_} className={"p-0" + rootClass}>
       <ArrowBackIcon color="secondary" className={iconClass} />
-    </IconButton>
+    </button>
   )
 })
