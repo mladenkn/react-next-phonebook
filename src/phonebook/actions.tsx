@@ -12,15 +12,9 @@ import FavoriteIcon from "@material-ui/icons/Favorite"
 import FavoriteOutlinedIcon from "@material-ui/icons/FavoriteBorder"
 import clsx from "clsx"
 
-type GoToEditActionProps = {
-  contactId: number
-  rootClass?: string
-  iconClass?: string
-}
-
-export const GoToEditAction = ({ contactId, rootClass, iconClass }: GoToEditActionProps) => (
-  <Link href={contactEditUrl(contactId)} className={rootClass}>
-    <EditIcon color="secondary" className={iconClass} />
+export const GoToEditAction = ({ contactId }: { contactId: number }) => (
+  <Link href={contactEditUrl(contactId)}>
+    <EditIcon color="secondary" />
   </Link>
 )
 
@@ -31,7 +25,7 @@ type FavoriteActionProps = {
 }
 
 export const FavoriteAction = ({ onClick, isFavorite, iconClass }: FavoriteActionProps) => (
-  <button className={"p-0"} onClick={onClick}>
+  <button className="" onClick={onClick}>
     {isFavorite ? (
       <FavoriteIcon className={iconClass} />
     ) : (

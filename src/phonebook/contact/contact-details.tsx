@@ -11,7 +11,7 @@ type Props = { contact: Contact; onFavorite: () => void }
 const ContactDetailsPage = ({ contact, onFavorite }: Props) => {
   const name = <p className="text-2xl">{contact.fullName}</p>
   const favAction = <FavoriteAction onClick={onFavorite} isFavorite={contact.isFavorite} />
-  const editAction = <GoToEditAction contactId={contact.id} rootClass="inline-flex items-center" />
+  const editAction = <GoToEditAction contactId={contact.id} />
 
   const onlyXs = useMediaQuery("(max-width:599px)")
 
