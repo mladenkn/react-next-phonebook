@@ -1,5 +1,4 @@
-import { withStyles, WithStyles, IconButton } from "@material-ui/core"
-import { deleteActionStyle } from "./actions-style"
+import { withStyles, WithStyles, IconButton, createStyles, Theme } from "@material-ui/core"
 import { contactEditUrl } from "./urls"
 import { useState } from "react"
 import DeleteModal from "./delete-dialog"
@@ -70,4 +69,21 @@ export const GoBackAction = () => {
       <ArrowBackIcon color="secondary" />
     </button>
   )
+}
+
+function deleteActionStyle({ palette }: Theme) {
+  return createStyles({
+    button: {
+      padding: 0,
+      color: palette.text.primary,
+      "&:hover": {
+        "background-color": "inherit",
+      },
+    },
+    buttonHoverEffect: {
+      padding: 5,
+      color: palette.text.primary,
+      borderRadius: "1%",
+    },
+  })
 }
