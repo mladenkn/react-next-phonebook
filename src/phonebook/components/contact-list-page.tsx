@@ -1,6 +1,6 @@
 import { useState } from "react"
 import ContactList from "./contact-list"
-import { useContactListOps } from "../logic/contactListOps"
+import { useContactListOps } from "../logic/contact-list-ops"
 import SearchIcon from "@material-ui/icons/Search"
 import clsx from "clsx"
 import { tw } from "../../utils"

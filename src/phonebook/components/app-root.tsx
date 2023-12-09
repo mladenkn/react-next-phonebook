@@ -6,7 +6,7 @@ import { Toolbar } from "./toolbar"
 import {
   ContactServiceContextProvider,
   useContactRepositoryLocalStorage,
-} from "../logic/contactsRepository"
+} from "../logic/contact-repository"
 import { seedDataIfNeeded } from "../devUtils/localStorage"
 
 const theme = createMuiTheme({
