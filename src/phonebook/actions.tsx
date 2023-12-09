@@ -72,15 +72,11 @@ export const DeleteAction = withStyles(deleteActionStyle)(({
   )
 })
 
-type GoBackActionProps = {
-  iconClass?: string
-}
-
-export const GoBackAction = ({ iconClass }: GoBackActionProps) => {
+export const GoBackAction = () => {
   const onClick = useGoBack()
   return (
-    <button onClick={onClick} className="p-0">
-      <ArrowBackIcon color="secondary" className={iconClass} />
+    <button onClick={onClick}>
+      <ArrowBackIcon color="secondary" />
     </button>
   )
 }
