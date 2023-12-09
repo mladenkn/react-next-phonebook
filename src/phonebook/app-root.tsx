@@ -7,7 +7,7 @@ import {
   ContactServiceContextProvider,
   useContactRepositoryLocalStorage,
 } from "./contact/contact-repository"
-import { seedDataIfNeeded } from "./devUtils/localStorage"
+import { seedDataIfNeeded } from "./local-storage-seed"
 
 const theme = createMuiTheme({
   palette: {

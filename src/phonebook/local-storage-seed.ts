@@ -1,5 +1,5 @@
-import { generateArray } from "../../utils"
-import { generateContact } from "../devUtils/dataGenerators"
+import { generateArray } from "../utils"
+import { generateContact } from "./contact/contact-data-generators"
 
 export function seedDataIfNeeded() {
   const hasAnyContacts = Object.keys(localStorage).some(key => key.startsWith("contact-"))
