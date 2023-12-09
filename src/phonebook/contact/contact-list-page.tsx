@@ -13,12 +13,12 @@ const searchWrapper_class = tw.class`
   shadow-homeSearch shadow-secondary-main
 `
 
-const ContactListPage = () => {
+const ContactListPage = ({ className }: { className?: string }) => {
   const [currentTab, setCurrentTab] = useState(0)
   const ops = useContactListOps()
 
   return (
-    <div>
+    <div className={className}>
       <div className="flex max-w-5xl flex-col items-center">
         <div className="flex gap-8">
           <StyledTab

@@ -1,7 +1,6 @@
 import HomeSection from "./contact/contact-list-page"
 import { useContactDetailsOps } from "./contact/contact-details-ops"
 import ContactDetails from "./contact/contact-details"
-import { useHomePageStyle } from "./pages-styles"
 import { GoBackContextProvider } from "./go-back-context"
 import ContactEdit from "./contact/contact-edit"
 import { useContactServiceContext } from "./contact/contact-repository"
@@ -19,11 +18,7 @@ export interface ContactIdRouteParams {
 }
 
 const ContactListPage = () => {
-  return (
-    <div className="mt-4 sm:mt-7">
-      <HomeSection />
-    </div>
-  )
+  return <HomeSection className="mt-4 sm:mt-7" />
 }
 
 const ContactDetailsPage = () => {
