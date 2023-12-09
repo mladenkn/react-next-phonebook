@@ -19,9 +19,8 @@ export interface ContactIdRouteParams {
 }
 
 const ContactListPage = () => {
-  const classes = useHomePageStyle()
   return (
-    <div className={classes.root}>
+    <div className="mt-4 sm:mt-7">
       <HomeSection />
     </div>
   )
