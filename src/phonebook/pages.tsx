@@ -35,17 +35,13 @@ const ContactDetailsPage = () => {
 
   return (
     <GoBackContextProvider value={() => navigate(-1)}>
-      <div>
-        {
-          ops.fetchStatus === "COMPLETED" ? (
-            <Container maxWidth="sm">
-              <ContactDetails contact={ops.contact!} onFavorite={ops.favorite} />
-            </Container>
-          ) : (
-            <div />
-          ) // doesn't make sense to handle this since there is no real fetching}
-        }
-      </div>
+      {
+        ops.fetchStatus === "COMPLETED" ? (
+          <Container maxWidth="sm">
+            <ContactDetails contact={ops.contact!} onFavorite={ops.favorite} />
+          </Container>
+        ) : null // doesn't make sense to handle this since there is no real fetching}
+      }
     </GoBackContextProvider>
   )
 }
@@ -55,9 +51,7 @@ const ContactCreatePage = () => {
   const contactService = useContactServiceContext()
   return (
     <GoBackContextProvider value={() => navigate(-1)}>
-      <div>
-        <ContactEdit onSave={c => contactService.save(c).then(() => navigate(-1))} />
-      </div>
+      <ContactEdit onSave={c => contactService.save(c).then(() => navigate(-1))} />
     </GoBackContextProvider>
   )
 }
@@ -69,15 +63,11 @@ const ContactEditPage = () => {
   const ops = useContactDetailsOps(contactId, () => navigate(-1), navigate)
   return (
     <GoBackContextProvider value={() => navigate(-1)}>
-      <div>
-        {
-          ops.fetchStatus === "COMPLETED" ? (
-            <ContactEdit contact={ops.contact!} onSave={ops.save} onDelete={ops.delete} />
-          ) : (
-            <div />
-          ) // doesn't make sense to handle this since there is no real fetching}
-        }
-      </div>
+      {
+        ops.fetchStatus === "COMPLETED" ? (
+          <ContactEdit contact={ops.contact!} onSave={ops.save} onDelete={ops.delete} />
+        ) : null // doesn't make sense to handle this since there is no real fetching}
+      }
     </GoBackContextProvider>
   )
 }
