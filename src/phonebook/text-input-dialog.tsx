@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Dialog, DialogContent, DialogTitle, Input, DialogActions, Button } from "@material-ui/core"
+import { Dialog, Input, Button } from "@material-ui/core"
 
 type TextInputDialogProps = {
   text?: string
@@ -14,15 +14,17 @@ export const TextInputDialog = (p: TextInputDialogProps) => {
   const okButtonDisabled = !inputValid
 
   return (
-    <Dialog classes={{ paper: "mx-2 w-full" }} open={true} aria-labelledby="text-input-dialog">
-      <DialogTitle id="text-input-dialog">Enter image url:</DialogTitle>
+    <Dialog classes={{ paper: "mx-2 w-full" }} open={true}>
+      <h1 className="mb-4 ml-6 mt-6 text-xl">Enter image url:</h1>
 
-      <DialogContent>
-        <Input className="w-full sm:w-96" value={input} onChange={e => setInput(e.target.value)} />
-      </DialogContent>
+      <Input
+        className="ml-6 w-full sm:w-96"
+        value={input}
+        onChange={e => setInput(e.target.value)}
+      />
 
-      <DialogActions className="mx-6 mb-3 mt-2">
-        <Button variant="contained" color="secondary" onClick={() => p.onCancel()} className={""}>
+      <div className="mx-6 mb-4 mt-6 flex justify-end gap-3">
+        <Button variant="contained" color="secondary" onClick={() => p.onCancel()}>
           Cancel
         </Button>
         <Button
@@ -34,7 +36,7 @@ export const TextInputDialog = (p: TextInputDialogProps) => {
         >
           OK
         </Button>
-      </DialogActions>
+      </div>
     </Dialog>
   )
 }
