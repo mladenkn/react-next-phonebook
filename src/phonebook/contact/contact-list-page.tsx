@@ -18,7 +18,7 @@ const ContactListPage = ({ className }: { className?: string }) => {
   const ops = useContactListOps()
 
   return (
-    <div className={cn("flex max-w-5xl flex-col items-center", className)}>
+    <div className={cn("flex flex-col items-center", className)}>
       <div className="flex gap-8">
         <StyledTab
           className={clsx(currentTab === 0 && "text-tc-secondary")}

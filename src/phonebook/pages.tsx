@@ -11,7 +11,8 @@ import {
   useParams,
   useNavigate,
 } from "react-router-dom"
-import { Container } from "@material-ui/core"
+import { AppBar, Container } from "@material-ui/core"
+import { Toolbar } from "./toolbar"
 
 export interface ContactIdRouteParams {
   contactId?: string
@@ -20,6 +21,9 @@ export interface ContactIdRouteParams {
 const ContactListPage = () => {
   return (
     <Container maxWidth="lg">
+      <AppBar>
+        <Toolbar />
+      </AppBar>
       <HomeSection className="mt-4 sm:mt-7" />
     </Container>
   )
@@ -36,6 +40,9 @@ const ContactDetailsPage = () => {
       {
         ops.fetchStatus === "COMPLETED" ? (
           <Container maxWidth="sm">
+            <AppBar>
+              <Toolbar />
+            </AppBar>
             <ContactDetails contact={ops.contact!} onFavorite={ops.favorite} />
           </Container>
         ) : null // doesn't make sense to handle this since there is no real fetching}
@@ -49,7 +56,12 @@ const ContactCreatePage = () => {
   const contactService = useContactServiceContext()
   return (
     <GoBackContextProvider value={() => navigate(-1)}>
-      <ContactEdit onSave={c => contactService.save(c).then(() => navigate(-1))} />
+      <Container maxWidth="sm">
+        <AppBar>
+          <Toolbar />
+        </AppBar>
+        <ContactEdit onSave={c => contactService.save(c).then(() => navigate(-1))} />
+      </Container>
     </GoBackContextProvider>
   )
 }
@@ -63,7 +75,12 @@ const ContactEditPage = () => {
     <GoBackContextProvider value={() => navigate(-1)}>
       {
         ops.fetchStatus === "COMPLETED" ? (
-          <ContactEdit contact={ops.contact!} onSave={ops.save} onDelete={ops.delete} />
+          <Container maxWidth="sm">
+            <AppBar>
+              <Toolbar />
+            </AppBar>
+            <ContactEdit contact={ops.contact!} onSave={ops.save} onDelete={ops.delete} />
+          </Container>
         ) : null // doesn't make sense to handle this since there is no real fetching}
       }
     </GoBackContextProvider>

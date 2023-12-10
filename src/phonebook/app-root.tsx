@@ -42,9 +42,9 @@ export const AppRoot = () => {
   return (
     <MuiThemeProvider theme={theme}>
       <ContactServiceContextProvider value={contactService}>
-        <AppBar position="sticky">
+        {/* <AppBar position="sticky">
           <Toolbar />
-        </AppBar>
+        </AppBar> */}
         <RouterProvider router={router} />
       </ContactServiceContextProvider>
     </MuiThemeProvider>
