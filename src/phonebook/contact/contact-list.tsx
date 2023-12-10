@@ -2,7 +2,6 @@ import { ContactListItem as ContactListItemModel } from "../models"
 import { useState } from "react"
 import ContactListItem from "./contact-list-item"
 import ContactAdder from "./contact-list-adder"
-import withWidth from "@material-ui/core/withWidth"
 import { cn, useWidth } from "../../utils"
 
 type Props = {
@@ -13,32 +12,24 @@ type Props = {
   toggleFavorite: (id: number) => void
 }
 
-const ContactList = withWidth()(({
+const ContactList = ({
   contacts,
   includeAdder,
   className,
   deleteContact,
   toggleFavorite,
 }: Props) => {
-  const includeAdder_ = includeAdder || false
-
   const [selectedItemId, setSelectedItemId] = useState(0)
+  const itemRootClass = cn("h-16 w-full pt-1", cn.md("w-60 h-36 p-1"))
 
   const width = useWidth()
   if (!width) return <></>
-
-  const variant = width >= 768 ? "bigger" : "smaller"
-  const isBigger = variant == "bigger"
-
-  const itemRootClass = cn("h-16 w-full pt-1", cn.md("w-60 h-36 p-1"))
-  // const itemRootClass = cn("h-16 w-full pt-1 md:w-60 md:h-36 md:p-1")
-  // const itemRootClass = cn("h-16 w-full pt-1", isBigger && "w-60 h-36 p-1")
 
   const items = contacts.map(c => (
     <li key={c.id} className={itemRootClass}>
       <ContactListItem
         isSelected={selectedItemId === c.id}
-        variant={variant}
+        variant={width >= 768 ? "bigger" : "smaller"}
         onDelete={() => deleteContact(c.id)}
         onSelect={() => setSelectedItemId(c.id)}
         onToggleFavorite={() => toggleFavorite(c.id)}
@@ -47,6 +38,7 @@ const ContactList = withWidth()(({
     </li>
   ))
 
+  const includeAdder_ = includeAdder || false
   if (includeAdder_) {
     const adder = (
       <li key={0} className={itemRootClass}>
@@ -68,6 +60,6 @@ const ContactList = withWidth()(({
       {items}
     </ul>
   )
-})
+}
 
 export default ContactList
