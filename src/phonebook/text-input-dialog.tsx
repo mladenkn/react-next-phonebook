@@ -1,5 +1,6 @@
 import { useState } from "react"
-import { Dialog, Input, Button } from "@material-ui/core"
+import { Dialog, Input } from "@material-ui/core"
+import { cn } from "../utils"
 
 type TextInputDialogProps = {
   text?: string
@@ -24,18 +25,23 @@ export const TextInputDialog = (p: TextInputDialogProps) => {
       />
 
       <div className="mx-6 mb-4 mt-6 flex justify-end gap-3">
-        <Button variant="contained" color="secondary" onClick={() => p.onCancel()}>
+        <button
+          className="h-10 w-20 rounded-lg border-none bg-secondary-main text-black"
+          onClick={() => p.onCancel()}
+        >
           Cancel
-        </Button>
-        <Button
-          variant="contained"
-          color="primary"
+        </button>
+        <button
+          className={cn(
+            "h-10 w-20 rounded-lg border-none ",
+            okButtonDisabled ? "text-gray bg-secondary-light" : "bg-secondary-main text-black",
+          )}
           onClick={() => p.onOK(input)}
           disabled={okButtonDisabled}
           autoFocus
         >
-          OK
-        </Button>
+          Ok
+        </button>
       </div>
     </Dialog>
   )
