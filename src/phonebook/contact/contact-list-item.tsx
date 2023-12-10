@@ -3,6 +3,7 @@ import { GoToEditAction, FavoriteAction, DeleteAction } from "../actions"
 import { ContactAvatar } from "./contact-avatar"
 import clsx from "clsx"
 import { tw } from "../../utils"
+import { Link } from "react-router-dom"
 
 type ItemPresenterProps = {
   contact: ContactListItemModel
@@ -67,12 +68,12 @@ const ContactListItem = ({
       )
     case isBigger && isSelected:
       return (
-        <a
+        <Link
           className={clsx(
             baseClass,
             "flex-col justify-center border-2 border-primary-main hover:no-underline",
           )}
-          href={`/contact/details/${contact.id}`}
+          to={`/contact/details/${contact.id}`}
         >
           <div className="flex w-full justify-between px-1.5">
             {favoriteAction}
@@ -83,16 +84,16 @@ const ContactListItem = ({
           </div>
           {avatar}
           {name}
-        </a>
+        </Link>
       )
     default:
       return (
-        <a
+        <Link
           className={clsx(
             baseClass,
             "w-full justify-between border-2 border-secondary-light pl-2 pr-1 shadow-none",
           )}
-          href={`/contact/details/${contact.id}`}
+          to={`/contact/details/${contact.id}`}
         >
           {avatar}
           {name}
@@ -101,7 +102,7 @@ const ContactListItem = ({
             {editAction}
             {deleteAction}
           </span>
-        </a>
+        </Link>
       )
   }
 }

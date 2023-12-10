@@ -1,7 +1,6 @@
 import { WithStyles, withStyles } from "@material-ui/core"
 import { contactFieldLabelStyle } from "./various-style"
-import React, { ComponentType } from "react"
-import { Link as RouterLink } from "react-router-dom"
+import { ComponentType } from "react"
 import clsx from "clsx"
 
 type ContactFieldLabelProps = {
@@ -19,7 +18,6 @@ const ContactFieldLabel_ = (p: ContactFieldLabelProps) => (
 
 export const ContactFieldLabel = withStyles(contactFieldLabelStyle)(ContactFieldLabel_)
 
-
 type EmptinessProps = {
   width?: number | string
   height?: number | string
@@ -28,9 +26,3 @@ type EmptinessProps = {
 export const Emptiness = ({ width, height, className }: EmptinessProps) => (
   <div className={className} style={{ width, height }}></div>
 )
-
-const createRefRouterLink = (url: string) =>
-  React.forwardRef((props, ref: any) => (
-    // @ts-ignore
-    <RouterLink innerRef={ref} to={url} {...props} />
-  ))

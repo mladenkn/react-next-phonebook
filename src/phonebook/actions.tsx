@@ -8,11 +8,12 @@ import DeleteIcon from "@material-ui/icons/Delete"
 import ArrowBackIcon from "@material-ui/icons/ArrowBack"
 import FavoriteIcon from "@material-ui/icons/Favorite"
 import FavoriteOutlinedIcon from "@material-ui/icons/FavoriteBorder"
+import { Link } from "react-router-dom"
 
 export const GoToEditAction = ({ contactId }: { contactId: number }) => (
-  <a href={contactEditUrl(contactId)}>
+  <Link to={contactEditUrl(contactId)}>
     <EditIcon color="secondary" />
-  </a>
+  </Link>
 )
 
 type FavoriteActionProps = {
