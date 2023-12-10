@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import { useState } from "react"
 import { Dialog, DialogContent, DialogTitle, Input, DialogActions, Button } from "@material-ui/core"
 import { useTextInputDialogStyle } from "./various-style"
 
