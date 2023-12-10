@@ -1,7 +1,6 @@
 import { ContactListItem as ContactListItemModel } from "../models"
 import { GoToEditAction, FavoriteAction, DeleteAction } from "../actions"
 import { ContactAvatar } from "./contact-avatar"
-import { Link } from "../various"
 import clsx from "clsx"
 import { tw } from "../../utils"
 
@@ -68,8 +67,11 @@ const ContactListItem = ({
       )
     case isBigger && isSelected:
       return (
-        <Link
-          className={clsx(baseClass, "flex-col justify-center border-2 border-primary-main")}
+        <a
+          className={clsx(
+            baseClass,
+            "flex-col justify-center border-2 border-primary-main hover:no-underline",
+          )}
           href={`/contact/details/${contact.id}`}
         >
           <div className="flex w-full justify-between px-1.5">
@@ -81,11 +83,11 @@ const ContactListItem = ({
           </div>
           {avatar}
           {name}
-        </Link>
+        </a>
       )
     default:
       return (
-        <Link
+        <a
           className={clsx(
             baseClass,
             "w-full justify-between border-2 border-secondary-light pl-2 pr-1 shadow-none",
@@ -99,7 +101,7 @@ const ContactListItem = ({
             {editAction}
             {deleteAction}
           </span>
-        </Link>
+        </a>
       )
   }
 }
