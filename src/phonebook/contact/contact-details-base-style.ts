@@ -10,7 +10,7 @@ export const ContactPageBaseStylesXs = {
 }
 
 export const ContactPageBaseStylesMd = {
-  root: cn("flex mt-12"),
+  root: cn("flex"),
   heading: cn("flex border-b-1 border-primary-main pb-2"),
   right: cn("inline-block ml-5"),
 }
