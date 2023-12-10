@@ -6,9 +6,9 @@ import useMediaQuery from "@material-ui/core/useMediaQuery"
 import { ContactAvatar } from "./contact-avatar"
 import { cn } from "../../utils"
 
-type Props = { contact: Contact; onFavorite: () => void }
+type Props = { className?: string; contact: Contact; onFavorite: () => void }
 
-const ContactDetailsPage = ({ contact, onFavorite }: Props) => {
+const ContactDetailsPage = ({ className, contact, onFavorite }: Props) => {
   const name = <p className="text-2xl">{contact.fullName}</p>
   const favAction = <FavoriteAction onClick={onFavorite} isFavorite={contact.isFavorite} />
   const editAction = <GoToEditAction contactId={contact.id} />
@@ -26,7 +26,7 @@ const ContactDetailsPage = ({ contact, onFavorite }: Props) => {
 
   if (onlyXs) {
     return (
-      <div className={cn(ContactPageBaseStylesXs.root, "text-tc-primary")}>
+      <div className={cn(ContactPageBaseStylesXs.root, "text-tc-primary", className)}>
         <div className={ContactPageBaseStylesXs.toolbar}>
           <GoBackAction />
           <span className="flex items-center gap-2">
@@ -45,7 +45,7 @@ const ContactDetailsPage = ({ contact, onFavorite }: Props) => {
     )
   } else {
     return (
-      <div className={cn(ContactPageBaseStylesMd.root, "text-tc-primary")}>
+      <div className={cn(className, ContactPageBaseStylesMd.root, "text-tc-primary")}>
         {avatar}
         <div className={ContactPageBaseStylesMd.right}>
           <div className={cn(ContactPageBaseStylesMd.heading, "flex justify-between")}>

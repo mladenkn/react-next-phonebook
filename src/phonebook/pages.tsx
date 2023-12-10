@@ -24,7 +24,7 @@ const ContactListPage = () => {
       <AppBar>
         <Toolbar />
       </AppBar>
-      <HomeSection className="mt-4 sm:mt-7" />
+      <HomeSection className="mt-20" />
     </Container>
   )
 }
@@ -43,7 +43,7 @@ const ContactDetailsPage = () => {
             <AppBar>
               <Toolbar />
             </AppBar>
-            <ContactDetails contact={ops.contact!} onFavorite={ops.favorite} />
+            <ContactDetails className="mt-20" contact={ops.contact!} onFavorite={ops.favorite} />
           </Container>
         ) : null // doesn't make sense to handle this since there is no real fetching}
       }
