@@ -42,17 +42,15 @@ const ContactListItem = ({
     </p>
   )
 
-  const showActions = variant === "smaller" || (isBigger && isSelected)
-
-  const favoriteAction = showActions && (
+  const favoriteAction = (
     <FavoriteAction
       onClick={onToggleFavorite}
       isFavorite={contact.isFavorite}
       iconClass="text-sm"
     />
   )
-  const editAction = showActions && <GoToEditAction contactId={contact.id} />
-  const deleteAction = showActions && <DeleteAction onConfirm={onDelete} />
+  const editAction = <GoToEditAction contactId={contact.id} />
+  const deleteAction = <DeleteAction onConfirm={onDelete} />
 
   const baseClass = tw.class`flex h-full items-center border-solid`
 
@@ -63,6 +61,7 @@ const ContactListItem = ({
           className={clsx(baseClass, "flex-col justify-center border-2 border-secondary-light")}
           onClick={onSelect}
         >
+          <div className="flex w-full justify-start px-1.5">{favoriteAction}</div>
           {avatar}
           {name}
         </div>
