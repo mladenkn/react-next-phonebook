@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { validURL } from "../utils"
+import { cn, validURL } from "../utils"
 import { swapableAvatarStyle } from "./swapable-avatar-style"
 import { withStyles, WithStyles, Avatar } from "@material-ui/core"
 import { TextInputDialog } from "./text-input-dialog"
@@ -46,7 +46,7 @@ export const SwapableAvatar = withStyles(swapableAvatarStyle)(({
 
   return (
     <div>
-      <div className={className + " " + classes.root} onClick={onClick}>
+      <div className={cn(classes.root, className)} onClick={onClick}>
         {src ? (
           <Avatar src={src} className={classes.avatar} />
         ) : (
