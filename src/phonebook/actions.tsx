@@ -3,7 +3,6 @@ import { contactEditUrl } from "./urls"
 import { useState } from "react"
 import DeleteModal from "./delete-dialog"
 import { useGoBack } from "./go-back-context"
-import { Link } from "./various"
 import EditIcon from "@material-ui/icons/Edit"
 import DeleteIcon from "@material-ui/icons/Delete"
 import ArrowBackIcon from "@material-ui/icons/ArrowBack"
@@ -11,9 +10,9 @@ import FavoriteIcon from "@material-ui/icons/Favorite"
 import FavoriteOutlinedIcon from "@material-ui/icons/FavoriteBorder"
 
 export const GoToEditAction = ({ contactId }: { contactId: number }) => (
-  <Link href={contactEditUrl(contactId)}>
+  <a href={contactEditUrl(contactId)}>
     <EditIcon color="secondary" />
-  </Link>
+  </a>
 )
 
 type FavoriteActionProps = {
