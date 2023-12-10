@@ -9,9 +9,9 @@ type TextInputDialogProps = {
   onCancel: () => void
 }
 
-export const TextInputDialog = (p: TextInputDialogProps) => {
-  const [input, setInput] = useState(p.text || "")
-  const inputValid = p.isInputValid(input)
+export const TextInputDialog = ({ text, isInputValid, onOK, onCancel }: TextInputDialogProps) => {
+  const [input, setInput] = useState(text || "")
+  const inputValid = isInputValid(input)
   const okButtonDisabled = !inputValid
 
   return (
@@ -27,7 +27,7 @@ export const TextInputDialog = (p: TextInputDialogProps) => {
       <div className="mx-6 mb-4 mt-6 flex justify-end gap-3">
         <button
           className="h-10 w-20 rounded-lg border-none bg-secondary-main text-black"
-          onClick={() => p.onCancel()}
+          onClick={() => onCancel()}
         >
           Cancel
         </button>
@@ -36,7 +36,7 @@ export const TextInputDialog = (p: TextInputDialogProps) => {
             "h-10 w-20 rounded-lg border-none ",
             okButtonDisabled ? "text-gray bg-secondary-light" : "bg-secondary-main text-black",
           )}
-          onClick={() => p.onOK(input)}
+          onClick={() => onOK(input)}
           disabled={okButtonDisabled}
           autoFocus
         >
