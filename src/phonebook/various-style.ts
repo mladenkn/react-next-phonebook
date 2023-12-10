@@ -14,15 +14,6 @@ export const contactFieldLabelStyle = ({ palette }: Theme) =>
     fieldLabelText: {},
   })
 
-export const dividerStyle = ({ palette }: Theme) =>
-  createStyles({
-    root: {
-      height: 1.2,
-      backgroundColor: palette.primary.main,
-      width: "100%",
-    },
-  })
-
 export const textInputDialogStyle = ({ breakpoints }: Theme) =>
   createStyles({
     [breakpoints.only("xs")]: {

@@ -2,7 +2,7 @@ import { WithStyles, withStyles, IconButton, Button } from "@material-ui/core"
 import { Contact } from "../models"
 import style from "./contact-form-style"
 import { FormikErrors, Formik, Field, ErrorMessage, FieldArray } from "formik"
-import { Divider, Emptiness } from "../various"
+import { Emptiness } from "../various"
 import { ContactFieldLabel } from "../various"
 import { AddCircleOutline } from "@material-ui/icons"
 import EmailIcon from "@material-ui/icons/Email"
@@ -60,7 +60,7 @@ const ContactForm = ({ classes, initialInput, onChange }: Props) => {
             <ErrorMessage component="div" name="fullName" className={classes.errorMessage} />
           </label>
 
-          <Divider className={classes.divider} margin={18} />
+          <div className="my-4 h-0.25 w-full bg-primary-main" />
 
           <label>
             <ContactFieldLabel Icon={EmailIcon} text="email" className={classes.label} />
@@ -72,7 +72,7 @@ const ContactForm = ({ classes, initialInput, onChange }: Props) => {
             <ErrorMessage component="div" name="email" className={classes.errorMessage} />
           </label>
 
-          <Divider className={classes.divider} margin={18} />
+          <div className="my-4 h-0.25 w-full bg-primary-main" />
 
           <FieldArray
             name="numbers"

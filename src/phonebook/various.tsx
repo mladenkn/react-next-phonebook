@@ -1,9 +1,7 @@
 import { WithStyles, withStyles } from "@material-ui/core"
 import { contactFieldLabelStyle } from "./various-style"
 import React, { ComponentType } from "react"
-import { Divider as MUIDivider } from "@material-ui/core"
 import { Link as RouterLink } from "react-router-dom"
-import { dividerStyle } from "./various-style"
 import clsx from "clsx"
 
 type ContactFieldLabelProps = {
@@ -21,18 +19,6 @@ const ContactFieldLabel_ = (p: ContactFieldLabelProps) => (
 
 export const ContactFieldLabel = withStyles(contactFieldLabelStyle)(ContactFieldLabel_)
 
-type DividerProps = {
-  margin?: number | string
-  className?: string
-} & WithStyles<typeof dividerStyle>
-const Divider_ = ({ className, classes, margin }: DividerProps) => (
-  <MUIDivider
-    className={clsx(classes.root, className)}
-    style={{ marginTop: margin, marginBottom: margin }}
-  />
-)
-
-export const Divider = withStyles(dividerStyle)(Divider_)
 
 type EmptinessProps = {
   width?: number | string
