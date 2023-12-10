@@ -1,5 +1,3 @@
-import { WithStyles, withStyles } from "@material-ui/core"
-import { contactFieldLabelStyle } from "./various-style"
 import { ComponentType } from "react"
 import clsx from "clsx"
 
@@ -7,16 +5,14 @@ type ContactFieldLabelProps = {
   Icon: ComponentType<{ className?: string }>
   text: string
   className?: string
-} & WithStyles<typeof contactFieldLabelStyle>
+}
 
-const ContactFieldLabel_ = (p: ContactFieldLabelProps) => (
-  <div className={clsx(p.classes.fieldLabel, p.className)}>
-    <p.Icon className={p.classes.fieldLabelIcon} />
-    <span className={p.classes.fieldLabelText}>{p.text}</span>
+export const ContactFieldLabel = (p: ContactFieldLabelProps) => (
+  <div className={clsx("flex items-end text-primary-main", p.className)}>
+    <p.Icon className="mr-2" />
+    <span>{p.text}</span>
   </div>
 )
-
-export const ContactFieldLabel = withStyles(contactFieldLabelStyle)(ContactFieldLabel_)
 
 type EmptinessProps = {
   width?: number | string
