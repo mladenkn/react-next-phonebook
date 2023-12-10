@@ -60,7 +60,10 @@ const ContactCreatePage = () => {
         <AppBar>
           <Toolbar />
         </AppBar>
-        <ContactEdit onSave={c => contactService.save(c).then(() => navigate(-1))} />
+        <ContactEdit
+          className="mt-20"
+          onSave={c => contactService.save(c).then(() => navigate(-1))}
+        />
       </Container>
     </GoBackContextProvider>
   )
@@ -79,7 +82,12 @@ const ContactEditPage = () => {
             <AppBar>
               <Toolbar />
             </AppBar>
-            <ContactEdit contact={ops.contact!} onSave={ops.save} onDelete={ops.delete} />
+            <ContactEdit
+              className="mt-20"
+              contact={ops.contact!}
+              onSave={ops.save}
+              onDelete={ops.delete}
+            />
           </Container>
         ) : null // doesn't make sense to handle this since there is no real fetching}
       }

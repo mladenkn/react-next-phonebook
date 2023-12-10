@@ -9,12 +9,13 @@ import { SwapableAvatar } from "../swapable-avatar"
 import { cn } from "../../utils"
 
 type Props = {
+  className?: string
   contact?: Contact
   onSave: (c: Contact) => void
   onDelete?: () => void
 }
 
-const ContactEditPage = ({ contact, onSave, onDelete }: Props) => {
+const ContactEditPage = ({ className, contact, onSave, onDelete }: Props) => {
   const backAction = <GoBackAction />
 
   const onlyXs = useMediaQuery("(max-width:599px)")
@@ -74,7 +75,7 @@ const ContactEditPage = ({ contact, onSave, onDelete }: Props) => {
 
   if (downSm) {
     return (
-      <div className="flex justify-center">
+      <div className={cn("flex justify-center", className)}>
         <div className={cn(ContactPageBaseStylesXs.root, "w-full max-w-lg")}>
           <div className={ContactPageBaseStylesXs.toolbar}>
             {backAction}
@@ -92,7 +93,7 @@ const ContactEditPage = ({ contact, onSave, onDelete }: Props) => {
     )
   }
   return (
-    <div className={ContactPageBaseStylesMd.root}>
+    <div className={cn(ContactPageBaseStylesMd.root, className)}>
       {avatar}
       <div className={cn(ContactPageBaseStylesMd.right)}>
         <div className={cn(ContactPageBaseStylesMd.heading, "justify-between")}>
