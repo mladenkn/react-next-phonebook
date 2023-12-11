@@ -48,14 +48,15 @@ export const SwapableAvatar = withStyles(swapableAvatarStyle)(({
     <div>
       <div className={cn(classes.root, className)} onClick={onClick}>
         {src ? (
-          <Avatar src={src} className={classes.avatar} />
+          <>
+            <Avatar src={src} className={classes.avatar} />
+            <div className={classes.removeIcon}>x</div>
+          </>
         ) : (
-          <div className={classes.uploadImage} />
-        )}
-        {src ? (
-          <div className={classes.removeIcon}>x</div>
-        ) : (
-          <CloudUploadIcon className={classes.uploadIcon} />
+          <>
+            <div className={classes.uploadImage} />
+            <CloudUploadIcon className={classes.uploadIcon} />
+          </>
         )}
       </div>
       {dialog}
