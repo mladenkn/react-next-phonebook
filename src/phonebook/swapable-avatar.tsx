@@ -40,26 +40,55 @@ export const SwapableAvatar = withStyles(swapableAvatarStyle)(({
       text={imageSrc}
       onOK={handleDialogOK}
       onCancel={() => setIsDialogOpen(false)}
-      isInputValid={validURL}
+      isInputValid={() => true}
     />
   )
 
+  const uploadBg = "rgba(45, 161, 173, 0.4000000059604645)"
+
   return (
-    <div>
-      <div className={cn(classes.root, className)} onClick={onClick}>
-        {src ? (
-          <>
+    // <div>
+    //   <div className={cn(classes.root, className)} onClick={onClick}>
+    //     {src ? (
+    //       <>
+    //         <Avatar src={src} className={classes.avatar} />
+    //         <div className={classes.removeIcon}>x</div>
+    //       </>
+    //     ) : (
+    //       <>
+    //         <div className={classes.uploadImage} />
+    //         <CloudUploadIcon className={classes.uploadIcon} />
+    //       </>
+    //     )}
+    //   </div>
+    //   {dialog}
+    // </div>
+    <>
+      {imageSrc ? (
+        <div>
+          <div
+            className={cn("relative cursor-pointer", className)}
+            onClick={() => setImageSrc_(undefined)}
+          >
             <Avatar src={src} className={classes.avatar} />
             <div className={classes.removeIcon}>x</div>
-          </>
-        ) : (
-          <>
-            <div className={classes.uploadImage} />
-            <CloudUploadIcon className={classes.uploadIcon} />
-          </>
-        )}
-      </div>
-      {dialog}
-    </div>
+          </div>
+        </div>
+      ) : (
+        <div>
+          <div
+            style={{ background: uploadBg }}
+            className={cn(
+              "flex cursor-pointer items-center justify-center rounded-full",
+              className,
+            )}
+            onClick={() => setIsDialogOpen(true)}
+          >
+            <CloudUploadIcon className="text-white" />
+          </div>
+          {dialog}
+        </div>
+      )}
+    </>
   )
 })
