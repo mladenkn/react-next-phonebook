@@ -30,39 +30,7 @@ export const SwapableAvatar = withStyles(swapableAvatarStyle)(({
     setImageSrc_(image)
   }
 
-  const onClick = () => {
-    if (imageSrc) setImageSrc_(undefined)
-    else setIsDialogOpen(true)
-  }
-
-  const dialog = isDialogOpen && (
-    <TextInputDialog
-      text={imageSrc}
-      onOK={handleDialogOK}
-      onCancel={() => setIsDialogOpen(false)}
-      isInputValid={() => true}
-    />
-  )
-
-  const uploadBg = "rgba(45, 161, 173, 0.4000000059604645)"
-
   return (
-    // <div>
-    //   <div className={cn(classes.root, className)} onClick={onClick}>
-    //     {src ? (
-    //       <>
-    //         <Avatar src={src} className={classes.avatar} />
-    //         <div className={classes.removeIcon}>x</div>
-    //       </>
-    //     ) : (
-    //       <>
-    //         <div className={classes.uploadImage} />
-    //         <CloudUploadIcon className={classes.uploadIcon} />
-    //       </>
-    //     )}
-    //   </div>
-    //   {dialog}
-    // </div>
     <>
       {imageSrc ? (
         <div>
@@ -77,7 +45,7 @@ export const SwapableAvatar = withStyles(swapableAvatarStyle)(({
       ) : (
         <div>
           <div
-            style={{ background: uploadBg }}
+            style={{ background: "rgba(45, 161, 173, 0.4000000059604645)" }}
             className={cn(
               "flex cursor-pointer items-center justify-center rounded-full",
               className,
@@ -86,7 +54,14 @@ export const SwapableAvatar = withStyles(swapableAvatarStyle)(({
           >
             <CloudUploadIcon className="text-white" />
           </div>
-          {dialog}
+          {isDialogOpen && (
+            <TextInputDialog
+              text={imageSrc}
+              onOK={handleDialogOK}
+              onCancel={() => setIsDialogOpen(false)}
+              isInputValid={imgUrl => !!imgUrl}
+            />
+          )}
         </div>
       )}
     </>

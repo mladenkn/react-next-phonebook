@@ -38,7 +38,6 @@ export const TextInputDialog = ({ text, isInputValid, onOK, onCancel }: TextInpu
           )}
           onClick={() => onOK(input)}
           disabled={okButtonDisabled}
-          autoFocus
         >
           Ok
         </button>
