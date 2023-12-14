@@ -1,7 +1,5 @@
 import { useState } from "react"
 import { cn, validURL } from "../utils"
-import { swapableAvatarStyle } from "./swapable-avatar-style"
-import { withStyles, WithStyles } from "@material-ui/core"
 import { TextInputDialog } from "./text-input-dialog"
 import CloudUploadIcon from "@material-ui/icons/CloudUpload"
 import { ContactAvatar } from "./contact/contact-avatar"
@@ -11,14 +9,9 @@ type Props = {
   src?: string
   onChange: (image?: string) => void
   className?: string
-} & WithStyles<typeof swapableAvatarStyle>
+}
 
-export const SwapableAvatar = withStyles(swapableAvatarStyle)(({
-  className,
-  classes,
-  src,
-  onChange,
-}: Props) => {
+export const SwapableAvatar = ({ className, src, onChange }: Props) => {
   const [isDialogOpen, setIsDialogOpen] = useState(false)
 
   const handleDialogOK = (image: string) => {
@@ -71,4 +64,4 @@ export const SwapableAvatar = withStyles(swapableAvatarStyle)(({
       )}
     </>
   )
-})
+}
