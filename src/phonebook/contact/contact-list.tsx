@@ -20,7 +20,10 @@ const ContactList = ({
   toggleFavorite,
 }: Props) => {
   const [selectedItemId, setSelectedItemId] = useState(0)
-  const itemRootClass = cn("h-16 w-full pt-1", cn.md("w-60 h-36 p-1"))
+  const itemRootClass = cn(
+    "h-16 w-full pt-1",
+    "md:w-60 md:h-36 md:p-1", // md
+  )
 
   const width = useWidth()
   if (!width) return <></>
@@ -50,12 +53,11 @@ const ContactList = ({
 
   return (
     <ul
-      className={cn("flex w-full flex-col", cn.md("flex-row flex-wrap justify-center"), className)}
-      // className={cn(
-      //   "flex w-full flex-col",
-      //   "md:flex-row md:flex-wrap md:justify-center",
-      //   className,
-      // )}
+      className={cn(
+        "flex w-full flex-col",
+        "md:flex-row md:flex-wrap md:justify-center", // md
+        className,
+      )}
     >
       {items}
     </ul>
