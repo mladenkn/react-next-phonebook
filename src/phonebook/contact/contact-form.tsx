@@ -26,6 +26,7 @@ import { cn } from "../../utils"
 
 const styles = {
   input: "p-2 border-2 border-solid border-secondary-light text-secondary-main outline-none",
+  errorMessage: "ml-2 mt-0.5 text-red-500",
 }
 
 type Props = {
@@ -54,7 +55,7 @@ const ContactForm = ({ classes, initialInput, onChange }: Props) => {
           <label>
             <ContactFieldLabel Icon={PersonOutlinedIcon} text="full name" className="mb-2" />
             <Field type="text" name="fullName" className={cn(styles.input, "w-full sm:w-1/2")} />
-            <ErrorMessage component="div" name="fullName" className={classes.errorMessage} />
+            <ErrorMessage component="div" name="fullName" className={styles.errorMessage} />
           </label>
 
           <div className="my-4 h-0.25 w-full bg-primary-main" />
@@ -62,7 +63,7 @@ const ContactForm = ({ classes, initialInput, onChange }: Props) => {
           <label>
             <ContactFieldLabel Icon={EmailIcon} text="email" className="mb-2" />
             <Field type="email" name="email" className={cn(styles.input, "w-full sm:w-1/2")} />
-            <ErrorMessage component="div" name="email" className={classes.errorMessage} />
+            <ErrorMessage component="div" name="email" className={styles.errorMessage} />
           </label>
 
           <div className="my-4 h-0.25 w-full bg-primary-main" />
