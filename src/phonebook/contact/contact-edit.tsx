@@ -4,9 +4,9 @@ import { DeleteAction, GoBackAction } from "../actions"
 import useMediaQuery from "@material-ui/core/useMediaQuery"
 import ContactForm from "./contact-form"
 import { ContactPageBaseStylesXs, ContactPageBaseStylesMd } from "./contact-details-base-style"
-import { useGoBack } from "../go-back-context"
 import { SwapableAvatar } from "../swapable-avatar"
 import { cn } from "../../utils"
+import { useNavigate } from "react-router-dom"
 
 type Props = {
   className?: string
@@ -53,12 +53,12 @@ const ContactEditPage = ({ className, contact, onSave, onDelete }: Props) => {
   )
 
   const form = <ContactForm initialInput={editedContact} onChange={formChange} />
-  const goBack = useGoBack()
+  const navigate = useNavigate()
   const buttonClass = cn("w-36 rounded-2xl text-white h-8")
 
   const buttons = (
     <div className="mx-0.5 mb-4 mt-6 flex justify-between">
-      <button className={cn(buttonClass, "bg-secondary-main")} onClick={goBack}>
+      <button className={cn(buttonClass, "bg-secondary-main")} onClick={() => navigate(-1)}>
         Cancel
       </button>
       <button

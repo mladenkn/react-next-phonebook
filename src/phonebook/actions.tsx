@@ -1,13 +1,12 @@
 import { contactEditUrl } from "./urls"
 import { useState } from "react"
 import DeleteModal from "./delete-dialog"
-import { useGoBack } from "./go-back-context"
 import EditIcon from "@material-ui/icons/Edit"
 import DeleteIcon from "@material-ui/icons/Delete"
 import ArrowBackIcon from "@material-ui/icons/ArrowBack"
 import FavoriteIcon from "@material-ui/icons/Favorite"
 import FavoriteOutlinedIcon from "@material-ui/icons/FavoriteBorder"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { cn } from "../utils"
 
 export const GoToEditAction = ({ contactId }: { contactId: number }) => (
@@ -63,9 +62,9 @@ export const DeleteAction = ({ onConfirm, withText, withHoverEffect }: DeleteAct
 }
 
 export const GoBackAction = () => {
-  const onClick = useGoBack()
+  const navigate = useNavigate()
   return (
-    <button onClick={onClick}>
+    <button onClick={() => navigate(-1)}>
       <ArrowBackIcon color="secondary" />
     </button>
   )
