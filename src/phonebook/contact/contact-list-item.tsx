@@ -4,6 +4,7 @@ import { ContactAvatar } from "./contact-avatar"
 import clsx from "clsx"
 import { tw } from "../../utils"
 import { Link } from "react-router-dom"
+import { contactDetailsUrl } from "../urls"
 
 type ItemPresenterProps = {
   contact: ContactListItemModel
@@ -73,7 +74,7 @@ const ContactListItem = ({
             baseClass,
             "flex-col justify-center border-2 border-primary-main hover:no-underline",
           )}
-          to={`/contact/details/${contact.id}`}
+          to={contactDetailsUrl(contact.id)}
         >
           <div className="flex w-full justify-between px-1.5">
             {favoriteAction}
@@ -93,7 +94,7 @@ const ContactListItem = ({
             baseClass,
             "w-full justify-between border-2 border-secondary-light pl-2 pr-1 shadow-none",
           )}
-          to={`/contact/details/${contact.id}`}
+          to={contactDetailsUrl(contact.id)}
         >
           {avatar}
           {name}

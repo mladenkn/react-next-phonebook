@@ -83,7 +83,7 @@ const router = createBrowserRouter(
     <>
       <Route path="/" element={<ContactListPage />} />
       <Route path="/contact/edit/:contactId" element={<ContactEditPage />} />
-      <Route path="/contact/details/:contactId" element={<ContactDetailsPage />} />
+      <Route path="/contact/:contactId" element={<ContactDetailsPage />} />
       <Route path="/contact/create" element={<ContactCreatePage />} />
     </>,
   ),
