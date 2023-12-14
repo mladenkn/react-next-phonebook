@@ -11,7 +11,7 @@ import {
   useParams,
   useNavigate,
 } from "react-router-dom"
-import { AppBar, Container } from "@material-ui/core"
+import { Container } from "@material-ui/core"
 import { Toolbar } from "./toolbar"
 
 export interface ContactIdRouteParams {
@@ -21,9 +21,7 @@ export interface ContactIdRouteParams {
 const ContactListPage = () => {
   return (
     <Container maxWidth="lg">
-      <AppBar>
-        <Toolbar />
-      </AppBar>
+      <Toolbar />
       <HomeSection className="mt-20" />
     </Container>
   )
@@ -40,9 +38,7 @@ const ContactDetailsPage = () => {
       {
         ops.fetchStatus === "COMPLETED" ? (
           <Container maxWidth="sm">
-            <AppBar>
-              <Toolbar />
-            </AppBar>
+            <Toolbar />
             <ContactDetails className="mt-20" contact={ops.contact!} onFavorite={ops.favorite} />
           </Container>
         ) : null // doesn't make sense to handle this since there is no real fetching}
@@ -57,9 +53,7 @@ const ContactCreatePage = () => {
   return (
     <GoBackContextProvider value={() => navigate(-1)}>
       <Container maxWidth="md">
-        <AppBar>
-          <Toolbar />
-        </AppBar>
+        <Toolbar />
         <ContactEdit
           className="mt-20"
           onSave={c => contactService.save(c).then(() => navigate(-1))}
@@ -79,9 +73,7 @@ const ContactEditPage = () => {
       {
         ops.fetchStatus === "COMPLETED" ? (
           <Container maxWidth="md">
-            <AppBar>
-              <Toolbar />
-            </AppBar>
+            <Toolbar />
             <ContactEdit
               className="mt-20"
               contact={ops.contact!}

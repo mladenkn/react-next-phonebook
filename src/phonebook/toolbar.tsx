@@ -1,19 +1,19 @@
 import { homePageUrl } from "./urls"
-import { Typography, Toolbar as MuiToolbar } from "@material-ui/core"
+import { Typography, Toolbar as MuiToolbar, AppBar } from "@material-ui/core"
 import { createStyles, makeStyles, Theme } from "@material-ui/core"
 import { Link } from "react-router-dom"
 
 export const Toolbar = () => {
   const classes = useToolbarStyle()
   return (
-    <div>
+    <AppBar>
       <MuiToolbar className={classes.toolbar}>
         <Link className={classes.headingLink} to={homePageUrl}>
           <Typography className={classes.headingLinkText}>Phonebook</Typography>
         </Link>
       </MuiToolbar>
       <div className={classes.toolbarBorder} />
-    </div>
+    </AppBar>
   )
 }
 
