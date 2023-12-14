@@ -51,8 +51,7 @@ export const DeleteAction = withStyles(deleteActionStyle)(({
       <button
         className={cn(
           "text-secondary-dark flex",
-          withHoverEffect && "rounded-sm p-1",
-          withHoverEffect && classes.buttonHoverEffect,
+          withHoverEffect && "button-hover-opacity rounded-sm p-1",
         )}
         onClick={() => setModalOpen(true)}
       >
