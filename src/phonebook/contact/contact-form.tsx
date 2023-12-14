@@ -84,7 +84,7 @@ const ContactForm = ({ initialInput, onChange }: Props) => {
                       className="flex items-center justify-center"
                       onClick={() => arr.remove(index)}
                     >
-                      <span className="inline-block h-7 w-7 rounded-full border-2 border-solid border-secondary-light text-center text-sm text-secondary-main">
+                      <span className="inline-block h-7 w-7 rounded-full border-2 border-solid border-secondary-light text-center text-base text-secondary-main">
                         x
                       </span>
                     </IconButton>
