@@ -35,14 +35,12 @@ const ContactDetailsPage = () => {
 
   return (
     <GoBackContextProvider value={() => navigate(-1)}>
-      {
-        ops.fetchStatus === "COMPLETED" ? (
-          <Container maxWidth="sm">
-            <Toolbar />
-            <ContactDetails className="mt-20" contact={ops.contact!} onFavorite={ops.favorite} />
-          </Container>
-        ) : null // doesn't make sense to handle this since there is no real fetching}
-      }
+      <Container maxWidth="sm">
+        <Toolbar />
+        {ops.fetchStatus === "COMPLETED" ? (
+          <ContactDetails className="mt-20" contact={ops.contact!} onFavorite={ops.favorite} />
+        ) : null}
+      </Container>
     </GoBackContextProvider>
   )
 }
@@ -70,10 +68,10 @@ const ContactEditPage = () => {
   const ops = useContactDetailsOps(contactId, () => navigate(-1), navigate)
   return (
     <GoBackContextProvider value={() => navigate(-1)}>
-      {
-        ops.fetchStatus === "COMPLETED" ? (
+      <Container maxWidth="md">
+        <Toolbar />
+        {ops.fetchStatus === "COMPLETED" ? (
           <Container maxWidth="md">
-            <Toolbar />
             <ContactEdit
               className="mt-20"
               contact={ops.contact!}
@@ -81,8 +79,8 @@ const ContactEditPage = () => {
               onDelete={ops.delete}
             />
           </Container>
-        ) : null // doesn't make sense to handle this since there is no real fetching}
-      }
+        ) : null}
+      </Container>
     </GoBackContextProvider>
   )
 }
