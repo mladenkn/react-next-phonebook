@@ -24,6 +24,10 @@ import { cn } from "../../utils"
     the form component itself.
 */
 
+const styles = {
+  input: "p-2 border-2 border-solid border-secondary-light text-secondary-main outline-none",
+}
+
 type Props = {
   initialInput: Contact
   onChange: (c: Contact, isValid: boolean) => void
@@ -49,7 +53,7 @@ const ContactForm = ({ classes, initialInput, onChange }: Props) => {
         <div>
           <label>
             <ContactFieldLabel Icon={PersonOutlinedIcon} text="full name" className="mb-2" />
-            <Field type="text" name="fullName" className={cn(classes.input, "w-full sm:w-1/2")} />
+            <Field type="text" name="fullName" className={cn(styles.input, "w-full sm:w-1/2")} />
             <ErrorMessage component="div" name="fullName" className={classes.errorMessage} />
           </label>
 
@@ -57,7 +61,7 @@ const ContactForm = ({ classes, initialInput, onChange }: Props) => {
 
           <label>
             <ContactFieldLabel Icon={EmailIcon} text="email" className="mb-2" />
-            <Field type="email" name="email" className={cn(classes.input, "w-full sm:w-1/2")} />
+            <Field type="email" name="email" className={cn(styles.input, "w-full sm:w-1/2")} />
             <ErrorMessage component="div" name="email" className={classes.errorMessage} />
           </label>
 
@@ -73,11 +77,11 @@ const ContactForm = ({ classes, initialInput, onChange }: Props) => {
                     <Field
                       type="number"
                       name={`numbers[${index}].value`}
-                      className={cn(classes.input, classes.phoneNumberInput)}
+                      className={cn(styles.input, classes.phoneNumberInput)}
                     />
                     <Field
                       name={`numbers.${index}.label`}
-                      className={cn(classes.input, classes.phoneNumberLabelInput)}
+                      className={cn(styles.input, classes.phoneNumberLabelInput)}
                     />
                     <IconButton className="p-1.5" onClick={() => arr.remove(index)}>
                       <span className={classes.labelRemoverIcon}>x</span>

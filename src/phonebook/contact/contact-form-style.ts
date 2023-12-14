@@ -2,14 +2,6 @@ import { createStyles, Theme } from "@material-ui/core"
 
 export default ({ palette, breakpoints }: Theme) =>
   createStyles({
-    input: {
-      padding: "10px 10px",
-      border: `2px solid ${palette.secondary.light}`,
-      color: palette.secondary.main,
-    },
-    labelRemover: {
-      padding: 6,
-    },
     labelRemoverIcon: {
       height: 28,
       width: 28,
