@@ -13,7 +13,7 @@ export const ContactAvatar = ({ className, style, letter, url }: ContactAvatarPr
     return (
       <img
         className={clsx(
-          "flex h-auto w-10 items-center justify-center rounded-full object-cover",
+          "flex h-auto w-10 items-center justify-center rounded-full object-contain",
           className,
         )}
         style={style}
