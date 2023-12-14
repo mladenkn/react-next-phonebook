@@ -3,10 +3,10 @@ import { Contact } from "../models"
 import { FormikErrors, Formik, Field, ErrorMessage, FieldArray } from "formik"
 import { Emptiness } from "../various"
 import { ContactFieldLabel } from "../various"
-import { AddCircleOutline } from "@material-ui/icons"
 import EmailIcon from "@material-ui/icons/Email"
 import PhoneIcon from "@material-ui/icons/Phone"
 import PersonOutlinedIcon from "@material-ui/icons/PersonOutlined"
+import AddCircleOutline from "@material-ui/icons/AddCircleOutline"
 import { cn } from "../../utils"
 
 /*
