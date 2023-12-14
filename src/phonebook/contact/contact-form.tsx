@@ -1,6 +1,5 @@
-import { WithStyles, withStyles, IconButton, Button } from "@material-ui/core"
+import { IconButton, Button } from "@material-ui/core"
 import { Contact } from "../models"
-import style from "./contact-form-style"
 import { FormikErrors, Formik, Field, ErrorMessage, FieldArray } from "formik"
 import { Emptiness } from "../various"
 import { ContactFieldLabel } from "../various"
@@ -32,9 +31,9 @@ const styles = {
 type Props = {
   initialInput: Contact
   onChange: (c: Contact, isValid: boolean) => void
-} & WithStyles<typeof style>
+}
 
-const ContactForm = ({ classes, initialInput, onChange }: Props) => {
+const ContactForm = ({ initialInput, onChange }: Props) => {
   const validate = (values: Contact) => {
     let errors: FormikErrors<Contact> = {}
 
@@ -108,4 +107,4 @@ const ContactForm = ({ classes, initialInput, onChange }: Props) => {
   )
 }
 
-export default withStyles(style)(ContactForm)
+export default ContactForm
