@@ -56,7 +56,7 @@ const ContactCreatePage = () => {
   const contactService = useContactServiceContext()
   return (
     <GoBackContextProvider value={() => navigate(-1)}>
-      <Container maxWidth="sm">
+      <Container maxWidth="md">
         <AppBar>
           <Toolbar />
         </AppBar>
@@ -78,7 +78,7 @@ const ContactEditPage = () => {
     <GoBackContextProvider value={() => navigate(-1)}>
       {
         ops.fetchStatus === "COMPLETED" ? (
-          <Container maxWidth="sm">
+          <Container maxWidth="md">
             <AppBar>
               <Toolbar />
             </AppBar>
