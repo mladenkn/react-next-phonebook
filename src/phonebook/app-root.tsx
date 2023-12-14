@@ -1,8 +1,7 @@
-import { AppBar, colors } from "@material-ui/core"
+import { colors } from "@material-ui/core"
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles"
 import router from "./pages"
 import { RouterProvider } from "react-router-dom"
-import { Toolbar } from "./toolbar"
 import {
   ContactServiceContextProvider,
   useContactRepositoryLocalStorage,
@@ -42,9 +41,6 @@ export const AppRoot = () => {
   return (
     <MuiThemeProvider theme={theme}>
       <ContactServiceContextProvider value={contactService}>
-        {/* <AppBar position="sticky">
-          <Toolbar />
-        </AppBar> */}
         <RouterProvider router={router} />
       </ContactServiceContextProvider>
     </MuiThemeProvider>
