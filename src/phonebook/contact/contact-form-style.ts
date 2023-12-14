@@ -37,13 +37,5 @@ export default ({ palette, breakpoints }: Theme) =>
       labelRemover: {
         width: "20%",
       },
-      singleValueInput: {
-        width: "100%",
-      },
-    },
-    [breakpoints.up("sm")]: {
-      singleValueInput: {
-        width: "50%",
-      },
     },
   })
