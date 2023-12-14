@@ -1,4 +1,3 @@
-import { withStyles, WithStyles, IconButton, createStyles, Theme } from "@material-ui/core"
 import { contactEditUrl } from "./urls"
 import { useState } from "react"
 import DeleteModal from "./delete-dialog"
@@ -37,14 +36,9 @@ type DeleteActionProps = {
   onConfirm: () => void
   withHoverEffect?: boolean
   withText?: boolean
-} & WithStyles<typeof deleteActionStyle>
+}
 
-export const DeleteAction = withStyles(deleteActionStyle)(({
-  onConfirm,
-  withText,
-  classes,
-  withHoverEffect,
-}: DeleteActionProps) => {
+export const DeleteAction = ({ onConfirm, withText, withHoverEffect }: DeleteActionProps) => {
   const [modalOpen, setModalOpen] = useState(false)
   return (
     <>
@@ -66,7 +60,7 @@ export const DeleteAction = withStyles(deleteActionStyle)(({
       />
     </>
   )
-})
+}
 
 export const GoBackAction = () => {
   const onClick = useGoBack()
@@ -75,14 +69,4 @@ export const GoBackAction = () => {
       <ArrowBackIcon color="secondary" />
     </button>
   )
-}
-
-function deleteActionStyle() {
-  return createStyles({
-    buttonHoverEffect: {
-      "&:hover": {
-        backgroundColor: "rgba(0, 0, 0, 0.08)",
-      },
-    },
-  })
 }
