@@ -78,7 +78,7 @@ const ContactForm = ({ classes, initialInput, onChange }: Props) => {
                     <Field
                       type="number"
                       name={`numbers[${index}].value`}
-                      className={cn(styles.input, classes.phoneNumberInput)}
+                      className={cn(styles.input, "max-sm-mb-2 max-sm:w-full")}
                     />
                     <Field name={`numbers.${index}.label`} className={styles.input} />
                     <IconButton
