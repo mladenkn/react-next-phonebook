@@ -1,7 +1,6 @@
 import HomeSection from "./contact/contact-list-page"
 import { useContactDetailsOps } from "./contact/contact-details-ops"
 import ContactDetails from "./contact/contact-details"
-import { GoBackContextProvider } from "./go-back-context"
 import ContactEdit from "./contact/contact-edit"
 import { useContactServiceContext } from "./contact/contact-repository"
 import {
@@ -34,14 +33,12 @@ const ContactDetailsPage = () => {
   const ops = useContactDetailsOps(contactId, () => navigate(-1), navigate)
 
   return (
-    <GoBackContextProvider value={() => navigate(-1)}>
-      <Container maxWidth="sm">
-        <Toolbar />
-        {ops.fetchStatus === "COMPLETED" ? (
-          <ContactDetails className="mt-20" contact={ops.contact!} onFavorite={ops.favorite} />
-        ) : null}
-      </Container>
-    </GoBackContextProvider>
+    <Container maxWidth="sm">
+      <Toolbar />
+      {ops.fetchStatus === "COMPLETED" ? (
+        <ContactDetails className="mt-20" contact={ops.contact!} onFavorite={ops.favorite} />
+      ) : null}
+    </Container>
   )
 }
 
@@ -49,15 +46,13 @@ const ContactCreatePage = () => {
   const navigate = useNavigate()
   const contactService = useContactServiceContext()
   return (
-    <GoBackContextProvider value={() => navigate(-1)}>
-      <Container maxWidth="md">
-        <Toolbar />
-        <ContactEdit
-          className="mt-20"
-          onSave={c => contactService.save(c).then(() => navigate(-1))}
-        />
-      </Container>
-    </GoBackContextProvider>
+    <Container maxWidth="md">
+      <Toolbar />
+      <ContactEdit
+        className="mt-20"
+        onSave={c => contactService.save(c).then(() => navigate(-1))}
+      />
+    </Container>
   )
 }
 
@@ -67,21 +62,19 @@ const ContactEditPage = () => {
   const contactId = parseInt(params.contactId!)
   const ops = useContactDetailsOps(contactId, () => navigate(-1), navigate)
   return (
-    <GoBackContextProvider value={() => navigate(-1)}>
-      <Container maxWidth="md">
-        <Toolbar />
-        {ops.fetchStatus === "COMPLETED" ? (
-          <Container maxWidth="md">
-            <ContactEdit
-              className="mt-20"
-              contact={ops.contact!}
-              onSave={ops.save}
-              onDelete={ops.delete}
-            />
-          </Container>
-        ) : null}
-      </Container>
-    </GoBackContextProvider>
+    <Container maxWidth="md">
+      <Toolbar />
+      {ops.fetchStatus === "COMPLETED" ? (
+        <Container maxWidth="md">
+          <ContactEdit
+            className="mt-20"
+            contact={ops.contact!}
+            onSave={ops.save}
+            onDelete={ops.delete}
+          />
+        </Container>
+      ) : null}
+    </Container>
   )
 }
 
