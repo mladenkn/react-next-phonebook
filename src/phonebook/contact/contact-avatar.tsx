@@ -16,6 +16,7 @@ export const ContactAvatar = ({ className, style, letter, url }: ContactAvatarPr
           "flex h-auto w-10 items-center justify-center rounded-full object-cover",
           className,
         )}
+        style={style}
         src={url}
       />
     )

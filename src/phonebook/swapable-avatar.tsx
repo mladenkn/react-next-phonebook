@@ -33,7 +33,11 @@ export const SwapableAvatar = withStyles(swapableAvatarStyle)(({
             className={cn("relative cursor-pointer", className)}
             onClick={() => onChange(undefined)}
           >
-            <ContactAvatar url={src} className={classes.avatar} />
+            <ContactAvatar
+              url={src}
+              className="h-full w-full"
+              style={{ filter: "brightness(70%)" }}
+            />
             <div className={classes.removeIcon}>x</div>
           </div>
         </div>
