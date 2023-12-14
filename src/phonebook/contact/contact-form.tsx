@@ -7,6 +7,7 @@ import EmailIcon from "@material-ui/icons/Email"
 import PhoneIcon from "@material-ui/icons/Phone"
 import PersonOutlinedIcon from "@material-ui/icons/PersonOutlined"
 import AddCircleOutline from "@material-ui/icons/AddCircleOutline"
+import HighlightOffIcon from "@material-ui/icons/HighlightOff"
 import { cn } from "../../utils"
 
 /*
@@ -80,13 +81,8 @@ const ContactForm = ({ initialInput, onChange }: Props) => {
                       className={cn(styles.input, "max-sm-mb-2 max-sm:w-full")}
                     />
                     <Field name={`numbers.${index}.label`} className={styles.input} />
-                    <IconButton
-                      className="flex items-center justify-center"
-                      onClick={() => arr.remove(index)}
-                    >
-                      <span className="inline-block h-7 w-7 rounded-full border-2 border-solid border-secondary-light text-center text-base text-secondary-main">
-                        x
-                      </span>
+                    <IconButton onClick={() => arr.remove(index)}>
+                      <HighlightOffIcon className="text-secondary-main" />
                     </IconButton>
                   </div>
                 ))}
