@@ -8,6 +8,7 @@ import { AddCircleOutline } from "@material-ui/icons"
 import EmailIcon from "@material-ui/icons/Email"
 import PhoneIcon from "@material-ui/icons/Phone"
 import PersonOutlinedIcon from "@material-ui/icons/PersonOutlined"
+import { cn } from "../../utils"
 
 /*
     Notes:
@@ -47,15 +48,11 @@ const ContactForm = ({ classes, initialInput, onChange }: Props) => {
       {({ values }) => (
         <div>
           <label>
-            <ContactFieldLabel
-              Icon={PersonOutlinedIcon}
-              text="full name"
-              className={classes.label}
-            />
+            <ContactFieldLabel Icon={PersonOutlinedIcon} text="full name" className="mb-2" />
             <Field
               type="text"
               name="fullName"
-              className={classes.input + " " + classes.singleValueInput}
+              className={cn(classes.input, classes.singleValueInput)}
             />
             <ErrorMessage component="div" name="fullName" className={classes.errorMessage} />
           </label>
@@ -67,7 +64,7 @@ const ContactForm = ({ classes, initialInput, onChange }: Props) => {
             <Field
               type="email"
               name="email"
-              className={classes.input + " " + classes.singleValueInput}
+              className={cn(classes.input, classes.singleValueInput)}
             />
             <ErrorMessage component="div" name="email" className={classes.errorMessage} />
           </label>
@@ -84,11 +81,11 @@ const ContactForm = ({ classes, initialInput, onChange }: Props) => {
                     <Field
                       type="number"
                       name={`numbers[${index}].value`}
-                      className={classes.input + " " + classes.phoneNumberInput}
+                      className={cn(classes.input, classes.phoneNumberInput)}
                     />
                     <Field
                       name={`numbers.${index}.label`}
-                      className={classes.input + " " + classes.phoneNumberLabelInput}
+                      className={cn(classes.input, classes.phoneNumberLabelInput)}
                     />
                     <IconButton className={classes.labelRemover} onClick={() => arr.remove(index)}>
                       <span className={classes.labelRemoverIcon}>x</span>
