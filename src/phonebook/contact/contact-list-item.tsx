@@ -77,10 +77,10 @@ const ContactListItem = ({
         >
           <div className="flex w-full justify-between px-1.5">
             {favoriteAction}
-            <span>
+            <div className="flex">
               {editAction}
               {deleteAction}
-            </span>
+            </div>
           </div>
           {avatar}
           {name}
@@ -97,11 +97,11 @@ const ContactListItem = ({
         >
           {avatar}
           {name}
-          <span>
+          <div className="flex gap-1">
             {favoriteAction}
             {editAction}
             {deleteAction}
-          </span>
+          </div>
         </Link>
       )
   }
