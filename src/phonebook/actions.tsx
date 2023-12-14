@@ -48,10 +48,10 @@ export const DeleteAction = withStyles(deleteActionStyle)(({
   const buttonClass = withHoverEffect || false ? classes.buttonHoverEffect : classes.button
   return (
     <>
-      <IconButton className={buttonClass} onClick={() => setModalOpen(true)} disableRipple>
+      <button className={buttonClass} onClick={() => setModalOpen(true)}>
         {(withText || false) && <p className="mr-1 text-base">Delete</p>}
         <DeleteIcon color="secondary" />
-      </IconButton>
+      </button>
       <DeleteModal
         isOpen={modalOpen}
         text="Are you sure you want to delete this contact?"
@@ -74,16 +74,17 @@ export const GoBackAction = () => {
 function deleteActionStyle({ palette }: Theme) {
   return createStyles({
     button: {
-      padding: 0,
+      display: "flex",
       color: palette.text.primary,
-      "&:hover": {
-        "background-color": "inherit",
-      },
     },
     buttonHoverEffect: {
+      display: "flex",
+      "&:hover": {
+        backgroundColor: "rgba(0, 0, 0, 0.08)",
+      },
       padding: 5,
       color: palette.text.primary,
-      borderRadius: "1%",
+      borderRadius: 6,
     },
   })
 }
