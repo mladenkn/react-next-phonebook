@@ -49,23 +49,15 @@ const ContactForm = ({ classes, initialInput, onChange }: Props) => {
         <div>
           <label>
             <ContactFieldLabel Icon={PersonOutlinedIcon} text="full name" className="mb-2" />
-            <Field
-              type="text"
-              name="fullName"
-              className={cn(classes.input, classes.singleValueInput)}
-            />
+            <Field type="text" name="fullName" className={cn(classes.input, "w-full sm:w-1/2")} />
             <ErrorMessage component="div" name="fullName" className={classes.errorMessage} />
           </label>
 
           <div className="my-4 h-0.25 w-full bg-primary-main" />
 
           <label>
-            <ContactFieldLabel Icon={EmailIcon} text="email" className={classes.label} />
-            <Field
-              type="email"
-              name="email"
-              className={cn(classes.input, classes.singleValueInput)}
-            />
+            <ContactFieldLabel Icon={EmailIcon} text="email" className="mb-2" />
+            <Field type="email" name="email" className={cn(classes.input, "w-full sm:w-1/2")} />
             <ErrorMessage component="div" name="email" className={classes.errorMessage} />
           </label>
 
@@ -75,9 +67,9 @@ const ContactForm = ({ classes, initialInput, onChange }: Props) => {
             name="numbers"
             render={arr => (
               <div>
-                <ContactFieldLabel Icon={PhoneIcon} text="numbers" className={classes.label} />
+                <ContactFieldLabel Icon={PhoneIcon} text="numbers" className="mb-2" />
                 {values.numbers.map((_, index) => (
-                  <div className={classes.phoneNumber} key={index}>
+                  <div className="py-2 sm:flex sm:justify-between" key={index}>
                     <Field
                       type="number"
                       name={`numbers[${index}].value`}
@@ -87,13 +79,13 @@ const ContactForm = ({ classes, initialInput, onChange }: Props) => {
                       name={`numbers.${index}.label`}
                       className={cn(classes.input, classes.phoneNumberLabelInput)}
                     />
-                    <IconButton className={classes.labelRemover} onClick={() => arr.remove(index)}>
+                    <IconButton className="p-1.5" onClick={() => arr.remove(index)}>
                       <span className={classes.labelRemoverIcon}>x</span>
                     </IconButton>
                   </div>
                 ))}
                 <Button
-                  className={classes.numberAdder}
+                  className="mt-8 text-primary-main"
                   onClick={() => arr.push({ value: "", label: "" })}
                 >
                   <AddCircleOutline color="primary" />
