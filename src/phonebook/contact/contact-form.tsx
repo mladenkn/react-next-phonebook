@@ -86,14 +86,14 @@ const ContactForm = ({ initialInput, onChange }: Props) => {
                     </IconButton>
                   </div>
                 ))}
-                <Button
-                  className="mt-8 text-primary-main"
+                <button
+                  className="mt-6 flex text-primary-main"
                   onClick={() => arr.push({ value: "", label: "" })}
                 >
                   <AddCircleOutline color="primary" />
                   <Emptiness width={5} />
                   Add number
-                </Button>
+                </button>
               </div>
             )}
           />

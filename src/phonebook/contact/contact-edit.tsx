@@ -57,7 +57,7 @@ const ContactEditPage = ({ className, contact, onSave, onDelete }: Props) => {
   const buttonClass = cn("w-36 rounded-2xl text-white h-8")
 
   const buttons = (
-    <div className="mx-0.5 mb-4 mt-2 flex justify-between">
+    <div className="mx-0.5 mb-4 mt-6 flex justify-between">
       <button className={cn(buttonClass, "bg-secondary-main")} onClick={goBack}>
         Cancel
       </button>
