@@ -1,13 +1,14 @@
 import { homePageUrl } from "./urls"
-import { Link, Typography, Toolbar as MuiToolbar } from "@material-ui/core"
+import { Typography, Toolbar as MuiToolbar } from "@material-ui/core"
 import { createStyles, makeStyles, Theme } from "@material-ui/core"
+import { Link } from "react-router-dom"
 
 export const Toolbar = () => {
   const classes = useToolbarStyle()
   return (
     <div>
       <MuiToolbar className={classes.toolbar}>
-        <Link className={classes.headingLink} underline="none" href={homePageUrl}>
+        <Link className={classes.headingLink} to={homePageUrl}>
           <Typography className={classes.headingLinkText}>Phonebook</Typography>
         </Link>
       </MuiToolbar>
@@ -32,6 +33,7 @@ export const toolbarStyle = ({ palette }: Theme) =>
     headingLink: {
       margin: "10px 0px 10px 0px",
       color: "white",
+      textDecoration: "none",
     },
     headingLinkText: {
       textTransform: "uppercase",
