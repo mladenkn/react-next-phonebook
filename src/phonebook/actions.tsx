@@ -9,6 +9,7 @@ import ArrowBackIcon from "@material-ui/icons/ArrowBack"
 import FavoriteIcon from "@material-ui/icons/Favorite"
 import FavoriteOutlinedIcon from "@material-ui/icons/FavoriteBorder"
 import { Link } from "react-router-dom"
+import { cn } from "../utils"
 
 export const GoToEditAction = ({ contactId }: { contactId: number }) => (
   <Link to={contactEditUrl(contactId)}>
@@ -45,7 +46,7 @@ export const DeleteAction = withStyles(deleteActionStyle)(({
   withHoverEffect,
 }: DeleteActionProps) => {
   const [modalOpen, setModalOpen] = useState(false)
-  const buttonClass = withHoverEffect || false ? classes.buttonHoverEffect : classes.button
+  const buttonClass = withHoverEffect || false ? cn("flex text-secondary-dark") : classes.button
   return (
     <>
       <button className={buttonClass} onClick={() => setModalOpen(true)}>

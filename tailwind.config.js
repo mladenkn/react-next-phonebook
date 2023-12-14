@@ -15,8 +15,9 @@ module.exports = {
           dark: "#2496A2",
         },
         secondary: {
-          main: "#BBC4C3",
           light: "#E3E3E3",
+          main: "#BBC4C3",
+          dark: colors.grey[600]
         },
         tc: {
           primary: colors.grey[500],
