@@ -21,9 +21,7 @@ const ContactEditPage = ({ className, contact, onSave, onDelete }: Props) => {
   const onlyXs = useMediaQuery("(max-width:599px)")
   const deleteAction = contact ? (
     <DeleteAction onConfirm={onDelete!} withHoverEffect withText={!onlyXs} />
-  ) : (
-    ""
-  )
+  ) : null
 
   const contact_ = contact || {
     id: 0,
