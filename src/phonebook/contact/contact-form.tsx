@@ -83,8 +83,13 @@ const ContactForm = ({ classes, initialInput, onChange }: Props) => {
                       name={`numbers.${index}.label`}
                       className={cn(styles.input, classes.phoneNumberLabelInput)}
                     />
-                    <IconButton className="p-1.5" onClick={() => arr.remove(index)}>
-                      <span className={classes.labelRemoverIcon}>x</span>
+                    <IconButton
+                      className="flex items-center justify-center"
+                      onClick={() => arr.remove(index)}
+                    >
+                      <span className="inline-block h-7 w-7 rounded-full border-2 border-solid border-secondary-light text-center text-sm text-secondary-main">
+                        x
+                      </span>
                     </IconButton>
                   </div>
                 ))}
