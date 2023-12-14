@@ -5,6 +5,7 @@ import { withStyles, WithStyles } from "@material-ui/core"
 import { TextInputDialog } from "./text-input-dialog"
 import CloudUploadIcon from "@material-ui/icons/CloudUpload"
 import { ContactAvatar } from "./contact/contact-avatar"
+import { grey } from "@material-ui/core/colors"
 
 type Props = {
   src?: string
@@ -38,7 +39,12 @@ export const SwapableAvatar = withStyles(swapableAvatarStyle)(({
               className="h-full w-full"
               style={{ filter: "brightness(70%)" }}
             />
-            <div className={classes.removeIcon}>x</div>
+            <div
+              className={cn("absolute text-3xl")}
+              style={{ top: "40%", left: "47%", color: grey[300] }}
+            >
+              x
+            </div>
           </div>
         </div>
       ) : (

@@ -18,12 +18,12 @@ export const swapableAvatarStyle = () =>
       filter: "brightness(70%)",
     },
     removeIcon: {
-      position: "absolute",
+      // position: "absolute",
       top: "40%",
       left: "47%",
       color: grey[300],
-      fontSize: "2rem",
-      fontWeight: "lighter",
+      // fontSize: "2rem",
+      // fontWeight: "lighter",
     },
     uploadIcon: {
       position: "absolute",
