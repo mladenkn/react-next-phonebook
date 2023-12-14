@@ -23,7 +23,10 @@ export const ContactAvatar = ({ className, style, letter, url }: ContactAvatarPr
   else if (letter)
     return (
       <div
-        className={clsx("flex h-10 w-10 items-center justify-center rounded-full", className)}
+        className={clsx(
+          "flex h-10 w-10 cursor-default items-center justify-center rounded-full",
+          className,
+        )}
         style={style}
       >
         {letter}
