@@ -17,26 +17,20 @@ export const SwapableAvatar = withStyles(swapableAvatarStyle)(({
   src,
   onChange,
 }: Props) => {
-  const [imageSrc, setImageSrc] = useState(src)
   const [isDialogOpen, setIsDialogOpen] = useState(false)
-
-  const setImageSrc_ = (src?: string) => {
-    setImageSrc(src)
-    onChange(src)
-  }
 
   const handleDialogOK = (image: string) => {
     setIsDialogOpen(false)
-    setImageSrc_(image)
+    onChange(image)
   }
 
   return (
     <>
-      {imageSrc ? (
+      {src ? (
         <div>
           <div
             className={cn("relative cursor-pointer", className)}
-            onClick={() => setImageSrc_(undefined)}
+            onClick={() => onChange(undefined)}
           >
             <Avatar src={src} className={classes.avatar} />
             <div className={classes.removeIcon}>x</div>
@@ -56,7 +50,7 @@ export const SwapableAvatar = withStyles(swapableAvatarStyle)(({
           </div>
           {isDialogOpen && (
             <TextInputDialog
-              text={imageSrc}
+              text={src}
               onOK={handleDialogOK}
               onCancel={() => setIsDialogOpen(false)}
               isInputValid={imgUrl => !!imgUrl}
