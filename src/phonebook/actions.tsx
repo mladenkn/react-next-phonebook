@@ -46,10 +46,16 @@ export const DeleteAction = withStyles(deleteActionStyle)(({
   withHoverEffect,
 }: DeleteActionProps) => {
   const [modalOpen, setModalOpen] = useState(false)
-  const buttonClass = withHoverEffect || false ? cn("flex text-secondary-dark") : classes.button
   return (
     <>
-      <button className={buttonClass} onClick={() => setModalOpen(true)}>
+      <button
+        className={cn(
+          "text-secondary-dark flex",
+          withHoverEffect && "rounded-sm p-1",
+          withHoverEffect && classes.buttonHoverEffect,
+        )}
+        onClick={() => setModalOpen(true)}
+      >
         {(withText || false) && <p className="mr-1 text-base">Delete</p>}
         <DeleteIcon color="secondary" />
       </button>
@@ -72,20 +78,12 @@ export const GoBackAction = () => {
   )
 }
 
-function deleteActionStyle({ palette }: Theme) {
+function deleteActionStyle() {
   return createStyles({
-    button: {
-      display: "flex",
-      color: palette.text.primary,
-    },
     buttonHoverEffect: {
-      display: "flex",
       "&:hover": {
         backgroundColor: "rgba(0, 0, 0, 0.08)",
       },
-      padding: 5,
-      color: palette.text.primary,
-      borderRadius: 6,
     },
   })
 }
