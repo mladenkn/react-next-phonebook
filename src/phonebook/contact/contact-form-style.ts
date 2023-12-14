@@ -7,11 +7,5 @@ export default ({ breakpoints }: Theme) =>
         width: "100%",
         marginBottom: 10,
       },
-      phoneNumberLabelInput: {
-        width: "80%",
-      },
-      labelRemover: {
-        width: "20%",
-      },
     },
   })
