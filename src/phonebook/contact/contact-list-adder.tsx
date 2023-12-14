@@ -7,12 +7,10 @@ import { Link } from "react-router-dom"
 const ContactAdder = ({ classes }: WithStyles<typeof style>) => (
   <Link
     to={contactCreateUrl}
-    className="flex h-full w-full border-1 border-dashed border-primary-light md:items-center md:justify-center"
+    className="flex h-full w-full items-center border-1 border-dashed border-primary-light md:flex-col md:justify-center"
   >
-    <div className={classes.content_}>
-      <AddIcon className="text-2xl text-primary-light" />
-      <p className="text-primary-light">Add new</p>
-    </div>
+    <AddIcon className="text-2xl text-primary-light max-sm:ml-5 max-sm:mr-2" />
+    <p className="text-primary-light">Add new</p>
   </Link>
 )
 
