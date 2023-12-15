@@ -1,5 +1,6 @@
 import { ComponentType, ReactNode } from "react"
 import clsx from "clsx"
+import { cn } from "../utils"
 
 type ContactFieldLabelProps = {
   Icon: ComponentType<{ className?: string }>
@@ -13,11 +14,17 @@ export const ContactFieldLabel = (p: ContactFieldLabelProps) => (
   </div>
 )
 
-export function Modal({ children }: { children: ReactNode }) {
+export function Modal({
+  contentClassName,
+  children,
+}: {
+  children: ReactNode
+  contentClassName?: string
+}) {
   return (
     <div className="fixed inset-0 z-40 flex items-center justify-center overflow-y-auto">
       <div className="fixed inset-0 bg-black opacity-40" />
-      {children}
+      <div className={cn("z-50", contentClassName)}>{children}</div>
     </div>
   )
 }
