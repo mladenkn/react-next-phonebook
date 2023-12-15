@@ -5,7 +5,7 @@ import { Link } from "react-router-dom"
 export default function Toolbar() {
   return (
     <AppBar>
-      <MuiToolbar className="relative flex h-10 justify-center bg-gradient-to-r from-primary-dark to-primary-light">
+      <MuiToolbar className="flex h-10 justify-center bg-gradient-to-r from-primary-dark to-primary-light">
         <Link
           className="pb-2 pt-3 text-xl font-semibold uppercase text-white no-underline"
           to={homePageUrl}
