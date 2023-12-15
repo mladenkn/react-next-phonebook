@@ -10,7 +10,6 @@ import {
   useParams,
   useNavigate,
 } from "react-router-dom"
-import { Container } from "@material-ui/core"
 import Toolbar from "./toolbar"
 import { getBreakpointContainerStyle } from "../ui-utils"
 
@@ -34,7 +33,7 @@ const ContactDetailsPage = () => {
   const ops = useContactDetailsOps(contactId, () => navigate(-1), navigate)
 
   return (
-    <Container maxWidth="sm">
+    <div className={getBreakpointContainerStyle("sm")}>
       <Toolbar />
       {ops.fetchStatus === "COMPLETED" ? (
         <ContactDetails
@@ -43,7 +42,7 @@ const ContactDetailsPage = () => {
           onFavorite={ops.favorite}
         />
       ) : null}
-    </Container>
+    </div>
   )
 }
 
@@ -51,13 +50,13 @@ const ContactCreatePage = () => {
   const navigate = useNavigate()
   const contactService = useContactServiceContext()
   return (
-    <Container maxWidth="md">
+    <div className={getBreakpointContainerStyle("md")}>
       <Toolbar />
       <ContactEdit
         className="mt-20"
         onSave={c => contactService.save(c).then(() => navigate(-1))}
       />
-    </Container>
+    </div>
   )
 }
 
@@ -67,19 +66,17 @@ const ContactEditPage = () => {
   const contactId = parseInt(params.contactId!)
   const ops = useContactDetailsOps(contactId, () => navigate(-1), navigate)
   return (
-    <Container maxWidth="md">
+    <div className={getBreakpointContainerStyle("md")}>
       <Toolbar />
       {ops.fetchStatus === "COMPLETED" ? (
-        <Container maxWidth="md">
-          <ContactEdit
-            className="mt-20"
-            contact={ops.contact!}
-            onSave={ops.save}
-            onDelete={ops.delete}
-          />
-        </Container>
+        <ContactEdit
+          className="mt-20"
+          contact={ops.contact!}
+          onSave={ops.save}
+          onDelete={ops.delete}
+        />
       ) : null}
-    </Container>
+    </div>
   )
 }
 
