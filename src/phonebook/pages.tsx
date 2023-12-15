@@ -21,7 +21,7 @@ const ContactListPage = () => {
   return (
     <Container maxWidth="lg">
       <Toolbar />
-      <HomeSection className="mt-20" />
+      <HomeSection className="mt-20 md:mt-24" />
     </Container>
   )
 }
@@ -36,7 +36,11 @@ const ContactDetailsPage = () => {
     <Container maxWidth="sm">
       <Toolbar />
       {ops.fetchStatus === "COMPLETED" ? (
-        <ContactDetails className="mt-20" contact={ops.contact!} onFavorite={ops.favorite} />
+        <ContactDetails
+          className="mt-20 md:mt-24"
+          contact={ops.contact!}
+          onFavorite={ops.favorite}
+        />
       ) : null}
     </Container>
   )
