@@ -22,36 +22,31 @@ const ContactList = ({
   toggleFavorite,
 }: Props) => {
   const [selectedItemId, setSelectedItemId] = useState(0)
-  const itemRootClass = cn(
-    "h-16 w-full pt-1",
-    "md:w-60 md:h-36 md:p-1", // md
-  )
 
   const width = useWidth()
   if (!width) return <></>
 
   const items = contacts.map(c => (
-    <li key={c.id} className={itemRootClass}>
-      <ContactListItem
-        isSelected={selectedItemId === c.id}
-        variant={width >= 768 ? "bigger" : "smaller"}
-        onDelete={() => deleteContact(c.id)}
-        onSelect={() => setSelectedItemId(c.id)}
-        onToggleFavorite={() => toggleFavorite(c.id)}
-        contact={c}
-      />
-    </li>
+    <ContactListItem
+      key={c.id}
+      isSelected={selectedItemId === c.id}
+      variant={width >= 768 ? "bigger" : "smaller"}
+      onDelete={() => deleteContact(c.id)}
+      onSelect={() => setSelectedItemId(c.id)}
+      onToggleFavorite={() => toggleFavorite(c.id)}
+      contact={c}
+    />
   ))
 
   const includeAdder_ = includeAdder || false
   if (includeAdder_) {
     const adder = (
-      <li key={0} className={itemRootClass}>
+      <li key={0} className="h-16 w-full md:h-36 md:w-60">
         <Link
           to={contactCreateUrl}
           className="flex h-full w-full items-center border-1 border-dashed border-primary-light md:flex-col md:justify-center"
         >
-          <AddIcon className="text-2xl text-primary-light max-sm:ml-5 max-sm:mr-2" />
+          <AddIcon className="text-2xl text-primary-light max-md:ml-5 max-md:mr-2" />
           <p className="text-primary-light">Add new</p>
         </Link>
       </li>
@@ -62,7 +57,7 @@ const ContactList = ({
   return (
     <ul
       className={cn(
-        "flex w-full flex-col",
+        "flex w-full flex-col gap-1",
         "md:flex-row md:flex-wrap md:justify-center", // md
         className,
       )}

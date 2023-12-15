@@ -2,7 +2,7 @@ import { ContactListItem as ContactListItemModel } from "../models"
 import { GoToEditAction, FavoriteAction, DeleteAction } from "../actions"
 import { ContactAvatar } from "./contact-avatar"
 import clsx from "clsx"
-import { tw } from "../../utils"
+import { cn, tw } from "../../utils"
 import { Link } from "react-router-dom"
 import { contactDetailsUrl } from "../urls"
 
@@ -53,57 +53,64 @@ const ContactListItem = ({
   const editAction = <GoToEditAction contactId={contact.id} />
   const deleteAction = <DeleteAction onConfirm={onDelete} />
 
-  const baseClass = tw.class`flex h-full items-center border-solid`
+  const baseClass = cn(
+    "flex items-center border-solid h-16 w-full",
+    "md:w-60 md:h-36", // md
+  )
 
   switch (true) {
     case isBigger && !isSelected:
       return (
-        <div
+        <li
           className={clsx(baseClass, "flex-col justify-center border-2 border-secondary-light")}
           onClick={onSelect}
         >
           <div className="flex w-full justify-start px-1.5">{favoriteAction}</div>
           {avatar}
           {name}
-        </div>
+        </li>
       )
     case isBigger && isSelected:
       return (
-        <Link
-          className={clsx(
-            baseClass,
-            "flex-col justify-center border-2 border-primary-main hover:no-underline",
-          )}
-          to={contactDetailsUrl(contact.id)}
-        >
-          <div className="flex w-full justify-between px-1.5">
-            {favoriteAction}
-            <div className="flex">
-              {editAction}
-              {deleteAction}
+        <li>
+          <Link
+            className={clsx(
+              baseClass,
+              "flex-col justify-center border-2 border-primary-main hover:no-underline",
+            )}
+            to={contactDetailsUrl(contact.id)}
+          >
+            <div className="flex w-full justify-between px-1.5">
+              {favoriteAction}
+              <div className="flex">
+                {editAction}
+                {deleteAction}
+              </div>
             </div>
-          </div>
-          {avatar}
-          {name}
-        </Link>
+            {avatar}
+            {name}
+          </Link>
+        </li>
       )
     default:
       return (
-        <Link
-          className={clsx(
-            baseClass,
-            "w-full justify-between border-2 border-secondary-light pl-2 pr-1 shadow-none",
-          )}
-          to={contactDetailsUrl(contact.id)}
-        >
-          {avatar}
-          {name}
-          <div className="flex gap-1">
-            {favoriteAction}
-            {editAction}
-            {deleteAction}
-          </div>
-        </Link>
+        <li>
+          <Link
+            className={clsx(
+              baseClass,
+              "w-full justify-between border-2 border-secondary-light pl-2 pr-1 shadow-none",
+            )}
+            to={contactDetailsUrl(contact.id)}
+          >
+            {avatar}
+            {name}
+            <div className="flex gap-1">
+              {favoriteAction}
+              {editAction}
+              {deleteAction}
+            </div>
+          </Link>
+        </li>
       )
   }
 }
