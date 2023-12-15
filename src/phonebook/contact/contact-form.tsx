@@ -1,7 +1,6 @@
 import { IconButton } from "@material-ui/core"
 import { Contact } from "../models"
 import { FormikErrors, Formik, Field, ErrorMessage, FieldArray } from "formik"
-import { Emptiness } from "../various"
 import { ContactFieldLabel } from "../various"
 import EmailIcon from "@material-ui/icons/Email"
 import PhoneIcon from "@material-ui/icons/Phone"
@@ -90,8 +89,7 @@ const ContactForm = ({ initialInput, onChange }: Props) => {
                   className="mt-6 flex text-primary-main"
                   onClick={() => arr.push({ value: "", label: "" })}
                 >
-                  <AddCircleOutline color="primary" />
-                  <Emptiness width={5} />
+                  <AddCircleOutline className="mr-1.5" color="primary" />
                   Add number
                 </button>
               </div>
