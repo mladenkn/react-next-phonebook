@@ -2,9 +2,8 @@ import { Contact } from "../models"
 import ContactDetailsFields from "./contact-details-fields"
 import { FavoriteAction, GoToEditAction, GoBackAction } from "../actions"
 import { contactPageBaseStylesMd, contactPageBaseStylesXs } from "./contact-details-base-style"
-import useMediaQuery from "@material-ui/core/useMediaQuery"
 import { ContactAvatar } from "./contact-avatar"
-import { cn } from "../../utils"
+import { cn, useWidth } from "../../utils"
 
 type Props = { className?: string; contact: Contact; onFavorite: () => void }
 
@@ -13,18 +12,21 @@ const ContactDetailsPage = ({ className, contact, onFavorite }: Props) => {
   const favAction = <FavoriteAction onClick={onFavorite} isFavorite={contact.isFavorite} />
   const editAction = <GoToEditAction contactId={contact.id} />
 
-  const onlyXs = useMediaQuery("(max-width:599px)")
+  const width = useWidth()
+  if (!width) return <></>
+
+  const isXs = width < 600
 
   const avatar = (
     <ContactAvatar
       style={contact.avatar}
-      className={cn("ml-2 mr-3 h-16 w-16", !onlyXs && "h-44 w-44")}
+      className={cn("ml-2 mr-3 h-16 w-16", !isXs && "h-44 w-44")}
       url={contact.avatarUrl}
       letter={contact.fullName[0]}
     />
   )
 
-  if (onlyXs) {
+  if (isXs) {
     return (
       <div className={cn(contactPageBaseStylesXs.root, "text-tc-primary", className)}>
         <div className={contactPageBaseStylesXs.toolbar}>

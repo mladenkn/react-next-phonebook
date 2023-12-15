@@ -1,11 +1,10 @@
 import { Contact } from "../models"
 import { useState } from "react"
 import { DeleteAction, GoBackAction } from "../actions"
-import useMediaQuery from "@material-ui/core/useMediaQuery"
 import ContactForm from "./contact-form"
 import { contactPageBaseStylesXs, contactPageBaseStylesMd } from "./contact-details-base-style"
 import { SwapableAvatar } from "../swapable-avatar"
-import { cn } from "../../utils"
+import { cn, useWidth } from "../../utils"
 import { useNavigate } from "react-router-dom"
 
 type Props = {
@@ -17,11 +16,6 @@ type Props = {
 
 const ContactEditPage = ({ className, contact, onSave, onDelete }: Props) => {
   const backAction = <GoBackAction />
-
-  const onlyXs = useMediaQuery("(max-width:599px)")
-  const deleteAction = contact ? (
-    <DeleteAction onConfirm={onDelete!} withHoverEffect withText={!onlyXs} />
-  ) : null
 
   const contact_ = contact || {
     id: 0,
@@ -69,7 +63,16 @@ const ContactEditPage = ({ className, contact, onSave, onDelete }: Props) => {
     </div>
   )
 
-  const downSm = useMediaQuery("(max-width:959px)")
+  const width = useWidth()
+  if (!width) return <></>
+
+  const isXs = width < 600
+
+  const deleteAction = contact ? (
+    <DeleteAction onConfirm={onDelete!} withHoverEffect withText={!isXs} />
+  ) : null
+
+  const downSm = width < 960
 
   if (downSm) {
     return (
