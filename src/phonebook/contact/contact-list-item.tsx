@@ -54,15 +54,15 @@ const ContactListItem = ({
   const deleteAction = <DeleteAction onConfirm={onDelete} />
 
   const baseClass = cn(
-    "flex items-center border-solid h-16 w-full",
-    "md:w-60 md:h-36", // md
+    "flex items-center border-solid w-full",
+    "md:w-60", // md
   )
 
   switch (true) {
     case isBigger && !isSelected:
       return (
         <li
-          className={clsx(baseClass, "flex-col justify-center border-2 border-secondary-light")}
+          className={clsx(baseClass, "flex-col border-2 border-secondary-light pt-2")}
           onClick={onSelect}
         >
           <div className="flex w-full justify-start px-1.5">{favoriteAction}</div>
@@ -76,7 +76,7 @@ const ContactListItem = ({
           <Link
             className={clsx(
               baseClass,
-              "flex-col justify-center border-2 border-primary-main hover:no-underline",
+              "flex-col border-2 border-primary-main pt-2 hover:no-underline",
             )}
             to={contactDetailsUrl(contact.id)}
           >
