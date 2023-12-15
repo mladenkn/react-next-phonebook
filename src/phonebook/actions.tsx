@@ -43,7 +43,7 @@ export const DeleteAction = ({ onConfirm, withText, withHoverEffect }: DeleteAct
     <>
       <button
         className={cn(
-          "text-secondary-dark flex",
+          "flex text-secondary-dark",
           withHoverEffect && "button-hover-opacity rounded-sm p-1",
         )}
         onClick={() => setModalOpen(true)}
@@ -51,12 +51,13 @@ export const DeleteAction = ({ onConfirm, withText, withHoverEffect }: DeleteAct
         {(withText || false) && <p className="mr-1 text-base">Delete</p>}
         <DeleteIcon color="secondary" />
       </button>
-      <DeleteModal
-        isOpen={modalOpen}
-        text="Are you sure you want to delete this contact?"
-        onCancel={() => setModalOpen(false)}
-        onConfirm={onConfirm}
-      />
+      {modalOpen ? (
+        <DeleteModal
+          text="Are you sure you want to delete this contact?"
+          onCancel={() => setModalOpen(false)}
+          onConfirm={onConfirm}
+        />
+      ) : null}
     </>
   )
 }

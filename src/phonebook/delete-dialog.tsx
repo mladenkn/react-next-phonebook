@@ -2,7 +2,6 @@ type Props = {
   text: string
   onCancel: () => void
   onConfirm: () => void
-  isOpen: boolean
 }
 
 const DeleteModal = ({ text, onCancel, onConfirm }: Props) => (
