@@ -9,9 +9,11 @@ import { seedDataIfNeeded } from "./local-storage-seed"
 
 const theme = createMuiTheme({
   palette: {
+    primary: {
+      main: "#2DA1AD",
+    },
     secondary: {
       main: "#BBC4C3",
-      light: "#E3E3E3",
     },
   },
 })
