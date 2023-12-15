@@ -55,7 +55,7 @@ const ContactListItem = ({
 
   const baseClass = cn(
     "flex items-center border-solid w-full",
-    "md:w-60", // md
+    "md:w-60 md:h-36", // md
   )
 
   switch (true) {
@@ -76,7 +76,7 @@ const ContactListItem = ({
           <Link
             className={clsx(
               baseClass,
-              "flex-col border-2 border-primary-main pt-2 hover:no-underline",
+              "h-full flex-col border-2 border-primary-main pt-2 hover:no-underline",
             )}
             to={contactDetailsUrl(contact.id)}
           >
