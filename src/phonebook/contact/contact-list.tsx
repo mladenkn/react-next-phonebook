@@ -41,7 +41,7 @@ const ContactList = ({
   const includeAdder_ = includeAdder || false
   if (includeAdder_) {
     const adder = (
-      <li key={0} className="h-16 w-full md:h-36 md:w-60">
+      <li key={0} className="h-14 w-full md:h-36 md:w-60">
         <Link
           to={contactCreateUrl}
           className="flex h-full w-full items-center border-1 border-dashed border-primary-light md:flex-col md:justify-center"
