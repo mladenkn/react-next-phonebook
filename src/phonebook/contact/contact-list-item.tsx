@@ -55,14 +55,14 @@ const ContactListItem = ({
 
   const baseClass = cn(
     "flex items-center border-solid w-full",
-    "md:w-60 md:h-36", // md
+    "md:w-60 md:h-36 md:pt-2 md:pt-2", // md
   )
 
   switch (true) {
     case isBigger && !isSelected:
       return (
         <li
-          className={clsx(baseClass, "flex-col border-2 border-secondary-light pt-2")}
+          className={clsx(baseClass, "flex-col border-2 border-secondary-light")}
           onClick={onSelect}
         >
           <div className="flex w-full justify-start px-1.5">{favoriteAction}</div>
@@ -76,7 +76,7 @@ const ContactListItem = ({
           <Link
             className={clsx(
               baseClass,
-              "h-full flex-col border-2 border-primary-main pt-2 hover:no-underline",
+              "h-full flex-col border-2 border-primary-main hover:no-underline",
             )}
             to={contactDetailsUrl(contact.id)}
           >
@@ -98,7 +98,7 @@ const ContactListItem = ({
           <Link
             className={clsx(
               baseClass,
-              "w-full justify-between border-2 border-secondary-light pl-2 pr-1 shadow-none",
+              "w-full justify-between border-2 border-secondary-light py-2 pl-2 pr-1 shadow-none",
             )}
             to={contactDetailsUrl(contact.id)}
           >
