@@ -3,7 +3,7 @@ import { useState } from "react"
 import { DeleteAction, GoBackAction } from "../actions"
 import useMediaQuery from "@material-ui/core/useMediaQuery"
 import ContactForm from "./contact-form"
-import { ContactPageBaseStylesXs, ContactPageBaseStylesMd } from "./contact-details-base-style"
+import { contactPageBaseStylesXs, contactPageBaseStylesMd } from "./contact-details-base-style"
 import { SwapableAvatar } from "../swapable-avatar"
 import { cn } from "../../utils"
 import { useNavigate } from "react-router-dom"
@@ -74,13 +74,13 @@ const ContactEditPage = ({ className, contact, onSave, onDelete }: Props) => {
   if (downSm) {
     return (
       <div className={cn("flex justify-center", className)}>
-        <div className={cn(ContactPageBaseStylesXs.root, "w-full max-w-lg")}>
-          <div className={ContactPageBaseStylesXs.toolbar}>
+        <div className={cn(contactPageBaseStylesXs.root, "w-full max-w-lg")}>
+          <div className={contactPageBaseStylesXs.toolbar}>
             {backAction}
             {deleteAction}
           </div>
-          <div className={ContactPageBaseStylesXs.body}>
-            <div className={cn(ContactPageBaseStylesXs.heading, "justify-center")}>{avatar}</div>
+          <div className={contactPageBaseStylesXs.body}>
+            <div className={cn(contactPageBaseStylesXs.heading, "justify-center")}>{avatar}</div>
             <div className="mt-3">
               {form}
               {buttons}
@@ -91,10 +91,10 @@ const ContactEditPage = ({ className, contact, onSave, onDelete }: Props) => {
     )
   }
   return (
-    <div className={cn(ContactPageBaseStylesMd.root, className)}>
+    <div className={cn(contactPageBaseStylesMd.root, className)}>
       {avatar}
-      <div className={cn(ContactPageBaseStylesMd.right)}>
-        <div className={cn(ContactPageBaseStylesMd.heading, "justify-between")}>
+      <div className={cn(contactPageBaseStylesMd.right)}>
+        <div className={cn(contactPageBaseStylesMd.heading, "justify-between")}>
           {backAction}
           {deleteAction}
         </div>

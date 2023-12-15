@@ -1,7 +1,7 @@
 import { Contact } from "../models"
 import ContactDetailsFields from "./contact-details-fields"
 import { FavoriteAction, GoToEditAction, GoBackAction } from "../actions"
-import { ContactPageBaseStylesMd, ContactPageBaseStylesXs } from "./contact-details-base-style"
+import { contactPageBaseStylesMd, contactPageBaseStylesXs } from "./contact-details-base-style"
 import useMediaQuery from "@material-ui/core/useMediaQuery"
 import { ContactAvatar } from "./contact-avatar"
 import { cn } from "../../utils"
@@ -26,16 +26,16 @@ const ContactDetailsPage = ({ className, contact, onFavorite }: Props) => {
 
   if (onlyXs) {
     return (
-      <div className={cn(ContactPageBaseStylesXs.root, "text-tc-primary", className)}>
-        <div className={ContactPageBaseStylesXs.toolbar}>
+      <div className={cn(contactPageBaseStylesXs.root, "text-tc-primary", className)}>
+        <div className={contactPageBaseStylesXs.toolbar}>
           <GoBackAction />
           <span className="flex items-center gap-2">
             {favAction}
             {editAction}
           </span>
         </div>
-        <div className={ContactPageBaseStylesXs.body}>
-          <div className={ContactPageBaseStylesXs.heading}>
+        <div className={contactPageBaseStylesXs.body}>
+          <div className={contactPageBaseStylesXs.heading}>
             {avatar}
             {name}
           </div>
@@ -45,10 +45,10 @@ const ContactDetailsPage = ({ className, contact, onFavorite }: Props) => {
     )
   } else {
     return (
-      <div className={cn(className, ContactPageBaseStylesMd.root, "items-start text-tc-primary")}>
+      <div className={cn(className, contactPageBaseStylesMd.root, "items-start text-tc-primary")}>
         {avatar}
-        <div className={ContactPageBaseStylesMd.right}>
-          <div className={cn(ContactPageBaseStylesMd.heading, "flex justify-between")}>
+        <div className={contactPageBaseStylesMd.right}>
+          <div className={cn(contactPageBaseStylesMd.heading, "flex justify-between")}>
             <GoBackAction />
             {name}
             <span className="inline-flex items-center gap-1">
