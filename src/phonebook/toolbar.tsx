@@ -33,11 +33,6 @@ export const toolbarStyle = ({ palette }: Theme) =>
       backgroundImage: `linear-gradient(to right, #70BBC3, #A0D8DC)`,
       height: 7,
     },
-    saveWorkAction: {
-      color: "white",
-      position: "absolute",
-      right: "5%",
-    },
   })
 
 export const useToolbarStyle = makeStyles(toolbarStyle, {
