@@ -8,8 +8,11 @@ export const Toolbar = () => {
   return (
     <AppBar>
       <MuiToolbar className={classes.toolbar}>
-        <Link className={classes.headingLink} to={homePageUrl}>
-          <Typography className={classes.headingLinkText}>Phonebook</Typography>
+        <Link
+          className="pb-2 pt-3 text-xl font-semibold uppercase text-white no-underline"
+          to={homePageUrl}
+        >
+          Phonebook
         </Link>
       </MuiToolbar>
       <div className={classes.toolbarBorder} />
@@ -29,16 +32,6 @@ export const toolbarStyle = ({ palette }: Theme) =>
     toolbarBorder: {
       backgroundImage: `linear-gradient(to right, #70BBC3, #A0D8DC)`,
       height: 7,
-    },
-    headingLink: {
-      margin: "10px 0px 10px 0px",
-      color: "white",
-      textDecoration: "none",
-    },
-    headingLinkText: {
-      textTransform: "uppercase",
-      fontSize: "1.2rem",
-      fontWeight: 600,
     },
     saveWorkAction: {
       color: "white",
