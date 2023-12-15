@@ -11,7 +11,7 @@ import {
   useNavigate,
 } from "react-router-dom"
 import { Container } from "@material-ui/core"
-import { Toolbar } from "./toolbar"
+import Toolbar from "./toolbar"
 
 export interface ContactIdRouteParams {
   contactId?: string

@@ -2,7 +2,7 @@ import { homePageUrl } from "./urls"
 import { Toolbar as MuiToolbar, AppBar } from "@material-ui/core"
 import { Link } from "react-router-dom"
 
-export const Toolbar = () => {
+export default function Toolbar() {
   return (
     <AppBar>
       <MuiToolbar className="relative flex h-10 justify-center bg-gradient-to-r from-primary-dark to-primary-light">
