@@ -1,9 +1,8 @@
 import { useState } from "react"
-import { cn, validURL } from "../utils"
+import { cn } from "../utils"
 import { TextInputDialog } from "./text-input-dialog"
 import CloudUploadIcon from "@material-ui/icons/CloudUpload"
 import { ContactAvatar } from "./contact/contact-avatar"
-import { grey } from "@material-ui/core/colors"
 
 type Props = {
   src?: string
@@ -33,8 +32,8 @@ export const SwapableAvatar = ({ className, src, onChange }: Props) => {
               style={{ filter: "brightness(70%)" }}
             />
             <div
-              className={cn("absolute text-3xl")}
-              style={{ top: "40%", left: "47%", color: grey[300] }}
+              className={cn("absolute text-3xl text-gray-200")}
+              style={{ top: "40%", left: "47%" }}
             >
               x
             </div>
