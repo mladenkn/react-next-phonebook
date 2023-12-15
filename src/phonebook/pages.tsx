@@ -12,6 +12,7 @@ import {
 } from "react-router-dom"
 import { Container } from "@material-ui/core"
 import Toolbar from "./toolbar"
+import { getBreakpointContainerStyle } from "../ui-utils"
 
 export interface ContactIdRouteParams {
   contactId?: string
@@ -19,10 +20,10 @@ export interface ContactIdRouteParams {
 
 const ContactListPage = () => {
   return (
-    <Container maxWidth="lg">
+    <div className={getBreakpointContainerStyle("lg")}>
       <Toolbar />
       <HomeSection className="mt-20 md:mt-24" />
-    </Container>
+    </div>
   )
 }
 
