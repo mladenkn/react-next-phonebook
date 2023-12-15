@@ -73,16 +73,16 @@ const ContactForm = ({ initialInput, onChange }: Props) => {
               <div>
                 <ContactFieldLabel Icon={PhoneIcon} text="numbers" className="mb-2" />
                 {values.numbers.map((_, index) => (
-                  <div className="py-2 sm:flex sm:justify-between" key={index}>
+                  <div className="py-2 md:flex md:justify-between md:gap-2" key={index}>
                     <Field
                       type="number"
                       name={`numbers[${index}].value`}
-                      className={cn(styles.input, "max-sm-mb-2 max-sm:w-full")}
+                      className={cn(styles.input, "max-sm:mb-2 max-sm:w-full")}
                     />
                     <Field name={`numbers.${index}.label`} className={styles.input} />
-                    <IconButton onClick={() => arr.remove(index)}>
+                    <button className="max-sm:ml-2" onClick={() => arr.remove(index)}>
                       <HighlightOffIcon className="text-secondary-main" />
-                    </IconButton>
+                    </button>
                   </div>
                 ))}
                 <button
