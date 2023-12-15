@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 
 export default function Toolbar() {
   return (
-    <AppBar>
+    <AppBar style={{ zIndex: 20 }}>
       <MuiToolbar className="flex h-10 justify-center bg-gradient-to-r from-primary-dark to-primary-light">
         <Link
           className="pb-2 pt-3 text-xl font-semibold uppercase text-white no-underline"
