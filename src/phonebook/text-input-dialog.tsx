@@ -1,6 +1,6 @@
 import { useState } from "react"
-import { Dialog, Input } from "@material-ui/core"
 import { cn } from "../utils"
+import { Modal } from "./various"
 
 type TextInputDialogProps = {
   text?: string
@@ -15,16 +15,17 @@ export const TextInputDialog = ({ text, isInputValid, onOK, onCancel }: TextInpu
   const okButtonDisabled = !inputValid
 
   return (
-    <Dialog classes={{ paper: "mx-2 w-full" }} open={true}>
-      <h1 className="mb-4 ml-6 mt-6 text-xl">Enter image url:</h1>
+    <Modal contentClassName="mx-2 bg-white px-6">
+      <h1 className="mb-6 mt-6 text-xl">Enter image url:</h1>
 
-      <Input
-        className="ml-6 w-full sm:w-96"
+      <input
+        className="w-full border-b-2 border-b-primary-light p-1 outline-none sm:w-96"
         value={input}
         onChange={e => setInput(e.target.value)}
+        autoFocus
       />
 
-      <div className="mx-6 mb-4 mt-6 flex justify-end gap-3">
+      <div className="mb-4 mt-6 flex justify-end gap-3">
         <button
           className="h-10 w-20 rounded-lg border-none bg-secondary-main text-black"
           onClick={() => onCancel()}
@@ -42,6 +43,6 @@ export const TextInputDialog = ({ text, isInputValid, onOK, onCancel }: TextInpu
           Ok
         </button>
       </div>
-    </Dialog>
+    </Modal>
   )
 }
