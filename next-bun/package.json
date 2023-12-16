@@ -10,7 +10,9 @@
     "dev": "next dev",
     "lint": "next lint",
     "start": "next start",
-    "tsc": "tsc"
+    "tsc": "tsc",
+    "wipe": "rm -rf node_modules && rm -f bun.lockb",
+    "reset": "bun wipe && bun install"
   },
   "dependencies": {
     "@faker-js/faker": "^8.3.1",
