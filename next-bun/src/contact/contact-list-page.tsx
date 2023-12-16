@@ -3,6 +3,8 @@ import ContactList, { ContactListProps } from "./contact-list"
 import SearchIcon from "@material-ui/icons/Search"
 import clsx from "clsx"
 import { cn, tw } from "../utils"
+import Toolbar from "~/toolbar"
+import { getBreakpointContainerStyle } from "~/utils/ui-utils"
 
 const StyledTab = tw.button`text-lg text-tc-primary font-semibold`
 
@@ -21,6 +23,9 @@ const ContactListPage = ({ className, data }: Props) => {
   const [currentTab, setCurrentTab] = useState<"all" | "favorites">("all")
 
   return (
+    <div className={getBreakpointContainerStyle("lg")}>
+    <Toolbar />
+
     <div className={cn("flex flex-col items-center", className)}>
       <div className="flex gap-8">
         <StyledTab
@@ -49,6 +54,7 @@ const ContactListPage = ({ className, data }: Props) => {
         includeAdder
         className="mt-3 sm:mt-6"
       />
+    </div>
     </div>
   )
 }
