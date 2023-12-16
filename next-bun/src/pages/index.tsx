@@ -1,4 +1,3 @@
-import Head from "next/head";
 import { generateContact } from "~/contact/contact-data-generators";
 import ContactListPage from "~/contact/contact-list-page";
 import { generateArray } from "~/utils";
@@ -13,14 +12,5 @@ export function getServerSideProps(){
 }
 
 export default function Home({ contacts }: ReturnType<typeof getServerSideProps>["props"]) {
-
-  return (
-    <>
-      <Head>
-        <title>Phonebook</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <ContactListPage data={contacts} />
-    </>
-  );
+  return <ContactListPage data={contacts} />
 }
