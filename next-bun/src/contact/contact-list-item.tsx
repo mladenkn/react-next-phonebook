@@ -3,6 +3,8 @@ import { GoToEditAction, FavoriteAction, DeleteAction } from "../actions"
 import { ContactAvatar } from "./contact-avatar"
 import clsx from "clsx"
 import { cn } from "../utils"
+import { useRouter } from "next/router"
+import { contactDetailsUrl } from "~/urls"
 
 type ItemPresenterProps = {
   contact: ContactListItemModel
@@ -47,10 +49,19 @@ const ContactListItem = ({
   const editAction = <GoToEditAction contactId={contact.id} />
   const deleteAction = <DeleteAction onConfirm={onDelete} />
 
+  const router = useRouter()
+  function handleClick(){
+    if(isSelected){
+      router.push(contactDetailsUrl(contact.id))
+    }
+    else
+      onSelect()
+  }
+
   return (
     <li
-      className={cn("border-solid border-2 border-secondary-light h-16 md:h-36 w-full md:w-60", isSelected && "border-primary-main")}
-      onClick={onSelect}
+      className={cn("border-solid border-2 border-secondary-light h-16 md:h-36 w-full md:w-60", isSelected && "border-primary-main cursor-pointer")}
+      onClick={handleClick}
     >
       <div className={cn("md-max:hidden flex flex-col items-center w-full h-full pt-2")}>
         <div className="flex w-full justify-between px-1.5">
