@@ -50,31 +50,38 @@ const ContactListItem = ({
   const deleteAction = <DeleteAction onConfirm={onDelete} />
 
   const router = useRouter()
-  function handleClick(){
-    if(isSelected){
+  function handleClick() {
+    if (isSelected) {
       router.push(contactDetailsUrl(contact.id))
-    }
-    else
-      onSelect()
+    } else onSelect()
   }
 
   return (
     <li
-      className={cn("border-solid border-2 border-secondary-light h-16 md:h-36 w-full md:w-60", isSelected && "border-primary-main cursor-pointer")}
+      className={cn(
+        "h-16 w-full border-2 border-solid border-secondary-light md:h-36 md:w-60",
+        isSelected && "cursor-pointer border-primary-main",
+      )}
       onClick={handleClick}
     >
-      <div className={cn("md-max:hidden flex flex-col items-center w-full h-full pt-2")}>
+      <div className={cn("flex h-full w-full flex-col items-center pt-2 md-max:hidden")}>
         <div className="flex w-full justify-between px-1.5">
           {favoriteAction}
-          {isSelected ? <div className="flex">
-            {editAction}
-            {deleteAction}
-          </div> : null}
+          {isSelected ? (
+            <div className="flex">
+              {editAction}
+              {deleteAction}
+            </div>
+          ) : null}
         </div>
         {avatar}
         {name}
       </div>
-      <div className={cn("w-full h-full md:hidden justify-between py-2 pl-2 pr-1 shadow-none flex items-center")}>
+      <div
+        className={cn(
+          "flex h-full w-full items-center justify-between py-2 pl-2 pr-1 shadow-none md:hidden",
+        )}
+      >
         {avatar}
         {name}
         <div className="flex gap-1">

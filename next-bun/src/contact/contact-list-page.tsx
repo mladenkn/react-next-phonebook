@@ -26,7 +26,7 @@ const ContactListPage = ({ data }: Props) => {
     <div className={getBreakpointContainerStyle("lg")}>
       <Toolbar />
 
-      <div className={cn("flex flex-col items-center mt-20")}>
+      <div className={cn("mt-20 flex flex-col items-center")}>
         <div className="flex gap-8">
           <StyledTab
             className={clsx(currentTab === "all" && "text-tc-secondary")}
@@ -44,7 +44,7 @@ const ContactListPage = ({ data }: Props) => {
         </div>
         <div className="mt-2 h-0.25 w-full bg-primary-main sm:mt-6" />
         <div className={searchWrapper_class}>
-          <SearchIcon color="secondary" className="ml-2 mr-2 w-4 h-4" />
+          <SearchIcon color="secondary" className="ml-2 mr-2 h-4 w-4" />
           <input className="h-12 w-full p-2 text-lg text-gray-500 outline-none" />
         </div>
         <ContactList

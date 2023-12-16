@@ -42,7 +42,7 @@ const ContactList = ({
           href={contactCreateUrl}
           className="flex h-full w-full items-center border-1 border-dashed border-primary-light md:flex-col md:justify-center"
         >
-          <AddIcon className="text-2xl text-primary-light max-md:ml-5 max-md:mr-2" />
+          <AddIcon className="max-md:ml-5 max-md:mr-2 text-2xl text-primary-light" />
           <p className="text-primary-light">Add new</p>
         </Link>
       </li>

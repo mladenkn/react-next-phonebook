@@ -35,8 +35,8 @@ export default {
         sans: ["var(--font-sans)", ...fontFamily.sans],
       },
       screens: {
-        "md-max": { max: "767px" }
-      }
+        "md-max": { max: "767px" },
+      },
     },
   },
   plugins: [],
