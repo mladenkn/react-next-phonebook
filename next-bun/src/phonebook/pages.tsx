@@ -3,12 +3,6 @@ import { useContactDetailsOps } from "./contact/contact-details-ops"
 import ContactDetails from "./contact/contact-details"
 import ContactEdit from "./contact/contact-edit"
 import { useContactServiceContext } from "./contact/contact-repository"
-import {
-  createRoutesFromElements,
-  createBrowserRouter,
-  Route,
-  useParams,
-} from "react-router-dom"
 import Toolbar from "./toolbar"
 import { getBreakpointContainerStyle } from "../utils/ui-utils"
 import { useRouter } from 'next/router'
@@ -27,9 +21,8 @@ const ContactListPage = () => {
 }
 
 const ContactDetailsPage = () => {
-  const params = useParams()
   const router = useRouter()
-  const contactId = parseInt(params.contactId!)
+  const contactId = 1 // TODO
   const ops = useContactDetailsOps(contactId, () => router.back(), router.push)
 
   return (
@@ -61,9 +54,8 @@ const ContactCreatePage = () => {
 }
 
 const ContactEditPage = () => {
-  const params = useParams()
   const router = useRouter()
-  const contactId = parseInt(params.contactId!)
+  const contactId = 1 // TODO
   const ops = useContactDetailsOps(contactId, () => router.back(), router.push)
   return (
     <div className={getBreakpointContainerStyle("md")}>
@@ -80,15 +72,15 @@ const ContactEditPage = () => {
   )
 }
 
-const router = createBrowserRouter(
-  createRoutesFromElements(
-    <>
-      <Route path="/" element={<ContactListPage />} />
-      <Route path="/contact/edit/:contactId" element={<ContactEditPage />} />
-      <Route path="/contact/:contactId" element={<ContactDetailsPage />} />
-      <Route path="/contact/create" element={<ContactCreatePage />} />
-    </>,
-  ),
-)
+// const router = createBrowserRouter(
+//   createRoutesFromElements(
+//     <>
+//       <Route path="/" element={<ContactListPage />} />
+//       <Route path="/contact/edit/:contactId" element={<ContactEditPage />} />
+//       <Route path="/contact/:contactId" element={<ContactDetailsPage />} />
+//       <Route path="/contact/create" element={<ContactCreatePage />} />
+//     </>,
+//   ),
+// )
 
-export default router
+// export default router
