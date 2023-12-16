@@ -15,18 +15,17 @@ const searchWrapper_class = tw.class`
 `
 
 type Props = {
-  className?: string
   data: ContactListProps["contacts"] // TODO: async data
 }
 
-const ContactListPage = ({ className, data }: Props) => {
+const ContactListPage = ({ data }: Props) => {
   const [currentTab, setCurrentTab] = useState<"all" | "favorites">("all")
 
   return (
     <div className={getBreakpointContainerStyle("lg")}>
       <Toolbar />
 
-      <div className={cn("flex flex-col items-center", className)}>
+      <div className={cn("flex flex-col items-center mt-20")}>
         <div className="flex gap-8">
           <StyledTab
             className={clsx(currentTab === "all" && "text-tc-secondary")}
