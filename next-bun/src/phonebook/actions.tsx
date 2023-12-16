@@ -8,6 +8,8 @@ import FavoriteIcon from "@material-ui/icons/Favorite"
 import FavoriteOutlinedIcon from "@material-ui/icons/FavoriteBorder"
 import Link from 'next/link'
 import { cn } from "../utils"
+import { useRouter } from 'next/router'
+
 
 export const GoToEditAction = ({ contactId }: { contactId: number }) => (
   <Link href={contactEditUrl(contactId)}>
@@ -63,9 +65,9 @@ export const DeleteAction = ({ onConfirm, withText, withHoverEffect }: DeleteAct
 }
 
 export const GoBackAction = () => {
-  const navigate = useNavigate()
+  const router = useRouter()
   return (
-    <button onClick={() => navigate(-1)}>
+    <button onClick={() => router.back()}>
       <ArrowBackIcon color="secondary" />
     </button>
   )

@@ -5,6 +5,7 @@ import ContactForm from "./contact-form"
 import { contactPageBaseStylesXs, contactPageBaseStylesMd } from "./contact-details-base-style"
 import { SwapableAvatar } from "../swapable-avatar"
 import { cn, useWidth } from "../../utils"
+import { useRouter } from 'next/router'
 
 type Props = {
   className?: string
@@ -44,12 +45,13 @@ const ContactEditPage = ({ className, contact, onSave, onDelete }: Props) => {
   )
 
   const form = <ContactForm initialInput={editedContact} onChange={formChange} />
-  const navigate = useNavigate()
   const buttonClass = cn("w-36 rounded-2xl text-white h-8")
+
+  const router = useRouter()
 
   const buttons = (
     <div className="mx-0.5 mb-4 mt-6 flex justify-between">
-      <button className={cn(buttonClass, "bg-secondary-main")} onClick={() => navigate(-1)}>
+      <button className={cn(buttonClass, "bg-secondary-main")} onClick={() => router.back()}>
         Cancel
       </button>
       <button

@@ -12,6 +12,7 @@ import {
 } from "react-router-dom"
 import Toolbar from "./toolbar"
 import { getBreakpointContainerStyle } from "../utils/ui-utils"
+import { useRouter } from 'next/router'
 
 export interface ContactIdRouteParams {
   contactId?: string
@@ -29,8 +30,9 @@ const ContactListPage = () => {
 const ContactDetailsPage = () => {
   const params = useParams()
   const navigate = useNavigate()
+  const router = useRouter()
   const contactId = parseInt(params.contactId!)
-  const ops = useContactDetailsOps(contactId, () => navigate(-1), navigate)
+  const ops = useContactDetailsOps(contactId, () => router.back(), navigate)
 
   return (
     <div className={getBreakpointContainerStyle("sm")}>
