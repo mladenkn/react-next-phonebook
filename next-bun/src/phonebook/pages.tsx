@@ -8,7 +8,6 @@ import {
   createBrowserRouter,
   Route,
   useParams,
-  useNavigate,
 } from "react-router-dom"
 import Toolbar from "./toolbar"
 import { getBreakpointContainerStyle } from "../utils/ui-utils"
@@ -29,10 +28,9 @@ const ContactListPage = () => {
 
 const ContactDetailsPage = () => {
   const params = useParams()
-  const navigate = useNavigate()
   const router = useRouter()
   const contactId = parseInt(params.contactId!)
-  const ops = useContactDetailsOps(contactId, () => router.back(), navigate)
+  const ops = useContactDetailsOps(contactId, () => router.back(), router.push)
 
   return (
     <div className={getBreakpointContainerStyle("sm")}>
@@ -49,14 +47,14 @@ const ContactDetailsPage = () => {
 }
 
 const ContactCreatePage = () => {
-  const navigate = useNavigate()
+  const router = useRouter()
   const contactService = useContactServiceContext()
   return (
     <div className={getBreakpointContainerStyle("md")}>
       <Toolbar />
       <ContactEdit
         className="mt-20"
-        onSave={c => contactService.save(c).then(() => navigate(-1))}
+        onSave={c => contactService.save(c).then(() => router.back())}
       />
     </div>
   )
@@ -64,9 +62,9 @@ const ContactCreatePage = () => {
 
 const ContactEditPage = () => {
   const params = useParams()
-  const navigate = useNavigate()
+  const router = useRouter()
   const contactId = parseInt(params.contactId!)
-  const ops = useContactDetailsOps(contactId, () => navigate(-1), navigate)
+  const ops = useContactDetailsOps(contactId, () => router.back(), router.push)
   return (
     <div className={getBreakpointContainerStyle("md")}>
       <Toolbar />
