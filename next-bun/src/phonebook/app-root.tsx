@@ -1,5 +1,5 @@
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles"
-import router from "./pages"
+// import router from "./pages"
 import {
   ContactServiceContextProvider,
   useContactRepositoryLocalStorage,
@@ -25,7 +25,7 @@ export const AppRoot = () => {
   return (
     <MuiThemeProvider theme={theme}>
       <ContactServiceContextProvider value={contactService}>
-        <RouterProvider router={router} />
+        {/* <RouterProvider router={router} /> */}
       </ContactServiceContextProvider>
     </MuiThemeProvider>
   )
