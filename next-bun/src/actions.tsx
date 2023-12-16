@@ -6,10 +6,9 @@ import DeleteIcon from "@material-ui/icons/Delete"
 import ArrowBackIcon from "@material-ui/icons/ArrowBack"
 import FavoriteIcon from "@material-ui/icons/Favorite"
 import FavoriteOutlinedIcon from "@material-ui/icons/FavoriteBorder"
-import Link from 'next/link'
+import Link from "next/link"
 import { cn } from "./utils"
-import { useRouter } from 'next/router'
-
+import { useRouter } from "next/router"
 
 export const GoToEditAction = ({ contactId }: { contactId: number }) => (
   <Link href={contactEditUrl(contactId)}>

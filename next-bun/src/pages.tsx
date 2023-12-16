@@ -5,7 +5,7 @@ import ContactEdit from "./contact/contact-edit"
 import { useContactServiceContext } from "./contact/contact-repository"
 import Toolbar from "./toolbar"
 import { getBreakpointContainerStyle } from "./utils/ui-utils"
-import { useRouter } from 'next/router'
+import { useRouter } from "next/router"
 
 export interface ContactIdRouteParams {
   contactId?: string

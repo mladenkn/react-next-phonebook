@@ -12,7 +12,8 @@
     "start": "next start",
     "tsc": "tsc",
     "wipe": "rm -rf node_modules && rm -f bun.lockb",
-    "reset": "bun wipe && bun install"
+    "reset": "bun wipe && bun install",
+    "format": "prettier --write \"**/*.{ts,tsx}\""
   },
   "dependencies": {
     "@faker-js/faker": "^8.3.1",

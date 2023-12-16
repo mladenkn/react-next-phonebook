@@ -24,37 +24,37 @@ const ContactListPage = ({ className, data }: Props) => {
 
   return (
     <div className={getBreakpointContainerStyle("lg")}>
-    <Toolbar />
+      <Toolbar />
 
-    <div className={cn("flex flex-col items-center", className)}>
-      <div className="flex gap-8">
-        <StyledTab
-          className={clsx(currentTab === "all" && "text-tc-secondary")}
-          onClick={() => setCurrentTab("all")}
-        >
-          All contacts
-        </StyledTab>
-        <div className="h-5 w-1 bg-secondary-main" />
-        <StyledTab
-          className={clsx(currentTab === "favorites" && "text-tc-secondary")}
-          onClick={() => setCurrentTab("favorites")}
-        >
-          My favorites
-        </StyledTab>
+      <div className={cn("flex flex-col items-center", className)}>
+        <div className="flex gap-8">
+          <StyledTab
+            className={clsx(currentTab === "all" && "text-tc-secondary")}
+            onClick={() => setCurrentTab("all")}
+          >
+            All contacts
+          </StyledTab>
+          <div className="h-5 w-1 bg-secondary-main" />
+          <StyledTab
+            className={clsx(currentTab === "favorites" && "text-tc-secondary")}
+            onClick={() => setCurrentTab("favorites")}
+          >
+            My favorites
+          </StyledTab>
+        </div>
+        <div className="mt-2 h-0.25 w-full bg-primary-main sm:mt-6" />
+        <div className={searchWrapper_class}>
+          <SearchIcon className="ml-2 mr-2 text-gray-500" />
+          <input className="h-12 w-full p-2 text-lg text-gray-500 outline-none" />
+        </div>
+        <ContactList
+          contacts={data}
+          deleteContact={() => {}}
+          toggleFavorite={() => {}}
+          includeAdder
+          className="mt-3 sm:mt-6"
+        />
       </div>
-      <div className="mt-2 h-0.25 w-full bg-primary-main sm:mt-6" />
-      <div className={searchWrapper_class}>
-        <SearchIcon className="ml-2 mr-2 text-gray-500" />
-        <input className="h-12 w-full p-2 text-lg text-gray-500 outline-none" />
-      </div>
-      <ContactList
-        contacts={data}
-        deleteContact={() => {}}
-        toggleFavorite={() => {}}
-        includeAdder
-        className="mt-3 sm:mt-6"
-      />
-    </div>
     </div>
   )
 }

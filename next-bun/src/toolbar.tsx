@@ -1,5 +1,5 @@
 import { homePageUrl } from "./urls"
-import Link from 'next/link'
+import Link from "next/link"
 
 export default function Toolbar() {
   return (
@@ -13,7 +13,9 @@ export default function Toolbar() {
         </Link>
       </div>
       <div
-        style={{ backgroundImage: "linear-gradient(to right, #70BBC3, #A0D8DC)" }}
+        style={{
+          backgroundImage: "linear-gradient(to right, #70BBC3, #A0D8DC)",
+        }}
         className="h-2"
       />
     </div>

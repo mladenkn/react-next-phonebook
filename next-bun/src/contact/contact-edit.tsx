@@ -5,7 +5,7 @@ import ContactForm from "./contact-form"
 import { contactPageBaseStylesXs, contactPageBaseStylesMd } from "./contact-details-base-style"
 import { SwapableAvatar } from "../swapable-avatar"
 import { cn, useWidth } from "../utils"
-import { useRouter } from 'next/router'
+import { useRouter } from "next/router"
 
 type Props = {
   className?: string
