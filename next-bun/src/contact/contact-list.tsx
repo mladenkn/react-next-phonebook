@@ -23,7 +23,6 @@ const ContactList = ({
 }: ContactListProps) => {
   const [selectedItemId, setSelectedItemId] = useState(0)
 
-
   const items = contacts.map(c => (
     <ContactListItem
       key={c.id}
