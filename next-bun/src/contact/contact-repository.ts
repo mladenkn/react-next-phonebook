@@ -1,6 +1,6 @@
 import { Contact } from "../models"
-import { updateMatches, containsOnlyDigits } from "../../utils"
-import { createContext } from "../../utils/react"
+import { updateMatches, containsOnlyDigits } from "../utils"
+import { createContext } from "../utils/react"
 import { useState } from "react"
 
 export const useContactRepositoryLocalStorage = () => {

@@ -3,7 +3,7 @@ import ContactList from "./contact-list"
 import { useContactListOps } from "./contact-list-ops"
 import SearchIcon from "@material-ui/icons/Search"
 import clsx from "clsx"
-import { cn, tw } from "../../utils"
+import { cn, tw } from "../utils"
 
 const StyledTab = tw.button`text-lg text-tc-primary font-semibold`
 

@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react"
-import { updateMatches } from "../../utils"
+import { updateMatches } from "../utils"
 import { ContactListItem } from "../models"
 import { useContactServiceContext } from "./contact-repository"
 

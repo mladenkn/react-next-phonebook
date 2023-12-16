@@ -1,4 +1,4 @@
-import { generateArray } from "../utils"
+import { generateArray } from "./utils"
 import { generateContact } from "./contact/contact-data-generators"
 
 export function seedDataIfNeeded() {

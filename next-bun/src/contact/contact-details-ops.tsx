@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { Contact } from "../models"
-import { AsyncOperationStatus } from "../../utils"
+import { AsyncOperationStatus } from "../utils"
 import { useContactServiceContext } from "./contact-repository"
 import { homePageUrl } from "../urls"
 

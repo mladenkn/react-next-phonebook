@@ -7,7 +7,7 @@ import ArrowBackIcon from "@material-ui/icons/ArrowBack"
 import FavoriteIcon from "@material-ui/icons/Favorite"
 import FavoriteOutlinedIcon from "@material-ui/icons/FavoriteBorder"
 import Link from 'next/link'
-import { cn } from "../utils"
+import { cn } from "./utils"
 import { useRouter } from 'next/router'
 
 

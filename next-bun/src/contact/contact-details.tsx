@@ -3,7 +3,7 @@ import ContactDetailsFields from "./contact-details-fields"
 import { FavoriteAction, GoToEditAction, GoBackAction } from "../actions"
 import { contactPageBaseStylesMd, contactPageBaseStylesXs } from "./contact-details-base-style"
 import { ContactAvatar } from "./contact-avatar"
-import { cn, useWidth } from "../../utils"
+import { cn, useWidth } from "../utils"
 
 type Props = { className?: string; contact: Contact; onFavorite: () => void }
 

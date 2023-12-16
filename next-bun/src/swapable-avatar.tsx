@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { cn } from "../utils"
+import { cn } from "./utils"
 import { TextInputDialog } from "./text-input-dialog"
 import CloudUploadIcon from "@material-ui/icons/CloudUpload"
 import { ContactAvatar } from "./contact/contact-avatar"

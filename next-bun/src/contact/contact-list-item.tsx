@@ -2,7 +2,7 @@ import { ContactListItem as ContactListItemModel } from "../models"
 import { GoToEditAction, FavoriteAction, DeleteAction } from "../actions"
 import { ContactAvatar } from "./contact-avatar"
 import clsx from "clsx"
-import { cn, tw } from "../../utils"
+import { cn, tw } from "../utils"
 import Link from 'next/link'
 import { contactDetailsUrl } from "../urls"
 

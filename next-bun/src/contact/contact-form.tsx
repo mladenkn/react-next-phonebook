@@ -6,7 +6,7 @@ import PhoneIcon from "@material-ui/icons/Phone"
 import PersonOutlinedIcon from "@material-ui/icons/PersonOutlined"
 import AddCircleOutline from "@material-ui/icons/AddCircleOutline"
 import HighlightOffIcon from "@material-ui/icons/HighlightOff"
-import { cn } from "../../utils"
+import { cn } from "../utils"
 
 /*
     Notes:

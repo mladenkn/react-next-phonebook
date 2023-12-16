@@ -1,6 +1,6 @@
 import { ComponentType, ReactNode } from "react"
 import clsx from "clsx"
-import { cn } from "../utils"
+import { cn } from "./utils"
 
 type ContactFieldLabelProps = {
   Icon: ComponentType<{ className?: string }>

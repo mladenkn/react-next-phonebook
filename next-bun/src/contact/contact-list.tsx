@@ -1,7 +1,7 @@
 import { ContactListItem as ContactListItemModel } from "../models"
 import { useState } from "react"
 import ContactListItem from "./contact-list-item"
-import { cn, useWidth } from "../../utils"
+import { cn, useWidth } from "../utils"
 import { contactCreateUrl } from "../urls"
 import AddIcon from "@material-ui/icons/Add"
 import Link from 'next/link'
