@@ -20,6 +20,7 @@ type Props = {
 
 const ContactListPage = ({ data }: Props) => {
   const [currentTab, setCurrentTab] = useState<"all" | "favorites">("all")
+  const tabContacts = currentTab === "all" ? data : data.filter(c => c.isFavorite)
 
   return (
     <div className={getBreakpointContainerStyle("lg")}>
@@ -47,7 +48,7 @@ const ContactListPage = ({ data }: Props) => {
           <input className="h-12 w-full p-2 text-lg text-gray-500 outline-none" />
         </div>
         <ContactList
-          contacts={data}
+          contacts={tabContacts}
           deleteContact={() => {}}
           toggleFavorite={() => {}}
           includeAdder
