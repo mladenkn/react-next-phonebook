@@ -2,14 +2,13 @@ import { ContactListItem as ContactListItemModel } from "../models"
 import { GoToEditAction, FavoriteAction, DeleteAction } from "../actions"
 import { ContactAvatar } from "./contact-avatar"
 import clsx from "clsx"
-import { cn, tw } from "../utils"
+import { cn, tw, useWidth } from "../utils"
 import Link from "next/link"
 import { contactDetailsUrl } from "../urls"
 
 type ItemPresenterProps = {
   contact: ContactListItemModel
   isSelected: boolean
-  variant: "smaller" | "bigger"
   onToggleFavorite(): void
   onDelete(): void
   onSelect(): void
@@ -18,12 +17,14 @@ type ItemPresenterProps = {
 const ContactListItem = ({
   contact,
   isSelected,
-  variant,
   onToggleFavorite,
   onDelete,
   onSelect,
 }: ItemPresenterProps) => {
-  const isBigger = variant === "bigger"
+  const width = useWidth()
+  if (!width) return <></>
+  
+  const isBigger = width >= 798
 
   const avatar = (
     <ContactAvatar

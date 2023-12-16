@@ -1,7 +1,7 @@
 import { ContactListItem as ContactListItemModel } from "../models"
 import { useState } from "react"
 import ContactListItem from "./contact-list-item"
-import { cn, useWidth } from "../utils"
+import { cn } from "../utils"
 import { contactCreateUrl } from "../urls"
 import AddIcon from "@material-ui/icons/Add"
 import Link from "next/link"
@@ -23,14 +23,11 @@ const ContactList = ({
 }: ContactListProps) => {
   const [selectedItemId, setSelectedItemId] = useState(0)
 
-  const width = useWidth()
-  if (!width) return <></>
 
   const items = contacts.map(c => (
     <ContactListItem
       key={c.id}
       isSelected={selectedItemId === c.id}
-      variant={width >= 768 ? "bigger" : "smaller"}
       onDelete={() => deleteContact(c.id)}
       onSelect={() => setSelectedItemId(c.id)}
       onToggleFavorite={() => toggleFavorite(c.id)}
