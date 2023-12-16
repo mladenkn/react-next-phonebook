@@ -6,7 +6,7 @@ import { contactCreateUrl } from "../urls"
 import AddIcon from "@material-ui/icons/Add"
 import Link from 'next/link'
 
-type Props = {
+export type ContactListProps = {
   contacts: ContactListItemModel[]
   className?: string
   includeAdder?: boolean
@@ -20,7 +20,7 @@ const ContactList = ({
   className,
   deleteContact,
   toggleFavorite,
-}: Props) => {
+}: ContactListProps) => {
   const [selectedItemId, setSelectedItemId] = useState(0)
 
   const width = useWidth()

@@ -1,6 +1,5 @@
 import { useState } from "react"
-import ContactList from "./contact-list"
-import { useContactListOps } from "./contact-list-ops"
+import ContactList, { ContactListProps } from "./contact-list"
 import SearchIcon from "@material-ui/icons/Search"
 import clsx from "clsx"
 import { cn, tw } from "../utils"
@@ -13,9 +12,13 @@ const searchWrapper_class = tw.class`
   shadow-homeSearch shadow-secondary-main
 `
 
-const ContactListPage = ({ className }: { className?: string }) => {
+type Props = {
+  className?: string
+  data: ContactListProps["contacts"] // TODO: async data
+}
+
+const ContactListPage = ({ className, data }: Props) => {
   const [currentTab, setCurrentTab] = useState(0)
-  const ops = useContactListOps()
 
   return (
     <div className={cn("flex flex-col items-center", className)}>
@@ -39,15 +42,13 @@ const ContactListPage = ({ className }: { className?: string }) => {
         <SearchIcon className="ml-2 mr-2 text-gray-500" />
         <input className="h-12 w-full p-2 text-lg text-gray-500 outline-none" />
       </div>
-      {ops.fetchStatus === "COMPLETED" && (
-        <ContactList
-          contacts={currentTab === 0 ? ops.contacts!.all : ops.contacts!.favorites}
-          deleteContact={ops.deleteContact}
-          toggleFavorite={ops.toggleFavorite}
-          includeAdder
-          className="mt-3 sm:mt-6"
-        />
-      )}
+      <ContactList
+        contacts={data}
+        deleteContact={() => {}}
+        toggleFavorite={() => {}}
+        includeAdder
+        className="mt-3 sm:mt-6"
+      />
     </div>
   )
 }
