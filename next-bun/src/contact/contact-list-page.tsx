@@ -18,21 +18,21 @@ type Props = {
 }
 
 const ContactListPage = ({ className, data }: Props) => {
-  const [currentTab, setCurrentTab] = useState(0)
+  const [currentTab, setCurrentTab] = useState<"all" | "favorites">("all")
 
   return (
     <div className={cn("flex flex-col items-center", className)}>
       <div className="flex gap-8">
         <StyledTab
-          className={clsx(currentTab === 0 && "text-tc-secondary")}
-          onClick={() => setCurrentTab(0)}
+          className={clsx(currentTab === "all" && "text-tc-secondary")}
+          onClick={() => setCurrentTab("all")}
         >
           All contacts
         </StyledTab>
         <div className="h-5 w-1 bg-secondary-main" />
         <StyledTab
-          className={clsx(currentTab === 1 && "text-tc-secondary")}
-          onClick={() => setCurrentTab(1)}
+          className={clsx(currentTab === "favorites" && "text-tc-secondary")}
+          onClick={() => setCurrentTab("favorites")}
         >
           My favorites
         </StyledTab>
