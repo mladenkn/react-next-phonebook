@@ -1,10 +1,12 @@
 import { type Config } from "drizzle-kit";
 
+import { env } from "~/env";
+
 export default {
   schema: "./src/server/db/schema.ts",
   driver: "mysql2",
   dbCredentials: {
-    connectionString: "TODO",
+    connectionString: env.DATABASE_URL,
   },
   tablesFilter: ["phonebook_*"],
 } satisfies Config;
