@@ -1,9 +1,8 @@
 import { Contact } from "../models"
 import ContactDetailsFields from "./contact-details-fields"
 import { FavoriteAction, GoToEditAction, GoBackAction } from "../actions"
-import { applyCn } from "~/utils/apply"
 import { ContactAvatar } from "./contact-avatar"
-import { cn, useWidth } from "../utils"
+import { cn } from "../utils"
 
 type Props = { className?: string; contact: Contact; onFavorite: () => void }
 
@@ -12,15 +11,10 @@ const ContactDetailsPage = ({ className, contact, onFavorite }: Props) => {
   const favAction = <FavoriteAction onClick={onFavorite} isFavorite={contact.isFavorite} />
   const editAction = <GoToEditAction contactId={contact.id} />
 
-  const width = useWidth()
-  if (!width) return <></>
-
-  const isXs = width < 600
-
   const avatar = (
     <ContactAvatar
       style={contact.avatar}
-      className={cn("ml-2 mr-3 h-16 w-16", !isXs && "h-44 w-44")}
+      className={cn("ml-2 mr-3 h-16 w-16 sm:h-44 sm:w-44")}
       url={contact.avatarUrl}
       letter={contact.fullName[0]}
     />
