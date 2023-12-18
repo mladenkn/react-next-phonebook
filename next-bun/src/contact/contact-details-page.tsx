@@ -28,46 +28,30 @@ const ContactDetailsPage = ({ className, contact, onFavorite }: Props) => {
     />
   )
 
-  if (isXs) {
-    return (
-      <v.Root className={cn("text-tc-primary", className)}>
+  return (
+    <v.Root className={cn("text-tc-primary", className)}>
+      <div className="sm-max:hidden">
+        {avatar}
+      </div>
+      <v.Body>
         <v.Toolbar>
           <GoBackAction />
+          <span className="text-2xl sm-max:hidden">{contact.fullName}</span>
           <span className="flex items-center gap-2">
             {favAction}
             {editAction}
           </span>
         </v.Toolbar>
-        <v.Body>
-          <v.Heading>
-            {avatar}
-            {name}
-          </v.Heading>
-          <v.BodyDivider />
-          <ContactDetailsFields contact={contact} />
-        </v.Body>
-      </v.Root>
-    )
-  } else {
-    return (
-      <div className={cn(className, contactPageBaseStylesMd.root, "items-start text-tc-primary")}>
-        {avatar}
-        <div className={contactPageBaseStylesMd.right}>
-          <div className={cn(contactPageBaseStylesMd.heading, "flex justify-between")}>
-            <GoBackAction />
-            {name}
-            <span className="inline-flex items-center gap-1">
-              {favAction}
-              {editAction}
-            </span>
-          </div>
-          <div className="ml-3 mt-2">
-            <ContactDetailsFields contact={contact} />
-          </div>
-        </div>
-      </div>
-    )
-  }
+        <v.ToolbarDivider />
+        <v.Heading>
+          {avatar}
+          {name}
+        </v.Heading>
+        <v.HeadingDivider />
+        <ContactDetailsFields contact={contact} />
+      </v.Body>
+    </v.Root>
+  )
 }
 
 export default ContactDetailsPage

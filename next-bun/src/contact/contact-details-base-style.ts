@@ -17,16 +17,17 @@ export const contactPageBaseStylesMd = {
 }
 
 export const SingleContactV = {
-  Root: applyCn("div", cn("root")),
+  Root: applyCn("div", cn("md:flex")),
   Toolbar: applyCn(
     "div",
-    cn("border-b-1 mt-4 flex items-center border-secondary-main px-1 pb-2 pt-0 justify-between"),
+    cn("mt-4 flex items-center px-1 pb-2 pt-0 justify-between"),
   ),
+  ToolbarDivider: applyCn("div", cn("h-0.25 bg-secondary-main w-full md:hidden")),
   Heading: applyCn(
     "h1",
-    cn("flex items-center px-0", "md:pb-2"),
+    cn("flex items-center px-0 md:pb-2 md:hidden sm-max:py-4"),
   ),
-  BodyDivider: applyCn("div", cn("h-0.25 bg-primary-main my-5 w-full")),
-  Body: applyCn("div", cn("pb-0 pl-4 pr-4 pt-2")),
+  HeadingDivider: applyCn("div", cn("h-0.25 bg-primary-main w-full")),
+  Body: applyCn("div", cn("")),
   Right: applyCn("div", cn("inline-block ml-5"))
 }
