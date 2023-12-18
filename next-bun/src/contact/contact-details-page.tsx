@@ -1,13 +1,11 @@
 import { Contact } from "../models"
 import ContactDetailsFields from "./contact-details-fields"
 import { FavoriteAction, GoToEditAction, GoBackAction } from "../actions"
-import { contactPageBaseStylesMd, SingleContactV } from "./contact-details-base-style"
+import { applyCn } from "~/utils/apply"
 import { ContactAvatar } from "./contact-avatar"
 import { cn, useWidth } from "../utils"
 
 type Props = { className?: string; contact: Contact; onFavorite: () => void }
-
-const v = SingleContactV
 
 const ContactDetailsPage = ({ className, contact, onFavorite }: Props) => {
   const name = <p className="text-2xl">{contact.fullName}</p>
@@ -53,5 +51,24 @@ const ContactDetailsPage = ({ className, contact, onFavorite }: Props) => {
     </v.Root>
   )
 }
+
+export const SingleContactV = {
+  Root: applyCn("div", cn("md:flex")),
+  Toolbar: applyCn(
+    "div",
+    cn("mt-4 flex items-center px-1 pb-2 pt-0 justify-between"),
+  ),
+  ToolbarDivider: applyCn("div", cn("h-0.25 bg-secondary-main w-full md:hidden")),
+  Heading: applyCn(
+    "h1",
+    cn("flex items-center px-0 md:pb-2 md:hidden sm-max:py-4"),
+  ),
+  HeadingDivider: applyCn("div", cn("h-0.25 bg-primary-main w-full")),
+  Body: applyCn("div", cn("")),
+  Right: applyCn("div", cn("inline-block ml-5"))
+}
+
+const v = SingleContactV
+
 
 export default ContactDetailsPage
