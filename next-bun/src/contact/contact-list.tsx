@@ -3,8 +3,8 @@ import { useState } from "react"
 import ContactListItem from "./contact-list-item"
 import { cn } from "../utils"
 import { contactCreateUrl } from "../urls"
-import AddIcon from "@material-ui/icons/Add"
 import Link from "next/link"
+import { PlusIcon } from "~/assets/icons"
 
 export type ContactListProps = {
   contacts: ContactListItemModel[]
@@ -42,7 +42,7 @@ const ContactList = ({
           href={contactCreateUrl}
           className="flex h-full w-full items-center border-1 border-dashed border-primary-light md:flex-col md:justify-center"
         >
-          <AddIcon className="max-md:ml-5 max-md:mr-2 text-2xl text-primary-light" />
+          <PlusIcon className="max-md:ml-5 max-md:mr-2 text-2xl text-primary-light" />
           <p className="text-primary-light">Add new</p>
         </Link>
       </li>
