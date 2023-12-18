@@ -45,7 +45,7 @@ const ContactListPage = ({ data }: Props) => {
         <div className="mt-2 h-0.25 w-full bg-primary-main sm:mt-6" />
         <div className={searchWrapper_class}>
           {/* <SearchIcon color="secondary" className="ml-2 mr-2" /> */}
-          <MagnifierIcon className="ml-2 mr-2 text-secondary-main" />
+          <MagnifierIcon className="ml-2 mr-2" />
           <input className="h-12 w-full p-2 text-lg text-gray-500 outline-none" />
         </div>
         <ContactList

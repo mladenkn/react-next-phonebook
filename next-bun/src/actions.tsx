@@ -4,11 +4,10 @@ import DeleteModal from "./delete-dialog"
 import EditIcon from "@material-ui/icons/Edit"
 import DeleteIcon from "@material-ui/icons/Delete"
 import ArrowBackIcon from "@material-ui/icons/ArrowBack"
-import FavoriteIcon from "@material-ui/icons/Favorite"
-import FavoriteOutlinedIcon from "@material-ui/icons/FavoriteBorder"
 import Link from "next/link"
 import { cn } from "./utils"
 import { useRouter } from "next/router"
+import { HeartBorderIcon, HeartFilledIcon } from "./assets/icons"
 
 export const GoToEditAction = ({ contactId }: { contactId: number }) => (
   <Link href={contactEditUrl(contactId)}>
@@ -25,9 +24,9 @@ type FavoriteActionProps = {
 export const FavoriteAction = ({ onClick, isFavorite, iconClass }: FavoriteActionProps) => (
   <button onClick={onClick}>
     {isFavorite ? (
-      <FavoriteIcon className={iconClass} color="secondary" />
+      <HeartFilledIcon className={iconClass} />
     ) : (
-      <FavoriteOutlinedIcon className={iconClass} color="secondary" />
+      <HeartBorderIcon className={iconClass} />
     )}
   </button>
 )
