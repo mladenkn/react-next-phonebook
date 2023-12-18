@@ -3,17 +3,7 @@ import { useState, useLayoutEffect } from "react"
 import { ClassValue, clsx } from "clsx"
 import { twMerge } from "tailwind-merge"
 
-const myPropNames_gruped = {
-  responsive: ["xs", "sm", "md", "lg", "xl"],
-  states: ["hover", "focus", "active"],
-} as const
-
-const myPropNames = Object.values(myPropNames_gruped).flat()
-
-type myProps_value = (typeof myPropNames)[0]
-type myClassValue = ClassValue | Record<myProps_value, string>
-
-export function cn(...inputs: myClassValue[]) {
+export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
