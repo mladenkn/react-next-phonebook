@@ -1,11 +1,10 @@
 import { contactEditUrl } from "./urls"
 import { useState } from "react"
 import DeleteModal from "./delete-dialog"
-import ArrowBackIcon from "@material-ui/icons/ArrowBack"
 import Link from "next/link"
 import { cn } from "./utils"
 import { useRouter } from "next/router"
-import { HeartBorderIcon, HeartFilledIcon, PencilIcon, TrashIcon } from "./assets/icons"
+import { ArrowBackIcon, HeartBorderIcon, HeartFilledIcon, PencilIcon, TrashIcon } from "./assets/icons"
 
 export const GoToEditAction = ({ contactId }: { contactId: number }) => (
   <Link href={contactEditUrl(contactId)}>
@@ -64,7 +63,7 @@ export const GoBackAction = () => {
   const router = useRouter()
   return (
     <button onClick={() => router.back()}>
-      <ArrowBackIcon color="secondary" />
+      <ArrowBackIcon />
     </button>
   )
 }

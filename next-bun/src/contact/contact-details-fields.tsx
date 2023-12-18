@@ -1,6 +1,5 @@
+import { EmailIcon, PhoneIcon } from "~/assets/icons"
 import { ContactFieldLabel } from "../various"
-import EmailIcon from "@material-ui/icons/Email"
-import PhoneIcon from "@material-ui/icons/Phone"
 
 type Contact = {
   email: string

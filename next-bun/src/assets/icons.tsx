@@ -40,4 +40,46 @@ export const TrashIcon = ({className}: Props) => (
   </svg>
 )
 
+export const ArrowBackIcon = ({className}: Props) => (
+  <svg className={cn(defaultStyle, className)} viewBox="0 0 24 24">
+    todo icon
+  </svg>
+)
+
+export const CloudUploadIcon = ({className}: Props) => (
+  <svg className={cn(defaultStyle, className)} viewBox="0 0 24 24">
+    todo icon
+  </svg>
+)
+
+export const EmailIcon = ({className}: Props) => (
+  <svg className={cn(defaultStyle, className)} viewBox="0 0 24 24">
+    todo icon
+  </svg>
+)
+
+export const PhoneIcon = ({className}: Props) => (
+  <svg className={cn(defaultStyle, className)} viewBox="0 0 24 24">
+    todo icon
+  </svg>
+)
+
+export const PersonOutlinedIcon = ({className}: Props) => (
+  <svg className={cn(defaultStyle, className)} viewBox="0 0 24 24">
+    todo icon
+  </svg>
+)
+
+export const AddCircleOutlineIcon = ({className}: Props) => (
+  <svg className={cn(defaultStyle, className)} viewBox="0 0 24 24">
+    todo icon
+  </svg>
+)
+
+export const HighlightOffIcon = ({className}: Props) => (
+  <svg className={cn(defaultStyle, className)} viewBox="0 0 24 24">
+    todo icon
+  </svg>
+)
+
 const defaultStyle = "fill-current w-6 h-6 inline-block text-1.5xl transition duration-200 ease-in-out flex-shrink-0 select-none text-secondary-main"
