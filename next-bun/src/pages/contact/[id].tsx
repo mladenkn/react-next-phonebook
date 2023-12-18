@@ -8,7 +8,7 @@ import { getBreakpointContainerStyle } from '~/utils/ui-utils'
 
 export default function ContactDetailsPageWrapper(){
   const router = useRouter()
-  const contactId = router.query.id as any
+  const contactId = router.query.id || 5
   const contact = asNonNil(contactsData.find(c => c.id == contactId))
   return <div className={getBreakpointContainerStyle("md")}>
     <Toolbar />
