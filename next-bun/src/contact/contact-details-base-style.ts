@@ -1,4 +1,4 @@
-import { apply, applyCn } from "~/utils/apply"
+import { applyCn } from "~/utils/apply"
 import { cn } from "../utils"
 
 export const contactPageBaseStylesXs = {
@@ -24,8 +24,9 @@ export const SingleContactV = {
   ),
   Heading: applyCn(
     "h1",
-    cn("border-b-1 flex items-center border-primary-main px-0 pb-5 pt-2", "md:pb-2"),
+    cn("flex items-center px-0", "md:pb-2"),
   ),
+  BodyDivider: applyCn("div", cn("h-0.25 bg-primary-main my-5 w-full")),
   Body: applyCn("div", cn("pb-0 pl-4 pr-4 pt-2")),
   Right: applyCn("div", cn("inline-block ml-5"))
 }

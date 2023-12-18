@@ -7,6 +7,8 @@ import { cn, useWidth } from "../utils"
 
 type Props = { className?: string; contact: Contact; onFavorite: () => void }
 
+const v = SingleContactV
+
 const ContactDetailsPage = ({ className, contact, onFavorite }: Props) => {
   const name = <p className="text-2xl">{contact.fullName}</p>
   const favAction = <FavoriteAction onClick={onFavorite} isFavorite={contact.isFavorite} />
@@ -28,22 +30,23 @@ const ContactDetailsPage = ({ className, contact, onFavorite }: Props) => {
 
   if (isXs) {
     return (
-      <SingleContactV.Root className={cn("text-tc-primary", className)}>
-        <SingleContactV.Toolbar>
+      <v.Root className={cn("text-tc-primary", className)}>
+        <v.Toolbar>
           <GoBackAction />
           <span className="flex items-center gap-2">
             {favAction}
             {editAction}
           </span>
-        </SingleContactV.Toolbar>
-        <SingleContactV.Body>
-          <SingleContactV.Heading>
+        </v.Toolbar>
+        <v.Body>
+          <v.Heading>
             {avatar}
             {name}
-          </SingleContactV.Heading>
+          </v.Heading>
+          <v.BodyDivider />
           <ContactDetailsFields contact={contact} />
-        </SingleContactV.Body>
-      </SingleContactV.Root>
+        </v.Body>
+      </v.Root>
     )
   } else {
     return (
