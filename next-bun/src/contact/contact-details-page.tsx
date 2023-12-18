@@ -27,48 +27,29 @@ const ContactDetailsPage = ({ className, contact, onFavorite }: Props) => {
   )
 
   return (
-    <v.Root className={cn("text-tc-primary", className)}>
+    <div className={cn("text-tc-primary md:flex", className)}>
       <div className="sm-max:hidden">
         {avatar}
       </div>
-      <v.Body>
-        <v.Toolbar>
+      <div>
+        <div className="mt-4 flex items-center px-1 pb-2 pt-0 justify-between">
           <GoBackAction />
           <span className="text-2xl sm-max:hidden">{contact.fullName}</span>
           <span className="flex items-center gap-2">
             {favAction}
             {editAction}
           </span>
-        </v.Toolbar>
-        <v.ToolbarDivider />
-        <v.Heading>
+        </div>
+        <div className="h-0.25 bg-secondary-main w-full md:hidden" />
+        <h1 className="flex items-center px-0 md:pb-2 md:hidden sm-max:py-4">
           {avatar}
           {name}
-        </v.Heading>
-        <v.HeadingDivider />
+        </h1>
+        <div className="h-0.25 bg-primary-main w-full" />
         <ContactDetailsFields contact={contact} />
-      </v.Body>
-    </v.Root>
+      </div>
+    </div>
   )
 }
-
-export const SingleContactV = {
-  Root: applyCn("div", cn("md:flex")),
-  Toolbar: applyCn(
-    "div",
-    cn("mt-4 flex items-center px-1 pb-2 pt-0 justify-between"),
-  ),
-  ToolbarDivider: applyCn("div", cn("h-0.25 bg-secondary-main w-full md:hidden")),
-  Heading: applyCn(
-    "h1",
-    cn("flex items-center px-0 md:pb-2 md:hidden sm-max:py-4"),
-  ),
-  HeadingDivider: applyCn("div", cn("h-0.25 bg-primary-main w-full")),
-  Body: applyCn("div", cn("")),
-  Right: applyCn("div", cn("inline-block ml-5"))
-}
-
-const v = SingleContactV
-
 
 export default ContactDetailsPage
