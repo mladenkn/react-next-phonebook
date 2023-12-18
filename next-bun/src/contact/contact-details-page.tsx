@@ -28,7 +28,7 @@ const ContactDetailsPage = ({ className, contact, onFavorite }: Props) => {
 
   if (isXs) {
     return (
-      <SingleContactV.Root className="text-tc-primary">
+      <SingleContactV.Root className={cn("text-tc-primary", className)}>
         <SingleContactV.Toolbar>
           <GoBackAction />
           <span className="flex items-center gap-2">
