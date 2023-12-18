@@ -1,4 +1,4 @@
-const { colors } = require("@material-ui/core")
+import colors from "tailwindcss/colors"
 import { fontFamily } from "tailwindcss/defaultTheme"
 import { type Config } from "tailwindcss"
 
@@ -15,10 +15,10 @@ export default {
         secondary: {
           light: "#E3E3E3",
           main: "#BBC4C3",
-          dark: colors.grey[600],
+          dark: colors.gray[600],
         },
         tc: {
-          primary: colors.grey[500],
+          primary: colors.gray[500],
           secondary: "#2DA1AD",
         },
       },

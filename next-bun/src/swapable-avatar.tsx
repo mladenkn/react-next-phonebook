@@ -1,8 +1,8 @@
 import { useState } from "react"
 import { cn } from "./utils"
 import { TextInputDialog } from "./text-input-dialog"
-import CloudUploadIcon from "@material-ui/icons/CloudUpload"
 import { ContactAvatar } from "./contact/contact-avatar"
+import { CloudUploadIcon } from "./assets/icons"
 
 type Props = {
   src?: string
