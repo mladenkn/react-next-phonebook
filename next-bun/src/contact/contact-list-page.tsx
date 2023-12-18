@@ -1,15 +1,15 @@
 import { useState } from "react"
 import ContactList, { ContactListProps } from "./contact-list"
-import { cn, tw } from "../utils"
+import { cn } from "../utils"
 import Toolbar from "~/toolbar"
 import { getBreakpointContainerStyle } from "~/utils/ui-utils"
 import { MagnifierIcon } from "~/assets/icons"
 
-const searchWrapper_class = tw.class`
-  mt-5 flex w-80 items-center sm:mt-10 sm:w-96
-  border-1 rounded-md border-solid border-secondary-light
-  shadow-homeSearch shadow-secondary-main
-`
+const searchWrapper_class = cn(
+  "mt-5 flex w-80 items-center sm:mt-10 sm:w-96",
+  "border-1 rounded-md border-solid border-secondary-light",
+  "shadow-homeSearch"
+)
 
 type Props = {
   data: ContactListProps["contacts"] // TODO: async data
@@ -40,7 +40,7 @@ const ContactListPage = ({ data }: Props) => {
           </button>
         </div>
         <div className="mt-2 h-0.25 w-full bg-primary-main sm:mt-6" />
-        <div className={searchWrapper_class}>
+        <div className={searchWrapper_class + " shadow-secondary-main"}>
           {/* <SearchIcon color="secondary" className="ml-2 mr-2" /> */}
           <MagnifierIcon className="ml-2 mr-2" />
           <input className="h-12 w-full p-2 text-lg text-gray-500 outline-none" />
