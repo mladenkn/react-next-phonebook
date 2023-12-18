@@ -1,12 +1,9 @@
 import { useState } from "react"
 import ContactList, { ContactListProps } from "./contact-list"
-import clsx from "clsx"
 import { cn, tw } from "../utils"
 import Toolbar from "~/toolbar"
 import { getBreakpointContainerStyle } from "~/utils/ui-utils"
 import { MagnifierIcon } from "~/assets/icons"
-
-const StyledTab = tw.button`text-lg text-tc-primary font-semibold`
 
 const searchWrapper_class = tw.class`
   mt-5 flex w-80 items-center sm:mt-10 sm:w-96
@@ -28,19 +25,19 @@ const ContactListPage = ({ data }: Props) => {
 
       <div className={cn("mt-20 flex flex-col items-center")}>
         <div className="flex gap-8">
-          <StyledTab
-            className={clsx(currentTab === "all" && "text-tc-secondary")}
+          <button
+            className={cn("text-lg text-tc-primary font-medium", currentTab === "all" && "text-tc-secondary")}
             onClick={() => setCurrentTab("all")}
           >
             All contacts
-          </StyledTab>
+          </button>
           <div className="h-5 w-1 bg-secondary-main" />
-          <StyledTab
-            className={clsx(currentTab === "favorites" && "text-tc-secondary")}
+          <button
+            className={cn("text-lg text-tc-primary font-medium", currentTab === "favorites" && "text-tc-secondary")}
             onClick={() => setCurrentTab("favorites")}
           >
             My favorites
-          </StyledTab>
+          </button>
         </div>
         <div className="mt-2 h-0.25 w-full bg-primary-main sm:mt-6" />
         <div className={searchWrapper_class}>
