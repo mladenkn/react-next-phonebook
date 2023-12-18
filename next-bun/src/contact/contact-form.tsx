@@ -2,7 +2,13 @@ import { Contact } from "../models"
 import { FormikErrors, Formik, Field, ErrorMessage, FieldArray } from "formik"
 import { ContactFieldLabel } from "../various"
 import { cn } from "../utils"
-import { PersonOutlinedIcon, EmailIcon, PhoneIcon, HighlightOffIcon, AddCircleOutlineIcon } from "~/assets/icons"
+import {
+  PersonOutlinedIcon,
+  EmailIcon,
+  PhoneIcon,
+  HighlightOffIcon,
+  AddCircleOutlineIcon,
+} from "~/assets/icons"
 
 /*
     Notes:

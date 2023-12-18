@@ -8,7 +8,7 @@ import { MagnifierIcon } from "~/assets/icons"
 const searchWrapper_class = cn(
   "mt-5 flex w-80 items-center sm:mt-10 sm:w-96",
   "border-1 rounded-md border-solid border-secondary-light",
-  "shadow-homeSearch"
+  "shadow-homeSearch",
 )
 
 type Props = {
@@ -26,14 +26,20 @@ const ContactListPage = ({ data }: Props) => {
       <div className={cn("mt-20 flex flex-col items-center")}>
         <div className="flex gap-8">
           <button
-            className={cn("text-lg text-tc-primary font-medium", currentTab === "all" && "text-tc-secondary")}
+            className={cn(
+              "text-lg font-medium text-tc-primary",
+              currentTab === "all" && "text-tc-secondary",
+            )}
             onClick={() => setCurrentTab("all")}
           >
             All contacts
           </button>
           <div className="h-5 w-1 bg-secondary-main" />
           <button
-            className={cn("text-lg text-tc-primary font-medium", currentTab === "favorites" && "text-tc-secondary")}
+            className={cn(
+              "text-lg font-medium text-tc-primary",
+              currentTab === "favorites" && "text-tc-secondary",
+            )}
             onClick={() => setCurrentTab("favorites")}
           >
             My favorites

@@ -4,7 +4,13 @@ import DeleteModal from "./delete-dialog"
 import Link from "next/link"
 import { cn } from "./utils"
 import { useRouter } from "next/router"
-import { ArrowBackIcon, HeartBorderIcon, HeartFilledIcon, PencilIcon, TrashIcon } from "./assets/icons"
+import {
+  ArrowBackIcon,
+  HeartBorderIcon,
+  HeartFilledIcon,
+  PencilIcon,
+  TrashIcon,
+} from "./assets/icons"
 
 export const GoToEditAction = ({ contactId }: { contactId: number }) => (
   <Link href={contactEditUrl(contactId)}>
