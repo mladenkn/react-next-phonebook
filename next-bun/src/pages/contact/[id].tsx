@@ -38,7 +38,6 @@ export default function ContactDetailsPageWrapper() {
   // const router = useRouter()
   // const contactId = router.query.id || 3
   // const contact = asNonNil(contactsData.find(c => c.id == contactId))
-  console.log(contact)
   return (
     <div className={getBreakpointContainerStyle("md")}>
       <Toolbar />
