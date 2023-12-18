@@ -1,5 +1,4 @@
 import { faker } from "@faker-js/faker"
-import _tw from "tailwind-styled-components"
 import { useState, useLayoutEffect } from "react"
 import { ClassValue, clsx } from "clsx"
 import { twMerge } from "tailwind-merge"
@@ -22,13 +21,6 @@ cn.md = function cn_md(styles: string) {
   const separated = styles.split(" ")
   const r = separated.map(s => `md:${s}`).join(" ")
   return r
-}
-
-export const tw = {
-  ..._tw,
-  class(className: TemplateStringsArray) {
-    return className.join("")
-  },
 }
 
 export const generateArray = <T>(getNext: () => T, minCount: number, maxCount: number) => {
