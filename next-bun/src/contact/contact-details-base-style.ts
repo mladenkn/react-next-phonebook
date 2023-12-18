@@ -1,3 +1,4 @@
+import { apply, applyCn } from "~/utils/apply"
 import { cn } from "../utils"
 
 export const contactPageBaseStylesXs = {
@@ -13,4 +14,17 @@ export const contactPageBaseStylesMd = {
   root: cn("flex"),
   heading: cn("flex border-b-1 border-primary-main pb-2"),
   right: cn("inline-block ml-5"),
+}
+export const ContactV = {
+  Root: applyCn("div", cn("root")),
+  Toolbar: applyCn(
+    "div",
+    cn("border-b-1 mt-4 flex items-center border-secondary-main px-1 pb-2 pt-0 justify-between"),
+  ),
+  Heading: applyCn(
+    "h1",
+    cn("border-b-1 flex items-center border-primary-main px-0 pb-5 pt-2", "md:pb-2"),
+  ),
+  Body: applyCn("div", cn("pb-0 pl-4 pr-4 pt-2")),
+  Right: applyCn("div", cn("inline-block ml-5"))
 }

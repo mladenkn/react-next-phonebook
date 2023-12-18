@@ -1,7 +1,7 @@
 import { Contact } from "../models"
 import ContactDetailsFields from "./contact-details-fields"
 import { FavoriteAction, GoToEditAction, GoBackAction } from "../actions"
-import { contactPageBaseStylesMd, contactPageBaseStylesXs } from "./contact-details-base-style"
+import { contactPageBaseStylesMd, ContactV } from "./contact-details-base-style"
 import { ContactAvatar } from "./contact-avatar"
 import { cn, useWidth } from "../utils"
 
@@ -28,22 +28,22 @@ const ContactDetailsPage = ({ className, contact, onFavorite }: Props) => {
 
   if (isXs) {
     return (
-      <div className={cn(contactPageBaseStylesXs.root, "text-tc-primary", className)}>
-        <div className={contactPageBaseStylesXs.toolbar}>
+      <ContactV.Root className="text-tc-primary">
+        <ContactV.Toolbar>
           <GoBackAction />
           <span className="flex items-center gap-2">
             {favAction}
             {editAction}
           </span>
-        </div>
-        <div className={contactPageBaseStylesXs.body}>
-          <div className={contactPageBaseStylesXs.heading}>
+        </ContactV.Toolbar>
+        <ContactV.Body>
+          <ContactV.Heading>
             {avatar}
             {name}
-          </div>
+          </ContactV.Heading>
           <ContactDetailsFields contact={contact} />
-        </div>
-      </div>
+        </ContactV.Body>
+      </ContactV.Root>
     )
   } else {
     return (
