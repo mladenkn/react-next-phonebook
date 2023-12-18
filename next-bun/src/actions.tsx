@@ -1,17 +1,15 @@
 import { contactEditUrl } from "./urls"
 import { useState } from "react"
 import DeleteModal from "./delete-dialog"
-import EditIcon from "@material-ui/icons/Edit"
-import DeleteIcon from "@material-ui/icons/Delete"
 import ArrowBackIcon from "@material-ui/icons/ArrowBack"
 import Link from "next/link"
 import { cn } from "./utils"
 import { useRouter } from "next/router"
-import { HeartBorderIcon, HeartFilledIcon } from "./assets/icons"
+import { HeartBorderIcon, HeartFilledIcon, PencilIcon, TrashIcon } from "./assets/icons"
 
 export const GoToEditAction = ({ contactId }: { contactId: number }) => (
   <Link href={contactEditUrl(contactId)}>
-    <EditIcon color="secondary" />
+    <PencilIcon />
   </Link>
 )
 
@@ -49,7 +47,7 @@ export const DeleteAction = ({ onConfirm, withText, withHoverEffect }: DeleteAct
         onClick={() => setModalOpen(true)}
       >
         {(withText || false) && <p className="mr-1 text-base">Delete</p>}
-        <DeleteIcon color="secondary" />
+        <TrashIcon />
       </button>
       {modalOpen ? (
         <DeleteModal
