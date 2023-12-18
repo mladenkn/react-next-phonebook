@@ -15,7 +15,7 @@ export const contactPageBaseStylesMd = {
   heading: cn("flex border-b-1 border-primary-main pb-2"),
   right: cn("inline-block ml-5"),
 }
-export const ContactV = {
+export const SingleContactV = {
   Root: applyCn("div", cn("root")),
   Toolbar: applyCn(
     "div",
