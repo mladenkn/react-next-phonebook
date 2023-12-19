@@ -66,7 +66,7 @@ const ContactEditPage = ({ contact, onSave, onDelete }: Props) => {
   ) : null
 
   return (
-    <div className="max-w-lg mx-auto">
+    <div className="max-w-3xl mx-auto">
       <Toolbar />
       <div className={cn("text-tc-primary md:flex mt-16 md:mt-24 sm-max:w-full px-3")}>
         <div className="sm-max:hidden mr-4">
