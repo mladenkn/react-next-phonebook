@@ -19,7 +19,7 @@ const ContactListPage = ({ data }: Props) => {
   const tabContacts = currentTab === "all" ? data : data.filter(c => c.isFavorite)
 
   return (
-    <div className="max-w-6xl px-4 sm:px-8 md:px-16 mx-auto">
+    <div className="max-w-6xl px-4 lg:px-16 mx-auto">
       <Toolbar />
 
       <div className={cn("mt-20 flex flex-col items-center")}>
