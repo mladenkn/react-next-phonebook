@@ -18,9 +18,9 @@ type Props = ReturnType<typeof getServerSideProps>["props"]
 
 export default function ContactDetailsPageWrapper({ contact }: Props) {
   return (
-    <div className="md:container flex justify-center items-center">
+    <div className="max-w-lg mx-auto">
       <Toolbar />
-      <ContactDetailsPage className="mt-14 md:mt-24 sm-max:w-full px-3" contact={contact} onFavorite={() => {}} />
+      <ContactDetailsPage className="mt-16 md:mt-24 sm-max:w-full px-3" contact={contact} onFavorite={() => {}} />
     </div>
   )
 }
