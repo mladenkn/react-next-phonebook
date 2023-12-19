@@ -8,24 +8,15 @@ import { useRouter } from "next/router"
 import Toolbar from "~/toolbar"
 
 type Props = {
-  contact?: Contact
+  contact: Contact
   onSave: (c: Contact) => void
   onDelete?: () => void
 }
 
 export default function ContactEditBase({ contact, onSave, onDelete }: Props) {
-  const contact_ = contact || {
-    id: 0,
-    fullName: "",
-    avatar: undefined,
-    email: "",
-    numbers: [],
-    isFavorite: false,
-  }
-
   const isEdit = contact ? true : false
 
-  const [editedContact, setEditedContact] = useState(contact_)
+  const [editedContact, setEditedContact] = useState(contact)
   const [isEditedContactValid, setIsEditedContactValid] = useState(isEdit)
 
   const formChange = (input: Contact, isValid: boolean) => {
