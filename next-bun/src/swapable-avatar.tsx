@@ -31,12 +31,6 @@ export const SwapableAvatar = ({ className, src, onChange }: Props) => {
               className="h-full w-full"
               style={{ filter: "brightness(70%)" }}
             />
-            {/* <div
-              className={cn("absolute text-3xl text-gray-200")}
-              style={{ top: "40%", left: "47%" }}
-            >
-              x
-            </div> */}
             <RemoveIcon className={cn("absolute text-3xl text-gray-200")}
               style={{ top: "40%", left: "47%" }} />
           </div>
