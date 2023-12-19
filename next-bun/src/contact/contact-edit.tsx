@@ -2,7 +2,6 @@ import { Contact } from "../models"
 import { useState } from "react"
 import { DeleteAction, GoBackAction } from "../actions"
 import ContactForm from "./contact-form"
-import { contactPageBaseStylesXs, contactPageBaseStylesMd } from "./contact-details-base-style"
 import { SwapableAvatar } from "../swapable-avatar"
 import { cn } from "../utils"
 import { useRouter } from "next/router"
@@ -61,10 +60,6 @@ const ContactEditPage = ({ contact, onSave, onDelete }: Props) => {
     </div>
   )
 
-  const deleteAction = contact ? (
-    <DeleteAction onConfirm={onDelete!} withHoverEffect />
-  ) : null
-
   return (
     <div className="max-w-3xl mx-auto">
       <Toolbar />
@@ -75,7 +70,9 @@ const ContactEditPage = ({ contact, onSave, onDelete }: Props) => {
         <div>
           <div className="mt-4 flex items-center px-1 pb-2 pt-0 justify-between w-full">
             <GoBackAction />
-            {deleteAction}
+            {contact ? (
+              <DeleteAction onConfirm={onDelete!} withHoverEffect />
+            ) : null}
           </div>
           <div className="h-0.25 bg-secondary-main w-full md:hidden" />
           <h1 className="flex items-center justify-center px-0 md:pb-2 md:hidden sm-max:py-4">
