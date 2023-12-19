@@ -37,7 +37,7 @@ type Props = {
 export default function ContactForm({ initialInput, onChange }: Props){
   function handleValidate(values: Contact){
     const errors = contactFormValidate(values)
-    onChange(values, Object.entries(errors).length === 0)
+    onChange(values, errors.isValid)
     return errors
   }
 
@@ -115,5 +115,7 @@ export function contactFormValidate(values: Contact){
 
   if (!values.fullName) errors.fullName = "Name is required."
 
-  return errors
+  const errorCount = Object.keys(values).length
+
+  return { errors, errorCount, isValid: errorCount === 0 }
 }

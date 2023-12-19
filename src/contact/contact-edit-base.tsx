@@ -1,7 +1,7 @@
 import { Contact } from "../models"
 import { useState } from "react"
 import { DeleteAction, GoBackAction } from "../actions"
-import ContactForm from "./contact-form"
+import ContactForm, { contactFormValidate } from "./contact-form"
 import { SwapableAvatar } from "../swapable-avatar"
 import { cn } from "../utils"
 import { useRouter } from "next/router"
@@ -17,7 +17,7 @@ export default function ContactEditBase({ contact, onSave, onDelete }: Props) {
   const isEdit = contact ? true : false
 
   const [editedContact, setEditedContact] = useState(contact)
-  const [isEditedContactValid, setIsEditedContactValid] = useState(isEdit)
+  const [isEditedContactValid, setIsEditedContactValid] = useState(contactFormValidate(contact).isValid)
 
   const formChange = (input: Contact, isValid: boolean) => {
     setEditedContact({ ...input, avatar: editedContact.avatar })
