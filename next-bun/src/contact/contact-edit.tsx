@@ -42,7 +42,6 @@ const ContactEditPage = ({ contact, onSave, onDelete }: Props) => {
     />
   )
 
-  const form = <ContactForm initialInput={editedContact} onChange={formChange} />
   const buttonClass = cn("w-36 rounded-2xl text-white h-8")
 
   const router = useRouter()
@@ -83,7 +82,7 @@ const ContactEditPage = ({ contact, onSave, onDelete }: Props) => {
             {avatar}
           </h1>
           <div className="h-0.25 bg-primary-main w-full" />
-          {form}
+          <ContactForm initialInput={editedContact} onChange={formChange} />
           {buttons}
         </div>
       </div>
