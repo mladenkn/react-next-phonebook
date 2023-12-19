@@ -13,7 +13,7 @@ type Props = {
   onDelete?: () => void
 }
 
-const ContactEditBase = ({ contact, onSave, onDelete }: Props) => {
+export default function ContactEditBase({ contact, onSave, onDelete }: Props) {
   const contact_ = contact || {
     id: 0,
     fullName: "",
@@ -82,5 +82,3 @@ const ContactEditBase = ({ contact, onSave, onDelete }: Props) => {
     </div>
   )
 }
-
-export default ContactEditBase
