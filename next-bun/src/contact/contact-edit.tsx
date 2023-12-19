@@ -70,7 +70,7 @@ const ContactEditPage = ({ contact, onSave, onDelete }: Props) => {
     <div className="max-w-lg mx-auto">
       <Toolbar />
       <div className={cn("text-tc-primary md:flex mt-16 md:mt-24 sm-max:w-full px-3")}>
-        <div className="sm-max:hidden">
+        <div className="sm-max:hidden mr-4">
           {avatar}
         </div>
         <div>
