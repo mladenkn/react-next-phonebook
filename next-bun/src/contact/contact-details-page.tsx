@@ -22,7 +22,7 @@ const ContactDetailsPage = ({ contact, onFavorite }: Props) => {
   )
 
   return (
-    <div className="max-w-lg mx-auto">
+    <div className="max-w-xl mx-auto">
       <Toolbar />
       <div className={cn("text-tc-primary sm:flex mt-16 sm:mt-24 xs-max:w-full px-3")}>
         <div className="xs-max:hidden">
