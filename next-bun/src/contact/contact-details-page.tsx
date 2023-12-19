@@ -26,7 +26,7 @@ const ContactDetailsPage = ({ className, contact, onFavorite }: Props) => {
         {avatar}
       </div>
       <div>
-        <div className="mt-4 flex items-center px-1 pb-2 pt-0 justify-between">
+        <div className="mt-4 flex items-center px-1 pb-2 pt-0 justify-between sm:w-80">
           <GoBackAction />
           <span className="text-2xl xs-max:hidden">{contact.fullName}</span>
           <span className="flex items-center gap-2">
