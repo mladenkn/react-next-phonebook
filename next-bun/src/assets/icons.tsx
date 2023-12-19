@@ -55,25 +55,28 @@ export const CloudUploadIcon = ({ className }: Props) => (
 
 export const EmailIcon = ({ className }: Props) => (
   <svg className={cn(defaultStyle, className)} viewBox="0 0 24 24">
-    todo icon
+    <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"></path>
+    <path fill="none" d="M0 0h24v24H0z"></path>
   </svg>
 )
 
 export const PhoneIcon = ({ className }: Props) => (
   <svg className={cn(defaultStyle, className)} viewBox="0 0 24 24">
-    todo icon
+    <path fill="none" d="M0 0h24v24H0z"></path>
+    <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"></path>
   </svg>
 )
 
 export const PersonOutlinedIcon = ({ className }: Props) => (
   <svg className={cn(defaultStyle, className)} viewBox="0 0 24 24">
-    todo icon
+    <path fill="none" d="M0 0h24v24H0V0z"></path>
   </svg>
 )
 
 export const AddCircleOutlineIcon = ({ className }: Props) => (
   <svg className={cn(defaultStyle, className)} viewBox="0 0 24 24">
-    todo icon
+    <path fill="none" d="M0 0h24v24H0z"></path>
+    <path d="M13 7h-2v4H7v2h4v4h2v-4h4v-2h-4V7zm-1-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"></path>
   </svg>
 )
 
