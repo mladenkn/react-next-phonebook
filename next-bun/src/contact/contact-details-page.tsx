@@ -21,21 +21,21 @@ const ContactDetailsPage = ({ className, contact, onFavorite }: Props) => {
   )
 
   return (
-    <div className={cn("text-tc-primary md:flex", className)}>
-      <div className="sm-max:hidden">
+    <div className={cn("text-tc-primary sm:flex", className)}>
+      <div className="xs-max:hidden">
         {avatar}
       </div>
       <div>
         <div className="mt-4 flex items-center px-1 pb-2 pt-0 justify-between">
           <GoBackAction />
-          <span className="text-2xl sm-max:hidden">{contact.fullName}</span>
+          <span className="text-2xl xs-max:hidden">{contact.fullName}</span>
           <span className="flex items-center gap-2">
             {favAction}
             {editAction}
           </span>
         </div>
-        <div className="h-0.25 bg-secondary-main w-full md:hidden" />
-        <h1 className="flex items-center px-0 md:pb-2 md:hidden sm-max:py-4">
+        <div className="h-0.25 bg-secondary-main w-full sm:hidden" />
+        <h1 className="flex items-center px-0 sm:pb-2 sm:hidden xs-max:py-4">
           {avatar}
           {name}
         </h1>
