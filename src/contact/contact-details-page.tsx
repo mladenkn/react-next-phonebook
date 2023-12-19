@@ -22,14 +22,12 @@ const ContactDetailsPage = ({ contact, onFavorite }: Props) => {
   )
 
   return (
-    <div className="max-w-xl mx-auto">
+    <div className="mx-auto max-w-xl">
       <Toolbar />
-      <div className={cn("text-tc-primary sm:flex mt-16 sm:mt-24 xs-max:w-full px-3")}>
-        <div className="xs-max:hidden">
-          {avatar}
-        </div>
+      <div className={cn("mt-16 px-3 text-tc-primary sm:mt-24 sm:flex xs-max:w-full")}>
+        <div className="xs-max:hidden">{avatar}</div>
         <div>
-          <div className="mt-4 flex items-center px-1 pb-2 pt-0 justify-between sm:w-80">
+          <div className="mt-4 flex items-center justify-between px-1 pb-2 pt-0 sm:w-80">
             <GoBackAction />
             <span className="text-2xl xs-max:hidden">{contact.fullName}</span>
             <span className="flex items-center gap-2">
@@ -37,12 +35,12 @@ const ContactDetailsPage = ({ contact, onFavorite }: Props) => {
               {editAction}
             </span>
           </div>
-          <div className="h-0.25 bg-secondary-main w-full sm:hidden" />
-          <h1 className="flex items-center px-0 sm:pb-2 sm:hidden xs-max:py-4">
+          <div className="h-0.25 w-full bg-secondary-main sm:hidden" />
+          <h1 className="flex items-center px-0 sm:hidden sm:pb-2 xs-max:py-4">
             {avatar}
             {name}
           </h1>
-          <div className="h-0.25 bg-primary-main w-full" />
+          <div className="h-0.25 w-full bg-primary-main" />
           <ContactDetailsFields contact={contact} />
         </div>
       </div>

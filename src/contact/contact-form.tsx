@@ -53,7 +53,11 @@ const ContactForm = ({ initialInput, onChange }: Props) => {
       {({ values }) => (
         <div>
           <label>
-            <ContactFieldLabel icon={<PersonOutlinedIcon className="text-primary-main" />} text="full name" className="mb-2" />
+            <ContactFieldLabel
+              icon={<PersonOutlinedIcon className="text-primary-main" />}
+              text="full name"
+              className="mb-2"
+            />
             <Field type="text" name="fullName" className={cn(styles.input, "w-full sm:w-1/2")} />
             <ErrorMessage component="div" name="fullName" className={styles.errorMessage} />
           </label>
@@ -61,7 +65,11 @@ const ContactForm = ({ initialInput, onChange }: Props) => {
           <div className="my-4 h-0.25 w-full bg-primary-main" />
 
           <label>
-            <ContactFieldLabel icon={<EmailIcon className="text-primary-main" />} text="email" className="mb-2" />
+            <ContactFieldLabel
+              icon={<EmailIcon className="text-primary-main" />}
+              text="email"
+              className="mb-2"
+            />
             <Field type="email" name="email" className={cn(styles.input, "w-full sm:w-1/2")} />
             <ErrorMessage component="div" name="email" className={styles.errorMessage} />
           </label>
@@ -72,7 +80,11 @@ const ContactForm = ({ initialInput, onChange }: Props) => {
             name="numbers"
             render={arr => (
               <div>
-                <ContactFieldLabel className="mb-2" icon={<PhoneIcon className="text-primary-main" />} text="numbers" />
+                <ContactFieldLabel
+                  className="mb-2"
+                  icon={<PhoneIcon className="text-primary-main" />}
+                  text="numbers"
+                />
                 {values.numbers.map((_, index) => (
                   <div className="py-2 md:flex md:justify-between md:gap-2" key={index}>
                     <Field

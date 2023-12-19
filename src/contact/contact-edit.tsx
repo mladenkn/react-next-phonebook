@@ -61,24 +61,20 @@ const ContactEditPage = ({ contact, onSave, onDelete }: Props) => {
   )
 
   return (
-    <div className="max-w-3xl mx-auto">
+    <div className="mx-auto max-w-3xl">
       <Toolbar />
-      <div className={cn("text-tc-primary md:flex mt-16 md:mt-24 sm-max:w-full px-3")}>
-        <div className="sm-max:hidden mr-4">
-          {avatar}
-        </div>
+      <div className={cn("mt-16 px-3 text-tc-primary md:mt-24 md:flex sm-max:w-full")}>
+        <div className="mr-4 sm-max:hidden">{avatar}</div>
         <div>
-          <div className="mt-4 flex items-center px-1 pb-2 pt-0 justify-between w-full">
+          <div className="mt-4 flex w-full items-center justify-between px-1 pb-2 pt-0">
             <GoBackAction />
-            {contact ? (
-              <DeleteAction onConfirm={onDelete!} withHoverEffect />
-            ) : null}
+            {contact ? <DeleteAction onConfirm={onDelete!} withHoverEffect /> : null}
           </div>
-          <div className="h-0.25 bg-secondary-main w-full md:hidden" />
-          <h1 className="flex items-center justify-center px-0 md:pb-2 md:hidden sm-max:py-4">
+          <div className="h-0.25 w-full bg-secondary-main md:hidden" />
+          <h1 className="flex items-center justify-center px-0 md:hidden md:pb-2 sm-max:py-4">
             {avatar}
           </h1>
-          <div className="h-0.25 bg-primary-main w-full mb-2" />
+          <div className="mb-2 h-0.25 w-full bg-primary-main" />
           <ContactForm initialInput={editedContact} onChange={formChange} />
           {buttons}
         </div>
