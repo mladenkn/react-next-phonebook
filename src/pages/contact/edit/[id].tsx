@@ -1,6 +1,6 @@
 import { GetServerSidePropsContext } from "next"
 import contactsData from "~/contact/contact-data"
-import ContactEditPage from "~/contact/contact-edit"
+import ContactEditBase from "~/contact/contact-edit-base"
 import { asNonNil } from "~/utils"
 
 export function getServerSideProps({ query }: GetServerSidePropsContext) {
@@ -15,5 +15,5 @@ export function getServerSideProps({ query }: GetServerSidePropsContext) {
 type Props = ReturnType<typeof getServerSideProps>["props"]
 
 export default function ContactDetailsPageWrapper({ contact }: Props) {
-  return <ContactEditPage contact={contact} onSave={() => {}} />
+  return <ContactEditBase contact={contact} onSave={() => {}} onDelete={() => {}} />
 }

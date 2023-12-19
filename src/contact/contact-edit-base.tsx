@@ -14,8 +14,6 @@ type Props = {
 }
 
 export default function ContactEditBase({ contact, onSave, onDelete }: Props) {
-  const isEdit = contact ? true : false
-
   const [editedContact, setEditedContact] = useState(contact)
   const [isEditedContactValid, setIsEditedContactValid] = useState(contactFormValidate(contact).isValid)
 
