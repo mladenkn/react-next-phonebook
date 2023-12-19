@@ -6,7 +6,7 @@ import {
   PersonOutlinedIcon,
   EmailIcon,
   PhoneIcon,
-  HighlightOffIcon,
+  RemoveCircledIcon,
   AddCircleOutlineIcon,
 } from "~/assets/icons"
 
@@ -82,7 +82,7 @@ const ContactForm = ({ initialInput, onChange }: Props) => {
                     />
                     <Field name={`numbers.${index}.label`} className={styles.input} />
                     <button className="max-sm:ml-2" onClick={() => arr.remove(index)}>
-                      <HighlightOffIcon className="text-secondary-main" />
+                      <RemoveCircledIcon className="text-secondary-main" />
                     </button>
                   </div>
                 ))}
