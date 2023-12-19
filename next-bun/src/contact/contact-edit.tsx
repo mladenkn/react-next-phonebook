@@ -4,19 +4,17 @@ import { DeleteAction, GoBackAction } from "../actions"
 import ContactForm from "./contact-form"
 import { contactPageBaseStylesXs, contactPageBaseStylesMd } from "./contact-details-base-style"
 import { SwapableAvatar } from "../swapable-avatar"
-import { cn, useWidth } from "../utils"
+import { cn } from "../utils"
 import { useRouter } from "next/router"
+import Toolbar from "~/toolbar"
 
 type Props = {
-  className?: string
   contact?: Contact
   onSave: (c: Contact) => void
   onDelete?: () => void
 }
 
-const ContactEditPage = ({ className, contact, onSave, onDelete }: Props) => {
-  const backAction = <GoBackAction />
-
+const ContactEditPage = ({ contact, onSave, onDelete }: Props) => {
   const contact_ = contact || {
     id: 0,
     fullName: "",
@@ -64,45 +62,27 @@ const ContactEditPage = ({ className, contact, onSave, onDelete }: Props) => {
     </div>
   )
 
-  const width = useWidth()
-  if (!width) return <></>
-
-  const isXs = width < 600
-
   const deleteAction = contact ? (
-    <DeleteAction onConfirm={onDelete!} withHoverEffect withText={!isXs} />
+    <DeleteAction onConfirm={onDelete!} withHoverEffect />
   ) : null
 
-  const downSm = width < 960
-
-  if (downSm) {
-    return (
-      <div className={cn("flex justify-center", className)}>
-        <div className={cn(contactPageBaseStylesXs.root, "w-full max-w-lg")}>
-          <div className={contactPageBaseStylesXs.toolbar}>
-            {backAction}
+  return (
+    <div className="max-w-lg mx-auto">
+      <Toolbar />
+      <div className={cn("text-tc-primary sm:flex mt-16 sm:mt-24 xs-max:w-full px-3")}>
+        <div className="xs-max:hidden">
+          {avatar}
+        </div>
+        <div>
+          <div className="mt-4 flex items-center px-1 pb-2 pt-0 justify-between w-full">
+            <GoBackAction />
             {deleteAction}
           </div>
-          <div className={contactPageBaseStylesXs.body}>
-            <div className={cn(contactPageBaseStylesXs.heading, "justify-center")}>{avatar}</div>
-            <div className="mt-3">
-              {form}
-              {buttons}
-            </div>
-          </div>
-        </div>
-      </div>
-    )
-  }
-  return (
-    <div className={cn(contactPageBaseStylesMd.root, className)}>
-      {avatar}
-      <div className={cn(contactPageBaseStylesMd.right)}>
-        <div className={cn(contactPageBaseStylesMd.heading, "justify-between")}>
-          {backAction}
-          {deleteAction}
-        </div>
-        <div className="ml-1 mt-1">
+          <div className="h-0.25 bg-secondary-main w-full sm:hidden" />
+          <h1 className="flex items-center px-0 sm:pb-2 sm:hidden xs-max:py-4">
+            {avatar}
+          </h1>
+          <div className="h-0.25 bg-primary-main w-full" />
           {form}
           {buttons}
         </div>
