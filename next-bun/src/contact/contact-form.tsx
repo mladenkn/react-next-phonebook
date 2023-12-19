@@ -72,7 +72,7 @@ const ContactForm = ({ initialInput, onChange }: Props) => {
             name="numbers"
             render={arr => (
               <div>
-                <ContactFieldLabel icon={<PhoneIcon className="text-primary-main"  />} text="numbers" className="mb-2" />
+                <ContactFieldLabel className="mb-2" icon={<PhoneIcon className="text-primary-main" />} text="numbers" />
                 {values.numbers.map((_, index) => (
                   <div className="py-2 md:flex md:justify-between md:gap-2" key={index}>
                     <Field
