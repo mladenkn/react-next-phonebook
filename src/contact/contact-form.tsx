@@ -34,22 +34,15 @@ type Props = {
   onChange: (c: Contact, isValid: boolean) => void
 }
 
-const ContactForm = ({ initialInput, onChange }: Props) => {
-  const validate = (values: Contact) => {
-    let errors: FormikErrors<Contact> = {}
-
-    if (values.email && (!values.email.includes("@") || !values.email.includes(".")))
-      errors.email = "Email not valid."
-
-    if (!values.fullName) errors.fullName = "Name is required."
-
+export default function ContactForm({ initialInput, onChange }: Props){
+  function handleValidate(values: Contact){
+    const errors = contactFormValidate(values)
     onChange(values, Object.entries(errors).length === 0)
-
     return errors
   }
 
   return (
-    <Formik initialValues={initialInput} validate={validate} onSubmit={() => {}}>
+    <Formik initialValues={initialInput} validate={handleValidate} onSubmit={() => {}}>
       {({ values }) => (
         <div>
           <label>
@@ -114,4 +107,13 @@ const ContactForm = ({ initialInput, onChange }: Props) => {
   )
 }
 
-export default ContactForm
+export function contactFormValidate(values: Contact){
+  let errors: FormikErrors<Contact> = {}
+
+  if (values.email && (!values.email.includes("@") || !values.email.includes(".")))
+    errors.email = "Email not valid."
+
+  if (!values.fullName) errors.fullName = "Name is required."
+
+  return errors
+}

@@ -66,7 +66,7 @@ export default function ContactEditBase({ contact, onSave, onDelete }: Props) {
             {avatar}
           </h1>
           <div className="mb-2 h-0.25 w-full bg-primary-main" />
-          <ContactForm initialInput={editedContact} onChange={formChange} />
+          <ContactForm initialInput={contact} onChange={formChange} />
           {buttons}
         </div>
       </div>
