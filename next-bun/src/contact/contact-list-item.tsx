@@ -64,7 +64,7 @@ const ContactListItem = ({
       )}
       onClick={handleClick}
     >
-      <div className={cn("flex h-full w-full flex-col items-center pt-2 xs-max:hidden")}>
+      <div className={cn("flex h-full w-full flex-col items-center pt-2 sm-max:hidden")}>
         <div className="flex w-full justify-between px-1.5">
           {favoriteAction}
           {isSelected ? (
