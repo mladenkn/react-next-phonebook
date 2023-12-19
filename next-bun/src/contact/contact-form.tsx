@@ -53,7 +53,7 @@ const ContactForm = ({ initialInput, onChange }: Props) => {
       {({ values }) => (
         <div>
           <label>
-            <ContactFieldLabel Icon={PersonOutlinedIcon} text="full name" className="mb-2" />
+            <ContactFieldLabel icon={<PersonOutlinedIcon />} text="full name" className="mb-2" />
             <Field type="text" name="fullName" className={cn(styles.input, "w-full sm:w-1/2")} />
             <ErrorMessage component="div" name="fullName" className={styles.errorMessage} />
           </label>
@@ -61,7 +61,7 @@ const ContactForm = ({ initialInput, onChange }: Props) => {
           <div className="my-4 h-0.25 w-full bg-primary-main" />
 
           <label>
-            <ContactFieldLabel Icon={EmailIcon} text="email" className="mb-2" />
+            <ContactFieldLabel icon={<EmailIcon />} text="email" className="mb-2" />
             <Field type="email" name="email" className={cn(styles.input, "w-full sm:w-1/2")} />
             <ErrorMessage component="div" name="email" className={styles.errorMessage} />
           </label>
@@ -72,7 +72,7 @@ const ContactForm = ({ initialInput, onChange }: Props) => {
             name="numbers"
             render={arr => (
               <div>
-                <ContactFieldLabel Icon={PhoneIcon} text="numbers" className="mb-2" />
+                <ContactFieldLabel icon={<PhoneIcon />} text="numbers" className="mb-2" />
                 {values.numbers.map((_, index) => (
                   <div className="py-2 md:flex md:justify-between md:gap-2" key={index}>
                     <Field

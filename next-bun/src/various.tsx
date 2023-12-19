@@ -1,16 +1,16 @@
-import { ComponentType, ReactNode } from "react"
+import { ReactNode } from "react"
 import clsx from "clsx"
 import { cn } from "./utils"
 
 type ContactFieldLabelProps = {
-  Icon: ComponentType<{ className?: string }>
+  icon: ReactNode
   text: string
   className?: string
 }
 export const ContactFieldLabel = (p: ContactFieldLabelProps) => (
   <div className={clsx("flex items-end text-primary-main", p.className)}>
-    <p.Icon className="mr-2" />
-    <span>{p.text}</span>
+    {p.icon}
+    <span className="ml-2">{p.text}</span>
   </div>
 )
 
