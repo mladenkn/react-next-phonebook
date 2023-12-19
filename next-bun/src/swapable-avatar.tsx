@@ -2,7 +2,7 @@ import { useState } from "react"
 import { cn } from "./utils"
 import { TextInputDialog } from "./text-input-dialog"
 import { ContactAvatar } from "./contact/contact-avatar"
-import { CloudUploadIcon } from "./assets/icons"
+import { CloudUploadIcon, RemoveIcon } from "./assets/icons"
 
 type Props = {
   src?: string
@@ -31,12 +31,14 @@ export const SwapableAvatar = ({ className, src, onChange }: Props) => {
               className="h-full w-full"
               style={{ filter: "brightness(70%)" }}
             />
-            <div
+            {/* <div
               className={cn("absolute text-3xl text-gray-200")}
               style={{ top: "40%", left: "47%" }}
             >
               x
-            </div>
+            </div> */}
+            <RemoveIcon className={cn("absolute text-3xl text-gray-200")}
+              style={{ top: "40%", left: "47%" }} />
           </div>
         </div>
       ) : (
