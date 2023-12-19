@@ -78,7 +78,7 @@ const ContactEditPage = ({ contact, onSave, onDelete }: Props) => {
             {deleteAction}
           </div>
           <div className="h-0.25 bg-secondary-main w-full md:hidden" />
-          <h1 className="flex items-center px-0 md:pb-2 md:hidden sm-max:py-4">
+          <h1 className="flex items-center justify-center px-0 md:pb-2 md:hidden sm-max:py-4">
             {avatar}
           </h1>
           <div className="h-0.25 bg-primary-main w-full" />
