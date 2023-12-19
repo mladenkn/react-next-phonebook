@@ -1,6 +1,6 @@
 import { GetServerSidePropsContext } from "next"
 import contactsData from "~/contact/contact-data"
-import ContactEditBase from "~/contact/contact-edit-base"
+import ContactEditBase from "~/contact/contact-edit"
 import { asNonNil } from "~/utils"
 
 export function getServerSideProps({ query }: GetServerSidePropsContext) {
