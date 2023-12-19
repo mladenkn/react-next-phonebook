@@ -1,43 +1,22 @@
-// import { useRouter } from "next/router"
-// import contactsData from "~/contact/contact-data"
+import { GetServerSidePropsContext } from "next"
+import contactsData from "~/contact/contact-data"
 import ContactDetailsPage from "~/contact/contact-details-page"
 import Toolbar from "~/toolbar"
-// import { asNonNil } from "~/utils"
-import { getBreakpointContainerStyle } from "~/utils/ui-utils"
+import { asNonNil } from "~/utils"
 
-const contact = {
-  "id": 4,
-  "fullName": "Maximilian Gleason",
-  "avatar": {
-      "background": "blue",
-      "color": "white"
-  },
-  "email": "Isabell99@hotmail.com",
-  "numbers": [
-      {
-          "value": 1871373754433536,
-          "label": "Work"
-      },
-      {
-          "value": 2151749802524672,
-          "label": "Work"
-      },
-      {
-          "value": 8721412206362624,
-          "label": "Cell"
-      },
-      {
-          "value": 5451996416966656,
-          "label": "Cell"
-      }
-  ],
-  "isFavorite": false
+export function getServerSideProps({ query }: GetServerSidePropsContext){
+  if(typeof query.id !== "string")
+    throw new Error ()
+  const contactId = parseInt(query.id)
+  const contact = asNonNil(contactsData.find(c => c.id == contactId))
+  return {
+    props: { contact }
+  }
 }
 
-export default function ContactDetailsPageWrapper() {
-  // const router = useRouter()
-  // const contactId = router.query.id || 3
-  // const contact = asNonNil(contactsData.find(c => c.id == contactId))
+type Props = ReturnType<typeof getServerSideProps>["props"]
+
+export default function ContactDetailsPageWrapper({ contact }: Props) {
   return (
     <div className="md:container flex justify-center items-center">
       <Toolbar />
