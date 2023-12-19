@@ -69,8 +69,8 @@ const ContactEditPage = ({ contact, onSave, onDelete }: Props) => {
   return (
     <div className="max-w-lg mx-auto">
       <Toolbar />
-      <div className={cn("text-tc-primary sm:flex mt-16 sm:mt-24 xs-max:w-full px-3")}>
-        <div className="xs-max:hidden">
+      <div className={cn("text-tc-primary md:flex mt-16 md:mt-24 sm-max:w-full px-3")}>
+        <div className="sm-max:hidden">
           {avatar}
         </div>
         <div>
@@ -78,8 +78,8 @@ const ContactEditPage = ({ contact, onSave, onDelete }: Props) => {
             <GoBackAction />
             {deleteAction}
           </div>
-          <div className="h-0.25 bg-secondary-main w-full sm:hidden" />
-          <h1 className="flex items-center px-0 sm:pb-2 sm:hidden xs-max:py-4">
+          <div className="h-0.25 bg-secondary-main w-full md:hidden" />
+          <h1 className="flex items-center px-0 md:pb-2 md:hidden sm-max:py-4">
             {avatar}
           </h1>
           <div className="h-0.25 bg-primary-main w-full" />
