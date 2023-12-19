@@ -2,7 +2,6 @@ import { useState } from "react"
 import ContactList, { ContactListProps } from "./contact-list"
 import { cn } from "../utils"
 import Toolbar from "~/toolbar"
-import { getBreakpointContainerStyle } from "~/utils/ui-utils"
 import { MagnifierIcon } from "~/assets/icons"
 
 const searchWrapper_class = cn(
@@ -20,7 +19,7 @@ const ContactListPage = ({ data }: Props) => {
   const tabContacts = currentTab === "all" ? data : data.filter(c => c.isFavorite)
 
   return (
-    <div className={getBreakpointContainerStyle("lg")}>
+    <div className="max-w-6xl px-4 sm:px-8 md:px-16 mx-auto">
       <Toolbar />
 
       <div className={cn("mt-20 flex flex-col items-center")}>
