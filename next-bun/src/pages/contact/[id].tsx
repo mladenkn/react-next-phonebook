@@ -39,9 +39,9 @@ export default function ContactDetailsPageWrapper() {
   // const contactId = router.query.id || 3
   // const contact = asNonNil(contactsData.find(c => c.id == contactId))
   return (
-    <div className={getBreakpointContainerStyle("md")}>
+    <div className="md:container flex justify-center items-center">
       <Toolbar />
-      <ContactDetailsPage className="mt-14 md:mt-24" contact={contact} onFavorite={() => {}} />
+      <ContactDetailsPage className="mt-14 md:mt-24 sm-max:w-full px-3" contact={contact} onFavorite={() => {}} />
     </div>
   )
 }
