@@ -14,6 +14,6 @@ export function getServerSideProps({ query }: GetServerSidePropsContext) {
 
 type Props = ReturnType<typeof getServerSideProps>["props"]
 
-export default function ContactDetailsPageWrapper({ contact }: Props) {
+export default function ContactDetailsEditPage({ contact }: Props) {
   return <ContactEditBase contact={contact} onSave={() => {}} onDelete={() => {}} />
 }

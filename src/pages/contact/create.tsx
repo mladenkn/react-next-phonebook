@@ -1,6 +1,6 @@
 import ContactEditBase from "~/contact/contact-edit";
 
-export default function ContactDetailsCreate() {
+export default function ContactCreatePage() {
   return <ContactEditBase contact={{
     email: "",
     fullName: "",
