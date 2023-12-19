@@ -1,4 +1,4 @@
-import { Contact } from "../models"
+import { Contact as _Contact } from "../models"
 import { FormikErrors, Formik, Field, ErrorMessage, FieldArray } from "formik"
 import { ContactFieldLabel } from "../various"
 import { cn } from "../utils"
@@ -28,6 +28,9 @@ const styles = {
   input: "p-2 border-2 border-solid border-secondary-light text-secondary-main outline-none",
   errorMessage: "ml-2 mt-0.5 text-red-500",
 }
+
+
+type Contact = Omit<_Contact, "id">
 
 type Props = {
   initialInput: Contact

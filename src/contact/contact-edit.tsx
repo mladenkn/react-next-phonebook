@@ -1,4 +1,4 @@
-import { Contact } from "../models"
+import { Contact as _Contact } from "../models"
 import { useState } from "react"
 import { DeleteAction, GoBackAction } from "../actions"
 import ContactForm, { contactFormValidate } from "./contact-form"
@@ -6,6 +6,8 @@ import { SwapableAvatar } from "../swapable-avatar"
 import { cn } from "../utils"
 import { useRouter } from "next/router"
 import Toolbar from "~/toolbar"
+
+type Contact = Omit<_Contact, "id">
 
 type Props = {
   contact: Contact
