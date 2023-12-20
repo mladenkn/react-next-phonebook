@@ -15,7 +15,8 @@
     "reset": "bun wipe && bun install",
     "format": "prettier --write \"**/*.{ts,tsx}\"",
     "drizzle.push": "drizzle-kit push:pg --config=./src/drizzle/drizzle.config.ts",
-    "db.drop": "psql $DATABASE_URL --file=./src/db.drop.sql"
+    "db.drop": "psql $DATABASE_URL --file=./src/db.drop.sql",
+    "db.reset": "bun run db.drop && bun run drizzle.push"
   },
   "dependencies": {
     "@faker-js/faker": "^8.3.1",
