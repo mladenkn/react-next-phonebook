@@ -18,7 +18,7 @@ export const Contact = pgTable("Contact", {
 
 export const PhoneNumber = pgTable("PhoneNumber", {
   id: serial("id").primaryKey().notNull(),
-  value: integer("value"), // TODO: vjer varchar
-  label: varchar("label"),
+  value: integer("value").notNull(), // TODO: vjer varchar
+  label: varchar("label").notNull(),
   contactId: integer("contactId").notNull().references(() => Contact.id)
 })
