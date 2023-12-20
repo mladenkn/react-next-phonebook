@@ -5,7 +5,7 @@ type ContactAvatarProps = {
   className?: string
   style?: CSSProperties
   letter?: string
-  url?: string
+  url?: string | null
 }
 
 export const ContactAvatar = ({ className, style, letter, url }: ContactAvatarProps) => {

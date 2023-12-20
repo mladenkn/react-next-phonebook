@@ -5,7 +5,7 @@ import { ContactAvatar } from "./contact/contact-avatar"
 import { CloudUploadIcon, RemoveIcon } from "./assets/icons"
 
 type Props = {
-  src?: string
+  src?: string | null
   onChange: (image?: string) => void
   className?: string
 }
@@ -51,7 +51,7 @@ export const SwapableAvatar = ({ className, src, onChange }: Props) => {
           </div>
           {isDialogOpen && (
             <TextInputDialog
-              text={src}
+              text={src || ""}
               onOK={handleDialogOK}
               onCancel={() => setIsDialogOpen(false)}
               isInputValid={imgUrl => !!imgUrl}

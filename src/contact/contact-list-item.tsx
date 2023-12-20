@@ -25,7 +25,7 @@ const ContactListItem = ({
     <ContactAvatar
       className="md:mb-2 md:mt-5"
       letter={contact.fullName[0]}
-      style={contact.avatar}
+      style={contact.avatarStyle}
       url={contact.avatarUrl}
     />
   )

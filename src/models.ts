@@ -4,7 +4,7 @@ export interface Contact {
   id: number
   fullName: string
   avatarStyle: CSSProperties
-  avatarUrl?: string
+  avatarUrl?: string | null
   email: string
   numbers: PhoneNumber[]
   isFavorite: boolean
@@ -13,8 +13,8 @@ export interface Contact {
 export interface ContactListItem {
   id: number
   fullName: string
-  avatar?: CSSProperties
-  avatarUrl?: string
+  avatarStyle?: CSSProperties
+  avatarUrl?: string | null
   isFavorite: boolean
 }
 
