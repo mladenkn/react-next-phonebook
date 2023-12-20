@@ -17,4 +17,4 @@ async function run(){
   await db.insert(PhoneNumber).values(phoneNumbers)
 }
 
-run()
+run().then(() => process.exit(0))

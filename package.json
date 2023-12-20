@@ -14,9 +14,10 @@
     "wipe": "rm -rf node_modules && rm -f bun.lockb",
     "reset": "bun wipe && bun install",
     "format": "prettier --write \"**/*.{ts,tsx}\"",
-    "drizzle.push": "drizzle-kit push:pg --config=./src/drizzle/drizzle.config.ts",
     "db.drop": "psql $DATABASE_URL --file=./src/db.drop.sql",
-    "db.reset": "bun run db.drop && bun run drizzle.push"
+    "drizzle.push": "drizzle-kit push:pg --config=./src/drizzle/drizzle.config.ts",
+    "db.seed": "bun run ./src/db.seed.ts",
+    "db.reset": "bun run db.drop && bun run drizzle.push && bun run db.seed"
   },
   "dependencies": {
     "@faker-js/faker": "^8.3.1",
