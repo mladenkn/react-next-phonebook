@@ -1,15 +1,17 @@
-import contactsData from "~/contact/contact-data"
 import ContactListPage from "~/contact/contact-list-page"
+import { contactApiList } from "~/contact/contact.api"
 import { api } from "~/utils/api"
 
-export function getServerSideProps() {
+export async function getServerSideProps() {
   return {
     props: {
-      contacts: contactsData,
+      contacts: await contactApiList(),
     },
   }
 }
 
-export default function Home({ contacts }: ReturnType<typeof getServerSideProps>["props"]) {
+type Props = Awaited<ReturnType<typeof getServerSideProps>>["props"]
+
+export default function Home({ contacts }: Props) {
   return <ContactListPage data={contacts} />
 }

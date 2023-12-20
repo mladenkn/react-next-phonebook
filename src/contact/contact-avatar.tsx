@@ -3,7 +3,7 @@ import { CSSProperties } from "react"
 
 type ContactAvatarProps = {
   className?: string
-  style?: CSSProperties
+  style?: CSSProperties | null
   letter?: string
   url?: string | null
 }
@@ -16,7 +16,7 @@ export const ContactAvatar = ({ className, style, letter, url }: ContactAvatarPr
           "flex h-auto w-10 items-center justify-center rounded-full object-contain",
           className,
         )}
-        style={style}
+        style={style || undefined}
         src={url}
       />
     )
@@ -27,7 +27,7 @@ export const ContactAvatar = ({ className, style, letter, url }: ContactAvatarPr
           "flex h-10 w-10 cursor-default items-center justify-center rounded-full",
           className,
         )}
-        style={style}
+        style={style || undefined}
       >
         {letter}
       </div>

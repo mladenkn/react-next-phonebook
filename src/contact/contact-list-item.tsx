@@ -9,7 +9,7 @@ import { ContactAvatarStyle } from "~/models"
 export type ContactListItemModel = {
   id: number
   fullName: string
-  avatarStyle: ContactAvatarStyle
+  avatarStyle: ContactAvatarStyle | null
   avatarUrl?: string | null
   isFavorite: boolean
 }
