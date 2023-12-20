@@ -3,7 +3,7 @@ import { CSSProperties } from "react"
 export interface Contact {
   id: number
   fullName: string
-  avatar?: CSSProperties
+  avatarStyle?: CSSProperties
   avatarUrl?: string
   email: string
   numbers: PhoneNumber[]

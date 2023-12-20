@@ -14,7 +14,7 @@ const ContactDetailsPage = ({ contact, onFavorite }: Props) => {
 
   const avatar = (
     <ContactAvatar
-      style={contact.avatar}
+      style={contact.avatarStyle}
       className={cn("ml-2 mr-3 h-16 w-16 sm:h-44 sm:w-44")}
       url={contact.avatarUrl}
       letter={contact.fullName[0]}

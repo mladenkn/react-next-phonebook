@@ -20,7 +20,7 @@ export default function ContactEditBase({ contact, onSave, onDelete }: Props) {
   const [isEditedContactValid, setIsEditedContactValid] = useState(contactFormValidate(contact).isValid)
 
   const formChange = (input: Contact, isValid: boolean) => {
-    setEditedContact({ ...input, avatar: editedContact.avatar })
+    setEditedContact({ ...input, avatarStyle: editedContact.avatarStyle })
     setIsEditedContactValid(isValid)
   }
 
