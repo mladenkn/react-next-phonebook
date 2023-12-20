@@ -10,7 +10,7 @@ export const env = createEnv({
     DATABASE_URL: z
       .string()
       .url()
-      .optional(),
+      .default("postgresql://postgres:postgres@localhost:5432/phonebook"),
       
     NODE_ENV: z
       .enum(["development", "test", "production"])
