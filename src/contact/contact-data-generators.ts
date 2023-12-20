@@ -1,8 +1,8 @@
-import { Contact, PhoneNumber } from "../models"
+import { Contact } from "../models"
 import { faker } from "@faker-js/faker"
 import { generateArray } from "../utils"
 
-const generatePhoneNumber = (): PhoneNumber => ({
+const generatePhoneNumber = () => ({
   value: faker.number.int(),
   label: faker.helpers.arrayElement(["Home", "Work", "Cell", "Husband"]),
 })

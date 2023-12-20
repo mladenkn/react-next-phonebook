@@ -1,6 +1,5 @@
-import { ContactListItem as ContactListItemModel } from "../models"
 import { useState } from "react"
-import ContactListItem from "./contact-list-item"
+import ContactListItem, { ContactListItemModel } from "./contact-list-item"
 import { cn } from "../utils"
 import { contactCreateUrl } from "../urls"
 import Link from "next/link"

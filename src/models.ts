@@ -10,15 +10,7 @@ export interface Contact {
   isFavorite: boolean
 }
 
-export interface ContactListItem {
-  id: number
-  fullName: string
-  avatarStyle?: CSSProperties
-  avatarUrl?: string | null
-  isFavorite: boolean
-}
-
-export interface PhoneNumber {
+interface PhoneNumber {
   value: number
   label: string
 }

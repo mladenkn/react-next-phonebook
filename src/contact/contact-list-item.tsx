@@ -1,10 +1,18 @@
-import { ContactListItem as ContactListItemModel } from "../models"
 import { GoToEditAction, FavoriteAction, DeleteAction } from "../actions"
 import { ContactAvatar } from "./contact-avatar"
 import clsx from "clsx"
 import { cn } from "../utils"
 import { useRouter } from "next/router"
 import { contactDetailsUrl } from "~/urls"
+import { CSSProperties } from "react"
+
+export type ContactListItemModel = {
+  id: number
+  fullName: string
+  avatarStyle: CSSProperties
+  avatarUrl?: string | null
+  isFavorite: boolean
+}
 
 type ItemPresenterProps = {
   contact: ContactListItemModel
