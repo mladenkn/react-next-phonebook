@@ -1,4 +1,4 @@
-export interface Contact {
+export type Contact = {
   id: number
   fullName: string
   avatarStyle: ContactAvatarStyle
@@ -12,7 +12,7 @@ export type ContactAvatarStyle = {
   backgroundColor: string, color: string
 }
 
-interface ContactPhoneNumber {
+type ContactPhoneNumber = {
   value: number
   label: string
 }
