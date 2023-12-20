@@ -4,7 +4,9 @@ import clsx from "clsx"
 import { cn } from "../utils"
 import { useRouter } from "next/router"
 import { contactDetailsUrl } from "~/urls"
-import { ContactListItemModel } from "./contact.api"
+import { ApiOutputs } from "~/utils/api"
+
+export type ContactListItemModel = ApiOutputs["contact"]["list"][number]
 
 type ItemPresenterProps = {
   contact: ContactListItemModel
