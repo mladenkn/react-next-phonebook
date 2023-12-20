@@ -1,11 +1,9 @@
 import { generateContact } from "~/contact/contact-data-generators"
 import { generateArray } from "~/utils"
-import drizzleConnect from "./drizzle/drizzle.instance"
+import db from "./drizzle/drizzle.instance"
 import { Contact, PhoneNumber } from "./contact/contact-schema"
 
 async function run(){
-  const db = drizzleConnect()
-
   const contacts = generateArray(generateContact, 25, 50)
   const contactsMapped = contacts.map(c => {
     const { numbers, id, ...ommited } = c
