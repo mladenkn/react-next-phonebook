@@ -15,11 +15,15 @@ const avatarStyles = [
   { background: "orange", color: "black" },
 ]
 
+export function getRandomAvatarStyle(){
+  return faker.helpers.arrayElement(avatarStyles)
+}
+
 let contactId = 1
 export const generateContact = (): Contact => ({
   id: contactId++,
   fullName: faker.person.firstName() + " " + faker.person.lastName(),
-  avatarStyle: faker.helpers.arrayElement(avatarStyles),
+  avatarStyle: getRandomAvatarStyle(),
   avatarUrl: faker.datatype.boolean() ? faker.internet.avatar() : undefined,
   email: faker.internet.email(),
   numbers: generateArray(generatePhoneNumber, 1, 4),
