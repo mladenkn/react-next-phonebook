@@ -84,7 +84,6 @@ export default function ContactForm({ initialInput, onChange }: Props){
                 {values.numbers.map((_, index) => (
                   <div className="py-2 md:flex md:justify-between md:gap-2" key={index}>
                     <Field
-                      type="number"
                       name={`numbers[${index}].value`}
                       className={cn(styles.input, "max-sm:mb-2 max-sm:w-full")}
                     />
