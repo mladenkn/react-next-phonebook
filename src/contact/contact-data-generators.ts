@@ -3,7 +3,7 @@ import { faker } from "@faker-js/faker"
 import { generateArray } from "../utils"
 
 const generatePhoneNumber = () => ({
-  value: faker.number.int(),
+  value: faker.phone.number(),
   label: faker.helpers.arrayElement(["Home", "Work", "Cell", "Husband"]),
 })
 

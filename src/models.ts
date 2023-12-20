@@ -13,6 +13,6 @@ export type ContactAvatarStyle = {
 }
 
 type ContactPhoneNumber = {
-  value: number
+  value: string
   label: string
 }
