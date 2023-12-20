@@ -4,15 +4,7 @@ import clsx from "clsx"
 import { cn } from "../utils"
 import { useRouter } from "next/router"
 import { contactDetailsUrl } from "~/urls"
-import { ContactAvatarStyle } from "~/models"
-
-export type ContactListItemModel = {
-  id: number
-  fullName: string
-  avatarStyle: ContactAvatarStyle | null
-  avatarUrl?: string | null
-  isFavorite: boolean
-}
+import { ContactListItemModel } from "./contact.api"
 
 type ItemPresenterProps = {
   contact: ContactListItemModel
