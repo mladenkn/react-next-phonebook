@@ -1,8 +1,10 @@
+import apiSs from "~/api/api.ss"
 import ContactListPage from "~/contact/contact-list-page"
 import { contactApiList } from "~/contact/contact.api"
-import { api } from "~/utils/api"
 
 export async function getServerSideProps() {
+  const a = await apiSs.example.hello.fetch({text: "sdfsdf"})
+  console.log(8, a)
   return {
     props: {
       contacts: await contactApiList(),
