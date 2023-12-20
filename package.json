@@ -14,7 +14,8 @@
     "wipe": "rm -rf node_modules && rm -f bun.lockb",
     "reset": "bun wipe && bun install",
     "format": "prettier --write \"**/*.{ts,tsx}\"",
-    "drizzle.push": "drizzle-kit push:pg --config=./src/drizzle/drizzle.config.ts"
+    "drizzle.push": "drizzle-kit push:pg --config=./src/drizzle/drizzle.config.ts",
+    "db.drop": "psql $DATABASE_URL --file=./src/db.drop.sql"
   },
   "dependencies": {
     "@faker-js/faker": "^8.3.1",
