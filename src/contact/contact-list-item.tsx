@@ -4,12 +4,12 @@ import clsx from "clsx"
 import { cn } from "../utils"
 import { useRouter } from "next/router"
 import { contactDetailsUrl } from "~/urls"
-import { CSSProperties } from "react"
+import { ContactAvatarStyle } from "~/models"
 
 export type ContactListItemModel = {
   id: number
   fullName: string
-  avatarStyle: CSSProperties
+  avatarStyle: ContactAvatarStyle
   avatarUrl?: string | null
   isFavorite: boolean
 }

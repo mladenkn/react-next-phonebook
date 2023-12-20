@@ -1,16 +1,18 @@
-import { CSSProperties } from "react"
-
 export interface Contact {
   id: number
   fullName: string
-  avatarStyle: CSSProperties
+  avatarStyle: ContactAvatarStyle
   avatarUrl?: string | null
   email: string
-  numbers: PhoneNumber[]
+  numbers: ContactPhoneNumber[]
   isFavorite: boolean
 }
 
-interface PhoneNumber {
+export type ContactAvatarStyle = {
+  backgroundColor: string, color: string
+}
+
+interface ContactPhoneNumber {
   value: number
   label: string
 }

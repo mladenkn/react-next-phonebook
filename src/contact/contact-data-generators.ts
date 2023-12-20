@@ -8,11 +8,11 @@ const generatePhoneNumber = () => ({
 })
 
 const avatarStyles = [
-  { background: "green", color: "white" },
-  { background: "yellow", color: "black" },
-  { background: "red", color: "white" },
-  { background: "blue", color: "white" },
-  { background: "orange", color: "black" },
+  { backgroundColor: "green", color: "white" },
+  { backgroundColor: "yellow", color: "black" },
+  { backgroundColor: "red", color: "white" },
+  { backgroundColor: "blue", color: "white" },
+  { backgroundColor: "orange", color: "black" },
 ]
 
 export function getRandomAvatarStyle(){
