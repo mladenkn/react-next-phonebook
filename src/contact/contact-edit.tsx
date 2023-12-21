@@ -17,7 +17,9 @@ type Props = {
 
 export default function ContactEditBase({ contact, onSave, onDelete }: Props) {
   const [editedContact, setEditedContact] = useState(contact)
-  const [isEditedContactValid, setIsEditedContactValid] = useState(contactFormValidate(contact).isValid)
+  const [isEditedContactValid, setIsEditedContactValid] = useState(
+    contactFormValidate(contact).isValid,
+  )
 
   const formChange = (input: Contact, isValid: boolean) => {
     setEditedContact({ ...input, avatarStyle: editedContact.avatarStyle })

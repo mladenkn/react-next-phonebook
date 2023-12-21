@@ -7,7 +7,7 @@ import contactApi from "~/contact/contact.api"
  * All routers added in /api/routers should be manually added here.
  */
 export const appRouter = createTRPCRouter({
-  contact: contactApi
+  contact: contactApi,
 })
 
 // export type definition of API

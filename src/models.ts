@@ -9,7 +9,8 @@ export type Contact = {
 }
 
 export type ContactAvatarStyle = {
-  backgroundColor: string, color: string
+  backgroundColor: string
+  color: string
 }
 
 type ContactPhoneNumber = {

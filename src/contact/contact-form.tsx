@@ -29,7 +29,6 @@ const styles = {
   errorMessage: "ml-2 mt-0.5 text-red-500",
 }
 
-
 type Contact = Omit<_Contact, "id">
 
 type Props = {
@@ -37,8 +36,8 @@ type Props = {
   onChange: (c: Contact, isValid: boolean) => void
 }
 
-export default function ContactForm({ initialInput, onChange }: Props){
-  function handleValidate(values: Contact){
+export default function ContactForm({ initialInput, onChange }: Props) {
+  function handleValidate(values: Contact) {
     const errors = contactFormValidate(values)
     onChange(values, errors.isValid)
     return errors
@@ -109,7 +108,7 @@ export default function ContactForm({ initialInput, onChange }: Props){
   )
 }
 
-export function contactFormValidate(values: Contact){
+export function contactFormValidate(values: Contact) {
   let errors: FormikErrors<Contact> = {}
 
   if (values.email && (!values.email.includes("@") || !values.email.includes(".")))

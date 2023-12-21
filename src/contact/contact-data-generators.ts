@@ -15,7 +15,7 @@ const avatarStyles = [
   { backgroundColor: "orange", color: "black" },
 ]
 
-export function getRandomAvatarStyle(){
+export function getRandomAvatarStyle() {
   return faker.helpers.arrayElement(avatarStyles)
 }
 
