@@ -15,7 +15,7 @@
     "reset": "bun wipe && bun install",
     "format": "prettier --write \"**/*.{ts,tsx}\"",
     "db.drop": "psql $DATABASE_URL --file=./src/db.drop.sql",
-    "drizzle.push": "drizzle-kit push:pg --config=./src/drizzle/drizzle.config.ts",
+    "drizzle.push": "drizzle-kit push:pg --config=./src/db/db.config.ts",
     "db.seed": "bun run ./src/db.seed.ts",
     "db.reset": "bun run db.drop && bun run drizzle.push && bun run db.seed"
   },

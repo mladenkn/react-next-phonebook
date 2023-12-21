@@ -1,6 +1,6 @@
 import { generateContact } from "~/contact/contact-data-generators"
 import { generateArray } from "~/utils"
-import db from "./drizzle/drizzle.instance"
+import db from "./db/db.instance"
 import { Contact, PhoneNumber } from "./contact/contact-schema"
 
 async function run(){
