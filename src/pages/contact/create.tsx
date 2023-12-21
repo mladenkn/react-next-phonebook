@@ -5,7 +5,7 @@ export default function ContactCreatePage() {
   return <ContactEditBase contact={{
     email: "",
     fullName: "",
-    numbers: [],
+    phoneNumbers: [],
     isFavorite: false,
     avatarStyle: getRandomAvatarStyle()
   }} onSave={() => {}} onDelete={() => {}} />

@@ -1,10 +1,10 @@
 export type Contact = {
   id: number
   fullName: string
-  avatarStyle: ContactAvatarStyle
+  avatarStyle: ContactAvatarStyle | null
   avatarUrl?: string | null
   email: string
-  numbers: ContactPhoneNumber[]
+  phoneNumbers: ContactPhoneNumber[]
   isFavorite: boolean
 }
 

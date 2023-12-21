@@ -26,6 +26,6 @@ export const generateContact = (): Contact => ({
   avatarStyle: getRandomAvatarStyle(),
   avatarUrl: faker.datatype.boolean() ? faker.internet.avatar() : null,
   email: faker.internet.email(),
-  numbers: generateArray(generatePhoneNumber, 1, 4),
+  phoneNumbers: generateArray(generatePhoneNumber, 1, 4),
   isFavorite: faker.datatype.boolean(),
 })
