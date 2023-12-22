@@ -4,7 +4,9 @@ import { z } from "zod"
 import { eq } from "drizzle-orm"
 
 const contactApi = createTRPCRouter({
-  list: publicProcedure.query(({ ctx }) => ctx.db.query.Contact.findMany()),
+  list: publicProcedure.query(({ ctx }) =>
+    ctx.db.query.Contact.findMany({ where: eq(Contact.isDeleted, false) }),
+  ),
 
   single: publicProcedure.input(z.number()).query(({ ctx, input }) =>
     ctx.db.query.Contact.findFirst({

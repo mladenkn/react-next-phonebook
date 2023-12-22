@@ -8,6 +8,7 @@ export const Contact = pgTable("Contact", {
   avatarUrl: varchar("avatarUrl"),
   email: varchar("email").notNull(),
   isFavorite: boolean("isFavorite").notNull().default(false),
+  isDeleted: boolean("isDeleted").notNull().default(false),
 })
 
 export const PhoneNumber = pgTable("PhoneNumber", {
