@@ -12,6 +12,12 @@ const contactApi = createTRPCRouter({
       with: { phoneNumbers: true },
     }),
   ),
+
+  update: publicProcedure
+    .input(z.object({ id: z.number(), isFavorite: z.boolean().nullish() }))
+    .mutation(({ ctx, input }) =>
+      ctx.db.update(Contact).set({ isFavorite: input.isFavorite || undefined }),
+    ),
 })
 
 export default contactApi
