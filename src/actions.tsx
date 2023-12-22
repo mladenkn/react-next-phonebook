@@ -12,8 +12,13 @@ import {
   TrashIcon,
 } from "./assets/icons"
 
-export const GoToEditAction = ({ contactId }: { contactId: number }) => (
-  <Link href={contactEditUrl(contactId)}>
+type GoToEditActionProps = {
+  onClick?(e: MouseEvent): void
+  contactId: number
+}
+
+export const GoToEditAction = ({ contactId, onClick }: GoToEditActionProps) => (
+  <Link href={contactEditUrl(contactId)} onClick={onClick}>
     <PencilIcon />
   </Link>
 )
