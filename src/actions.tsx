@@ -19,7 +19,7 @@ export const GoToEditAction = ({ contactId }: { contactId: number }) => (
 )
 
 type FavoriteActionProps = {
-  onClick: () => void
+  onClick: (e: MouseEvent) => void
   isFavorite: boolean
   iconClass?: string
 }

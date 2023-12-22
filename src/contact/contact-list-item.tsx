@@ -42,9 +42,13 @@ const ContactListItem = ({
     </p>
   )
 
+  function handleToggleFavorite(e: MouseEvent) {
+    e.stopPropagation()
+    onToggleFavorite()
+  }
   const favoriteAction = (
     <FavoriteAction
-      onClick={onToggleFavorite}
+      onClick={handleToggleFavorite}
       isFavorite={contact.isFavorite}
       iconClass="text-sm"
     />
