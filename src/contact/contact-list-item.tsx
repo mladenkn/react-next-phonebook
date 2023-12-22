@@ -5,6 +5,7 @@ import { cn } from "../utils"
 import { useRouter } from "next/router"
 import { contactDetailsUrl } from "~/urls"
 import { ApiOutputs } from "~/utils/api"
+import { MouseEvent } from "react"
 
 export type ContactListItemModel = ApiOutputs["contact"]["list"][number]
 
@@ -49,7 +50,7 @@ const ContactListItem = ({
     />
   )
   const editAction = <GoToEditAction contactId={contact.id} />
-  const deleteAction = <DeleteAction onConfirm={onDelete} />
+  const deleteAction = <DeleteAction onConfirm={onDelete} onClick={e => e.stopPropagation()} />
 
   const router = useRouter()
   function handleClick() {

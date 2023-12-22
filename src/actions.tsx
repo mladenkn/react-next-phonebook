@@ -1,5 +1,5 @@
 import { contactEditUrl } from "./urls"
-import { useState } from "react"
+import { MouseEvent, useState } from "react"
 import DeleteModal from "./delete-dialog"
 import Link from "next/link"
 import { cn } from "./utils"
@@ -35,13 +35,25 @@ export const FavoriteAction = ({ onClick, isFavorite, iconClass }: FavoriteActio
 )
 
 type DeleteActionProps = {
-  onConfirm: () => void
   withHoverEffect?: boolean
   withText?: boolean
+  onClick?(e: MouseEvent): void
+  onConfirm: () => void
 }
 
-export const DeleteAction = ({ onConfirm, withText, withHoverEffect }: DeleteActionProps) => {
+export const DeleteAction = ({
+  withText,
+  withHoverEffect,
+  onConfirm,
+  onClick,
+}: DeleteActionProps) => {
   const [modalOpen, setModalOpen] = useState(false)
+
+  function handleClick(e: MouseEvent) {
+    onClick && onClick(e)
+    setModalOpen(true)
+  }
+
   return (
     <>
       <button
@@ -49,7 +61,7 @@ export const DeleteAction = ({ onConfirm, withText, withHoverEffect }: DeleteAct
           "flex text-secondary-dark",
           withHoverEffect && "button-hover-opacity rounded-sm p-1",
         )}
-        onClick={() => setModalOpen(true)}
+        onClick={handleClick}
       >
         {(withText || false) && <p className="mr-1 text-base">Delete</p>}
         <TrashIcon />

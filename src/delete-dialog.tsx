@@ -1,9 +1,10 @@
+import { MouseEvent } from "react"
 import { Modal } from "./various"
 
 type Props = {
   text: string
   onCancel: () => void
-  onConfirm: () => void
+  onConfirm: (e: MouseEvent) => void
 }
 
 const DeleteModal = ({ text, onCancel, onConfirm }: Props) => (
