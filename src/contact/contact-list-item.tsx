@@ -43,7 +43,7 @@ const ContactListItem = ({
   )
 
   function handleToggleFavorite(e: MouseEvent) {
-    e.stopPropagation()
+    if (isSelected) e.stopPropagation()
     onToggleFavorite()
   }
   const favoriteAction = (
@@ -53,8 +53,8 @@ const ContactListItem = ({
       iconClass="text-sm"
     />
   )
-  const editAction = <GoToEditAction contactId={contact.id} onClick={e => e.stopPropagation()} />
-  const deleteAction = <DeleteAction onConfirm={onDelete} onClick={e => e.stopPropagation()} />
+  const editAction = <GoToEditAction contactId={contact.id} />
+  const deleteAction = <DeleteAction onConfirm={onDelete} />
 
   const router = useRouter()
   function handleClick() {

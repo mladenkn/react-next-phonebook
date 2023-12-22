@@ -13,15 +13,16 @@ import {
 } from "./assets/icons"
 
 type GoToEditActionProps = {
-  onClick?(e: MouseEvent): void
   contactId: number
 }
 
-export const GoToEditAction = ({ contactId, onClick }: GoToEditActionProps) => (
-  <Link href={contactEditUrl(contactId)} onClick={onClick}>
-    <PencilIcon />
-  </Link>
-)
+export const GoToEditAction = ({ contactId }: GoToEditActionProps) => {
+  return (
+    <Link href={contactEditUrl(contactId)} onClick={e => e.stopPropagation()}>
+      <PencilIcon />
+    </Link>
+  )
+}
 
 type FavoriteActionProps = {
   onClick: (e: MouseEvent) => void
@@ -42,7 +43,7 @@ export const FavoriteAction = ({ onClick, isFavorite, iconClass }: FavoriteActio
 type DeleteActionProps = {
   withHoverEffect?: boolean
   withText?: boolean
-  onClick?(e: MouseEvent): void
+  onClick?(): void
   onConfirm: () => void
 }
 
@@ -55,7 +56,8 @@ export const DeleteAction = ({
   const [modalOpen, setModalOpen] = useState(false)
 
   function handleClick(e: MouseEvent) {
-    onClick && onClick(e)
+    e.stopPropagation()
+    onClick && onClick()
     setModalOpen(true)
   }
 
