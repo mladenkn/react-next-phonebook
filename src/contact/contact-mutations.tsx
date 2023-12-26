@@ -4,7 +4,7 @@ import { updateMatches } from "~/utils"
 import { api } from "~/utils/api"
 
 // nevalja još
-export function useContactMutation() {
+export function useContactUpdate() {
   const utils = api.useUtils()
 
   return api.contact.update.useMutation({
@@ -48,7 +48,7 @@ type ContactFavoriteProps = {
 }
 
 export function ContactFavorite({ id, isFavorite }: ContactFavoriteProps) {
-  const { mutate } = useContactMutation()
+  const { mutate } = useContactUpdate()
 
   function handleClick(e: MouseEvent) {
     e.stopPropagation()

@@ -11,7 +11,6 @@ export type ContactListProps = {
   className?: string
   includeAdder?: boolean
   deleteContact: (id: number) => void
-  toggleFavorite: (id: number) => void
 }
 
 export default function ContactList({
@@ -19,7 +18,6 @@ export default function ContactList({
   includeAdder,
   className,
   deleteContact,
-  toggleFavorite,
 }: ContactListProps) {
   const [selectedItemId, setSelectedItemId] = useState<number>()
 
@@ -38,7 +36,6 @@ export default function ContactList({
       key={c.id}
       isSelected={selectedItemId === c.id}
       onDelete={() => deleteContact(c.id)}
-      onToggleFavorite={() => toggleFavorite(c.id)}
       contact={c}
       onClick={() => onClick(c.id)}
     />

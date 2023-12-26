@@ -1,9 +1,8 @@
-import { GoToEditAction, FavoriteAction, DeleteAction } from "../actions"
+import { GoToEditAction, DeleteAction } from "../actions"
 import ContactAvatar from "./contact-avatar"
 import clsx from "clsx"
 import { cn } from "~/utils/ui-utils"
 import { ApiOutputs } from "~/utils/api"
-import { MouseEvent } from "react"
 import { ContactFavorite } from "./contact-mutations"
 
 export type ContactListItemModel = ApiOutputs["contact"]["list"][number]
@@ -11,7 +10,6 @@ export type ContactListItemModel = ApiOutputs["contact"]["list"][number]
 type ItemPresenterProps = {
   contact: ContactListItemModel
   isSelected: boolean
-  onToggleFavorite(): void
   onDelete(): void
   onClick(): void
 }
@@ -19,7 +17,6 @@ type ItemPresenterProps = {
 export default function ContactListItem({
   contact,
   isSelected,
-  onToggleFavorite,
   onDelete,
   onClick,
 }: ItemPresenterProps) {

@@ -45,7 +45,6 @@ export default function ContactListPage() {
         </div>
         <div className="mt-2 h-0.25 w-full bg-primary-main sm:mt-6" />
         <div className={searchWrapper_class + " shadow-secondary-main"}>
-          {/* <SearchIcon color="secondary" className="ml-2 mr-2" /> */}
           <MagnifierIcon className="ml-2 mr-2" />
           <input className="h-12 w-full p-2 text-lg text-gray-500 outline-none" />
         </div>
@@ -53,7 +52,6 @@ export default function ContactListPage() {
           <ContactList
             contacts={tabContacts}
             deleteContact={() => {}}
-            toggleFavorite={() => {}}
             includeAdder
             className="mt-3 sm:mt-6"
           />
