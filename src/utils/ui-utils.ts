@@ -1,14 +1,34 @@
-import { cn } from "."
+import { useState, useEffect } from "react"
 
-type Breakpoint = "sm" | "md" | "lg"
+export function useMediaQuery(breakpoint: Breakpoint) {
+  const [isMatch, setIsMatch] = useState(false)
+  const query = breakpointToQuery(breakpoint)
 
-export function getBreakpointContainerStyle(breakpoint: Breakpoint) {
+  useEffect(() => {
+    setIsMatch(window.matchMedia(query).matches)
+
+    const mediaQuery = window.matchMedia(query)
+    mediaQuery.addEventListener("change", e => setIsMatch(e.matches))
+
+    return () => mediaQuery.removeEventListener("change", e => setIsMatch(e.matches))
+  }, [])
+
+  return isMatch
+}
+
+type Breakpoint = "sm" | "md" | "lg" | "xl"
+
+function breakpointToQuery(breakpoint: Breakpoint) {
   switch (breakpoint) {
     case "sm":
-      return cn("px-8 mx-auto max-w-xl") // možda fali w-full
+      return "(min-width: 640px)"
     case "md":
-      return cn("px-8 mx-auto max-w-4xl flex justify-center items-center") // možda fali w-full
+      return "(min-width: 768px)"
     case "lg":
-      return cn("px-8 w-full mx-auto")
+      return "(min-width: 1024px)"
+    case "xl":
+      return "(min-width: 1280px)"
+    default:
+      throw new Error(`Breakpoint ${breakpoint} not supported.`)
   }
 }

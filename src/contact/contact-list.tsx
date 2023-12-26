@@ -4,6 +4,7 @@ import { cn } from "../utils"
 import { contactCreateUrl } from "../urls"
 import Link from "next/link"
 import { PlusIcon } from "~/assets/icons"
+import { useMediaQuery } from "~/utils/ui-utils"
 
 export type ContactListProps = {
   contacts: ContactListItemModel[]
@@ -21,13 +22,14 @@ const ContactList = ({
   toggleFavorite,
 }: ContactListProps) => {
   const [selectedItemId, setSelectedItemId] = useState<number>()
+  const isMd = useMediaQuery("md")
 
   const items = contacts.map(c => (
     <ContactListItem
       key={c.id}
       isSelected={selectedItemId === c.id}
       onDelete={() => deleteContact(c.id)}
-      onSelect={() => setSelectedItemId(c.id)}
+      onSelect={() => isMd && setSelectedItemId(c.id)}
       onToggleFavorite={() => toggleFavorite(c.id)}
       contact={c}
     />
