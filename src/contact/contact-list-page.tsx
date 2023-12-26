@@ -1,5 +1,5 @@
 import { useState } from "react"
-import ContactList, { ContactListProps } from "./contact-list"
+import ContactList from "./contact-list"
 import { cn } from "~/utils/ui-utils"
 import Toolbar from "~/toolbar"
 import { MagnifierIcon } from "~/assets/icons"
@@ -11,12 +11,8 @@ const searchWrapper_class = cn(
   "shadow-homeSearch",
 )
 
-type Props = {
-  // initialData: ContactListProps["contacts"] // TODO: async data
-}
-
 export default function ContactListPage() {
-  const contacts = api.contact.list.useQuery(undefined, {}) // TODO: never auto refetch
+  const contacts = api.contact.list.useQuery(undefined) // TODO: never auto refetch
   const [currentTab, setCurrentTab] = useState<"all" | "favorites">("all")
   const tabContacts =
     currentTab === "all" ? contacts.data : contacts.data?.filter(c => c.isFavorite)
