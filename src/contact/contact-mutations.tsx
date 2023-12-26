@@ -9,8 +9,7 @@ export function useContactUpdate() {
 
   return api.contact.update.useMutation({
     onMutate: async updatedContact => {
-      await utils.contact.list.cancel()
-      await utils.contact.single.cancel()
+      await Promise.all([utils.contact.list.cancel(), utils.contact.single.cancel()])
 
       utils.contact.list.setData(undefined, old => {
         if (!old) return old
