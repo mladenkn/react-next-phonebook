@@ -1,7 +1,7 @@
 import { Contact } from "./contact-schema"
 import { createTRPCRouter, publicProcedure } from "~/api/trpc"
 import { z } from "zod"
-import { eq, desc } from "drizzle-orm"
+import { eq, desc, and } from "drizzle-orm"
 
 const contactApi = createTRPCRouter({
   list: publicProcedure.query(({ ctx }) =>
@@ -13,9 +13,9 @@ const contactApi = createTRPCRouter({
 
   single: publicProcedure.input(z.number()).query(({ ctx, input }) =>
     ctx.db.query.Contact.findFirst({
-      where: eq(Contact.id, input),
+      where: and(eq(Contact.id, input), eq(Contact.isDeleted, false)),
       with: { phoneNumbers: true },
-    }),
+    }).then(c => c || null),
   ),
 
   update: publicProcedure

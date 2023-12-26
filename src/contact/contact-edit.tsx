@@ -7,6 +7,7 @@ import { cn } from "~/utils/ui-utils"
 import { useRouter } from "next/router"
 import Toolbar from "~/toolbar"
 import { ContactDeleteAction } from "./contact-delete"
+import { homePageUrl } from "~/urls"
 
 type Contact = Omit<_Contact, "id"> & { id?: number }
 
@@ -64,7 +65,7 @@ export default function ContactEditBase({ contact, onSave }: Props) {
             {contact.id ? (
               <ContactDeleteAction
                 contactId={contact.id}
-                onComplete={router.back}
+                onComplete={() => router.push(homePageUrl)}
                 withHoverEffect
               />
             ) : null}
