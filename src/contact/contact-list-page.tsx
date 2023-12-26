@@ -14,7 +14,7 @@ type Props = {
   data: ContactListProps["contacts"] // TODO: async data
 }
 
-const ContactListPage = ({ data }: Props) => {
+export default function ContactListPage({ data }: Props) {
   const [currentTab, setCurrentTab] = useState<"all" | "favorites">("all")
   const tabContacts = currentTab === "all" ? data : data.filter(c => c.isFavorite)
 
@@ -61,5 +61,3 @@ const ContactListPage = ({ data }: Props) => {
     </div>
   )
 }
-
-export default ContactListPage

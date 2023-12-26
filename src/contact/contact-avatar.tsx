@@ -8,7 +8,7 @@ type ContactAvatarProps = {
   url?: string | null
 }
 
-export const ContactAvatar = ({ className, style, letter, url }: ContactAvatarProps) => {
+export default function ContactAvatar({ className, style, letter, url }: ContactAvatarProps) {
   if (url)
     return (
       <img

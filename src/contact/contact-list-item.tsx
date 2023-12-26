@@ -1,5 +1,5 @@
 import { GoToEditAction, FavoriteAction, DeleteAction } from "../actions"
-import { ContactAvatar } from "./contact-avatar"
+import ContactAvatar from "./contact-avatar"
 import clsx from "clsx"
 import { cn } from "../utils"
 import { ApiOutputs } from "~/utils/api"
@@ -15,13 +15,13 @@ type ItemPresenterProps = {
   onClick(): void
 }
 
-const ContactListItem = ({
+export default function ContactListItem({
   contact,
   isSelected,
   onToggleFavorite,
   onDelete,
   onClick,
-}: ItemPresenterProps) => {
+}: ItemPresenterProps) {
   const avatar = (
     <ContactAvatar
       className="md:mb-2 md:mt-5"
@@ -91,5 +91,3 @@ const ContactListItem = ({
     </li>
   )
 }
-
-export default ContactListItem

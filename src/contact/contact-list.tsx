@@ -15,13 +15,13 @@ export type ContactListProps = {
   toggleFavorite: (id: number) => void
 }
 
-const ContactList = ({
+export default function ContactList({
   contacts,
   includeAdder,
   className,
   deleteContact,
   toggleFavorite,
-}: ContactListProps) => {
+}: ContactListProps) {
   const [selectedItemId, setSelectedItemId] = useState<number>()
 
   const isMd = useMediaQuery("md")
@@ -73,5 +73,3 @@ const ContactList = ({
     </ul>
   )
 }
-
-export default ContactList

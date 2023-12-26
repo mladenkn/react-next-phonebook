@@ -1,13 +1,13 @@
 import { Contact } from "../models"
 import ContactDetailsFields from "./contact-details-fields"
 import { FavoriteAction, GoToEditAction, GoBackAction } from "../actions"
-import { ContactAvatar } from "./contact-avatar"
+import ContactAvatar from "./contact-avatar"
 import { cn } from "../utils"
 import Toolbar from "~/toolbar"
 
 type Props = { contact: Contact; onFavorite: () => void }
 
-const ContactDetailsPage = ({ contact, onFavorite }: Props) => {
+export default function ContactDetailsPage({ contact, onFavorite }: Props) {
   const name = <p className="text-2xl">{contact.fullName}</p>
   const favAction = <FavoriteAction onClick={onFavorite} isFavorite={contact.isFavorite} />
   const editAction = <GoToEditAction contactId={contact.id} />
@@ -47,5 +47,3 @@ const ContactDetailsPage = ({ contact, onFavorite }: Props) => {
     </div>
   )
 }
-
-export default ContactDetailsPage

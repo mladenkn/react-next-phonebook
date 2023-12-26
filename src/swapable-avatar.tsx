@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { cn } from "./utils"
 import { TextInputDialog } from "./text-input-dialog"
-import { ContactAvatar } from "./contact/contact-avatar"
+import ContactAvatar from "./contact/contact-avatar"
 import { CloudUploadIcon, RemoveIcon } from "./assets/icons"
 
 type Props = {
