@@ -34,7 +34,7 @@ type Props = {
   withHoverEffect?: boolean
   withText?: boolean
   onClick?(): void
-  onComplete(): void
+  onComplete?(): void
 }
 
 export function ContactDeleteAction({ contactId, onComplete, ...props }: Props) {
@@ -42,7 +42,7 @@ export function ContactDeleteAction({ contactId, onComplete, ...props }: Props) 
 
   async function handleConfirm() {
     await mutate(contactId)
-    onComplete()
+    onComplete && onComplete()
   }
 
   return (

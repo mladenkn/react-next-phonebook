@@ -1,13 +1,14 @@
 import { Contact as _Contact } from "../models"
 import { useState } from "react"
-import { DeleteAction, GoBackAction } from "../actions"
+import { GoBackAction } from "../actions"
 import ContactForm, { contactFormValidate } from "./contact-form"
 import SwapableAvatar from "../swapable-avatar"
 import { cn } from "~/utils/ui-utils"
 import { useRouter } from "next/router"
 import Toolbar from "~/toolbar"
+import { ContactDeleteAction } from "./contact-delete"
 
-type Contact = Omit<_Contact, "id">
+type Contact = Omit<_Contact, "id"> & { id?: number }
 
 type Props = {
   contact: Contact
@@ -60,7 +61,13 @@ export default function ContactEditBase({ contact, onSave }: Props) {
         <div>
           <div className="mt-4 flex w-full items-center justify-between px-1 pb-2 pt-0">
             <GoBackAction />
-            {contact ? <DeleteAction onConfirm={router.back} withHoverEffect /> : null}
+            {contact.id ? (
+              <ContactDeleteAction
+                contactId={contact.id}
+                onComplete={router.back}
+                withHoverEffect
+              />
+            ) : null}
           </div>
           <div className="h-0.25 w-full bg-secondary-main md:hidden" />
           <h1 className="flex items-center justify-center px-0 md:hidden md:pb-2 sm-max:py-4">

@@ -27,23 +27,20 @@ export function GoToEditAction({ contactId }: GoToEditActionProps) {
 export type DeleteActionProps = {
   withHoverEffect?: boolean
   withText?: boolean
-  dialogText?: string
-  onClick?(): void
+  dialogText: string
   onConfirm: () => void
 }
 
 export function DeleteAction({
   withText,
   withHoverEffect,
-  dialogText = "Are you sure you want to delete this contact?",
+  dialogText,
   onConfirm,
-  onClick,
 }: DeleteActionProps) {
   const [modalOpen, setModalOpen] = useState(false)
 
   function handleClick(e: MouseEvent) {
     e.stopPropagation()
-    onClick && onClick()
     setModalOpen(true)
   }
 

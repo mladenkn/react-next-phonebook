@@ -1,25 +1,20 @@
-import { GoToEditAction, DeleteAction } from "../actions"
+import { GoToEditAction } from "~/actions"
 import ContactAvatar from "./contact-avatar"
 import clsx from "clsx"
 import { cn } from "~/utils/ui-utils"
 import { ApiOutputs } from "~/utils/api"
 import { ContactFavorite } from "./contact-mutations"
+import { ContactDeleteAction } from "./contact-delete"
 
 export type ContactListItemModel = ApiOutputs["contact"]["list"][number]
 
 type ItemPresenterProps = {
   contact: ContactListItemModel
   isSelected: boolean
-  onDelete(): void
   onClick(): void
 }
 
-export default function ContactListItem({
-  contact,
-  isSelected,
-  onDelete,
-  onClick,
-}: ItemPresenterProps) {
+export default function ContactListItem({ contact, isSelected, onClick }: ItemPresenterProps) {
   const avatar = (
     <ContactAvatar
       className="md:mb-2 md:mt-5"
@@ -40,7 +35,7 @@ export default function ContactListItem({
 
   const favoriteAction = <ContactFavorite id={contact.id} isFavorite={contact.isFavorite} />
   const editAction = <GoToEditAction contactId={contact.id} />
-  const deleteAction = <DeleteAction onConfirm={onDelete} />
+  const deleteAction = <ContactDeleteAction contactId={contact.id} />
 
   return (
     <li

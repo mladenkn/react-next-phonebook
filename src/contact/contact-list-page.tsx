@@ -49,12 +49,7 @@ export default function ContactListPage() {
           <input className="h-12 w-full p-2 text-lg text-gray-500 outline-none" />
         </div>
         {tabContacts ? (
-          <ContactList
-            contacts={tabContacts}
-            deleteContact={() => {}}
-            includeAdder
-            className="mt-3 sm:mt-6"
-          />
+          <ContactList contacts={tabContacts} includeAdder className="mt-3 sm:mt-6" />
         ) : (
           <p className="mt-3 sm:mt-6">Loading...</p>
         )}
