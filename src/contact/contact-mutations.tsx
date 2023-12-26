@@ -3,32 +3,38 @@ import { HeartBorderIcon, HeartFilledIcon } from "~/assets/icons"
 import { updateMatches } from "~/utils"
 import { api } from "~/utils/api"
 
+// nevalja još
 export function useContactMutation() {
   const utils = api.useUtils()
 
   return api.contact.update.useMutation({
     onMutate: async updatedContact => {
       await utils.contact.list.cancel()
-
-      const currentContacts = utils.contact.list.getData()
+      await utils.contact.single.cancel()
 
       utils.contact.list.setData(undefined, old => {
         if (!old) return old
         return updateMatches(
           old,
           c => c.id === updatedContact.id,
-          c => ({ ...c, isfavorite: c.isFavorite }),
+          c => ({ ...c, isfavorite: updatedContact.isFavorite || c.isFavorite }),
         )
       })
 
-      // todo: set data to single
+      utils.contact.single.setData(updatedContact.id, old =>
+        old ? { ...old, isFavorite: updatedContact.isFavorite || old.isFavorite } : undefined,
+      )
 
-      return { previous: { contact: { list: currentContacts } } }
+      return {
+        previous: {
+          contact: { list: utils.contact.list.getData(), single: utils.contact.single.getData() },
+        },
+      }
     },
 
     onError: (err, updatedContact, context) => {
       utils.contact.list.setData(undefined, context?.previous.contact.list)
-      utils.contact.single.setData(updatedContact.id, c => c && { ...c, isFavorite: c?.isFavorite })
+      utils.contact.single.setData(updatedContact.id, context?.previous.contact.single)
     },
 
     onSettled: () =>
