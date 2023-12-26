@@ -2,8 +2,6 @@ import { GoToEditAction, FavoriteAction, DeleteAction } from "../actions"
 import { ContactAvatar } from "./contact-avatar"
 import clsx from "clsx"
 import { cn } from "../utils"
-import { useRouter } from "next/router"
-import { contactDetailsUrl } from "~/urls"
 import { ApiOutputs } from "~/utils/api"
 import { MouseEvent } from "react"
 
@@ -14,7 +12,7 @@ type ItemPresenterProps = {
   isSelected: boolean
   onToggleFavorite(): void
   onDelete(): void
-  onSelect(): void
+  onClick(): void
 }
 
 const ContactListItem = ({
@@ -22,7 +20,7 @@ const ContactListItem = ({
   isSelected,
   onToggleFavorite,
   onDelete,
-  onSelect,
+  onClick,
 }: ItemPresenterProps) => {
   const avatar = (
     <ContactAvatar
@@ -56,20 +54,13 @@ const ContactListItem = ({
   const editAction = <GoToEditAction contactId={contact.id} />
   const deleteAction = <DeleteAction onConfirm={onDelete} />
 
-  const router = useRouter()
-  function handleClick() {
-    if (isSelected) {
-      router.push(contactDetailsUrl(contact.id))
-    } else onSelect()
-  }
-
   return (
     <li
       className={cn(
-        "h-16 w-full border-2 border-solid border-secondary-light md:h-36 md:w-60",
-        isSelected && "cursor-pointer border-primary-main",
+        "h-16 w-full cursor-pointer border-2 border-solid border-secondary-light md:h-36 md:w-60",
+        isSelected && "border-primary-main",
       )}
-      onClick={handleClick}
+      onClick={onClick}
     >
       <div className={cn("flex h-full w-full flex-col items-center pt-2 sm-max:hidden")}>
         <div className="flex w-full justify-between px-1.5">
