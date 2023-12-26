@@ -4,6 +4,7 @@ import clsx from "clsx"
 import { cn } from "~/utils/ui-utils"
 import { ApiOutputs } from "~/utils/api"
 import { MouseEvent } from "react"
+import { ContactFavorite } from "./contact-mutations"
 
 export type ContactListItemModel = ApiOutputs["contact"]["list"][number]
 
@@ -44,13 +45,7 @@ export default function ContactListItem({
     if (isSelected) e.stopPropagation()
     onToggleFavorite()
   }
-  const favoriteAction = (
-    <FavoriteAction
-      onClick={handleToggleFavorite}
-      isFavorite={contact.isFavorite}
-      iconClass="text-sm"
-    />
-  )
+  const favoriteAction = <ContactFavorite contact={contact} iconClass="text-sm" />
   const editAction = <GoToEditAction contactId={contact.id} />
   const deleteAction = <DeleteAction onConfirm={onDelete} />
 

@@ -33,3 +33,23 @@ export function asNonNil<T>(val?: T) {
 }
 
 export const eva = <T>(f: () => T) => f()
+
+export const updateMatches = <T>(
+  arr: T[],
+  doesMatch: (item: T) => boolean,
+  update: (item: T) => T,
+) => {
+  const allItems: T[] = []
+  // const updatedItems: T[] = []
+
+  arr.forEach(item => {
+    if (doesMatch(item)) {
+      const updated = update(item)
+      allItems.push(updated)
+      // updatedItems.push(updated)
+    } else allItems.push(item)
+  })
+
+  return allItems
+  // return [allItems, updatedItems]
+}

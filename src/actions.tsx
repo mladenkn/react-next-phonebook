@@ -24,7 +24,7 @@ export function GoToEditAction({ contactId }: GoToEditActionProps) {
   )
 }
 
-type FavoriteActionProps = {
+export type FavoriteActionProps = {
   onClick: (e: MouseEvent) => void
   isFavorite: boolean
   iconClass?: string
