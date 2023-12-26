@@ -32,19 +32,20 @@ export function useContactMutation() {
 }
 
 type ContactFavoriteProps = {
-  contact: {
-    id: number
-    isFavorite: boolean
-  }
+  id: number
+  isFavorite: boolean
 }
 
-export function ContactFavorite(props: ContactFavoriteProps) {
+export function ContactFavorite({ id, isFavorite }: ContactFavoriteProps) {
   const { mutate } = useContactMutation()
 
   function handleClick(e: MouseEvent) {
     e.stopPropagation()
-    mutate(props.contact)
+    mutate({
+      id,
+      isFavorite: !isFavorite,
+    })
   }
 
-  return <FavoriteAction isFavorite={props.contact.isFavorite} onClick={handleClick} />
+  return <FavoriteAction isFavorite={isFavorite} onClick={handleClick} />
 }

@@ -16,12 +16,9 @@ const contactApi = createTRPCRouter({
   ),
 
   update: publicProcedure
-    .input(z.object({ id: z.number(), isFavorite: z.boolean().nullish() }))
+    .input(z.object({ id: z.number(), isFavorite: z.boolean().optional() }))
     .mutation(({ ctx, input }) =>
-      ctx.db
-        .update(Contact)
-        .set({ isFavorite: input.isFavorite || undefined })
-        .where(eq(Contact.id, input.id)),
+      ctx.db.update(Contact).set({ isFavorite: input.isFavorite }).where(eq(Contact.id, input.id)),
     ),
 
   delete: publicProcedure

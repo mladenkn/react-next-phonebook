@@ -41,7 +41,7 @@ export default function ContactListItem({
     </p>
   )
 
-  const favoriteAction = <ContactFavorite contact={contact} iconClass="text-sm" />
+  const favoriteAction = <ContactFavorite id={contact.id} isFavorite={contact.isFavorite} />
   const editAction = <GoToEditAction contactId={contact.id} />
   const deleteAction = <DeleteAction onConfirm={onDelete} />
 
