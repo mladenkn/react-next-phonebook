@@ -1,5 +1,5 @@
 import { MouseEvent } from "react"
-import { FavoriteAction, FavoriteActionProps } from "~/actions"
+import { FavoriteAction } from "~/actions"
 import { updateMatches } from "~/utils"
 import { api } from "~/utils/api"
 
@@ -10,7 +10,7 @@ export function useContactMutation() {
     onMutate: async updatedContact => {
       await utils.contact.list.cancel()
 
-      const previousTodos = utils.contact.list.getData()
+      const currentContacts = utils.contact.list.getData()
 
       utils.contact.list.setData(undefined, old => {
         if (!old) return old
@@ -21,11 +21,11 @@ export function useContactMutation() {
         )
       })
 
-      return { previousTodos }
+      return { previous: { contact: { list: currentContacts } } }
     },
 
     onError: (err, updatedContact, context) =>
-      utils.contact.list.setData(undefined, context?.previousTodos),
+      utils.contact.list.setData(undefined, context?.previous.contact.list),
 
     onSettled: () =>
       Promise.all([utils.contact.list.invalidate(), utils.contact.single.invalidate()]),
