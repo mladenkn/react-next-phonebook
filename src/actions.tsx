@@ -2,7 +2,7 @@ import { contactEditUrl } from "./urls"
 import { MouseEvent, useState } from "react"
 import DeleteModal from "./delete-dialog"
 import Link from "next/link"
-import { cn } from "./utils"
+import { cn } from "~/utils/ui-utils"
 import { useRouter } from "next/router"
 import {
   ArrowBackIcon,

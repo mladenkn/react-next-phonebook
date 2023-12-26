@@ -1,10 +1,9 @@
 import { useState } from "react"
 import ContactListItem, { ContactListItemModel } from "./contact-list-item"
-import { cn } from "~/utils"
+import { cn, useMediaQuery } from "~/utils/ui-utils"
 import { contactCreateUrl, contactDetailsUrl } from "~/urls"
 import Link from "next/link"
 import { PlusIcon } from "~/assets/icons"
-import { useMediaQuery } from "~/utils/ui-utils"
 import { useRouter } from "next/router"
 
 export type ContactListProps = {

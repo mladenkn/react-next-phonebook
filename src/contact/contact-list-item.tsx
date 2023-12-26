@@ -1,7 +1,7 @@
 import { GoToEditAction, FavoriteAction, DeleteAction } from "../actions"
 import ContactAvatar from "./contact-avatar"
 import clsx from "clsx"
-import { cn } from "../utils"
+import { cn } from "~/utils/ui-utils"
 import { ApiOutputs } from "~/utils/api"
 import { MouseEvent } from "react"
 

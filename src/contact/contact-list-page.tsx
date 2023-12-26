@@ -1,6 +1,6 @@
 import { useState } from "react"
 import ContactList, { ContactListProps } from "./contact-list"
-import { cn } from "../utils"
+import { cn } from "~/utils/ui-utils"
 import Toolbar from "~/toolbar"
 import { MagnifierIcon } from "~/assets/icons"
 

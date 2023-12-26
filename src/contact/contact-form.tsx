@@ -1,7 +1,7 @@
 import { Contact as _Contact } from "../models"
 import { FormikErrors, Formik, Field, ErrorMessage, FieldArray } from "formik"
 import { ContactFieldLabel } from "../various"
-import { cn } from "../utils"
+import { cn } from "~/utils/ui-utils"
 import {
   PersonOutlinedIcon,
   EmailIcon,

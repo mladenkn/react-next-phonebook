@@ -3,7 +3,7 @@ import { useState } from "react"
 import { DeleteAction, GoBackAction } from "../actions"
 import ContactForm, { contactFormValidate } from "./contact-form"
 import { SwapableAvatar } from "../swapable-avatar"
-import { cn } from "../utils"
+import { cn } from "~/utils/ui-utils"
 import { useRouter } from "next/router"
 import Toolbar from "~/toolbar"
 

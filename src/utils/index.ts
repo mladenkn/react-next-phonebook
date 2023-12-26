@@ -1,10 +1,4 @@
 import { faker } from "@faker-js/faker"
-import { ClassValue, clsx } from "clsx"
-import { twMerge } from "tailwind-merge"
-
-export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
-}
 
 export const generateArray = <T>(getNext: () => T, minCount: number, maxCount: number) => {
   const count = faker.number.int({ min: minCount, max: maxCount })

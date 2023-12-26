@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react"
+import { ClassValue, clsx } from "clsx"
+import { twMerge } from "tailwind-merge"
 
 export function useMediaQuery(breakpoint: Breakpoint) {
   const [isMatch, setIsMatch] = useState<boolean>()
@@ -14,6 +16,10 @@ export function useMediaQuery(breakpoint: Breakpoint) {
   }, [])
 
   return isMatch
+}
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs))
 }
 
 type Breakpoint = "sm" | "md" | "lg" | "xl"

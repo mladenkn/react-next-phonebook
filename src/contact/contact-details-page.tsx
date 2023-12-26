@@ -2,7 +2,7 @@ import { Contact } from "../models"
 import ContactDetailsFields from "./contact-details-fields"
 import { FavoriteAction, GoToEditAction, GoBackAction } from "../actions"
 import ContactAvatar from "./contact-avatar"
-import { cn } from "../utils"
+import { cn } from "~/utils/ui-utils"
 import Toolbar from "~/toolbar"
 
 type Props = { contact: Contact; onFavorite: () => void }

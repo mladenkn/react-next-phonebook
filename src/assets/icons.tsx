@@ -1,5 +1,5 @@
 import { CSSProperties } from "react"
-import { cn } from "~/utils"
+import { cn } from "~/utils/ui-utils"
 
 type Props = {
   className?: string
