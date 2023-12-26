@@ -1,5 +1,4 @@
 import { faker } from "@faker-js/faker"
-import { useState, useLayoutEffect } from "react"
 import { ClassValue, clsx } from "clsx"
 import { twMerge } from "tailwind-merge"
 
@@ -7,38 +6,11 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
-cn.md = function cn_md(styles: string) {
-  const separated = styles.split(" ")
-  const r = separated.map(s => `md:${s}`).join(" ")
-  return r
-}
-
 export const generateArray = <T>(getNext: () => T, minCount: number, maxCount: number) => {
   const count = faker.number.int({ min: minCount, max: maxCount })
   const r: T[] = []
   for (let i = 0; i < count; i++) r.push(getNext())
   return r
-}
-
-export type AsyncOperationStatus = "NEVER_INITIATED" | "PROCESSING" | "COMPLETED" | "ERROR"
-
-export const updateMatches = <T>(
-  arr: T[],
-  doesMatch: (item: T) => boolean,
-  update: (item: T) => T,
-): [T[], T[]] => {
-  const allItems: T[] = []
-  const updatedItems: T[] = []
-
-  arr.forEach(item => {
-    if (doesMatch(item)) {
-      const updated = update(item)
-      allItems.push(updated)
-      updatedItems.push(updated)
-    } else allItems.push(item)
-  })
-
-  return [allItems, updatedItems]
 }
 
 export const validURL = (str: string) => {
@@ -67,22 +39,3 @@ export function asNonNil<T>(val?: T) {
 }
 
 export const eva = <T>(f: () => T) => f()
-
-export function useWidth() {
-  const [size, setSize] = useState<number>()
-
-  useLayoutEffect(() => {
-    const handleResize = () => {
-      setSize(window.innerWidth)
-    }
-
-    handleResize()
-    window.addEventListener("resize", handleResize)
-
-    return () => {
-      window.removeEventListener("resize", handleResize)
-    }
-  }, [])
-
-  return size
-}
