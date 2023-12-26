@@ -24,15 +24,6 @@ export function GoToEditAction({ contactId }: GoToEditActionProps) {
   )
 }
 
-export type FavoriteActionProps = {
-  onClick: (e: MouseEvent) => void
-  isFavorite: boolean
-}
-
-export function FavoriteAction({ onClick, isFavorite }: FavoriteActionProps) {
-  return <button onClick={onClick}>{isFavorite ? <HeartFilledIcon /> : <HeartBorderIcon />}</button>
-}
-
 type DeleteActionProps = {
   withHoverEffect?: boolean
   withText?: boolean

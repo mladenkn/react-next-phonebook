@@ -1,4 +1,3 @@
-import { Contact } from "../models"
 import ContactDetailsFields from "./contact-details-fields"
 import { GoToEditAction, GoBackAction } from "../actions"
 import ContactAvatar from "./contact-avatar"
@@ -12,7 +11,6 @@ export default function ContactDetailsPage({ contactId }: { contactId: number })
 
   if (!contact.data) return <>Loading...</> // never
 
-  // const favAction = <FavoriteAction onClick={onFavorite} isFavorite={contact.isFavorite} />
   const editAction = <GoToEditAction contactId={contact.data.id} />
 
   const avatar = (

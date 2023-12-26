@@ -1,5 +1,5 @@
 import { MouseEvent } from "react"
-import { FavoriteAction } from "~/actions"
+import { HeartBorderIcon, HeartFilledIcon } from "~/assets/icons"
 import { updateMatches } from "~/utils"
 import { api } from "~/utils/api"
 
@@ -48,5 +48,7 @@ export function ContactFavorite({ id, isFavorite }: ContactFavoriteProps) {
     })
   }
 
-  return <FavoriteAction isFavorite={isFavorite} onClick={handleClick} />
+  return (
+    <button onClick={handleClick}>{isFavorite ? <HeartFilledIcon /> : <HeartBorderIcon />}</button>
+  )
 }
