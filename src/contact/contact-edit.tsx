@@ -12,10 +12,9 @@ type Contact = Omit<_Contact, "id">
 type Props = {
   contact: Contact
   onSave: (c: Contact) => void
-  onDelete?: () => void
 }
 
-export default function ContactEditBase({ contact, onSave, onDelete }: Props) {
+export default function ContactEditBase({ contact, onSave }: Props) {
   const [editedContact, setEditedContact] = useState(contact)
   const [isEditedContactValid, setIsEditedContactValid] = useState(
     contactFormValidate(contact).isValid,
@@ -61,7 +60,7 @@ export default function ContactEditBase({ contact, onSave, onDelete }: Props) {
         <div>
           <div className="mt-4 flex w-full items-center justify-between px-1 pb-2 pt-0">
             <GoBackAction />
-            {contact ? <DeleteAction onConfirm={onDelete!} withHoverEffect /> : null}
+            {contact ? <DeleteAction onConfirm={router.back} withHoverEffect /> : null}
           </div>
           <div className="h-0.25 w-full bg-secondary-main md:hidden" />
           <h1 className="flex items-center justify-center px-0 md:hidden md:pb-2 sm-max:py-4">

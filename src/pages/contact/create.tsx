@@ -12,7 +12,6 @@ export default function ContactCreatePage() {
         avatarStyle: getRandomAvatarStyle(),
       }}
       onSave={() => {}}
-      onDelete={() => {}}
     />
   )
 }

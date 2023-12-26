@@ -15,5 +15,5 @@ export async function getServerSideProps({ query }: GetServerSidePropsContext) {
 type Props = Awaited<ReturnType<typeof getServerSideProps>>["props"]
 
 export default function ContactEditPage({ contact }: Props) {
-  return <ContactEditBase contact={contact} onSave={() => {}} onDelete={() => {}} />
+  return <ContactEditBase contact={contact} onSave={() => {}} />
 }
