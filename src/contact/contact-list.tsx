@@ -20,7 +20,7 @@ const ContactList = ({
   deleteContact,
   toggleFavorite,
 }: ContactListProps) => {
-  const [selectedItemId, setSelectedItemId] = useState(0)
+  const [selectedItemId, setSelectedItemId] = useState<number>()
 
   const items = contacts.map(c => (
     <ContactListItem
