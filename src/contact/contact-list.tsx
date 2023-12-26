@@ -10,15 +10,9 @@ export type ContactListProps = {
   contacts: ContactListItemModel[]
   className?: string
   includeAdder?: boolean
-  deleteContact: (id: number) => void
 }
 
-export default function ContactList({
-  contacts,
-  includeAdder,
-  className,
-  deleteContact,
-}: ContactListProps) {
+export default function ContactList({ contacts, includeAdder, className }: ContactListProps) {
   const [selectedItemId, setSelectedItemId] = useState<number>()
 
   const isMd = useMediaQuery("md")
@@ -35,7 +29,6 @@ export default function ContactList({
     <ContactListItem
       key={c.id}
       isSelected={selectedItemId === c.id}
-      onDelete={() => deleteContact(c.id)}
       contact={c}
       onClick={() => onClick(c.id)}
     />
