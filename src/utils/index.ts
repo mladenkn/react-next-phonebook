@@ -32,6 +32,10 @@ export function asNonNil<T>(val?: T) {
   return val
 }
 
+export function isNil<T>(val?: T | null | undefined): val is null | undefined {
+  return val === null || val === undefined
+}
+
 export const eva = <T>(f: () => T) => f()
 
 export const updateMatches = <T>(

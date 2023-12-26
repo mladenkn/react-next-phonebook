@@ -1,14 +1,22 @@
 import { MouseEvent } from "react"
 import { HeartBorderIcon, HeartFilledIcon } from "~/assets/icons"
-import { updateMatches } from "~/utils"
+import { isNil, updateMatches } from "~/utils"
 import { api } from "~/utils/api"
 
-// nevalja još
 export function useContactUpdate() {
   const utils = api.useUtils()
 
   return api.contact.update.useMutation({
-    onMutate: async updatedContact => {
+    async onMutate(updatedContact) {
+      function getNewData<T extends { id: number; isFavorite: boolean }>(old: T) {
+        return {
+          ...old,
+          isFavorite: isNil(updatedContact.isFavorite)
+            ? old.isFavorite
+            : (updatedContact.isFavorite as boolean),
+        }
+      }
+
       await Promise.all([utils.contact.list.cancel(), utils.contact.single.cancel()])
 
       utils.contact.list.setData(undefined, old => {
@@ -16,14 +24,11 @@ export function useContactUpdate() {
         return updateMatches(
           old,
           c => c.id === updatedContact.id,
-          c => ({ ...c, isfavorite: updatedContact.isFavorite || c.isFavorite }),
+          c => getNewData(c),
         )
       })
 
-      utils.contact.single.setData(
-        updatedContact.id,
-        old => old && { ...old, isFavorite: updatedContact.isFavorite || old.isFavorite },
-      )
+      utils.contact.single.setData(updatedContact.id, old => old && getNewData(old))
 
       return {
         previous: {
@@ -32,13 +37,14 @@ export function useContactUpdate() {
       }
     },
 
-    onError: (err, updatedContact, context) => {
+    onError(err, updatedContact, context) {
       utils.contact.list.setData(undefined, context?.previous.contact.list)
       utils.contact.single.setData(updatedContact.id, context?.previous.contact.single)
     },
 
-    onSettled: () =>
-      Promise.all([utils.contact.list.invalidate(), utils.contact.single.invalidate()]),
+    onSettled() {
+      return Promise.all([utils.contact.list.invalidate(), utils.contact.single.invalidate()])
+    },
   })
 }
 
