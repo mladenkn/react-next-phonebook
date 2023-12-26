@@ -24,14 +24,21 @@ export function GoToEditAction({ contactId }: GoToEditActionProps) {
   )
 }
 
-type DeleteActionProps = {
+export type DeleteActionProps = {
   withHoverEffect?: boolean
   withText?: boolean
+  dialogText?: string
   onClick?(): void
   onConfirm: () => void
 }
 
-export function DeleteAction({ withText, withHoverEffect, onConfirm, onClick }: DeleteActionProps) {
+export function DeleteAction({
+  withText,
+  withHoverEffect,
+  dialogText = "Are you sure you want to delete this contact?",
+  onConfirm,
+  onClick,
+}: DeleteActionProps) {
   const [modalOpen, setModalOpen] = useState(false)
 
   function handleClick(e: MouseEvent) {
@@ -53,11 +60,7 @@ export function DeleteAction({ withText, withHoverEffect, onConfirm, onClick }: 
         <TrashIcon />
       </button>
       {modalOpen ? (
-        <DeleteModal
-          text="Are you sure you want to delete this contact?"
-          onCancel={() => setModalOpen(false)}
-          onConfirm={onConfirm}
-        />
+        <DeleteModal text={dialogText} onCancel={() => setModalOpen(false)} onConfirm={onConfirm} />
       ) : null}
     </>
   )
