@@ -27,7 +27,8 @@ export function useContactMutation() {
     onError: (err, updatedContact, context) =>
       utils.contact.list.setData(undefined, context?.previousTodos),
 
-    onSettled: () => utils.contact.list.invalidate(),
+    onSettled: () =>
+      Promise.all([utils.contact.list.invalidate(), utils.contact.single.invalidate()]),
   })
 }
 

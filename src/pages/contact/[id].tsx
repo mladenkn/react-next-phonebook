@@ -1,19 +1,17 @@
 import { GetServerSidePropsContext } from "next"
 import apiSs from "~/api/api.ss"
 import ContactDetailsPage from "~/contact/contact-details-page"
-import { asNonNil } from "~/utils"
 
 export async function getServerSideProps({ query }: GetServerSidePropsContext) {
   if (typeof query.id !== "string") throw new Error()
   const contactId = parseInt(query.id)
-  const contact = asNonNil(await apiSs.contact.single.fetch(contactId))
+  await apiSs.contact.single.prefetch(contactId)
   return {
-    props: { contact },
+    props: {
+      trpcState: apiSs.dehydrate(),
+      contactId,
+    },
   }
 }
 
-type Props = Awaited<ReturnType<typeof getServerSideProps>>["props"]
-
-export default function ContactDetailsPageWrapper({ contact }: Props) {
-  return <ContactDetailsPage contact={contact} onFavorite={() => {}} />
-}
+export default ContactDetailsPage
