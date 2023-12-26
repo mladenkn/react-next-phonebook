@@ -20,8 +20,9 @@ export function useContactUpdate() {
         )
       })
 
-      utils.contact.single.setData(updatedContact.id, old =>
-        old ? { ...old, isFavorite: updatedContact.isFavorite || old.isFavorite } : undefined,
+      utils.contact.single.setData(
+        updatedContact.id,
+        old => old && { ...old, isFavorite: updatedContact.isFavorite || old.isFavorite },
       )
 
       return {
