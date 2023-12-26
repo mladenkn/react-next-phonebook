@@ -12,5 +12,5 @@ export async function getServerSideProps() {
 type Props = Awaited<ReturnType<typeof getServerSideProps>>["props"]
 
 export default function Home({ contacts }: Props) {
-  return <ContactListPage data={contacts} />
+  return <ContactListPage initialData={contacts} />
 }

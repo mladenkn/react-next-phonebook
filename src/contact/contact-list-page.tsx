@@ -3,6 +3,7 @@ import ContactList, { ContactListProps } from "./contact-list"
 import { cn } from "~/utils/ui-utils"
 import Toolbar from "~/toolbar"
 import { MagnifierIcon } from "~/assets/icons"
+import { api } from "~/utils/api"
 
 const searchWrapper_class = cn(
   "mt-5 flex w-80 items-center sm:mt-10 sm:w-96",
@@ -11,12 +12,14 @@ const searchWrapper_class = cn(
 )
 
 type Props = {
-  data: ContactListProps["contacts"] // TODO: async data
+  initialData: ContactListProps["contacts"] // TODO: async data
 }
 
-export default function ContactListPage({ data }: Props) {
+export default function ContactListPage({ initialData }: Props) {
+  const contacts = api.contact.list.useQuery(undefined, { initialData }) // TODO: never auto refetch
   const [currentTab, setCurrentTab] = useState<"all" | "favorites">("all")
-  const tabContacts = currentTab === "all" ? data : data.filter(c => c.isFavorite)
+  const tabContacts =
+    currentTab === "all" ? contacts.data : contacts.data?.filter(c => c.isFavorite)
 
   return (
     <div className="mx-auto max-w-6xl px-4 lg:px-16">
@@ -50,13 +53,17 @@ export default function ContactListPage({ data }: Props) {
           <MagnifierIcon className="ml-2 mr-2" />
           <input className="h-12 w-full p-2 text-lg text-gray-500 outline-none" />
         </div>
-        <ContactList
-          contacts={tabContacts}
-          deleteContact={() => {}}
-          toggleFavorite={() => {}}
-          includeAdder
-          className="mt-3 sm:mt-6"
-        />
+        {tabContacts ? (
+          <ContactList
+            contacts={tabContacts}
+            deleteContact={() => {}}
+            toggleFavorite={() => {}}
+            includeAdder
+            className="mt-3 sm:mt-6"
+          />
+        ) : (
+          <p>Loading...</p>
+        )}
       </div>
     </div>
   )
