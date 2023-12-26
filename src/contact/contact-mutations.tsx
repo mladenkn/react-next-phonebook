@@ -21,11 +21,15 @@ export function useContactMutation() {
         )
       })
 
+      // todo: set data to single
+
       return { previous: { contact: { list: currentContacts } } }
     },
 
-    onError: (err, updatedContact, context) =>
-      utils.contact.list.setData(undefined, context?.previous.contact.list),
+    onError: (err, updatedContact, context) => {
+      utils.contact.list.setData(undefined, context?.previous.contact.list)
+      utils.contact.single.setData(updatedContact.id, c => c && { ...c, isFavorite: c?.isFavorite })
+    },
 
     onSettled: () =>
       Promise.all([utils.contact.list.invalidate(), utils.contact.single.invalidate()]),
