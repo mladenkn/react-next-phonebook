@@ -4,13 +4,7 @@ import DeleteModal from "./delete-dialog"
 import Link from "next/link"
 import { cn } from "~/utils/ui-utils"
 import { useRouter } from "next/router"
-import {
-  ArrowBackIcon,
-  HeartBorderIcon,
-  HeartFilledIcon,
-  PencilIcon,
-  TrashIcon,
-} from "./assets/icons"
+import { ArrowBackIcon, PencilIcon, TrashIcon } from "./assets/icons"
 
 type GoToEditActionProps = {
   contactId: number
