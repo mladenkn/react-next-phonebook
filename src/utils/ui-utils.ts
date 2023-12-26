@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 
 export function useMediaQuery(breakpoint: Breakpoint) {
-  const [isMatch, setIsMatch] = useState(false)
+  const [isMatch, setIsMatch] = useState<boolean>()
   const query = breakpointToQuery(breakpoint)
 
   useEffect(() => {
