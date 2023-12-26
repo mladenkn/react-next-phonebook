@@ -8,7 +8,7 @@ export function useContactUpdate() {
 
   return api.contact.update.useMutation({
     async onMutate(updatedContact) {
-      function getNewData<T extends { id: number; isFavorite: boolean }>(old: T) {
+      function getNewData<T extends typeof updatedContact>(old: T) {
         return {
           ...old,
           isFavorite: isNil(updatedContact.isFavorite)
