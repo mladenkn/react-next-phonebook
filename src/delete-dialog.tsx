@@ -3,7 +3,7 @@ import { Modal } from "./various"
 
 type Props = {
   text: string
-  onCancel: () => void
+  onCancel: (e: MouseEvent) => void
   onConfirm: (e: MouseEvent) => void
 }
 

@@ -18,6 +18,7 @@ export default function ContactList({ contacts, includeAdder, className }: Conta
   const isMd = useMediaQuery("md")
   const router = useRouter()
   function onClick(itemId: number) {
+    console.log(21, "contact-item-click")
     if (selectedItemId === itemId || !isMd) {
       router.push(contactDetailsUrl(itemId))
     } else if (isMd) {

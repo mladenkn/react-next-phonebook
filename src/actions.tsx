@@ -38,6 +38,11 @@ export function DeleteAction({
     setModalOpen(true)
   }
 
+  function handleCancel(e: MouseEvent) {
+    e.stopPropagation()
+    setModalOpen(false)
+  }
+
   return (
     <>
       <button
@@ -51,7 +56,7 @@ export function DeleteAction({
         <TrashIcon />
       </button>
       {modalOpen ? (
-        <DeleteModal text={dialogText} onCancel={() => setModalOpen(false)} onConfirm={onConfirm} />
+        <DeleteModal text={dialogText} onCancel={handleCancel} onConfirm={onConfirm} />
       ) : null}
     </>
   )
