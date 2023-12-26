@@ -2,15 +2,12 @@ import apiSs from "~/api/api.ss"
 import ContactListPage from "~/contact/contact-list-page"
 
 export async function getServerSideProps() {
+  await apiSs.contact.list.prefetch()
   return {
     props: {
-      contacts: await apiSs.contact.list.fetch(),
+      trpcState: apiSs.dehydrate(),
     },
   }
 }
 
-type Props = Awaited<ReturnType<typeof getServerSideProps>>["props"]
-
-export default function Home({ contacts }: Props) {
-  return <ContactListPage initialData={contacts} />
-}
+export default ContactListPage

@@ -12,11 +12,11 @@ const searchWrapper_class = cn(
 )
 
 type Props = {
-  initialData: ContactListProps["contacts"] // TODO: async data
+  // initialData: ContactListProps["contacts"] // TODO: async data
 }
 
-export default function ContactListPage({ initialData }: Props) {
-  const contacts = api.contact.list.useQuery(undefined, { initialData }) // TODO: never auto refetch
+export default function ContactListPage() {
+  const contacts = api.contact.list.useQuery(undefined, {}) // TODO: never auto refetch
   const [currentTab, setCurrentTab] = useState<"all" | "favorites">("all")
   const tabContacts =
     currentTab === "all" ? contacts.data : contacts.data?.filter(c => c.isFavorite)
@@ -62,7 +62,7 @@ export default function ContactListPage({ initialData }: Props) {
             className="mt-3 sm:mt-6"
           />
         ) : (
-          <p>Loading...</p>
+          <p className="mt-3 sm:mt-6">Loading...</p>
         )}
       </div>
     </div>
