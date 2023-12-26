@@ -30,15 +30,17 @@ type FavoriteActionProps = {
   iconClass?: string
 }
 
-export const FavoriteAction = ({ onClick, isFavorite, iconClass }: FavoriteActionProps) => (
-  <button onClick={onClick}>
-    {isFavorite ? (
-      <HeartFilledIcon className={iconClass} />
-    ) : (
-      <HeartBorderIcon className={iconClass} />
-    )}
-  </button>
-)
+export function FavoriteAction({ onClick, isFavorite, iconClass }: FavoriteActionProps) {
+  return (
+    <button onClick={onClick}>
+      {isFavorite ? (
+        <HeartFilledIcon className={iconClass} />
+      ) : (
+        <HeartBorderIcon className={iconClass} />
+      )}
+    </button>
+  )
+}
 
 type DeleteActionProps = {
   withHoverEffect?: boolean
