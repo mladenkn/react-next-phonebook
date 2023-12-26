@@ -27,19 +27,10 @@ export function GoToEditAction({ contactId }: GoToEditActionProps) {
 export type FavoriteActionProps = {
   onClick: (e: MouseEvent) => void
   isFavorite: boolean
-  iconClass?: string
 }
 
-export function FavoriteAction({ onClick, isFavorite, iconClass }: FavoriteActionProps) {
-  return (
-    <button onClick={onClick}>
-      {isFavorite ? (
-        <HeartFilledIcon className={iconClass} />
-      ) : (
-        <HeartBorderIcon className={iconClass} />
-      )}
-    </button>
-  )
+export function FavoriteAction({ onClick, isFavorite }: FavoriteActionProps) {
+  return <button onClick={onClick}>{isFavorite ? <HeartFilledIcon /> : <HeartBorderIcon />}</button>
 }
 
 type DeleteActionProps = {
