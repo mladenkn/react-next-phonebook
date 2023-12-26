@@ -16,7 +16,7 @@ type GoToEditActionProps = {
   contactId: number
 }
 
-export const GoToEditAction = ({ contactId }: GoToEditActionProps) => {
+export function GoToEditAction({ contactId }: GoToEditActionProps) {
   return (
     <Link href={contactEditUrl(contactId)} onClick={e => e.stopPropagation()}>
       <PencilIcon />
@@ -47,12 +47,7 @@ type DeleteActionProps = {
   onConfirm: () => void
 }
 
-export const DeleteAction = ({
-  withText,
-  withHoverEffect,
-  onConfirm,
-  onClick,
-}: DeleteActionProps) => {
+export function DeleteAction({ withText, withHoverEffect, onConfirm, onClick }: DeleteActionProps) {
   const [modalOpen, setModalOpen] = useState(false)
 
   function handleClick(e: MouseEvent) {
@@ -84,7 +79,7 @@ export const DeleteAction = ({
   )
 }
 
-export const GoBackAction = () => {
+export function GoBackAction() {
   const router = useRouter()
   return (
     <button onClick={() => router.back()}>

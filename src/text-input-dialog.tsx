@@ -9,7 +9,12 @@ type TextInputDialogProps = {
   onCancel: () => void
 }
 
-export const TextInputDialog = ({ text, isInputValid, onOK, onCancel }: TextInputDialogProps) => {
+export default function TextInputDialog({
+  text,
+  isInputValid,
+  onOK,
+  onCancel,
+}: TextInputDialogProps) {
   const [input, setInput] = useState(text || "")
   const inputValid = isInputValid(input)
   const okButtonDisabled = !inputValid

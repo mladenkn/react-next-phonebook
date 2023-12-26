@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { cn } from "~/utils/ui-utils"
-import { TextInputDialog } from "./text-input-dialog"
+import TextInputDialog from "./text-input-dialog"
 import ContactAvatar from "./contact/contact-avatar"
 import { CloudUploadIcon, RemoveIcon } from "./assets/icons"
 
@@ -10,7 +10,7 @@ type Props = {
   className?: string
 }
 
-export const SwapableAvatar = ({ className, src, onChange }: Props) => {
+export default function SwapableAvatar({ className, src, onChange }: Props) {
   const [isDialogOpen, setIsDialogOpen] = useState(false)
 
   const handleDialogOK = (image: string) => {
