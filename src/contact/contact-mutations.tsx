@@ -36,7 +36,6 @@ type ContactFavoriteProps = {
     id: number
     isFavorite: boolean
   }
-  iconClass?: string
 }
 
 export function ContactFavorite(props: ContactFavoriteProps) {
