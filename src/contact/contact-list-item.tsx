@@ -41,10 +41,6 @@ export default function ContactListItem({
     </p>
   )
 
-  function handleToggleFavorite(e: MouseEvent) {
-    if (isSelected) e.stopPropagation()
-    onToggleFavorite()
-  }
   const favoriteAction = <ContactFavorite contact={contact} iconClass="text-sm" />
   const editAction = <GoToEditAction contactId={contact.id} />
   const deleteAction = <DeleteAction onConfirm={onDelete} />
