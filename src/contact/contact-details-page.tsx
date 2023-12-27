@@ -4,7 +4,7 @@ import ContactAvatar from "./contact-avatar"
 import { cn } from "~/utils/ui-utils"
 import Toolbar from "~/toolbar"
 import { api } from "~/utils/api"
-import { ContactFavorite } from "./contact-mutations"
+import { ContactFavorite } from "./contact-update"
 
 export default function ContactDetailsPage({ contactId }: { contactId: number }) {
   const contact = api.contact.single.useQuery(contactId)
