@@ -2,6 +2,7 @@ import { GetServerSidePropsContext } from "next"
 import apiSs from "~/api/api.ss"
 import ContactDetailsPage from "~/contact/contact-details-page"
 
+// missing not found handle
 export async function getServerSideProps({ query }: GetServerSidePropsContext) {
   if (typeof query.id !== "string") throw new Error()
   const contactId = parseInt(query.id)

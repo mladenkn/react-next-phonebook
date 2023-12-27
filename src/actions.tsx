@@ -25,6 +25,7 @@ export type DeleteActionProps = {
   onConfirm: () => void
 }
 
+// Maybe put in head like MUI, to avoid some problems like e.stopPropagation()
 export function DeleteAction({
   withHoverEffect,
   withText,
@@ -36,6 +37,11 @@ export function DeleteAction({
   function handleClick(e: MouseEvent) {
     e.stopPropagation()
     setModalOpen(true)
+  }
+
+  function handleConfirm(e: MouseEvent) {
+    e.stopPropagation()
+    onConfirm()
   }
 
   function handleCancel(e: MouseEvent) {
@@ -56,7 +62,7 @@ export function DeleteAction({
         <TrashIcon />
       </button>
       {modalOpen ? (
-        <DeleteModal text={dialogText} onCancel={handleCancel} onConfirm={onConfirm} />
+        <DeleteModal text={dialogText} onCancel={handleCancel} onConfirm={handleConfirm} />
       ) : null}
     </>
   )
