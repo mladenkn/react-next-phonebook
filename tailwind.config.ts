@@ -13,11 +13,13 @@ export default {
           dark: "#2496A2",
         },
         secondary: {
+          // vjer popravit
           light: "#E3E3E3",
           main: "#BBC4C3",
           dark: colors.gray[600],
         },
         tc: {
+          // vjer izbacit
           primary: colors.gray[500],
           secondary: "#2DA1AD",
         },

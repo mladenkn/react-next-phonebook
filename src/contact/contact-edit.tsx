@@ -67,6 +67,7 @@ export default function ContactEditBase({ contact, onSave }: Props) {
                 contactId={contact.id}
                 onComplete={() => router.push(homePageUrl)}
                 withHoverEffect
+                withText
               />
             ) : null}
           </div>

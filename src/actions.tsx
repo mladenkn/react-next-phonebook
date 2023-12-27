@@ -26,8 +26,8 @@ export type DeleteActionProps = {
 }
 
 export function DeleteAction({
-  withText,
   withHoverEffect,
+  withText,
   dialogText,
   onConfirm,
 }: DeleteActionProps) {
@@ -52,7 +52,7 @@ export function DeleteAction({
         )}
         onClick={handleClick}
       >
-        {(withText || false) && <p className="mr-1 text-base">Delete</p>}
+        {withText && <p className="mr-1 hidden text-base text-tc-primary md:block">Delete</p>}
         <TrashIcon />
       </button>
       {modalOpen ? (
