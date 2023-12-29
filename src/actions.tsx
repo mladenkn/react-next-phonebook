@@ -11,7 +11,7 @@ type GoToEditActionProps = {
 export function GoToEditAction({ contactId }: GoToEditActionProps) {
   function handleClick(e: MouseEvent) {
     e.stopPropagation()
-    alert("Edit functionality not implemented. HARE KRISHNA JAAAY")
+    alert("Edit functionality not implemented.")
   }
   return (
     <button onClick={handleClick}>
