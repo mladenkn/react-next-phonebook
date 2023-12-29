@@ -1,7 +1,5 @@
-import { contactEditUrl } from "./urls"
 import { MouseEvent, useState } from "react"
 import DeleteModal from "./delete-dialog"
-import Link from "next/link"
 import { cn } from "~/utils/ui-utils"
 import { useRouter } from "next/router"
 import { ArrowBackIcon, PencilIcon, TrashIcon } from "./assets/icons"
@@ -11,10 +9,14 @@ type GoToEditActionProps = {
 }
 
 export function GoToEditAction({ contactId }: GoToEditActionProps) {
+  function handleClick(e: MouseEvent) {
+    e.stopPropagation()
+    alert("Edit functionality not implemented.")
+  }
   return (
-    <Link href={contactEditUrl(contactId)} onClick={e => e.stopPropagation()}>
+    <button onClick={handleClick}>
       <PencilIcon />
-    </Link>
+    </button>
   )
 }
 
