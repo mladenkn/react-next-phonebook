@@ -2,7 +2,7 @@ import { MouseEvent, useRef, useState } from "react"
 import DeleteModal from "./delete-dialog"
 import { cn } from "~/utils/ui-utils"
 import { useRouter } from "next/router"
-import { ArrowBackIcon, PencilIcon, TrashIcon } from "./assets/icons"
+import { ArrowBackIcon, PencilIcon, RemoveIcon, TrashIcon } from "./assets/icons"
 import * as Toast from "@radix-ui/react-toast"
 
 type GoToEditActionProps = {
@@ -10,21 +10,19 @@ type GoToEditActionProps = {
 }
 
 const toastCn = cn([
-  "data-[state=open]:animate-slideIn",
-  "data-[state=closed]:animate-hide",
-  "data-[swipe=end]:animate-swipeOut",
-  "grid",
-  "grid-cols-[auto_max-content]",
-  "items-center",
-  "gap-x-[15px]",
-  "rounded-md",
-  "bg-white",
-  "p-[15px]",
-  "shadow-[hsl(206_22%_7%_/_35%)_0px_10px_38px_-10px,_hsl(206_22%_7%_/_20%)_0px_10px_20px_-15px]",
-  "[grid-template-areas:_'title_action'_'description_action']",
-  "data-[swipe=cancel]:translate-x-0",
-  "data-[swipe=move]:translate-x-[var(--radix-toast-swipe-move-x)]",
-  "data-[swipe=cancel]:transition-[transform_200ms_ease-out]",
+  // "data-[state=open]:animate-slideIn",
+  // "data-[state=closed]:animate-hide",
+  // "data-[swipe=end]:animate-swipeOut",
+  // // "grid",
+  // // "grid-cols-[auto_max-content]",
+  // "items-center",
+  // // "gap-x-[15px]",
+  // // "p-[15px]",
+  // "shadow-[hsl(206_22%_7%_/_35%)_0px_10px_38px_-10px,_hsl(206_22%_7%_/_20%)_0px_10px_20px_-15px]",
+  // "[grid-template-areas:_'title_action'_'description_action']",
+  // "data-[swipe=cancel]:translate-x-0",
+  // "data-[swipe=move]:translate-x-[var(--radix-toast-swipe-move-x)]",
+  // "data-[swipe=cancel]:transition-[transform_200ms_ease-out]",
 ])
 
 export function GoToEditAction({ contactId }: GoToEditActionProps) {
@@ -36,7 +34,6 @@ export function GoToEditAction({ contactId }: GoToEditActionProps) {
     setToastActive(false)
     window.clearTimeout(timerRef.current)
     timerRef.current = window.setTimeout(() => {
-      // eventDateRef.current = oneWeekAway();
       setToastActive(true)
     }, 100)
   }
@@ -45,8 +42,15 @@ export function GoToEditAction({ contactId }: GoToEditActionProps) {
       <button onClick={handleClick}>
         <PencilIcon />
       </button>
-      <Toast.Root className={toastCn} open={toastActive} onOpenChange={setToastActive}>
-        oooohhh yeahhh
+      <Toast.Root
+        className="flex w-96 justify-between rounded-lg bg-secondary-main px-3 pb-4 pt-3"
+        open={toastActive}
+        onOpenChange={setToastActive}
+      >
+        <p className="text-xl">Edit functionality not implemented.</p>
+        <button>
+          <RemoveIcon className="text-black" />
+        </button>
       </Toast.Root>
     </>
   )
