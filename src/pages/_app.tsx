@@ -3,6 +3,7 @@ import { type AppType } from "next/app"
 import { api } from "~/utils/api"
 import "~/styles.css"
 import * as Toast from "@radix-ui/react-toast"
+import { ToastViewport } from "~/utils/toast"
 
 const MyApp: AppType = ({ Component, pageProps }) => {
   return (
@@ -12,7 +13,7 @@ const MyApp: AppType = ({ Component, pageProps }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Component {...pageProps} />
-      <Toast.Viewport className="fixed bottom-0 right-0 z-[2147483647] m-0 mr-2 flex w-[390px] max-w-[100vw] list-none flex-col gap-[10px] p-[var(--viewport-padding)] outline-none [--viewport-padding:_25px] lg:mr-8" />
+      <ToastViewport />
     </Toast.Provider>
   )
 }
