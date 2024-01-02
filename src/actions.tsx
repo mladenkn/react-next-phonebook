@@ -43,7 +43,7 @@ export function GoToEditAction({ contactId }: GoToEditActionProps) {
         <PencilIcon />
       </button>
       <Toast.Root
-        className="flex w-96 justify-between rounded-lg bg-secondary-main px-3 pb-4 pt-3"
+        className="bg-primary-lightBg flex w-96 justify-between rounded-lg px-3 pb-4 pt-3"
         open={toastActive}
         onOpenChange={setToastActive}
       >

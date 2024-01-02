@@ -8,6 +8,7 @@ export default {
     extend: {
       colors: {
         primary: {
+          lightBg: colors.sky[100],
           light: "#78C9CE",
           main: "#2DA1AD",
           dark: "#2496A2",
