@@ -1,10 +1,10 @@
 import { useState } from "react"
 import ContactListItem, { ContactListItemModel } from "./contact-list-item"
 import { cn, useMediaQuery } from "~/utils/ui-utils"
-import { contactCreateUrl, contactDetailsUrl } from "~/urls"
-import Link from "next/link"
+import { contactDetailsUrl } from "~/urls"
 import { PlusIcon } from "~/assets/icons"
 import { useRouter } from "next/router"
+import { Toast, useToast } from "~/utils/toast"
 
 export type ContactListProps = {
   contacts: ContactListItemModel[]
@@ -14,6 +14,7 @@ export type ContactListProps = {
 
 export default function ContactList({ contacts, includeAdder, className }: ContactListProps) {
   const [selectedItemId, setSelectedItemId] = useState<number>()
+  const [isToastActive, setToastActive] = useToast()
 
   const isMd = useMediaQuery("md")
   const router = useRouter()
@@ -38,13 +39,13 @@ export default function ContactList({ contacts, includeAdder, className }: Conta
   if (includeAdder_) {
     const adder = (
       <li key={0} className="h-14 w-full md:h-36 md:w-60">
-        <Link
-          href={contactCreateUrl}
+        <button
+          onClick={() => setToastActive(true)}
           className="flex h-full w-full items-center border-1 border-dashed border-primary-light md:flex-col md:justify-center"
         >
           <PlusIcon className="max-md:ml-5 max-md:mr-2 text-2xl text-primary-light" />
           <p className="text-primary-light">Add new</p>
-        </Link>
+        </button>
       </li>
     )
     items.unshift(adder)
@@ -59,6 +60,9 @@ export default function ContactList({ contacts, includeAdder, className }: Conta
       )}
     >
       {items}
+      <Toast className="bg-error-light" isActive={isToastActive} setIsActive={setToastActive}>
+        <p className="text-xl">Contact create not implemented.</p>
+      </Toast>
     </ul>
   )
 }
