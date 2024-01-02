@@ -1,25 +1,20 @@
-import { MouseEvent, useRef, useState } from "react"
+import { MouseEvent, useState } from "react"
 import DeleteModal from "./delete-dialog"
 import { cn } from "~/utils/ui-utils"
 import { useRouter } from "next/router"
-import { ArrowBackIcon, PencilIcon, RemoveIcon, TrashIcon } from "./assets/icons"
-import * as Toast from "@radix-ui/react-toast"
+import { ArrowBackIcon, PencilIcon, TrashIcon } from "./assets/icons"
+import { Toast, useToast } from "./utils/toast"
 
 type GoToEditActionProps = {
   contactId: number
 }
 
-export function GoToEditAction({ contactId }: GoToEditActionProps) {
-  const [toastActive, setToastActive] = useState(false)
-  const timerRef = useRef(0)
+export function GoToEditAction({}: GoToEditActionProps) {
+  const [isToastActive, setToastActive] = useToast()
 
   function handleClick(e: MouseEvent) {
     e.stopPropagation()
-    setToastActive(false)
-    window.clearTimeout(timerRef.current)
-    timerRef.current = window.setTimeout(() => {
-      setToastActive(true)
-    }, 100)
+    setToastActive(true)
   }
 
   return (
@@ -27,18 +22,9 @@ export function GoToEditAction({ contactId }: GoToEditActionProps) {
       <button onClick={handleClick}>
         <PencilIcon />
       </button>
-      <Toast.Root
-        duration={200000}
-        className="bg-error-light flex w-96 justify-between rounded-lg px-3 pb-4 pt-3"
-        open={toastActive}
-        onOpenChange={setToastActive}
-        onClick={e => e.stopPropagation()}
-      >
+      <Toast className="bg-error-light" isActive={isToastActive} setIsActive={setToastActive}>
         <p className="text-xl">Edit functionality not implemented.</p>
-        <button onClick={() => setToastActive(false)}>
-          <RemoveIcon className="text-black" />
-        </button>
-      </Toast.Root>
+      </Toast>
     </>
   )
 }
