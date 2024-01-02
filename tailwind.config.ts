@@ -8,7 +8,6 @@ export default {
     extend: {
       colors: {
         primary: {
-          lightBg: colors.sky[100],
           light: "#78C9CE",
           main: "#2DA1AD",
           dark: "#2496A2",
@@ -23,6 +22,9 @@ export default {
           // vjer izbacit
           primary: colors.gray[500],
           secondary: "#2DA1AD",
+        },
+        error: {
+          light: colors.red[200],
         },
       },
       boxShadow: {

@@ -43,12 +43,14 @@ export function GoToEditAction({ contactId }: GoToEditActionProps) {
         <PencilIcon />
       </button>
       <Toast.Root
-        className="bg-primary-lightBg flex w-96 justify-between rounded-lg px-3 pb-4 pt-3"
+        duration={200000}
+        className="bg-error-light flex w-96 justify-between rounded-lg px-3 pb-4 pt-3"
         open={toastActive}
         onOpenChange={setToastActive}
+        onClick={e => e.stopPropagation()}
       >
         <p className="text-xl">Edit functionality not implemented.</p>
-        <button>
+        <button onClick={() => setToastActive(false)}>
           <RemoveIcon className="text-black" />
         </button>
       </Toast.Root>
