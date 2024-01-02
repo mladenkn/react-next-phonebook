@@ -18,7 +18,7 @@ export default function ContactListPage() {
     currentTab === "all" ? contacts.data : contacts.data?.filter(c => c.isFavorite)
 
   return (
-    <div className="mx-auto max-w-6xl px-4 lg:px-16">
+    <div className="mx-auto max-w-6xl px-3 pb-2 lg:px-16">
       <Toolbar />
 
       <div className={cn("mt-20 flex flex-col items-center")}>
