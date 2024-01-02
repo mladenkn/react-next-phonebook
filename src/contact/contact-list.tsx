@@ -43,7 +43,7 @@ export default function ContactList({ contacts, includeAdder, className }: Conta
           onClick={() => setToastActive(true)}
           className="flex h-full w-full items-center border-1 border-dashed border-primary-light md:flex-col md:justify-center"
         >
-          <PlusIcon className="max-md:ml-5 max-md:mr-2 text-2xl text-primary-light" />
+          <PlusIcon className="text-2xl text-primary-light sm-max:ml-3 sm-max:mr-2" />
           <p className="text-primary-light">Add new</p>
         </button>
       </li>

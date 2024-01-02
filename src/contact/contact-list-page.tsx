@@ -32,7 +32,7 @@ export default function ContactListPage() {
           >
             All contacts
           </button>
-          <div className="h-5 w-1 bg-secondary-main" />
+          <div className="h-5 w-0.5 bg-secondary-main" />
           <button
             className={cn(
               "text-lg font-medium text-tc-primary",
