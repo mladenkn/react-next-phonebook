@@ -53,7 +53,7 @@ export function ToastViewport() {
   return (
     <_Toast.Viewport
       className={cn(
-        "fixed bottom-2 right-2 z-[2147483647] m-0 flex max-w-[100vw]",
+        "fixed bottom-2 left-2 right-2 z-[2147483647] m-0 flex max-w-[100vw]",
         "list-none flex-col gap-[10px] outline-none",
       )}
     />
