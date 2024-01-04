@@ -2,20 +2,7 @@ import { MouseEvent, useState } from "react"
 import DeleteModal from "./delete-dialog"
 import { cn } from "~/utils/ui-utils"
 import { useRouter } from "next/router"
-import { ArrowBackIcon, PencilIcon, TrashIcon } from "./assets/icons"
-
-type GoToEditActionProps = {
-  contactId: number
-  onClick(e: MouseEvent): void
-}
-
-export function GoToEditAction({ onClick }: GoToEditActionProps) {
-  return (
-    <button onClick={onClick}>
-      <PencilIcon />
-    </button>
-  )
-}
+import { ArrowBackIcon, TrashIcon } from "./assets/icons"
 
 export type DeleteActionProps = {
   withHoverEffect?: boolean

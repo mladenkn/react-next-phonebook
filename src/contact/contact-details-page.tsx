@@ -1,17 +1,24 @@
 import ContactDetailsFields from "./contact-details-fields"
-import { GoToEditAction, GoBackAction } from "../actions"
+import { GoBackAction } from "../actions"
 import ContactAvatar from "./contact-avatar"
 import { cn } from "~/utils/ui-utils"
 import Toolbar from "~/toolbar"
 import { api } from "~/utils/api"
 import { ContactFavorite } from "./contact-update"
+import { PencilIcon } from "~/assets/icons"
+import { Toast, useToast } from "~/utils/toast"
 
 export default function ContactDetailsPage({ contactId }: { contactId: number }) {
   const contact = api.contact.single.useQuery(contactId)
 
   if (!contact.data) return <>Loading...</> // never
 
-  const editAction = <GoToEditAction contactId={contact.data.id} />
+  const [isEditToastActive, setIsEditToastActive] = useToast()
+  const editAction = (
+    <button onClick={() => setIsEditToastActive(true)}>
+      <PencilIcon />
+    </button>
+  )
 
   const avatar = (
     <ContactAvatar
@@ -45,6 +52,13 @@ export default function ContactDetailsPage({ contactId }: { contactId: number })
           <ContactDetailsFields contact={contact.data} />
         </div>
       </div>
+      <Toast
+        className="bg-error-light"
+        isActive={isEditToastActive}
+        setIsActive={setIsEditToastActive}
+      >
+        <p className="text-xl sm:mr-6">Edit functionality not implemented.</p>
+      </Toast>
     </div>
   )
 }

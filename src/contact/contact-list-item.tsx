@@ -1,4 +1,3 @@
-import { GoToEditAction } from "~/actions"
 import ContactAvatar from "./contact-avatar"
 import clsx from "clsx"
 import { cn } from "~/utils/ui-utils"
@@ -8,7 +7,7 @@ import { ContactDeleteAction } from "./contact-delete"
 import Link from "next/link"
 import { contactDetailsUrl } from "~/urls"
 import { MouseEvent } from "react"
-import { Toast, useToast } from "~/utils/toast"
+import { PencilIcon } from "~/assets/icons"
 
 export type ContactListItemModel = ApiOutputs["contact"]["list"][number]
 
@@ -44,7 +43,11 @@ export default function ContactListItem({
   )
 
   const favoriteAction = <ContactFavorite id={contact.id} isFavorite={contact.isFavorite} />
-  const editAction = <GoToEditAction contactId={contact.id} onClick={onEditClick} />
+  const editAction = (
+    <button onClick={onEditClick}>
+      <PencilIcon />
+    </button>
+  )
   const deleteAction = <ContactDeleteAction contactId={contact.id} />
 
   function handleMdClick(e: MouseEvent) {
