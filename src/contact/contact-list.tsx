@@ -1,9 +1,7 @@
 import { useState } from "react"
 import ContactListItem, { ContactListItemModel } from "./contact-list-item"
-import { cn, useMediaQuery } from "~/utils/ui-utils"
-import { contactDetailsUrl } from "~/urls"
+import { cn } from "~/utils/ui-utils"
 import { PlusIcon } from "~/assets/icons"
-import { useRouter } from "next/router"
 import { Toast, useToast } from "~/utils/toast"
 
 export type ContactListProps = {
@@ -16,22 +14,12 @@ export default function ContactList({ contacts, includeAdder, className }: Conta
   const [selectedItemId, setSelectedItemId] = useState<number>()
   const [isToastActive, setToastActive] = useToast()
 
-  const isMd = useMediaQuery("md")
-  const router = useRouter()
-  function onClick(itemId: number) {
-    if (selectedItemId === itemId || !isMd) {
-      router.push(contactDetailsUrl(itemId))
-    } else if (isMd) {
-      setSelectedItemId(itemId)
-    }
-  }
-
   const items = contacts.map(c => (
     <ContactListItem
       key={c.id}
       isSelected={selectedItemId === c.id}
       contact={c}
-      onClick={() => onClick(c.id)}
+      onSelect={() => setSelectedItemId(c.id)}
     />
   ))
 
