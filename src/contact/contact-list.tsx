@@ -61,14 +61,14 @@ export default function ContactList({ contacts, includeAdder, className }: Conta
         isActive={isCreateToastActive}
         setIsActive={setIsCreateToastActive}
       >
-        <p className="mr-6 text-xl">Contact create not implemented.</p>
+        <p className="mr-6 text-xl">Contact create not available.</p>
       </Toast>
       <Toast
         className="bg-error-light"
         isActive={isEditToastActive}
         setIsActive={setIsEditToastActive}
       >
-        <p className="text-xl sm:mr-6">Edit functionality not implemented.</p>
+        <p className="text-xl sm:mr-6">Contact edit not available.</p>
       </Toast>
     </ul>
   )
