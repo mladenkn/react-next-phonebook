@@ -68,7 +68,7 @@ export default function ContactList({ contacts, includeAdder, className }: Conta
         isActive={isEditToastActive}
         setIsActive={setIsEditToastActive}
       >
-        <p className="text-xl sm:mr-6">Contact edit not available.</p>
+        <p className="mr-4 text-xl">Contact edit not available.</p>
       </Toast>
     </ul>
   )

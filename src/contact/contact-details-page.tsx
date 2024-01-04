@@ -57,7 +57,7 @@ export default function ContactDetailsPage({ contactId }: { contactId: number })
         isActive={isEditToastActive}
         setIsActive={setIsEditToastActive}
       >
-        <p className="text-xl sm:mr-6">Contact edit not available.</p>
+        <p className="text-xl mr-4">Contact edit not available.</p>
       </Toast>
     </div>
   )
