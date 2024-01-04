@@ -8,6 +8,7 @@ import { ContactDeleteAction } from "./contact-delete"
 import Link from "next/link"
 import { contactDetailsUrl } from "~/urls"
 import { MouseEvent } from "react"
+import { Toast, useToast } from "~/utils/toast"
 
 export type ContactListItemModel = ApiOutputs["contact"]["list"][number]
 
@@ -15,9 +16,15 @@ type ItemPresenterProps = {
   contact: ContactListItemModel
   isSelected: boolean
   onSelect(): void
+  onEditClick(e: MouseEvent): void
 }
 
-export default function ContactListItem({ contact, isSelected, onSelect }: ItemPresenterProps) {
+export default function ContactListItem({
+  contact,
+  isSelected,
+  onSelect,
+  onEditClick,
+}: ItemPresenterProps) {
   const avatar = (
     <ContactAvatar
       className="md:mb-2 md:mt-5"
@@ -37,7 +44,7 @@ export default function ContactListItem({ contact, isSelected, onSelect }: ItemP
   )
 
   const favoriteAction = <ContactFavorite id={contact.id} isFavorite={contact.isFavorite} />
-  const editAction = <GoToEditAction contactId={contact.id} />
+  const editAction = <GoToEditAction contactId={contact.id} onClick={onEditClick} />
   const deleteAction = <ContactDeleteAction contactId={contact.id} />
 
   function handleMdClick(e: MouseEvent) {

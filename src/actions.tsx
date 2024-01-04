@@ -3,30 +3,17 @@ import DeleteModal from "./delete-dialog"
 import { cn } from "~/utils/ui-utils"
 import { useRouter } from "next/router"
 import { ArrowBackIcon, PencilIcon, TrashIcon } from "./assets/icons"
-import { Toast, useToast } from "./utils/toast"
 
 type GoToEditActionProps = {
   contactId: number
+  onClick(e: MouseEvent): void
 }
 
-export function GoToEditAction({}: GoToEditActionProps) {
-  const [isToastActive, setToastActive] = useToast()
-
-  function handleClick(e: MouseEvent) {
-    e.preventDefault()
-    e.stopPropagation()
-    setToastActive(true)
-  }
-
+export function GoToEditAction({ onClick }: GoToEditActionProps) {
   return (
-    <>
-      <button onClick={handleClick}>
-        <PencilIcon />
-      </button>
-      <Toast className="bg-error-light" isActive={isToastActive} setIsActive={setToastActive}>
-        <p className="text-xl sm:mr-6">Edit functionality not implemented.</p>
-      </Toast>
-    </>
+    <button onClick={onClick}>
+      <PencilIcon />
+    </button>
   )
 }
 

@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { MouseEvent, useState } from "react"
 import ContactListItem, { ContactListItemModel } from "./contact-list-item"
 import { cn } from "~/utils/ui-utils"
 import { PlusIcon } from "~/assets/icons"
@@ -12,7 +12,14 @@ export type ContactListProps = {
 
 export default function ContactList({ contacts, includeAdder, className }: ContactListProps) {
   const [selectedItemId, setSelectedItemId] = useState<number>()
-  const [isToastActive, setToastActive] = useToast()
+  const [isCreateToastActive, setIsCreateToastActive] = useToast()
+
+  const [isEditToastActive, setIsEditToastActive] = useToast()
+  function handleEditClick(e: MouseEvent) {
+    e.stopPropagation()
+    e.preventDefault()
+    setIsEditToastActive(true)
+  }
 
   const items = contacts.map(c => (
     <ContactListItem
@@ -20,6 +27,7 @@ export default function ContactList({ contacts, includeAdder, className }: Conta
       isSelected={selectedItemId === c.id}
       contact={c}
       onSelect={() => setSelectedItemId(c.id)}
+      onEditClick={handleEditClick}
     />
   ))
 
@@ -28,7 +36,7 @@ export default function ContactList({ contacts, includeAdder, className }: Conta
     const adder = (
       <li key={0} className="h-14 w-full md:h-36 md:w-60">
         <button
-          onClick={() => setToastActive(true)}
+          onClick={() => setIsCreateToastActive(true)}
           className="flex h-full w-full items-center border-1 border-dashed border-primary-light md:flex-col md:justify-center"
         >
           <PlusIcon className="text-2xl text-primary-light sm-max:ml-3 sm-max:mr-2" />
@@ -48,8 +56,19 @@ export default function ContactList({ contacts, includeAdder, className }: Conta
       )}
     >
       {items}
-      <Toast className="bg-error-light" isActive={isToastActive} setIsActive={setToastActive}>
+      <Toast
+        className="bg-error-light"
+        isActive={isCreateToastActive}
+        setIsActive={setIsCreateToastActive}
+      >
         <p className="mr-6 text-xl">Contact create not implemented.</p>
+      </Toast>
+      <Toast
+        className="bg-error-light"
+        isActive={isEditToastActive}
+        setIsActive={setIsEditToastActive}
+      >
+        <p className="text-xl sm:mr-6">Edit functionality not implemented.</p>
       </Toast>
     </ul>
   )
