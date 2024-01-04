@@ -36,7 +36,7 @@ type ToastProps = {
 export function Toast({ className, isActive, children, setIsActive }: ToastProps) {
   return (
     <_Toast.Root
-      className={cn("flex w-96 justify-between rounded-lg px-3 pb-4 pt-3", className)}
+      className={cn("flex justify-between rounded-lg px-3 pb-4 pt-3", className)}
       open={isActive}
       onOpenChange={setIsActive}
       onClick={e => e.stopPropagation()}
@@ -51,6 +51,11 @@ export function Toast({ className, isActive, children, setIsActive }: ToastProps
 
 export function ToastViewport() {
   return (
-    <_Toast.Viewport className="fixed bottom-0 right-0 z-[2147483647] m-0 mr-2 flex w-[390px] max-w-[100vw] list-none flex-col gap-[10px] p-[var(--viewport-padding)] outline-none [--viewport-padding:_25px] lg:mr-8" />
+    <_Toast.Viewport
+      className={cn(
+        "fixed bottom-2 right-2 z-[2147483647] m-0 flex max-w-[100vw]",
+        "list-none flex-col gap-[10px] outline-none",
+      )}
+    />
   )
 }

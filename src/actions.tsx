@@ -23,7 +23,7 @@ export function GoToEditAction({}: GoToEditActionProps) {
         <PencilIcon />
       </button>
       <Toast className="bg-error-light" isActive={isToastActive} setIsActive={setToastActive}>
-        <p className="text-xl">Edit functionality not implemented.</p>
+        <p className="text-xl sm:mr-6">Edit functionality not implemented.</p>
       </Toast>
     </>
   )

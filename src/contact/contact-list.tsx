@@ -61,7 +61,7 @@ export default function ContactList({ contacts, includeAdder, className }: Conta
     >
       {items}
       <Toast className="bg-error-light" isActive={isToastActive} setIsActive={setToastActive}>
-        <p className="text-xl">Contact create not implemented.</p>
+        <p className="mr-6 text-xl">Contact create not implemented.</p>
       </Toast>
     </ul>
   )
