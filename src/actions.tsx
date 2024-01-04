@@ -13,6 +13,7 @@ export function GoToEditAction({}: GoToEditActionProps) {
   const [isToastActive, setToastActive] = useToast()
 
   function handleClick(e: MouseEvent) {
+    e.preventDefault()
     e.stopPropagation()
     setToastActive(true)
   }
