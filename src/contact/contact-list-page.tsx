@@ -4,6 +4,7 @@ import Toolbar from "~/toolbar"
 import { MagnifierIcon } from "~/assets/icons"
 import { api } from "~/utils/api"
 import { useRouter, useSearchParams } from "next/navigation"
+import { useState } from "react"
 
 const searchWrapper_class = cn(
   "mt-5 flex w-80 items-center sm:mt-10 sm:w-96",
@@ -12,7 +13,8 @@ const searchWrapper_class = cn(
 )
 
 export default function ContactListPage() {
-  const contacts = api.contact.list.useQuery(undefined)
+  const [search, setSearch] = useState("")
+  const contacts = api.contact.list.useQuery({ search })
   const [currentTab, setCurrentTab] = useTabState()
   const tabContacts =
     currentTab === "all" ? contacts.data : contacts.data?.filter(c => c.isFavorite)
@@ -46,7 +48,10 @@ export default function ContactListPage() {
         <div className="mt-2 h-0.25 w-full bg-primary-main sm:mt-6" />
         <div className={searchWrapper_class + " shadow-secondary-main"}>
           <MagnifierIcon className="ml-2 mr-2" />
-          <input className="h-12 w-full p-2 text-lg text-gray-500 outline-none" />
+          <input
+            className="h-12 w-full p-2 text-lg text-gray-500 outline-none"
+            onChange={e => setSearch(e.target.value)}
+          />
         </div>
         {tabContacts ? (
           <ContactList contacts={tabContacts} includeAdder className="mt-3 sm:mt-6" />
