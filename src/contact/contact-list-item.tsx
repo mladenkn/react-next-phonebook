@@ -52,10 +52,12 @@ export default function ContactListItem({
 
   const router = useRouter()
   function handleMdClick(e: MouseEvent) {
-    if (!isSelected) {
+    if (isSelected) {
+      router.push(contactDetailsUrl(contact.id))
+    } else {
       e.preventDefault()
       onSelect()
-    } else router.push(contactDetailsUrl(contact.id))
+    }
   }
 
   return (
@@ -65,6 +67,20 @@ export default function ContactListItem({
         isSelected && "border-primary-main",
       )}
     >
+      <button
+        className={cn(
+          "flex h-full w-full items-center justify-between py-2 pl-2 pr-1 shadow-none md:hidden",
+        )}
+        onClick={() => router.push(contactDetailsUrl(contact.id))}
+      >
+        {avatar}
+        {name}
+        <div className="flex gap-1">
+          {favoriteAction}
+          {editAction}
+          {deleteAction}
+        </div>
+      </button>
       <button
         className={cn("flex h-full w-full flex-col items-center pt-2 sm-max:hidden")}
         onClick={handleMdClick}
@@ -80,20 +96,6 @@ export default function ContactListItem({
         </div>
         {avatar}
         {name}
-      </button>
-      <button
-        className={cn(
-          "flex h-full w-full items-center justify-between py-2 pl-2 pr-1 shadow-none md:hidden",
-        )}
-        onClick={() => router.push(contactDetailsUrl(contact.id))}
-      >
-        {avatar}
-        {name}
-        <div className="flex gap-1">
-          {favoriteAction}
-          {editAction}
-          {deleteAction}
-        </div>
       </button>
     </li>
   )
