@@ -1,9 +1,9 @@
-import { useState } from "react"
 import ContactList from "./contact-list"
 import { cn } from "~/utils/ui-utils"
 import Toolbar from "~/toolbar"
 import { MagnifierIcon } from "~/assets/icons"
 import { api } from "~/utils/api"
+import { useRouter, useSearchParams } from "next/navigation"
 
 const searchWrapper_class = cn(
   "mt-5 flex w-80 items-center sm:mt-10 sm:w-96",
@@ -12,8 +12,8 @@ const searchWrapper_class = cn(
 )
 
 export default function ContactListPage() {
-  const contacts = api.contact.list.useQuery(undefined) // TODO: never auto refetch
-  const [currentTab, setCurrentTab] = useState<"all" | "favorites">("all")
+  const contacts = api.contact.list.useQuery(undefined)
+  const [currentTab, setCurrentTab] = useTabState()
   const tabContacts =
     currentTab === "all" ? contacts.data : contacts.data?.filter(c => c.isFavorite)
 
@@ -56,4 +56,16 @@ export default function ContactListPage() {
       </div>
     </div>
   )
+}
+
+function useTabState() {
+  const searchParams = useSearchParams()
+  const router = useRouter()
+  const value = (searchParams.get("tab") || "all") as "all" | "favorites"
+
+  function setValue(value: "all" | "favorites") {
+    router.push(`?tab=${value}`)
+  }
+
+  return [value, setValue] as const
 }
