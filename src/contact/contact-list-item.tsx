@@ -67,7 +67,7 @@ export default function ContactListItem({
         isSelected && "border-primary-main",
       )}
     >
-      <button
+      <div
         className={cn(
           "flex h-full w-full items-center justify-between py-2 pl-2 pr-1 shadow-none md:hidden",
         )}
@@ -80,8 +80,8 @@ export default function ContactListItem({
           {editAction}
           {deleteAction}
         </div>
-      </button>
-      <button
+      </div>
+      <div
         className={cn("flex h-full w-full flex-col items-center pt-2 sm-max:hidden")}
         onClick={handleMdClick}
       >
@@ -96,7 +96,7 @@ export default function ContactListItem({
         </div>
         {avatar}
         {name}
-      </button>
+      </div>
     </li>
   )
 }
