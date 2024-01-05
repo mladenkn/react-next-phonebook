@@ -14,10 +14,8 @@ const searchWrapper_class = cn(
 
 export default function ContactListPage() {
   const [search, setSearch] = useState("")
-  const contacts = api.contact.list.useQuery({ search })
   const [currentTab, setCurrentTab] = useTabState()
-  const tabContacts =
-    currentTab === "all" ? contacts.data : contacts.data?.filter(c => c.isFavorite)
+  const contacts = api.contact.list.useQuery({ search, isFavorite: currentTab === "favorites" })
 
   return (
     <div className="mx-auto max-w-6xl px-3 pb-2 lg:px-16">
@@ -53,8 +51,8 @@ export default function ContactListPage() {
             onChange={e => setSearch(e.target.value)}
           />
         </div>
-        {tabContacts ? (
-          <ContactList contacts={tabContacts} includeAdder className="mt-3 sm:mt-6" />
+        {contacts.data ? (
+          <ContactList contacts={contacts.data} includeAdder className="mt-3 sm:mt-6" />
         ) : (
           <p className="mt-3 sm:mt-6">Loading...</p>
         )}
