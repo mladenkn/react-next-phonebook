@@ -11,7 +11,7 @@
     "lint": "next lint",
     "start": "next start",
     "tsc": "tsc",
-    "wipe": "rm -rf node_modules && rm -f bun.lockb",
+    "wipe": "rm -rf node_modules && rm -f bun.lockb && rm -rf .next",
     "reset": "bun wipe && bun install",
     "format": "prettier --write \"**/*.{ts,tsx}\"",
     "db.drop": "psql $DATABASE_URL --file=./src/db.drop.sql",
