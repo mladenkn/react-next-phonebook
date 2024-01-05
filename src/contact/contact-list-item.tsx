@@ -4,10 +4,10 @@ import { cn } from "~/utils/ui-utils"
 import { ApiOutputs } from "~/utils/api"
 import { ContactFavorite } from "./contact-update"
 import { ContactDeleteAction } from "./contact-delete"
-import Link from "next/link"
 import { contactDetailsUrl } from "~/urls"
 import { MouseEvent } from "react"
 import { PencilIcon } from "~/assets/icons"
+import { useRouter } from "next/router"
 
 export type ContactListItemModel = ApiOutputs["contact"]["list"][number]
 
@@ -50,11 +50,12 @@ export default function ContactListItem({
   )
   const deleteAction = <ContactDeleteAction contactId={contact.id} />
 
+  const router = useRouter()
   function handleMdClick(e: MouseEvent) {
     if (!isSelected) {
       e.preventDefault()
       onSelect()
-    }
+    } else router.push(contactDetailsUrl(contact.id))
   }
 
   return (
@@ -64,9 +65,8 @@ export default function ContactListItem({
         isSelected && "border-primary-main",
       )}
     >
-      <Link
+      <button
         className={cn("flex h-full w-full flex-col items-center pt-2 sm-max:hidden")}
-        href={contactDetailsUrl(contact.id)}
         onClick={handleMdClick}
       >
         <div className="flex w-full justify-between px-1.5">
@@ -80,12 +80,12 @@ export default function ContactListItem({
         </div>
         {avatar}
         {name}
-      </Link>
-      <Link
+      </button>
+      <button
         className={cn(
           "flex h-full w-full items-center justify-between py-2 pl-2 pr-1 shadow-none md:hidden",
         )}
-        href={contactDetailsUrl(contact.id)}
+        onClick={() => router.push(contactDetailsUrl(contact.id))}
       >
         {avatar}
         {name}
@@ -94,7 +94,7 @@ export default function ContactListItem({
           {editAction}
           {deleteAction}
         </div>
-      </Link>
+      </button>
     </li>
   )
 }
