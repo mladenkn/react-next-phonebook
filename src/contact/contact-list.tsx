@@ -17,7 +17,6 @@ export default function ContactList({ contacts, includeAdder, className }: Conta
   const [isEditToastActive, setIsEditToastActive] = useToast()
   function handleEditClick(e: MouseEvent) {
     e.stopPropagation()
-    e.preventDefault()
     setIsEditToastActive(true)
   }
 
