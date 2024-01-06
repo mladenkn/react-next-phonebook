@@ -21,7 +21,6 @@ export default {
         tc: {
           // vjer izbacit
           primary: colors.gray[500],
-          secondary: "#2DA1AD",
         },
         error: {
           light: colors.red[200],

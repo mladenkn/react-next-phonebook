@@ -26,7 +26,7 @@ export default function ContactListPage() {
           <button
             className={cn(
               "text-lg font-medium text-tc-primary",
-              currentTab === "all" && "text-tc-secondary",
+              currentTab === "all" && "text-primary-main",
             )}
             onClick={() => setCurrentTab("all")}
           >
@@ -36,7 +36,7 @@ export default function ContactListPage() {
           <button
             className={cn(
               "text-lg font-medium text-tc-primary",
-              currentTab === "favorites" && "text-tc-secondary",
+              currentTab === "favorites" && "text-primary-main",
             )}
             onClick={() => setCurrentTab("favorites")}
           >
