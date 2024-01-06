@@ -44,7 +44,7 @@ export function DeleteAction({
         )}
         onClick={handleClick}
       >
-        {withText && <p className="mr-1 hidden text-base text-tc-primary md:block">Delete</p>}
+        {withText && <p className="mr-1 hidden text-base text-secondary-dark md:block">Delete</p>}
         <TrashIcon />
       </button>
       {modalOpen ? (

@@ -57,7 +57,7 @@ export default function ContactEditBase({ contact, onSave }: Props) {
   return (
     <div className="mx-auto max-w-3xl">
       <Toolbar />
-      <div className={cn("mt-16 px-3 text-tc-primary md:mt-24 md:flex sm-max:w-full")}>
+      <div className={cn("mt-16 px-3 text-secondary-dark md:mt-24 md:flex sm-max:w-full")}>
         <div className="mr-4 sm-max:hidden">{avatar}</div>
         <div>
           <div className="mt-4 flex w-full items-center justify-between px-1 pb-2 pt-0">

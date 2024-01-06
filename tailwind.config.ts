@@ -18,10 +18,6 @@ export default {
           main: "#BBC4C3",
           dark: colors.gray[600],
         },
-        tc: {
-          // vjer izbacit
-          primary: colors.gray[500],
-        },
         error: {
           light: colors.red[200],
         },

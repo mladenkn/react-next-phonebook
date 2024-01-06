@@ -25,7 +25,7 @@ export default function ContactListPage() {
         <div className="flex gap-8">
           <button
             className={cn(
-              "text-lg font-medium text-tc-primary",
+              "text-lg font-medium text-secondary-dark",
               currentTab === "all" && "text-primary-main",
             )}
             onClick={() => setCurrentTab("all")}
@@ -35,7 +35,7 @@ export default function ContactListPage() {
           <div className="h-5 w-0.5 bg-secondary-main" />
           <button
             className={cn(
-              "text-lg font-medium text-tc-primary",
+              "text-lg font-medium text-secondary-dark",
               currentTab === "favorites" && "text-primary-main",
             )}
             onClick={() => setCurrentTab("favorites")}

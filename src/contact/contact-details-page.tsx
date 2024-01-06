@@ -32,7 +32,7 @@ export default function ContactDetailsPage({ contactId }: { contactId: number })
   return (
     <div className="mx-auto max-w-xl">
       <Toolbar />
-      <div className={cn("mt-16 px-3 text-tc-primary sm:mt-24 sm:flex xs-max:w-full")}>
+      <div className={cn("mt-16 px-3 text-secondary-dark sm:mt-24 sm:flex xs-max:w-full")}>
         <div className="xs-max:hidden">{avatar}</div>
         <div>
           <div className="mt-4 flex items-center justify-between px-1 pb-2 pt-0 sm:w-80">
