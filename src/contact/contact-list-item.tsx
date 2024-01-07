@@ -35,8 +35,7 @@ export default function ContactListItem({
 
   const name = (
     <p
-      style={{ color: "rgba(0, 0, 0, 0.54)" }}
-      className={clsx("font-sans text-sm md:text-center")}
+      className={clsx("font-sans text-secondary-dark md:text-center")}
     >
       {contact.fullName}
     </p>

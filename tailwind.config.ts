@@ -13,10 +13,9 @@ export default {
           dark: "#2496A2",
         },
         secondary: {
-          // vjer popravit
-          light: "#E3E3E3",
-          main: "#BBC4C3",
-          dark: colors.gray[600],
+          light: colors.gray[300],
+          main: colors.gray[400],
+          dark: colors.gray[500],
         },
         error: {
           light: colors.red[200],
