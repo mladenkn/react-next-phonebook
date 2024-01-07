@@ -28,7 +28,7 @@ export default function ContactListItem({
     <ContactAvatar
       className="md:mb-2 md:mt-5"
       letter={contact.fullName[0]}
-      style={contact.avatarStyle}
+      style={contact.avatarUrl ? undefined : contact.avatarStyle}
       url={contact.avatarUrl}
     />
   )

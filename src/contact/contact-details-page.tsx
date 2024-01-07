@@ -22,7 +22,7 @@ export default function ContactDetailsPage({ contactId }: { contactId: number })
 
   const avatar = (
     <ContactAvatar
-      style={contact.data.avatarStyle}
+      style={contact.data.avatarUrl ? undefined : contact.data.avatarStyle}
       className={cn("ml-2 mr-3 h-16 w-16 sm:h-44 sm:w-44")}
       url={contact.data.avatarUrl}
       letter={contact.data.fullName[0]}
@@ -35,7 +35,7 @@ export default function ContactDetailsPage({ contactId }: { contactId: number })
       <div className={cn("mt-16 px-3 text-secondary-dark sm:mt-24 sm:flex xs-max:w-full")}>
         <div className="xs-max:hidden">{avatar}</div>
         <div>
-          <div className="mt-4 flex items-center justify-between px-1 pb-2 pt-0 sm:w-80">
+          <div className="mt-4 flex items-center justify-between px-1 pb-2 pt-0 sm:w-96">
             <GoBackAction />
             <span className="text-2xl xs-max:hidden">{contact.data.fullName}</span>
             <span className="flex items-center gap-2">
