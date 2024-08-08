@@ -24,7 +24,7 @@ export const generateContact = (): Contact => ({
   id: contactId++,
   fullName: faker.person.firstName() + " " + faker.person.lastName(),
   avatarStyle: getRandomAvatarStyle(),
-  avatarUrl: faker.datatype.boolean() ? faker.internet.avatar() : null,
+  avatarUrl: faker.datatype.boolean() ? faker.image.avatar() : null,
   email: faker.internet.email(),
   phoneNumbers: generateArray(generatePhoneNumber, 1, 4),
   isFavorite: faker.datatype.boolean(),
