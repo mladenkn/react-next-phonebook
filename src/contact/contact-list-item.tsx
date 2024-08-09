@@ -33,7 +33,9 @@ export default function ContactListItem({
     />
   )
 
-  const name = <p className="font-sans text-secondary-dark md:text-center">{contact.fullName}</p>
+  const name = (
+    <p className="select-none font-sans text-secondary-dark md:text-center">{contact.fullName}</p>
+  )
 
   const favoriteAction = <ContactFavorite id={contact.id} isFavorite={contact.isFavorite} />
   const editAction = (
