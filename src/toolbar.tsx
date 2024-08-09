@@ -2,6 +2,7 @@ import clsx from "clsx"
 import { SourceCodeIcon } from "./assets/icons"
 import { homePageUrl } from "./urls"
 import Link from "next/link"
+import * as Tooltip from "@radix-ui/react-tooltip"
 
 type Props = {
   className?: string
@@ -25,13 +26,30 @@ function Toolbar({ className, titleContainerClassName }: Props) {
           >
             Phonebook
           </Link>
-          <a
-            href="https://github.com/mladenkn/react-typescript-phonebook"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <SourceCodeIcon />
-          </a>
+          <Tooltip.Provider>
+            <Tooltip.Root>
+              <Tooltip.Trigger asChild>
+                <button>
+                  <a
+                    href="https://github.com/mladenkn/react-typescript-phonebook"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <SourceCodeIcon />
+                  </a>
+                </button>
+              </Tooltip.Trigger>
+              <Tooltip.Portal>
+                <Tooltip.Content
+                  className="mt-2 rounded-md bg-secondary-light px-2 py-1 font-sans text-secondary-dark"
+                  sideOffset={5}
+                >
+                  Show source code
+                  <Tooltip.Arrow className="TooltipArrow" />
+                </Tooltip.Content>
+              </Tooltip.Portal>
+            </Tooltip.Root>
+          </Tooltip.Provider>
         </div>
       </div>
       <div
