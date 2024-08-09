@@ -1,3 +1,4 @@
+import { SourceCodeIcon } from "./assets/icons"
 import { homePageUrl } from "./urls"
 import Link from "next/link"
 
@@ -11,6 +12,7 @@ export default function Toolbar() {
         >
           Phonebook
         </Link>
+        <SourceCodeIcon />
       </div>
       <div
         style={{

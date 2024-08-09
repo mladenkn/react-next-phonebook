@@ -93,5 +93,14 @@ export const RemoveCircledIcon = ({ className }: Props) => (
   </svg>
 )
 
+export const SourceCodeIcon = ({ className }: Props) => (
+  <svg className={cn(defaultStyle, "h-7 w-7", className)} viewBox="0 0 24 24">
+    <path
+      fill="white"
+      d="M9.4 16.6 4.8 12l4.6-4.6L8 6l-6 6 6 6zm5.2 0 4.6-4.6-4.6-4.6L16 6l6 6-6 6z"
+    ></path>
+  </svg>
+)
+
 const defaultStyle =
   "fill-current w-6 h-6 inline-block text-1.5xl transition duration-200 ease-in-out flex-shrink-0 select-none text-secondary-main"
