@@ -45,7 +45,6 @@ function Toolbar({ className, titleContainerClassName }: Props) {
                   sideOffset={18}
                 >
                   <p className="cursor-default">Show source code</p>
-                  {/* <Tooltip.Arrow className="TooltipArrow" /> */}
                 </Tooltip.Content>
               </Tooltip.Portal>
             </Tooltip.Root>
