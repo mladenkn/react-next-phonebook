@@ -1,6 +1,6 @@
 import ContactList from "./contact-list"
 import { cn } from "~/utils/ui-utils"
-import Toolbar from "~/toolbar"
+import FixedToolbar from "~/toolbar"
 import { MagnifierIcon } from "~/assets/icons"
 import { api } from "~/utils/api"
 import { useRouter, useSearchParams } from "next/navigation"
@@ -19,7 +19,7 @@ export default function ContactListPage() {
 
   return (
     <div className="mx-auto max-w-6xl px-3 pb-2 lg:px-16">
-      <Toolbar className="fixed left-auto right-0 top-0 z-20" titleContainerClassName="max-w-6xl" />
+      <FixedToolbar />
 
       <div className={cn("mt-20 flex flex-col items-center")}>
         <div className="flex gap-8">

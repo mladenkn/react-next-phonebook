@@ -8,7 +8,7 @@ type Props = {
   titleContainerClassName?: string
 }
 
-export default function Toolbar({ className, titleContainerClassName }: Props) {
+function Toolbar({ className, titleContainerClassName }: Props) {
   return (
     <div className={clsx("box-border flex w-full flex-col", className)}>
       <div className="bg-gradient-to-r from-primary-dark to-primary-light">
@@ -37,5 +37,11 @@ export default function Toolbar({ className, titleContainerClassName }: Props) {
         className="h-2"
       />
     </div>
+  )
+}
+
+export default function FixedToolbar() {
+  return (
+    <Toolbar className="fixed left-auto right-0 top-0 z-20" titleContainerClassName="max-w-6xl" />
   )
 }

@@ -5,7 +5,7 @@ import ContactForm, { contactFormValidate } from "./contact-form"
 import SwapableAvatar from "../swapable-avatar"
 import { cn } from "~/utils/ui-utils"
 import { useRouter } from "next/router"
-import Toolbar from "~/toolbar"
+import FixedToolbar from "~/toolbar"
 import { ContactDeleteAction } from "./contact-delete"
 import { homePageUrl } from "~/urls"
 
@@ -56,7 +56,7 @@ export default function ContactEditBase({ contact, onSave }: Props) {
 
   return (
     <div className="mx-auto max-w-3xl">
-      <Toolbar />
+      <FixedToolbar />
       <div className={cn("mt-16 px-3 text-secondary-dark md:mt-24 md:flex sm-max:w-full")}>
         <div className="mr-4 sm-max:hidden">{avatar}</div>
         <div>

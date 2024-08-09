@@ -2,7 +2,7 @@ import ContactDetailsFields from "./contact-details-fields"
 import { GoBackAction } from "../actions"
 import ContactAvatar from "./contact-avatar"
 import { cn } from "~/utils/ui-utils"
-import Toolbar from "~/toolbar"
+import FixedToolbar from "~/toolbar"
 import { api } from "~/utils/api"
 import { ContactFavorite } from "./contact-update"
 import { PencilIcon } from "~/assets/icons"
@@ -31,7 +31,7 @@ export default function ContactDetailsPage({ contactId }: { contactId: number })
 
   return (
     <div className="mx-auto max-w-xl">
-      <Toolbar />
+      <FixedToolbar />
       <div className={cn("mt-16 px-3 text-secondary-dark sm:mt-24 sm:flex xs-max:w-full")}>
         <div className="xs-max:hidden">{avatar}</div>
         <div>
@@ -57,7 +57,7 @@ export default function ContactDetailsPage({ contactId }: { contactId: number })
         isActive={isEditToastActive}
         setIsActive={setIsEditToastActive}
       >
-        <p className="text-xl mr-4">Contact edit not available.</p>
+        <p className="mr-4 text-xl">Contact edit not available.</p>
       </Toast>
     </div>
   )
