@@ -52,7 +52,7 @@ export default function ContactListPage() {
           />
         </div>
         {contacts.data ? (
-          <ContactList contacts={contacts.data} includeAdder className="mt-3 sm:mt-6" />
+          <ContactList contacts={contacts.data} className="mt-3 sm:mt-6" />
         ) : (
           <p className="mt-3 sm:mt-6">Loading...</p>
         )}

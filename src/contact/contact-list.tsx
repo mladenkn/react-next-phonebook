@@ -7,10 +7,9 @@ import { Toast, useToast } from "~/utils/toast"
 export type ContactListProps = {
   contacts: ContactListItemModel[]
   className?: string
-  includeAdder?: boolean
 }
 
-export default function ContactList({ contacts, includeAdder, className }: ContactListProps) {
+export default function ContactList({ contacts, className }: ContactListProps) {
   const [selectedItemId, setSelectedItemId] = useState<number>()
   const [isCreateToastActive, setIsCreateToastActive] = useToast()
 
@@ -30,9 +29,14 @@ export default function ContactList({ contacts, includeAdder, className }: Conta
     />
   ))
 
-  const includeAdder_ = includeAdder || false
-  if (includeAdder_) {
-    const adder = (
+  return (
+    <ul
+      className={cn(
+        "flex w-full flex-col gap-2",
+        "md:flex-row md:flex-wrap md:justify-center", // md
+        className,
+      )}
+    >
       <li key={0} className="h-14 w-full md:h-36 md:w-60">
         <button
           onClick={() => setIsCreateToastActive(true)}
@@ -42,18 +46,6 @@ export default function ContactList({ contacts, includeAdder, className }: Conta
           <p className="text-primary-light">Add new</p>
         </button>
       </li>
-    )
-    items.unshift(adder)
-  }
-
-  return (
-    <ul
-      className={cn(
-        "flex w-full flex-col gap-2",
-        "md:flex-row md:flex-wrap md:justify-center", // md
-        className,
-      )}
-    >
       {items}
       <Toast
         className="bg-error-light"
