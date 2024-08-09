@@ -27,7 +27,7 @@ function Toolbar({ className, titleContainerClassName }: Props) {
             Phonebook
           </Link>
           <Tooltip.Provider>
-            <Tooltip.Root>
+            <Tooltip.Root delayDuration={350}>
               <Tooltip.Trigger asChild>
                 <button>
                   <a
@@ -41,11 +41,11 @@ function Toolbar({ className, titleContainerClassName }: Props) {
               </Tooltip.Trigger>
               <Tooltip.Portal>
                 <Tooltip.Content
-                  className="mt-2 rounded-md bg-secondary-light px-2 py-1 font-sans text-secondary-dark"
-                  sideOffset={5}
+                  className="rounded-md bg-secondary-light px-2 py-1 font-sans text-secondary-dark"
+                  sideOffset={18}
                 >
-                  Show source code
-                  <Tooltip.Arrow className="TooltipArrow" />
+                  <p className="cursor-default">Show source code</p>
+                  {/* <Tooltip.Arrow className="TooltipArrow" /> */}
                 </Tooltip.Content>
               </Tooltip.Portal>
             </Tooltip.Root>
