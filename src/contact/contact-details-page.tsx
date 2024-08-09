@@ -11,7 +11,7 @@ import { Toast, useToast } from "~/utils/toast"
 export default function ContactDetailsPage({ contactId }: { contactId: number }) {
   const contact = api.contact.single.useQuery(contactId)
 
-  if (!contact.data) return <>Loading...</> // never
+  if (!contact.data) return <>Loading...</> // never because of prefetch
 
   const [isEditToastActive, setIsEditToastActive] = useToast()
   const editAction = (
