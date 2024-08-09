@@ -22,7 +22,9 @@ export default function Toolbar({ titleContainerClassName }: Props) {
           >
             Phonebook
           </Link>
-          <SourceCodeIcon />
+          <a href="https://github.com/mladenkn/react-typescript-phonebook" target="_blank">
+            <SourceCodeIcon />
+          </a>
         </div>
       </div>
       <div
