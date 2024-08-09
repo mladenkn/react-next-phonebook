@@ -49,7 +49,7 @@ export default function ContactList({ contacts, includeAdder, className }: Conta
   return (
     <ul
       className={cn(
-        "flex w-full flex-col gap-1",
+        "flex w-full flex-col gap-2",
         "md:flex-row md:flex-wrap md:justify-center", // md
         className,
       )}
