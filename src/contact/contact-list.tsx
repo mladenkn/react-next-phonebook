@@ -40,7 +40,7 @@ export default function ContactList({ contacts, className }: ContactListProps) {
       <li key={0} className="h-14 w-full md:h-36 md:w-60">
         <button
           onClick={() => setIsCreateToastActive(true)}
-          className="flex h-full w-full items-center border-1 border-dashed border-primary-light md:flex-col md:justify-center"
+          className="flex h-full w-full items-center border-2 border-dashed border-primary-light md:flex-col md:justify-center"
         >
           <PlusIcon className="text-2xl text-primary-light sm-max:ml-3 sm-max:mr-2" />
           <p className="text-primary-light">Add new</p>
