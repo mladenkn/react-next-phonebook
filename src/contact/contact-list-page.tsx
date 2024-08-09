@@ -19,7 +19,7 @@ export default function ContactListPage() {
 
   return (
     <div className="mx-auto max-w-6xl px-3 pb-2 lg:px-16">
-      <Toolbar titleContainerClassName="max-w-6xl" />
+      <Toolbar className="fixed left-auto right-0 top-0 z-20" titleContainerClassName="max-w-6xl" />
 
       <div className={cn("mt-20 flex flex-col items-center")}>
         <div className="flex gap-8">

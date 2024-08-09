@@ -4,12 +4,13 @@ import { homePageUrl } from "./urls"
 import Link from "next/link"
 
 type Props = {
+  className?: string
   titleContainerClassName?: string
 }
 
-export default function Toolbar({ titleContainerClassName }: Props) {
+export default function Toolbar({ className, titleContainerClassName }: Props) {
   return (
-    <div className="fixed left-auto right-0 top-0 z-20 box-border flex w-full flex-col">
+    <div className={clsx("box-border flex w-full flex-col", className)}>
       <div className="bg-gradient-to-r from-primary-dark to-primary-light">
         <div
           className={clsx(
