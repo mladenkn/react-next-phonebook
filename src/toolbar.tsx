@@ -25,7 +25,11 @@ function Toolbar({ className, titleContainerClassName }: Props) {
           >
             Phonebook
           </Link>
-          <a href="https://github.com/mladenkn/react-typescript-phonebook" target="_blank">
+          <a
+            href="https://github.com/mladenkn/react-typescript-phonebook"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <SourceCodeIcon />
           </a>
         </div>
