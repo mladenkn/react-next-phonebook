@@ -19,7 +19,7 @@ const styles = {
   errorMessage: "ml-2 mt-0.5 text-red-500",
 }
 
-type Contact = Omit<_Contact, "id">
+type Contact = Omit<_Contact, "id" | "avatarStyle">
 
 type Props = {
   initialInput: Contact
