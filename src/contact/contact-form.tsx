@@ -46,6 +46,11 @@ export default function ContactForm({ initialInput, toolbarRight }: Props) {
     </form.Field>
   )
 
+  const formStore = form.useStore(s => s.values)
+  console.log(49, formStore)
+
+  const numbersField = form.useField({ name: "phoneNumbers" })
+
   return (
     <form
       className="mt-16 px-3 text-secondary-dark md:mt-20 md:flex sm-max:w-full"
@@ -116,15 +121,15 @@ export default function ContactForm({ initialInput, toolbarRight }: Props) {
 
         <form.Field name="phoneNumbers" mode="array">
           {phoneNumberField => (
-            <div>
+            <div className="min-h-14">
               <ContactFieldLabel
                 className="mb-2"
                 icon={<PhoneIcon className="text-primary-main" />}
                 text="Phone numbers"
               />
-              {phoneNumberField.state.value?.map((_, i) => (
-                <div className="py-2 md:flex md:justify-between md:gap-2" key={i}>
-                  <form.Field name={`phoneNumbers[${i}].value`}>
+              {phoneNumberField.state.value?.map((_, index) => (
+                <div className="py-2 md:flex md:justify-between md:gap-2" key={index}>
+                  <form.Field name={`phoneNumbers[${index}].value`}>
                     {field => (
                       <input
                         className={cn(styles.input, "max-sm:mb-2 max-sm:w-full")}
@@ -136,7 +141,7 @@ export default function ContactForm({ initialInput, toolbarRight }: Props) {
                       />
                     )}
                   </form.Field>
-                  <form.Field name={`phoneNumbers[${i}].label`}>
+                  <form.Field name={`phoneNumbers[${index}].label`}>
                     {field => (
                       <input
                         className={styles.input}
@@ -148,7 +153,11 @@ export default function ContactForm({ initialInput, toolbarRight }: Props) {
                       />
                     )}
                   </form.Field>
-                  <button className="max-sm:ml-2" type="button">
+                  <button
+                    className="max-sm:ml-2"
+                    type="button"
+                    onClick={() => numbersField.removeValue(index)}
+                  >
                     <RemoveCircledIcon className="text-secondary-main" />
                   </button>
                 </div>
@@ -157,7 +166,10 @@ export default function ContactForm({ initialInput, toolbarRight }: Props) {
           )}
         </form.Field>
 
-        <button className="mt-6 flex text-primary-main">
+        <button
+          className="mt-6 flex text-primary-main"
+          onClick={() => numbersField.pushValue({ label: "", value: "" })}
+        >
           <AddCircleOutlineIcon className="mr-1.5 text-primary-main" />
           Add number
         </button>
