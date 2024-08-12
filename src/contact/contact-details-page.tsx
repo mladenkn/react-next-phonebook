@@ -6,16 +6,17 @@ import FixedToolbar from "~/toolbar"
 import { api } from "~/utils/api"
 import { ContactFavorite } from "./contact-update"
 import { PencilIcon } from "~/assets/icons"
-import { Toast, useToast } from "~/utils/toast"
+import { useRouter } from "next/router"
+import { contactEditUrl } from "~/urls"
 
 export default function ContactDetailsPage({ contactId }: { contactId: number }) {
   const contact = api.contact.single.useQuery(contactId)
 
   if (!contact.data) return <>Loading...</> // never because of prefetch
 
-  const [isEditToastActive, setIsEditToastActive] = useToast()
+  const router = useRouter()
   const editAction = (
-    <button onClick={() => setIsEditToastActive(true)}>
+    <button onClick={() => router.push(contactEditUrl(contactId))}>
       <PencilIcon />
     </button>
   )
@@ -52,13 +53,6 @@ export default function ContactDetailsPage({ contactId }: { contactId: number })
           <ContactDetailsFields contact={contact.data} />
         </div>
       </div>
-      <Toast
-        className="bg-error-light"
-        isActive={isEditToastActive}
-        setIsActive={setIsEditToastActive}
-      >
-        <p className="mr-4 text-xl">Contact edit not available.</p>
-      </Toast>
     </div>
   )
 }
