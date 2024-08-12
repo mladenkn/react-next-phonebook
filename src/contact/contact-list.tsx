@@ -2,9 +2,8 @@ import { MouseEvent, useState } from "react"
 import ContactListItem, { ContactListItemModel } from "./contact-list-item"
 import { cn } from "~/utils/ui-utils"
 import { PlusIcon } from "~/assets/icons"
-import { Toast, useToast } from "~/utils/toast"
 import { useRouter } from "next/router"
-import { contactEditUrl } from "~/urls"
+import { contactCreateUrl, contactEditUrl } from "~/urls"
 
 export type ContactListProps = {
   contacts: ContactListItemModel[]
@@ -13,7 +12,6 @@ export type ContactListProps = {
 
 export default function ContactList({ contacts, className }: ContactListProps) {
   const [selectedItemId, setSelectedItemId] = useState<number>()
-  const [isCreateToastActive, setIsCreateToastActive] = useToast()
   const router = useRouter()
 
   function handleEditClick(e: MouseEvent, contactId: number) {
@@ -41,7 +39,7 @@ export default function ContactList({ contacts, className }: ContactListProps) {
     >
       <li key={0} className="h-14 w-full md:h-36 md:w-60">
         <button
-          onClick={() => setIsCreateToastActive(true)}
+          onClick={() => router.push(contactCreateUrl)}
           className="flex h-full w-full items-center border-2 border-dashed border-primary-light md:flex-col md:justify-center"
         >
           <PlusIcon className="text-2xl text-primary-light sm-max:ml-3 sm-max:mr-2" />
@@ -49,13 +47,6 @@ export default function ContactList({ contacts, className }: ContactListProps) {
         </button>
       </li>
       {items}
-      <Toast
-        className="bg-error-light"
-        isActive={isCreateToastActive}
-        setIsActive={setIsCreateToastActive}
-      >
-        <p className="mr-6 text-xl">Contact create not available.</p>
-      </Toast>
     </ul>
   )
 }
