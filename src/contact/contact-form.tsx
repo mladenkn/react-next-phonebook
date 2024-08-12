@@ -9,6 +9,7 @@ import {
   AddCircleOutlineIcon,
 } from "~/assets/icons"
 import { useForm } from "@tanstack/react-form"
+import { ReactElement } from "react"
 
 const styles = {
   input: "p-2 border-2 border-solid border-secondary-light text-secondary-main outline-none",
@@ -19,9 +20,10 @@ type Contact = Omit<_Contact, "id">
 
 type Props = {
   initialInput: Contact
+  buttons: ReactElement
 }
 
-export default function ContactForm({ initialInput }: Props) {
+export default function ContactForm({ initialInput, buttons }: Props) {
   function handleValidate(values: Contact) {
     const errors = contactFormValidate(values)
     return errors
@@ -139,6 +141,8 @@ export default function ContactForm({ initialInput }: Props) {
       </button>
 
       <div className="my-4 h-0.25 w-full bg-primary-main" />
+
+      {buttons}
     </form>
   )
 }

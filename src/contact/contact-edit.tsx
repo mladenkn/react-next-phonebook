@@ -35,14 +35,16 @@ export default function ContactEdit({ contact }: Props) {
   const router = useRouter()
 
   const buttons = (
-    <div className="mx-0.5 mb-4 mt-6 flex justify-between">
-      <button className={cn(buttonClass, "bg-secondary-main")} onClick={() => router.back()}>
-        Cancel
-      </button>
-      <button className={cn(buttonClass, "bg-primary-main")} disabled={!isEditedContactValid}>
-        Save
-      </button>
-    </div>
+    <>
+      <div className="mx-0.5 mb-4 mt-6 flex justify-between">
+        <button className={cn(buttonClass, "bg-secondary-main")} onClick={() => router.back()}>
+          Cancel
+        </button>
+        <button className={cn(buttonClass, "bg-primary-main")} disabled={!isEditedContactValid}>
+          Save
+        </button>
+      </div>
+    </>
   )
 
   return (
@@ -67,8 +69,7 @@ export default function ContactEdit({ contact }: Props) {
             {avatar}
           </h1>
           <div className="mb-2 h-0.25 w-full bg-primary-main" />
-          <ContactForm initialInput={contact} />
-          {buttons}
+          <ContactForm initialInput={contact} buttons={buttons} />
         </div>
       </div>
     </div>
