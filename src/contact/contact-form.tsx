@@ -10,6 +10,7 @@ import {
 } from "~/assets/icons"
 import { useForm } from "@tanstack/react-form"
 import { ReactElement } from "react"
+import { useRouter } from "next/router"
 
 const styles = {
   input: "p-2 border-2 border-solid border-secondary-light text-secondary-main outline-none",
@@ -20,10 +21,9 @@ type Contact = Omit<_Contact, "id">
 
 type Props = {
   initialInput: Contact
-  buttons: ReactElement
 }
 
-export default function ContactForm({ initialInput, buttons }: Props) {
+export default function ContactForm({ initialInput }: Props) {
   function handleValidate(values: Contact) {
     const errors = contactFormValidate(values)
     return errors
@@ -36,6 +36,10 @@ export default function ContactForm({ initialInput, buttons }: Props) {
       console.log(value)
     },
   })
+
+  const buttonClass = cn("w-36 rounded-2xl text-white h-8")
+
+  const router = useRouter()
 
   return (
     <form
@@ -142,7 +146,12 @@ export default function ContactForm({ initialInput, buttons }: Props) {
 
       <div className="my-4 h-0.25 w-full bg-primary-main" />
 
-      {buttons}
+      <div className="mx-0.5 mb-4 mt-6 flex justify-between">
+        <button className={cn(buttonClass, "bg-secondary-main")} onClick={() => router.back()}>
+          Cancel
+        </button>
+        <button className={cn(buttonClass, "bg-primary-main")}>Save</button>
+      </div>
     </form>
   )
 }

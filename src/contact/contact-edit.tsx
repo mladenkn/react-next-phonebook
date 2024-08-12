@@ -1,7 +1,7 @@
 import { Contact as _Contact } from "../models"
 import { useState } from "react"
 import { GoBackAction } from "../actions"
-import ContactForm, { contactFormValidate } from "./contact-form"
+import ContactForm from "./contact-form"
 import SwapableAvatar from "../swapable-avatar"
 import { cn } from "~/utils/ui-utils"
 import { useRouter } from "next/router"
@@ -16,36 +16,11 @@ type Props = {
 }
 
 export default function ContactEdit({ contact }: Props) {
-  const [editedContact, setEditedContact] = useState(contact)
-  const [isEditedContactValid, setIsEditedContactValid] = useState(
-    contactFormValidate(contact).isValid,
-  )
-
-  const formChange = (input: Contact, isValid: boolean) => {
-    setEditedContact({ ...input, avatarStyle: editedContact.avatarStyle })
-    setIsEditedContactValid(isValid)
-  }
-
   const avatar = (
-    <SwapableAvatar src={editedContact.avatarUrl} className="h-52 w-52" onChange={() => {}} />
+    <SwapableAvatar src={contact.avatarUrl} className="h-52 w-52" onChange={() => {}} />
   )
-
-  const buttonClass = cn("w-36 rounded-2xl text-white h-8")
 
   const router = useRouter()
-
-  const buttons = (
-    <>
-      <div className="mx-0.5 mb-4 mt-6 flex justify-between">
-        <button className={cn(buttonClass, "bg-secondary-main")} onClick={() => router.back()}>
-          Cancel
-        </button>
-        <button className={cn(buttonClass, "bg-primary-main")} disabled={!isEditedContactValid}>
-          Save
-        </button>
-      </div>
-    </>
-  )
 
   return (
     <div className="mx-auto max-w-3xl">
@@ -69,7 +44,7 @@ export default function ContactEdit({ contact }: Props) {
             {avatar}
           </h1>
           <div className="mb-2 h-0.25 w-full bg-primary-main" />
-          <ContactForm initialInput={contact} buttons={buttons} />
+          <ContactForm initialInput={contact} />
         </div>
       </div>
     </div>
