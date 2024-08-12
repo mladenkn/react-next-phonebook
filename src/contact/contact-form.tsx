@@ -24,7 +24,6 @@ type Props = {
 export default function ContactForm({ initialInput }: Props) {
   function handleValidate(values: Contact) {
     const errors = contactFormValidate(values)
-    onChange(values, errors.isValid)
     return errors
   }
 
