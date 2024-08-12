@@ -13,10 +13,9 @@ type Contact = Omit<_Contact, "id"> & { id?: number }
 
 type Props = {
   contact: Contact
-  onSave: (c: Contact) => void
 }
 
-export default function ContactEditBase({ contact, onSave }: Props) {
+export default function ContactEditBase({ contact }: Props) {
   const [editedContact, setEditedContact] = useState(contact)
   const [isEditedContactValid, setIsEditedContactValid] = useState(
     contactFormValidate(contact).isValid,
@@ -28,11 +27,7 @@ export default function ContactEditBase({ contact, onSave }: Props) {
   }
 
   const avatar = (
-    <SwapableAvatar
-      src={editedContact.avatarUrl}
-      className="h-52 w-52"
-      onChange={(avatarUrl?: string) => setEditedContact({ ...editedContact, avatarUrl })}
-    />
+    <SwapableAvatar src={editedContact.avatarUrl} className="h-52 w-52" onChange={() => {}} />
   )
 
   const buttonClass = cn("w-36 rounded-2xl text-white h-8")
@@ -44,11 +39,7 @@ export default function ContactEditBase({ contact, onSave }: Props) {
       <button className={cn(buttonClass, "bg-secondary-main")} onClick={() => router.back()}>
         Cancel
       </button>
-      <button
-        onClick={() => onSave(editedContact)}
-        className={cn(buttonClass, "bg-primary-main")}
-        disabled={!isEditedContactValid}
-      >
+      <button className={cn(buttonClass, "bg-primary-main")} disabled={!isEditedContactValid}>
         Save
       </button>
     </div>
@@ -76,7 +67,7 @@ export default function ContactEditBase({ contact, onSave }: Props) {
             {avatar}
           </h1>
           <div className="mb-2 h-0.25 w-full bg-primary-main" />
-          <ContactForm initialInput={contact} onChange={formChange} />
+          <ContactForm initialInput={contact} />
           {buttons}
         </div>
       </div>
