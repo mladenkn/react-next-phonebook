@@ -15,7 +15,7 @@ type Props = {
   contact: Contact
 }
 
-export default function ContactEditBase({ contact }: Props) {
+export default function ContactEdit({ contact }: Props) {
   const [editedContact, setEditedContact] = useState(contact)
   const [isEditedContactValid, setIsEditedContactValid] = useState(
     contactFormValidate(contact).isValid,

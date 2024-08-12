@@ -1,9 +1,9 @@
 import { getRandomAvatarStyle } from "~/contact/contact-data-generators"
-import ContactEditBase from "~/contact/contact-edit"
+import ContactEdit from "~/contact/contact-edit"
 
 export default function ContactCreatePage() {
   return (
-    <ContactEditBase
+    <ContactEdit
       contact={{
         email: "",
         fullName: "",
@@ -11,7 +11,6 @@ export default function ContactCreatePage() {
         isFavorite: false,
         avatarStyle: getRandomAvatarStyle(),
       }}
-      onSave={() => {}}
     />
   )
 }
