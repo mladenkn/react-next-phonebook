@@ -26,7 +26,7 @@ export default function ContactForm({ initialInput, toolbarRight }: Props) {
     defaultValues: initialInput,
     onSubmit: async ({ value }) => {
       // Do something with form data
-      console.log(value)
+      console.log("form submit", value)
     },
   })
 
@@ -174,7 +174,11 @@ export default function ContactForm({ initialInput, toolbarRight }: Props) {
         <div className="my-4 h-0.25 w-full bg-primary-main" />
 
         <div className="mx-0.5 mb-4 mt-6 flex justify-between">
-          <button className={cn(buttonClass, "bg-secondary-main")} onClick={() => router.back()}>
+          <button
+            className={cn(buttonClass, "bg-secondary-main")}
+            onClick={() => router.back()}
+            type="button"
+          >
             Cancel
           </button>
           <button className={cn(buttonClass, "bg-primary-main")}>Save</button>
