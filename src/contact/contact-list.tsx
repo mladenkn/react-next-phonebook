@@ -4,6 +4,7 @@ import { cn } from "~/utils/ui-utils"
 import { PlusIcon } from "~/assets/icons"
 import { useRouter } from "next/router"
 import { contactCreateUrl, contactEditUrl } from "~/urls"
+import Link from "next/link"
 
 export type ContactListProps = {
   contacts: ContactListItemModel[]
@@ -38,13 +39,13 @@ export default function ContactList({ contacts, className }: ContactListProps) {
       )}
     >
       <li key={0} className="h-14 w-full md:h-36 md:w-60">
-        <button
-          onClick={() => router.push(contactCreateUrl)}
+        <Link
+          href={contactCreateUrl}
           className="flex h-full w-full items-center border-2 border-dashed border-primary-light md:flex-col md:justify-center"
         >
           <PlusIcon className="text-2xl text-primary-light sm-max:ml-3 sm-max:mr-2" />
           <p className="text-primary-light">Add new</p>
-        </button>
+        </Link>
       </li>
       {items}
     </ul>
