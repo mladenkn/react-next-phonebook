@@ -14,7 +14,7 @@ import { GoBackAction } from "../actions"
 import SwapableAvatar from "../swapable-avatar"
 import { ReactNode } from "react"
 
-type Contact = Omit<_Contact, "id" | "avatarStyle">
+type Contact = Omit<_Contact, "id" | "avatarStyle" | "isFavorite">
 
 type Props = {
   initialInput: Contact

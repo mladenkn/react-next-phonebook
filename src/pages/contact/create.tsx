@@ -5,9 +5,7 @@ export default function ContactCreatePage() {
   return (
     <div className="mx-auto max-w-3xl">
       <FixedToolbar />
-      <ContactForm
-        initialInput={{ email: "", fullName: "", isFavorite: false, phoneNumbers: [] }}
-      />
+      <ContactForm initialInput={{ email: "", fullName: "", phoneNumbers: [] }} />
     </div>
   )
 }
