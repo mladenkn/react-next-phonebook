@@ -1,9 +1,7 @@
 import ContactAvatar from "./contact-avatar"
-import clsx from "clsx"
 import { cn } from "~/utils/ui-utils"
 import { ApiOutputs } from "~/utils/api"
 import { ContactFavorite } from "./contact-update"
-import { ContactDeleteAction } from "./contact-delete"
 import { contactDetailsUrl } from "~/urls"
 import { MouseEvent } from "react"
 import { PencilIcon } from "~/assets/icons"
@@ -43,7 +41,6 @@ export default function ContactListItem({
       <PencilIcon />
     </button>
   )
-  const deleteAction = <ContactDeleteAction contactId={contact.id} />
 
   const router = useRouter()
   function handleMdClick(e: MouseEvent) {
@@ -73,7 +70,6 @@ export default function ContactListItem({
         <div className="flex gap-1">
           {favoriteAction}
           {editAction}
-          {deleteAction}
         </div>
       </div>
       <div
@@ -82,12 +78,7 @@ export default function ContactListItem({
       >
         <div className="flex w-full justify-between px-1.5">
           {favoriteAction}
-          {isSelected ? (
-            <div className="flex">
-              {editAction}
-              {deleteAction}
-            </div>
-          ) : null}
+          {isSelected ? <div className="flex">{editAction}</div> : null}
         </div>
         {avatar}
         {name}
