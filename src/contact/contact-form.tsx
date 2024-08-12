@@ -1,5 +1,4 @@
 import { Contact as _Contact } from "../models"
-import { FormikErrors, Formik, Field, ErrorMessage, FieldArray } from "formik"
 import { ContactFieldLabel } from "../various"
 import { cn } from "~/utils/ui-utils"
 import {
@@ -28,72 +27,46 @@ export default function ContactForm({ initialInput }: Props) {
   }
 
   return (
-    <Formik initialValues={initialInput} validate={handleValidate} onSubmit={() => {}}>
-      {({ values }) => (
-        <div>
-          <label>
-            <ContactFieldLabel
-              icon={<PersonOutlinedIcon className="text-primary-main" />}
-              text="full name"
-              className="mb-2"
-            />
-            <Field type="text" name="fullName" className={cn(styles.input, "w-full sm:w-1/2")} />
-            <ErrorMessage component="div" name="fullName" className={styles.errorMessage} />
-          </label>
+    <div>
+      <label>
+        <ContactFieldLabel
+          icon={<PersonOutlinedIcon className="text-primary-main" />}
+          text="full name"
+          className="mb-2"
+        />
+        <input
+          type="text"
+          name="fullName"
+          className={cn(styles.input, "w-full sm:w-1/2")}
+          defaultValue={initialInput.fullName}
+        />
+        {/* <ErrorMessage component="div" name="fullName" className={styles.errorMessage} /> */}
+      </label>
 
-          <div className="my-4 h-0.25 w-full bg-primary-main" />
+      <div className="my-4 h-0.25 w-full bg-primary-main" />
 
-          <label>
-            <ContactFieldLabel
-              icon={<EmailIcon className="text-primary-main" />}
-              text="email"
-              className="mb-2"
-            />
-            <Field type="email" name="email" className={cn(styles.input, "w-full sm:w-1/2")} />
-            <ErrorMessage component="div" name="email" className={styles.errorMessage} />
-          </label>
+      <label>
+        <ContactFieldLabel
+          icon={<EmailIcon className="text-primary-main" />}
+          text="email"
+          className="mb-2"
+        />
+        <input
+          type="email"
+          name="email"
+          className={cn(styles.input, "w-full sm:w-1/2")}
+          defaultValue={initialInput.email}
+        />
+        {/* <ErrorMessage component="div" name="email" className={styles.errorMessage} /> */}
+      </label>
 
-          <div className="my-4 h-0.25 w-full bg-primary-main" />
-
-          <FieldArray
-            name="phoneNumbers"
-            render={arr => (
-              <div>
-                <ContactFieldLabel
-                  className="mb-2"
-                  icon={<PhoneIcon className="text-primary-main" />}
-                  text="phoneNumbers"
-                />
-                {values.phoneNumbers.map((_, index) => (
-                  <div className="py-2 md:flex md:justify-between md:gap-2" key={index}>
-                    <Field
-                      name={`phoneNumbers[${index}].value`}
-                      className={cn(styles.input, "max-sm:mb-2 max-sm:w-full")}
-                    />
-                    <Field name={`phoneNumbers.${index}.label`} className={styles.input} />
-                    <button className="max-sm:ml-2" onClick={() => arr.remove(index)}>
-                      <RemoveCircledIcon className="text-secondary-main" />
-                    </button>
-                  </div>
-                ))}
-                <button
-                  className="mt-6 flex text-primary-main"
-                  onClick={() => arr.push({ value: "", label: "" })}
-                >
-                  <AddCircleOutlineIcon className="mr-1.5 text-primary-main" />
-                  Add number
-                </button>
-              </div>
-            )}
-          />
-        </div>
-      )}
-    </Formik>
+      <div className="my-4 h-0.25 w-full bg-primary-main" />
+    </div>
   )
 }
 
 export function contactFormValidate(values: Contact) {
-  let errors: FormikErrors<Contact> = {}
+  let errors: any = {}
 
   if (values.email && (!values.email.includes("@") || !values.email.includes(".")))
     errors.email = "Email not valid."
