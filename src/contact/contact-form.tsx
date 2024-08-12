@@ -60,7 +60,7 @@ export default function ContactForm({ initialInput, toolbarRight }: Props) {
         form.handleSubmit()
       }}
     >
-      <div className="mr-4 sm-max:hidden">{avatar}</div>
+      <div className="mr-8 sm-max:hidden">{avatar}</div>
       <div className="md:min-w-96">
         <div className="mt-4 flex w-full items-center justify-between px-1 pb-2 pt-0">
           <GoBackAction />
