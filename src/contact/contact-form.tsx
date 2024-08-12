@@ -75,7 +75,7 @@ export default function ContactForm({ initialInput, toolbarRight }: Props) {
         <label>
           <ContactFieldLabel
             icon={<PersonOutlinedIcon className="text-primary-main" />}
-            text="full name"
+            text="Full name"
             className="mb-2"
           />
 
@@ -99,7 +99,7 @@ export default function ContactForm({ initialInput, toolbarRight }: Props) {
         <label>
           <ContactFieldLabel
             icon={<EmailIcon className="text-primary-main" />}
-            text="email"
+            text="Email"
             className="mb-2"
           />
           <form.Field
