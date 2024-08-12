@@ -25,7 +25,6 @@ export default function ContactForm({ initialInput, toolbarRight }: Props) {
   const form = useForm({
     defaultValues: initialInput,
     onSubmit: async ({ value }) => {
-      // Do something with form data
       console.log("form submit", value)
     },
   })
