@@ -12,6 +12,7 @@ import { useForm } from "@tanstack/react-form"
 import { useRouter } from "next/router"
 import { GoBackAction } from "../actions"
 import SwapableAvatar from "../swapable-avatar"
+import { ReactNode } from "react"
 
 const styles = {
   input: "p-2 border-2 border-solid border-secondary-light text-secondary-main outline-none",
@@ -22,9 +23,10 @@ type Contact = Omit<_Contact, "id">
 
 type Props = {
   initialInput: Contact
+  toolbarRight?: ReactNode
 }
 
-export default function ContactForm({ initialInput }: Props) {
+export default function ContactForm({ initialInput, toolbarRight }: Props) {
   const form = useForm({
     defaultValues: initialInput,
     onSubmit: async ({ value }) => {
@@ -62,14 +64,7 @@ export default function ContactForm({ initialInput }: Props) {
       <div>
         <div className="mt-4 flex w-full items-center justify-between px-1 pb-2 pt-0">
           <GoBackAction />
-          {/* {initialInput.id ? (
-            <ContactDeleteAction
-              contactId={initialInput.id}
-              onComplete={() => router.push(homePageUrl)}
-              withHoverEffect
-              withText
-            />
-          ) : null} */}
+          {toolbarRight}
         </div>
         <div className="h-0.25 w-full bg-secondary-main md:hidden" />
         <h1 className="flex items-center justify-center px-0 md:hidden md:pb-2 sm-max:py-4">
