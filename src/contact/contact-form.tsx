@@ -14,11 +14,6 @@ import { GoBackAction } from "../actions"
 import SwapableAvatar from "../swapable-avatar"
 import { ReactNode } from "react"
 
-const styles = {
-  input: "p-2 border-2 border-solid border-secondary-light text-secondary-main outline-none",
-  errorMessage: "ml-2 mt-0.5 text-red-500",
-}
-
 type Contact = Omit<_Contact, "id" | "avatarStyle">
 
 type Props = {
@@ -180,15 +175,7 @@ export default function ContactForm({ initialInput, toolbarRight }: Props) {
   )
 }
 
-export function contactFormValidate(values: Contact) {
-  let errors: any = {}
-
-  if (values.email && (!values.email.includes("@") || !values.email.includes(".")))
-    errors.email = "Email not valid."
-
-  if (!values.fullName) errors.fullName = "Name is required."
-
-  const errorCount = Object.keys(values).length
-
-  return { errors, errorCount, isValid: errorCount === 0 }
+const styles = {
+  input: "p-2 border-2 border-solid border-secondary-light text-secondary-main outline-none",
+  errorMessage: "ml-2 mt-0.5 text-red-500",
 }
