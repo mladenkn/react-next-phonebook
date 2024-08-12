@@ -63,7 +63,6 @@ export default function ContactForm({ initialInput }: Props) {
             />
           )}
         />
-        {/* <ErrorMessage component="div" name="fullName" className={styles.errorMessage} /> */}
       </label>
 
       <div className="my-4 h-0.25 w-full bg-primary-main" />
@@ -87,8 +86,57 @@ export default function ContactForm({ initialInput }: Props) {
             />
           )}
         />
-        {/* <ErrorMessage component="div" name="email" className={styles.errorMessage} /> */}
       </label>
+
+      <div className="my-4 h-0.25 w-full bg-primary-main" />
+
+      <form.Field name="phoneNumbers" mode="array">
+        {phoneNumberField => (
+          <div>
+            <ContactFieldLabel
+              className="mb-2"
+              icon={<PhoneIcon className="text-primary-main" />}
+              text="Phone numbers"
+            />
+            {phoneNumberField.state.value?.map((_, i) => (
+              <div className="py-2 md:flex md:justify-between md:gap-2" key={i}>
+                <form.Field name={`phoneNumbers[${i}].value`}>
+                  {field => (
+                    <input
+                      className={cn(styles.input, "max-sm:mb-2 max-sm:w-full")}
+                      id={field.name}
+                      name={field.name}
+                      value={field.state.value}
+                      onBlur={field.handleBlur}
+                      onChange={e => field.handleChange(e.target.value)}
+                    />
+                  )}
+                </form.Field>
+                <form.Field name={`phoneNumbers[${i}].label`}>
+                  {field => (
+                    <input
+                      className={styles.input}
+                      id={field.name}
+                      name={field.name}
+                      value={field.state.value}
+                      onBlur={field.handleBlur}
+                      onChange={e => field.handleChange(e.target.value)}
+                    />
+                  )}
+                </form.Field>
+                <button className="max-sm:ml-2" type="button">
+                  <RemoveCircledIcon className="text-secondary-main" />
+                </button>
+              </div>
+            ))}
+          </div>
+        )}
+      </form.Field>
+
+      <button className="mt-6 flex text-primary-main">
+        <AddCircleOutlineIcon className="mr-1.5 text-primary-main" />
+        Add number
+      </button>
 
       <div className="my-4 h-0.25 w-full bg-primary-main" />
     </form>
