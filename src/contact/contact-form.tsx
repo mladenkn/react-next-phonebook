@@ -9,7 +9,6 @@ import {
   AddCircleOutlineIcon,
 } from "~/assets/icons"
 import { useForm } from "@tanstack/react-form"
-import { ReactElement } from "react"
 import { useRouter } from "next/router"
 
 const styles = {
@@ -24,11 +23,6 @@ type Props = {
 }
 
 export default function ContactForm({ initialInput }: Props) {
-  function handleValidate(values: Contact) {
-    const errors = contactFormValidate(values)
-    return errors
-  }
-
   const form = useForm({
     defaultValues: initialInput,
     onSubmit: async ({ value }) => {

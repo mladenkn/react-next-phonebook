@@ -1,5 +1,4 @@
 import { Contact as _Contact } from "../models"
-import { useState } from "react"
 import { GoBackAction } from "../actions"
 import ContactForm from "./contact-form"
 import SwapableAvatar from "../swapable-avatar"
