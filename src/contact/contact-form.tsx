@@ -38,7 +38,15 @@ export default function ContactForm({ initialInput }: Props) {
   const router = useRouter()
 
   const avatar = (
-    <SwapableAvatar src={initialInput.avatarUrl} className="h-52 w-52" onChange={() => {}} />
+    <form.Field name="avatarUrl">
+      {field => (
+        <SwapableAvatar
+          src={field.state.value}
+          className="h-52 w-52"
+          onChange={value => field.handleChange(value)}
+        />
+      )}
+    </form.Field>
   )
 
   return (
