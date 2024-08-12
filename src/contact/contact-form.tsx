@@ -8,6 +8,7 @@ import {
   RemoveCircledIcon,
   AddCircleOutlineIcon,
 } from "~/assets/icons"
+import { useForm } from "@tanstack/react-form"
 
 const styles = {
   input: "p-2 border-2 border-solid border-secondary-light text-secondary-main outline-none",
@@ -26,19 +27,41 @@ export default function ContactForm({ initialInput }: Props) {
     return errors
   }
 
+  const form = useForm({
+    defaultValues: initialInput,
+    onSubmit: async ({ value }) => {
+      // Do something with form data
+      console.log(value)
+    },
+  })
+
   return (
-    <div>
+    <form
+      onSubmit={e => {
+        e.preventDefault()
+        e.stopPropagation()
+        form.handleSubmit()
+      }}
+    >
       <label>
         <ContactFieldLabel
           icon={<PersonOutlinedIcon className="text-primary-main" />}
           text="full name"
           className="mb-2"
         />
-        <input
-          type="text"
+
+        <form.Field
           name="fullName"
-          className={cn(styles.input, "w-full sm:w-1/2")}
-          defaultValue={initialInput.fullName}
+          children={field => (
+            <input
+              className={cn(styles.input, "w-full sm:w-1/2")}
+              type="text"
+              name={field.name}
+              onBlur={field.handleBlur}
+              value={field.state.value}
+              onChange={e => field.handleChange(e.target.value)}
+            />
+          )}
         />
         {/* <ErrorMessage component="div" name="fullName" className={styles.errorMessage} /> */}
       </label>
@@ -51,17 +74,24 @@ export default function ContactForm({ initialInput }: Props) {
           text="email"
           className="mb-2"
         />
-        <input
-          type="email"
+        <form.Field
           name="email"
-          className={cn(styles.input, "w-full sm:w-1/2")}
-          defaultValue={initialInput.email}
+          children={field => (
+            <input
+              className={cn(styles.input, "w-full sm:w-1/2")}
+              type="text"
+              name={field.name}
+              onBlur={field.handleBlur}
+              value={field.state.value}
+              onChange={e => field.handleChange(e.target.value)}
+            />
+          )}
         />
         {/* <ErrorMessage component="div" name="email" className={styles.errorMessage} /> */}
       </label>
 
       <div className="my-4 h-0.25 w-full bg-primary-main" />
-    </div>
+    </form>
   )
 }
 
