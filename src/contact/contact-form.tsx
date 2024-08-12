@@ -46,9 +46,6 @@ export default function ContactForm({ initialInput, toolbarRight }: Props) {
     </form.Field>
   )
 
-  const formStore = form.useStore(s => s.values)
-  console.log(49, formStore)
-
   const numbersField = form.useField({ name: "phoneNumbers" })
 
   return (
