@@ -2,6 +2,8 @@ import { Contact } from "./contact-schema"
 import { createTRPCRouter, publicProcedure } from "~/api/trpc"
 import { z } from "zod"
 import { eq, desc, and, ilike, or, SQL } from "drizzle-orm"
+import { ContactUpdateInput, ContactCreateInput } from "./contact-api-inputs"
+import { getRandomAvatarStyle } from "./contact-data-generators"
 
 const contactApi = createTRPCRouter({
   list: publicProcedure
@@ -33,6 +35,12 @@ const contactApi = createTRPCRouter({
     .input(z.object({ id: z.number(), isFavorite: z.boolean().optional() }))
     .mutation(({ ctx, input }) =>
       ctx.db.update(Contact).set({ isFavorite: input.isFavorite }).where(eq(Contact.id, input.id)),
+    ),
+
+  create: publicProcedure
+    .input(ContactCreateInput)
+    .mutation(({ ctx, input }) =>
+      ctx.db.insert(Contact).values({ ...input, avatarStyle: getRandomAvatarStyle() }),
     ),
 
   delete: publicProcedure
