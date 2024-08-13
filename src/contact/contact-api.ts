@@ -34,16 +34,14 @@ const contactApi = createTRPCRouter({
     }).then(c => c || null),
   ),
 
-  update: publicProcedure
-    .input(z.object({ id: z.number(), isFavorite: z.boolean().optional() }))
-    .mutation(({ ctx, input }) =>
-      ctx.db
-        .update(Contact)
-        .set({ isFavorite: input.isFavorite })
-        .where(eq(Contact.id, input.id))
-        .returning()
-        .then(c => asNonNil(c[0])),
-    ),
+  update: publicProcedure.input(ContactUpdateInput).mutation(({ ctx, input }) =>
+    ctx.db
+      .update(Contact)
+      .set({ isFavorite: input.isFavorite })
+      .where(eq(Contact.id, input.id))
+      .returning()
+      .then(c => asNonNil(c[0])),
+  ),
 
   create: publicProcedure.input(ContactCreateInput).mutation(({ ctx, input }) =>
     ctx.db
