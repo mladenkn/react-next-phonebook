@@ -3,8 +3,8 @@ import { ContactDeleteAction } from "./contact-delete"
 import ContactForm, { ContactFormEntries } from "./contact-form"
 import FixedToolbar from "~/toolbar"
 import { useRouter } from "next/router"
-import { homePageUrl } from "~/urls"
-import { useContactUpdate } from "./contact-update-client"
+import { contactDetailsUrl, homePageUrl } from "~/urls"
+import { api } from "~/utils/api"
 
 type Props = {
   contact: Contact
@@ -12,9 +12,15 @@ type Props = {
 
 export default function ContactEdit({ contact }: Props) {
   const router = useRouter()
-  const { mutate } = useContactUpdate()
 
-  function onSubmit(entries: ContactFormEntries) {}
+  const { mutate } = api.contact.update.useMutation({
+    onSuccess() {
+      router.push(contactDetailsUrl(contact.id))
+    },
+  })
+  async function onSubmit(entries: ContactFormEntries) {
+    mutate({ id: contact.id, ...entries })
+  }
 
   return (
     <div className="mx-auto max-w-3xl">
