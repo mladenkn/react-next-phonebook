@@ -9,7 +9,7 @@ export const ContactUpdateInput = z.object({
   phoneNumbers: z
     .array(
       z.object({
-        id: z.number(),
+        id: z.number().optional(),
         value: z.string(),
         label: z.string(),
       }),

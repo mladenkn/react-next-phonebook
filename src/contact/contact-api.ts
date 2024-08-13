@@ -58,7 +58,10 @@ const contactApi = createTRPCRouter({
     if (existingPhoneNumbersInput && existingPhoneNumbersInput.length) {
       await Promise.all(
         existingPhoneNumbersInput.map(number =>
-          ctx.db.update(PhoneNumber).set(number).where(eq(PhoneNumber.id, number.id)),
+          ctx.db
+            .update(PhoneNumber)
+            .set(number)
+            .where(eq(PhoneNumber.id, asNonNil(number.id))),
         ),
       )
     }
