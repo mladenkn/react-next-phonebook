@@ -67,11 +67,25 @@ const contactApi = createTRPCRouter({
   }),
 
   create: publicProcedure.input(ContactCreateInput).mutation(({ ctx, input }) =>
-    ctx.db
-      .insert(Contact)
-      .values({ ...input, avatarStyle: getRandomAvatarStyle() })
-      .returning()
-      .then(c => asNonNil(c[0])),
+    ctx.db.transaction(async tx => {
+      const contact = await tx
+        .insert(Contact)
+        .values({ ...input, avatarStyle: getRandomAvatarStyle() })
+        .returning()
+        .then(c => asNonNil(c[0]))
+
+      const newPhoneNumbersInput = input.phoneNumbers?.map(n => ({
+        value: n.value,
+        label: n.label,
+        contactId: contact.id,
+      }))
+
+      if (newPhoneNumbersInput && newPhoneNumbersInput.length) {
+        await tx.insert(PhoneNumber).values(newPhoneNumbersInput)
+      }
+
+      return contact
+    }),
   ),
 
   delete: publicProcedure

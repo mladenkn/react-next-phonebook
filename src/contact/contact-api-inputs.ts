@@ -21,4 +21,12 @@ export const ContactCreateInput = z.object({
   fullName: z.string(),
   avatarUrl: z.string().optional(),
   email: z.string().email(),
+  phoneNumbers: z
+    .array(
+      z.object({
+        value: z.string(),
+        label: z.string(),
+      }),
+    )
+    .optional(),
 })
