@@ -14,19 +14,18 @@ import { GoBackAction } from "../actions"
 import SwapableAvatar from "../swapable-avatar"
 import { ReactNode } from "react"
 
-type Contact = Omit<_Contact, "id" | "avatarStyle" | "isFavorite">
+export type ContactFormEntries = Omit<_Contact, "id" | "avatarStyle" | "isFavorite">
 
 type Props = {
-  initialInput: Contact
+  initialInput: ContactFormEntries
   toolbarRight?: ReactNode
+  onSubmit: (entries: ContactFormEntries) => void
 }
 
-export default function ContactForm({ initialInput, toolbarRight }: Props) {
+export default function ContactForm({ initialInput, toolbarRight, onSubmit }: Props) {
   const form = useForm({
     defaultValues: initialInput,
-    onSubmit: async ({ value }) => {
-      console.log("form submit", value)
-    },
+    onSubmit: ({ value }) => onSubmit(value),
   })
 
   const buttonClass = cn("w-36 rounded-2xl text-white h-8")

@@ -1,9 +1,10 @@
 import { Contact } from "../models"
 import { ContactDeleteAction } from "./contact-delete"
-import ContactForm from "./contact-form"
+import ContactForm, { ContactFormEntries } from "./contact-form"
 import FixedToolbar from "~/toolbar"
 import { useRouter } from "next/router"
 import { homePageUrl } from "~/urls"
+import { useContactUpdate } from "./contact-update-client"
 
 type Props = {
   contact: Contact
@@ -11,6 +12,10 @@ type Props = {
 
 export default function ContactEdit({ contact }: Props) {
   const router = useRouter()
+  const { mutate } = useContactUpdate()
+
+  function onSubmit(entries: ContactFormEntries) {}
+
   return (
     <div className="mx-auto max-w-3xl">
       <FixedToolbar />
@@ -24,6 +29,7 @@ export default function ContactEdit({ contact }: Props) {
             withText
           />
         }
+        onSubmit={onSubmit}
       />
     </div>
   )
