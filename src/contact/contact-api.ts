@@ -36,17 +36,12 @@ const contactApi = createTRPCRouter({
 
   // TODO: transaction
   update: publicProcedure.input(ContactUpdateInput).mutation(async ({ ctx, input }) => {
-    const contact = ctx.db.transaction(async tx => {
-      const contact = await tx
-        .update(Contact)
-        .set(input)
-        .where(eq(Contact.id, input.id))
-        .returning()
-        .then(c => asNonNil(c[0]))
+    await ctx.db.transaction(async tx => {
+      await tx.update(Contact).set(input).where(eq(Contact.id, input.id))
 
       const newPhoneNumbersInput = input.phoneNumbers
         ?.filter(n => !n.id)
-        .map(n => ({ value: n.value, label: n.label, contactId: contact.id }))
+        .map(n => ({ value: n.value, label: n.label, contactId: input.id }))
 
       if (newPhoneNumbersInput && newPhoneNumbersInput.length) {
         await tx.insert(PhoneNumber).values(newPhoneNumbersInput)
@@ -54,7 +49,7 @@ const contactApi = createTRPCRouter({
 
       const existingPhoneNumbersInput = input.phoneNumbers
         ?.filter(n => n.id)
-        .map(n => ({ ...n, contactId: contact.id }))
+        .map(n => ({ ...n, contactId: input.id }))
 
       if (existingPhoneNumbersInput && existingPhoneNumbersInput.length) {
         await Promise.all(
@@ -66,11 +61,9 @@ const contactApi = createTRPCRouter({
           ),
         )
       }
-
-      return contact
     })
 
-    return contact
+    return { id: input.id }
   }),
 
   create: publicProcedure.input(ContactCreateInput).mutation(({ ctx, input }) =>
