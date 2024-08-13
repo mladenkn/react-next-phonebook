@@ -57,3 +57,10 @@ export const updateMatches = <T>(
   return allItems
   // return [allItems, updatedItems]
 }
+
+export function removeNils<T extends Record<string, unknown>>(record: T) {
+  const nonNilEntries = Object.entries(record).filter(
+    ([key, value]) => value !== null && value !== undefined,
+  )
+  return Object.fromEntries(nonNilEntries)
+}

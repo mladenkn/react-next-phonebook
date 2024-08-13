@@ -1,6 +1,6 @@
 import { MouseEvent } from "react"
 import { HeartBorderIcon, HeartFilledIcon } from "~/assets/icons"
-import { isNil, updateMatches } from "~/utils"
+import { updateMatches, removeNils } from "~/utils"
 import { api } from "~/utils/api"
 
 export function useContactUpdate() {
@@ -8,14 +8,7 @@ export function useContactUpdate() {
 
   return api.contact.update.useMutation({
     async onMutate(updatedContact) {
-      function getNewData<T extends typeof updatedContact>(old: T) {
-        return {
-          ...old,
-          isFavorite: isNil(updatedContact.isFavorite)
-            ? old.isFavorite
-            : (updatedContact.isFavorite as boolean),
-        }
-      }
+      const updatedFields = removeNils(updatedContact)
 
       await Promise.all([utils.contact.list.cancel(), utils.contact.single.cancel()])
 
@@ -24,11 +17,11 @@ export function useContactUpdate() {
         return updateMatches(
           old,
           c => c.id === updatedContact.id,
-          c => getNewData(c),
+          c => ({ ...c, ...updatedFields }),
         )
       })
 
-      utils.contact.single.setData(updatedContact.id, old => old && getNewData(old))
+      utils.contact.single.setData(updatedContact.id, old => old && { ...old, ...updatedFields })
 
       return {
         previous: {
@@ -42,12 +35,12 @@ export function useContactUpdate() {
       utils.contact.single.setData(updatedContact.id, context?.previous.contact.single)
     },
 
-    onSettled() {
-      return Promise.all([utils.contact.list.invalidate(), utils.contact.single.invalidate()])
+    async onSettled(data) {
+      if (data) await utils.contact.single.invalidate(data.id)
+      await utils.contact.list.invalidate()
     },
   })
 }
-
 type ContactFavoriteProps = {
   id: number
   isFavorite: boolean

@@ -4,6 +4,7 @@ import { z } from "zod"
 import { eq, desc, and, ilike, or, SQL } from "drizzle-orm"
 import { ContactUpdateInput, ContactCreateInput } from "./contact-api-inputs"
 import { getRandomAvatarStyle } from "./contact-data-generators"
+import { asNonNil } from "~/utils"
 
 const contactApi = createTRPCRouter({
   list: publicProcedure
@@ -18,10 +19,12 @@ const contactApi = createTRPCRouter({
       const favoriteFilter = input?.isFavorite && eq(Contact.isFavorite, true)
       const optionalFilters = [searchFilter, favoriteFilter].filter(f => f) as SQL<unknown>[]
 
-      return await ctx.db.query.Contact.findMany({
+      const list = await ctx.db.query.Contact.findMany({
         where: and(...[eq(Contact.isDeleted, false), ...optionalFilters]),
         orderBy: [desc(Contact.id)],
       })
+
+      return list
     }),
 
   single: publicProcedure.input(z.number()).query(({ ctx, input }) =>
@@ -34,14 +37,21 @@ const contactApi = createTRPCRouter({
   update: publicProcedure
     .input(z.object({ id: z.number(), isFavorite: z.boolean().optional() }))
     .mutation(({ ctx, input }) =>
-      ctx.db.update(Contact).set({ isFavorite: input.isFavorite }).where(eq(Contact.id, input.id)),
+      ctx.db
+        .update(Contact)
+        .set({ isFavorite: input.isFavorite })
+        .where(eq(Contact.id, input.id))
+        .returning()
+        .then(c => asNonNil(c[0])),
     ),
 
-  create: publicProcedure
-    .input(ContactCreateInput)
-    .mutation(({ ctx, input }) =>
-      ctx.db.insert(Contact).values({ ...input, avatarStyle: getRandomAvatarStyle() }),
-    ),
+  create: publicProcedure.input(ContactCreateInput).mutation(({ ctx, input }) =>
+    ctx.db
+      .insert(Contact)
+      .values({ ...input, avatarStyle: getRandomAvatarStyle() })
+      .returning()
+      .then(c => asNonNil(c[0])),
+  ),
 
   delete: publicProcedure
     .input(z.number())
