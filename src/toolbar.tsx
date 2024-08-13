@@ -15,16 +15,16 @@ function Toolbar({ className, titleContainerClassName }: Props) {
       <div className="bg-gradient-to-r from-primary-dark to-primary-light">
         <div
           className={clsx(
-            "m-auto flex h-11 items-center justify-between px-4",
+            "m-auto flex h-14 items-center justify-between px-4",
             titleContainerClassName,
           )}
         >
           <div />
           <Link
-            className={clsx("mt-1 text-xl font-semibold uppercase text-white no-underline")}
+            className={clsx("mt-1 text-2xl font-medium text-white no-underline")}
             href={homePageUrl}
           >
-            Phonebook
+            Everyone's Phonebook
           </Link>
           <Tooltip.Provider>
             <Tooltip.Root delayDuration={350}>

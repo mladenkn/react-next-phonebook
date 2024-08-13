@@ -7,7 +7,7 @@ const MyApp: AppType = ({ Component, pageProps }) => {
   return (
     <>
       <Head>
-        <title>Phonebook</title>
+        <title>Everyone's Phonebook</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Component {...pageProps} />
