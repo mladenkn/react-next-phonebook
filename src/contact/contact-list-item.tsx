@@ -1,7 +1,7 @@
 import ContactAvatar from "./contact-avatar"
 import { cn } from "~/utils/ui-utils"
 import { ApiOutputs } from "~/utils/api"
-import { ContactFavorite } from "./contact-update"
+import { ContactFavorite } from "./contact-update-client"
 import { contactDetailsUrl } from "~/urls"
 import { MouseEvent } from "react"
 import { PencilIcon } from "~/assets/icons"
