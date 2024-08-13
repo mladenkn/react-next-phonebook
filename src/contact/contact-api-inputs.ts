@@ -6,7 +6,14 @@ export const ContactUpdateInput = z.object({
   fullName: z.string().optional(),
   avatarUrl: z.string().url().nullish(),
   email: z.string().email().optional(),
-  // TODO: phone numbers
+  phoneNumbers: z
+    .array(
+      z.object({
+        value: z.string(),
+        label: z.string(),
+      }),
+    )
+    .optional(),
 })
 
 export const ContactCreateInput = z.object({

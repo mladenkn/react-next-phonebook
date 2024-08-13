@@ -14,7 +14,12 @@ import { GoBackAction } from "../actions"
 import SwapableAvatar from "../swapable-avatar"
 import { ReactNode } from "react"
 
-export type ContactFormEntries = Pick<_Contact, "fullName" | "email" | "phoneNumbers" | "avatarUrl">
+export type ContactFormEntries = {
+  fullName?: string
+  email?: string
+  avatarUrl?: string | null | undefined
+  phoneNumbers?: { value: string; label: string }[]
+}
 
 type Props = {
   initialInput: ContactFormEntries

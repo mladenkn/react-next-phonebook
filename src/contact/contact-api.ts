@@ -34,14 +34,15 @@ const contactApi = createTRPCRouter({
     }).then(c => c || null),
   ),
 
-  update: publicProcedure.input(ContactUpdateInput).mutation(({ ctx, input }) =>
-    ctx.db
+  update: publicProcedure.input(ContactUpdateInput).mutation(async ({ ctx, input }) => {
+    const contact = await ctx.db
       .update(Contact)
       .set(input)
       .where(eq(Contact.id, input.id))
       .returning()
-      .then(c => asNonNil(c[0])),
-  ),
+      .then(c => asNonNil(c[0]))
+    return contact
+  }),
 
   create: publicProcedure.input(ContactCreateInput).mutation(({ ctx, input }) =>
     ctx.db
