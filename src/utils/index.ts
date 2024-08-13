@@ -64,3 +64,7 @@ export function removeNils<T extends Record<string, unknown>>(record: T) {
   )
   return Object.fromEntries(nonNilEntries)
 }
+
+export function arrayWithoutNils<T>(array: (T | undefined | null)[]) {
+  return array.map(i => i !== undefined && i !== null) as T[]
+}

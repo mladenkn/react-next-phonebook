@@ -18,7 +18,7 @@ export type ContactFormEntries = {
   fullName?: string
   email?: string
   avatarUrl?: string | null | undefined
-  phoneNumbers?: { value: string; label: string }[]
+  phoneNumbers?: { id?: number; value: string; label: string }[]
 }
 
 type Props = {

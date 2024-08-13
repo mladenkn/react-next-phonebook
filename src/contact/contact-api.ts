@@ -1,10 +1,10 @@
-import { Contact } from "./contact-schema"
+import { Contact, PhoneNumber } from "./contact-schema"
 import { createTRPCRouter, publicProcedure } from "~/api/trpc"
 import { z } from "zod"
 import { eq, desc, and, ilike, or, SQL } from "drizzle-orm"
 import { ContactUpdateInput, ContactCreateInput } from "./contact-api-inputs"
 import { getRandomAvatarStyle } from "./contact-data-generators"
-import { asNonNil } from "~/utils"
+import { asNonNil, eva, arrayWithoutNils } from "~/utils"
 
 const contactApi = createTRPCRouter({
   list: publicProcedure
@@ -34,6 +34,7 @@ const contactApi = createTRPCRouter({
     }).then(c => c || null),
   ),
 
+  // TODO: transaction
   update: publicProcedure.input(ContactUpdateInput).mutation(async ({ ctx, input }) => {
     const contact = await ctx.db
       .update(Contact)
@@ -41,7 +42,39 @@ const contactApi = createTRPCRouter({
       .where(eq(Contact.id, input.id))
       .returning()
       .then(c => asNonNil(c[0]))
-    return contact
+
+    const newNumbers = await eva(async () => {
+      const newPhoneNumbersInput = input.phoneNumbers
+        ?.filter(n => !n.id)
+        .map(n => ({ value: n.value, label: n.label, contactId: contact.id }))
+
+      if (!newPhoneNumbersInput || !newPhoneNumbersInput.length) return
+
+      const numbers = await ctx.db.insert(PhoneNumber).values(newPhoneNumbersInput).returning()
+      return numbers
+    })
+
+    const existingNumbersUpdated = await eva(async () => {
+      const newPhoneNumbersInput = input.phoneNumbers
+        ?.filter(n => n.id)
+        .map(n => ({ ...n, contactId: contact.id }))
+
+      if (!newPhoneNumbersInput || !newPhoneNumbersInput.length) return
+
+      const numbers = (
+        await Promise.all(
+          newPhoneNumbersInput.map(number =>
+            ctx.db.update(PhoneNumber).set(number).where(eq(PhoneNumber.id, number.id)).returning(),
+          ),
+        )
+      ).flat()
+
+      return numbers
+    })
+
+    const phoneNumbers = arrayWithoutNils([newNumbers, existingNumbersUpdated]).flat()
+
+    return { ...contact, phoneNumbers }
   }),
 
   create: publicProcedure.input(ContactCreateInput).mutation(({ ctx, input }) =>
