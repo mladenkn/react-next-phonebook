@@ -36,35 +36,39 @@ const contactApi = createTRPCRouter({
 
   // TODO: transaction
   update: publicProcedure.input(ContactUpdateInput).mutation(async ({ ctx, input }) => {
-    const contact = await ctx.db
-      .update(Contact)
-      .set(input)
-      .where(eq(Contact.id, input.id))
-      .returning()
-      .then(c => asNonNil(c[0]))
+    const contact = ctx.db.transaction(async tx => {
+      const contact = await tx
+        .update(Contact)
+        .set(input)
+        .where(eq(Contact.id, input.id))
+        .returning()
+        .then(c => asNonNil(c[0]))
 
-    const newPhoneNumbersInput = input.phoneNumbers
-      ?.filter(n => !n.id)
-      .map(n => ({ value: n.value, label: n.label, contactId: contact.id }))
+      const newPhoneNumbersInput = input.phoneNumbers
+        ?.filter(n => !n.id)
+        .map(n => ({ value: n.value, label: n.label, contactId: contact.id }))
 
-    if (newPhoneNumbersInput && newPhoneNumbersInput.length) {
-      await ctx.db.insert(PhoneNumber).values(newPhoneNumbersInput)
-    }
+      if (newPhoneNumbersInput && newPhoneNumbersInput.length) {
+        await tx.insert(PhoneNumber).values(newPhoneNumbersInput)
+      }
 
-    const existingPhoneNumbersInput = input.phoneNumbers
-      ?.filter(n => n.id)
-      .map(n => ({ ...n, contactId: contact.id }))
+      const existingPhoneNumbersInput = input.phoneNumbers
+        ?.filter(n => n.id)
+        .map(n => ({ ...n, contactId: contact.id }))
 
-    if (existingPhoneNumbersInput && existingPhoneNumbersInput.length) {
-      await Promise.all(
-        existingPhoneNumbersInput.map(number =>
-          ctx.db
-            .update(PhoneNumber)
-            .set(number)
-            .where(eq(PhoneNumber.id, asNonNil(number.id))),
-        ),
-      )
-    }
+      if (existingPhoneNumbersInput && existingPhoneNumbersInput.length) {
+        await Promise.all(
+          existingPhoneNumbersInput.map(number =>
+            tx
+              .update(PhoneNumber)
+              .set(number)
+              .where(eq(PhoneNumber.id, asNonNil(number.id))),
+          ),
+        )
+      }
+
+      return contact
+    })
 
     return contact
   }),
