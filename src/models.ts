@@ -1,7 +1,7 @@
 export type Contact = {
   id: number
   fullName: string
-  avatarStyle: ContactAvatarStyle | null
+  avatarStyle: ContactAvatarStyle
   avatarUrl?: string | null
   email: string
   phoneNumbers: ContactPhoneNumber[]

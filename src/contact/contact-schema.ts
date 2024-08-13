@@ -4,7 +4,7 @@ import { relations } from "drizzle-orm"
 export const Contact = pgTable("Contact", {
   id: serial("id").primaryKey().notNull(),
   fullName: varchar("name", { length: 32 }).notNull(),
-  avatarStyle: json("avatarStyle").$type<{ backgroundColor: string; color: string }>(), // probably not null?
+  avatarStyle: json("avatarStyle").$type<{ backgroundColor: string; color: string }>().notNull(),
   avatarUrl: varchar("avatarUrl"),
   email: varchar("email").notNull(),
   isFavorite: boolean("isFavorite").notNull().default(false),
