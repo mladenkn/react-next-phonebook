@@ -68,3 +68,16 @@ export function removeNils<T extends Record<string, unknown>>(record: T) {
 export function arrayWithoutNils<T>(array: (T | undefined | null)[]) {
   return array.map(i => i !== undefined && i !== null) as T[]
 }
+
+export function pick<T, K extends keyof T>(obj: T, ...keys: K[]): Pick<T, K> {
+  const ret: any = {}
+  keys.forEach(key => {
+    ret[key] = obj[key]
+  })
+  return ret
+}
+
+export function omit<T extends object, K extends keyof T>(obj: T, ...keys: K[]): Omit<T, K> {
+  keys.forEach(key => delete obj[key])
+  return obj
+}

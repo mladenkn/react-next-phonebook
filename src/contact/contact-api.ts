@@ -4,7 +4,7 @@ import { z } from "zod"
 import { eq, desc, and, ilike, or, SQL } from "drizzle-orm"
 import { ContactUpdateInput, ContactCreateInput } from "./contact-api-inputs"
 import { getRandomAvatarStyle } from "./contact-data-generators"
-import { asNonNil, eva } from "~/utils"
+import { asNonNil, pick } from "~/utils"
 
 const contactApi = createTRPCRouter({
   list: publicProcedure
@@ -37,7 +37,10 @@ const contactApi = createTRPCRouter({
   // TODO: transaction
   update: publicProcedure.input(ContactUpdateInput).mutation(async ({ ctx, input }) => {
     await ctx.db.transaction(async tx => {
-      await tx.update(Contact).set(input).where(eq(Contact.id, input.id))
+      await tx
+        .update(Contact)
+        .set(pick(input, "fullName", "email", "isFavorite", "avatarUrl"))
+        .where(eq(Contact.id, input.id))
 
       const newPhoneNumbersInput = input.phoneNumbers
         ?.filter(n => !n.id)
