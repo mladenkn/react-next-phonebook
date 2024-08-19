@@ -34,7 +34,6 @@ const contactApi = createTRPCRouter({
     }).then(c => c || null),
   ),
 
-  // TODO: transaction
   update: publicProcedure.input(ContactUpdateInput).mutation(async ({ ctx, input }) => {
     await ctx.db.transaction(async tx => {
       await tx
