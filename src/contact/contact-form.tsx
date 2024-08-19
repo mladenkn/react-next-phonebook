@@ -15,9 +15,9 @@ import SwapableAvatar from "../swapable-avatar"
 import { ReactNode } from "react"
 
 export type ContactFormEntries = {
-  fullName?: string
-  email?: string
-  avatarUrl?: string | null | undefined
+  fullName: string
+  email: string
+  avatarUrl?: string
   phoneNumbers?: { id?: number; value: string; label: string }[]
 }
 

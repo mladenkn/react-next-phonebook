@@ -3,7 +3,7 @@ export type Contact = {
   fullName: string
   avatarStyle: ContactAvatarStyle
   avatarUrl?: string | null
-  email: string
+  email?: string | null
   phoneNumbers: ContactPhoneNumber[]
   isFavorite: boolean
 }

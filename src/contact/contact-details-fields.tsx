@@ -2,7 +2,7 @@ import { EmailIcon, PhoneIcon } from "~/assets/icons"
 import { ContactFieldLabel } from "../various"
 
 type Contact = {
-  email: string
+  email?: string | null
   phoneNumbers: {
     label: string
     value: string

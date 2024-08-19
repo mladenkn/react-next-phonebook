@@ -22,11 +22,17 @@ export default function ContactEdit({ contact }: Props) {
     mutate({ id: contact.id, ...entries })
   }
 
+  const mappedContact = {
+    ...contact,
+    email: contact.email || "",
+    avatarUrl: contact.avatarUrl || undefined,
+  }
+
   return (
     <div className="mx-auto max-w-3xl">
       <FixedToolbar />
       <ContactForm
-        initialInput={contact}
+        initialInput={mappedContact}
         toolbarRight={
           <ContactDeleteAction
             contactId={contact.id}
