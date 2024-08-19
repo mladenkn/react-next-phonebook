@@ -2,7 +2,6 @@ import { z } from "zod"
 
 export const ContactUpdateInput = z.object({
   id: z.number(),
-  isFavorite: z.boolean().optional(),
   fullName: z.string().optional(),
   avatarUrl: z.string().url().nullish(),
   email: z.string().email().optional(),
