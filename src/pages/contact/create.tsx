@@ -1,13 +1,33 @@
-import ContactForm from "~/contact/contact-form"
+import { useRouter } from "next/router"
+import ContactForm, { ContactFormEntries } from "~/contact/contact-form"
 import FixedToolbar from "~/toolbar"
+import { contactDetailsUrl } from "~/urls"
+import { api } from "~/utils/api"
+
+type FormEntriesValid = ContactFormEntries & {
+  fullName: string
+}
 
 export default function ContactCreatePage() {
+  const router = useRouter()
+
+  // TODO: error handling
+  const { mutate } = api.contact.create.useMutation({
+    onSuccess(contact) {
+      router.push(contactDetailsUrl(contact.id))
+    },
+  })
+
+  function handleSubmit(input: ContactFormEntries) {
+    mutate(input as FormEntriesValid)
+  }
+
   return (
     <div className="mx-auto max-w-3xl">
       <FixedToolbar />
       <ContactForm
         initialInput={{ email: "", fullName: "", phoneNumbers: [] }}
-        onSubmit={() => {}}
+        onSubmit={handleSubmit}
       />
     </div>
   )

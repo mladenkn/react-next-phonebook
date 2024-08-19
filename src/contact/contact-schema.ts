@@ -6,7 +6,7 @@ export const Contact = pgTable("Contact", {
   fullName: varchar("name", { length: 32 }).notNull(),
   avatarStyle: json("avatarStyle").$type<{ backgroundColor: string; color: string }>().notNull(),
   avatarUrl: varchar("avatarUrl"),
-  email: varchar("email").notNull(),
+  email: varchar("email"),
   isFavorite: boolean("isFavorite").notNull().default(false),
   isDeleted: boolean("isDeleted").notNull().default(false),
 })

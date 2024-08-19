@@ -19,8 +19,8 @@ export const ContactUpdateInput = z.object({
 
 export const ContactCreateInput = z.object({
   fullName: z.string(),
-  avatarUrl: z.string().optional(),
-  email: z.string().email(),
+  avatarUrl: z.string().nullish(),
+  email: z.string().email().optional(),
   phoneNumbers: z
     .array(
       z.object({
