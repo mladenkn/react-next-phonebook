@@ -1,33 +1,5 @@
-import { DeleteAction, DeleteActionProps } from "~/actions"
+import { DeleteAction } from "~/actions"
 import { api } from "~/utils/api"
-
-function useContactDelete() {
-  const utils = api.useUtils()
-
-  return api.contact.delete.useMutation({
-    async onMutate(contactId) {
-      await Promise.all([utils.contact.list.cancel(), utils.contact.single.cancel()])
-
-      utils.contact.list.setData(undefined, old => {
-        return old?.filter(c => c.id !== contactId)
-      })
-
-      return {
-        previous: {
-          contact: { list: utils.contact.list.getData() },
-        },
-      }
-    },
-
-    onError(err, updatedContact, context) {
-      utils.contact.list.setData(undefined, context?.previous.contact.list)
-    },
-
-    onSettled() {
-      return Promise.all([utils.contact.list.invalidate()])
-    },
-  })
-}
 
 type Props = {
   contactId: number
@@ -38,10 +10,10 @@ type Props = {
 }
 
 export function ContactDeleteAction({ contactId, onComplete, ...props }: Props) {
-  const { mutate } = useContactDelete()
+  const { mutate } = api.contact.delete.useMutation()
 
   async function handleConfirm() {
-    await mutate(contactId)
+    mutate(contactId)
     onComplete && onComplete()
   }
 
