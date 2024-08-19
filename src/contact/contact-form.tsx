@@ -107,19 +107,8 @@ export default function ContactForm({ initialInput, toolbarRight, onSubmit }: Pr
               />
               {phoneNumberField.state.value?.map((_, index) => (
                 <div className="py-2 md:flex md:justify-between md:gap-2" key={index}>
+                  <FormInput form={form} name={`phoneNumbers[${index}].label`} />
                   <FormInput form={form} name={`phoneNumbers[${index}].value`} />
-                  <form.Field name={`phoneNumbers[${index}].label`}>
-                    {field => (
-                      <input
-                        className={styles.input}
-                        id={field.name}
-                        name={field.name}
-                        value={field.state.value}
-                        onBlur={field.handleBlur}
-                        onChange={e => field.handleChange(e.target.value)}
-                      />
-                    )}
-                  </form.Field>
                   <button
                     className="max-sm:ml-2"
                     type="button"
@@ -160,7 +149,8 @@ export default function ContactForm({ initialInput, toolbarRight, onSubmit }: Pr
 }
 
 const styles = {
-  input: "p-2 border-2 border-solid border-secondary-light text-secondary-main outline-none",
+  input:
+    "p-2 border-2 border-solid border-secondary-light text-secondary-main outline-none w-full sm:w-1/2",
   errorMessage: "ml-2 mt-0.5 text-red-500",
 }
 
@@ -175,7 +165,7 @@ function FormInput({ form, name }: FormInputProps) {
       name={name}
       children={field => (
         <input
-          className={cn(styles.input, "w-full sm:w-1/2")}
+          className={styles.input}
           type="text"
           name={field.name}
           onBlur={field.handleBlur}
