@@ -6,7 +6,7 @@ import { api } from "~/utils/api"
 function useContactUpdateOptimistic() {
   const utils = api.useUtils()
 
-  return api.contact.update.useMutation({
+  return api.contact.update1.useMutation({
     async onMutate(updatedContact) {
       const updatedFields = removeNils(updatedContact)
 

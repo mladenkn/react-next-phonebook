@@ -2,7 +2,7 @@ import { Contact, PhoneNumber } from "./contact-schema"
 import { createTRPCRouter, publicProcedure } from "~/api/trpc"
 import { z } from "zod"
 import { eq, desc, and, ilike, or, SQL } from "drizzle-orm"
-import { ContactUpdateInput, ContactCreateInput } from "./contact-api-inputs"
+import { ContactUpdateInput, ContactCreateInput, ContactUpdate1Input } from "./contact-api-inputs"
 import { getRandomAvatarStyle } from "./contact-data-generators"
 import { asNonNil, pick } from "~/utils"
 
@@ -67,6 +67,15 @@ const contactApi = createTRPCRouter({
     })
 
     return { id: input.id }
+  }),
+
+  update1: publicProcedure.input(ContactUpdate1Input).mutation(async ({ ctx, input }) => {
+    const contact = await ctx.db
+      .update(Contact)
+      .set(input)
+      .where(eq(Contact.id, input.id))
+      .returning()
+    return contact[0]!
   }),
 
   create: publicProcedure.input(ContactCreateInput).mutation(({ ctx, input }) =>
