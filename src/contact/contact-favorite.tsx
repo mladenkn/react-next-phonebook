@@ -3,7 +3,7 @@ import { HeartBorderIcon, HeartFilledIcon } from "~/assets/icons"
 import { updateMatches, removeNils } from "~/utils"
 import { api } from "~/utils/api"
 
-export function useContactUpdate() {
+function useContactUpdateOptimistic() {
   const utils = api.useUtils()
 
   return api.contact.update.useMutation({
@@ -47,7 +47,7 @@ type ContactFavoriteProps = {
 }
 
 export function ContactFavorite({ id, isFavorite }: ContactFavoriteProps) {
-  const { mutate } = useContactUpdate()
+  const { mutate } = useContactUpdateOptimistic()
 
   function handleClick(e: MouseEvent) {
     e.stopPropagation()
