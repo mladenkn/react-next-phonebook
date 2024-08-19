@@ -8,7 +8,7 @@ import {
   RemoveCircledIcon,
   AddCircleOutlineIcon,
 } from "~/assets/icons"
-import { useForm } from "@tanstack/react-form"
+import { DeepKeys, FormApi, ReactFormApi, useForm } from "@tanstack/react-form"
 import { useRouter } from "next/router"
 import { GoBackAction } from "../actions"
 import SwapableAvatar from "../swapable-avatar"
@@ -51,6 +51,9 @@ export default function ContactForm({ initialInput, toolbarRight, onSubmit }: Pr
 
   const numbersField = form.useField({ name: "phoneNumbers" })
 
+  const formState = form.useStore(s => s.values)
+  console.log(55, formState)
+
   return (
     <form
       className="mt-16 px-3 text-secondary-dark md:mt-20 md:flex sm-max:w-full"
@@ -78,20 +81,7 @@ export default function ContactForm({ initialInput, toolbarRight, onSubmit }: Pr
             text="Full name"
             className="mb-2"
           />
-
-          <form.Field
-            name="fullName"
-            children={field => (
-              <input
-                className={cn(styles.input, "w-full sm:w-1/2")}
-                type="text"
-                name={field.name}
-                onBlur={field.handleBlur}
-                value={field.state.value}
-                onChange={e => field.handleChange(e.target.value)}
-              />
-            )}
-          />
+          <FormInput name="fullName" form={form} />
         </label>
 
         <div className="my-4 h-0.25 w-full bg-primary-main" />
@@ -102,19 +92,7 @@ export default function ContactForm({ initialInput, toolbarRight, onSubmit }: Pr
             text="Email"
             className="mb-2"
           />
-          <form.Field
-            name="email"
-            children={field => (
-              <input
-                className={cn(styles.input, "w-full sm:w-1/2")}
-                type="text"
-                name={field.name}
-                onBlur={field.handleBlur}
-                value={field.state.value}
-                onChange={e => field.handleChange(e.target.value)}
-              />
-            )}
-          />
+          <FormInput name="email" form={form} />
         </label>
 
         <div className="my-4 h-0.25 w-full bg-primary-main" />
@@ -129,18 +107,7 @@ export default function ContactForm({ initialInput, toolbarRight, onSubmit }: Pr
               />
               {phoneNumberField.state.value?.map((_, index) => (
                 <div className="py-2 md:flex md:justify-between md:gap-2" key={index}>
-                  <form.Field name={`phoneNumbers[${index}].value`}>
-                    {field => (
-                      <input
-                        className={cn(styles.input, "max-sm:mb-2 max-sm:w-full")}
-                        id={field.name}
-                        name={field.name}
-                        value={field.state.value}
-                        onBlur={field.handleBlur}
-                        onChange={e => field.handleChange(e.target.value)}
-                      />
-                    )}
-                  </form.Field>
+                  <FormInput form={form} name={`phoneNumbers[${index}].value`} />
                   <form.Field name={`phoneNumbers[${index}].label`}>
                     {field => (
                       <input
@@ -167,6 +134,7 @@ export default function ContactForm({ initialInput, toolbarRight, onSubmit }: Pr
         </form.Field>
 
         <button
+          type="button"
           className="mt-6 flex text-primary-main"
           onClick={() => numbersField.pushValue({ label: "", value: "" })}
         >
@@ -194,4 +162,27 @@ export default function ContactForm({ initialInput, toolbarRight, onSubmit }: Pr
 const styles = {
   input: "p-2 border-2 border-solid border-secondary-light text-secondary-main outline-none",
   errorMessage: "ml-2 mt-0.5 text-red-500",
+}
+
+type FormInputProps = {
+  form: FormApi<ContactFormEntries, undefined> & ReactFormApi<ContactFormEntries, undefined>
+  name: DeepKeys<ContactFormEntries>
+}
+
+function FormInput({ form, name }: FormInputProps) {
+  return (
+    <form.Field
+      name={name}
+      children={field => (
+        <input
+          className={cn(styles.input, "w-full sm:w-1/2")}
+          type="text"
+          name={field.name}
+          onBlur={field.handleBlur}
+          value={field.state.value as any}
+          onChange={e => field.handleChange(e.target.value)}
+        />
+      )}
+    />
+  )
 }
