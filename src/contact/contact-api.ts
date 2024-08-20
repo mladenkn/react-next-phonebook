@@ -2,9 +2,14 @@ import { Contact, PhoneNumber } from "./contact-schema"
 import { createTRPCRouter, publicProcedure } from "~/api/trpc"
 import { z } from "zod"
 import { eq, desc, and, ilike, or, SQL } from "drizzle-orm"
-import { ContactFormInput, ContactUpdate1Input } from "./contact-api-inputs"
+import { ContactFormInput } from "./contact-api-inputs"
 import { getRandomAvatarStyle } from "./contact-data-generators"
 import { asNonNil, pick } from "~/utils"
+
+const ContactUpdate1Input = z.object({
+  id: z.number(),
+  isFavorite: z.boolean(),
+})
 
 const contactApi = createTRPCRouter({
   list: publicProcedure

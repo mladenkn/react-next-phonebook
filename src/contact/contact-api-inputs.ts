@@ -14,8 +14,3 @@ export const ContactFormInput = z.object({
     )
     .optional(),
 })
-
-export const ContactUpdate1Input = z.object({
-  id: z.number(),
-  isFavorite: z.boolean(),
-})
