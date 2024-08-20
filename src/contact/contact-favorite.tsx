@@ -10,11 +10,13 @@ type ContactFavoriteProps = {
 export function ContactFavorite({ id, isFavorite }: ContactFavoriteProps) {
   const apiUtils = api.useUtils()
   const { mutate } = api.contact.update1.useMutation({
-    async onSettled(data, error, variables) {
-      await Promise.all([
-        apiUtils.contact.single.invalidate(variables.id),
-        apiUtils.contact.list.invalidate(),
-      ])
+    async onSuccess(data, variables) {
+      if (data) {
+        apiUtils.contact.single.setData(data.id, data)
+      } else {
+        await apiUtils.contact.single.invalidate(variables.id)
+      }
+      await apiUtils.contact.list.invalidate()
     },
   })
 
