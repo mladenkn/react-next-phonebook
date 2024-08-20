@@ -2,7 +2,7 @@ import { Contact, PhoneNumber } from "./contact-schema"
 import { createTRPCRouter, publicProcedure } from "~/api/trpc"
 import { z } from "zod"
 import { eq, desc, and, ilike, or, SQL } from "drizzle-orm"
-import { ContactUpdateInput, ContactCreateInput, ContactUpdate1Input } from "./contact-api-inputs"
+import { ContactFormInput, ContactUpdate1Input } from "./contact-api-inputs"
 import { getRandomAvatarStyle } from "./contact-data-generators"
 import { asNonNil, pick } from "~/utils"
 
@@ -35,39 +35,41 @@ const contactApi = createTRPCRouter({
   ),
 
   // TODO: delete numbers that are not sent
-  update: publicProcedure.input(ContactUpdateInput).mutation(async ({ ctx, input }) => {
-    await ctx.db.transaction(async tx => {
-      await tx
-        .update(Contact)
-        .set(pick(input, "fullName", "email", "avatarUrl"))
-        .where(eq(Contact.id, input.id))
+  update: publicProcedure
+    .input(ContactFormInput.extend({ id: z.number() }))
+    .mutation(async ({ ctx, input }) => {
+      await ctx.db.transaction(async tx => {
+        await tx
+          .update(Contact)
+          .set(pick(input, "fullName", "email", "avatarUrl"))
+          .where(eq(Contact.id, input.id))
 
-      const newPhoneNumbersInput = input.phoneNumbers
-        ?.filter(n => !n.id)
-        .map(n => ({ value: n.value, label: n.label, contactId: input.id }))
+        const newPhoneNumbersInput = input.phoneNumbers
+          ?.filter(n => !n.id)
+          .map(n => ({ value: n.value, label: n.label, contactId: input.id }))
 
-      if (newPhoneNumbersInput && newPhoneNumbersInput.length) {
-        await tx.insert(PhoneNumber).values(newPhoneNumbersInput)
-      }
+        if (newPhoneNumbersInput && newPhoneNumbersInput.length) {
+          await tx.insert(PhoneNumber).values(newPhoneNumbersInput)
+        }
 
-      const existingPhoneNumbersInput = input.phoneNumbers
-        ?.filter(n => n.id)
-        .map(n => ({ ...n, contactId: input.id }))
+        const existingPhoneNumbersInput = input.phoneNumbers
+          ?.filter(n => n.id)
+          .map(n => ({ ...n, contactId: input.id }))
 
-      if (existingPhoneNumbersInput && existingPhoneNumbersInput.length) {
-        await Promise.all(
-          existingPhoneNumbersInput.map(number =>
-            tx
-              .update(PhoneNumber)
-              .set(number)
-              .where(eq(PhoneNumber.id, asNonNil(number.id))),
-          ),
-        )
-      }
-    })
+        if (existingPhoneNumbersInput && existingPhoneNumbersInput.length) {
+          await Promise.all(
+            existingPhoneNumbersInput.map(number =>
+              tx
+                .update(PhoneNumber)
+                .set(number)
+                .where(eq(PhoneNumber.id, asNonNil(number.id))),
+            ),
+          )
+        }
+      })
 
-    return { id: input.id }
-  }),
+      return { id: input.id }
+    }),
 
   update1: publicProcedure.input(ContactUpdate1Input).mutation(async ({ ctx, input }) => {
     await ctx.db
@@ -81,7 +83,7 @@ const contactApi = createTRPCRouter({
     }).then(c => c || null)
   }),
 
-  create: publicProcedure.input(ContactCreateInput).mutation(({ ctx, input }) =>
+  create: publicProcedure.input(ContactFormInput).mutation(({ ctx, input }) =>
     ctx.db.transaction(async tx => {
       const contact = await tx
         .insert(Contact)
