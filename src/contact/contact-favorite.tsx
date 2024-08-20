@@ -7,19 +7,19 @@ function useContactUpdateOptimistic() {
   const utils = api.useUtils()
 
   return api.contact.update1.useMutation({
-    async onMutate(updatedContact) {
+    async onMutate(variables) {
       await Promise.all([utils.contact.list.cancel(), utils.contact.single.cancel()])
 
       utils.contact.list.setData(undefined, old => {
         if (!old) return old
         return updateMatches(
           old,
-          c => c.id === updatedContact.id,
-          c => ({ ...c, ...updatedContact }),
+          c => c.id === variables.id,
+          c => ({ ...c, ...variables }),
         )
       })
 
-      utils.contact.single.setData(updatedContact.id, old => old && { ...old, ...updatedContact })
+      utils.contact.single.setData(variables.id, old => old && { ...old, ...variables })
     },
 
     async onSettled(data, error, variables, context) {
