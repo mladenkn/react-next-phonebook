@@ -34,6 +34,7 @@ const contactApi = createTRPCRouter({
     }).then(c => c || null),
   ),
 
+  // TODO: delete numbers that are not sent
   update: publicProcedure.input(ContactUpdateInput).mutation(async ({ ctx, input }) => {
     await ctx.db.transaction(async tx => {
       await tx
