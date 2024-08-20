@@ -78,6 +78,7 @@ export function pick<T, K extends keyof T>(obj: T, ...keys: K[]): Pick<T, K> {
 }
 
 export function omit<T extends object, K extends keyof T>(obj: T, ...keys: K[]): Omit<T, K> {
-  keys.forEach(key => delete obj[key])
-  return obj
+  const ret = { ...obj }
+  keys.forEach(key => delete ret[key])
+  return ret
 }
