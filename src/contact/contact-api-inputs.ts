@@ -18,7 +18,7 @@ export const ContactUpdateInput = z.object({
 
 export const ContactUpdate1Input = z.object({
   id: z.number(),
-  isFavorite: z.boolean().optional(),
+  isFavorite: z.boolean(),
 })
 
 export const ContactCreateInput = z.object({

@@ -69,9 +69,10 @@ const contactApi = createTRPCRouter({
   }),
 
   update1: publicProcedure.input(ContactUpdate1Input).mutation(async ({ ctx, input }) => {
+    throw new Error("experiment")
     const contact = await ctx.db
       .update(Contact)
-      .set(omit(input, "id"))
+      .set({ isFavorite: input.isFavorite })
       .where(eq(Contact.id, input.id))
       .returning()
     return contact[0]!
