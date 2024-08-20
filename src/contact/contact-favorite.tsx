@@ -9,7 +9,7 @@ type ContactFavoriteProps = {
 
 export function ContactFavorite({ id, isFavorite }: ContactFavoriteProps) {
   const apiUtils = api.useUtils()
-  const { mutate } = api.contact.update1.useMutation({
+  const { mutate } = api.contact.favorite.useMutation({
     async onSuccess(data, variables) {
       if (data) {
         apiUtils.contact.single.setData(data.id, data)

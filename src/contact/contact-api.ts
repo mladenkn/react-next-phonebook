@@ -6,7 +6,7 @@ import { ContactFormInput } from "./contact-api-inputs"
 import { getRandomAvatarStyle } from "./contact-data-generators"
 import { asNonNil, pick } from "~/utils"
 
-const ContactUpdate1Input = z.object({
+const ContactFavoriteInput = z.object({
   id: z.number(),
   isFavorite: z.boolean(),
 })
@@ -76,7 +76,7 @@ const contactApi = createTRPCRouter({
       return { id: input.id }
     }),
 
-  update1: publicProcedure.input(ContactUpdate1Input).mutation(async ({ ctx, input }) => {
+  favorite: publicProcedure.input(ContactFavoriteInput).mutation(async ({ ctx, input }) => {
     await ctx.db
       .update(Contact)
       .set({ isFavorite: input.isFavorite })
