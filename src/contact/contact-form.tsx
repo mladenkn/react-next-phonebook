@@ -108,7 +108,11 @@ export default function ContactForm({ initialInput, toolbarRight, onSubmit }: Pr
               />
               {phoneNumberField.state.value?.map((_, index) => (
                 <div className="py-2 md:flex md:justify-between md:gap-2" key={index}>
-                  <FormInput form={form} name={`phoneNumbers[${index}].label`} />
+                  <FormInput
+                    placeholder="Label"
+                    form={form}
+                    name={`phoneNumbers[${index}].label`}
+                  />
                   <FormInput form={form} name={`phoneNumbers[${index}].value`} />
                   <button
                     className="max-sm:ml-2"
@@ -158,9 +162,10 @@ const styles = {
 type FormInputProps = {
   form: FormApi<ContactFormEntries, undefined> & ReactFormApi<ContactFormEntries, undefined>
   name: DeepKeys<ContactFormEntries>
+  placeholder?: string
 }
 
-function FormInput({ form, name }: FormInputProps) {
+function FormInput({ form, name, placeholder }: FormInputProps) {
   return (
     <form.Field
       name={name}
@@ -173,6 +178,7 @@ function FormInput({ form, name }: FormInputProps) {
             onBlur={field.handleBlur}
             value={field.state.value as any}
             onChange={e => field.handleChange(e.target.value)}
+            placeholder={placeholder}
           />
           <FieldInfo className="text-red-500" field={field} />
         </div>
