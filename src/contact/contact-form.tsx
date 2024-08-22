@@ -52,9 +52,6 @@ export default function ContactForm({ initialInput, toolbarRight, onSubmit }: Pr
 
   const numbersField = form.useField({ name: "phoneNumbers" })
 
-  const formState = form.useStore(s => s.values)
-  console.log(55, formState)
-
   return (
     <form
       className="mt-16 px-3 text-secondary-dark md:mt-20 md:flex sm-max:w-full"
@@ -200,9 +197,7 @@ function FormInput({ form, name, placeholder, validate }: FormInputProps) {
           const validationResult = ContactFormInput.pick({ [name]: true } as any).safeParse({
             [name]: value,
           })
-          console.log(195, validationResult)
           if (validationResult.error) {
-            console.log(187, validationResult.error.issues)
             return validationResult.error.issues.map(i => i.message).join(", ")
           }
         },
