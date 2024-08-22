@@ -117,6 +117,7 @@ export default function ContactForm({ initialInput, toolbarRight, onSubmit }: Pr
                     placeholder="Number"
                     form={form}
                     name={`phoneNumbers[${index}].value`}
+                    validate={input => (input?.length === 0 ? "Required" : undefined)}
                   />
                   <button
                     className="max-sm:ml-2"
@@ -167,9 +168,10 @@ type FormInputProps = {
   form: FormApi<ContactFormEntries, undefined> & ReactFormApi<ContactFormEntries, undefined>
   name: DeepKeys<ContactFormEntries>
   placeholder?: string
+  validate?(input: string): string | undefined
 }
 
-function FormInput({ form, name, placeholder }: FormInputProps) {
+function FormInput({ form, name, placeholder, validate }: FormInputProps) {
   return (
     <form.Field
       name={name}
@@ -189,6 +191,12 @@ function FormInput({ form, name, placeholder }: FormInputProps) {
       )}
       validators={{
         onBlur({ value }) {
+          if (validate) {
+            if (typeof value !== "string")
+              throw new Error("Custom validation supported only for string values")
+            return validate(value as any)
+          }
+
           const validationResult = ContactFormInput.pick({ [name]: true } as any).safeParse({
             [name]: value,
           })
