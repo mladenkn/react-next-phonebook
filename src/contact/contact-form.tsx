@@ -8,11 +8,12 @@ import {
   RemoveCircledIcon,
   AddCircleOutlineIcon,
 } from "~/assets/icons"
-import { DeepKeys, FormApi, ReactFormApi, useForm } from "@tanstack/react-form"
+import { DeepKeys, FieldApi, FormApi, ReactFormApi, useForm } from "@tanstack/react-form"
 import { useRouter } from "next/router"
 import { GoBackAction } from "../actions"
 import SwapableAvatar from "../swapable-avatar"
 import { ReactNode } from "react"
+import { ContactFormInput } from "./contact-api-shared"
 
 export type ContactFormEntries = {
   fullName: string
@@ -164,15 +165,46 @@ function FormInput({ form, name }: FormInputProps) {
     <form.Field
       name={name}
       children={field => (
-        <input
-          className={styles.input}
-          type="text"
-          name={field.name}
-          onBlur={field.handleBlur}
-          value={field.state.value as any}
-          onChange={e => field.handleChange(e.target.value)}
-        />
+        <div className="flex flex-col gap-1">
+          <input
+            className={styles.input}
+            type="text"
+            name={field.name}
+            onBlur={field.handleBlur}
+            value={field.state.value as any}
+            onChange={e => field.handleChange(e.target.value)}
+          />
+          <FieldInfo className="text-red-500" field={field} />
+        </div>
       )}
+      validators={{
+        onBlur({ value }) {
+          const validationResult = ContactFormInput.pick({ [name]: true } as any).safeParse({
+            [name]: value,
+          })
+          if (validationResult.error) {
+            console.log(187, validationResult.error.issues)
+            return validationResult.error.issues.map(i => i.message).join(", ")
+          }
+        },
+      }}
     />
+  )
+}
+
+function FieldInfo({
+  field,
+  className,
+}: {
+  className?: string
+  field: FieldApi<any, any, any, any>
+}) {
+  return (
+    <>
+      {field.state.meta.isTouched && field.state.meta.errors.length ? (
+        <em className={className}>{field.state.meta.errors.join(", ")}</em>
+      ) : null}
+      {/* {field.state.meta.isValidating ? 'Validating...' : null} */}
+    </>
   )
 }
