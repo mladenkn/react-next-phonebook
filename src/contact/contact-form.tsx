@@ -113,7 +113,11 @@ export default function ContactForm({ initialInput, toolbarRight, onSubmit }: Pr
                     form={form}
                     name={`phoneNumbers[${index}].label`}
                   />
-                  <FormInput form={form} name={`phoneNumbers[${index}].value`} />
+                  <FormInput
+                    placeholder="Number"
+                    form={form}
+                    name={`phoneNumbers[${index}].value`}
+                  />
                   <button
                     className="max-sm:ml-2"
                     type="button"
@@ -188,6 +192,7 @@ function FormInput({ form, name, placeholder }: FormInputProps) {
           const validationResult = ContactFormInput.pick({ [name]: true } as any).safeParse({
             [name]: value,
           })
+          console.log(195, validationResult)
           if (validationResult.error) {
             console.log(187, validationResult.error.issues)
             return validationResult.error.issues.map(i => i.message).join(", ")
