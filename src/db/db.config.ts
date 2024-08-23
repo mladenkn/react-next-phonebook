@@ -3,8 +3,8 @@ import { env } from "~/env"
 
 export default {
   schema: ["./src/contact/contact-schema.ts"],
-  driver: "pg",
   dbCredentials: {
-    connectionString: env.DATABASE_URL,
+    url: env.DATABASE_URL,
   },
+  dialect: "postgresql",
 } satisfies Config
