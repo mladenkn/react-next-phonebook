@@ -184,7 +184,9 @@ function FormInput({ form, name, placeholder, validate }: FormInputProps) {
             onChange={e => field.handleChange(e.target.value)}
             placeholder={placeholder}
           />
-          <FieldInfo className="text-red-500" field={field} />
+          {field.state.meta.isTouched && field.state.meta.errors.length ? (
+            <em className="not-italic text-red-500">{field.state.meta.errors.join(", ")}</em>
+          ) : null}
         </div>
       )}
       validators={{
@@ -204,22 +206,5 @@ function FormInput({ form, name, placeholder, validate }: FormInputProps) {
         },
       }}
     />
-  )
-}
-
-function FieldInfo({
-  field,
-  className,
-}: {
-  className?: string
-  field: FieldApi<any, any, any, any>
-}) {
-  return (
-    <>
-      {field.state.meta.isTouched && field.state.meta.errors.length ? (
-        <em className={className}>{field.state.meta.errors.join(", ")}</em>
-      ) : null}
-      {/* {field.state.meta.isValidating ? 'Validating...' : null} */}
-    </>
   )
 }
