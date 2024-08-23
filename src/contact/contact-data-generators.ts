@@ -4,7 +4,7 @@ import { generateArray } from "../utils"
 
 const generatePhoneNumber = () => ({
   value: faker.phone.number(),
-  label: faker.helpers.arrayElement(["Home", "Work", "Cell", "Husband"]),
+  label: faker.helpers.arrayElement(["Home", "Work", "Cell"]),
 })
 
 const avatarStyles = [
@@ -19,9 +19,7 @@ export function getRandomAvatarStyle() {
   return faker.helpers.arrayElement(avatarStyles)
 }
 
-let contactId = 1
-export const generateContact = (): Contact => ({
-  id: contactId++,
+export const generateContact = (): Omit<Contact, "id"> => ({
   fullName: faker.person.firstName() + " " + faker.person.lastName(),
   avatarStyle: getRandomAvatarStyle(),
   avatarUrl: faker.datatype.boolean() ? faker.image.avatar() : null,
