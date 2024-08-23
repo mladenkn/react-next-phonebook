@@ -1,4 +1,3 @@
-import { Contact } from "../models"
 import { faker } from "@faker-js/faker"
 import { generateArray } from "../utils"
 
@@ -19,7 +18,7 @@ export function getRandomAvatarStyle() {
   return faker.helpers.arrayElement(avatarStyles)
 }
 
-export const generateContact = (): Omit<Contact, "id"> => ({
+export const generateContact = () => ({
   fullName: faker.person.firstName() + " " + faker.person.lastName(),
   avatarStyle: getRandomAvatarStyle(),
   avatarUrl: faker.datatype.boolean() ? faker.image.avatar() : null,

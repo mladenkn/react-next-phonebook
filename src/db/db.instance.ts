@@ -21,3 +21,5 @@ function postgresConnect() {
     max: 1,
   })
 }
+
+export type Database = typeof db

@@ -1,10 +1,11 @@
 import { Contact, PhoneNumber } from "./contact-schema"
-import { createTRPCRouter, publicProcedure } from "~/api/trpc"
+import { createTRPCRouter, publicProcedure, TrpcContext } from "~/api/trpc"
 import { z } from "zod"
 import { eq, desc, and, ilike, or, SQL, notInArray } from "drizzle-orm"
 import { ContactFormInput } from "./contact-api-shared"
 import { getRandomAvatarStyle } from "./contact-data-generators"
 import { asNonNil, pick } from "~/utils"
+import { Database } from "~/db/db.instance"
 
 const ContactFavoriteInput = z.object({
   id: z.number(),
@@ -99,27 +100,9 @@ const contactApi = createTRPCRouter({
     }).then(c => c || null)
   }),
 
-  create: publicProcedure.input(ContactFormInput).mutation(({ ctx, input }) =>
-    ctx.db.transaction(async tx => {
-      const contact = await tx
-        .insert(Contact)
-        .values({ ...input, avatarStyle: getRandomAvatarStyle() })
-        .returning()
-        .then(c => asNonNil(c[0]))
-
-      const newPhoneNumbersInput = input.phoneNumbers?.map(n => ({
-        value: n.value,
-        label: n.label,
-        contactId: contact.id,
-      }))
-
-      if (newPhoneNumbersInput && newPhoneNumbersInput.length) {
-        await tx.insert(PhoneNumber).values(newPhoneNumbersInput)
-      }
-
-      return contact
-    }),
-  ),
+  create: publicProcedure
+    .input(ContactFormInput)
+    .mutation(({ ctx, input }) => createContact(ctx.db, input)),
 
   delete: publicProcedure
     .input(z.number())
@@ -129,3 +112,26 @@ const contactApi = createTRPCRouter({
 })
 
 export default contactApi
+
+// TODO: pokušat stavit u router pa zvat preko apiSS
+export function createContact(db: Database, input: z.infer<typeof ContactFormInput>) {
+  return db.transaction(async tx => {
+    const contact = await tx
+      .insert(Contact)
+      .values({ ...input, avatarStyle: getRandomAvatarStyle() })
+      .returning()
+      .then(c => asNonNil(c[0]))
+
+    const newPhoneNumbersInput = input.phoneNumbers?.map(n => ({
+      value: n.value,
+      label: n.label,
+      contactId: contact.id,
+    }))
+
+    if (newPhoneNumbersInput && newPhoneNumbersInput.length) {
+      await tx.insert(PhoneNumber).values(newPhoneNumbersInput)
+    }
+
+    return contact
+  })
+}

@@ -50,6 +50,8 @@ export const createTRPCContext = (_opts: CreateNextContextOptions) => {
   return createInnerTRPCContext({})
 }
 
+export type TrpcContext = ReturnType<typeof createTRPCContext>
+
 /**
  * 2. INITIALIZATION
  *
