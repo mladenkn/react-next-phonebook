@@ -1,7 +1,7 @@
 import { Contact, PhoneNumber } from "./contact-schema"
 import { createTRPCRouter, publicProcedure } from "~/api/trpc"
 import { z } from "zod"
-import { eq, desc, and, ilike, or, SQL } from "drizzle-orm"
+import { eq, desc, and, ilike, or, SQL, notInArray } from "drizzle-orm"
 import { ContactFormInput } from "./contact-api-shared"
 import { getRandomAvatarStyle } from "./contact-data-generators"
 import { asNonNil, pick } from "~/utils"
@@ -44,24 +44,35 @@ const contactApi = createTRPCRouter({
     .input(ContactFormInput.extend({ id: z.number() }))
     .mutation(async ({ ctx, input }) => {
       await ctx.db.transaction(async tx => {
+        // update root entries
         await tx
           .update(Contact)
           .set(pick(input, "fullName", "email", "avatarUrl"))
           .where(eq(Contact.id, input.id))
 
+        // insert new phone numbers
         const newPhoneNumbersInput = input.phoneNumbers
           ?.filter(n => !n.id)
           .map(n => ({ value: n.value, label: n.label, contactId: input.id }))
-
-        if (newPhoneNumbersInput && newPhoneNumbersInput.length) {
-          await tx.insert(PhoneNumber).values(newPhoneNumbersInput)
+        console.log(57, newPhoneNumbersInput)
+        if (newPhoneNumbersInput?.length) {
+          const newPhoneNumbers = await tx
+            .insert(PhoneNumber)
+            .values(newPhoneNumbersInput)
+            .returning()
+          console.log(63, newPhoneNumbers)
         }
 
         const existingPhoneNumbersInput = input.phoneNumbers
           ?.filter(n => n.id)
-          .map(n => ({ ...n, contactId: input.id }))
+          .map(n => ({ id: n.id!, contactId: input.id, value: n.value, label: n.label }))
 
-        if (existingPhoneNumbersInput && existingPhoneNumbersInput.length) {
+        if (existingPhoneNumbersInput?.length) {
+          // delete phone numbers that are no longer specified
+          const existingPhoneNumbersIds = existingPhoneNumbersInput.map(n => n.id)
+          await tx.delete(PhoneNumber).where(notInArray(PhoneNumber.id, existingPhoneNumbersIds))
+
+          // update remaining phone numbers
           await Promise.all(
             existingPhoneNumbersInput.map(number =>
               tx
