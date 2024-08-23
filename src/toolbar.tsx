@@ -31,7 +31,7 @@ function Toolbar({ className, titleContainerClassName }: Props) {
               <Tooltip.Trigger asChild>
                 <button>
                   <a
-                    href="https://github.com/mladenkn/react-typescript-phonebook"
+                    href="https://github.com/mladenkn/react-next-phonebook"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
