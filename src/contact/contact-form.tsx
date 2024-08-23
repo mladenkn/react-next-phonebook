@@ -107,7 +107,10 @@ export default function ContactForm({ initialInput, toolbarRight, onSubmit }: Pr
                 text="Phone numbers"
               />
               {phoneNumberField.state.value?.map((_, index) => (
-                <div className="py-2 md:flex md:justify-between md:gap-2" key={index}>
+                <div
+                  className="flex flex-col gap-2 py-2 md:flex-row md:justify-between"
+                  key={index}
+                >
                   <FormInput
                     placeholder="Label"
                     form={form}
@@ -183,7 +186,7 @@ function FormInput({ form, name, placeholder, validate }: FormInputProps) {
       children={field => (
         <div className="flex flex-col gap-1">
           <input
-            className="w-full border-2 border-solid border-secondary-light p-2 text-secondary-main outline-none sm:w-1/2"
+            className="w-full border-2 border-solid border-secondary-light p-2 text-secondary-main outline-none"
             type="text"
             name={field.name}
             onBlur={field.handleBlur}
