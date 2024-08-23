@@ -31,10 +31,7 @@ type Props = {
 export default function ContactForm({ initialInput, toolbarRight, onSubmit }: Props) {
   const form = useForm({
     defaultValues: initialInput,
-    onSubmit: ({ value }) => {
-      console.log(35, "form submit")
-      return onSubmit(value)
-    },
+    onSubmit: ({ value }) => onSubmit(value),
   })
 
   const buttonClass = cn("w-36 rounded-2xl text-white h-8")
