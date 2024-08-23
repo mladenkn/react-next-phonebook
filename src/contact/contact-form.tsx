@@ -31,7 +31,10 @@ type Props = {
 export default function ContactForm({ initialInput, toolbarRight, onSubmit }: Props) {
   const form = useForm({
     defaultValues: initialInput,
-    onSubmit: ({ value }) => onSubmit(value),
+    onSubmit: ({ value }) => {
+      console.log(35, "form submit")
+      return onSubmit(value)
+    },
   })
 
   const buttonClass = cn("w-36 rounded-2xl text-white h-8")
@@ -129,7 +132,6 @@ export default function ContactForm({ initialInput, toolbarRight, onSubmit }: Pr
           )}
         </form.Field>
 
-        {/* TODO: Disable kad nije validno */}
         <button
           type="button"
           className="mt-6 flex text-primary-main"
@@ -149,7 +151,18 @@ export default function ContactForm({ initialInput, toolbarRight, onSubmit }: Pr
           >
             Cancel
           </button>
-          <button className={cn(buttonClass, "bg-primary-main")}>Save</button>
+          <form.Subscribe
+            selector={state => [state.canSubmit, state.isSubmitting]}
+            children={([canSubmit, isSubmitting]) => (
+              <button
+                className={cn(buttonClass, "bg-primary-main")}
+                type="submit"
+                disabled={!canSubmit}
+              >
+                {isSubmitting ? "..." : "Save"}
+              </button>
+            )}
+          />
         </div>
       </div>
     </form>
