@@ -50,19 +50,6 @@ const contactApi = createTRPCRouter({
           .set(pick(input, "fullName", "email", "avatarUrl"))
           .where(eq(Contact.id, input.id))
 
-        // insert new phone numbers
-        const newPhoneNumbersInput = input.phoneNumbers
-          ?.filter(n => !n.id)
-          .map(n => ({ value: n.value, label: n.label, contactId: input.id }))
-        console.log(57, newPhoneNumbersInput)
-        if (newPhoneNumbersInput?.length) {
-          const newPhoneNumbers = await tx
-            .insert(PhoneNumber)
-            .values(newPhoneNumbersInput)
-            .returning()
-          console.log(63, newPhoneNumbers)
-        }
-
         const existingPhoneNumbersInput = input.phoneNumbers
           ?.filter(n => n.id)
           .map(n => ({ id: n.id!, contactId: input.id, value: n.value, label: n.label }))
@@ -85,6 +72,14 @@ const contactApi = createTRPCRouter({
               tx.update(PhoneNumber).set(number).where(eq(PhoneNumber.id, number.id)),
             ),
           )
+        }
+
+        // insert new phone numbers
+        const newPhoneNumbersInput = input.phoneNumbers
+          ?.filter(n => !n.id)
+          .map(n => ({ value: n.value, label: n.label, contactId: input.id }))
+        if (newPhoneNumbersInput?.length) {
+          await tx.insert(PhoneNumber).values(newPhoneNumbersInput)
         }
       })
 
