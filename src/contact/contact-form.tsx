@@ -85,7 +85,7 @@ export default function ContactForm({ initialInput, toolbarRight, onSubmit }: Pr
             text="Full name"
             className="mb-2"
           />
-          <FormInput name="fullName" form={form} />
+          <FormTextInput name="fullName" form={form} />
         </label>
 
         <div className="my-4 h-0.25 w-full bg-primary-main" />
@@ -96,7 +96,7 @@ export default function ContactForm({ initialInput, toolbarRight, onSubmit }: Pr
             text="Email"
             className="mb-2"
           />
-          <FormInput name="email" form={form} />
+          <FormTextInput name="email" form={form} />
         </label>
 
         <div className="my-4 h-0.25 w-full bg-primary-main" />
@@ -114,12 +114,12 @@ export default function ContactForm({ initialInput, toolbarRight, onSubmit }: Pr
                   className="flex flex-col gap-2 py-2 md:flex-row md:justify-between"
                   key={index}
                 >
-                  <FormInput
+                  <FormTextInput
                     placeholder="Label"
                     form={form}
                     name={`phoneNumbers[${index}].label`}
                   />
-                  <FormInput
+                  <FormTextInput
                     placeholder="Number"
                     form={form}
                     name={`phoneNumbers[${index}].value`}
@@ -175,14 +175,14 @@ export default function ContactForm({ initialInput, toolbarRight, onSubmit }: Pr
   )
 }
 
-type FormInputProps = {
+type FormTextInputProps = {
   form: FormApi<ContactFormEntries, undefined> & ReactFormApi<ContactFormEntries, undefined>
   name: DeepKeys<ContactFormEntries>
   placeholder?: string
   validate?(input: string): string | undefined
 }
 
-function FormInput({ form, name, placeholder, validate }: FormInputProps) {
+function FormTextInput({ form, name, placeholder, validate }: FormTextInputProps) {
   return (
     <form.Field
       name={name}
@@ -205,9 +205,7 @@ function FormInput({ form, name, placeholder, validate }: FormInputProps) {
       validators={{
         onBlur({ value }) {
           if (validate) {
-            if (typeof value !== "string")
-              throw new Error("Custom validation supported only for string values")
-            return validate(value as any)
+            return validate(value as string)
           }
 
           const validationResult = ContactFormInput.pick({ [name]: true } as any).safeParse({
