@@ -169,12 +169,6 @@ export default function ContactForm({ initialInput, toolbarRight, onSubmit }: Pr
   )
 }
 
-const styles = {
-  input:
-    "p-2 border-2 border-solid border-secondary-light text-secondary-main outline-none w-full sm:w-1/2",
-  errorMessage: "ml-2 mt-0.5 text-red-500",
-}
-
 type FormInputProps = {
   form: FormApi<ContactFormEntries, undefined> & ReactFormApi<ContactFormEntries, undefined>
   name: DeepKeys<ContactFormEntries>
@@ -189,7 +183,7 @@ function FormInput({ form, name, placeholder, validate }: FormInputProps) {
       children={field => (
         <div className="flex flex-col gap-1">
           <input
-            className={styles.input}
+            className="w-full border-2 border-solid border-secondary-light p-2 text-secondary-main outline-none sm:w-1/2"
             type="text"
             name={field.name}
             onBlur={field.handleBlur}
