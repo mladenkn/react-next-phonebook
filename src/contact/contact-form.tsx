@@ -8,7 +8,7 @@ import {
   RemoveCircledIcon,
   AddCircleOutlineIcon,
 } from "~/assets/icons"
-import { DeepKeys, FieldApi, FormApi, ReactFormApi, useForm } from "@tanstack/react-form"
+import { DeepKeys, FormApi, ReactFormApi, useForm } from "@tanstack/react-form"
 import { useRouter } from "next/router"
 import { GoBackAction } from "../actions"
 import SwapableAvatar from "../swapable-avatar"
