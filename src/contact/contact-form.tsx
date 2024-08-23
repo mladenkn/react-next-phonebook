@@ -18,7 +18,7 @@ import { ContactFormInput } from "./contact-api-shared"
 export type ContactFormEntries = {
   fullName: string
   email: string
-  avatarUrl?: string
+  avatarUrl?: string | null
   phoneNumbers?: { id?: number; value: string; label: string }[]
 }
 
@@ -44,13 +44,19 @@ export default function ContactForm({ initialInput, toolbarRight, onSubmit }: Pr
         <SwapableAvatar
           src={field.state.value}
           className="h-52 w-52"
-          onChange={value => field.handleChange(value)}
+          onChange={value => {
+            console.log(48, value)
+            return field.handleChange(value)
+          }}
         />
       )}
     </form.Field>
   )
 
   const numbersField = form.useField({ name: "phoneNumbers" })
+
+  const formState = form.useStore(s => s.values.avatarUrl)
+  console.log(55, formState)
 
   return (
     <form

@@ -6,7 +6,7 @@ import { CloudUploadIcon, RemoveIcon } from "./assets/icons"
 
 type Props = {
   src?: string | null
-  onChange: (image?: string) => void
+  onChange: (image?: string | null) => void
   className?: string
 }
 
@@ -22,10 +22,7 @@ export default function SwapableAvatar({ className, src, onChange }: Props) {
     <>
       {src ? (
         <div>
-          <div
-            className={cn("relative cursor-pointer", className)}
-            onClick={() => onChange(undefined)}
-          >
+          <div className={cn("relative cursor-pointer", className)} onClick={() => onChange(null)}>
             <ContactAvatar
               url={src}
               className="h-full w-full"
