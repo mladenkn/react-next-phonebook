@@ -12,9 +12,9 @@
     "wipe": "rm -rf node_modules && rm -f bun.lockb && rm -rf .next",
     "reset": "bun wipe && bun install",
     "format": "prettier --write \"**/*.{ts,tsx}\"",
-    "db.drop": "psql $DATABASE_URL --file=./src/db.drop.sql",
+    "db.drop": "psql $DATABASE_URL --file=./src/db/db.drop.sql",
     "db.push": "bunx drizzle-kit push --config=./src/db/db.config.ts",
-    "db.seed": "bun run ./src/db.seed.ts",
+    "db.seed": "bun run ./src/db/db.seed.ts",
     "db.reset": "bun run db.drop && bun run db.push && bun run db.seed",
     "db.studio": "drizzle-kit studio --config=./src/db/db.config.ts"
   },
