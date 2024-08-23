@@ -11,7 +11,6 @@ type FormEntriesValid = ContactFormEntries & {
 export default function ContactCreatePage() {
   const router = useRouter()
 
-  // TODO: error handling
   const { mutate } = api.contact.create.useMutation({
     onSuccess(contact) {
       router.push(contactDetailsUrl(contact.id))

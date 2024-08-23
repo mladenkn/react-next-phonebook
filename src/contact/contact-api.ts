@@ -111,7 +111,6 @@ const contactApi = createTRPCRouter({
 
 export default contactApi
 
-// TODO: pokušat stavit u router pa zvat preko apiSS
 export function createContact(db: Database, input: z.infer<typeof ContactFormInput>) {
   return db.transaction(async tx => {
     const contact = await tx
