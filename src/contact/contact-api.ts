@@ -82,10 +82,7 @@ const contactApi = createTRPCRouter({
           // update remaining phone numbers
           await Promise.all(
             existingPhoneNumbersInput.map(number =>
-              tx
-                .update(PhoneNumber)
-                .set(number)
-                .where(eq(PhoneNumber.id, asNonNil(number.id))),
+              tx.update(PhoneNumber).set(number).where(eq(PhoneNumber.id, number.id)),
             ),
           )
         }
