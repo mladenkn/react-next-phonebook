@@ -129,6 +129,7 @@ export default function ContactForm({ initialInput, toolbarRight, onSubmit }: Pr
           )}
         </form.Field>
 
+        {/* Disable kad nije validno */}
         <button
           type="button"
           className="mt-6 flex text-primary-main"
