@@ -1,7 +1,7 @@
 import { Contact, PhoneNumber } from "./contact-schema"
 import { createTRPCRouter, publicProcedure, TrpcContext } from "~/api/trpc"
 import { z } from "zod"
-import { eq, desc, and, ilike, or, SQL, notInArray } from "drizzle-orm"
+import { eq, desc, and, ilike, or, SQL, notInArray, ne } from "drizzle-orm"
 import { ContactFormInput } from "./contact-api-shared"
 import { getRandomAvatarStyle } from "./contact-data-generators"
 import { asNonNil, pick } from "~/utils"
@@ -70,7 +70,14 @@ const contactApi = createTRPCRouter({
         if (existingPhoneNumbersInput?.length) {
           // delete phone numbers that are no longer specified
           const existingPhoneNumbersIds = existingPhoneNumbersInput.map(n => n.id)
-          await tx.delete(PhoneNumber).where(notInArray(PhoneNumber.id, existingPhoneNumbersIds))
+          await tx
+            .delete(PhoneNumber)
+            .where(
+              and(
+                eq(PhoneNumber.contactId, input.id),
+                notInArray(PhoneNumber.id, existingPhoneNumbersIds),
+              ),
+            )
 
           // update remaining phone numbers
           await Promise.all(
