@@ -7,10 +7,10 @@ import {
   PhoneIcon,
   RemoveCircledIcon,
   AddCircleOutlineIcon,
+  ArrowBackIcon,
 } from "~/assets/icons"
 import { DeepKeys, FormApi, ReactFormApi, useForm } from "@tanstack/react-form"
 import { useRouter } from "next/router"
-import { GoBackAction } from "../actions"
 import SwapableAvatar from "../swapable-avatar"
 import { ReactNode } from "react"
 import { ContactFormInput } from "./contact-api-shared"
@@ -44,19 +44,13 @@ export default function ContactForm({ initialInput, toolbarRight, onSubmit }: Pr
         <SwapableAvatar
           src={field.state.value}
           className="h-52 w-52"
-          onChange={value => {
-            console.log(48, value)
-            return field.handleChange(value)
-          }}
+          onChange={value => field.handleChange(value)}
         />
       )}
     </form.Field>
   )
 
   const numbersField = form.useField({ name: "phoneNumbers" })
-
-  const formState = form.useStore(s => s.values.avatarUrl)
-  console.log(55, formState)
 
   return (
     <form
@@ -70,7 +64,9 @@ export default function ContactForm({ initialInput, toolbarRight, onSubmit }: Pr
       <div className="mr-8 sm-max:hidden">{avatar}</div>
       <div className="md:min-w-96">
         <div className="mt-4 flex w-full items-center justify-between px-1 pb-2 pt-0">
-          <GoBackAction />
+          <button onClick={() => router.back()}>
+            <ArrowBackIcon />
+          </button>
           {toolbarRight}
         </div>
         <div className="h-0.25 w-full bg-secondary-main md:hidden" />
