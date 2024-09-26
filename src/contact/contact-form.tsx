@@ -15,6 +15,7 @@ import SwapableAvatar from "../swapable-avatar"
 import { ReactNode } from "react"
 import { ContactFormInput } from "./contact-api-shared"
 import { contactDetailsUrl } from "~/urls"
+import Link from "next/link"
 
 export type ContactFormEntries = {
   fullName: string
@@ -66,9 +67,9 @@ export default function ContactForm({ initialInput, toolbarRight, onSubmit, goBa
       <div className="mr-8 sm-max:hidden">{avatar}</div>
       <div className="md:min-w-96">
         <div className="mt-4 flex w-full items-center justify-between px-1 pb-2 pt-0">
-          <button onClick={() => router.push(goBackUrl)} type="button">
+          <Link href={goBackUrl}>
             <ArrowBackIcon />
-          </button>
+          </Link>
           {toolbarRight}
         </div>
         <div className="h-0.25 w-full bg-secondary-main md:hidden" />
