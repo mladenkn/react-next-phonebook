@@ -42,6 +42,7 @@ export default function ContactEdit({ contact }: Props) {
           />
         }
         onSubmit={onSubmit}
+        goBackUrl={contactDetailsUrl(contact.id)}
       />
     </div>
   )

@@ -14,6 +14,7 @@ import { useRouter } from "next/router"
 import SwapableAvatar from "../swapable-avatar"
 import { ReactNode } from "react"
 import { ContactFormInput } from "./contact-api-shared"
+import { contactDetailsUrl } from "~/urls"
 
 export type ContactFormEntries = {
   fullName: string
@@ -26,9 +27,10 @@ type Props = {
   initialInput: ContactFormEntries
   toolbarRight?: ReactNode
   onSubmit: (entries: ContactFormEntries) => void
+  goBackUrl: string
 }
 
-export default function ContactForm({ initialInput, toolbarRight, onSubmit }: Props) {
+export default function ContactForm({ initialInput, toolbarRight, onSubmit, goBackUrl }: Props) {
   const form = useForm({
     defaultValues: initialInput,
     onSubmit: ({ value }) => onSubmit(value),
@@ -64,7 +66,7 @@ export default function ContactForm({ initialInput, toolbarRight, onSubmit }: Pr
       <div className="mr-8 sm-max:hidden">{avatar}</div>
       <div className="md:min-w-96">
         <div className="mt-4 flex w-full items-center justify-between px-1 pb-2 pt-0">
-          <button onClick={() => router.back()}>
+          <button onClick={() => router.push(goBackUrl)} type="button">
             <ArrowBackIcon />
           </button>
           {toolbarRight}

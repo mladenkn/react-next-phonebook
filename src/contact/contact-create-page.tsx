@@ -1,7 +1,7 @@
 import { useRouter } from "next/router"
 import ContactForm, { ContactFormEntries } from "~/contact/contact-form"
 import FixedToolbar from "~/toolbar"
-import { contactDetailsUrl } from "~/urls"
+import { contactDetailsUrl, homePageUrl } from "~/urls"
 import { api } from "~/utils/api"
 
 type FormEntriesValid = ContactFormEntries & {
@@ -27,6 +27,7 @@ export default function ContactCreatePage() {
       <ContactForm
         initialInput={{ email: "", fullName: "", phoneNumbers: [] }}
         onSubmit={handleSubmit}
+        goBackUrl={homePageUrl}
       />
     </div>
   )
