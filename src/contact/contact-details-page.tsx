@@ -1,13 +1,13 @@
 import ContactDetailsFields from "./contact-details-fields"
-import { GoBackAction } from "../actions"
 import ContactAvatar from "./contact-avatar"
 import { cn } from "~/utils/ui-utils"
 import FixedToolbar from "~/toolbar"
 import { api } from "~/utils/api"
 import { ContactFavorite } from "./contact-favorite"
-import { PencilIcon } from "~/assets/icons"
+import { ArrowBackIcon, PencilIcon } from "~/assets/icons"
 import { useRouter } from "next/router"
-import { contactEditUrl } from "~/urls"
+import { contactEditUrl, homePageUrl } from "~/urls"
+import Link from "next/link"
 
 export default function ContactDetailsPage({ contactId }: { contactId: number }) {
   const contact = api.contact.single.useQuery(contactId)
@@ -37,7 +37,9 @@ export default function ContactDetailsPage({ contactId }: { contactId: number })
         <div className="mr-8 xs-max:hidden">{avatar}</div>
         <div>
           <div className="mt-4 flex items-center justify-between px-1 pb-2 pt-0 sm:w-96">
-            <GoBackAction />
+            <Link href={homePageUrl}>
+              <ArrowBackIcon />
+            </Link>
             <span className="text-2xl xs-max:hidden">{contact.data.fullName}</span>
             <span className="flex items-center gap-2">
               <ContactFavorite id={contact.data.id} isFavorite={contact.data.isFavorite} />
